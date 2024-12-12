@@ -5,7 +5,6 @@ import 'package:solidify/solidify.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   runApp(
     SolidifyApp(
       appRoutes: AppRoutes(),

@@ -23,6 +23,9 @@ class SolidifyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: ColorsManager.mainBlue,
           scaffoldBackgroundColor: ColorsManager.scaffoldBackground,
+          appBarTheme: const AppBarTheme(
+            color: ColorsManager.scaffoldBackground
+          )
         ),
         debugShowCheckedModeBanner: false,
         initialRoute: initialRoute,
