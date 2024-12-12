@@ -10,18 +10,24 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      context.pushReplacementNamed(Routes.onboardingScreen);
-    });
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        context.pushReplacementNamed(Routes.onboardingScreen);
+      },
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Image.asset('assets/images/splash.png', fit: BoxFit.fill,),
+      body: Image.asset(
+        'assets/images/splash.png',
+        fit: BoxFit.fill,
+      ),
     );
   }
 }
