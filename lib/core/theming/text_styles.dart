@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:solidify/core/theming/color_manger.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/theming/font_weight_helper.dart';
 
-class TextStyles{
+class TextStyles {
   static TextStyle font15MainBlueMedium = GoogleFonts.poppins(
     fontSize: 15.sp,
     color: ColorsManager.mainBlue,
@@ -19,6 +19,12 @@ class TextStyles{
     fontSize: 14.sp,
     color: ColorsManager.lightBlack,
     fontWeight: FontWeightHelper.regular,
+  );
+
+  static TextStyle font12lightBlacklight = GoogleFonts.poppins(
+    fontSize: 14.sp,
+    color: ColorsManager.lightBlack,
+    fontWeight: FontWeightHelper.light,
   );
   static TextStyle font16WhiteMedium = GoogleFonts.poppins(
     fontSize: 16.sp,
