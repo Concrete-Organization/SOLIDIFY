@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:solidify/solidify.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:solidify/core/routes/app_routes.dart';
 // This is a basic Flutter widget test.
 //
 // To perform an interaction with a widget in your test, use the WidgetTester
@@ -5,17 +9,11 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:solidify/core/routes/app_routes.dart';
-
-import 'package:solidify/main.dart';
-import 'package:solidify/solidify.dart';
-
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(SolidifyApp(appRoutes: AppRoutes(), initialRoute: '/'));
+    await tester
+        .pumpWidget(SolidifyApp(appRoutes: AppRoutes(), initialRoute: '/'));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
