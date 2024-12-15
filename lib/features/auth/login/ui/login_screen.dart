@@ -24,60 +24,69 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            SvgPicture.asset('assets/svgs/back_button.svg'),
-            verticalSpace(40),
-            Text(
-              'Sign in to your account',
-              style: TextStyles.font24MainBlueMedium,
-            ),
-            verticalSpace(40),
-            Form(
-              key: formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Email',
-                    style: TextStyles.font14lightBlackRegular,
-                  ),
-                  verticalSpace(5),
-                  const AppTextFormField(
-                    hintText: 'Enter your email',
-                  ),
-                  verticalSpace(18),
-                  Text(
-                    'Password',
-                    style: TextStyles.font14lightBlackRegular,
-                  ),
-                  verticalSpace(5),
-                  AppTextFormField(
-                    hintText: 'Enter your password',
-                    isObscureText: isObscureText,
-                    suffixIcon: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isObscureText = !isObscureText;
-                        });
-                      },
-                      child: Icon(
-                        isObscureText ? Icons.visibility_off : Icons.visibility,
-                        color: isObscureText
-                            ? ColorsManager.mainBlue
-                            : ColorsManager.secondaryGold,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SvgPicture.asset('assets/svgs/back_button.svg'),
+              verticalSpace(40),
+              Text(
+                'Sign in to your account',
+                style: TextStyles.font24MainBlueMedium,
+              ),
+              verticalSpace(40),
+              Form(
+                key: formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Email',
+                      style: TextStyles.font14lightBlackRegular,
+                    ),
+                    verticalSpace(5),
+                    const AppTextFormField(
+                      hintText: 'Enter your email',
+                    ),
+                    verticalSpace(18),
+                    Text(
+                      'Password',
+                      style: TextStyles.font14lightBlackRegular,
+                    ),
+                    verticalSpace(5),
+                    AppTextFormField(
+                      hintText: 'Enter your password',
+                      isObscureText: isObscureText,
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isObscureText = !isObscureText;
+                          });
+                        },
+                        child: Icon(
+                          isObscureText
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: isObscureText
+                              ? ColorsManager.mainBlue
+                              : ColorsManager.secondaryGold,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    verticalSpace(18),
+                    Text(
+                      'Forget Password?',
+                      style: TextStyles.font15MainBlueRegular,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const Spacer(),
-            AppTextButton(
-              onPressed: () {},
-              textButton: 'sign up',
-            ),
-          ]),
+              const Spacer(),
+              AppTextButton(
+                onPressed: () {},
+                textButton: 'sign up',
+              ),
+            ],
+          ),
         ),
       ),
     );
