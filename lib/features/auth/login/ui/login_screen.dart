@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
@@ -23,12 +22,13 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20.w,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset('assets/svgs/back_button.svg'),
-              verticalSpace(40),
+              verticalSpace(99),
               Text(
                 'Sign in to your account',
                 style: TextStyles.font24MainBlueMedium,
@@ -85,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {},
                 textButton: 'sign up',
               ),
+              verticalSpace(22),
             ],
           ),
         ),

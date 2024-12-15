@@ -22,7 +22,7 @@ class CircleIndicator extends StatelessWidget {
         shape: BoxShape.circle,
         color: currentIndex == index
             ? ColorsManager.mainBlue
-            : ColorsManager.secondaryGold,
+            : ColorsManager.mainBlueWith50Opacity,
       ),
     );
   }
