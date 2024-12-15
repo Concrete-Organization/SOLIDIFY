@@ -104,7 +104,7 @@ class AppTextFormField extends StatelessWidget {
                 child: prefixIcon,
               )
             : null,
-        fillColor: backgroundColor ?? ColorsManager.mainBlue.withOpacity(0.15),
+        fillColor: backgroundColor ?? ColorsManager.mainBlueWithOpacity,
         filled: true,
       ),
     );
