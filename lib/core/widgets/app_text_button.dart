@@ -39,36 +39,33 @@ class AppTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: buttonPadding ?? EdgeInsets.symmetric(horizontal: 24.w),
-      child: SizedBox(
-        width: width ?? double.infinity,
-        height: height ?? 52.h,
-        child: ElevatedButton(
-          onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: backgroundColor ?? ColorsManager.mainBlue,
-            disabledBackgroundColor: disabledBackgroundColor ?? ColorsManager.mainBlue.withOpacity(0.8),
-            disabledForegroundColor: disabledTextColor ?? ColorsManager.white,
-            padding: padding ?? EdgeInsets.symmetric(vertical: 12.h),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.r),
-              side: BorderSide(
-                color: (onPressed == null)
-                    ? Colors.transparent
-                    : borderColor ?? ColorsManager.mainBlue,
-              ),
+    return SizedBox(
+      width: width ?? double.infinity,
+      height: height ?? 52.h,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor ?? ColorsManager.mainBlue,
+          disabledBackgroundColor: disabledBackgroundColor ?? ColorsManager.mainBlue.withOpacity(0.8),
+          disabledForegroundColor: disabledTextColor ?? ColorsManager.white,
+          padding: padding ?? EdgeInsets.symmetric(vertical: 12.h),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.r),
+            side: BorderSide(
+              color: (onPressed == null)
+                  ? Colors.transparent
+                  : borderColor ?? ColorsManager.mainBlue,
             ),
           ),
-          child: Text(
-            textButton,
-            style: TextStyles.font16WhiteMedium.copyWith(
-              color: onPressed == null
-                  ? disabledTextColor ?? ColorsManager.white
-                  : textColor ?? ColorsManager.white,
-              fontSize: fontSize ?? 16,
-              fontWeight: fontWeight ?? FontWeightHelper.semiBold,
-            ),
+        ),
+        child: Text(
+          textButton,
+          style: TextStyles.font16WhiteMedium.copyWith(
+            color: onPressed == null
+                ? disabledTextColor ?? ColorsManager.white
+                : textColor ?? ColorsManager.white,
+            fontSize: fontSize ?? 16,
+            fontWeight: fontWeight ?? FontWeightHelper.semiBold,
           ),
         ),
       ),

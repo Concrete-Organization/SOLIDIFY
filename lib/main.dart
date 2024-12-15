@@ -8,7 +8,7 @@ void main() async {
   runApp(
     SolidifyApp(
       appRoutes: AppRoutes(),
-      initialRoute: Routes.loginScreen,
+      initialRoute: Routes.splashScreen,
     ),
   );
 }

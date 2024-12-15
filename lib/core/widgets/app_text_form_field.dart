@@ -86,14 +86,16 @@ class AppTextFormField extends StatelessWidget {
       autofillHints: autofillHints,
       decoration: InputDecoration(
         isDense: true,
-        contentPadding: contentPadding ?? EdgeInsets.symmetric(vertical: 16.h),
+        contentPadding: contentPadding ?? EdgeInsets.symmetric(vertical: 13.h, horizontal: 13.w),
         enabledBorder: enabledBorder ??
             buildOutlineInputBorder(color: ColorsManager.lightBlack),
         focusedBorder: focusedBorder ??
             buildOutlineInputBorder(color: ColorsManager.secondaryGold),
         focusedErrorBorder: buildOutlineInputBorder(color: Colors.red),
         errorBorder: buildOutlineInputBorder(color: Colors.red),
-        hintStyle: hintStyle ?? TextStyles.font12lightBlacklight,
+        hintStyle: hintStyle ?? TextStyles.font12lightBlacklight.copyWith(
+          color: ColorsManager.lightBlack.withOpacity(0.8),
+        ),
         hintText: hintText,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon != null
@@ -102,7 +104,7 @@ class AppTextFormField extends StatelessWidget {
                 child: prefixIcon,
               )
             : null,
-        fillColor: backgroundColor ?? ColorsManager.mainBlue30,
+        fillColor: backgroundColor ?? ColorsManager.mainBlue.withOpacity(0.15),
         filled: true,
       ),
     );

@@ -17,12 +17,13 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
   bool isObscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             SvgPicture.asset('assets/svgs/back_button.svg'),
@@ -31,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
               'Sign in to your account',
               style: TextStyles.font24MainBlueMedium,
             ),
-            verticalSpace(60),
+            verticalSpace(40),
             Form(
               key: formKey,
               child: Column(
@@ -43,17 +44,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   verticalSpace(5),
                   const AppTextFormField(
-                    hintText: 'enter your email',
-                    contentPadding: EdgeInsets.all(10),
+                    hintText: 'Enter your email',
                   ),
-                  verticalSpace(10),
+                  verticalSpace(18),
                   Text(
                     'Password',
                     style: TextStyles.font14lightBlackRegular,
                   ),
+                  verticalSpace(5),
                   AppTextFormField(
-                    hintText: 'Password',
-                    contentPadding: const EdgeInsets.all(10),
+                    hintText: 'Enter your password',
                     isObscureText: isObscureText,
                     suffixIcon: GestureDetector(
                       onTap: () {
@@ -73,7 +73,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const Spacer(),
-            AppTextButton(onPressed: () {}, textButton: 'sign up')
+            AppTextButton(
+              onPressed: () {},
+              textButton: 'sign up',
+            ),
           ]),
         ),
       ),

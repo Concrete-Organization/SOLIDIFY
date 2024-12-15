@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/features/onboarding/widgets/onboarding_app_bar.dart';
@@ -63,16 +65,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     AppTextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.pushReplacementNamed(Routes.loginScreen);
+                      },
                       textButton: 'Login',
                       width: 166.w,
-                      buttonPadding: EdgeInsets.zero,
                     ),
                     AppTextButton(
                       onPressed: () {},
                       textButton: 'Register',
                       width: 166.w,
-                      buttonPadding: EdgeInsets.zero,
                       backgroundColor: ColorsManager.white,
                       textColor: ColorsManager.mainBlue,
                     ),
@@ -82,7 +84,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 AppTextButton(
                   onPressed: _onNextPage,
                   textButton: 'Next',
-                  buttonPadding: EdgeInsets.zero,
                 ),
               verticalSpace(25),
             ],
