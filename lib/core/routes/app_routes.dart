@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/routes/routes_name.dart';
-import 'package:solidify/features/auth/forget_password/ui/forget_password_screens.dart';
-import 'package:solidify/features/auth/otp/ui/otp_screen.dart';
-import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.dart';
+import 'package:solidify/features/auth/sign_up/ui/screens/select_account_type_screen.dart';
 import 'package:solidify/features/splash/splash_screen.dart';
+import 'package:solidify/features/auth/otp/ui/otp_screen.dart';
 import 'package:solidify/features/auth/login/ui/login_screen.dart';
 import 'package:solidify/features/onboarding/onboarding_screen.dart';
+import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.dart';
+import 'package:solidify/features/auth/forget_password/ui/forget_password_screens.dart';
 
 class AppRoutes {
   Route generateRoute(RouteSettings settings) {
@@ -33,6 +34,10 @@ class AppRoutes {
       case Routes.resetPasswordScreen:
         return MaterialPageRoute(
           builder: (context) => const ResetPasswordScreen(),
+        );
+        case Routes.selectAccountTypeScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SelectAccountTypeScreen(),
         );
       default:
         return MaterialPageRoute(
