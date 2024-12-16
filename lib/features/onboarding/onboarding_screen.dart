@@ -48,7 +48,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             children: [
-              verticalSpace(84),
+              verticalSpace(67),
               Expanded(
                 child: OnboardingPageViewBuilder(
                   controller: _controller,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/features/onboarding/model/onboarding_model.dart';
@@ -13,8 +14,8 @@ class OnboardingContent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.asset(onboardingModel.imagePath),
-        verticalSpace(50),
+        SvgPicture.asset(onboardingModel.imagePath),
+        verticalSpace(30),
         Text(
           onboardingModel.title,
           style: TextStyles.font18MainBlueBold,

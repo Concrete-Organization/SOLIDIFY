@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -73,9 +75,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     verticalSpace(18),
-                    Text(
-                      'Forget Password?',
-                      style: TextStyles.font15MainBlueRegular,
+                    InkWell(
+                      onTap: (){
+                        context.pushNamed(Routes.forgetPasswordScreen);
+                      },
+                      child: Text(
+                        'Forget Password?',
+                        style: TextStyles.font15MainBlueRegular,
+                      ),
                     ),
                   ],
                 ),
@@ -83,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const Spacer(),
               AppTextButton(
                 onPressed: () {},
-                textButton: 'sign up',
+                textButton: 'Sign up',
               ),
               verticalSpace(22),
             ],
