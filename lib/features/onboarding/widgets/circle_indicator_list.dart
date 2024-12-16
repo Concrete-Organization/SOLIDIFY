@@ -18,7 +18,7 @@ class CircleIndicatorList extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
         onboardingList.length,
-        (index) => CircleIndicator(
+            (index) => CircleIndicator(
           currentIndex: currentIndex,
           index: index,
         ),
