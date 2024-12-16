@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:solidify/core/theming/color_manger.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SelectableRow extends StatefulWidget {
-  final String iconPath;
-  final String label;
-  final String selectedIconPath;
-  final Color defaultBorderColor;
-  final Color selectedBorderColor;
-  final Color backgroundColor;
-  final Color selectedBackgroundColor;
-  final TextStyle textStyle;
+class SelectableRowWithCheck extends StatefulWidget {
+  final String iconPath; // First icon path (dynamic)
+  final String label; // Text (dynamic)
 
-  const SelectableRow({
-    super.key,
+  const SelectableRowWithCheck({
+    Key? key,
     required this.iconPath,
     required this.label,
-    required this.selectedIconPath,
-    required this.defaultBorderColor,
-    required this.selectedBorderColor,
-    required this.backgroundColor,
-    required this.selectedBackgroundColor,
-    required this.textStyle,
-  });
+  }) : super(key: key);
 
   @override
-  _SelectableRowState createState() => _SelectableRowState();
+  _SelectableRowWithCheckState createState() => _SelectableRowWithCheckState();
 }
 
-class _SelectableRowState extends State<SelectableRow> {
+class _SelectableRowWithCheckState extends State<SelectableRowWithCheck> {
   bool _isSelected = false;
+
+  // Constants
+  static const String _checkIconPath = "assets/svgs/selected_check_icon.svg";
+  static const Color _defaultBorderColor = ColorsManager.mainBlue;
+  static const Color _selectedBorderColor = ColorsManager.secondaryGold;
+  static final Color _defaultBackgroundColor =
+      ColorsManager.mainBlueWith15Opacity;
 
   @override
   Widget build(BuildContext context) {
@@ -39,34 +36,34 @@ class _SelectableRowState extends State<SelectableRow> {
         });
       },
       child: Container(
-        width: 353,
-        height: 65,
+        width: 353.w,
+        height: 65.h,
         decoration: BoxDecoration(
-          color: _isSelected
-              ? widget.selectedBackgroundColor
-              : widget.backgroundColor,
-          borderRadius: BorderRadius.circular(10),
+          color: _defaultBackgroundColor,
+          borderRadius: BorderRadius.circular(10.r),
           border: Border.all(
-            color: _isSelected
-                ? widget.selectedBorderColor
-                : widget.defaultBorderColor,
+            color: _isSelected ? _selectedBorderColor : _defaultBorderColor,
             width: 2,
           ),
         ),
         child: Row(
           children: [
             SvgPicture.asset(
-              widget.iconPath,
+              widget.iconPath, // Dynamic icon
             ),
             const SizedBox(width: 10),
             Text(
-              widget.label,
-              style: widget.textStyle,
+              widget.label, // Dynamic text
+              style: const TextStyle(
+                color: Colors.blue,
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             const Spacer(),
             if (_isSelected)
               SvgPicture.asset(
-                widget.selectedIconPath,
+                _checkIconPath, // Constant check icon
               ),
           ],
         ),

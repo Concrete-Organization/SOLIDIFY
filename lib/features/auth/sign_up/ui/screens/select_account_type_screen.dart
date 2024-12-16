@@ -5,6 +5,7 @@ import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/features/auth/sign_up/ui/widgets/selectable_row.dart';
 
 class SelectAccountTypeScreen extends StatefulWidget {
   const SelectAccountTypeScreen({super.key});
@@ -39,32 +40,6 @@ class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
               style: TextStyles.font24MainBlueMedium,
             ),
             verticalSpace(20),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                width: 353.w,
-                height: 65.h,
-                decoration: BoxDecoration(
-                    color: ColorsManager.mainBlueWith15Opacity,
-                    borderRadius: BorderRadius.circular(10.r),
-                    border: Border.all(
-                      color: ColorsManager.mainBlue,
-                      width: 2.w,
-                    )),
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      "assets/svgs/user_register_icon.svg",
-                    ),
-                    horizontalSpace(10),
-                    Text(
-                      'User account',
-                      style: TextStyles.font15MainBlueMedium,
-                    )
-                  ],
-                ),
-              ),
-            )
           ],
         ),
       )),
