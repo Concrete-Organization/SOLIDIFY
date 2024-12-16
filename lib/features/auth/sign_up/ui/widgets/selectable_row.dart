@@ -1,71 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/theming/text_styles.dart';
 
-class SelectableRowWithCheck extends StatefulWidget {
-  final String iconPath; // First icon path (dynamic)
-  final String label; // Text (dynamic)
+class SelectableRowWithCheck extends StatelessWidget {
+  final String iconPath;
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
 
   const SelectableRowWithCheck({
-    Key? key,
+    super.key,
     required this.iconPath,
     required this.label,
-  }) : super(key: key);
-
-  @override
-  _SelectableRowWithCheckState createState() => _SelectableRowWithCheckState();
-}
-
-class _SelectableRowWithCheckState extends State<SelectableRowWithCheck> {
-  bool _isSelected = false;
-
-  // Constants
-  static const String _checkIconPath = "assets/svgs/selected_check_icon.svg";
-  static const Color _defaultBorderColor = ColorsManager.mainBlue;
-  static const Color _selectedBorderColor = ColorsManager.secondaryGold;
-  static final Color _defaultBackgroundColor =
-      ColorsManager.mainBlueWith15Opacity;
+    required this.isSelected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          _isSelected = !_isSelected;
-        });
-      },
-      child: Container(
-        width: 353.w,
-        height: 65.h,
-        decoration: BoxDecoration(
-          color: _defaultBackgroundColor,
-          borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(
-            color: _isSelected ? _selectedBorderColor : _defaultBorderColor,
-            width: 2,
+      onTap: onTap,
+      child: Material(
+        elevation: isSelected ? 5 : 0,
+        borderRadius: BorderRadius.circular(10.r),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          height: 65.h,
+          decoration: BoxDecoration(
+            color: ColorsManager.mainBlueWith15Opacity,
+            borderRadius: BorderRadius.circular(10.r),
+            border: Border.all(
+              color: isSelected
+                  ? ColorsManager.secondaryGold
+                  : ColorsManager.lightBlack,
+              width: 2,
+            ),
           ),
-        ),
-        child: Row(
-          children: [
-            SvgPicture.asset(
-              widget.iconPath, // Dynamic icon
-            ),
-            const SizedBox(width: 10),
-            Text(
-              widget.label, // Dynamic text
-              style: const TextStyle(
-                color: Colors.blue,
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            const Spacer(),
-            if (_isSelected)
+          child: Row(
+            children: [
               SvgPicture.asset(
-                _checkIconPath, // Constant check icon
+                iconPath,
+                colorFilter: ColorFilter.mode(
+                  isSelected
+                      ? ColorsManager.secondaryGold
+                      : ColorsManager.mainBlue,
+                  BlendMode.srcIn,
+                ),
               ),
-          ],
+              horizontalSpace(7),
+              Text(
+                label,
+                style: TextStyles.font15MainBlueMedium,
+              ),
+              const Spacer(),
+              if (isSelected)
+                SvgPicture.asset(
+                  'assets/svgs/selected_check_icon.svg',
+                ),
+            ],
+          ),
         ),
       ),
     );

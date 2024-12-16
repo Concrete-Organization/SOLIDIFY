@@ -72,7 +72,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       width: 166.w,
                     ),
                     AppTextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.pushNamed(Routes.selectAccountTypeScreen);
+                      },
                       textButton: 'Register',
                       width: 166.w,
                       backgroundColor: ColorsManager.white,

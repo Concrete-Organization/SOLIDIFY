@@ -1,10 +1,8 @@
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
-import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/theming/text_styles.dart';
-import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/features/auth/sign_up/ui/widgets/selectable_row.dart';
 
 class SelectAccountTypeScreen extends StatefulWidget {
@@ -16,33 +14,59 @@ class SelectAccountTypeScreen extends StatefulWidget {
 }
 
 class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
+  int _selectedIndex = -1;
+
+  void _onRowSelected(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GestureDetector(
-              onTap: () {
-                context.pop();
-              },
-              child: SvgPicture.asset(
-                "assets/svgs/back_button.svg",
-                fit: BoxFit.scaleDown,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              verticalSpace(99),
+              Text(
+                'Create your account as',
+                style: TextStyles.font24MainBlueMedium,
               ),
-            ),
-            verticalSpace(35),
-            Text(
-              'Create your account as',
-              style: TextStyles.font24MainBlueMedium,
-            ),
-            verticalSpace(20),
-          ],
+              verticalSpace(40),
+              SelectableRowWithCheck(
+                iconPath: 'assets/svgs/user_register_icon.svg',
+                label: 'User account',
+                isSelected: _selectedIndex == 0,
+                onTap: () => _onRowSelected(0),
+              ),
+              verticalSpace(40),
+              SelectableRowWithCheck(
+                iconPath: 'assets/svgs/engineer_register.svg',
+                label: 'Engineer account',
+                isSelected: _selectedIndex == 1,
+                onTap: () => _onRowSelected(1),
+              ),
+              verticalSpace(40),
+              SelectableRowWithCheck(
+                iconPath: 'assets/svgs/business_account_register.svg',
+                label: 'Business account',
+                isSelected: _selectedIndex == 2,
+                onTap: () => _onRowSelected(2),
+              ),
+              const Spacer(),
+              AppTextButton(
+                onPressed: () {},
+                textButton: 'Continue',
+              ),
+              verticalSpace(22),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }
