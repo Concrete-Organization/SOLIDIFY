@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/routes/routes_name.dart';
-import 'package:solidify/features/auth/sign_up/ui/screens/select_account_type_screen.dart';
+import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
+import 'package:solidify/features/auth/sign_up/screens/user_sign_up/user_sign_up_screen.dart';
 import 'package:solidify/features/splash/splash_screen.dart';
 import 'package:solidify/features/auth/otp/ui/otp_screen.dart';
 import 'package:solidify/features/auth/login/ui/login_screen.dart';
@@ -35,9 +36,13 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const ResetPasswordScreen(),
         );
-        case Routes.selectAccountTypeScreen:
+      case Routes.selectAccountTypeScreen:
         return MaterialPageRoute(
           builder: (context) => const SelectAccountTypeScreen(),
+        );
+      case Routes.userSignUpScreen:
+        return MaterialPageRoute(
+          builder: (context) => const UserSignUpScreen(),
         );
       default:
         return MaterialPageRoute(

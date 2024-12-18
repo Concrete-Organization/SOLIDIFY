@@ -18,7 +18,7 @@ class ResetPasswordScreen extends StatelessWidget {
         verticalSpace(6),
         Text(
           'Secure your account with new password',
-          style: TextStyles.font12lightBlacklight,
+          style: TextStyles.font12lightBlackLight,
         ),
         verticalSpace(16),
         const ResetPasswordForm(),

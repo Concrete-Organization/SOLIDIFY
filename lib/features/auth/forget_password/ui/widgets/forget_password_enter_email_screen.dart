@@ -22,7 +22,7 @@ class ForgetPasswordEnterEmailScreen extends StatelessWidget {
         verticalSpace(6),
         Text(
           'Enter your email to reset password',
-          style: TextStyles.font12lightBlacklight,
+          style: TextStyles.font12lightBlackLight,
         ),
         verticalSpace(16),
         Text(

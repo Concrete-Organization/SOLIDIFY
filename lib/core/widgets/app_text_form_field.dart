@@ -82,7 +82,7 @@ class AppTextFormField extends StatelessWidget {
       onSaved: onSaved,
       maxLines: maxLines ?? 1,
       minLines: minLines ?? 1,
-      style: inputTextStyle ?? TextStyles.font12lightBlacklight,
+      style: inputTextStyle ?? TextStyles.font12lightBlackLight,
       autofillHints: autofillHints,
       decoration: InputDecoration(
         isDense: true,
@@ -93,7 +93,7 @@ class AppTextFormField extends StatelessWidget {
             buildOutlineInputBorder(color: ColorsManager.secondaryGold),
         focusedErrorBorder: buildOutlineInputBorder(color: Colors.red),
         errorBorder: buildOutlineInputBorder(color: Colors.red),
-        hintStyle: hintStyle ?? TextStyles.font12lightBlacklight.copyWith(
+        hintStyle: hintStyle ?? TextStyles.font12lightBlackLight.copyWith(
           color: ColorsManager.lightBlack.withOpacity(0.8),
         ),
         hintText: hintText,

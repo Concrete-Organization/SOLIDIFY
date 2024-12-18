@@ -6,4 +6,5 @@ class Routes {
   static const String otpScreen = 'otpScreen';
   static const String resetPasswordScreen = 'resetPasswordScreen';
   static const String selectAccountTypeScreen = 'selectAccountTypeScreen';
+  static const String userSignUpScreen = 'userSignUpScreen';
 }
