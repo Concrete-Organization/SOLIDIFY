@@ -16,6 +16,12 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
   );
 
+  static TextStyle font10MainBlueRegular = GoogleFonts.poppins(
+    fontSize: 10.sp,
+    color: ColorsManager.mainBlue,
+    fontWeight: FontWeightHelper.regular,
+  );
+
   static TextStyle font24MainBlueMedium = GoogleFonts.poppins(
     fontSize: 24.sp,
     color: ColorsManager.mainBlue,
@@ -32,7 +38,7 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
   );
 
-  static TextStyle font12lightBlacklight = GoogleFonts.poppins(
+  static TextStyle font12lightBlackLight = GoogleFonts.poppins(
     fontSize: 14.sp,
     color: ColorsManager.lightBlack,
     fontWeight: FontWeightHelper.light,

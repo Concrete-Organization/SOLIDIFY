@@ -19,7 +19,7 @@ class OtpScreen extends StatelessWidget {
         verticalSpace(6),
         Text(
           'Enter the otp sent to your email',
-          style: TextStyles.font12lightBlacklight,
+          style: TextStyles.font12lightBlackLight,
         ),
         verticalSpace(16),
         Text(
