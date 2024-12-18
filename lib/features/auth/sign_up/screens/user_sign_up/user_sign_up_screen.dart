@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:solidify/core/helpers/extensions.dart';
+import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_form.dart';
 
 class UserSignUpScreen extends StatelessWidget {
@@ -30,7 +30,7 @@ class UserSignUpScreen extends StatelessWidget {
                   style: TextStyles.font24MainBlueMedium,
                 ),
                 verticalSpace(40),
-                SignUpForm(),
+                const SignUpForm(),
               ],
             ),
           ),
