@@ -5,7 +5,7 @@ import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
-import 'package:solidify/features/auth/sign_up/ui/screens/select_account_type/ui/widgets/selectable_row.dart';
+import 'package:solidify/features/auth/sign_up/screens/select_account_type/widgets/selectable_row.dart';
 
 class SelectAccountTypeScreen extends StatefulWidget {
   const SelectAccountTypeScreen({super.key});
@@ -28,7 +28,7 @@ class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
     if (_selectedIndex == 0) {
       context.pushNamed(Routes.userSignUpScreen);
     } else if (_selectedIndex == 1) {
-      //context.pushNamed(Routes.userSignUpScreen);
+      context.pushNamed(Routes.engineerAccountSignUpScreen);
     } else if (_selectedIndex == 2) {
       //context.pushNamed(Routes.userSignUpScreen);
     }

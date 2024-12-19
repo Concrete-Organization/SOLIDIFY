@@ -6,9 +6,9 @@ import 'package:solidify/features/auth/login/ui/login_screen.dart';
 import 'package:solidify/features/onboarding/onboarding_screen.dart';
 import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screens.dart';
-import 'package:solidify/features/auth/sign_up/ui/screens/user_sign_up/user_sign_up_screen.dart';
-import 'package:solidify/features/auth/sign_up/ui/screens/select_account_type/ui/select_account_type_screen.dart';
-import 'package:solidify/features/auth/sign_up/ui/screens/engineer_account_sign_up/engineer_account_sign_up_screen.dart';
+import 'package:solidify/features/auth/sign_up/screens/user_sign_up/ui/user_sign_up_screen.dart';
+import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/ui/engineer_account_sign_up_screen.dart';
 
 class AppRoutes {
   Route generateRoute(RouteSettings settings) {

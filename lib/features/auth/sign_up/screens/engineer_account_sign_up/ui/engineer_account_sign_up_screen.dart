@@ -1,11 +1,9 @@
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
-import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solidify/features/auth/sign_up/ui/widgets/sign_up_form.dart';
-import 'package:solidify/features/auth/sign_up/ui/widgets/engineer_account_list.dart';
+import 'package:solidify/features/auth/sign_up/widgets/sign_up_form.dart';
+import 'package:solidify/features/auth/sign_up/widgets/engineer_account_list.dart';
 import 'package:solidify/features/auth/forget_password/ui/widgets/forget_password_app_bar.dart';
 
 class EngineerAccountSignUpScreen extends StatefulWidget {
