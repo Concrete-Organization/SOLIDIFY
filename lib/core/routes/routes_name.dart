@@ -7,4 +7,6 @@ class Routes {
   static const String resetPasswordScreen = 'resetPasswordScreen';
   static const String selectAccountTypeScreen = 'selectAccountTypeScreen';
   static const String userSignUpScreen = 'userSignUpScreen';
+  static const String engineerAccountSignUpScreen =
+      'engineerAccountSignUpScreen';
 }
