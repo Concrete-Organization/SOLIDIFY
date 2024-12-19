@@ -30,7 +30,7 @@ class UserSignUpScreen extends StatelessWidget {
                   style: TextStyles.font24MainBlueMedium,
                 ),
                 verticalSpace(40),
-                SignUpForm(),
+                const SignUpForm(),
               ],
             ),
           ),

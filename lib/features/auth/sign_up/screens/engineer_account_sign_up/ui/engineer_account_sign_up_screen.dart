@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_form.dart';
 import 'package:solidify/features/auth/sign_up/widgets/engineer_account_list.dart';
-import 'package:solidify/features/auth/forget_password/ui/widgets/forget_password_app_bar.dart';
+import 'package:solidify/features/auth/sign_up/widgets/engineer_account_app_bar.dart';
 
 class EngineerAccountSignUpScreen extends StatefulWidget {
   const EngineerAccountSignUpScreen({super.key});
@@ -34,21 +37,35 @@ class _EngineerAccountSignUpScreenState
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                verticalSpace(20),
-                const ForgetPasswordAppBar(currentIndex: 0, totalPages: 2),
-                verticalSpace(40),
-                Text(
-                  "Create your account",
-                  style: TextStyles.font24MainBlueMedium,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              verticalSpace(20),
+              const EngineerAccountAppBar(currentIndex: 0, totalPages: 2),
+              verticalSpace(40),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Create your account",
+                        style: TextStyles.font24MainBlueMedium,
+                      ),
+                      verticalSpace(40),
+                      const SignUpForm(),
+                    ],
+                  ),
                 ),
-                verticalSpace(40),
-                const SignUpForm(),
-              ],
-            ),
+              ),
+              AppTextButton(
+                onPressed: () {
+                  context.pushNamed(Routes.identityAuth);
+                },
+                textButton: 'Continue',
+              ),
+              verticalSpace(20),
+            ],
           ),
         ),
       ),
