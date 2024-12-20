@@ -39,20 +39,12 @@ class _SignUpFormState extends State<SignUpForm> {
     passwordController.addListener(() {
       setState(() {
         hasLowerCaseAndUpperCase =
-            AppRegex.hasLowerCase(passwordController.text);
+            AppRegex.hasUpperAndLowerCase(passwordController.text);
         hasSpecialCharacters =
             AppRegex.hasSpecialCharacter(passwordController.text);
         hasNumber = AppRegex.hasNumber(passwordController.text);
         hasMinLength = AppRegex.hasMinLength(passwordController.text);
-        // Show validations when password field is not empty
         showPasswordValidations = passwordController.text.isNotEmpty;
-      });
-    });
-
-    confirmPasswordController.addListener(() {
-      setState(() {
-        // Show validations when confirm password field is not empty
-        showPasswordValidations = confirmPasswordController.text.isNotEmpty;
       });
     });
   }
