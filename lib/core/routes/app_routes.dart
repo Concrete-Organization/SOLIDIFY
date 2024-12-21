@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
-import 'package:solidify/core/di/dependency_injection.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/widgets/engineer_identity_auth.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/engineer_sign_up_screen.dart';
+import 'package:solidify/features/home/ui/home_screen.dart';
 import 'package:solidify/features/splash/splash_screen.dart';
 import 'package:solidify/features/auth/otp/ui/otp_screen.dart';
 import 'package:solidify/features/auth/login/ui/login_screen.dart';
