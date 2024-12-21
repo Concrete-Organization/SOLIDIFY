@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/extensions.dart';
-import 'package:solidify/features/auth/forget_password/ui/widgets/forget_password_indicator.dart';
+import 'package:solidify/core/widgets/custom_indicator.dart';
 
-class EngineerAccountAppBar extends StatelessWidget
+class CustomAppBarWithIndicator extends StatelessWidget
     implements PreferredSizeWidget {
   final int currentIndex;
   final int totalPages;
 
-  const EngineerAccountAppBar({
+  const CustomAppBarWithIndicator({
     super.key,
     required this.currentIndex,
     required this.totalPages,
@@ -18,8 +18,9 @@ class EngineerAccountAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
+      centerTitle: true,
       leading: GestureDetector(
-        onTap: () {
+        onTap: (){
           context.pop();
         },
         child: SvgPicture.asset(
@@ -30,7 +31,7 @@ class EngineerAccountAppBar extends StatelessWidget
       title: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ForgetPasswordIndicator(
+          CustomIndicator(
             currentPage: currentIndex,
             totalPages: totalPages,
           ),

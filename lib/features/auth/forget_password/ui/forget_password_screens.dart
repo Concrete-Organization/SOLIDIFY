@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/helpers/spacing.dart';
-import 'package:solidify/features/auth/forget_password/ui/widgets/forget_password_app_bar.dart';
+import 'package:solidify/core/widgets/custom_app_bar_with_indicator.dart';
 import 'package:solidify/features/auth/forget_password/ui/widgets/forget_password_page_view_builder.dart';
 import 'package:solidify/features/auth/forget_password/ui/widgets/forget_password_pages_list.dart';
 import '../../../../core/widgets/app_text_button.dart';
@@ -35,7 +35,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreens> {
           child: Column(
             children: [
               verticalSpace(20),
-              ForgetPasswordAppBar(
+              CustomAppBarWithIndicator(
                 currentIndex: currentPage,
                 totalPages: forgetPasswordPages.length,
               ),
