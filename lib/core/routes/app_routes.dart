@@ -11,7 +11,10 @@ import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.d
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screens.dart';
 import 'package:solidify/features/auth/sign_up/screens/user_sign_up/ui/user_sign_up_screen.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/ui/identity_auth.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/contact_info_screen.dart';
 import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/financial_details_screen.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/business_account_sign_up_screen.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/ui/engineer_account_sign_up_screen.dart';
 
 class AppRoutes {
@@ -60,6 +63,19 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const IdentityAuth(),
         );
+      case Routes.businessAccountScreen:
+        return MaterialPageRoute(
+          builder: (context) => const BusinessAccountSignUpScreen(),
+        );
+      case Routes.financialDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const FinancialDetailsScreen(),
+        );
+      case Routes.contactInfoScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ContactInfoScreen(),
+        );
+
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(
