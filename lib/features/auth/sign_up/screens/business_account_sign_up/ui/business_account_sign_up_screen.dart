@@ -33,11 +33,14 @@ class _BusinessAccountSignUpScreenState
                     children: [
                       verticalSpace(20),
                       const EngineerAccountAppBar(
-                          currentIndex: 0, totalPages: 3),
+                          currentIndex: 1, totalPages: 3),
                       verticalSpace(30),
-                      Text(
-                        'Identity authentication',
-                        style: TextStyles.font24MainBlueSemiBold,
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Contact information',
+                          style: TextStyles.font24MainBlueSemiBold,
+                        ),
                       ),
                       verticalSpace(40),
                       const BusinessAcountSignUpForm(),
