@@ -1,99 +1,81 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
-import 'package:solidify/core/theming/text_styles.dart';
-import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solidify/core/widgets/app_text_button.dart';
-import 'package:solidify/core/widgets/app_text_form_field.dart';
+import 'package:solidify/core/widgets/custom_divider.dart';
+import 'package:solidify/core/widgets/have_account_question_text.dart';
+import 'package:solidify/core/widgets/social_media_buttons.dart';
+import 'package:solidify/features/auth/login/logic/login_cubit.dart';
+import 'package:solidify/features/auth/login/logic/login_state.dart';
+import 'package:solidify/features/auth/login/ui/widgets/login_form_with_button.dart';
+import 'package:solidify/features/auth/login/ui/widgets/login_header.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final formKey = GlobalKey<FormState>();
-  bool isObscureText = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 20.w,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              verticalSpace(99),
-              Text(
-                'Sign in to your account',
-                style: TextStyles.font24MainBlueMedium,
+        child: BlocListener<LoginCubit, LoginState>(
+          listener: (context, state) {
+            state.map(
+              initial: (_) {},
+              loading: (_) {
+                showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) =>
+                      const Center(child: CircularProgressIndicator()),
+                );
+              },
+              success: (_) {
+                context.pushNamedAndRemoveUntil(
+                  Routes.homeScreen,
+                  predicate: (Route<dynamic> route) => false,
+                );
+              },
+              error: (errorState) {
+                Navigator.of(context).pop();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: Colors.red,
+                    content: Text(
+                      errorState.error.message,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  verticalSpace(99),
+                  const LoginHeader(),
+                  verticalSpace(40),
+                  const LoginFormWithButton(),
+                  verticalSpace(46),
+                  const CustomDivider(),
+                  verticalSpace(14),
+                  const SocialMediaButtons(),
+                  verticalSpace(23),
+                  HaveAccountQuestionText(
+                    questionText: 'Don’t have an account? ',
+                    clickableText: 'Signup',
+                    onTap: () => context.pushReplacementNamed(
+                      Routes.selectAccountTypeScreen,
+                    ),
+                  ),
+                ],
               ),
-              verticalSpace(40),
-              Form(
-                key: formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Email',
-                      style: TextStyles.font14lightBlackRegular,
-                    ),
-                    verticalSpace(5),
-                    const AppTextFormField(
-                      hintText: 'Enter your email',
-                    ),
-                    verticalSpace(18),
-                    Text(
-                      'Password',
-                      style: TextStyles.font14lightBlackRegular,
-                    ),
-                    verticalSpace(5),
-                    AppTextFormField(
-                      hintText: 'Enter your password',
-                      isObscureText: isObscureText,
-                      suffixIcon: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isObscureText = !isObscureText;
-                          });
-                        },
-                        child: Icon(
-                          isObscureText
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: isObscureText
-                              ? ColorsManager.mainBlue
-                              : ColorsManager.secondaryGold,
-                        ),
-                      ),
-                    ),
-                    verticalSpace(18),
-                    InkWell(
-                      onTap: (){
-                        context.pushNamed(Routes.forgetPasswordScreen);
-                      },
-                      child: Text(
-                        'Forget Password?',
-                        style: TextStyles.font15MainBlueRegular,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Spacer(),
-              AppTextButton(
-                onPressed: () {},
-                textButton: 'Sign up',
-              ),
-              verticalSpace(22),
-            ],
+            ),
           ),
         ),
       ),

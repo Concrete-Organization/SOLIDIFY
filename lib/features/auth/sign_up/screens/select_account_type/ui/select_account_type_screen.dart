@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
@@ -26,7 +27,12 @@ class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
 
   void _navigateToNextScreen() {
     if (_selectedIndex == 0) {
+  void _navigateToNextScreen() {
+    if (_selectedIndex == 0) {
       context.pushNamed(Routes.userSignUpScreen);
+    } else if (_selectedIndex == 1) {
+      context.pushNamed(Routes.engineerAccountSignUpScreen);
+    } else if (_selectedIndex == 2) {
     } else if (_selectedIndex == 1) {
       context.pushNamed(Routes.engineerAccountSignUpScreen);
     } else if (_selectedIndex == 2) {
@@ -74,7 +80,18 @@ class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
                 onPressed: _selectedIndex == -1 ? null : _navigateToNextScreen,
                 textButton: 'Continue',
               ),
-              verticalSpace(22),
+              verticalSpace(18),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  HaveAccountQuestionText(
+                    questionText: 'Already have an account? ',
+                    clickableText: 'Login',
+                    onTap: () => context.pushReplacementNamed(Routes.loginScreen),
+                  ),
+                ],
+              ),
+              verticalSpace(18),
             ],
           ),
         ),

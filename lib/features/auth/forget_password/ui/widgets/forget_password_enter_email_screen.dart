@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
-import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
-
-import '../../../../../core/widgets/app_text_button.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
 
 class ForgetPasswordEnterEmailScreen extends StatelessWidget {

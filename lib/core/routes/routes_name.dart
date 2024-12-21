@@ -10,4 +10,5 @@ class Routes {
   static const String engineerAccountSignUpScreen =
       'engineerAccountSignUpScreen';
   static const String identityAuth = 'identityAuth';
+  static const String homeScreen = 'homeScreen';
 }
