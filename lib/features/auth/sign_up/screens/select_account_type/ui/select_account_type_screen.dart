@@ -6,7 +6,7 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/have_account_question_text.dart';
-import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/widgets/selectable_row.dart';
+import 'package:solidify/features/auth/sign_up/screens/select_account_type/widgets/selectable_row.dart';
 
 class SelectAccountTypeScreen extends StatefulWidget {
   const SelectAccountTypeScreen({super.key});
@@ -31,7 +31,7 @@ class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
     } else if (_selectedIndex == 1) {
       context.pushNamed(Routes.engineerAccountSignUpScreen);
     } else if (_selectedIndex == 2) {
-      //context.pushNamed(Routes.userSignUpScreen);
+      context.pushNamed(Routes.businessAccountScreen);
     }
   }
 
@@ -82,7 +82,8 @@ class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
                   HaveAccountQuestionText(
                     questionText: 'Already have an account? ',
                     clickableText: 'Login',
-                    onTap: () => context.pushReplacementNamed(Routes.loginScreen),
+                    onTap: () =>
+                        context.pushReplacementNamed(Routes.loginScreen),
                   ),
                 ],
               ),

@@ -7,13 +7,17 @@ import 'package:solidify/features/home/ui/home_screen.dart';
 import 'package:solidify/features/splash/splash_screen.dart';
 import 'package:solidify/features/auth/otp/ui/otp_screen.dart';
 import 'package:solidify/features/auth/login/ui/login_screen.dart';
+import 'package:solidify/features/auth/login/logic/login_cubit.dart';
 import 'package:solidify/features/onboarding/onboarding_screen.dart';
 import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screens.dart';
+import 'package:solidify/features/auth/sign_up/screens/user_sign_up/ui/user_sign_up_screen.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/ui/identity_auth.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/contact_info_screen.dart';
 import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
-import '../../features/auth/login/logic/login_cubit.dart';
-import '../../features/auth/sign_up/screens/user_sign_up/user_sign_up_screen.dart';
-import '../di/dependency_injection.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/financial_details_screen.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/business_account_sign_up_screen.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/ui/engineer_account_sign_up_screen.dart';
 
 class AppRoutes {
   Route generateRoute(RouteSettings settings) {
@@ -55,16 +59,25 @@ class AppRoutes {
         );
       case Routes.engineerAccountSignUpScreen:
         return MaterialPageRoute(
-          builder: (context) => const EngineerSignUpScreen(),
+          builder: (context) => const EngineerAccountSignUpScreen(),
         );
       case Routes.identityAuth:
         return MaterialPageRoute(
-          builder: (context) => const EngineerIdentityAuth(),
+          builder: (context) => const IdentityAuth(),
         );
-      case Routes.homeScreen:
+      case Routes.businessAccountScreen:
         return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => const BusinessAccountSignUpScreen(),
         );
+      case Routes.financialDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const FinancialDetailsScreen(),
+        );
+      case Routes.contactInfoScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ContactInfoScreen(),
+        );
+
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(

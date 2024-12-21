@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/features/auth/sign_up/widgets/password_validations.dart';
-import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theming/color_manger.dart';
+import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/theming/text_styles.dart';
+import '../../../../core/theming/color_manger.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
+import 'package:solidify/features/auth/sign_up/widgets/password_validations.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -146,7 +146,7 @@ class _SignUpFormState extends State<SignUpForm> {
               onTap: () {
                 setState(() {
                   isPasswordConfirmationObscureText =
-                  !isPasswordConfirmationObscureText;
+                      !isPasswordConfirmationObscureText;
                 });
               },
               child: Icon(
