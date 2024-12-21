@@ -5,7 +5,7 @@ import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/widgets/engineer_account_app_bar.dart';
+import 'package:solidify/core/widgets/custom_app_bar_with_indicator.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/widgets/engineer_account_list.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_form.dart';
 
@@ -41,7 +41,7 @@ class _EngineerAccountSignUpScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               verticalSpace(20),
-              const EngineerAccountAppBar(currentIndex: 0, totalPages: 2),
+              const CustomAppBarWithIndicator(currentIndex: 0, totalPages: 2),
               verticalSpace(40),
               Expanded(
                 child: SingleChildScrollView(
