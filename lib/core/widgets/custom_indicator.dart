@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 
-class ForgetPasswordIndicator extends StatelessWidget {
+class CustomIndicator extends StatelessWidget {
   final int currentPage;
   final int totalPages;
 
-  const ForgetPasswordIndicator({
+  const CustomIndicator({
     super.key,
     required this.currentPage,
     required this.totalPages,
@@ -24,8 +24,8 @@ class ForgetPasswordIndicator extends StatelessWidget {
           height: 3.h,
           width: 40.w,
           decoration: BoxDecoration(
-            color: currentPage == index ? ColorsManager.mainBlue : ColorsManager.mainBlueWith50Opacity,
-            borderRadius: BorderRadius.circular(20.r)
+              color: currentPage == index ? ColorsManager.mainBlue : ColorsManager.mainBlueWith50Opacity,
+              borderRadius: BorderRadius.circular(20.r)
           ),
         ),
       ),
