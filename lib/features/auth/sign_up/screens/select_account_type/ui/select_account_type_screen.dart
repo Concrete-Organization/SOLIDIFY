@@ -31,7 +31,7 @@ class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
     } else if (_selectedIndex == 1) {
       context.pushNamed(Routes.engineerAccountSignUpScreen);
     } else if (_selectedIndex == 2) {
-      //context.pushNamed(Routes.userSignUpScreen);
+      context.pushNamed(Routes.businessAccountScreen);
     }
   }
 

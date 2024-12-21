@@ -13,41 +13,42 @@ class BusinessAcountSignUpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
         child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Company official name ',
           style: TextStyles.font14lightBlackRegular,
         ),
-        verticalSpace(5),
+        verticalSpace(10),
         const AppTextFormField(hintText: 'Enter company name'),
         verticalSpace(10),
         Text(
           'Company address ',
           style: TextStyles.font14lightBlackRegular,
         ),
-        verticalSpace(5),
-        const AppTextFormField(hintText: 'Enter Company address '),
         verticalSpace(10),
+        const AppTextFormField(hintText: 'Enter Company address '),
+        verticalSpace(20),
         Text(
           'Commercial registration number ',
           style: TextStyles.font14lightBlackRegular,
         ),
-        verticalSpace(5),
+        verticalSpace(10),
         const AppTextFormField(
             hintText: 'Enter Commercial registration number'),
-        verticalSpace(10),
+        verticalSpace(20),
         Text(
           'Tax ID ',
           style: TextStyles.font14lightBlackRegular,
         ),
-        verticalSpace(5),
-        const AppTextFormField(hintText: 'Only 12 numbers'),
         verticalSpace(10),
+        const AppTextFormField(hintText: 'Only 12 numbers'),
+        verticalSpace(20),
         Text(
           'Copy of the commercial license',
           style: TextStyles.font14lightBlackRegular,
         ),
-        verticalSpace(5),
+        verticalSpace(10),
         Container(
           width: 353.w,
           height: 62.h,
