@@ -24,8 +24,10 @@ class CustomIndicator extends StatelessWidget {
           height: 3.h,
           width: 40.w,
           decoration: BoxDecoration(
-              color: currentPage == index ? ColorsManager.mainBlue : ColorsManager.mainBlueWith50Opacity,
-              borderRadius: BorderRadius.circular(20.r)
+            color: index <= currentPage
+                ? ColorsManager.mainBlue
+                : ColorsManager.mainBlueWith50Opacity,
+            borderRadius: BorderRadius.circular(20.r),
           ),
         ),
       ),

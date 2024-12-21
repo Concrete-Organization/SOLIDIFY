@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/widgets/upload_container.dart';
+import 'package:solidify/core/widgets/upload_container.dart';
 
 class EngineerIdentityAuth extends StatefulWidget {
   const EngineerIdentityAuth({super.key});

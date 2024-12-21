@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/widgets/business_account_list.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/widgets/engineer_account_list.dart';
+
+
+class BusinessSignUpPageViewBuilder extends StatelessWidget {
+  final PageController controller;
+  final Function(int) onPageChanged;
+
+  const BusinessSignUpPageViewBuilder({
+    super.key,
+    required this.controller,
+    required this.onPageChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      controller: controller,
+      itemCount: businessAccountSignUpScreens.length,
+      onPageChanged: onPageChanged,
+      itemBuilder: (context, index) => businessAccountSignUpScreens[index],
+    );
+  }
+}
