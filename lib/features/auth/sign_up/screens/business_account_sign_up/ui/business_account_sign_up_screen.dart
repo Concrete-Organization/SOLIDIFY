@@ -5,11 +5,31 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/widgets/engineer_account_list.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/widgets/engineer_account_app_bar.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/widgets/business_acount_sign_up_form.dart';
 
-class BusinessAccountSignUpScreen extends StatelessWidget {
+class BusinessAccountSignUpScreen extends StatefulWidget {
   const BusinessAccountSignUpScreen({super.key});
+
+  @override
+  State<BusinessAccountSignUpScreen> createState() =>
+      _BusinessAccountSignUpScreenState();
+}
+
+class _BusinessAccountSignUpScreenState
+    extends State<BusinessAccountSignUpScreen> {
+  final PageController _controller = PageController();
+  int currentPage = 0;
+
+  void _onNextPage() {
+    if (currentPage < engineerAccountSignUp.length - 1) {
+      _controller.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
