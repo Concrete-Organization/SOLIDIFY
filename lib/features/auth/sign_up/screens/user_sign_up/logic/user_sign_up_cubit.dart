@@ -8,7 +8,7 @@ import 'package:solidify/features/auth/sign_up/screens/user_sign_up/data/models/
 
 class UserSignUpCubit extends Cubit<UserSignUpState> {
   final UserSignUpRepo _userSignUpRepo;
-
+  final formKey = GlobalKey<FormState>();
   UserSignUpCubit(this._userSignUpRepo)
       : super(const UserSignUpState.initial());
 
@@ -17,7 +17,6 @@ class UserSignUpCubit extends Cubit<UserSignUpState> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController addressController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
 
   void emitUserSignupStates({
     required String name,
