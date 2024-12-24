@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../../../core/helpers/spacing.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/theming/color_manger.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
+import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/features/auth/sign_up/widgets/password_validations.dart';
+import 'package:solidify/features/auth/sign_up/screens/user_sign_up/logic/user_sign_up_cubit.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -24,51 +27,49 @@ class _SignUpFormState extends State<SignUpForm> {
 
   bool showPasswordValidations = false;
 
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
-
-  final formKey = GlobalKey<FormState>();
+  late UserSignUpCubit cubit;
 
   @override
   void initState() {
     super.initState();
+    cubit = context.read<UserSignUpCubit>();
     setupPasswordControllerListener();
   }
 
   void setupPasswordControllerListener() {
-    passwordController.addListener(() {
+    cubit.passwordController.addListener(() {
       setState(() {
         hasLowerCaseAndUpperCase =
-            AppRegex.hasUpperAndLowerCase(passwordController.text);
+            AppRegex.hasUpperAndLowerCase(cubit.passwordController.text);
         hasSpecialCharacters =
-            AppRegex.hasSpecialCharacter(passwordController.text);
-        hasNumber = AppRegex.hasNumber(passwordController.text);
-        hasMinLength = AppRegex.hasMinLength(passwordController.text);
-        showPasswordValidations = passwordController.text.isNotEmpty;
+            AppRegex.hasSpecialCharacter(cubit.passwordController.text);
+        hasNumber = AppRegex.hasNumber(cubit.passwordController.text);
+        hasMinLength = AppRegex.hasMinLength(cubit.passwordController.text);
+        showPasswordValidations = cubit.passwordController.text.isNotEmpty;
       });
     });
   }
 
   @override
   void dispose() {
-    passwordController.dispose();
-    confirmPasswordController.dispose();
+    cubit.nameController.dispose();
+    cubit.emailController.dispose();
+    cubit.passwordController.dispose();
+    cubit.confirmPasswordController.dispose();
+    cubit.addressController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Username',
-            style: TextStyles.font14lightBlackRegular,
-          ),
+          Text('Username', style: TextStyles.font14lightBlackRegular),
           verticalSpace(5),
           AppTextFormField(
+            controller: cubit.nameController,
             hintText: 'Enter your User Name',
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -78,12 +79,10 @@ class _SignUpFormState extends State<SignUpForm> {
             },
           ),
           verticalSpace(18),
-          Text(
-            'Email',
-            style: TextStyles.font14lightBlackRegular,
-          ),
+          Text('Email', style: TextStyles.font14lightBlackRegular),
           verticalSpace(5),
           AppTextFormField(
+            controller: cubit.emailController,
             hintText: 'Enter your email',
             validator: (value) {
               if (value == null ||
@@ -95,13 +94,10 @@ class _SignUpFormState extends State<SignUpForm> {
             },
           ),
           verticalSpace(18),
-          Text(
-            'Password',
-            style: TextStyles.font14lightBlackRegular,
-          ),
+          Text('Password', style: TextStyles.font14lightBlackRegular),
           verticalSpace(5),
           AppTextFormField(
-            controller: passwordController,
+            controller: cubit.passwordController,
             hintText: 'Enter your password',
             isObscureText: isPasswordObscureText,
             validator: (value) {
@@ -125,19 +121,16 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
           ),
           verticalSpace(18),
-          Text(
-            'Confirm Password',
-            style: TextStyles.font14lightBlackRegular,
-          ),
+          Text('Confirm Password', style: TextStyles.font14lightBlackRegular),
           verticalSpace(5),
           AppTextFormField(
-            controller: confirmPasswordController,
+            controller: cubit.confirmPasswordController,
             hintText: 'Enter your password',
             isObscureText: isPasswordConfirmationObscureText,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter a valid password';
-              } else if (value != passwordController.text) {
+              } else if (value != cubit.passwordController.text) {
                 return 'Passwords do not match';
               }
               return null;
@@ -169,12 +162,10 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
             verticalSpace(18),
           ],
-          Text(
-            'Phone number',
-            style: TextStyles.font14lightBlackRegular,
-          ),
+          Text('Phone number', style: TextStyles.font14lightBlackRegular),
           verticalSpace(5),
           AppTextFormField(
+            controller: cubit.addressController,
             hintText: 'Enter your Phone number',
             validator: (value) {
               if (value == null ||
@@ -185,6 +176,7 @@ class _SignUpFormState extends State<SignUpForm> {
               return null;
             },
           ),
+          verticalSpace(16),
         ],
       ),
     );

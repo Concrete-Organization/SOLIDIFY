@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/features/home/ui/home_screen.dart';
 import 'package:solidify/features/splash/splash_screen.dart';
 import 'package:solidify/features/auth/otp/ui/otp_screen.dart';
 import 'package:solidify/features/auth/login/ui/login_screen.dart';
@@ -73,6 +74,10 @@ class AppRoutes {
       case Routes.contactInfoScreen:
         return MaterialPageRoute(
           builder: (context) => const ContactInfoScreen(),
+        );
+      case Routes.homeScreen:
+        return MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
         );
 
       default:
