@@ -59,12 +59,12 @@ class _ApiService implements ApiService {
 
   @override
   Future<UserSignUpResponseModel> userSignUp(
-      UserSignUpRequestModel loginRequestBody) async {
+      UserSignUpRequestModel userSignUpRequestModel) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(loginRequestBody.toJson());
+    _data.addAll(userSignUpRequestModel.toJson());
     final _options = _setStreamType<UserSignUpResponseModel>(Options(
       method: 'POST',
       headers: _headers,
@@ -72,7 +72,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'Account/register',
+          'Account/registerUser',
           queryParameters: queryParameters,
           data: _data,
         )

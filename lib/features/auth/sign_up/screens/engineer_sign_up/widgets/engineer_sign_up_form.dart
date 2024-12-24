@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../../../core/helpers/spacing.dart';
 import '../../../../../../core/theming/text_styles.dart';
-import '../../../widgets/sign_up_form.dart';
+import '../../user_sign_up/ui/widgets/user_sign_up_form.dart';
 
 class EngineerSignUpForm extends StatelessWidget {
   const EngineerSignUpForm({super.key});
@@ -17,7 +17,7 @@ class EngineerSignUpForm extends StatelessWidget {
             style: TextStyles.font24MainBlueMedium,
           ),
           verticalSpace(40),
-          const SignUpForm(),
+          const UserSignUpForm(),
         ],
       ),
     );

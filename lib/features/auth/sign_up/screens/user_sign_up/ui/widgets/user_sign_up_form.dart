@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import '../../../../core/helpers/spacing.dart';
+import '../../../../../../../core/helpers/spacing.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/helpers/app_regex.dart';
-import '../../../../core/theming/text_styles.dart';
-import '../../../../core/theming/color_manger.dart';
-import '../../../../core/widgets/app_text_form_field.dart';
-import 'package:solidify/core/widgets/app_text_button.dart';
+import '../../../../../../../core/helpers/app_regex.dart';
+import '../../../../../../../core/theming/text_styles.dart';
+import '../../../../../../../core/theming/color_manger.dart';
+import '../../../../../../../core/widgets/app_text_form_field.dart';
 import 'package:solidify/features/auth/sign_up/widgets/password_validations.dart';
 import 'package:solidify/features/auth/sign_up/screens/user_sign_up/logic/user_sign_up_cubit.dart';
 
-class SignUpForm extends StatefulWidget {
-  const SignUpForm({super.key});
+class UserSignUpForm extends StatefulWidget {
+  const UserSignUpForm({super.key});
 
   @override
-  State<SignUpForm> createState() => _SignUpFormState();
+  State<UserSignUpForm> createState() => _SignUpFormState();
 }
 
-class _SignUpFormState extends State<SignUpForm> {
+class _SignUpFormState extends State<UserSignUpForm> {
   bool isPasswordObscureText = true;
   bool isPasswordConfirmationObscureText = true;
 
@@ -28,6 +27,8 @@ class _SignUpFormState extends State<SignUpForm> {
   bool showPasswordValidations = false;
 
   late UserSignUpCubit cubit;
+  late TextEditingController passwordController;
+
 
   @override
   void initState() {
@@ -56,6 +57,7 @@ class _SignUpFormState extends State<SignUpForm> {
     cubit.emailController.dispose();
     cubit.passwordController.dispose();
     cubit.confirmPasswordController.dispose();
+    cubit.phoneNumberController.dispose();
     cubit.addressController.dispose();
     super.dispose();
   }
@@ -63,6 +65,7 @@ class _SignUpFormState extends State<SignUpForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: cubit.formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -78,7 +81,7 @@ class _SignUpFormState extends State<SignUpForm> {
               return null;
             },
           ),
-          verticalSpace(18),
+          verticalSpace(20),
           Text('Email', style: TextStyles.font14lightBlackRegular),
           verticalSpace(5),
           AppTextFormField(
@@ -93,7 +96,7 @@ class _SignUpFormState extends State<SignUpForm> {
               return null;
             },
           ),
-          verticalSpace(18),
+          verticalSpace(20),
           Text('Password', style: TextStyles.font14lightBlackRegular),
           verticalSpace(5),
           AppTextFormField(
@@ -120,7 +123,7 @@ class _SignUpFormState extends State<SignUpForm> {
               ),
             ),
           ),
-          verticalSpace(18),
+          verticalSpace(20),
           Text('Confirm Password', style: TextStyles.font14lightBlackRegular),
           verticalSpace(5),
           AppTextFormField(
@@ -152,7 +155,7 @@ class _SignUpFormState extends State<SignUpForm> {
               ),
             ),
           ),
-          verticalSpace(18),
+          verticalSpace(20),
           if (showPasswordValidations) ...[
             PasswordValidations(
               hasLowerCaseAndUpperCase: hasLowerCaseAndUpperCase,
@@ -165,7 +168,7 @@ class _SignUpFormState extends State<SignUpForm> {
           Text('Phone number', style: TextStyles.font14lightBlackRegular),
           verticalSpace(5),
           AppTextFormField(
-            controller: cubit.addressController,
+            controller: cubit.phoneNumberController,
             hintText: 'Enter your Phone number',
             validator: (value) {
               if (value == null ||
@@ -176,7 +179,19 @@ class _SignUpFormState extends State<SignUpForm> {
               return null;
             },
           ),
-          verticalSpace(16),
+          verticalSpace(20),
+          Text('Address', style: TextStyles.font14lightBlackRegular),
+          verticalSpace(5),
+          AppTextFormField(
+            controller: cubit.addressController,
+            hintText: 'Enter your Address',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter a valid Address';
+              }
+              return null;
+            },
+          ),
         ],
       ),
     );

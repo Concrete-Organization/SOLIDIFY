@@ -8,7 +8,7 @@ class UserSignUpRequestModel {
   final String email;
   final String password;
   final String confirmPassword;
-  final int phoneNumber;
+  final String phoneNumber;
   final String address;
 
   UserSignUpRequestModel({

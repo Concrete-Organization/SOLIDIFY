@@ -13,7 +13,7 @@ UserSignUpRequestModel _$UserSignUpRequestModelFromJson(
       email: json['email'] as String,
       password: json['password'] as String,
       confirmPassword: json['confirmPassword'] as String,
-      phoneNumber: (json['phoneNumber'] as num).toInt(),
+      phoneNumber: json['phoneNumber'] as String,
       address: json['address'] as String,
     );
 
