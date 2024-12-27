@@ -52,6 +52,7 @@ class _EngineerAccountSignUpScreenState extends State<EngineerSignUpScreen> {
                   },
                 ),
               ),
+              verticalSpace(20),
               AppTextButton(
                 onPressed: _onNextPage,
                 textButton: currentPage == engineerAccountSignUp.length - 1
