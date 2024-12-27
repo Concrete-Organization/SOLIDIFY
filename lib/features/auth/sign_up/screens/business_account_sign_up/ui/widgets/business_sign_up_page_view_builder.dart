@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/widgets/business_account_list.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/widgets/engineer_account_list.dart';
 
 
 class BusinessSignUpPageViewBuilder extends StatelessWidget {
