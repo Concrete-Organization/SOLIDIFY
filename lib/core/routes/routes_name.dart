@@ -9,6 +9,8 @@ class Routes {
   static const String userSignUpScreen = 'userSignUpScreen';
   static const String engineerAccountSignUpScreen =
       'engineerAccountSignUpScreen';
+  static const String engineerSignUpUploadFilesScreen =
+      'engineerSignUpUploadFilesScreen';
   static const String homeScreen = 'homeScreen';
   static const String businessAccountScreen = 'businessAccountScreen';
   static const String contactInfoScreen = 'contactInfoScreen';

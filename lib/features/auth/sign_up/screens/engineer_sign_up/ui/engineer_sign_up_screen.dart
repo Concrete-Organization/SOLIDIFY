@@ -3,8 +3,8 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/custom_app_bar_with_indicator.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/widgets/engineer_account_list.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/widgets/engineer_sign_up_page_view_builder.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/engineer_account_list.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/engineer_sign_up_page_view_builder.dart';
 
 class EngineerSignUpScreen extends StatefulWidget {
   const EngineerSignUpScreen({super.key});
@@ -19,7 +19,7 @@ class _EngineerAccountSignUpScreenState extends State<EngineerSignUpScreen> {
   int currentPage = 0;
 
   void _onNextPage() {
-    if (currentPage < engineerAccountSignUp.length - 1) {
+    if (currentPage < engineerAccountSignUpScreensList.length - 1) {
       _controller.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.ease,
@@ -39,7 +39,7 @@ class _EngineerAccountSignUpScreenState extends State<EngineerSignUpScreen> {
               verticalSpace(20),
               CustomAppBarWithIndicator(
                 currentIndex: currentPage,
-                totalPages: engineerAccountSignUp.length,
+                totalPages: engineerAccountSignUpScreensList.length,
               ),
               verticalSpace(40),
               Expanded(
@@ -55,7 +55,7 @@ class _EngineerAccountSignUpScreenState extends State<EngineerSignUpScreen> {
               verticalSpace(20),
               AppTextButton(
                 onPressed: _onNextPage,
-                textButton: currentPage == engineerAccountSignUp.length - 1
+                textButton: currentPage == engineerAccountSignUpScreensList.length - 1
                     ? 'Done'
                     : 'Continue',
               ),

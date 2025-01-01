@@ -70,6 +70,8 @@ dependencies:
   lottie: ^3.2.0
   # Flutter plugin for selecting images from the Android and iOS image library, and taking new pictures with the camera.
   image_picker: ^1.1.2
+  # A package that allows you to use a native file explorer to pick single or multiple absolute file paths, with extension filtering support.
+  file_picker: ^8.1.7
 
 dev_dependencies:
   flutter_test:

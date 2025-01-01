@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/widgets/engineer_account_list.dart';
+import 'engineer_account_list.dart';
 
 
 class EngineerSignUpPageViewBuilder extends StatelessWidget {
@@ -17,9 +17,9 @@ class EngineerSignUpPageViewBuilder extends StatelessWidget {
     return PageView.builder(
       physics: const NeverScrollableScrollPhysics(),
       controller: controller,
-      itemCount: engineerAccountSignUp.length,
+      itemCount: engineerAccountSignUpScreensList.length,
       onPageChanged: onPageChanged,
-      itemBuilder: (context, index) => engineerAccountSignUp[index],
+      itemBuilder: (context, index) => engineerAccountSignUpScreensList[index],
     );
   }
 }
