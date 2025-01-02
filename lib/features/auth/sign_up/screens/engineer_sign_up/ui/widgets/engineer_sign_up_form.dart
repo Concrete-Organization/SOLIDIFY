@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/logic/engineer_sign_up_cubit.dart';
 import '../../../../../../../core/helpers/app_regex.dart';
 import '../../../../../../../core/helpers/spacing.dart';
@@ -27,6 +28,38 @@ class _EngineerSignUpFormState extends State<EngineerSignUpForm> {
 
   late TextEditingController passwordController;
   late EngineerSignUpCubit cubit;
+
+  void setupPasswordControllerListener() {
+    cubit.passwordController.addListener(() {
+      setState(() {
+        hasLowerCaseAndUpperCase =
+            AppRegex.hasUpperAndLowerCase(cubit.passwordController.text);
+        hasSpecialCharacters =
+            AppRegex.hasSpecialCharacter(cubit.passwordController.text);
+        hasNumber = AppRegex.hasNumber(cubit.passwordController.text);
+        hasMinLength = AppRegex.hasMinLength(cubit.passwordController.text);
+        showPasswordValidations = cubit.passwordController.text.isNotEmpty;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    cubit = context.read<EngineerSignUpCubit>();
+    setupPasswordControllerListener();
+  }
+
+  @override
+  void dispose() {
+    cubit.nameController.dispose();
+    cubit.emailController.dispose();
+    cubit.passwordController.dispose();
+    cubit.confirmPasswordController.dispose();
+    cubit.phoneNumberController.dispose();
+    cubit.addressController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

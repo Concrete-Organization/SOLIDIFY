@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
@@ -88,7 +87,19 @@ class _EngineerSignUpUploadFilesScreenState
                   Expanded(
                     child: AppTextButton(
                       onPressed: uploadedFiles.isNotEmpty
-                          ? () => Navigator.pop(context, uploadedFiles)
+                          ? () {
+                        final uploadedFileName =
+                            uploadedFiles.first.name;
+                        final uploadedFileExtension =
+                            uploadedFiles.first.type;
+                        Navigator.pop(
+                          context,
+                          {
+                            'name': uploadedFileName,
+                            'extension': uploadedFileExtension
+                          },
+                        );
+                      }
                           : null,
                       textButton: 'Attach File',
                     ),
@@ -98,7 +109,7 @@ class _EngineerSignUpUploadFilesScreenState
                     child: AppTextButton(
                       backgroundColor: ColorsManager.white,
                       textColor: ColorsManager.mainBlue,
-                      onPressed: context.pop,
+                      onPressed: () => Navigator.pop(context),
                       textButton: 'Cancel',
                     ),
                   ),
