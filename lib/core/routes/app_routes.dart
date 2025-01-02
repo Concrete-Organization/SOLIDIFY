@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/logic/engineer_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/engineer_sign_up_upload_files_screen.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,7 +63,10 @@ class AppRoutes {
         );
       case Routes.engineerAccountSignUpScreen:
         return MaterialPageRoute(
-          builder: (context) => const EngineerSignUpScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<EngineerSignUpCubit>(),
+            child: const EngineerSignUpScreen(),
+          ),
         );
       case Routes.engineerSignUpUploadFilesScreen:
         return MaterialPageRoute(

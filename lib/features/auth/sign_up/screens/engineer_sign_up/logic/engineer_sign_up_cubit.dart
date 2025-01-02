@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart' as shared_prefs;
@@ -8,7 +10,7 @@ import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/logic/en
 class EngineerSignUpCubit extends Cubit<EngineerSignUpState> {
   final EngineerSignUpRepo _engineerSignUpRepo;
 
-  EngineerSignUpCubit(this._engineerSignUpRepo):super(const EngineerSignUpState.initial());
+  EngineerSignUpCubit(this._engineerSignUpRepo) : super(const EngineerSignUpState.initial());
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -17,9 +19,16 @@ class EngineerSignUpCubit extends Cubit<EngineerSignUpState> {
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  File? syndicateFileName;
+  File? cvFileName;
+
+
 
   void emitEngineerSignupStates() async {
     emit(const EngineerSignUpState.engineerSignUpLoading());
+    if (cvFileName == null || syndicateFileName == null) {
+      return;
+    }
     final response = await _engineerSignUpRepo.engineerSignUp(
       EngineerSignUpRequestModel(
         userName: nameController.text,
@@ -28,11 +37,10 @@ class EngineerSignUpCubit extends Cubit<EngineerSignUpState> {
         phoneNumber: phoneNumberController.text,
         confirmPassword: confirmPasswordController.text,
         address: addressController.text,
-        cvFile: '',
-        syndicateCard: '',
+        cvFile: cvFileName,
+        syndicateCard: syndicateFileName,
       ),
     );
-
     response.when(success: (engineerSignupResponse) async {
       await shared_prefs.SharedPrefHelper.setSecuredString(
           shared_prefs.SharedPrefKeys.userId, engineerSignupResponse.model?.id ?? '');
