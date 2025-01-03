@@ -29,30 +29,33 @@ class EngineerSignUpCubit extends Cubit<EngineerSignUpState> {
     if (cvFileName == null || syndicateFileName == null) {
       return;
     }
-    final response = await _engineerSignUpRepo.engineerSignUp(
-      EngineerSignUpRequestModel(
-        userName: nameController.text,
-        email: emailController.text,
-        password: passwordController.text,
-        phoneNumber: phoneNumberController.text,
-        confirmPassword: confirmPasswordController.text,
-        address: addressController.text,
-        cvFile: cvFileName,
-        syndicateCard: syndicateFileName,
-      ),
+
+    // Create the request model
+    final requestModel = EngineerSignUpRequestModel(
+      userName: nameController.text,
+      email: emailController.text,
+      password: passwordController.text,
+      confirmPassword: confirmPasswordController.text,
+      phoneNumber: phoneNumberController.text,
+      address: addressController.text,
+      cvFile: cvFileName,
+      syndicateCard: syndicateFileName,
     );
-    response.when(success: (engineerSignupResponse) async {
+
+    // Use the repository to handle the request
+    final response = await _engineerSignUpRepo.engineerSignUp(requestModel);
+
+    response.when(success: (engineerSignUpResponse) async {
       await shared_prefs.SharedPrefHelper.setSecuredString(
-          shared_prefs.SharedPrefKeys.userId, engineerSignupResponse.model?.id ?? '');
+          shared_prefs.SharedPrefKeys.userId, engineerSignUpResponse.model?.id ?? '');
       await shared_prefs.SharedPrefHelper.setSecuredString(
           shared_prefs.SharedPrefKeys.userName,
-          engineerSignupResponse.model?.userName ?? '');
+          engineerSignUpResponse.model?.userName ?? '');
       await shared_prefs.SharedPrefHelper.setSecuredString(
-          shared_prefs.SharedPrefKeys.email, engineerSignupResponse.model?.email ?? '');
+          shared_prefs.SharedPrefKeys.email, engineerSignUpResponse.model?.email ?? '');
 
-      emit(EngineerSignUpState.engineerSignUpSuccess(engineerSignupResponse));
+      emit(EngineerSignUpState.engineerSignUpSuccess(engineerSignUpResponse));
     }, failure: (error) {
       emit(EngineerSignUpState.engineerSignUpError(error: error.apiErrorModel));
     });
-  }
-}
+  }}
