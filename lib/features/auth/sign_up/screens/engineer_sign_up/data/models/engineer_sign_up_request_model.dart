@@ -1,6 +1,6 @@
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 part 'engineer_sign_up_request_model.g.dart';
 
 @JsonSerializable()
@@ -12,10 +12,10 @@ class EngineerSignUpRequestModel {
   final String phoneNumber;
   final String address;
 
-  @JsonKey(fromJson: _fileFromJson, toJson: _fileToJson)
+  @JsonKey(fromJson: FileConverter.fromJson, toJson: FileConverter.toJson)
   final File? cvFile;
 
-  @JsonKey(fromJson: _fileFromJson, toJson: _fileToJson)
+  @JsonKey(fromJson: FileConverter.fromJson, toJson: FileConverter.toJson)
   final File? syndicateCard;
 
   EngineerSignUpRequestModel({
@@ -34,20 +34,52 @@ class EngineerSignUpRequestModel {
 
   Map<String, dynamic> toJson() => _$EngineerSignUpRequestModelToJson(this);
 
-  static File? _fileFromJson(String? json) => json != null ? File(json) : null;
-  static String? _fileToJson(File? file) => file?.path;}
+  Future<FormData> toFormData() async {
+    final formData = FormData();
 
-class FileConverter implements JsonConverter<File, String> {
-  const FileConverter();
+    formData.fields.addAll([
+      MapEntry('userName', userName),
+      MapEntry('email', email),
+      MapEntry('password', password),
+      MapEntry('confirmPassword', confirmPassword),
+      MapEntry('phoneNumber', phoneNumber),
+      MapEntry('address', address),
+    ]);
 
-  @override
-  File fromJson(String json) {
-    return File(json);
-  }
+    if (cvFile != null) {
+      if (!await cvFile!.exists()) {
+        return formData;
+      }
+      formData.files.add(
+        MapEntry(
+          'CV',
+          await MultipartFile.fromFile(
+              cvFile!.path,
+              filename: cvFile!.path.split(Platform.pathSeparator).last
+          ),
+        ),
+      );
+    }
 
-  @override
-  String toJson(File object) {
-    return object.path;
-  }
+    if (syndicateCard != null) {
+      if (!await syndicateCard!.exists()) {
+        return formData;
+      }
+      formData.files.add(
+        MapEntry(
+          'SyndicateCard',
+          await MultipartFile.fromFile(
+              syndicateCard!.path,
+              filename: syndicateCard!.path.split(Platform.pathSeparator).last
+          ),
+        ),
+      );
+    }
+
+    return formData;
+  }}
+
+class FileConverter {
+  static File? fromJson(String? path) => path != null ? File(path) : null;
+  static String? toJson(File? file) => file?.path;
 }
-

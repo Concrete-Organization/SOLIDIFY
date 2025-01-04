@@ -1,11 +1,12 @@
 import 'dart:io';
-
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:solidify/core/helpers/spacing.dart';
-import 'package:solidify/core/theming/text_styles.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/logic/engineer_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/upload_container.dart';
+import '../../../../../../../core/helpers/spacing.dart';
+import '../../../../../../../core/theming/text_styles.dart';
 import '../engineer_sign_up_upload_files_screen.dart';
 
 class EngineerIdentityAuth extends StatefulWidget {
@@ -26,17 +27,24 @@ class _EngineerIdentityAuthState extends State<EngineerIdentityAuth> {
     cubit = context.read<EngineerSignUpCubit>();
   }
 
-  void updateFileState(String fileName, String fileType, bool isCV) {
+  Future<File> saveFileToTempDirectory(PlatformFile platformFile) async {
+    final tempDir = await getTemporaryDirectory();
+    final file = File('${tempDir.path}/${platformFile.name}');
+    return file.writeAsBytes(platformFile.bytes!);
+  }
+
+  void updateFileState(File file, String fileType, bool isCV) {
     setState(() {
       if (isCV) {
-        cubit.cvFileName = File(fileName);
+        cubit.cvFileName = file;
         cvFileType = fileType;
       } else {
-        cubit.syndicateFileName = File(fileName);
+        cubit.syndicateFileName = file;
         syndicateFileType = fileType;
       }
     });
   }
+
   Future<void> navigateToUploadScreen(bool isCV) async {
     final result = await Navigator.push(
       context,
@@ -50,7 +58,12 @@ class _EngineerIdentityAuthState extends State<EngineerIdentityAuth> {
       final fileType = result['extension'];
 
       if (fileName != null && fileType != null) {
-        updateFileState(fileName, fileType, isCV);
+        final file = File(fileName);
+        if (await file.exists()) {
+          updateFileState(file, fileType, isCV);
+        } else {
+          print("File does not exist: $fileName");
+        }
       }
     }
   }
@@ -74,7 +87,7 @@ class _EngineerIdentityAuthState extends State<EngineerIdentityAuth> {
           onTap: () => navigateToUploadScreen(false),
           child: UploadContainer(
             isUploaded: cubit.syndicateFileName != null,
-            uploadedFileName: cubit.syndicateFileName?.path.split('/').last,  // Get filename from path
+            uploadedFileName: cubit.syndicateFileName?.path.split('/').last,
             fileType: syndicateFileType,
             onClose: () {
               setState(() {

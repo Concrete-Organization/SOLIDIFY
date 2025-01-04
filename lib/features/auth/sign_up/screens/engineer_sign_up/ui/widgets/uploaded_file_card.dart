@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:path/path.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
@@ -23,6 +24,7 @@ class UploadedFileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fileName = basename(name);
     return Container(
       decoration: BoxDecoration(
         color: ColorsManager.mainBlueWith15Opacity,
@@ -39,7 +41,7 @@ class UploadedFileCard extends StatelessWidget {
               : 'assets/svgs/img_file.svg',
         ),
         title: Text(
-          isUploading ? 'Uploading' : name,
+          isUploading ? 'Uploading' : fileName,
           style: TextStyles.font12MainBlueMedium,
         ),
         subtitle: Column(

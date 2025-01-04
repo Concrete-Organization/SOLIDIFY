@@ -15,10 +15,8 @@ EngineerSignUpRequestModel _$EngineerSignUpRequestModelFromJson(
       confirmPassword: json['confirmPassword'] as String,
       phoneNumber: json['phoneNumber'] as String,
       address: json['address'] as String,
-      cvFile:
-          EngineerSignUpRequestModel._fileFromJson(json['cvFile'] as String?),
-      syndicateCard: EngineerSignUpRequestModel._fileFromJson(
-          json['syndicateCard'] as String?),
+      cvFile: FileConverter.fromJson(json['cvFile'] as String?),
+      syndicateCard: FileConverter.fromJson(json['syndicateCard'] as String?),
     );
 
 Map<String, dynamic> _$EngineerSignUpRequestModelToJson(
@@ -30,7 +28,6 @@ Map<String, dynamic> _$EngineerSignUpRequestModelToJson(
       'confirmPassword': instance.confirmPassword,
       'phoneNumber': instance.phoneNumber,
       'address': instance.address,
-      'cvFile': EngineerSignUpRequestModel._fileToJson(instance.cvFile),
-      'syndicateCard':
-          EngineerSignUpRequestModel._fileToJson(instance.syndicateCard),
+      'cvFile': FileConverter.toJson(instance.cvFile),
+      'syndicateCard': FileConverter.toJson(instance.syndicateCard),
     };

@@ -72,6 +72,10 @@ dependencies:
   image_picker: ^1.1.2
   # A package that allows you to use a native file explorer to pick single or multiple absolute file paths, with extension filtering support.
   file_picker: ^8.1.7
+  # Flutter plugin for getting commonly used locations on host platform file systems, such as the temp and app data directories.
+  path_provider: ^2.1.5
+  # A string-based path manipulation library.
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:

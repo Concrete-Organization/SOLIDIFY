@@ -127,6 +127,7 @@ class ErrorHandler implements Exception {
       apiErrorModel = _handleError(error);
     } else {
       // default error
+      print("Default Error: $error"); // طباعة الخطأ بالتفصيل
       apiErrorModel = DataSource.DEFAULT.getFailure();
     }
   }
@@ -144,7 +145,20 @@ ApiErrorModel _handleError(DioException error) {
       if (error.response != null &&
           error.response?.statusCode != null &&
           error.response?.statusMessage != null) {
-        return ApiErrorModel.fromJson(error.response!.data);
+        try {
+          final responseData = error.response!.data;
+          if (responseData is Map<String, dynamic>) {
+            return ApiErrorModel(
+              message: responseData['title'] ?? 'Unknown error',
+              code: error.response?.statusCode,
+            );
+          } else {
+            return DataSource.DEFAULT.getFailure();
+          }
+        } catch (e) {
+          print("Error parsing API response: $e");
+          return DataSource.DEFAULT.getFailure();
+        }
       } else {
         return DataSource.DEFAULT.getFailure();
       }
