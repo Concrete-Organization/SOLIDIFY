@@ -12,7 +12,8 @@ class EngineerSignUpRepo {
   Future<ApiResult<EngineerSignUpResponseModel>> engineerSignUp(
       EngineerSignUpRequestModel engineerSignUpRequestModel) async {
     try {
-      final response = await _apiService.engineerSignUp(engineerSignUpRequestModel);
+      final formData = await engineerSignUpRequestModel.toFormData();
+      final response = await _apiService.engineerSignUp(formData);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ErrorHandler.handle(error));

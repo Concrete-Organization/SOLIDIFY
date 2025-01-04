@@ -93,17 +93,16 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<EngineerSignUpResponseModel> engineerSignUp(
-      EngineerSignUpRequestModel engineerSignUpRequestModel) async {
+  Future<EngineerSignUpResponseModel> engineerSignUp(FormData formData) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(engineerSignUpRequestModel.toJson());
+    final _data = formData;
     final _options = _setStreamType<EngineerSignUpResponseModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
         .compose(
           _dio.options,
