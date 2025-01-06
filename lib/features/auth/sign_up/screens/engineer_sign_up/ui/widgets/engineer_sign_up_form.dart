@@ -71,7 +71,6 @@ class _EngineerSignUpFormState extends State<EngineerSignUpForm> {
           style: TextStyles.font24MainBlueMedium,
         ),
         verticalSpace(20),
-        // Scrollable section
         Expanded(
           child: SingleChildScrollView(
             child: Column(
@@ -117,8 +116,10 @@ class _EngineerSignUpFormState extends State<EngineerSignUpForm> {
                         },
                       ),
                       verticalSpace(20),
-                      Text('Password',
-                          style: TextStyles.font14lightBlackRegular),
+                      Text(
+                        'Password',
+                        style: TextStyles.font14lightBlackRegular,
+                      ),
                       verticalSpace(5),
                       AppTextFormField(
                         controller: cubit.passwordController,
