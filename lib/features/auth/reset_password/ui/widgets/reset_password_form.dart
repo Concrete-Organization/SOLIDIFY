@@ -38,9 +38,23 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
     if (_formKey.currentState!.validate()) {
       final String newPassword = _newPasswordController.text;
       final String confirmPassword = _confirmPasswordController.text;
-      context
-          .read<ResetPasswordCubit>()
-          .resetPassword(newPassword, confirmPassword);
+      if (newPassword.isEmpty || confirmPassword.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Please fill in both password fields'),
+          ),
+        );
+        return;
+      }
+      if (newPassword != confirmPassword) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Passwords do not match'),
+          ),
+        );
+        return;
+      }
+      context.read<ResetPasswordCubit>().resetPassword(newPassword, confirmPassword);
     }
   }
 
@@ -60,6 +74,12 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
             controller: _newPasswordController,
             hintText: 'Password',
             isObscureText: _isPasswordHidden,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter a valid password';
+              }
+              return null;
+            },
             suffixIcon: IconButton(
               icon: Icon(
                 _isPasswordHidden
@@ -82,6 +102,14 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
             controller: _confirmPasswordController,
             hintText: 'Confirm Password',
             isObscureText: _isConfirmPasswordHidden,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter a valid password';
+              } else if (value != _newPasswordController.text) {
+                return 'Passwords do not match';
+              }
+              return null;
+            },
             suffixIcon: IconButton(
               icon: Icon(
                 _isConfirmPasswordHidden
