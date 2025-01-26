@@ -92,6 +92,13 @@ class SharedPrefHelper {
     return await flutterSecureStorage.read(key: key) ?? '';
   }
 
+  /// Retrieves the saved email from SharedPreferences
+  static Future<String> getEmail() async {
+    debugPrint('SharedPrefHelper : Retrieving email');
+    return await getString('email');
+  }
+
+
   /// Removes all keys and values in FlutterSecureStorage.
   static Future<void> clearAllSecuredData() async {
     debugPrint('FlutterSecureStorage: All secured data has been cleared');
