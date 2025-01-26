@@ -6,6 +6,8 @@ import '../../features/auth/forget_password/data/repos/forget_password_repo.dart
 import '../../features/auth/forget_password/logic/forget_password_cubit.dart';
 import '../../features/auth/otp/data/repos/verify_otp_repo.dart';
 import '../../features/auth/otp/logic/verify_otp_cubit.dart';
+import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
+import '../../features/auth/reset_password/logic/reset_password_cubit.dart';
 import '../network/api_service.dart';
 import '../network/dio_factory.dart';
 import '../../features/auth/login/logic/login_cubit.dart';
@@ -33,4 +35,7 @@ Future<void> setupGetIt() async {
   // verify otp
   getIt.registerLazySingleton<VerifyOtpRepo>(() => VerifyOtpRepo(getIt()));
   getIt.registerFactory<VerifyOtpCubit>(() => VerifyOtpCubit(getIt()));
+  // reset password
+  getIt.registerLazySingleton<ResetPasswordRepo>(() => ResetPasswordRepo(getIt()));
+  getIt.registerFactory<ResetPasswordCubit>(() => ResetPasswordCubit(getIt()));
 }
