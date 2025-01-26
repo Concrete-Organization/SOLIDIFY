@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
+import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/logic/engineer_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/engineer_sign_up_upload_files_screen.dart';
 import '../di/dependency_injection.dart';
@@ -56,7 +57,10 @@ class AppRoutes {
         );
       case Routes.resetPasswordScreen:
         return MaterialPageRoute(
-          builder: (context) => const ResetPasswordScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ResetPasswordCubit>(),
+            child: const ResetPasswordScreen(),
+          ),
         );
       case Routes.selectAccountTypeScreen:
         return MaterialPageRoute(

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theming/color_manger.dart';
 import '../../../../../core/theming/text_styles.dart';
+import '../../../../../core/widgets/app_text_button.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
+import '../../logic/reset_password_cubit.dart';
 
 class ResetPasswordForm extends StatefulWidget {
-
   const ResetPasswordForm({super.key});
 
   @override
@@ -16,7 +18,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _newPasswordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
-  TextEditingController();
+      TextEditingController();
   bool _isPasswordHidden = true;
   bool _isConfirmPasswordHidden = true;
 
@@ -32,6 +34,15 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
     });
   }
 
+  void _submitForm() {
+    if (_formKey.currentState!.validate()) {
+      final String newPassword = _newPasswordController.text;
+      final String confirmPassword = _confirmPasswordController.text;
+      context
+          .read<ResetPasswordCubit>()
+          .resetPassword(newPassword, confirmPassword);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +65,9 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
                 _isPasswordHidden
                     ? Icons.visibility_off_outlined
                     : Icons.visibility_outlined,
-                color: _isPasswordHidden ? ColorsManager.mainBlue : ColorsManager.secondaryGold,
+                color: _isPasswordHidden
+                    ? ColorsManager.mainBlue
+                    : ColorsManager.secondaryGold,
               ),
               onPressed: togglePasswordVisibility,
             ),
@@ -74,11 +87,19 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
                 _isConfirmPasswordHidden
                     ? Icons.visibility_off_outlined
                     : Icons.visibility_outlined,
-                color: _isPasswordHidden ? ColorsManager.mainBlue : ColorsManager.secondaryGold,
+                color: _isPasswordHidden
+                    ? ColorsManager.mainBlue
+                    : ColorsManager.secondaryGold,
               ),
               onPressed: toggleConfirmPasswordVisibility,
             ),
           ),
+          const Spacer(),
+          AppTextButton(
+            onPressed: _submitForm,
+            textButton: 'Done',
+          ),
+          verticalSpace(20),
         ],
       ),
     );

@@ -54,6 +54,7 @@ class _OtpFormState extends State<OtpForm> {
       final otp = _controllers.map((c) => c.text).join();
       final email = await SharedPrefHelper.getEmail();
       final requestModel = VerifyOtpRequestModel(email: email, otp: otp,);
+      await SharedPrefHelper.setSecuredString('otp', otp);
       BlocProvider.of<VerifyOtpCubit>(context).verifyOtp(requestModel);
     }
     else {

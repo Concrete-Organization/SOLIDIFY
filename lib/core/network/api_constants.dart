@@ -6,6 +6,7 @@ class ApiConstants {
   static const String engineerSignUP = 'Account/registerEngineer';
   static const String forgetPassword = 'Account/forgot-password';
   static const String verifyOtp = 'Account/verifyOtp';
+  static const String resetPassword = 'Account/reset-password';
 }
 
 class ApiErrors {
