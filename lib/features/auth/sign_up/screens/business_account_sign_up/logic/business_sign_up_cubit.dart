@@ -33,6 +33,9 @@ class BusinessAccountSignUpCubit extends Cubit<BusinessAccountSignUpState> {
   final formKey = GlobalKey<FormState>();
   File? commercialLicenseFile;
 
+  final GlobalKey<FormState> identityFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> contactInfoFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> financialFormKey = GlobalKey<FormState>();
   void emitBusinessSignUpStates() async {
     emit(const BusinessAccountSignUpState.businessSignUpLoading());
 
