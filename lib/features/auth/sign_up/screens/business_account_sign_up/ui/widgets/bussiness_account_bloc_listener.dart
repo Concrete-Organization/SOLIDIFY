@@ -4,7 +4,6 @@ import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_account_sign_up_state.dart';
-// features/auth/sign_up/screens/business_account_sign_up/ui/widgets/business_sign_up_bloc_listener.dart
 
 class BusinessSignUpBlocListener extends StatelessWidget {
   const BusinessSignUpBlocListener({super.key});

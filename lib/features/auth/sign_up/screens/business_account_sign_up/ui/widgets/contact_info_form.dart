@@ -6,7 +6,6 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_sign_up_cubit.dart';
-// features/auth/sign_up/screens/business_account_sign_up/ui/widgets/contact_info_form.dart
 
 class ContactInfoForm extends StatelessWidget {
   const ContactInfoForm({super.key});
@@ -20,7 +19,6 @@ class ContactInfoForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Phone Number
           Text('Company official phone number',
               style: TextStyles.font14lightBlackRegular),
           verticalSpace(5),
