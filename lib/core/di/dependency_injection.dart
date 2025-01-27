@@ -1,19 +1,21 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/data/repos/engineer_sign_up_repo.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/logic/engineer_sign_up_cubit.dart';
-import '../../features/auth/forget_password/data/repos/forget_password_repo.dart';
-import '../../features/auth/forget_password/logic/forget_password_cubit.dart';
-import '../../features/auth/otp/data/repos/verify_otp_repo.dart';
-import '../../features/auth/otp/logic/verify_otp_cubit.dart';
-import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
-import '../../features/auth/reset_password/logic/reset_password_cubit.dart';
 import '../network/api_service.dart';
 import '../network/dio_factory.dart';
 import '../../features/auth/login/logic/login_cubit.dart';
+import '../../features/auth/otp/logic/verify_otp_cubit.dart';
 import '../../features/auth/login/data/repo/login_repo.dart';
+import '../../features/auth/otp/data/repos/verify_otp_repo.dart';
+import '../../features/auth/reset_password/logic/reset_password_cubit.dart';
+import '../../features/auth/forget_password/logic/forget_password_cubit.dart';
+import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
+import '../../features/auth/forget_password/data/repos/forget_password_repo.dart';
 import 'package:solidify/features/auth/sign_up/screens/user_sign_up/logic/user_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/user_sign_up/data/repos/user_sign_up_repo.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/logic/engineer_sign_up_cubit.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/data/repos/engineer_sign_up_repo.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_sign_up_cubit.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/data/repos/business_account_repo.dart';
 
 final getIt = GetIt.instance;
 Future<void> setupGetIt() async {
@@ -23,19 +25,29 @@ Future<void> setupGetIt() async {
   // login
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
- //user sign up
+  //user sign up
   getIt.registerLazySingleton<UserSignUpRepo>(() => UserSignUpRepo(getIt()));
   getIt.registerFactory<UserSignUpCubit>(() => UserSignUpCubit(getIt()));
   //engineer sign up
-  getIt.registerLazySingleton<EngineerSignUpRepo>(() => EngineerSignUpRepo(getIt()));
-  getIt.registerFactory<EngineerSignUpCubit>(() => EngineerSignUpCubit(getIt()));
+  getIt.registerLazySingleton<EngineerSignUpRepo>(
+      () => EngineerSignUpRepo(getIt()));
+  getIt
+      .registerFactory<EngineerSignUpCubit>(() => EngineerSignUpCubit(getIt()));
+  //business account sign up
+  getIt.registerLazySingleton<BusinessAccountRepo>(
+      () => BusinessAccountRepo(getIt()));
+  getIt.registerFactory<BusinessAccountSignUpCubit>(
+      () => BusinessAccountSignUpCubit(getIt()));
   // forget password
-  getIt.registerLazySingleton<ForgetPasswordRepo>(() => ForgetPasswordRepo(getIt()));
-  getIt.registerFactory<ForgetPasswordCubit>(() => ForgetPasswordCubit(getIt()));
+  getIt.registerLazySingleton<ForgetPasswordRepo>(
+      () => ForgetPasswordRepo(getIt()));
+  getIt
+      .registerFactory<ForgetPasswordCubit>(() => ForgetPasswordCubit(getIt()));
   // verify otp
   getIt.registerLazySingleton<VerifyOtpRepo>(() => VerifyOtpRepo(getIt()));
   getIt.registerFactory<VerifyOtpCubit>(() => VerifyOtpCubit(getIt()));
   // reset password
-  getIt.registerLazySingleton<ResetPasswordRepo>(() => ResetPasswordRepo(getIt()));
+  getIt.registerLazySingleton<ResetPasswordRepo>(
+      () => ResetPasswordRepo(getIt()));
   getIt.registerFactory<ResetPasswordCubit>(() => ResetPasswordCubit(getIt()));
 }
