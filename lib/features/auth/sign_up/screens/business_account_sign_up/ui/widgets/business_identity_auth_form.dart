@@ -7,19 +7,19 @@ import 'package:path_provider/path_provider.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/upload_container.dart';
+import 'package:solidify/features/auth/sign_up/widgets/upload_container.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_sign_up_cubit.dart';
 
-import '../../../engineer_sign_up/ui/engineer_sign_up_upload_files_screen.dart';
+import '../../../../widgets/sign_up_upload_files_screen.dart';
 
-class IdentityAuthForm extends StatefulWidget {
-  const IdentityAuthForm({super.key});
+class BusinessIdentityAuthForm extends StatefulWidget {
+  const BusinessIdentityAuthForm({super.key});
 
   @override
-  State<IdentityAuthForm> createState() => _IdentityAuthFormState();
+  State<BusinessIdentityAuthForm> createState() => _IdentityAuthFormState();
 }
 
-class _IdentityAuthFormState extends State<IdentityAuthForm> {
+class _IdentityAuthFormState extends State<BusinessIdentityAuthForm> {
   String? commercialLicenseType;
   late BusinessAccountSignUpCubit cubit;
 
@@ -37,8 +37,8 @@ class _IdentityAuthFormState extends State<IdentityAuthForm> {
 
   void updateFileState(File file, String fileType) {
     setState(() {
-        cubit.commercialLicenseFile = file;
-        commercialLicenseType = fileType;
+      cubit.commercialLicenseFile = file;
+      commercialLicenseType = fileType;
     });
   }
 
@@ -46,7 +46,7 @@ class _IdentityAuthFormState extends State<IdentityAuthForm> {
     final result = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const EngineerSignUpUploadFilesScreen(),
+        builder: (context) => const SignUpUploadFilesScreen(),
       ),
     );
 
@@ -57,13 +57,17 @@ class _IdentityAuthFormState extends State<IdentityAuthForm> {
       if (fileName != null && fileType != null) {
         final file = File(fileName);
         if (await file.exists()) {
-          updateFileState(file, fileType,);
+          updateFileState(
+            file,
+            fileType,
+          );
         } else {
           print("File does not exist: $fileName");
         }
       }
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -137,7 +141,8 @@ class _IdentityAuthFormState extends State<IdentityAuthForm> {
             onTap: () => navigateToUploadScreen(true),
             child: UploadContainer(
               isUploaded: cubit.commercialLicenseFile != null,
-              uploadedFileName: cubit.commercialLicenseFile?.path.split('/').last,
+              uploadedFileName:
+                  cubit.commercialLicenseFile?.path.split('/').last,
               fileType: commercialLicenseType,
               onClose: () {
                 setState(() {

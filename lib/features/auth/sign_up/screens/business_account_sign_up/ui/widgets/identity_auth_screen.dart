@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
-import 'identity_auth_form.dart';
+import 'business_identity_auth_form.dart';
 
 class IdentityAuthScreen extends StatelessWidget {
   const IdentityAuthScreen({super.key});
@@ -17,7 +17,7 @@ class IdentityAuthScreen extends StatelessWidget {
             style: TextStyles.font24MainBlueSemiBold,
           ),
           verticalSpace(40),
-          const IdentityAuthForm(),
+          const BusinessIdentityAuthForm(),
           verticalSpace(20),
         ],
       ),

@@ -30,8 +30,15 @@ class _EngineerAccountSignUpScreenState extends State<EngineerSignUpScreen> {
   }
 
   void _onNextPage() {
-    if (currentPage < engineerAccountSignUpScreensList.length - 1) {
-      if (cubit.formKey.currentState!.validate()) {
+    if (currentPage == 0) {
+      if (cubit.userAndEmailFormKey.currentState!.validate()) {
+        _controller.nextPage(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.ease,
+        );
+      }
+    } else if (currentPage == 1) {
+      if (cubit.passwordFormKey.currentState!.validate()) {
         _controller.nextPage(
           duration: const Duration(milliseconds: 300),
           curve: Curves.ease,

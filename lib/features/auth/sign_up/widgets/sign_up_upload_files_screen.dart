@@ -6,20 +6,20 @@ import 'package:path_provider/path_provider.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/build_uploaded_files_list.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/upload_file_container.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/upload_file_model.dart';
+import 'package:solidify/features/auth/sign_up/widgets/build_uploaded_files_list.dart';
+import 'package:solidify/features/auth/sign_up/widgets/upload_file_container.dart';
+import 'package:solidify/features/auth/sign_up/widgets/upload_file_model.dart';
 
-class EngineerSignUpUploadFilesScreen extends StatefulWidget {
-  const EngineerSignUpUploadFilesScreen({super.key});
+class SignUpUploadFilesScreen extends StatefulWidget {
+  const SignUpUploadFilesScreen({super.key});
 
   @override
-  State<EngineerSignUpUploadFilesScreen> createState() =>
+  State<SignUpUploadFilesScreen> createState() =>
       _EngineerSignUpUploadFilesScreenState();
 }
 
 class _EngineerSignUpUploadFilesScreenState
-    extends State<EngineerSignUpUploadFilesScreen> {
+    extends State<SignUpUploadFilesScreen> {
   final List<UploadedFile> _uploadedFiles = [];
 
   bool get _isAnyFileUploading => _uploadedFiles.any((file) => file.isUploading);

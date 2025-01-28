@@ -16,9 +16,8 @@ class EngineerSignUpCubit extends Cubit<EngineerSignUpState> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+  final userAndEmailFormKey = GlobalKey<FormState>();
+  final passwordFormKey = GlobalKey<FormState>();
   File? syndicateFileName;
   File? cvFileName;
 
@@ -34,8 +33,6 @@ class EngineerSignUpCubit extends Cubit<EngineerSignUpState> {
       email: emailController.text,
       password: passwordController.text,
       confirmPassword: confirmPasswordController.text,
-      phoneNumber: phoneNumberController.text,
-      address: addressController.text,
       cvFile: cvFileName,
       syndicateCard: syndicateFileName,
     );

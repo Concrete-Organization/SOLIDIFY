@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../../../../core/theming/color_manger.dart';
-import '../../../../../../../core/theming/text_styles.dart';
+import '../../../../core/theming/color_manger.dart';
+import '../../../../core/theming/text_styles.dart';
 
 class UploadContainer extends StatelessWidget {
   final bool isUploaded;
