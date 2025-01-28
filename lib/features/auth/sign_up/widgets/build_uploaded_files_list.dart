@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/upload_file_model.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/uploaded_file_card.dart';
+import 'package:solidify/features/auth/sign_up/widgets/upload_file_model.dart';
+import 'package:solidify/features/auth/sign_up/widgets/uploaded_file_card.dart';
 
 class BuildUploadedFilesList extends StatelessWidget {
   final List<UploadedFile> uploadedFiles;

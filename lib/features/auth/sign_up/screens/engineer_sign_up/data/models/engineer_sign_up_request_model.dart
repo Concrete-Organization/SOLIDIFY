@@ -9,8 +9,6 @@ class EngineerSignUpRequestModel {
   final String email;
   final String password;
   final String confirmPassword;
-  final String phoneNumber;
-  final String address;
 
   @JsonKey(fromJson: FileConverter.fromJson, toJson: FileConverter.toJson)
   final File? cvFile;
@@ -23,8 +21,6 @@ class EngineerSignUpRequestModel {
     required this.email,
     required this.password,
     required this.confirmPassword,
-    required this.phoneNumber,
-    required this.address,
     required this.cvFile,
     required this.syndicateCard,
   });
@@ -42,8 +38,6 @@ class EngineerSignUpRequestModel {
       MapEntry('email', email),
       MapEntry('password', password),
       MapEntry('confirmPassword', confirmPassword),
-      MapEntry('phoneNumber', phoneNumber),
-      MapEntry('address', address),
     ]);
 
     if (cvFile != null) {

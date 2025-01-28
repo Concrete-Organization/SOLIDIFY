@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/logic/engineer_sign_up_cubit.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/upload_container.dart';
+import 'package:solidify/features/auth/sign_up/widgets/upload_container.dart';
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/theming/text_styles.dart';
-import '../engineer_sign_up_upload_files_screen.dart';
+import '../../../../widgets/sign_up_upload_files_screen.dart';
 
-class EngineerIdentityAuth extends StatefulWidget {
-  const EngineerIdentityAuth({super.key});
+class EngineerIdentityAuthForm extends StatefulWidget {
+  const EngineerIdentityAuthForm({super.key});
 
   @override
-  State<EngineerIdentityAuth> createState() => _EngineerIdentityAuthState();
+  State<EngineerIdentityAuthForm> createState() => _EngineerIdentityAuthState();
 }
 
-class _EngineerIdentityAuthState extends State<EngineerIdentityAuth> {
+class _EngineerIdentityAuthState extends State<EngineerIdentityAuthForm> {
   String? syndicateFileType;
   String? cvFileType;
   late EngineerSignUpCubit cubit;
@@ -49,7 +49,7 @@ class _EngineerIdentityAuthState extends State<EngineerIdentityAuth> {
     final result = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const EngineerSignUpUploadFilesScreen(),
+        builder: (context) => const SignUpUploadFilesScreen(),
       ),
     );
 

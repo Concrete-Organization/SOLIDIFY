@@ -21,9 +21,8 @@ import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/se
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/business_sign_up_screen.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/widgets/contact_info_screen.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/engineer_sign_up_upload_files_screen.dart';
+import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/widgets/financial_details_screen.dart';
-import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_account_sign_up_state.dart';
 
 class AppRoutes {
   Route generateRoute(RouteSettings settings) {
@@ -82,9 +81,9 @@ class AppRoutes {
             child: const EngineerSignUpScreen(),
           ),
         );
-      case Routes.engineerSignUpUploadFilesScreen:
+      case Routes.signUpUploadFilesScreen:
         return MaterialPageRoute(
-          builder: (context) => const EngineerSignUpUploadFilesScreen(),
+          builder: (context) => const SignUpUploadFilesScreen(),
         );
       case Routes.businessAccountScreen:
         return MaterialPageRoute(
