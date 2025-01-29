@@ -29,7 +29,6 @@ class _SignUpFormState extends State<UserSignUpForm> {
   late UserSignUpCubit cubit;
   late TextEditingController passwordController;
 
-
   @override
   void initState() {
     super.initState();
@@ -57,8 +56,6 @@ class _SignUpFormState extends State<UserSignUpForm> {
     cubit.emailController.dispose();
     cubit.passwordController.dispose();
     cubit.confirmPasswordController.dispose();
-    cubit.phoneNumberController.dispose();
-    cubit.addressController.dispose();
     super.dispose();
   }
 
@@ -69,7 +66,10 @@ class _SignUpFormState extends State<UserSignUpForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Username', style: TextStyles.font14lightBlackRegular),
+          Text(
+            'Username',
+            style: TextStyles.font14lightBlackRegular,
+          ),
           verticalSpace(5),
           AppTextFormField(
             controller: cubit.nameController,
@@ -97,7 +97,10 @@ class _SignUpFormState extends State<UserSignUpForm> {
             },
           ),
           verticalSpace(20),
-          Text('Password', style: TextStyles.font14lightBlackRegular),
+          Text(
+            'Password',
+            style: TextStyles.font14lightBlackRegular,
+          ),
           verticalSpace(5),
           AppTextFormField(
             controller: cubit.passwordController,
@@ -124,7 +127,10 @@ class _SignUpFormState extends State<UserSignUpForm> {
             ),
           ),
           verticalSpace(20),
-          Text('Confirm Password', style: TextStyles.font14lightBlackRegular),
+          Text(
+            'Confirm Password',
+            style: TextStyles.font14lightBlackRegular,
+          ),
           verticalSpace(5),
           AppTextFormField(
             controller: cubit.confirmPasswordController,
@@ -165,33 +171,6 @@ class _SignUpFormState extends State<UserSignUpForm> {
             ),
             verticalSpace(18),
           ],
-          Text('Phone number', style: TextStyles.font14lightBlackRegular),
-          verticalSpace(5),
-          AppTextFormField(
-            controller: cubit.phoneNumberController,
-            hintText: 'Enter your Phone number',
-            validator: (value) {
-              if (value == null ||
-                  value.isEmpty ||
-                  !AppRegex.isPhoneNumberValid(value)) {
-                return 'Please enter a valid phone number';
-              }
-              return null;
-            },
-          ),
-          verticalSpace(20),
-          Text('Address', style: TextStyles.font14lightBlackRegular),
-          verticalSpace(5),
-          AppTextFormField(
-            controller: cubit.addressController,
-            hintText: 'Enter your Address',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid Address';
-              }
-              return null;
-            },
-          ),
         ],
       ),
     );

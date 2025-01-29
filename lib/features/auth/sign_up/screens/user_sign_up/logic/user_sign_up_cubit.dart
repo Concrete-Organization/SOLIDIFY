@@ -14,8 +14,6 @@ class UserSignUpCubit extends Cubit<UserSignUpState> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   void emitUserSignupStates() async {
@@ -25,9 +23,7 @@ class UserSignUpCubit extends Cubit<UserSignUpState> {
         userName: nameController.text,
         email: emailController.text,
         password: passwordController.text,
-        phoneNumber: phoneNumberController.text,
         confirmPassword: confirmPasswordController.text,
-        address: addressController.text,
       ),
     );
 
