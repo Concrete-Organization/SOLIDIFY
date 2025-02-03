@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/app_validation.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_sign_up_cubit.dart';
 import '../../../../../../../core/helpers/app_regex.dart';
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/theming/color_manger.dart';
 import '../../../../../../../core/theming/text_styles.dart';
 import '../../../../../../../core/widgets/app_text_form_field.dart';
 import '../../../../widgets/password_validations.dart';
-import '../../logic/engineer_sign_up_cubit.dart';
 
-class EngineerPasswordSignUpForm extends StatefulWidget {
-  const EngineerPasswordSignUpForm({super.key});
+class BusinessPasswordSignUpForm extends StatefulWidget {
+  const BusinessPasswordSignUpForm({super.key});
 
   @override
-  State<EngineerPasswordSignUpForm> createState() =>
-      _EngineerPasswordSignUpFormState();
+  State<BusinessPasswordSignUpForm> createState() =>
+      _BusinessPasswordSignUpFormState();
 }
 
-class _EngineerPasswordSignUpFormState
-    extends State<EngineerPasswordSignUpForm> {
+class _BusinessPasswordSignUpFormState
+    extends State<BusinessPasswordSignUpForm> {
   bool isPasswordObscureText = true;
   bool isPasswordConfirmationObscureText = true;
 
@@ -30,7 +30,7 @@ class _EngineerPasswordSignUpFormState
   bool showPasswordValidations = false;
 
   late TextEditingController passwordController;
-  late EngineerSignUpCubit cubit;
+  late BusinessAccountSignUpCubit cubit;
 
   void setupPasswordControllerListener() {
     cubit.passwordController.addListener(() {
@@ -49,7 +49,7 @@ class _EngineerPasswordSignUpFormState
   @override
   void initState() {
     super.initState();
-    cubit = context.read<EngineerSignUpCubit>();
+    cubit = context.read<BusinessAccountSignUpCubit>();
     setupPasswordControllerListener();
   }
 
@@ -124,7 +124,7 @@ class _EngineerPasswordSignUpFormState
                           onTap: () {
                             setState(() {
                               isPasswordConfirmationObscureText =
-                                  !isPasswordConfirmationObscureText;
+                              !isPasswordConfirmationObscureText;
                             });
                           },
                           child: Icon(

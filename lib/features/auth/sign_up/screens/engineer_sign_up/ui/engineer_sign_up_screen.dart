@@ -4,9 +4,10 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/custom_app_bar_with_indicator.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/engineer_account_list.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/engineer_account_sign_up_forms_list.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/engineer_sign_up_bloc_listener.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/widgets/engineer_sign_up_page_view_builder.dart';
+import '../../../../../../core/widgets/custom_snack_bar.dart';
 import '../logic/engineer_sign_up_cubit.dart';
 
 class EngineerSignUpScreen extends StatefulWidget {
@@ -30,30 +31,39 @@ class _EngineerAccountSignUpScreenState extends State<EngineerSignUpScreen> {
   }
 
   void _onNextPage() {
-    if (currentPage == 0) {
-      if (cubit.userAndEmailFormKey.currentState!.validate()) {
-        _controller.nextPage(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.ease,
-        );
-      }
-    } else if (currentPage == 1) {
-      if (cubit.passwordFormKey.currentState!.validate()) {
-        _controller.nextPage(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.ease,
-        );
-      }
-    } else {
-      final syndicateFileUploaded = cubit.syndicateFileName != null;
-      final cvFileUploaded = cubit.cvFileName != null;
+    final cubit = context.read<EngineerSignUpCubit>();
 
-      if (syndicateFileUploaded && cvFileUploaded) {
-        cubit.emitEngineerSignupStates();
-      }
+    switch (currentPage) {
+      case 0:
+        if (!cubit.userAndEmailFormKey.currentState!.validate()) return;
+        break;
+      case 1:
+        if (!cubit.passwordFormKey.currentState!.validate()) return;
+        break;
+      case 2:
+        final syndicateFileUploaded = cubit.syndicateFileName != null;
+        final cvFileUploaded = cubit.cvFileName != null;
+
+        if (!syndicateFileUploaded || !cvFileUploaded) {
+          CustomSnackBar.showError(
+            context,
+            'Please upload both syndicate card and CV files.',
+          );
+          return;
+        }
+        break;
+    }
+
+    if (currentPage < engineerAccountSignUpFormsScreensList.length - 1) {
+      _controller.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
+      setState(() => currentPage++);
+    } else {
+      cubit.emitEngineerSignupStates();
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +76,7 @@ class _EngineerAccountSignUpScreenState extends State<EngineerSignUpScreen> {
               verticalSpace(20),
               CustomAppBarWithIndicator(
                 currentIndex: currentPage,
-                totalPages: engineerAccountSignUpScreensList.length,
+                totalPages: engineerAccountSignUpFormsScreensList.length,
               ),
               verticalSpace(40),
               Expanded(
@@ -83,7 +93,7 @@ class _EngineerAccountSignUpScreenState extends State<EngineerSignUpScreen> {
               AppTextButton(
                 onPressed: _onNextPage,
                 textButton:
-                    currentPage == engineerAccountSignUpScreensList.length - 1
+                    currentPage == engineerAccountSignUpFormsScreensList.length - 1
                         ? 'Done'
                         : 'Continue',
               ),

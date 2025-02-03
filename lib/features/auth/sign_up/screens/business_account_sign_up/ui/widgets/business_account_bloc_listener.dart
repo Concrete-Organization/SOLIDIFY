@@ -5,6 +5,8 @@ import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_account_sign_up_state.dart';
 
+import '../../../../../../../core/widgets/custom_snack_bar.dart';
+
 class BusinessSignUpBlocListener extends StatelessWidget {
   const BusinessSignUpBlocListener({super.key});
 
@@ -22,19 +24,17 @@ class BusinessSignUpBlocListener extends StatelessWidget {
             );
           },
           businessSignUpSuccess: (response) {
-            Navigator.of(context).pop(); // Close loading dialog
+            Navigator.of(context).pop();
             context.pushNamedAndRemoveUntil(
               Routes.homeScreen,
               predicate: (Route<dynamic> route) => false,
             );
           },
           businessSignUpError: (error) {
-            Navigator.of(context).pop(); // Close loading dialog
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(error.message),
-                backgroundColor: Colors.red,
-              ),
+            Navigator.of(context).pop();
+            CustomSnackBar.showError(
+              context,
+              error.message,
             );
           },
         );

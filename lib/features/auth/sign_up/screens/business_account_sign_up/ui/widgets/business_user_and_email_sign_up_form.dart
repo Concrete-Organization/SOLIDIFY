@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/app_validation.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/logic/engineer_sign_up_cubit.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_sign_up_cubit.dart';
 import '../../../../../../../core/helpers/spacing.dart';
 import '../../../../../../../core/theming/text_styles.dart';
 import '../../../../../../../core/widgets/app_text_form_field.dart';
 
-class EngineerUserAndEmailSignUpForm extends StatefulWidget {
-  const EngineerUserAndEmailSignUpForm({super.key});
+class BusinessUserAndEmailSignUpForm extends StatefulWidget {
+  const BusinessUserAndEmailSignUpForm({super.key});
 
   @override
-  State<EngineerUserAndEmailSignUpForm> createState() => _EngineerSignUpFormState();
+  State<BusinessUserAndEmailSignUpForm> createState() => _BusinessSignUpFormState();
 }
 
-class _EngineerSignUpFormState extends State<EngineerUserAndEmailSignUpForm> {
+class _BusinessSignUpFormState extends State<BusinessUserAndEmailSignUpForm> {
 
-  late EngineerSignUpCubit cubit;
+  late BusinessAccountSignUpCubit cubit;
 
 
   @override
   void initState() {
     super.initState();
-    cubit = context.read<EngineerSignUpCubit>();
+    cubit = context.read<BusinessAccountSignUpCubit>();
   }
 
   @override
   void dispose() {
-    cubit.nameController.dispose();
+    cubit.userNameController.dispose();
     cubit.emailController.dispose();
     super.dispose();
   }
@@ -58,7 +58,7 @@ class _EngineerSignUpFormState extends State<EngineerUserAndEmailSignUpForm> {
                       ),
                       verticalSpace(5),
                       AppTextFormField(
-                        controller: cubit.nameController,
+                        controller: cubit.userNameController,
                         hintText: 'Enter your User Name',
                         validator: validateName,
                       ),

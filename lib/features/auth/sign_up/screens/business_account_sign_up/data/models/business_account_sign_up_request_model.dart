@@ -9,18 +9,11 @@ class BusinessAccountSignUpRequestModel {
   final String companyName;
   final String commercialNumber;
   final String taxId;
-  final String companyWebSite;
-  final String faceBookAccount;
-  final String instagramAccount;
-  final String twitterAccount;
-  final String bankAccount;
-  final String paymentTerm;
   final String userName;
   final String email;
   final String password;
   final String confirmPassword;
-  final String phoneNumber;
-  final String address;
+  final String companyAddress;
 
   @JsonKey(fromJson: FileConverter.fromJson, toJson: FileConverter.toJson)
   final File? commercialLicense;
@@ -29,18 +22,11 @@ class BusinessAccountSignUpRequestModel {
     required this.companyName,
     required this.commercialNumber,
     required this.taxId,
-    required this.companyWebSite,
-    required this.faceBookAccount,
-    required this.instagramAccount,
-    required this.twitterAccount,
-    required this.bankAccount,
-    required this.paymentTerm,
     required this.userName,
     required this.email,
     required this.password,
     required this.confirmPassword,
-    required this.phoneNumber,
-    required this.address,
+    required this.companyAddress,
     required this.commercialLicense,
   });
 
@@ -58,18 +44,11 @@ class BusinessAccountSignUpRequestModel {
       MapEntry('CompanyName', companyName),
       MapEntry('CommericalNumber', commercialNumber),
       MapEntry('TaxId', taxId),
-      MapEntry('CompanyWebSite', companyWebSite),
-      MapEntry('FaceBookAccout', faceBookAccount),
-      MapEntry('InstagramAccount', instagramAccount),
-      MapEntry('TwitterAccount', twitterAccount),
-      MapEntry('BankAccount', bankAccount),
-      MapEntry('PaymentTerm', paymentTerm),
       MapEntry('UserName', userName),
       MapEntry('Email', email),
       MapEntry('Password', password),
       MapEntry('ConfirmPassword', confirmPassword),
-      MapEntry('PhoneNumber', phoneNumber),
-      MapEntry('Address', address),
+      MapEntry('CompanyAddress', companyAddress),
     ]);
 
     if (commercialLicense != null) {

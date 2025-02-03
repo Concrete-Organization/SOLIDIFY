@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/core/helpers/app_validation.dart';
 import '../../../../../../../core/helpers/spacing.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../../core/helpers/app_regex.dart';
@@ -74,12 +75,7 @@ class _SignUpFormState extends State<UserSignUpForm> {
           AppTextFormField(
             controller: cubit.nameController,
             hintText: 'Enter your User Name',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid Name';
-              }
-              return null;
-            },
+            validator: validateName,
           ),
           verticalSpace(20),
           Text('Email', style: TextStyles.font14lightBlackRegular),
@@ -87,14 +83,7 @@ class _SignUpFormState extends State<UserSignUpForm> {
           AppTextFormField(
             controller: cubit.emailController,
             hintText: 'Enter your email',
-            validator: (value) {
-              if (value == null ||
-                  value.isEmpty ||
-                  !AppRegex.isEmailValid(value)) {
-                return 'Please enter a valid email';
-              }
-              return null;
-            },
+            validator: validateEmail,
           ),
           verticalSpace(20),
           Text(
@@ -106,12 +95,7 @@ class _SignUpFormState extends State<UserSignUpForm> {
             controller: cubit.passwordController,
             hintText: 'Enter your password',
             isObscureText: isPasswordObscureText,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
-              }
-              return null;
-            },
+            validator: validatePassword,
             suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {
@@ -136,14 +120,10 @@ class _SignUpFormState extends State<UserSignUpForm> {
             controller: cubit.confirmPasswordController,
             hintText: 'Enter your password',
             isObscureText: isPasswordConfirmationObscureText,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
-              } else if (value != cubit.passwordController.text) {
-                return 'Passwords do not match';
-              }
-              return null;
-            },
+            validator: (value) => validateConfirmPassword(
+              value,
+              cubit.passwordController.text,
+            ),
             suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {
