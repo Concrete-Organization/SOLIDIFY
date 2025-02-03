@@ -13,6 +13,4 @@ class Routes {
       'signUpUploadFilesScreen';
   static const String homeScreen = 'homeScreen';
   static const String businessAccountScreen = 'businessAccountScreen';
-  static const String contactInfoScreen = 'contactInfoScreen';
-  static const String financialDetailsScreen = 'financialDetailsScreen';
 }

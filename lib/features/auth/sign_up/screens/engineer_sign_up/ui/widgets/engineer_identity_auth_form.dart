@@ -61,8 +61,6 @@ class _EngineerIdentityAuthState extends State<EngineerIdentityAuthForm> {
         final file = File(fileName);
         if (await file.exists()) {
           updateFileState(file, fileType, isCV);
-        } else {
-          print("File does not exist: $fileName");
         }
       }
     }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'widgets/business_account_list.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
+import 'widgets/business_account_sign_up_forms_list.dart';
 import '../logic/business_sign_up_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/spacing.dart';
@@ -7,7 +8,7 @@ import 'widgets/business_sign_up_page_view_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/custom_app_bar_with_indicator.dart';
-import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/widgets/bussiness_account_bloc_listener.dart';
+import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/widgets/business_account_bloc_listener.dart';
 
 class BusinessSignUpScreen extends StatefulWidget {
   const BusinessSignUpScreen({super.key});
@@ -23,25 +24,33 @@ class _BusinessSignUpScreenState extends State<BusinessSignUpScreen> {
   void _onNextPage() {
     final cubit = context.read<BusinessAccountSignUpCubit>();
 
-    // Validate current form before proceeding
     switch (currentPage) {
       case 0:
         if (!cubit.identityFormKey.currentState!.validate()) return;
+        if (cubit.commercialLicenseFile == null) {
+          CustomSnackBar.showError(
+            context,
+            'Please upload a commercial license file',
+          );
+          return;
+        }
         break;
       case 1:
-        if (!cubit.contactInfoFormKey.currentState!.validate()) return;
+        if (!cubit.userAndEmailFormKey.currentState!.validate()) return;
         break;
       case 2:
-        if (!cubit.financialFormKey.currentState!.validate()) return;
+        if (!cubit.passwordFormKey.currentState!.validate()) return;
         break;
     }
 
-    if (currentPage < businessAccountSignUpScreens.length - 1) {
+    if (currentPage < businessAccountSignUpFormsScreens.length - 1) {
       _controller.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.ease,
       );
-      setState(() => currentPage++);
+      setState(
+        () => currentPage++,
+      );
     } else {
       cubit.emitBusinessSignUpStates();
     }
@@ -58,23 +67,24 @@ class _BusinessSignUpScreenState extends State<BusinessSignUpScreen> {
               verticalSpace(20),
               CustomAppBarWithIndicator(
                 currentIndex: currentPage,
-                totalPages: businessAccountSignUpScreens.length,
+                totalPages: businessAccountSignUpFormsScreens.length,
               ),
               verticalSpace(40),
               Expanded(
                 child: BusinessSignUpPageViewBuilder(
                   controller: _controller,
-                  onPageChanged: (index) => setState(() => currentPage = index),
+                  onPageChanged: (index) => setState(
+                    () => currentPage = index,
+                  ),
                 ),
               ),
-              // Add Bloc Listener and Button
               Column(
                 children: [
                   const BusinessSignUpBlocListener(),
                   AppTextButton(
                     onPressed: _onNextPage,
                     textButton:
-                        currentPage == businessAccountSignUpScreens.length - 1
+                        currentPage == businessAccountSignUpFormsScreens.length - 1
                             ? 'Submit'
                             : 'Continue',
                   ),

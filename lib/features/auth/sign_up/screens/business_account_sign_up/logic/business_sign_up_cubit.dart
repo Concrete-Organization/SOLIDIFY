@@ -13,36 +13,31 @@ class BusinessAccountSignUpCubit extends Cubit<BusinessAccountSignUpState> {
   BusinessAccountSignUpCubit(this._businessAccountRepo)
       : super(const BusinessAccountSignUpState.initial());
 
-  // Controllers for form fields
   TextEditingController companyNameController = TextEditingController();
   TextEditingController commercialNumberController = TextEditingController();
   TextEditingController taxIdController = TextEditingController();
-  TextEditingController companyWebSiteController = TextEditingController();
-  TextEditingController faceBookAccountController = TextEditingController();
-  TextEditingController instagramAccountController = TextEditingController();
-  TextEditingController twitterAccountController = TextEditingController();
-  TextEditingController bankAccountController = TextEditingController();
-  TextEditingController paymentTermController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
   File? commercialLicenseFile;
 
   final GlobalKey<FormState> identityFormKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> contactInfoFormKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> financialFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> userAndEmailFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> passwordFormKey = GlobalKey<FormState>();
+
   void emitBusinessSignUpStates() async {
     emit(const BusinessAccountSignUpState.businessSignUpLoading());
 
     if (commercialLicenseFile == null) {
-      emit(BusinessAccountSignUpState.businessSignUpError(
-        error: ApiErrorModel(message: 'Commercial license file is required'),
-      ));
+      emit(
+        BusinessAccountSignUpState.businessSignUpError(
+          error: ApiErrorModel(message: 'Commercial license file is required',),
+        ),
+      );
       return;
     }
 
@@ -50,18 +45,11 @@ class BusinessAccountSignUpCubit extends Cubit<BusinessAccountSignUpState> {
       companyName: companyNameController.text,
       commercialNumber: commercialNumberController.text,
       taxId: taxIdController.text,
-      companyWebSite: companyWebSiteController.text,
-      faceBookAccount: faceBookAccountController.text,
-      instagramAccount: instagramAccountController.text,
-      twitterAccount: twitterAccountController.text,
-      bankAccount: bankAccountController.text,
-      paymentTerm: paymentTermController.text,
       userName: userNameController.text,
       email: emailController.text,
       password: passwordController.text,
       confirmPassword: confirmPasswordController.text,
-      phoneNumber: phoneNumberController.text,
-      address: addressController.text,
+      companyAddress: addressController.text,
       commercialLicense: commercialLicenseFile,
     );
 

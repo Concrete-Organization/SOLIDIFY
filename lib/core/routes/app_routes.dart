@@ -20,9 +20,7 @@ import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/logic/en
 import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/business_sign_up_screen.dart';
 import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_sign_up_cubit.dart';
-import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/widgets/contact_info_screen.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
-import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/widgets/financial_details_screen.dart';
 
 class AppRoutes {
   Route generateRoute(RouteSettings settings) {
@@ -87,17 +85,10 @@ class AppRoutes {
         );
       case Routes.businessAccountScreen:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => getIt<BusinessAccountSignUpCubit>(),
-                  child: const BusinessSignUpScreen(),
-                ));
-      case Routes.financialDetailsScreen:
-        return MaterialPageRoute(
-          builder: (context) => const FinancialDetailsScreen(),
-        );
-      case Routes.contactInfoScreen:
-        return MaterialPageRoute(
-          builder: (context) => const ContactInfoScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<BusinessAccountSignUpCubit>(),
+            child: const BusinessSignUpScreen(),
+          ),
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
