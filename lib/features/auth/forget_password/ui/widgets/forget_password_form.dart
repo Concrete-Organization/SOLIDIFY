@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/app_validation.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
-import '../../../../../core/helpers/app_regex.dart';
 import '../../../../../core/helpers/shared_pref_helper.dart';
 import '../../../../../core/widgets/app_text_button.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
@@ -57,12 +57,7 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
           AppTextFormField(
             hintText: 'Enter your email',
             controller: context.read<ForgetPasswordCubit>().emailController,
-            validator: (value) {
-              if (value == null || value.isEmpty || !AppRegex.isEmailValid(value)) {
-                return 'Please enter a valid email';
-              }
-              return null;
-            },
+            validator: validateEmail,
           ),
           const Spacer(),
           AppTextButton(

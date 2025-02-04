@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/app_validation.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theming/color_manger.dart';
 import '../../../../../core/theming/text_styles.dart';
@@ -39,18 +41,16 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
       final String newPassword = _newPasswordController.text;
       final String confirmPassword = _confirmPasswordController.text;
       if (newPassword.isEmpty || confirmPassword.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Please fill in both password fields'),
-          ),
+        CustomSnackBar.showError(
+          context,
+          'Please fill in both password fields',
         );
         return;
       }
       if (newPassword != confirmPassword) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Passwords do not match'),
-          ),
+        CustomSnackBar.showError(
+          context,
+          'Passwords do not match',
         );
         return;
       }
@@ -74,12 +74,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
             controller: _newPasswordController,
             hintText: 'Password',
             isObscureText: _isPasswordHidden,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
-              }
-              return null;
-            },
+            validator: validatePassword,
             suffixIcon: IconButton(
               icon: Icon(
                 _isPasswordHidden
@@ -102,14 +97,10 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
             controller: _confirmPasswordController,
             hintText: 'Confirm Password',
             isObscureText: _isConfirmPasswordHidden,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
-              } else if (value != _newPasswordController.text) {
-                return 'Passwords do not match';
-              }
-              return null;
-            },
+            validator: (value) => validateConfirmPassword(
+              value,
+              _newPasswordController.text,
+            ),
             suffixIcon: IconButton(
               icon: Icon(
                 _isConfirmPasswordHidden

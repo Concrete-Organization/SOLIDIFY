@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import '../../../../../core/helpers/shared_pref_helper.dart';
-import '../../../../../core/theming/color_manger.dart';
-import '../../../../../core/theming/text_styles.dart';
 import '../../../../../core/widgets/app_text_button.dart';
 import '../../data/models/verify_otp_request_model.dart';
 import '../../logic/verify_otp_cubit.dart';
@@ -17,13 +16,15 @@ class OtpForm extends StatefulWidget {
 }
 
 class _OtpFormState extends State<OtpForm> {
+  late VerifyOtpCubit cubit;
   final List<FocusNode> _focusNodes = List.generate(6, (_) => FocusNode());
   final List<TextEditingController> _controllers =
-  List.generate(6, (_) => TextEditingController());
+      List.generate(6, (_) => TextEditingController());
 
   @override
   void initState() {
     super.initState();
+    cubit = BlocProvider.of<VerifyOtpCubit>(context);
     for (var controller in _controllers) {
       controller.addListener(_updateOtp);
     }
@@ -53,20 +54,16 @@ class _OtpFormState extends State<OtpForm> {
     if (isValid) {
       final otp = _controllers.map((c) => c.text).join();
       final email = await SharedPrefHelper.getEmail();
-      final requestModel = VerifyOtpRequestModel(email: email, otp: otp,);
+      final requestModel = VerifyOtpRequestModel(
+        email: email,
+        otp: otp,
+      );
       await SharedPrefHelper.setSecuredString('otp', otp);
-      BlocProvider.of<VerifyOtpCubit>(context).verifyOtp(requestModel);
-    }
-    else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: ColorsManager.mainBlue,
-          content: Text(
-            'Please enter the complete OTP code',
-            textAlign: TextAlign.center,
-            style: TextStyles.font16WhiteMedium.copyWith(fontSize: 14),
-          ),
-        ),
+      cubit.verifyOtp(requestModel);
+    } else {
+      CustomSnackBar.showError(
+        context,
+        'Please enter the complete OTP code',
       );
     }
   }
