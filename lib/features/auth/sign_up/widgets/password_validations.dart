@@ -24,7 +24,7 @@ class PasswordValidations extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 9.h),
       decoration: BoxDecoration(
-        color: ColorsManager.mainBlueWith15Opacity,
+        color: ColorsManager.mainBlueWith1Opacity,
         borderRadius: BorderRadius.circular(5.r),
         border: Border.all(color: ColorsManager.secondaryGold),
       ),

@@ -26,10 +26,10 @@ class UploadContainer extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           color:
-          isUploaded ? ColorsManager.secondaryGold : ColorsManager.mainBlue,
+          isUploaded ? ColorsManager.mainBlue : ColorsManager.mainBlueWith50Opacity,
         ),
         borderRadius: BorderRadius.circular(5.r),
-        color: ColorsManager.mainBlueWith15Opacity,
+        color: ColorsManager.mainBlueWith1Opacity,
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.h),

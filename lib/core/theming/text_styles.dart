@@ -30,7 +30,7 @@ class TextStyles {
   static TextStyle font24MainBlueMedium = GoogleFonts.poppins(
     fontSize: 24.sp,
     color: ColorsManager.mainBlue,
-    fontWeight: FontWeightHelper.medium,
+    fontWeight: FontWeightHelper.semiBold,
   );
   static TextStyle font12MainBlueMedium = GoogleFonts.poppins(
     fontSize: 12.sp,
