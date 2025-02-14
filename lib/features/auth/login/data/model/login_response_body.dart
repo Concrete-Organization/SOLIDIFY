@@ -28,10 +28,12 @@ class LoginResponseBody {
 @JsonSerializable()
 class TokenModel {
   final String token;
+  final List<String> roles;
   final String expireDate;
 
   TokenModel({
     required this.token,
+    required this.roles,
     required this.expireDate,
   });
 
