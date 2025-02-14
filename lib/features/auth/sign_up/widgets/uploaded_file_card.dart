@@ -27,11 +27,13 @@ class UploadedFileCard extends StatelessWidget {
     final fileName = basename(name);
     return Container(
       decoration: BoxDecoration(
-        color: ColorsManager.mainBlueWith15Opacity,
-        borderRadius: BorderRadius.circular(5.r),
+        color: ColorsManager.mainBlueWith1Opacity,
+        borderRadius: BorderRadius.circular(10.r),
         border: Border.all(
-          color: ColorsManager.secondaryGold,
-          width: 1.5.w,
+          color: isUploading
+              ? ColorsManager.secondaryGold
+              : ColorsManager.mainBlue,
+          width: 0.5.w,
         ),
       ),
       child: ListTile(
@@ -63,7 +65,7 @@ class UploadedFileCard extends StatelessWidget {
                 padding: EdgeInsets.only(left: 30.w),
                 icon: const Icon(
                   Icons.delete,
-                  color: ColorsManager.mainBlue,
+                  color: ColorsManager.secondaryGold,
                 ),
                 onPressed: onDelete,
               ),

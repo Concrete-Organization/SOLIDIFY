@@ -45,11 +45,11 @@ class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
               verticalSpace(99),
               Text(
                 'Create your account as',
-                style: TextStyles.font24MainBlueMedium,
+                style: TextStyles.font24MainBlueSemiBold,
               ),
               verticalSpace(40),
               SelectableRowWithCheck(
-                iconPath: 'assets/svgs/user_register_icon.svg',
+                iconPath: 'assets/svgs/business_account_register.svg',
                 label: 'Concrete company account',
                 isSelected: _selectedIndex == 0,
                 onTap: () => _onRowSelected(0),

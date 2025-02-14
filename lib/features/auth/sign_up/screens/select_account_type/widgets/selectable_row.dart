@@ -24,19 +24,19 @@ class SelectableRowWithCheck extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Material(
-        elevation: isSelected ? 5 : 0,
+        elevation: 0,
         borderRadius: BorderRadius.circular(10.r),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           height: 65.h,
           decoration: BoxDecoration(
-            color: ColorsManager.mainBlueWith15Opacity,
+            color: ColorsManager.mainBlueWith1Opacity,
             borderRadius: BorderRadius.circular(10.r),
             border: Border.all(
               color: isSelected
                   ? ColorsManager.secondaryGold
                   : ColorsManager.lightBlack,
-              width: 2,
+              width: 1.w,
             ),
           ),
           child: Row(
@@ -53,7 +53,11 @@ class SelectableRowWithCheck extends StatelessWidget {
               horizontalSpace(7),
               Text(
                 label,
-                style: TextStyles.font15MainBlueMedium,
+                style: isSelected
+                    ? TextStyles.font15MainBlueMedium.copyWith(
+                        color: ColorsManager.secondaryGold,
+                      )
+                    : TextStyles.font15MainBlueMedium,
               ),
               const Spacer(),
               if (isSelected)

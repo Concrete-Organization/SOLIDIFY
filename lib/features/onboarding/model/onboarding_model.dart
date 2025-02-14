@@ -19,8 +19,8 @@ List<OnboardingModel> getOnBoardingList() {
     ),
     OnboardingModel(
       imagePath: 'assets/svgs/second_onboarding.svg',
-      title: 'Consult Experts for Your Project!',
-      body: 'Book an appointment with professional\nengineers for consultations and expert\nopinions on your project’s progress.',
+      title: 'Engineering Community!',
+      body: 'Communicate: Share ideas and collaborate,\nLearn: Access valuable resources, Support: Get\nhelp and offer advice, Innovate: Work on\ncutting-edge projects together.',
     ),
     OnboardingModel(
       imagePath: 'assets/svgs/third_onboarding.svg',

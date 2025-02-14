@@ -90,9 +90,9 @@ class AppTextFormField extends StatelessWidget {
         isDense: true,
         contentPadding: contentPadding ?? EdgeInsets.symmetric(vertical: 13.h, horizontal: 13.w),
         enabledBorder: enabledBorder ??
-            buildOutlineInputBorder(color: ColorsManager.lightBlack),
+            buildOutlineInputBorder(color: ColorsManager.mainBlueWith50Opacity),
         focusedBorder: focusedBorder ??
-            buildOutlineInputBorder(color: ColorsManager.secondaryGold),
+            buildOutlineInputBorder(color: ColorsManager.mainBlue),
         focusedErrorBorder: buildOutlineInputBorder(color: Colors.red),
         errorBorder: buildOutlineInputBorder(color: Colors.red),
         hintStyle: hintStyle ?? TextStyles.font12lightBlackLight.copyWith(
@@ -106,7 +106,7 @@ class AppTextFormField extends StatelessWidget {
                 child: prefixIcon,
               )
             : null,
-        fillColor: backgroundColor ?? ColorsManager.mainBlueWith15Opacity,
+        fillColor: backgroundColor ?? ColorsManager.mainBlueWith1Opacity,
         filled: true,
       ),
     );
