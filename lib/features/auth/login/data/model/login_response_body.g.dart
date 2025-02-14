@@ -24,11 +24,13 @@ Map<String, dynamic> _$LoginResponseBodyToJson(LoginResponseBody instance) =>
 
 TokenModel _$TokenModelFromJson(Map<String, dynamic> json) => TokenModel(
       token: json['token'] as String,
+      roles: (json['roles'] as List<dynamic>).map((e) => e as String).toList(),
       expireDate: json['expireDate'] as String,
     );
 
 Map<String, dynamic> _$TokenModelToJson(TokenModel instance) =>
     <String, dynamic>{
       'token': instance.token,
+      'roles': instance.roles,
       'expireDate': instance.expireDate,
     };
