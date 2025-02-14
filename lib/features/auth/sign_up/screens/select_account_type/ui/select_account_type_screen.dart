@@ -27,11 +27,9 @@ class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
 
   void _navigateToNextScreen() {
     if (_selectedIndex == 0) {
-      context.pushNamed(Routes.userSignUpScreen);
+      context.pushNamed(Routes.concreteCompanyAccountScreen);
     } else if (_selectedIndex == 1) {
-      context.pushNamed(Routes.engineerAccountSignUpScreen);
-    } else if (_selectedIndex == 2) {
-      context.pushNamed(Routes.businessAccountScreen);
+      context.pushNamed(Routes.engineerSignUpScreen);
     }
   }
 
@@ -52,7 +50,7 @@ class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
               verticalSpace(40),
               SelectableRowWithCheck(
                 iconPath: 'assets/svgs/user_register_icon.svg',
-                label: 'User account',
+                label: 'Concrete company account',
                 isSelected: _selectedIndex == 0,
                 onTap: () => _onRowSelected(0),
               ),
@@ -62,13 +60,6 @@ class _SelectAccountTypeScreenState extends State<SelectAccountTypeScreen> {
                 label: 'Engineer account',
                 isSelected: _selectedIndex == 1,
                 onTap: () => _onRowSelected(1),
-              ),
-              verticalSpace(40),
-              SelectableRowWithCheck(
-                iconPath: 'assets/svgs/business_account_register.svg',
-                label: 'Business account',
-                isSelected: _selectedIndex == 2,
-                onTap: () => _onRowSelected(2),
               ),
               const Spacer(),
               AppTextButton(
