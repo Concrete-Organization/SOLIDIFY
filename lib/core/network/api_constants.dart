@@ -1,8 +1,7 @@
 class ApiConstants {
-  static const String apiBaseUrl = "http://solidify.runasp.net/api/";
+  static const String apiBaseUrl = "https://solidifyapi.runasp.net/api/";
 
   static const String login = "Account/login";
-  static const String userSignUP = 'Account/registerUser';
   static const String engineerSignUP = 'Account/registerEngineer';
   static const String forgetPassword = 'Account/forgot-password';
   static const String verifyOtp = 'Account/verifyOtp';

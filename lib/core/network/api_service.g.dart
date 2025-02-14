@@ -14,7 +14,7 @@ class _ApiService implements ApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://solidify.runasp.net/api/';
+    baseUrl ??= 'https://solidifyapi.runasp.net/api/';
   }
 
   final Dio _dio;
@@ -58,51 +58,18 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<UserSignUpResponseModel> userSignUp(
-      UserSignUpRequestModel userSignUpRequestModel) async {
+  Future<EngineerAccountSignUpResponseModel> engineerSignUp(
+      EngineerAccountSignUpRequestModel
+          engineerAccountSignUpRequestModel) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(userSignUpRequestModel.toJson());
-    final _options = _setStreamType<UserSignUpResponseModel>(Options(
+    _data.addAll(engineerAccountSignUpRequestModel.toJson());
+    final _options = _setStreamType<EngineerAccountSignUpResponseModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          'Account/registerUser',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late UserSignUpResponseModel _value;
-    try {
-      _value = UserSignUpResponseModel.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<EngineerSignUpResponseModel> engineerSignUp(FormData formData) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = formData;
-    final _options = _setStreamType<EngineerSignUpResponseModel>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-      contentType: 'multipart/form-data',
     )
         .compose(
           _dio.options,
@@ -116,9 +83,9 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late EngineerSignUpResponseModel _value;
+    late EngineerAccountSignUpResponseModel _value;
     try {
-      _value = EngineerSignUpResponseModel.fromJson(_result.data!);
+      _value = EngineerAccountSignUpResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -127,33 +94,35 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<BusinessAccountSignUpResponseModel> componySignUp(
+  Future<ConcreteCompanyAccountSignUpResponseModel> companySignUp(
       FormData formData) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = formData;
-    final _options = _setStreamType<BusinessAccountSignUpResponseModel>(Options(
+    final _options =
+        _setStreamType<ConcreteCompanyAccountSignUpResponseModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
       contentType: 'multipart/form-data',
     )
-        .compose(
-          _dio.options,
-          'Account/registerCompany',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+            .compose(
+              _dio.options,
+              'Account/registerCompany',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late BusinessAccountSignUpResponseModel _value;
+    late ConcreteCompanyAccountSignUpResponseModel _value;
     try {
-      _value = BusinessAccountSignUpResponseModel.fromJson(_result.data!);
+      _value =
+          ConcreteCompanyAccountSignUpResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

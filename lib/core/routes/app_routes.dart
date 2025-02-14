@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/logic/concrete_company_sign_up_cubit.dart';
+import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/ui/concrete_company_sign_up_screen.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/ui/engineer_account_sign_up_screen.dart';
+import '../../features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -13,13 +17,7 @@ import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.d
 import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
-import 'package:solidify/features/auth/sign_up/screens/user_sign_up/ui/user_sign_up_screen.dart';
-import 'package:solidify/features/auth/sign_up/screens/user_sign_up/logic/user_sign_up_cubit.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/ui/engineer_sign_up_screen.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_sign_up/logic/engineer_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
-import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/ui/business_sign_up_screen.dart';
-import 'package:solidify/features/auth/sign_up/screens/business_account_sign_up/logic/business_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 
 class AppRoutes {
@@ -65,29 +63,22 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const SelectAccountTypeScreen(),
         );
-      case Routes.userSignUpScreen:
+      case Routes.engineerSignUpScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => getIt<UserSignUpCubit>(),
-            child: const UserSignUpScreen(),
-          ),
-        );
-      case Routes.engineerAccountSignUpScreen:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<EngineerSignUpCubit>(),
-            child: const EngineerSignUpScreen(),
+            create: (context) => getIt<EngineerAccountSignUpCubit>(),
+            child: const EngineerAccountSignUpScreen(),
           ),
         );
       case Routes.signUpUploadFilesScreen:
         return MaterialPageRoute(
           builder: (context) => const SignUpUploadFilesScreen(),
         );
-      case Routes.businessAccountScreen:
+      case Routes.concreteCompanyAccountScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => getIt<BusinessAccountSignUpCubit>(),
-            child: const BusinessSignUpScreen(),
+            create: (context) => getIt<ConcreteCompanySignUpCubit>(),
+            child: const ConcreteCompanySignUpScreen(),
           ),
         );
       case Routes.homeScreen:
