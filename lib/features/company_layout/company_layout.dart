@@ -5,8 +5,8 @@ import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/chatbot/ui/chatbot_screen.dart';
 import 'package:solidify/features/profile/ui/profile_screen.dart';
-import 'package:solidify/features/marketplace/ui/screens/marketplace_screen.dart';
 import 'package:solidify/features/concrete_strength/ui/concrete_strength_screen.dart';
+import 'package:solidify/features/marketplace/ui/screens/marketplace/marketplace_screen.dart';
 
 class CompanyLayout extends StatefulWidget {
   const CompanyLayout({super.key});
