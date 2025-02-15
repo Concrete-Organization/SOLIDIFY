@@ -33,7 +33,7 @@ class LoginScreen extends StatelessWidget {
               },
               success: (_) {
                 context.pushNamedAndRemoveUntil(
-                  Routes.homeScreen,
+                  Routes.companyLayout,
                   predicate: (Route<dynamic> route) => false,
                 );
               },

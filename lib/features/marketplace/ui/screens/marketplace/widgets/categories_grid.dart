@@ -15,7 +15,6 @@ class _CategoriesGridState extends State<CategoriesGrid>
   int selectedIndex = 0;
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
-
   final List<Map<String, String>> categories = [
     {
       'icon': 'assets/images/all_categories_icon.png',
@@ -66,7 +65,7 @@ class _CategoriesGridState extends State<CategoriesGrid>
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             categoryItem(0),
             categoryItem(1),
@@ -75,7 +74,7 @@ class _CategoriesGridState extends State<CategoriesGrid>
         ),
         verticalSpace(20),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             categoryItem(3),
             categoryItem(4),

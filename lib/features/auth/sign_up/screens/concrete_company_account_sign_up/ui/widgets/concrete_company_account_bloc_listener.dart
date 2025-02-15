@@ -25,7 +25,7 @@ class ConcreteCompanyAccountBlocListener extends StatelessWidget {
           concreteCompanySignUpSuccess: (response) {
             Navigator.of(context).pop();
             context.pushNamedAndRemoveUntil(
-              Routes.homeScreen,
+              Routes.companyLayout,
               predicate: (Route<dynamic> route) => false,
             );
           },

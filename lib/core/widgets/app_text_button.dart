@@ -16,6 +16,7 @@ class AppTextButton extends StatelessWidget {
   final double? width;
   final double? height;
   final double? fontSize;
+  final double? borderRadius;
   final FontWeight? fontWeight;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? buttonPadding;
@@ -32,6 +33,7 @@ class AppTextButton extends StatelessWidget {
     this.width,
     this.height,
     this.fontSize,
+    this.borderRadius,
     this.fontWeight,
     this.padding,
     this.buttonPadding,
@@ -46,11 +48,14 @@ class AppTextButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? ColorsManager.mainBlue,
-          disabledBackgroundColor: disabledBackgroundColor ?? ColorsManager.mainBlue.withOpacity(0.8),
+          disabledBackgroundColor: disabledBackgroundColor ??
+              ColorsManager.mainBlue.withOpacity(0.8),
           disabledForegroundColor: disabledTextColor ?? ColorsManager.white,
           padding: padding ?? EdgeInsets.symmetric(vertical: 12.h),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.r),
+            borderRadius: BorderRadius.circular(
+              borderRadius ?? 20.r,
+            ),
             side: BorderSide(
               width: 2.w,
               color: (onPressed == null)

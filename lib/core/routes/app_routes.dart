@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
-import 'package:solidify/features/home/ui/home_screen.dart';
 import 'package:solidify/features/splash/splash_screen.dart';
 import 'package:solidify/features/auth/otp/ui/otp_screen.dart';
 import 'package:solidify/features/auth/login/ui/login_screen.dart';
@@ -82,15 +81,10 @@ class AppRoutes {
             child: const ConcreteCompanySignUpScreen(),
           ),
         );
-      case Routes.homeScreen:
-        return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        );
-              case Routes.companyLayout:
+      case Routes.companyLayout:
         return MaterialPageRoute(
           builder: (context) => const CompanyLayout(),
         );
-
 
       default:
         return MaterialPageRoute(
