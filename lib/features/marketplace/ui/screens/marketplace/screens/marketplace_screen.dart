@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:solidify/core/widgets/horizontal_divider.dart';
+import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/available_now_containers.dart';
 import '../../../../../../core/helpers/spacing.dart';
 import '../../../../../../core/theming/text_styles.dart';
-import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/categories_grid.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/product_grid_view.dart';
@@ -18,24 +18,20 @@ class MarketplaceScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
               sliver: SliverList(
                 delegate: SliverChildListDelegate(
                   [
                     const MarketplaceTopBar(),
                     verticalSpace(15),
-                    const Divider(
-                      color: ColorsManager.mainBlue,
-                      height: 0.2,
-                    ),
+                    const HorizontalDivider(),
                     verticalSpace(15),
-                    SvgPicture.asset('assets/svgs/elcontainer_elbedan.svg'),
-                    verticalSpace(20),
+                    const AvailableNowContainers(),
                     Row(
                       children: [
                         Text(
                           'Categories',
-                          style: TextStyles.font15MainBlueSemiBold,
+                          style: TextStyles.font15lightBlackSemiBold,
                         ),
                         const Spacer(),
                         Text(
@@ -46,13 +42,14 @@ class MarketplaceScreen extends StatelessWidget {
                     ),
                     verticalSpace(20),
                     const CategoriesGrid(),
-                    verticalSpace(40),
+                    verticalSpace(26),
+                    const HorizontalDivider(),
                     verticalSpace(20),
                     Row(
                       children: [
                         Text(
-                          'Best sellers ',
-                          style: TextStyles.font15MainBlueSemiBold,
+                          'Best sellers',
+                          style: TextStyles.font15lightBlackSemiBold,
                         ),
                         const Spacer(),
                         Text(
@@ -61,7 +58,7 @@ class MarketplaceScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    verticalSpace(7),
+                    verticalSpace(20),
                   ],
                 ),
               ),

@@ -9,9 +9,13 @@ class MarketplaceTopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        GestureDetector(child: SvgPicture.asset('assets/svgs/search_icon.svg')),
+        GestureDetector(
+          child: SvgPicture.asset('assets/svgs/search_icon.svg'),
+        ),
         const Spacer(),
-        GestureDetector(child: SvgPicture.asset('assets/svgs/cart_icon.svg')),
+        GestureDetector(
+          child: SvgPicture.asset('assets/svgs/cart_icon.svg'),
+        ),
         horizontalSpace(15),
         GestureDetector(
           child: SvgPicture.asset('assets/svgs/list_icon.svg'),

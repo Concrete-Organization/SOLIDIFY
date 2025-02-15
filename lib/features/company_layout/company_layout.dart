@@ -19,8 +19,8 @@ class _AppLayoutState extends State<CompanyLayout> {
   int selectedIndex = 0;
   List<Widget> screens = [
     const MarketplaceScreen(),
-    const ChatbotScreen(),
     const ConcreteStrengthScreen(),
+    const ChatbotScreen(),
     const ProfileScreen(),
   ];
 
@@ -35,21 +35,12 @@ class _AppLayoutState extends State<CompanyLayout> {
     return Scaffold(
       body: screens[selectedIndex],
       bottomNavigationBar: Container(
-        height: 90.h,
         decoration: BoxDecoration(
-          color: ColorsManager.white,
+          color: ColorsManager.mainBlueWith5Opacity,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(40.r),
             topRight: Radius.circular(40.r),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              spreadRadius: 3,
-              blurRadius: 8,
-              offset: const Offset(0, -3),
-            ),
-          ],
           border: const Border(
             top: BorderSide(
               color: ColorsManager.mainBlue,
@@ -63,13 +54,11 @@ class _AppLayoutState extends State<CompanyLayout> {
           type: BottomNavigationBarType.fixed,
           currentIndex: selectedIndex,
           showSelectedLabels: true,
-          showUnselectedLabels: true, // Ensure labels are always visible
+          showUnselectedLabels: true,
           selectedItemColor: ColorsManager.secondaryGold,
-          unselectedItemColor:
-              ColorsManager.mainBlue, // Optional: Set unselected icon color
+          unselectedItemColor: ColorsManager.mainBlue,
           selectedLabelStyle: TextStyles.font13MainBlueMedium,
-          unselectedLabelStyle: TextStyles
-              .font13MainBlueMedium, // Apply the same style for consistency
+          unselectedLabelStyle: TextStyles.font13MainBlueMedium,
           onTap: onItemTapped,
           items: [
             BottomNavigationBarItem(
