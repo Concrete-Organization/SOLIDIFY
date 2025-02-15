@@ -10,8 +10,11 @@ class CategoriesGrid extends StatefulWidget {
   State<CategoriesGrid> createState() => _CategoriesGridState();
 }
 
-class _CategoriesGridState extends State<CategoriesGrid> {
+class _CategoriesGridState extends State<CategoriesGrid>
+    with SingleTickerProviderStateMixin {
   int selectedIndex = 0;
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
 
   final List<Map<String, String>> categories = [
     {
@@ -39,6 +42,24 @@ class _CategoriesGridState extends State<CategoriesGrid> {
       'label': 'Fly Ash',
     },
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 200),
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.1).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,22 +93,33 @@ class _CategoriesGridState extends State<CategoriesGrid> {
         setState(() {
           selectedIndex = index;
         });
+        _controller.forward().then((_) => _controller.reverse());
       },
-      child: Column(
-        children: [
-          Image.asset(
-            categories[index]['icon']!,
-          ),
-          verticalSpace(5),
-          Text(
-            categories[index]['label']!,
-            style: TextStyles.font12MainBlueMedium.copyWith(
-              color: isSelected
-                  ? ColorsManager.secondaryGold
-                  : ColorsManager.mainBlue,
+      child: AnimatedBuilder(
+        animation: _scaleAnimation,
+        builder: (context, child) {
+          return Transform.scale(
+            scale: isSelected ? _scaleAnimation.value : 1.0,
+            child: Column(
+              children: [
+                Image.asset(
+                  categories[index]['icon']!,
+                  width: 55,
+                  height: 55,
+                ),
+                verticalSpace(5),
+                Text(
+                  categories[index]['label']!,
+                  style: TextStyles.font12MainBlueMedium.copyWith(
+                    color: isSelected
+                        ? ColorsManager.secondaryGold
+                        : ColorsManager.mainBlue,
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
