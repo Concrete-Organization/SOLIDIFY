@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,7 @@ class AppTextFormField extends StatelessWidget {
   final InputBorder? enabledBorder;
   final TextStyle? inputTextStyle;
   final TextStyle? hintStyle;
-  final String hintText;
+  final String? hintText;
   final bool? isObscureText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
@@ -31,6 +32,10 @@ class AppTextFormField extends StatelessWidget {
   final int? maxLines;
   final int? minLines;
   final double? textFieldHeight;
+  final double? borderRadius;
+  final InputDecoration? decoration;
+  final Color? borderColor;
+  final List<TextInputFormatter>? inputFormatters;
 
   const AppTextFormField({
     super.key,
@@ -39,7 +44,7 @@ class AppTextFormField extends StatelessWidget {
     this.enabledBorder,
     this.inputTextStyle,
     this.hintStyle,
-    required this.hintText,
+    this.hintText,
     this.isObscureText,
     this.suffixIcon,
     this.prefixIcon,
@@ -61,6 +66,10 @@ class AppTextFormField extends StatelessWidget {
     this.maxLines,
     this.minLines,
     this.textFieldHeight,
+    this.borderRadius,
+    this.decoration,
+    this.borderColor,
+    this.inputFormatters
   });
 
   @override
@@ -86,13 +95,14 @@ class AppTextFormField extends StatelessWidget {
       minLines: minLines ?? 1,
       style: inputTextStyle ?? TextStyles.font12lightBlackLight,
       autofillHints: autofillHints,
-      decoration: InputDecoration(
+      inputFormatters: inputFormatters,
+      decoration: decoration ?? InputDecoration(
         isDense: true,
         contentPadding: contentPadding ?? EdgeInsets.symmetric(vertical: 13.h, horizontal: 13.w),
         enabledBorder: enabledBorder ??
-            buildOutlineInputBorder(color: ColorsManager.mainBlueWith50Opacity),
+            buildOutlineInputBorder(color: borderColor ?? ColorsManager.mainBlueWith50Opacity),
         focusedBorder: focusedBorder ??
-            buildOutlineInputBorder(color: ColorsManager.mainBlue),
+            buildOutlineInputBorder(color: borderColor ?? ColorsManager.mainBlue),
         focusedErrorBorder: buildOutlineInputBorder(color: Colors.red),
         errorBorder: buildOutlineInputBorder(color: Colors.red),
         hintStyle: hintStyle ?? TextStyles.font12lightBlackLight.copyWith(
@@ -102,9 +112,9 @@ class AppTextFormField extends StatelessWidget {
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon != null
             ? Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.w),
-                child: prefixIcon,
-              )
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
+          child: prefixIcon,
+        )
             : null,
         fillColor: backgroundColor ?? ColorsManager.mainBlueWith1Opacity,
         filled: true,
@@ -115,7 +125,7 @@ class AppTextFormField extends StatelessWidget {
   OutlineInputBorder buildOutlineInputBorder({required Color color}) {
     return OutlineInputBorder(
       borderSide: BorderSide(color: color, width: 1.3),
-      borderRadius: BorderRadius.circular(5.r),
+      borderRadius: BorderRadius.circular(borderRadius ?? 5.r),
     );
   }
 }

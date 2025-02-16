@@ -65,3 +65,10 @@ String? validateTaxId(String? value) {
   }
   return null;
 }
+
+String? validateConcreteAiNumber(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Enter a valid number';
+  }
+  return null;
+}
