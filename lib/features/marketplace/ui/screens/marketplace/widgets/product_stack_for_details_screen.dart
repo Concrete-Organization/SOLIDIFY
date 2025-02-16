@@ -18,9 +18,8 @@ class _ProductStackForDetailsScreenState
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Larger container for the product image
         SizedBox(
-          height: 300.h, // Adjust as desired
+          height: 227.h,
           width: double.infinity,
           child: Image.asset(
             'assets/images/cement_bag.png',
