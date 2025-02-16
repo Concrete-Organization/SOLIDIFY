@@ -21,24 +21,26 @@ class ConcreteStrengthAiScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          children: [
-            verticalSpace(41),
-            Image.asset('assets/images/ai_concrete.png'),
-            verticalSpace(13),
-            Text(
-              'This AI tool predicts the strength of concrete by analyzing various factors like material mix and environmental conditions. It helps ensure strong and durable concrete structures.',
-              style: TextStyles.font15lightBlackMedium,
-              textAlign: TextAlign.center,
-            ),
-            verticalSpace(27),
-            AppTextButton(
-              onPressed: () {
-                context.pushNamed(Routes.concreteStrengthScreens);
-              },
-              textButton: 'Get started!',
-            )
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              verticalSpace(41),
+              Image.asset('assets/images/ai_concrete.png'),
+              verticalSpace(13),
+              Text(
+                'This AI tool predicts the strength of concrete by analyzing various factors like material mix and environmental conditions. It helps ensure strong and durable concrete structures.',
+                style: TextStyles.font15lightBlackMedium,
+                textAlign: TextAlign.center,
+              ),
+              verticalSpace(27),
+              AppTextButton(
+                onPressed: () {
+                  context.pushNamed(Routes.concreteStrengthScreens);
+                },
+                textButton: 'Get started!',
+              )
+            ],
+          ),
         ),
       ),
     );
