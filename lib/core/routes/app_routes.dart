@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_page_view_builder.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -85,7 +86,10 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const CompanyLayout(),
         );
-
+      case Routes.concreteStrengthScreens:
+        return MaterialPageRoute(
+          builder: (context) => const ConcreteStrengthAiPageViewBuilder(),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(

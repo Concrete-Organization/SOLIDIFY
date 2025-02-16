@@ -4,8 +4,8 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/chatbot/ui/chatbot_screen.dart';
+import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_screen.dart';
 import 'package:solidify/features/profile/ui/profile_screen.dart';
-import 'package:solidify/features/concrete_strength/ui/concrete_strength_screen.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/marketplace_screen.dart';
 
 class CompanyLayout extends StatefulWidget {
@@ -19,7 +19,7 @@ class _AppLayoutState extends State<CompanyLayout> {
   int selectedIndex = 0;
   List<Widget> screens = [
     const MarketplaceScreen(),
-    const ConcreteStrengthScreen(),
+    const ConcreteStrengthAiScreen(),
     const ChatbotScreen(),
     const ProfileScreen(),
   ];
