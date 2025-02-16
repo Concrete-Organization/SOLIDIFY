@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 
@@ -15,6 +17,7 @@ class _CategoriesGridState extends State<CategoriesGrid>
   int selectedIndex = 0;
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
+
   final List<Map<String, String>> categories = [
     {
       'icon': 'assets/images/all_categories_icon.png',
@@ -92,7 +95,12 @@ class _CategoriesGridState extends State<CategoriesGrid>
         setState(() {
           selectedIndex = index;
         });
-        _controller.forward().then((_) => _controller.reverse());
+        _controller.forward().then((_) {
+          _controller.reverse().then((_) {
+            context.pushNamed(Routes.productCategoryScreen,
+                arguments: categories[index]);
+          });
+        });
       },
       child: AnimatedBuilder(
         animation: _scaleAnimation,
