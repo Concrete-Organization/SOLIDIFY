@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_page_view_builder.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -15,6 +14,9 @@ import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
+import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/product_details_screen.dart';
+import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/product_category_screen.dart';
+import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_page_view_builder.dart';
 import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
 import '../../features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/ui/engineer_account_sign_up_screen.dart';
@@ -90,6 +92,15 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const ConcreteStrengthAiPageViewBuilder(),
         );
+      case Routes.productCategoryScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ProductCategoryScreen(),
+        );
+      case Routes.productDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ProductDetailsScreen(),
+        );
+
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(
