@@ -11,4 +11,6 @@ class Routes {
   static const String concreteCompanyAccountScreen =
       'concreteCompanyAccountScreen';
   static const String companyLayout = 'companyLayout';
+  static const String concreteStrengthScreens = 'concreteStrengthScreens';
+
 }
