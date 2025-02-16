@@ -3,14 +3,22 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 
 class MarketplaceTopBar extends StatelessWidget {
-  const MarketplaceTopBar({super.key});
+  final String leftIconPath;
+  final VoidCallback? onLeftIconTap;
+
+  const MarketplaceTopBar({
+    super.key,
+    this.leftIconPath = 'assets/svgs/search_icon.svg',
+    this.onLeftIconTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         GestureDetector(
-          child: SvgPicture.asset('assets/svgs/search_icon.svg'),
+          onTap: onLeftIconTap ?? () => Navigator.pop(context),
+          child: SvgPicture.asset(leftIconPath),
         ),
         const Spacer(),
         GestureDetector(
@@ -19,7 +27,7 @@ class MarketplaceTopBar extends StatelessWidget {
         horizontalSpace(15),
         GestureDetector(
           child: SvgPicture.asset('assets/svgs/list_icon.svg'),
-        )
+        ),
       ],
     );
   }
