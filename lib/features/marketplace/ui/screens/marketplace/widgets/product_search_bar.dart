@@ -33,7 +33,7 @@ class ProductSearchBar extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.r),
             borderSide: BorderSide(
-              color: ColorsManager.mainBlueWith50Opacity,
+              color: ColorsManager.mainBlue,
               width: 1.w,
             ),
           ),
