@@ -22,15 +22,15 @@ class _ProductStackForDetailsScreenState
           height: 227.h,
           width: double.infinity,
           child: Image.asset(
-            'assets/images/cement_bag.png',
+            'assets/images/cement_bag_3x.png',
             fit: BoxFit.contain,
           ),
         ),
 
-        // Favorite icon positioned farther to the top-right
+        // Favorite icon positioned at the far top-right corner
         Positioned(
-          top: 50.h, // Increase to move icon further down
-          right: 50.w, // Increase to move icon further from the right edge
+          top: 16.h, // Closer to the top edge
+          right: 16.w, // Closer to the right edge
           child: GestureDetector(
             onTap: () {
               setState(() {
@@ -42,10 +42,10 @@ class _ProductStackForDetailsScreenState
               width: 48.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.transparent, // No solid fill
+                color: Colors.transparent,
                 border: Border.all(
                   color: ColorsManager.mainBlue,
-                  width: 2.w, // Hollow border width
+                  width: 2.w,
                 ),
               ),
               child: Icon(
