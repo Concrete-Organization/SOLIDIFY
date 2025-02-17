@@ -1,3 +1,4 @@
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
@@ -13,6 +14,7 @@ class ProductTextColumn extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Top row with title and price
         Row(
           children: [
             Text(
@@ -27,24 +29,31 @@ class ProductTextColumn extends StatelessWidget {
           ],
         ),
         verticalSpace(15),
+        // Subtitle
         Text(
           'Ambuja cement',
           style: TextStyles.font15MainBlueMedium,
         ),
         verticalSpace(15),
+        // Row for rating and reviews
         Row(
           children: [
             Container(
-              width: 45.w,
+              width: 50.w, // Slightly increased width
               height: 19.h,
-              color: ColorsManager.mainBlue,
+              decoration: BoxDecoration(
+                border: Border.all(color: ColorsManager.mainBlue),
+                borderRadius: BorderRadius.circular(3.r),
+              ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Icon(
                     Icons.star,
                     color: ColorsManager.mainBlue,
+                    size: 14,
                   ),
-                  horizontalSpace(10),
+                  horizontalSpace(4),
                   Text(
                     '4.5',
                     style: TextStyles.font12lightBlackLight,
@@ -52,7 +61,7 @@ class ProductTextColumn extends StatelessWidget {
                 ],
               ),
             ),
-            horizontalSpace(25),
+            horizontalSpace(10), // Adjusted for better spacing
             Text(
               '+123',
               style: TextStyles.font14lightBlackRegular,
@@ -60,7 +69,37 @@ class ProductTextColumn extends StatelessWidget {
           ],
         ),
         verticalSpace(20),
-        const ExpandableReviewText(),
+        Row(
+          children: [
+            Text(
+              'Reviews (+123)',
+              style: TextStyles.font15lightBlackMedium,
+            ),
+            const Spacer(),
+            Text(
+              'View All',
+              style: TextStyles.font13MainBlueMedium,
+            ),
+          ],
+        ),
+        verticalSpace(20),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 6.h),
+              child: SvgPicture.asset(
+                'assets/svgs/review_dot_icon.svg',
+                width: 10.w, // Constrain width to prevent overflow
+                height: 10.h,
+              ),
+            ),
+            horizontalSpace(3),
+            const Flexible(
+              child: ExpandableReviewText(),
+            ),
+          ],
+        ),
       ],
     );
   }

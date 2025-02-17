@@ -11,7 +11,6 @@ class ExpandableReviewText extends StatefulWidget {
 class _ExpandableReviewTextState extends State<ExpandableReviewText> {
   bool isExpanded = false;
 
-  // Full review text
   final String reviewText =
       "Ambuja cement offers giant compressive strength top-notch quality, combining strength and flexibility for reliable structural support. The product is consistently high-standard, with timely deliveries and excellent customer service more..";
 
