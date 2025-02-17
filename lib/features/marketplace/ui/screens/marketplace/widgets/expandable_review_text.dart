@@ -12,7 +12,7 @@ class _ExpandableReviewTextState extends State<ExpandableReviewText> {
   bool isExpanded = false;
 
   final String reviewText =
-      "Ambuja cement offers giant compressive strength top-notch quality, combining strength and flexibility for reliable structural support. The product is consistently high-standard, with timely deliveries and excellent customer service more..";
+      "Ambuja cement offers giant compressive strength top-notch quality, combining strength and flexibility for reliable structural support. The product is consistently high-standard, with timely deliveries and excellent customer service.";
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +39,9 @@ class _ExpandableReviewTextState extends State<ExpandableReviewText> {
           style: reviewStyle,
           children: [
             TextSpan(text: displayText),
-            if (!isExpanded && needTruncation)
+            if (needTruncation)
               TextSpan(
-                text: 'more',
+                text: isExpanded ? ' less' : ' more',
                 style: moreStyle,
               ),
           ],

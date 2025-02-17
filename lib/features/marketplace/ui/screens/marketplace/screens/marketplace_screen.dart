@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/market_place_app_bar.dart';
 import '../../../../../../core/helpers/spacing.dart';
 import '../../../../../../core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/categories_grid.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/product_grid_view.dart';
-import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/marketplace_top_bar.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/available_now_containers.dart';
 
 class MarketplaceScreen extends StatelessWidget {
@@ -14,6 +14,7 @@ class MarketplaceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const MarketPlaceAppBar(),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
@@ -22,10 +23,9 @@ class MarketplaceScreen extends StatelessWidget {
               sliver: SliverList(
                 delegate: SliverChildListDelegate(
                   [
-                    const MarketplaceTopBar(),
-                    verticalSpace(15),
+                    verticalSpace(5),
                     const HorizontalDivider(),
-                    verticalSpace(15),
+                    verticalSpace(19),
                     const AvailableNowContainers(),
                     Row(
                       children: [
@@ -58,13 +58,13 @@ class MarketplaceScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    verticalSpace(20),
+                    verticalSpace(10),
                   ],
                 ),
               ),
             ),
             SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
               sliver: const ProductGridView(),
             ),
           ],

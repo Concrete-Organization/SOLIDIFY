@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
@@ -19,30 +19,12 @@ class _CategoriesGridState extends State<CategoriesGrid>
   late Animation<double> _scaleAnimation;
 
   final List<Map<String, String>> categories = [
-    {
-      'icon': 'assets/images/all_categories_icon.png',
-      'label': 'All',
-    },
-    {
-      'icon': 'assets/images/coarse_aggregate.png',
-      'label': 'coarse aggregate',
-    },
-    {
-      'icon': 'assets/images/ceement_icon.png',
-      'label': 'Cement',
-    },
-    {
-      'icon': 'assets/images/blast.png',
-      'label': 'Blast',
-    },
-    {
-      'icon': 'assets/images/superplasticizer_icon.png',
-      'label': 'superplasticizer',
-    },
-    {
-      'icon': 'assets/images/fly_ash.png',
-      'label': 'Fly Ash',
-    },
+    {'icon': 'assets/images/all_categories_icon.png', 'label': 'All'},
+    {'icon': 'assets/images/coarse_aggregate.png', 'label': 'Coarse Aggregate'},
+    {'icon': 'assets/images/cement_icon.png', 'label': 'Cement'},
+    {'icon': 'assets/images/blast.png', 'label': 'Blast'},
+    {'icon': 'assets/images/superplasticizer_icon.png', 'label': 'Superplasticizer'},
+    {'icon': 'assets/images/fly_ash.png', 'label': 'Fly Ash'},
   ];
 
   @override
@@ -95,10 +77,15 @@ class _CategoriesGridState extends State<CategoriesGrid>
         setState(() {
           selectedIndex = index;
         });
+
         _controller.forward().then((_) {
           _controller.reverse().then((_) {
-            context.pushNamed(Routes.productCategoryScreen,
-                arguments: categories[index]);
+            final selectedCategory = categories[index]['label'];
+            print("Navigating with category: $selectedCategory");
+            context.pushNamed(
+              Routes.productCategoryScreen,
+              arguments: {'label': selectedCategory},
+            );
           });
         });
       },

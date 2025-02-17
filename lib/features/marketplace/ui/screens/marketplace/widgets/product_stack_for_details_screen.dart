@@ -26,11 +26,9 @@ class _ProductStackForDetailsScreenState
             fit: BoxFit.contain,
           ),
         ),
-
-        // Favorite icon positioned at the far top-right corner
         Positioned(
-          top: 16.h, // Closer to the top edge
-          right: 16.w, // Closer to the right edge
+          top: 0.h,
+          right: 10.w,
           child: GestureDetector(
             onTap: () {
               setState(() {
@@ -38,21 +36,19 @@ class _ProductStackForDetailsScreenState
               });
             },
             child: Container(
-              height: 48.h,
-              width: 48.h,
+              height: 38.h,
+              width: 38.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.transparent,
                 border: Border.all(
                   color: ColorsManager.mainBlue,
-                  width: 2.w,
+                  width: 1.w,
                 ),
               ),
               child: Icon(
                 isFavorite ? Icons.favorite : Icons.favorite_border,
-                color: isFavorite
-                    ? ColorsManager.secondaryGold
-                    : ColorsManager.mainBlue,
+                color: ColorsManager.mainBlue,
               ),
             ),
           ),

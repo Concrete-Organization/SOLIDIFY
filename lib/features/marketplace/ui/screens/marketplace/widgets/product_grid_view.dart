@@ -1,3 +1,5 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'product_grid_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/extensions.dart';
@@ -11,16 +13,17 @@ class ProductGridView extends StatelessWidget {
     return SliverGrid(
       delegate: SliverChildBuilderDelegate(
         (context, index) => GestureDetector(
-            onTap: () {
-              context.pushNamed(Routes.productDetailsScreen);
-            },
-            child: const ProductGridViewItem()),
+          onTap: () {
+            context.pushNamed(Routes.productDetailsScreen);
+          },
+          child: const ProductGridViewItem(),
+        ),
         childCount: 6,
       ),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 12,
+        crossAxisSpacing: 15.w,
+        mainAxisSpacing: 12.h,
         childAspectRatio: 0.6,
       ),
     );

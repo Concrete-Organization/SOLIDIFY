@@ -17,12 +17,11 @@ class _ReviewCardState extends State<ReviewCard> {
 
   final String reviewText =
       "Ambuja cement met all my expectations, ensuring no delays "
-      "or safety compromises more.";
+      "or safety compromises.";
 
   @override
   Widget build(BuildContext context) {
-    // Expandable text logic
-    const int maxChars = 80;
+    const int maxChars = 70;
     final bool needTruncation = reviewText.length > maxChars;
     String displayText;
     if (!isExpanded && needTruncation) {
@@ -32,8 +31,6 @@ class _ReviewCardState extends State<ReviewCard> {
     }
 
     return Container(
-      width: 353.w,
-      // Height is dynamic based on content
       padding: EdgeInsets.all(12.h),
       decoration: BoxDecoration(
         color: ColorsManager.mainBlueWith1Opacity,
@@ -46,7 +43,6 @@ class _ReviewCardState extends State<ReviewCard> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Circle avatar with an image
           Container(
             width: 42.w,
             height: 42.h,
@@ -60,32 +56,28 @@ class _ReviewCardState extends State<ReviewCard> {
             ),
           ),
           horizontalSpace(12),
-          // Right side: Name, stars, and expandable text
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Name
                 Text(
                   'Ahmed Adel',
                   style: TextStyles.font12LightBlackMedium,
                 ),
                 verticalSpace(4),
-                // Star rating below the name
                 Row(
                   children: List.generate(5, (index) {
                     return Padding(
                       padding: EdgeInsets.only(right: 4.w),
                       child: SvgPicture.asset(
                         'assets/svgs/star_icon.svg',
-                        width: 14.w,
-                        height: 14.h,
+                        width: 12.w,
+                        height: 12.h,
                       ),
                     );
                   }),
                 ),
                 verticalSpace(4),
-                // Expandable review text
                 GestureDetector(
                   onTap: () {
                     setState(() {
@@ -97,9 +89,9 @@ class _ReviewCardState extends State<ReviewCard> {
                       style: TextStyles.font13lightBlackRegular,
                       children: [
                         TextSpan(text: displayText),
-                        if (!isExpanded && needTruncation)
+                        if (needTruncation)
                           TextSpan(
-                            text: 'more',
+                            text: isExpanded ? ' less' : ' more',
                             style: TextStyles.font13MainBlueMedium,
                           ),
                       ],

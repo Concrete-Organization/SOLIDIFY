@@ -3,8 +3,8 @@ import 'package:solidify/core/theming/font_weight_helper.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
-import '../../../../../../core/widgets/app_text_button.dart';
 
 class ProductGridViewItem extends StatefulWidget {
   const ProductGridViewItem({super.key});
@@ -18,11 +18,13 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: ColorsManager.white,
+    return Card(
+      margin: EdgeInsets.zero,
+      color: ColorsManager.white,
+      elevation: 4,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(
+        side: BorderSide(
           color: ColorsManager.mainBlue,
           width: 1.w,
         ),

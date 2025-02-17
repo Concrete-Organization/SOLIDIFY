@@ -15,7 +15,6 @@ class ProductTextColumn extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Top row with title and price
         Row(
           children: [
             Text(
@@ -30,18 +29,15 @@ class ProductTextColumn extends StatelessWidget {
           ],
         ),
         verticalSpace(15),
-        // Subtitle
         Text(
           'Ambuja cement',
           style: TextStyles.font15MainBlueMedium,
         ),
         verticalSpace(15),
-        // Row for rating and reviews
         Row(
           children: [
             Container(
-              width: 50.w, // Slightly increased width
-              height: 19.h,
+              padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
               decoration: BoxDecoration(
                 border: Border.all(color: ColorsManager.mainBlue),
                 borderRadius: BorderRadius.circular(3.r),
@@ -62,13 +58,33 @@ class ProductTextColumn extends StatelessWidget {
                 ],
               ),
             ),
-            horizontalSpace(10), // Adjusted for better spacing
+            horizontalSpace(10),
             Text(
-              '+123',
+              '+123 Reviews',
               style: TextStyles.font14lightBlackRegular,
             ),
           ],
         ),
+        verticalSpace(20),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 6.h),
+              child: SvgPicture.asset(
+                'assets/svgs/review_dot_icon.svg',
+                width: 10.w,
+                height: 10.h,
+              ),
+            ),
+            horizontalSpace(5),
+            const Flexible(
+              child: ExpandableReviewText(),
+            ),
+          ],
+        ),
+        verticalSpace(20),
+        const HorizontalDivider(),
         verticalSpace(20),
         Row(
           children: [
@@ -80,26 +96,6 @@ class ProductTextColumn extends StatelessWidget {
             Text(
               'View All',
               style: TextStyles.font13MainBlueMedium,
-            ),
-          ],
-        ),
-        verticalSpace(20),
-        const HorizontalDivider(),
-        verticalSpace(20),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 6.h),
-              child: SvgPicture.asset(
-                'assets/svgs/review_dot_icon.svg',
-                width: 10.w, // Constrain width to prevent overflow
-                height: 10.h,
-              ),
-            ),
-            horizontalSpace(3),
-            const Flexible(
-              child: ExpandableReviewText(),
             ),
           ],
         ),

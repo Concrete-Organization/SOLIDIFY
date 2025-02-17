@@ -100,6 +100,7 @@ class AppRoutes {
       case Routes.productCategoryScreen:
         return MaterialPageRoute(
           builder: (context) => const ProductCategoryScreen(),
+          settings: settings,
         );
       case Routes.productDetailsScreen:
         return MaterialPageRoute(
