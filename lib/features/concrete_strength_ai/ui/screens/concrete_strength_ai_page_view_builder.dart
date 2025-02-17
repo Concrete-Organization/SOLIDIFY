@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/widgets/question_item.dart';
@@ -126,6 +128,7 @@ class _ConcreteStrengthAiPageViewBuilderState
             },
           ];
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,7 +186,11 @@ class _ConcreteStrengthAiPageViewBuilderState
                       ? () {
                           if (pageIndex == 0) {
                             _goToNextPage();
-                          } else {}
+                          } else {
+                            context.pushReplacementNamed(
+                              Routes.concreteStrengthAiResultScreen,
+                            );
+                          }
                         }
                       : null,
                   textButton: pageIndex == 0 ? 'Next' : 'Test',
