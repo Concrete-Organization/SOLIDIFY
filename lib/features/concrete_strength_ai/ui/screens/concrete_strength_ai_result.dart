@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 
@@ -49,7 +51,9 @@ class ConcreteStrengthAiResult extends StatelessWidget {
             ),
             const Spacer(),
             AppTextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.pushReplacementNamed(Routes.companyLayout);
+              },
               textButton: 'Done',
             ),
             verticalSpace(56),
