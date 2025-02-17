@@ -22,7 +22,7 @@ class _ProductStackForDetailsScreenState
           height: 227.h,
           width: double.infinity,
           child: Image.asset(
-            'assets/images/cement_bag.png',
+            'assets/images/cement_bag_3x.png',
             fit: BoxFit.contain,
           ),
         ),
