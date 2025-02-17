@@ -7,15 +7,19 @@ class ReviewCardListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: const EdgeInsets.all(16),
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return const ReviewCard();
-      },
-      separatorBuilder: (context, index) {
-        return verticalSpace(10);
-      },
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          return Column(
+            children: [
+              const ReviewCard(),
+              if (index < 9)
+                verticalSpace(10), // Space except for the last item
+            ],
+          );
+        },
+        childCount: 10,
+      ),
     );
   }
 }

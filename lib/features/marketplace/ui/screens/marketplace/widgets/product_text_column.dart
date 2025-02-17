@@ -4,6 +4,7 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/expandable_review_text.dart';
 
 class ProductTextColumn extends StatelessWidget {
@@ -82,6 +83,8 @@ class ProductTextColumn extends StatelessWidget {
             ),
           ],
         ),
+        verticalSpace(20),
+        const HorizontalDivider(),
         verticalSpace(20),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,

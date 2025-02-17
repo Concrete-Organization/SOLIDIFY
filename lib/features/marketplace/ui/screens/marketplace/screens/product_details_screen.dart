@@ -18,42 +18,28 @@ class ProductDetailsScreen extends StatelessWidget {
           slivers: [
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
-              sliver: SliverToBoxAdapter(
-                child: const BackableTopBar(
+              sliver: const SliverToBoxAdapter(
+                child: BackableTopBar(
                   screenTitle: 'Product Details',
                   suffixIconPath: 'assets/svgs/cart_icon.svg',
                 ),
               ),
             ),
             SliverToBoxAdapter(child: verticalSpace(20)),
-            SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              sliver: const SliverToBoxAdapter(child: HorizontalDivider()),
+            const SliverToBoxAdapter(child: HorizontalDivider()),
+            SliverToBoxAdapter(child: verticalSpace(20)),
+            const SliverToBoxAdapter(
+              child: ProductStackForDetailsScreen(),
             ),
             SliverToBoxAdapter(child: verticalSpace(20)),
-            SliverToBoxAdapter(
-              child: Center(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: const ProductStackForDetailsScreen(),
-                ),
-              ),
-            ),
-            SliverToBoxAdapter(child: verticalSpace(20)),
-            SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              sliver: const SliverToBoxAdapter(child: HorizontalDivider()),
-            ),
+            const SliverToBoxAdapter(child: HorizontalDivider()),
             SliverToBoxAdapter(child: verticalSpace(35)),
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               sliver: const SliverToBoxAdapter(child: ProductTextColumn()),
             ),
             SliverToBoxAdapter(child: verticalSpace(25)),
-            SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              sliver: const SliverToBoxAdapter(child: ReviewCardListView()),
-            ),
+            const ReviewCardListView(),
           ],
         ),
       ),
