@@ -8,12 +8,14 @@ class TextFieldOfQuestionItem extends StatelessWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
   final String unit;
+  final VoidCallback? onChanged;
 
   const TextFieldOfQuestionItem({
     super.key,
     required this.controller,
     required this.focusNode,
     required this.unit,
+    this.onChanged,
   });
 
   @override
@@ -21,8 +23,8 @@ class TextFieldOfQuestionItem extends StatelessWidget {
     final textFieldBorderColor = controller.text.isNotEmpty
         ? ColorsManager.mainBlue
         : focusNode.hasFocus
-        ? ColorsManager.secondaryGold
-        : ColorsManager.mainBlue;
+            ? ColorsManager.secondaryGold
+            : ColorsManager.mainBlue;
 
     return SizedBox(
       width: 147.w,
@@ -30,7 +32,7 @@ class TextFieldOfQuestionItem extends StatelessWidget {
       child: AppTextFormField(
         controller: controller,
         focusNode: focusNode,
-        keyboardType: TextInputType.text,
+        keyboardType: TextInputType.number,
         textInputAction: TextInputAction.done,
         borderRadius: 10.r,
         inputTextStyle: TextStyles.font12MainBlueMedium,
@@ -52,6 +54,7 @@ class TextFieldOfQuestionItem extends StatelessWidget {
           controller.selection = TextSelection.fromPosition(
             TextPosition(offset: newText.length),
           );
+          onChanged?.call();
         },
       ),
     );

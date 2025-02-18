@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,9 +7,37 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
+import 'package:solidify/features/concrete_strength_ai/data/models/concrete_ai_response_model.dart';
+import '../../../../core/helpers/shared_pref_helper.dart';
 
-class ConcreteStrengthAiResult extends StatelessWidget {
+class ConcreteStrengthAiResult extends StatefulWidget {
   const ConcreteStrengthAiResult({super.key});
+
+  @override
+  State<ConcreteStrengthAiResult> createState() => _ConcreteStrengthAiResultState();
+}
+
+class _ConcreteStrengthAiResultState extends State<ConcreteStrengthAiResult> {
+  double _concreteStrengthResult = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadConcreteStrengthResult();
+  }
+
+  Future<void> _loadConcreteStrengthResult() async {
+    final resultJson = await SharedPrefHelper.getSurveyResult();
+    if (resultJson != null && resultJson.isNotEmpty) {
+      final Map<String, dynamic> jsonMap = jsonDecode(resultJson);
+      final concreteStrengthResult = ConcreteAiResponseModel.fromJson(jsonMap);
+      setState(() {
+        _concreteStrengthResult = concreteStrengthResult.strength;
+      });
+    } else {
+      debugPrint('No result found in SharedPreferences');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +69,7 @@ class ConcreteStrengthAiResult extends StatelessWidget {
                       ),
                       verticalSpace(8),
                       Text(
-                        '9.88888',
+                        _concreteStrengthResult.toStringAsFixed(3),
                         style: TextStyles.font20SecondaryGoldBold,
                       ),
                       verticalSpace(16),

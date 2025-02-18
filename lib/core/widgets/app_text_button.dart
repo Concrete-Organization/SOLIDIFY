@@ -20,9 +20,11 @@ class AppTextButton extends StatelessWidget {
   final FontWeight? fontWeight;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? buttonPadding;
+  final bool enabled;
 
   const AppTextButton({
     super.key,
+    this.enabled = true,
     required this.onPressed,
     required this.textButton,
     this.backgroundColor,
@@ -45,7 +47,7 @@ class AppTextButton extends StatelessWidget {
       width: width ?? double.infinity,
       height: height ?? 52.h,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: enabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? ColorsManager.mainBlue,
           disabledBackgroundColor: disabledBackgroundColor ??

@@ -13,6 +13,7 @@ class QuestionItem extends StatefulWidget {
   final String keyword;
   final String number;
   final TextEditingController controller;
+  final VoidCallback? onChanged;
 
   const QuestionItem({
     super.key,
@@ -21,6 +22,7 @@ class QuestionItem extends StatefulWidget {
     required this.keyword,
     required this.number,
     required this.controller,
+    this.onChanged,
   });
 
   @override
@@ -35,19 +37,30 @@ class _QuestionItemState extends State<QuestionItem> {
   void initState() {
     super.initState();
     _focusNode.addListener(_onFocusChange);
+    widget.controller.addListener(_handleControllerChange);
   }
 
   @override
   void dispose() {
     _focusNode.removeListener(_onFocusChange);
     _focusNode.dispose();
+    widget.controller.removeListener(_handleControllerChange);
     super.dispose();
   }
 
   void _onFocusChange() {
-    setState(() {
-      _isFocused = _focusNode.hasFocus;
-    });
+    if (mounted) {
+      setState(() {
+        _isFocused = _focusNode.hasFocus;
+      });
+    }
+  }
+
+  void _handleControllerChange() {
+    if (mounted) {
+      setState(() {});
+      widget.onChanged?.call();
+    }
   }
 
   @override
@@ -94,6 +107,7 @@ class _QuestionItemState extends State<QuestionItem> {
             controller: widget.controller,
             focusNode: _focusNode,
             unit: widget.unit,
+            onChanged: _handleControllerChange,
           ),
         ],
       ),

@@ -6,8 +6,8 @@ import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 
-class ConcreteStrengthAiScreen extends StatelessWidget {
-  const ConcreteStrengthAiScreen({super.key});
+class ConcreteStrengthAiGetStarted extends StatelessWidget {
+  const ConcreteStrengthAiGetStarted({super.key});
 
   @override
   Widget build(BuildContext context) {

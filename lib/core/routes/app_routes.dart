@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_result.dart';
+import '../../features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -17,7 +19,7 @@ import 'package:solidify/features/auth/forget_password/logic/forget_password_cub
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/product_details_screen.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/product_category_screen.dart';
-import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_page_view_builder.dart';
+import 'package:solidify/features/concrete_strength_ai/ui/widgets/concrete_strength_ai_page_view_builder.dart';
 import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
 import '../../features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/ui/engineer_account_sign_up_screen.dart';
@@ -91,7 +93,10 @@ class AppRoutes {
         );
       case Routes.concreteStrengthScreens:
         return MaterialPageRoute(
-          builder: (context) => const ConcreteStrengthAiPageViewBuilder(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ConcreteStrengthAiCubit>(),
+            child: const ConcreteStrengthAiQuestionsScreen(),
+          ),
         );
       case Routes.concreteStrengthAiResultScreen:
         return MaterialPageRoute(
