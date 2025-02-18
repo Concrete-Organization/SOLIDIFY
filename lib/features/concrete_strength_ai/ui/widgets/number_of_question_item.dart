@@ -17,6 +17,9 @@ class NumberOfQuestionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hasText = this.hasText;
+    final isFocused = this.isFocused;
+
     final containerBorderColor = hasText
         ? ColorsManager.mainBlue
         : isFocused

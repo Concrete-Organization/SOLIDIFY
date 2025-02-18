@@ -106,6 +106,12 @@ class SharedPrefHelper {
     await flutterSecureStorage.deleteAll();
   }
 
+  static Future<String?> getSurveyResult() async {
+    debugPrint('SharedPrefHelper : Retrieving survey result');
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getString('surveyResult');
+  }
+
   /// Saves user details in both SharedPreferences and SecureStorage.
   static Future<void> saveUserDetails({
     required String id,
