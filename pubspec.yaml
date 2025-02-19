@@ -36,7 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   # State management
-  flutter_bloc: ^8.1.6
+  flutter_bloc: ^9.0.0
   # Code generator (mainly used with cubit & retrofit)
   freezed: ^2.5.7
   freezed_annotation: ^2.4.4
@@ -59,7 +59,7 @@ dependencies:
   # Flutter library to load and cache network images.
   cached_network_image: ^3.4.1
   # Flutter plugin for reading and writing simple key-value pairs. Wraps NSUserDefaults on iOS and SharedPreferences on Android.
-  shared_preferences: ^2.3.3
+  shared_preferences: ^2.5.2
   # Flutter Secure Storage provides API to store data in secure storage. Keychain is used in iOS, KeyStore based solution is used in Android.
   flutter_secure_storage: ^9.2.2
   # easy way to add shimmer effect
@@ -71,7 +71,7 @@ dependencies:
   # Flutter plugin for selecting images from the Android and iOS image library, and taking new pictures with the camera.
   image_picker: ^1.1.2
   # A package that allows you to use a native file explorer to pick single or multiple absolute file paths, with extension filtering support.
-  file_picker: ^8.1.7
+  file_picker: ^9.0.0
   # Flutter plugin for getting commonly used locations on host platform file systems, such as the temp and app data directories.
   path_provider: ^2.1.5
   # A string-based path manipulation library.
@@ -86,7 +86,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
   json_serializable: ^6.9.0
   #A build system for Dart code generation and modular compilation
