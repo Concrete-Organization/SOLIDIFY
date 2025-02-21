@@ -7,15 +7,8 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 
-class ChatbotScreen extends StatefulWidget {
+class ChatbotScreen extends StatelessWidget {
   const ChatbotScreen({super.key});
-
-  @override
-  State<ChatbotScreen> createState() => _ChatbotScreenState();
-}
-
-class _ChatbotScreenState extends State<ChatbotScreen> {
-  bool animateSvg = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +17,6 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 15.w),
         child: Column(
           children: [
-            verticalSpace(70),
             RichText(
               text: TextSpan(
                 children: [
@@ -43,34 +35,14 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                 ],
               ),
             ),
-            verticalSpace(30),
-            AnimatedSwitcher(
-              duration: const Duration(milliseconds: 500),
-              transitionBuilder: (Widget child, Animation<double> animation) {
-                return ScaleTransition(scale: animation, child: child);
-              },
-              child: animateSvg
-                  ? SvgPicture.asset(
-                      'assets/svgs/chatbot_avatar.svg',
-                      key: const ValueKey('animated_svg'),
-                    )
-                  : SvgPicture.asset(
-                      'assets/svgs/chatbot_avatar.svg',
-                      key: const ValueKey('static_svg'),
-                    ),
-            ),
-            verticalSpace(60),
+            verticalSpace(40),
+            SvgPicture.asset('assets/svgs/chatbot_avatar.svg'),
+            verticalSpace(50),
             AppTextButton(
-              onPressed: () {
-                setState(() {
-                  animateSvg = true; // Trigger animation before navigating
-                });
-                Future.delayed(const Duration(milliseconds: 500), () {
+                onPressed: () {
                   context.pushNamed(Routes.chatScreen);
-                });
-              },
-              textButton: 'Get started!',
-            ),
+                },
+                textButton: 'Get started!')
           ],
         ),
       ),
