@@ -13,37 +13,43 @@ class ChatbotScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 15.w),
-        child: Column(
-          children: [
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Hi, I’m ',
-                    style: TextStyles.font25MainBlueBold,
-                  ),
-                  TextSpan(
-                    text: 'Sila',
-                    style: TextStyles.font25secondaryGoldBold,
-                  ),
-                  TextSpan(
-                    text: ' let’s talk!',
-                    style: TextStyles.font25MainBlueBold,
-                  ),
-                ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              verticalSpace(108),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Hi, I’m ',
+                      style: TextStyles.font25MainBlueBold,
+                    ),
+                    TextSpan(
+                      text: 'Sila',
+                      style: TextStyles.font25secondaryGoldBold,
+                    ),
+                    TextSpan(
+                      text: ' let’s talk!',
+                      style: TextStyles.font25MainBlueBold,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            verticalSpace(40),
-            SvgPicture.asset('assets/svgs/chatbot_avatar.svg'),
-            verticalSpace(90),
-            AppTextButton(
-                onPressed: () {
-                  context.pushNamed(Routes.chatScreen);
-                },
-                textButton: 'Get started!')
-          ],
+              verticalSpace(61),
+              SvgPicture.asset('assets/svgs/chatbot_avatar.svg'),
+              verticalSpace(61),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: AppTextButton(
+                  onPressed: () {
+                    context.pushNamed(Routes.chatScreen);
+                  },
+                  textButton: 'Get started!',
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
-import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/chatbot/ui/widgets/message_form_filed.dart';
@@ -12,21 +11,16 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true, 
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: SvgPicture.asset('assets/svgs/back_arrow.svg'),
-        ),
-      ),
+      resizeToAvoidBottomInset: true,
+      appBar: AppBar(),
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
-              child: SingleChildScrollView( // ✅ Prevents overflow when keyboard appears
-                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    verticalSpace(78),
                     RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
@@ -54,7 +48,7 @@ class ChatScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(16.w),
-              child: MessageFormField(), 
+              child: MessageFormField(),
             ),
           ],
         ),

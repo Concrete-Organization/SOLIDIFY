@@ -57,9 +57,10 @@ class _MessageFormFieldState extends State<MessageFormField> {
             'assets/svgs/send_message_icon.svg',
             width: 20.w,
             height: 20.h,
-            color: _isTyping
-                ? ColorsManager.secondaryGold
-                : ColorsManager.mainBlue,
+            colorFilter: ColorFilter.mode(
+              _isTyping ? ColorsManager.secondaryGold : ColorsManager.mainBlue,
+              BlendMode.srcIn,
+            ),
           ),
         ],
       ),
