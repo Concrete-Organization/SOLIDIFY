@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solidify/features/chatbot/ui/chatbot_screen.dart';
-import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_get_started.dart';
 import 'package:solidify/features/profile/ui/profile_screen.dart';
+import 'package:solidify/features/chatbot/ui/screens/chatbot_screen.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/marketplace_screen.dart';
+import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_get_started.dart';
 
 class CompanyLayout extends StatefulWidget {
   const CompanyLayout({super.key});

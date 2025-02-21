@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
-import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_result.dart';
-import '../../features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -11,12 +8,16 @@ import 'package:solidify/features/auth/login/ui/login_screen.dart';
 import 'package:solidify/features/auth/login/logic/login_cubit.dart';
 import 'package:solidify/features/onboarding/onboarding_screen.dart';
 import 'package:solidify/features/company_layout/company_layout.dart';
+import 'package:solidify/features/chatbot/ui/screens/chat_screen.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
 import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.dart';
 import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
+import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
+import '../../features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
+import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_result.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/product_details_screen.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/product_category_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/widgets/concrete_strength_ai_page_view_builder.dart';
@@ -110,6 +111,11 @@ class AppRoutes {
       case Routes.productDetailsScreen:
         return MaterialPageRoute(
           builder: (context) => const ProductDetailsScreen(),
+        );
+
+      case Routes.chatScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ChatScreen(),
         );
 
       default:
