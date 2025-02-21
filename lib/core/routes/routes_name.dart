@@ -16,4 +16,5 @@ class Routes {
       'concreteStrengthAiResultScreen';
   static const String productCategoryScreen = 'productCategoryScreen';
   static const String productDetailsScreen = 'productDetailsScreen';
+  static const String chatScreen = 'chatScreen';
 }
