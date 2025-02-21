@@ -37,7 +37,7 @@ class ChatbotScreen extends StatelessWidget {
             ),
             verticalSpace(40),
             SvgPicture.asset('assets/svgs/chatbot_avatar.svg'),
-            verticalSpace(50),
+            verticalSpace(90),
             AppTextButton(
                 onPressed: () {
                   context.pushNamed(Routes.chatScreen);

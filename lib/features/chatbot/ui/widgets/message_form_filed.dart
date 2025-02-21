@@ -4,7 +4,6 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class MessageFormField extends StatefulWidget {
   const MessageFormField({super.key});
 
@@ -33,10 +32,11 @@ class _MessageFormFieldState extends State<MessageFormField> {
       height: 55.h,
       padding: EdgeInsets.symmetric(horizontal: 15.w),
       decoration: BoxDecoration(
-        color: ColorsManager.mainBlueWith50Opacity,
+        color: ColorsManager.mainBlueWith1Opacity,
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(
-          color: _isTyping ? ColorsManager.secondaryGold : ColorsManager.mainBlue,
+          color:
+              _isTyping ? ColorsManager.secondaryGold : ColorsManager.mainBlue,
           width: 1.5.w,
         ),
       ),
@@ -57,7 +57,9 @@ class _MessageFormFieldState extends State<MessageFormField> {
             'assets/svgs/send_message_icon.svg',
             width: 20.w,
             height: 20.h,
-            color: _isTyping ? ColorsManager.secondaryGold : ColorsManager.mainBlue,
+            color: _isTyping
+                ? ColorsManager.secondaryGold
+                : ColorsManager.mainBlue,
           ),
         ],
       ),
