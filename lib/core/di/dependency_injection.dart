@@ -1,12 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/data/repos/concrete_company_account_repo.dart';
-import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/logic/concrete_company_sign_up_cubit.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/repos/engineer_account_sign_up_repo.dart';
-import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
-import 'package:solidify/features/concrete_strength_ai/data/api/concrete_strength_ai_api_call.dart';
-import 'package:solidify/features/concrete_strength_ai/data/repo/concrete_strength_ai_repo.dart';
-import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
 import '../network/api_service.dart';
 import '../network/dio_factory.dart';
 import '../../features/auth/login/logic/login_cubit.dart';
@@ -17,6 +10,14 @@ import '../../features/auth/reset_password/logic/reset_password_cubit.dart';
 import '../../features/auth/forget_password/logic/forget_password_cubit.dart';
 import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
 import '../../features/auth/forget_password/data/repos/forget_password_repo.dart';
+import 'package:solidify/features/chatbot/data/repos/chatbot_with_gemini_repo.dart';
+import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
+import 'package:solidify/features/concrete_strength_ai/data/repo/concrete_strength_ai_repo.dart';
+import 'package:solidify/features/concrete_strength_ai/data/api/concrete_strength_ai_api_call.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/repos/engineer_account_sign_up_repo.dart';
+import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/logic/concrete_company_sign_up_cubit.dart';
+import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/data/repos/concrete_company_account_repo.dart';
 
 final getIt = GetIt.instance;
 
@@ -54,4 +55,6 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<ConcreteStrengthAiRepo>(
           () => ConcreteStrengthAiRepo(getIt()));
   getIt.registerFactory<ConcreteStrengthAiCubit>(() => ConcreteStrengthAiCubit(getIt()));
+  //chatbot
+    getIt.registerLazySingleton<ChatbotWithGeminiRepo>(() => ChatbotWithGeminiRepo(getIt()));
 }

@@ -5,7 +5,7 @@ part 'chatbot_request_model.g.dart';
 @JsonSerializable()
 class ChatbotRequestModel {
   final Prompt prompt;
-  final String? history; // Optional: summarized history
+  final String? history;
 
   ChatbotRequestModel({
     required this.prompt,
