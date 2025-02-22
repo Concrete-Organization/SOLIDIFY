@@ -29,12 +29,10 @@ Future<void> setupGetIt() async {
   // Dio & ApiService
   Dio dio = DioFactory.getDio();
   getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
-
-  getIt.registerLazySingleton<ConcreteStrengthAiApiCall>(() => ConcreteStrengthAiApiCall(dio));
-   getIt.registerLazySingleton<ChatbotApiService>(() => ChatbotApiService(dio));
-
+  getIt.registerLazySingleton<ChatbotApiService>(() => ChatbotApiService(dio));
   getIt.registerLazySingleton<ConcreteStrengthAiApiCall>(
-      () => ConcreteStrengthAiApiCall(dio))
+      () => ConcreteStrengthAiApiCall(dio));
+
   // login
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
@@ -66,13 +64,8 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<ConcreteStrengthAiCubit>(
       () => ConcreteStrengthAiCubit(getIt()));
   //chatbot
-
-    getIt.registerLazySingleton<ChatbotWithGeminiRepo>(() => ChatbotWithGeminiRepo(getIt()));
-     getIt.registerFactory<ChatbotCubit>(() => ChatbotCubit(getIt()));
-
-  getIt.registerLazySingleton<ChatbotWithGeminiRepo>(
-      () => ChatbotWithGeminiRepo(getIt()));
-
+  getIt.registerLazySingleton<ChatbotWithGeminiRepo>(() => ChatbotWithGeminiRepo(getIt()));
+  getIt.registerFactory<ChatbotCubit>(() => ChatbotCubit(getIt()));
   // products list
   getIt.registerLazySingleton<ProductsListRepo>(() => ProductsListRepo(getIt()));
   getIt.registerFactory<ProductsListCubit>(() => ProductsListCubit(getIt()));
