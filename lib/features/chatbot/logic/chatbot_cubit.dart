@@ -1,5 +1,5 @@
 import 'chatbot_state.dart';
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/features/chatbot/data/models/chatbot_request_model.dart';
 import 'package:solidify/features/chatbot/data/models/chatbot_response_model.dart';
 import 'package:solidify/features/chatbot/data/repos/chatbot_with_gemini_repo.dart';
