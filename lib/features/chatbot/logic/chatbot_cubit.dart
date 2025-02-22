@@ -14,7 +14,6 @@ class ChatbotCubit extends Cubit<ChatbotState> {
   Future<void> sendMessage(String message, {String? history}) async {
     final request = ChatbotRequestModel(
       prompt: Prompt(text: message),
-      history: history,
     );
 
     emit(const ChatbotState.loading());

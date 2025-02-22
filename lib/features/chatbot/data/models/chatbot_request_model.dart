@@ -5,11 +5,9 @@ part 'chatbot_request_model.g.dart';
 @JsonSerializable()
 class ChatbotRequestModel {
   final Prompt prompt;
-  final String? history;
 
   ChatbotRequestModel({
     required this.prompt,
-    this.history,
   });
 
   factory ChatbotRequestModel.fromJson(Map<String, dynamic> json) =>

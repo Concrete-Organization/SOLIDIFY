@@ -5,10 +5,9 @@ import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MessageFormField extends StatefulWidget {
-  /// Callback when send icon is tapped.
-  final Function(String) onSend;
+  final Function(String) onSend; // <-- Callback to parent
 
-  const MessageFormField({Key? key, required this.onSend}) : super(key: key);
+  const MessageFormField({super.key, required this.onSend});
 
   @override
   State<MessageFormField> createState() => _MessageFormFieldState();
@@ -26,6 +25,12 @@ class _MessageFormFieldState extends State<MessageFormField> {
         _isTyping = _controller.text.isNotEmpty;
       });
     });
+  }
+
+  void _handleSend() {
+    final message = _controller.text.trim();
+    widget.onSend(message);
+    _controller.clear();
   }
 
   @override
@@ -54,14 +59,11 @@ class _MessageFormFieldState extends State<MessageFormField> {
                 hintStyle: TextStyles.font14lightBlackLight,
               ),
               style: TextStyles.font14lightBlackLight,
+              onSubmitted: (_) => _handleSend(), // Send on keyboard "done"
             ),
           ),
           GestureDetector(
-            onTap: () {
-              // Invoke callback with current text, then clear the field.
-              widget.onSend(_controller.text.trim());
-              _controller.clear();
-            },
+            onTap: _handleSend, // Send on tap of the icon
             child: SvgPicture.asset(
               'assets/svgs/send_message_icon.svg',
               width: 20.w,

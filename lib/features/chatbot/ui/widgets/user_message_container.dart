@@ -6,16 +6,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class UserMessageContainer extends StatelessWidget {
   final String message;
 
-  const UserMessageContainer({
-    super.key,
-    required this.message,
-  });
+  const UserMessageContainer({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      // Adjust width/height to suit your design.
-      width: 227.w,
+      constraints: BoxConstraints(
+        minWidth: 100.w,
+        maxWidth: 227.w,
+      ),
+      margin: EdgeInsets.only(bottom: 12.h),
       padding: EdgeInsets.all(8.w),
       decoration: BoxDecoration(
         color: ColorsManager.mainBlueWith1Opacity,

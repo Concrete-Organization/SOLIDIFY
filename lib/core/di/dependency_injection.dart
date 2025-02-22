@@ -6,6 +6,8 @@ import '../../features/auth/login/logic/login_cubit.dart';
 import '../../features/auth/otp/logic/verify_otp_cubit.dart';
 import '../../features/auth/login/data/repo/login_repo.dart';
 import '../../features/auth/otp/data/repos/verify_otp_repo.dart';
+import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
+import 'package:solidify/features/chatbot/data/api/chatbot_api_call.dart';
 import '../../features/auth/reset_password/logic/reset_password_cubit.dart';
 import '../../features/auth/forget_password/logic/forget_password_cubit.dart';
 import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
@@ -26,6 +28,7 @@ Future<void> setupGetIt() async {
   Dio dio = DioFactory.getDio();
   getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
   getIt.registerLazySingleton<ConcreteStrengthAiApiCall>(() => ConcreteStrengthAiApiCall(dio));
+   getIt.registerLazySingleton<ChatbotApiService>(() => ChatbotApiService(dio));
   // login
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
@@ -57,4 +60,5 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<ConcreteStrengthAiCubit>(() => ConcreteStrengthAiCubit(getIt()));
   //chatbot
     getIt.registerLazySingleton<ChatbotWithGeminiRepo>(() => ChatbotWithGeminiRepo(getIt()));
+     getIt.registerFactory<ChatbotCubit>(() => ChatbotCubit(getIt()));
 }
