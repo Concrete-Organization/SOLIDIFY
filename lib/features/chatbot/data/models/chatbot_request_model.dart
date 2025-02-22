@@ -4,13 +4,9 @@ part 'chatbot_request_model.g.dart';
 
 @JsonSerializable()
 class ChatbotRequestModel {
-  final Prompt prompt;
-  final String? history;
+  final List<Content> contents;
 
-  ChatbotRequestModel({
-    required this.prompt,
-    this.history,
-  });
+  ChatbotRequestModel({required this.contents});
 
   factory ChatbotRequestModel.fromJson(Map<String, dynamic> json) =>
       _$ChatbotRequestModelFromJson(json);
@@ -19,12 +15,24 @@ class ChatbotRequestModel {
 }
 
 @JsonSerializable()
-class Prompt {
+class Content {
+  final List<Part> parts;
+
+  Content({required this.parts});
+
+  factory Content.fromJson(Map<String, dynamic> json) =>
+      _$ContentFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ContentToJson(this);
+}
+
+@JsonSerializable()
+class Part {
   final String text;
 
-  Prompt({required this.text});
+  Part({required this.text});
 
-  factory Prompt.fromJson(Map<String, dynamic> json) => _$PromptFromJson(json);
+  factory Part.fromJson(Map<String, dynamic> json) => _$PartFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PromptToJson(this);
+  Map<String, dynamic> toJson() => _$PartToJson(this);
 }

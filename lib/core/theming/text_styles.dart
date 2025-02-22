@@ -15,6 +15,11 @@ class TextStyles {
     color: ColorsManager.mainBlue,
     fontWeight: FontWeightHelper.semiBold,
   );
+  static TextStyle font18MainBlueSemiBold = GoogleFonts.poppins(
+    fontSize: 18.sp,
+    color: ColorsManager.mainBlue,
+    fontWeight: FontWeightHelper.semiBold,
+  );
   static TextStyle font12MainBlueSemiBold = GoogleFonts.poppins(
     fontSize: 12.sp,
     color: ColorsManager.mainBlue,
@@ -44,6 +49,11 @@ class TextStyles {
     fontSize: 20.sp,
     color: ColorsManager.secondaryGold,
     fontWeight: FontWeightHelper.bold,
+  );
+  static TextStyle font14SecondaryGoldRegular = GoogleFonts.poppins(
+    fontSize: 20.sp,
+    color: ColorsManager.secondaryGold,
+    fontWeight: FontWeightHelper.regular,
   );
   static TextStyle font15MainBlueRegular = GoogleFonts.poppins(
     fontSize: 15.sp,

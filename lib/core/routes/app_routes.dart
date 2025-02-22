@@ -5,6 +5,7 @@ import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/features/splash/splash_screen.dart';
 import 'package:solidify/features/auth/otp/ui/otp_screen.dart';
 import 'package:solidify/features/auth/login/ui/login_screen.dart';
+import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
 import 'package:solidify/features/auth/login/logic/login_cubit.dart';
 import 'package:solidify/features/onboarding/onboarding_screen.dart';
 import 'package:solidify/features/company_layout/company_layout.dart';
@@ -114,7 +115,10 @@ class AppRoutes {
 
       case Routes.chatScreen:
         return MaterialPageRoute(
-          builder: (context) => const ChatScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ChatbotCubit>(),
+            child: const ChatScreen(),
+          ),
         );
 
       default:

@@ -5,7 +5,9 @@ import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MessageFormField extends StatefulWidget {
-  const MessageFormField({super.key});
+  final Function(String) onSend;
+
+  const MessageFormField({super.key, required this.onSend});
 
   @override
   State<MessageFormField> createState() => _MessageFormFieldState();
@@ -23,6 +25,12 @@ class _MessageFormFieldState extends State<MessageFormField> {
         _isTyping = _controller.text.isNotEmpty;
       });
     });
+  }
+
+  void _handleSend() {
+    final message = _controller.text.trim();
+    widget.onSend(message);
+    _controller.clear();
   }
 
   @override
@@ -44,6 +52,7 @@ class _MessageFormFieldState extends State<MessageFormField> {
         children: [
           Expanded(
             child: TextField(
+              cursorColor: ColorsManager.mainBlue,
               controller: _controller,
               decoration: InputDecoration(
                 border: InputBorder.none,
@@ -51,15 +60,21 @@ class _MessageFormFieldState extends State<MessageFormField> {
                 hintStyle: TextStyles.font14lightBlackLight,
               ),
               style: TextStyles.font14lightBlackLight,
+              onSubmitted: (_) => _handleSend(),
             ),
           ),
-          SvgPicture.asset(
-            'assets/svgs/send_message_icon.svg',
-            width: 20.w,
-            height: 20.h,
-            colorFilter: ColorFilter.mode(
-              _isTyping ? ColorsManager.secondaryGold : ColorsManager.mainBlue,
-              BlendMode.srcIn,
+          GestureDetector(
+            onTap: _handleSend,
+            child: SvgPicture.asset(
+              'assets/svgs/send_message_icon.svg',
+              width: 20.w,
+              height: 20.h,
+              colorFilter: ColorFilter.mode(
+                _isTyping
+                    ? ColorsManager.secondaryGold
+                    : ColorsManager.mainBlue,
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ],
