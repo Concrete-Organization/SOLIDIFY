@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/market_place_app_bar.dart';
-import '../../../../../../core/helpers/spacing.dart';
-import '../../../../../../core/theming/text_styles.dart';
+import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/market_place_bloc_builder.dart';
+import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/categories_grid.dart';
-import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/product_grid_view.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/available_now_containers.dart';
 
 class MarketplaceScreen extends StatelessWidget {
@@ -65,7 +65,7 @@ class MarketplaceScreen extends StatelessWidget {
             ),
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-              sliver: const ProductGridView(),
+              sliver: MarketplaceBlocBuilder(),
             ),
           ],
         ),
