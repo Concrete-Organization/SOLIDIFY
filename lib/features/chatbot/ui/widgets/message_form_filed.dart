@@ -5,7 +5,10 @@ import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MessageFormField extends StatefulWidget {
-  const MessageFormField({super.key});
+  /// Callback when send icon is tapped.
+  final Function(String) onSend;
+
+  const MessageFormField({Key? key, required this.onSend}) : super(key: key);
 
   @override
   State<MessageFormField> createState() => _MessageFormFieldState();
@@ -53,13 +56,22 @@ class _MessageFormFieldState extends State<MessageFormField> {
               style: TextStyles.font14lightBlackLight,
             ),
           ),
-          SvgPicture.asset(
-            'assets/svgs/send_message_icon.svg',
-            width: 20.w,
-            height: 20.h,
-            colorFilter: ColorFilter.mode(
-              _isTyping ? ColorsManager.secondaryGold : ColorsManager.mainBlue,
-              BlendMode.srcIn,
+          GestureDetector(
+            onTap: () {
+              // Invoke callback with current text, then clear the field.
+              widget.onSend(_controller.text.trim());
+              _controller.clear();
+            },
+            child: SvgPicture.asset(
+              'assets/svgs/send_message_icon.svg',
+              width: 20.w,
+              height: 20.h,
+              colorFilter: ColorFilter.mode(
+                _isTyping
+                    ? ColorsManager.secondaryGold
+                    : ColorsManager.mainBlue,
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ],
