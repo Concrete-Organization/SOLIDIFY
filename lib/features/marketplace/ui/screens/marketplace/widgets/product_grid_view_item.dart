@@ -5,9 +5,12 @@ import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
+import 'package:solidify/features/marketplace/data/models/product_list_response_model.dart';
 
 class ProductGridViewItem extends StatefulWidget {
-  const ProductGridViewItem({super.key});
+  final Product product;
+
+  const ProductGridViewItem({super.key, required this.product});
 
   @override
   State<ProductGridViewItem> createState() => _ProductGridViewItemState();
@@ -72,9 +75,14 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
           ),
           Padding(
             padding: EdgeInsets.only(bottom: 8.h),
-            child: Image.asset(
-              'assets/images/cement_bag.png',
-              fit: BoxFit.contain,
+            child: SizedBox(
+              width: 68.w,
+              height: 92.h,
+              child: Image.network(
+                widget.product.imageUri.replaceFirst("https", "http"),
+                fit: BoxFit.contain,
+                errorBuilder: (_, __, ___) => const Icon(Icons.error),
+              ),
             ),
           ),
           const HorizontalDivider(),
@@ -98,7 +106,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
                   Row(
                     children: [
                       Text(
-                        'Cement',
+                        widget.product.brandName,
                         style: TextStyles.font12lightBlackLight,
                       ),
                       const Spacer(),
@@ -109,21 +117,21 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
                       ),
                       SizedBox(width: 4.w),
                       Text(
-                        '4.5',
+                        widget.product.rate.toString(),
                         style: TextStyles.font12MainBlueMedium,
                       ),
                     ],
                   ),
                   Text(
-                    'Ambuja cement',
+                    widget.product.name,
                     style: TextStyles.font12lightBlackLight,
                   ),
                   Text(
-                    '1,000 EGP',
+                    '${widget.product.price} EGP',
                     style: TextStyles.font12MainBlueSemiBold,
                   ),
                   AppTextButton(
-                    height: 34,
+                    height: 34.h,
                     borderRadius: 10.r,
                     textButton: 'Add to cart',
                     fontSize: 12.sp,

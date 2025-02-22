@@ -1,24 +1,29 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'product_grid_view_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/features/marketplace/data/models/product_list_response_model.dart';
+import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/product_grid_view_item.dart';
 
 class ProductGridView extends StatelessWidget {
-  const ProductGridView({super.key});
+  final List<Product> products;
+
+  const ProductGridView({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
       delegate: SliverChildBuilderDelegate(
-        (context, index) => GestureDetector(
+            (context, index) => GestureDetector(
           onTap: () {
-            context.pushNamed(Routes.productDetailsScreen);
+            context.pushNamed(
+              Routes.productDetailsScreen,
+              arguments: products[index],
+            );
           },
-          child: const ProductGridViewItem(),
+          child: ProductGridViewItem(product: products[index]),
         ),
-        childCount: 6,
+        childCount: products.length,
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,

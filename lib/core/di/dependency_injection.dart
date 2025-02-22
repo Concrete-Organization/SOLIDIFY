@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:solidify/features/marketplace/data/repo/products_list_repo.dart';
+import 'package:solidify/features/marketplace/logic/products_list_cubit/products_list_cubit.dart';
 import '../network/api_service.dart';
 import '../network/dio_factory.dart';
 import '../../features/auth/login/logic/login_cubit.dart';
@@ -25,7 +27,8 @@ Future<void> setupGetIt() async {
   // Dio & ApiService
   Dio dio = DioFactory.getDio();
   getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
-  getIt.registerLazySingleton<ConcreteStrengthAiApiCall>(() => ConcreteStrengthAiApiCall(dio));
+  getIt.registerLazySingleton<ConcreteStrengthAiApiCall>(
+      () => ConcreteStrengthAiApiCall(dio));
   // login
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
@@ -53,8 +56,14 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<ResetPasswordCubit>(() => ResetPasswordCubit(getIt()));
   // concrete strength ai
   getIt.registerLazySingleton<ConcreteStrengthAiRepo>(
-          () => ConcreteStrengthAiRepo(getIt()));
-  getIt.registerFactory<ConcreteStrengthAiCubit>(() => ConcreteStrengthAiCubit(getIt()));
+      () => ConcreteStrengthAiRepo(getIt()));
+  getIt.registerFactory<ConcreteStrengthAiCubit>(
+      () => ConcreteStrengthAiCubit(getIt()));
   //chatbot
-    getIt.registerLazySingleton<ChatbotWithGeminiRepo>(() => ChatbotWithGeminiRepo(getIt()));
+  getIt.registerLazySingleton<ChatbotWithGeminiRepo>(
+      () => ChatbotWithGeminiRepo(getIt()));
+
+  // products list
+  getIt.registerLazySingleton<ProductsListRepo>(() => ProductsListRepo(getIt()));
+  getIt.registerFactory<ProductsListCubit>(() => ProductsListCubit(getIt()));
 }

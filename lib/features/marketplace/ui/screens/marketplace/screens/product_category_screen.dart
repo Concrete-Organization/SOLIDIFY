@@ -4,6 +4,7 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
+import 'package:solidify/features/marketplace/data/models/product_list_response_model.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/product_grid_view.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/product_search_bar.dart';
 
@@ -15,8 +16,11 @@ class ProductCategoryScreen extends StatelessWidget {
     final args = ModalRoute.of(context)?.settings.arguments;
 
     String categoryLabel = 'Material';
+    List<Product> products = [];
+
     if (args != null && args is Map<String, dynamic>) {
       categoryLabel = args['label'] ?? 'Material';
+      products = args['products'] ?? [];
     }
 
     return Scaffold(
@@ -57,7 +61,7 @@ class ProductCategoryScreen extends StatelessWidget {
             ),
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
-              sliver: const ProductGridView(),
+              sliver: ProductGridView(products: products),
             ),
           ],
         ),
