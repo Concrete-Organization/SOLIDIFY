@@ -52,6 +52,7 @@ class _MessageFormFieldState extends State<MessageFormField> {
         children: [
           Expanded(
             child: TextField(
+              cursorColor: ColorsManager.mainBlue,
               controller: _controller,
               decoration: InputDecoration(
                 border: InputBorder.none,

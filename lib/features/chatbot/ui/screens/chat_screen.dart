@@ -6,7 +6,9 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
 import 'package:solidify/features/chatbot/logic/chatbot_state.dart';
+import 'package:solidify/features/chatbot/ui/widgets/chat_message.dart';
 import 'package:solidify/features/chatbot/ui/widgets/message_form_filed.dart';
+import 'package:solidify/features/chatbot/ui/widgets/bot_loading_widget.dart';
 import 'package:solidify/features/chatbot/ui/widgets/user_message_container.dart';
 import 'package:solidify/features/chatbot/ui/widgets/sila_bot_message_container.dart';
 
@@ -18,15 +20,13 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  String _userMessage = '';
-
-  
-  String _botMessage = '';
+  final List<ChatMessage> _messages = [];
 
   void _onSend(String message) {
     if (message.isEmpty) return;
     setState(() {
-      _userMessage = message;
+      // Add user's message to conversation history
+      _messages.add(ChatMessage(text: message, isUser: true));
     });
     // Dispatch to Cubit
     context.read<ChatbotCubit>().sendMessage(message);
@@ -34,27 +34,28 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isMessageSent = _userMessage.isNotEmpty;
+    final bool hasMessages = _messages.isNotEmpty;
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        // If a message is sent, show "Sila" with mini avatar on the right
-        title: isMessageSent
+        // If there's at least one message, show "Sila" with mini avatar on the right.
+        title: hasMessages
             ? Text(
                 'Sila',
                 style: TextStyles.font18MainBlueSemiBold,
               )
             : null,
-        actions: isMessageSent
+        actions: hasMessages
             ? [
                 Padding(
                   padding: EdgeInsets.only(right: 16.w),
-                  child: SvgPicture.asset('assets/svgs/mini_chatbot_avatar.svg'),
+                  child:
+                      SvgPicture.asset('assets/svgs/mini_chatbot_avatar.svg'),
                 ),
               ]
             : [],
-        leading: isMessageSent
+        leading: hasMessages
             ? null
             : IconButton(
                 onPressed: () => Navigator.pop(context),
@@ -62,7 +63,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
       ),
       body: SafeArea(
-        child: BlocListener<ChatbotCubit, ChatbotState>(
+        child: BlocConsumer<ChatbotCubit, ChatbotState>(
           listener: (context, state) {
             state.whenOrNull(
               success: (request, response) {
@@ -70,83 +71,128 @@ class _ChatScreenState extends State<ChatScreen> {
                     ? response.candidates.first.output
                     : "I couldn't find an answer.";
                 setState(() {
-                  _botMessage = text;
+                  _messages.add(ChatMessage(text: text, isUser: false));
                 });
               },
               error: (error) {
                 setState(() {
-                  _botMessage = 'Error: ${error.message ?? "Unknown"}';
+                  _messages.add(
+                    ChatMessage(
+                      text: 'Error: ${error.message}',
+                      isUser: false,
+                    ),
+                  );
                 });
               },
             );
           },
-          child: Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (!isMessageSent) ...[
-                        verticalSpace(78),
-                        RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'Welcome ',
-                                style: TextStyles.font25MainBlueBold,
+          builder: (context, state) {
+            final bool isLoading =
+                state.maybeWhen(loading: () => true, orElse: () => false);
+
+            if (isLoading) {
+              // Show ONLY the loading widget over the entire screen
+              return const BotLoadingWidget();
+            } else {
+              // Otherwise, show the normal chat UI
+              return Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      // No horizontal padding here
+                      padding: EdgeInsets.zero,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Show welcome text if no messages yet.
+                          if (!hasMessages) ...[
+                            verticalSpace(78),
+                            Center(
+                              child: RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'Welcome ',
+                                      style: TextStyles.font25MainBlueBold,
+                                    ),
+                                    TextSpan(
+                                      text: 'Ahmed ',
+                                      style: TextStyles.font25secondaryGoldBold,
+                                    ),
+                                    TextSpan(
+                                      text: 'ask me anything',
+                                      style: TextStyles.font25MainBlueBold,
+                                    ),
+                                  ],
+                                ),
                               ),
-                              TextSpan(
-                                text: 'Ahmed ',
-                                style: TextStyles.font25secondaryGoldBold,
+                            ),
+                            verticalSpace(40),
+                            Center(
+                              child: SvgPicture.asset(
+                                'assets/svgs/chatbot_avatar.svg',
                               ),
-                              TextSpan(
-                                text: 'ask me anything',
-                                style: TextStyles.font25MainBlueBold,
+                            ),
+                          ],
+                          // Display conversation history
+                          ..._messages.map((msg) {
+                            return Padding(
+                              // Only vertical spacing, no horizontal padding
+                              padding: EdgeInsets.symmetric(vertical: 10.h),
+                              child: Column(
+                                crossAxisAlignment: msg.isUser
+                                    ? CrossAxisAlignment.end
+                                    : CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    // Also no horizontal padding for "Me"/"Sila"
+                                    padding: EdgeInsets.only(
+                                        left: 10.w, right: 10.w),
+                                    child: Text(
+                                      msg.isUser ? 'Me' : 'Sila',
+                                      style:
+                                          TextStyles.font14SecondaryGoldRegular,
+                                    ),
+                                  ),
+                                  SizedBox(height: 4.h),
+                                  // Use a Row to keep containers flush on the edges
+                                  Row(
+                                    mainAxisAlignment: msg.isUser
+                                        ? MainAxisAlignment.end
+                                        : MainAxisAlignment.start,
+                                    children: [
+                                      if (msg.isUser) ...[
+                                        // user message pinned to right
+                                        UserMessageContainer(message: msg.text),
+                                        SizedBox(width: 10.w),
+                                      ] else ...[
+                                        // bot message pinned to left
+                                        SizedBox(width: 10.w),
+                                        SilaBotMessageContainer(
+                                            message: msg.text),
+                                      ],
+                                    ],
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ),
-                        verticalSpace(40),
-                        Center(
-                          child:
-                              SvgPicture.asset('assets/svgs/chatbot_avatar.svg'),
-                        ),
-                      ] else ...[
-                        verticalSpace(20),
-                        Text(
-                          'Me',
-                          style: TextStyles.font14SecondaryGoldRegular,
-                        ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: UserMessageContainer(message: _userMessage),
-                        ),
-                        verticalSpace(20),
-                        Text(
-                          'Sila',
-                          style: TextStyles.font14SecondaryGoldRegular,
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: SilaBotMessageContainer(message: _botMessage),
-                        ),
-                      ],
-                    ],
+                            );
+                          }).toList(),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              // The text input
-              Padding(
-                padding: EdgeInsets.all(16.w),
-                child: MessageFormField(
-                  onSend: _onSend,
-                ),
-              ),
-            ],
-          ),
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 10.w, right: 10.w, bottom: 16.h),
+                    child: MessageFormField(
+                      onSend: _onSend,
+                    ),
+                  ),
+                ],
+              );
+            }
+          },
         ),
       ),
     );
