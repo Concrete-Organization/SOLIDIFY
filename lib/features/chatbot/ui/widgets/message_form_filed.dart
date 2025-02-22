@@ -5,7 +5,7 @@ import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MessageFormField extends StatefulWidget {
-  final Function(String) onSend; // <-- Callback to parent
+  final Function(String) onSend;
 
   const MessageFormField({super.key, required this.onSend});
 
@@ -60,11 +60,11 @@ class _MessageFormFieldState extends State<MessageFormField> {
                 hintStyle: TextStyles.font14lightBlackLight,
               ),
               style: TextStyles.font14lightBlackLight,
-              onSubmitted: (_) => _handleSend(), // Send on keyboard "done"
+              onSubmitted: (_) => _handleSend(),
             ),
           ),
           GestureDetector(
-            onTap: _handleSend, // Send on tap of the icon
+            onTap: _handleSend,
             child: SvgPicture.asset(
               'assets/svgs/send_message_icon.svg',
               width: 20.w,

@@ -91,10 +91,11 @@ class _ChatScreenState extends State<ChatScreen> {
                 state.maybeWhen(loading: () => true, orElse: () => false);
 
             if (isLoading) {
-              // Show ONLY the loading widget over the entire screen
-              return const BotLoadingWidget();
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                child: const BotLoadingWidget(),
+              );
             } else {
-              // Otherwise, show the normal chat UI
               return Column(
                 children: [
                   Expanded(
@@ -138,7 +139,6 @@ class _ChatScreenState extends State<ChatScreen> {
                           // Display conversation history
                           ..._messages.map((msg) {
                             return Padding(
-                              // Only vertical spacing, no horizontal padding
                               padding: EdgeInsets.symmetric(vertical: 10.h),
                               child: Column(
                                 crossAxisAlignment: msg.isUser
@@ -146,7 +146,6 @@ class _ChatScreenState extends State<ChatScreen> {
                                     : CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    // Also no horizontal padding for "Me"/"Sila"
                                     padding: EdgeInsets.only(
                                         left: 10.w, right: 10.w),
                                     child: Text(
@@ -156,7 +155,6 @@ class _ChatScreenState extends State<ChatScreen> {
                                     ),
                                   ),
                                   SizedBox(height: 4.h),
-                                  // Use a Row to keep containers flush on the edges
                                   Row(
                                     mainAxisAlignment: msg.isUser
                                         ? MainAxisAlignment.end
