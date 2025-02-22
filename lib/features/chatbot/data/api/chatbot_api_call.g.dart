@@ -40,7 +40,7 @@ class _ChatbotApiService implements ChatbotApiService {
     )
         .compose(
           _dio.options,
-          'models/gemini-pro:generateText',
+          'models/gemini-1.5-flash:generateContent',
           queryParameters: queryParameters,
           data: _data,
         )
