@@ -36,8 +36,7 @@ class _MessageFormFieldState extends State<MessageFormField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 353.w,
-      height: 55.h,
+      height: 59.h,
       padding: EdgeInsets.symmetric(horizontal: 15.w),
       decoration: BoxDecoration(
         color: ColorsManager.mainBlueWith1Opacity,

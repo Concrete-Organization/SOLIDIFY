@@ -51,7 +51,7 @@ class TextStyles {
     fontWeight: FontWeightHelper.bold,
   );
   static TextStyle font14SecondaryGoldRegular = GoogleFonts.poppins(
-    fontSize: 20.sp,
+    fontSize: 14.sp,
     color: ColorsManager.secondaryGold,
     fontWeight: FontWeightHelper.regular,
   );

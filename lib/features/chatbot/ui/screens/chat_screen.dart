@@ -21,15 +21,27 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final List<ChatMessage> _messages = [];
+  final ScrollController _scrollController = ScrollController();
 
   void _onSend(String message) {
     if (message.isEmpty) return;
     setState(() {
-      // Add user's message to conversation history
       _messages.add(ChatMessage(text: message, isUser: true));
     });
-    // Dispatch to Cubit
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    });
     context.read<ChatbotCubit>().sendMessage(message);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -39,28 +51,26 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        // If there's at least one message, show "Sila" with mini avatar on the right.
         title: hasMessages
             ? Text(
-                'Sila',
-                style: TextStyles.font18MainBlueSemiBold,
-              )
+          'Sila',
+          style: TextStyles.font18MainBlueSemiBold,
+        )
             : null,
         actions: hasMessages
             ? [
-                Padding(
-                  padding: EdgeInsets.only(right: 16.w),
-                  child:
-                      SvgPicture.asset('assets/svgs/mini_chatbot_avatar.svg'),
-                ),
-              ]
+          Padding(
+            padding: EdgeInsets.only(right: 13.w),
+            child: SvgPicture.asset('assets/svgs/mini_chatbot_avatar.svg'),
+          ),
+        ]
             : [],
         leading: hasMessages
             ? null
             : IconButton(
-                onPressed: () => Navigator.pop(context),
-                icon: SvgPicture.asset('assets/svgs/back_arrow.svg'),
-              ),
+          onPressed: () => Navigator.pop(context),
+          icon: SvgPicture.asset('assets/svgs/back_arrow.svg'),
+        ),
       ),
       body: SafeArea(
         child: BlocConsumer<ChatbotCubit, ChatbotState>(
@@ -73,6 +83,14 @@ class _ChatScreenState extends State<ChatScreen> {
                 setState(() {
                   _messages.add(ChatMessage(text: text, isUser: false));
                 });
+                // Scroll to bottom after bot response
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  _scrollController.animateTo(
+                    _scrollController.position.maxScrollExtent,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOut,
+                  );
+                });
               },
               error: (error) {
                 setState(() {
@@ -83,29 +101,34 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   );
                 });
+                // Scroll to bottom after error message
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  _scrollController.animateTo(
+                    _scrollController.position.maxScrollExtent,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOut,
+                  );
+                });
               },
             );
           },
           builder: (context, state) {
-            final bool isLoading =
-                state.maybeWhen(loading: () => true, orElse: () => false);
-
+            final bool isLoading = state.maybeWhen(
+              loading: () => true,
+              orElse: () => false,
+            );
             if (isLoading) {
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.w),
-                child: const BotLoadingWidget(),
-              );
+              return const BotLoadingWidget();
             } else {
               return Column(
                 children: [
                   Expanded(
                     child: SingleChildScrollView(
-                      // No horizontal padding here
+                      controller: _scrollController, // Attach controller
                       padding: EdgeInsets.zero,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Show welcome text if no messages yet.
                           if (!hasMessages) ...[
                             verticalSpace(78),
                             Center(
@@ -136,7 +159,6 @@ class _ChatScreenState extends State<ChatScreen> {
                               ),
                             ),
                           ],
-                          // Display conversation history
                           ..._messages.map((msg) {
                             return Padding(
                               padding: EdgeInsets.symmetric(vertical: 10.h),
@@ -147,42 +169,42 @@ class _ChatScreenState extends State<ChatScreen> {
                                 children: [
                                   Padding(
                                     padding: EdgeInsets.only(
-                                        left: 10.w, right: 10.w),
+                                      left: 20.w,
+                                      right: 20.w,
+                                    ),
                                     child: Text(
                                       msg.isUser ? 'Me' : 'Sila',
-                                      style:
-                                          TextStyles.font14SecondaryGoldRegular,
+                                      style: TextStyles.font14SecondaryGoldRegular,
                                     ),
                                   ),
-                                  SizedBox(height: 4.h),
+                                  verticalSpace(4),
                                   Row(
                                     mainAxisAlignment: msg.isUser
                                         ? MainAxisAlignment.end
                                         : MainAxisAlignment.start,
                                     children: [
                                       if (msg.isUser) ...[
-                                        // user message pinned to right
                                         UserMessageContainer(message: msg.text),
-                                        SizedBox(width: 10.w),
+                                        horizontalSpace(20),
                                       ] else ...[
-                                        // bot message pinned to left
-                                        SizedBox(width: 10.w),
+                                        horizontalSpace(20),
                                         SilaBotMessageContainer(
-                                            message: msg.text),
+                                          message: msg.text,
+                                        ),
                                       ],
                                     ],
                                   ),
                                 ],
                               ),
                             );
-                          }).toList(),
+                          }),
                         ],
                       ),
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsets.only(left: 10.w, right: 10.w, bottom: 16.h),
+                    EdgeInsets.only(left: 20.w, right: 20.w, bottom: 12.h),
                     child: MessageFormField(
                       onSend: _onSend,
                     ),

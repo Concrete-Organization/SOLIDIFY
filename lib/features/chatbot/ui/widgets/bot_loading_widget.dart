@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
@@ -35,14 +36,17 @@ class _BotLoadingWidgetState extends State<BotLoadingWidget>
     return FadeTransition(
       opacity: _animation,
       child: Center(
-        child: Column(
-          children: [
-            SvgPicture.asset('assets/svgs/chatbot_avatar.svg'),
-            verticalSpace(15),
-            LinearProgressIndicator(
-              color: ColorsManager.secondaryGold,
-            ),
-          ],
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            children: [
+              SvgPicture.asset('assets/svgs/chatbot_avatar.svg'),
+              verticalSpace(15),
+              LinearProgressIndicator(
+                color: ColorsManager.secondaryGold,
+              ),
+            ],
+          ),
         ),
       ),
     );

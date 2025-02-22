@@ -12,11 +12,10 @@ class UserMessageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(
-        minWidth: 100.w,
+        minWidth: 60.w,
         maxWidth: 227.w,
       ),
-      margin: EdgeInsets.only(bottom: 12.h),
-      padding: EdgeInsets.all(8.w),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
       decoration: BoxDecoration(
         color: ColorsManager.mainBlueWith1Opacity,
         borderRadius: BorderRadius.circular(15.r),
