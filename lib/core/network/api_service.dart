@@ -1,6 +1,7 @@
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/data/models/concrete_company_account_sign_up_response_model.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/models/engineer_account_sign_up_request_model.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/models/engineer_account_sign_up_response_model.dart';
+import 'package:solidify/features/marketplace/data/models/product_list_response_model.dart';
 import 'api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -48,4 +49,7 @@ abstract class ApiService {
   Future<ResetPasswordResponseModel> resetPassword(
     @Body() ResetPasswordRequestModel resetPasswordRequestModel,
   );
+
+  @GET(ApiConstants.product)
+  Future<ProductListResponseModel> productsList();
 }
