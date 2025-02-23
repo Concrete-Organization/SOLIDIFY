@@ -37,7 +37,7 @@ class _BotLoadingWidgetState extends State<BotLoadingWidget>
       opacity: _animation,
       child: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 50.h),
           child: Column(
             children: [
               SvgPicture.asset('assets/svgs/chatbot_avatar.svg'),

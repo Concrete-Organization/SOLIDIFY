@@ -5,6 +5,8 @@ import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/repos/engineer_account_sign_up_repo.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_state.dart';
 
+import '../../../../../../core/helpers/shared_pref_helper.dart';
+
 class EngineerAccountSignUpCubit extends Cubit<EngineerAccountSignUpState> {
   final EngineerAccountSignUpRepo _engineerAccountSignUpRepo;
 
@@ -36,6 +38,9 @@ class EngineerAccountSignUpCubit extends Cubit<EngineerAccountSignUpState> {
           signupResponse.model?.userName ?? '');
       await shared_prefs.SharedPrefHelper.setSecuredString(
           shared_prefs.SharedPrefKeys.email, signupResponse.model?.email ?? '');
+
+      await SharedPrefHelper.setData(SharedPrefKeys.isLoggedIn, true);
+
 
       emit(EngineerAccountSignUpState.engineerSignUpSuccess(signupResponse));
     }, failure: (error) {

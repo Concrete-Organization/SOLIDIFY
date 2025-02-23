@@ -50,6 +50,7 @@ class Product {
   final int measurement;
   final String imageUri;
   final int rate;
+  final int discount;
   final String brandName;
 
   Product({
@@ -60,6 +61,7 @@ class Product {
     required this.measurement,
     required this.imageUri,
     required this.rate,
+    required this.discount,
     required this.brandName,
   });
 

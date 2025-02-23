@@ -49,7 +49,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
                   ),
                 ),
                 child: Text(
-                  '20%',
+                  '${widget.product.discount}%',
                   style: TextStyles.font10MainBlueRegular,
                 ),
               ),

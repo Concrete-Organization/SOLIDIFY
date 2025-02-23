@@ -6,7 +6,12 @@ class SharedPrefKeys {
   static const String userId = 'userId';
   static const String userName = 'userName';
   static const String email = 'email';
-  static const String userToken = 'userToken';
+  static const String accessToken = 'accessToken';
+  static const String refreshToken = 'refreshToken';
+  static const String expiresOn = 'expiresOn';
+  static const String refreshTokenExpiration = 'refreshTokenExpiration';
+  static const String role = 'role';
+  static const String isLoggedIn = 'isLoggedIn';
 }
 
 class SharedPrefHelper {

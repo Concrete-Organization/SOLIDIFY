@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/features/engineer_layout/engineer_layout.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -91,6 +92,10 @@ class AppRoutes {
       case Routes.companyLayout:
         return MaterialPageRoute(
           builder: (context) => const CompanyLayout(),
+        );
+      case Routes.engineerLayout:
+        return MaterialPageRoute(
+          builder: (context) => const EngineerLayout(),
         );
       case Routes.concreteStrengthScreens:
         return MaterialPageRoute(

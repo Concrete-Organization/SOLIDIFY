@@ -4,6 +4,7 @@ import 'core/di/dependency_injection.dart';
 import 'package:solidify/core/routes/app_routes.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +12,8 @@ void main() async {
   runApp(
     SolidifyApp(
       appRoutes: AppRoutes(),
-      initialRoute: Routes.companyLayout,
+      initialRoute: Routes.splashScreen,
+      navigatorKey: navigatorKey,
     ),
   );
 }

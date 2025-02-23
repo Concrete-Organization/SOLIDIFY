@@ -25,7 +25,7 @@ class EngineerAccountSignUpBlocListener extends StatelessWidget {
           engineerSignUpSuccess: (_) {
             context.pop();
             context.pushNamedAndRemoveUntil(
-              Routes.companyLayout,
+              Routes.engineerLayout,
               predicate: (Route<dynamic> route) => false,
             );
           },

@@ -15,34 +15,26 @@ class LoginResponseBody {
     required this.model,
   });
 
-  /// A factory constructor for creating a new `LoginResponseBody` instance
-  /// from a map (which is the deserialized JSON).
   factory LoginResponseBody.fromJson(Map<String, dynamic> json) =>
       _$LoginResponseBodyFromJson(json);
-
-  /// A method that serializes the `LoginResponseBody` instance to a map
-  /// (which will be serialized into JSON).
   Map<String, dynamic> toJson() => _$LoginResponseBodyToJson(this);
 }
 
 @JsonSerializable()
 class TokenModel {
-  final String token;
-  final List<String> roles;
-  final String expireDate;
+  final String accessToken;
+  final DateTime expiresOn;
+  final String refreshToken;
+  final DateTime refreshTokenExpiration;
 
   TokenModel({
-    required this.token,
-    required this.roles,
-    required this.expireDate,
+    required this.accessToken,
+    required this.expiresOn,
+    required this.refreshToken,
+    required this.refreshTokenExpiration,
   });
 
-  /// A factory constructor for creating a new `TokenModel` instance
-  /// from a map (which is the deserialized JSON).
   factory TokenModel.fromJson(Map<String, dynamic> json) =>
       _$TokenModelFromJson(json);
-
-  /// A method that serializes the `TokenModel` instance to a map
-  /// (which will be serialized into JSON).
   Map<String, dynamic> toJson() => _$TokenModelToJson(this);
 }

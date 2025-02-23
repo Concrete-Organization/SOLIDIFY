@@ -7,6 +7,8 @@ import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/data/repos/concrete_company_account_repo.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/logic/concrete_company_account_sign_up_state.dart';
 
+import '../../../../../../core/helpers/shared_pref_helper.dart';
+
 class ConcreteCompanySignUpCubit extends Cubit<ConcreteCompanyAccountSignUpState> {
   final ConcreteCompanyAccountRepo _concreteCompanyAccountRepo;
 
@@ -69,6 +71,9 @@ class ConcreteCompanySignUpCubit extends Cubit<ConcreteCompanyAccountSignUpState
           shared_prefs.SharedPrefKeys.email,
           businessSignUpResponse.model.email,
         );
+
+        await SharedPrefHelper.setData(SharedPrefKeys.isLoggedIn, true);
+
         emit(ConcreteCompanyAccountSignUpState.concreteCompanySignUpSuccess(
             businessSignUpResponse));
       },

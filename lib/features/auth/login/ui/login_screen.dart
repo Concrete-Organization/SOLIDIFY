@@ -21,32 +21,55 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: BlocListener<LoginCubit, LoginState>(
           listener: (context, state) {
-            state.map(
-              initial: (_) {},
-              loading: (_) {
+            state.when(
+              initial: () {},
+              loading: () {
                 showDialog(
                   context: context,
                   barrierDismissible: false,
-                  builder: (context) =>
-                      const Center(child: CircularProgressIndicator()),
+                  builder: (context) => const Center(child: CircularProgressIndicator()),
                 );
               },
-              success: (_) {
-                context.pushNamedAndRemoveUntil(
-                  Routes.companyLayout,
-                  predicate: (Route<dynamic> route) => false,
-                );
+              success: (loginResponse, role) {
+                Navigator.of(context).pop();
+                if (role == 'Company') {
+                  context.pushNamedAndRemoveUntil(
+                    Routes.companyLayout,
+                    predicate: (Route<dynamic> route) => false,
+                  );
+                } else {
+                  context.pushNamedAndRemoveUntil(
+                    Routes.engineerLayout,
+                    predicate: (Route<dynamic> route) => false,
+                  );
+                }
               },
-              error: (errorState) {
+              error: (error) {
                 Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     backgroundColor: Colors.red,
                     content: Text(
-                      errorState.error.message,
+                      error.message,
                       style: const TextStyle(color: Colors.white),
                     ),
                   ),
+                );
+              },
+              tokenExpired: (message) {
+                Navigator.of(context).pop();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: Colors.orange,
+                    content: Text(
+                      message,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
+                );
+                context.pushNamedAndRemoveUntil(
+                  Routes.loginScreen,
+                  predicate: (Route<dynamic> route) => false,
                 );
               },
             );

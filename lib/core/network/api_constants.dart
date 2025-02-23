@@ -9,8 +9,10 @@ class ApiConstants {
   static const String verifyOtp = 'Account/verifyOtp';
   static const String resetPassword = 'Account/reset-password';
   static const String companySignUp = 'Account/registerCompany';
+  static const String refreshToken = 'Account/refreshToken';
   static const String predict = 'predict';
   static const String product = 'Product';
+
   static const String geminiApiUrl =
       "https://generativelanguage.googleapis.com/v1beta/";
 }

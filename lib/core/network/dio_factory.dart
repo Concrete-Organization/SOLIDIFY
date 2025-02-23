@@ -1,35 +1,33 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'token_interceptor.dart';
 
 class DioFactory {
-  DioFactory._();
+  static Dio? _authenticatedDio;
+  static Dio? _publicDio;
 
-  static Dio? dio;
-
-  static Dio getDio() {
-    Duration timeOut = const Duration(seconds: 30);
-
-    if (dio == null) {
-      dio = Dio();
-      dio!
-        ..options.connectTimeout = timeOut
-        ..options.receiveTimeout = timeOut;
-      addDioInterceptor();
-      //addDioHeaders();
-      return dio!;
-    } else {
-      return dio!;
+  static Dio get publicDio {
+    if (_publicDio == null) {
+      _publicDio = Dio();
+      _publicDio!
+        ..options.connectTimeout = const Duration(seconds: 30)
+        ..options.receiveTimeout = const Duration(seconds: 30);
+      _publicDio!.interceptors.add(PrettyDioLogger());
     }
+    return _publicDio!;
   }
 
-  static void addDioInterceptor() {
-    dio?.interceptors.add(
-      PrettyDioLogger(
-        requestHeader: true,
-        requestBody: true,
-        responseHeader: true,
-        responseBody: true,
-        error: true,
-      ),
-    );
-  }}
+  static Dio get authenticatedDio {
+    if (_authenticatedDio == null) {
+      _authenticatedDio = Dio();
+      _authenticatedDio!
+        ..options.connectTimeout = const Duration(seconds: 30)
+        ..options.receiveTimeout = const Duration(seconds: 30);
+      _authenticatedDio!.interceptors.addAll([
+        PrettyDioLogger(),
+        TokenInterceptor(_authenticatedDio!),
+      ]);
+    }
+    return _authenticatedDio!;
+  }
+}

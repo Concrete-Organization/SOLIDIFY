@@ -27,8 +27,10 @@ final getIt = GetIt.instance;
 
 Future<void> setupGetIt() async {
   // Dio & ApiService
-  Dio dio = DioFactory.getDio();
-  getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
+  Dio dio = DioFactory.publicDio;
+  Dio authDio = DioFactory.authenticatedDio;
+
+  getIt.registerLazySingleton<ApiService>(() => ApiService(authDio));
   getIt.registerLazySingleton<ChatbotApiService>(() => ChatbotApiService(dio));
   getIt.registerLazySingleton<ConcreteStrengthAiApiCall>(
       () => ConcreteStrengthAiApiCall(dio));

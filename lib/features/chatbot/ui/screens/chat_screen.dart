@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,6 +23,20 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final List<ChatMessage> _messages = [];
   final ScrollController _scrollController = ScrollController();
+  String userName = '';
+
+  void getUserName() async {
+    userName = await SharedPrefHelper.getSecuredString(SharedPrefKeys.userName);
+    setState(() {
+
+    });
+  }
+
+  @override
+  void initState() {
+    getUserName();
+    super.initState();
+  }
 
   void _onSend(String message) {
     if (message.isEmpty) return;
@@ -83,7 +98,6 @@ class _ChatScreenState extends State<ChatScreen> {
                 setState(() {
                   _messages.add(ChatMessage(text: text, isUser: false));
                 });
-                // Scroll to bottom after bot response
                 WidgetsBinding.instance.addPostFrameCallback((_) {
                   _scrollController.animateTo(
                     _scrollController.position.maxScrollExtent,
@@ -101,7 +115,6 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   );
                 });
-                // Scroll to bottom after error message
                 WidgetsBinding.instance.addPostFrameCallback((_) {
                   _scrollController.animateTo(
                     _scrollController.position.maxScrollExtent,
@@ -124,7 +137,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 children: [
                   Expanded(
                     child: SingleChildScrollView(
-                      controller: _scrollController, // Attach controller
+                      controller: _scrollController,
                       padding: EdgeInsets.zero,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +154,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                       style: TextStyles.font25MainBlueBold,
                                     ),
                                     TextSpan(
-                                      text: 'Ahmed ',
+                                      text: '$userName ',
                                       style: TextStyles.font25secondaryGoldBold,
                                     ),
                                     TextSpan(

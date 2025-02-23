@@ -6,11 +6,13 @@ import 'core/theming/color_manger.dart';
 class SolidifyApp extends StatelessWidget {
   final AppRoutes appRoutes;
   final String initialRoute;
+  final GlobalKey<NavigatorState> navigatorKey;
 
   const SolidifyApp({
     super.key,
     required this.appRoutes,
     required this.initialRoute,
+    required this.navigatorKey,
   });
 
   @override
@@ -19,6 +21,7 @@ class SolidifyApp extends StatelessWidget {
       designSize: const Size(393, 852),
       minTextAdapt: true,
       child: MaterialApp(
+        navigatorKey: navigatorKey,
         title: 'SOLIDIFY',
         theme: ThemeData(
           primaryColor: ColorsManager.mainBlue,
