@@ -81,7 +81,6 @@ class _CategoriesGridState extends State<CategoriesGrid>
         _controller.forward().then((_) {
           _controller.reverse().then((_) {
             final selectedCategory = categories[index]['label'];
-            print("Navigating with category: $selectedCategory");
             context.pushNamed(
               Routes.productCategoryScreen,
               arguments: {'label': selectedCategory},
