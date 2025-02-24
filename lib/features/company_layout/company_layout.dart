@@ -15,15 +15,16 @@ class CompanyLayout extends StatefulWidget {
   const CompanyLayout({super.key});
 
   @override
-  State<CompanyLayout> createState() => _AppLayoutState();
+  State<CompanyLayout> createState() => _CompanyLayoutState();
 }
 
-class _AppLayoutState extends State<CompanyLayout> {
+class _CompanyLayoutState extends State<CompanyLayout> {
   int selectedIndex = 0;
-  List<Widget> screens = [
+
+  final List<Widget> screens = [
     BlocProvider(
       create: (context) => getIt<ProductsListCubit>()..fetchProductsList(),
-      child: MarketplaceScreen(),
+      child: const MarketplaceScreen(),
     ),
     const ConcreteStrengthAiGetStarted(),
     const ChatbotScreen(),
@@ -39,7 +40,10 @@ class _AppLayoutState extends State<CompanyLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[selectedIndex],
+      body: IndexedStack(
+        index: selectedIndex,
+        children: screens,
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: ColorsManager.mainBlueWith5Opacity,
