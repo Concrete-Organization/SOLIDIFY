@@ -79,7 +79,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
               width: 68.w,
               height: 92.h,
               child: Image.network(
-                widget.product.imageUri.replaceFirst("https", "http"),
+                widget.product.imageUri,
                 fit: BoxFit.contain,
                 errorBuilder: (_, __, ___) => const Icon(Icons.error),
               ),

@@ -26,9 +26,9 @@ class TokenInterceptor extends Interceptor {
     final refreshToken = await SharedPrefHelper.getSecuredString(SharedPrefKeys.refreshToken);
     final refreshExpiresStr = await SharedPrefHelper.getSecuredString(SharedPrefKeys.refreshTokenExpiration);
 
-    // if (expiresOnStr.isEmpty || refreshExpiresStr.isEmpty) {
-    //   return handler.next(options);
-    // }
+    if (expiresOnStr.isEmpty || refreshExpiresStr.isEmpty) {
+      return handler.next(options);
+    }
 
     final expiresOn = DateTime.parse(expiresOnStr);
     final refreshExpires = DateTime.parse(refreshExpiresStr);
@@ -107,6 +107,7 @@ class TokenInterceptor extends Interceptor {
 
   void _logoutUser() async {
     await SharedPrefHelper.clearAllSecuredData();
+    await SharedPrefHelper.clearAllData();
     await SharedPrefHelper.setData(SharedPrefKeys.isLoggedIn, false);
     navigatorKey.currentState?.pushNamedAndRemoveUntil(
       Routes.loginScreen,

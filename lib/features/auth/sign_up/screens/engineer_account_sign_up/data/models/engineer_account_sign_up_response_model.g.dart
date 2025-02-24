@@ -12,9 +12,7 @@ EngineerAccountSignUpResponseModel _$EngineerAccountSignUpResponseModelFromJson(
       isSucceeded: json['isSucceeded'] as bool,
       statusCode: (json['statusCode'] as num).toInt(),
       message: json['message'] as String,
-      model: json['model'] == null
-          ? null
-          : UserModel.fromJson(json['model'] as Map<String, dynamic>),
+      model: AuthResponse.fromJson(json['model'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$EngineerAccountSignUpResponseModelToJson(
@@ -26,14 +24,17 @@ Map<String, dynamic> _$EngineerAccountSignUpResponseModelToJson(
       'model': instance.model,
     };
 
-UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
-      id: json['id'] as String,
-      userName: json['userName'] as String,
-      email: json['email'] as String,
+AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) => AuthResponse(
+      accessToken: json['accessToken'] as String,
+      expiresOn: json['expiresOn'] as String,
+      refreshToken: json['refreshToken'] as String,
+      refreshTokenExpiration: json['refreshTokenExpiration'] as String,
     );
 
-Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
-      'id': instance.id,
-      'userName': instance.userName,
-      'email': instance.email,
+Map<String, dynamic> _$AuthResponseToJson(AuthResponse instance) =>
+    <String, dynamic>{
+      'accessToken': instance.accessToken,
+      'expiresOn': instance.expiresOn,
+      'refreshToken': instance.refreshToken,
+      'refreshTokenExpiration': instance.refreshTokenExpiration,
     };

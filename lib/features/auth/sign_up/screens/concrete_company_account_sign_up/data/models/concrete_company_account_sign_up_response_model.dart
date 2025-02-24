@@ -7,7 +7,7 @@ class ConcreteCompanyAccountSignUpResponseModel {
   final bool isSucceeded;
   final int statusCode;
   final String message;
-  final BusinessAccountModel model;
+  final CompanyModel model;
 
   ConcreteCompanyAccountSignUpResponseModel({
     required this.isSucceeded,
@@ -17,7 +17,7 @@ class ConcreteCompanyAccountSignUpResponseModel {
   });
 
   factory ConcreteCompanyAccountSignUpResponseModel.fromJson(
-          Map<String, dynamic> json) =>
+      Map<String, dynamic> json) =>
       _$ConcreteCompanyAccountSignUpResponseModelFromJson(json);
 
   Map<String, dynamic> toJson() =>
@@ -25,21 +25,37 @@ class ConcreteCompanyAccountSignUpResponseModel {
 }
 
 @JsonSerializable()
-class BusinessAccountModel {
-  final String id;
-  final String userName;
+class CompanyModel {
   final String companyName;
-  final String email;
+  final AuthResponse authResponse;
 
-  BusinessAccountModel({
-    required this.id,
-    required this.userName,
+  CompanyModel({
     required this.companyName,
-    required this.email,
+    required this.authResponse,
   });
 
-  factory BusinessAccountModel.fromJson(Map<String, dynamic> json) =>
-      _$BusinessAccountModelFromJson(json);
+  factory CompanyModel.fromJson(Map<String, dynamic> json) =>
+      _$CompanyModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$BusinessAccountModelToJson(this);
+  Map<String, dynamic> toJson() => _$CompanyModelToJson(this);
+}
+
+@JsonSerializable()
+class AuthResponse {
+  final String accessToken;
+  final String expiresOn;
+  final String refreshToken;
+  final String refreshTokenExpiration;
+
+  AuthResponse({
+    required this.accessToken,
+    required this.expiresOn,
+    required this.refreshToken,
+    required this.refreshTokenExpiration,
+  });
+
+  factory AuthResponse.fromJson(Map<String, dynamic> json) =>
+      _$AuthResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthResponseToJson(this);
 }

@@ -13,8 +13,7 @@ ConcreteCompanyAccountSignUpResponseModel
           isSucceeded: json['isSucceeded'] as bool,
           statusCode: (json['statusCode'] as num).toInt(),
           message: json['message'] as String,
-          model: BusinessAccountModel.fromJson(
-              json['model'] as Map<String, dynamic>),
+          model: CompanyModel.fromJson(json['model'] as Map<String, dynamic>),
         );
 
 Map<String, dynamic> _$ConcreteCompanyAccountSignUpResponseModelToJson(
@@ -26,20 +25,29 @@ Map<String, dynamic> _$ConcreteCompanyAccountSignUpResponseModelToJson(
       'model': instance.model,
     };
 
-BusinessAccountModel _$BusinessAccountModelFromJson(
-        Map<String, dynamic> json) =>
-    BusinessAccountModel(
-      id: json['id'] as String,
-      userName: json['userName'] as String,
+CompanyModel _$CompanyModelFromJson(Map<String, dynamic> json) => CompanyModel(
       companyName: json['companyName'] as String,
-      email: json['email'] as String,
+      authResponse:
+          AuthResponse.fromJson(json['authResponse'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$BusinessAccountModelToJson(
-        BusinessAccountModel instance) =>
+Map<String, dynamic> _$CompanyModelToJson(CompanyModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'userName': instance.userName,
       'companyName': instance.companyName,
-      'email': instance.email,
+      'authResponse': instance.authResponse,
+    };
+
+AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) => AuthResponse(
+      accessToken: json['accessToken'] as String,
+      expiresOn: json['expiresOn'] as String,
+      refreshToken: json['refreshToken'] as String,
+      refreshTokenExpiration: json['refreshTokenExpiration'] as String,
+    );
+
+Map<String, dynamic> _$AuthResponseToJson(AuthResponse instance) =>
+    <String, dynamic>{
+      'accessToken': instance.accessToken,
+      'expiresOn': instance.expiresOn,
+      'refreshToken': instance.refreshToken,
+      'refreshTokenExpiration': instance.refreshTokenExpiration,
     };

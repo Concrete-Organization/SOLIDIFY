@@ -60,18 +60,27 @@ class ConcreteCompanySignUpCubit extends Cubit<ConcreteCompanyAccountSignUpState
     response.when(
       success: (businessSignUpResponse) async {
         await shared_prefs.SharedPrefHelper.setSecuredString(
-          shared_prefs.SharedPrefKeys.userId,
-          businessSignUpResponse.model.id,
-        );
-        await shared_prefs.SharedPrefHelper.setSecuredString(
           shared_prefs.SharedPrefKeys.userName,
-          businessSignUpResponse.model.userName,
+          businessSignUpResponse.model.companyName,
         );
         await shared_prefs.SharedPrefHelper.setSecuredString(
-          shared_prefs.SharedPrefKeys.email,
-          businessSignUpResponse.model.email,
+          shared_prefs.SharedPrefKeys.accessToken,
+          businessSignUpResponse.model.authResponse.accessToken,
+        );
+        await shared_prefs.SharedPrefHelper.setSecuredString(
+          shared_prefs.SharedPrefKeys.refreshToken,
+          businessSignUpResponse.model.authResponse.refreshToken,
+        );
+        await shared_prefs.SharedPrefHelper.setSecuredString(
+          shared_prefs.SharedPrefKeys.expiresOn,
+          businessSignUpResponse.model.authResponse.expiresOn,
+        );
+        await shared_prefs.SharedPrefHelper.setSecuredString(
+          shared_prefs.SharedPrefKeys.refreshTokenExpiration,
+          businessSignUpResponse.model.authResponse.refreshTokenExpiration,
         );
 
+        await SharedPrefHelper.setSecuredString(SharedPrefKeys.role, 'Company');
         await SharedPrefHelper.setData(SharedPrefKeys.isLoggedIn, true);
 
         emit(ConcreteCompanyAccountSignUpState.concreteCompanySignUpSuccess(

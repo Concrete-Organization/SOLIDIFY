@@ -32,13 +32,23 @@ class EngineerAccountSignUpCubit extends Cubit<EngineerAccountSignUpState> {
 
     response.when(success: (signupResponse) async {
       await shared_prefs.SharedPrefHelper.setSecuredString(
-          shared_prefs.SharedPrefKeys.userId, signupResponse.model?.id ?? '');
+        shared_prefs.SharedPrefKeys.accessToken,
+        signupResponse.model.accessToken,
+      );
       await shared_prefs.SharedPrefHelper.setSecuredString(
-          shared_prefs.SharedPrefKeys.userName,
-          signupResponse.model?.userName ?? '');
+        shared_prefs.SharedPrefKeys.refreshToken,
+        signupResponse.model.refreshToken,
+      );
       await shared_prefs.SharedPrefHelper.setSecuredString(
-          shared_prefs.SharedPrefKeys.email, signupResponse.model?.email ?? '');
+        shared_prefs.SharedPrefKeys.expiresOn,
+        signupResponse.model.expiresOn,
+      );
+      await shared_prefs.SharedPrefHelper.setSecuredString(
+        shared_prefs.SharedPrefKeys.refreshTokenExpiration,
+        signupResponse.model.refreshTokenExpiration,
+      );
 
+      await SharedPrefHelper.setSecuredString(SharedPrefKeys.role, 'Engineer');
       await SharedPrefHelper.setData(SharedPrefKeys.isLoggedIn, true);
 
 

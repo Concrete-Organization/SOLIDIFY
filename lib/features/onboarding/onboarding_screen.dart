@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/color_manger.dart';
@@ -65,14 +66,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     AppTextButton(
-                      onPressed: () {
+                      onPressed: () async{
+                        await SharedPrefHelper.setData(SharedPrefKeys.isFirstTime, false);
                         context.pushReplacementNamed(Routes.loginScreen);
                       },
                       textButton: 'Login',
                       width: 166.w,
                     ),
                     AppTextButton(
-                      onPressed: () {
+                      onPressed: () async{
+                        await SharedPrefHelper.setData(SharedPrefKeys.isFirstTime, false);
                         context.pushNamed(Routes.selectAccountTypeScreen);
                       },
                       textButton: 'Register',

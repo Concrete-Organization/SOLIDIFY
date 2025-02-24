@@ -7,13 +7,13 @@ class EngineerAccountSignUpResponseModel {
   final bool isSucceeded;
   final int statusCode;
   final String message;
-  final UserModel? model;
+  final AuthResponse model;
 
   EngineerAccountSignUpResponseModel({
     required this.isSucceeded,
     required this.statusCode,
     required this.message,
-    this.model,
+    required this.model,
   });
 
   factory EngineerAccountSignUpResponseModel.fromJson(Map<String, dynamic> json) =>
@@ -23,19 +23,21 @@ class EngineerAccountSignUpResponseModel {
 }
 
 @JsonSerializable()
-class UserModel {
-  final String id;
-  final String userName;
-  final String email;
+class AuthResponse {
+  final String accessToken;
+  final String expiresOn;
+  final String refreshToken;
+  final String refreshTokenExpiration;
 
-  UserModel({
-    required this.id,
-    required this.userName,
-    required this.email,
+  AuthResponse({
+    required this.accessToken,
+    required this.expiresOn,
+    required this.refreshToken,
+    required this.refreshTokenExpiration,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) =>
-      _$UserModelFromJson(json);
+  factory AuthResponse.fromJson(Map<String, dynamic> json) =>
+      _$AuthResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$UserModelToJson(this);
+  Map<String, dynamic> toJson() => _$AuthResponseToJson(this);
 }
