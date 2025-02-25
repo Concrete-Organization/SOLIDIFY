@@ -54,7 +54,7 @@ class EngineerAccountSignUpCubit extends Cubit<EngineerAccountSignUpState> {
 
       emit(EngineerAccountSignUpState.engineerSignUpSuccess(signupResponse));
     }, failure: (error) {
-      emit(EngineerAccountSignUpState.engineerSignUpError(error: error.apiErrorModel));
+      emit(EngineerAccountSignUpState.engineerSignUpError(error: error));
     });
   }
 }

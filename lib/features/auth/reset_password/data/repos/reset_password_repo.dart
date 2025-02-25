@@ -15,7 +15,7 @@ class ResetPasswordRepo {
       final response = await _apiService.resetPassword(resetPasswordRequestModel);
       return ApiResult.success(response);
     } catch (error) {
-      return ApiResult.failure(ErrorHandler.handle(error));
+      return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
 }

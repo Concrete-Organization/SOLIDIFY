@@ -88,7 +88,7 @@ class ConcreteCompanySignUpCubit extends Cubit<ConcreteCompanyAccountSignUpState
       },
       failure: (error) {
         emit(ConcreteCompanyAccountSignUpState.concreteCompanySignUpError(
-            error: error.apiErrorModel));
+            error: error));
       },
     );
   }

@@ -98,7 +98,7 @@ class ConcreteStrengthAiCubit extends Cubit<ConcreteStrengthAiState> {
         await SharedPrefHelper.setData('surveyResult', jsonString);
         emit(ConcreteStrengthAiState.success(data));
       },      failure: (error) =>
-          emit(ConcreteStrengthAiState.error(error: error.apiErrorModel)),
+          emit(ConcreteStrengthAiState.error(error: error)),
     );
   }
 }

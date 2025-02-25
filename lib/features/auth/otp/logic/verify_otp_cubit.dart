@@ -15,7 +15,7 @@ class VerifyOtpCubit extends Cubit<VerifyOtpState> {
 
     result.when(
       success: (response) => emit(VerifyOtpState.success(response)),
-      failure: (error) => emit(VerifyOtpState.error(error: error.apiErrorModel)),
+      failure: (error) => emit(VerifyOtpState.error(error: error)),
     );
   }
 }

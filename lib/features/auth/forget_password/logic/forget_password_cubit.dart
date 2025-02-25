@@ -27,7 +27,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
 
     response.when(
       success: (data) => emit(ForgetPasswordState.success(data)),
-      failure: (error) => emit(ForgetPasswordState.error(error: error.apiErrorModel)),
+      failure: (error) => emit(ForgetPasswordState.error(error: error)),
     );
   }
 }

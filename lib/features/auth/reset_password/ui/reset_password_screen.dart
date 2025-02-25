@@ -26,7 +26,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 storedDataLoaded: () => _buildContent(),
                 resetPasswordLoading: () => _buildContent(),
                 resetPasswordSuccess: () => const SizedBox.shrink(),
-                error: (error) => Center(child: Text(error.message)),
+                error: (error) => Center(child: Text(error.getAllErrorMessages())),
               );
             },
           ),

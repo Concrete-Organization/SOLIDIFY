@@ -31,7 +31,7 @@ class OtpBlocListener extends StatelessWidget {
           error: (error) {
             Navigator.pop(context);
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(error.message)),
+              SnackBar(content: Text(error.getAllErrorMessages())),
             );
           },
         );
