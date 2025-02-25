@@ -15,7 +15,7 @@ class VerifyOtpRepo {
       final response = await _apiService.verifyOtp(verifyOtpRequestModel);
       return ApiResult.success(response);
     } catch (error) {
-      return ApiResult.failure(ErrorHandler.handle(error));
+      return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
 }

@@ -41,7 +41,7 @@ class LoginBlocListener extends StatelessWidget {
               SnackBar(
                 backgroundColor: Colors.red,
                 content: Text(
-                  error.message,
+                  error.getAllErrorMessages(),
                   style: const TextStyle(color: Colors.white),
                 ),
               ),

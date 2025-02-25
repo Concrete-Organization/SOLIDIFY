@@ -32,7 +32,7 @@ class ConcreteStrengthAiBlocListener extends StatelessWidget {
             Navigator.of(context).pop();
             CustomSnackBar.showError(
               context,
-              error.message,
+              error.getAllErrorMessages(),
             );
           },
         );

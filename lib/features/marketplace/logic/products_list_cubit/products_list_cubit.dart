@@ -17,7 +17,7 @@ class ProductsListCubit extends Cubit<ProductsListState> {
         emit(ProductsListState.productsListSuccess(data.model.items));
       },
       failure: (error) {
-        emit(ProductsListState.productsListError(error: error.apiErrorModel));
+        emit(ProductsListState.productsListError(error: error));
       },
     );
   }
