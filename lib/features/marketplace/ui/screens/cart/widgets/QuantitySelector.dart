@@ -18,62 +18,66 @@ class QuantitySelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Minus button
-        GestureDetector(
-          onTap: onDecrement,
-          child: Container(
-            width: 17.w,
-            height: 16.h,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: ColorsManager.mainBlueWith1Opacity,
-            ),
-            alignment: Alignment.center,
-            child: SvgPicture.asset(
-              'assets/svgs/minus_icon.svg',
-              width: 10.w,
-              height: 10.h,
-            ),
-          ),
+    return IntrinsicWidth(
+      child: Container(
+        decoration: BoxDecoration(
+          // A unified border and rounded corners for the entire widget.
+          border: Border.all(color: ColorsManager.mainBlue),
+          borderRadius: BorderRadius.circular(4.r),
+          color: ColorsManager.white,
         ),
-        SizedBox(width: 4.w),
-        // Number display
-        Container(
-          width: 43.w,
-          height: 16.h,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            border: Border.all(color: ColorsManager.mainBlue),
-            borderRadius: BorderRadius.circular(4.r),
-          ),
-          child: Text(
-            quantity.toString(),
-            style: TextStyles.font10MainBlueSemiBold,
-          ),
-        ),
-        SizedBox(width: 4.w),
-        // Plus button
-        GestureDetector(
-          onTap: onIncrement,
-          child: Container(
-            width: 17.w,
-            height: 16.h,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: ColorsManager.mainBlueWith1Opacity,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Minus button container with main blue background.
+            GestureDetector(
+              onTap: onDecrement,
+              child: Container(
+                width: 17.w,
+                height: 16.h,
+                alignment: Alignment.center,
+                color: ColorsManager.mainBlue,
+                child: SvgPicture.asset(
+                  'assets/svgs/minus_icon.svg',
+                  width: 10.w,
+                  height: 10.h,
+                ),
+              ),
             ),
-            alignment: Alignment.center,
-            child: SvgPicture.asset(
-              'assets/svgs/plus_icon.svg',
-              width: 10.w,
-              height: 10.h,
+            // Number display container with white background and vertical dividers.
+            Container(
+              width: 43.w,
+              height: 16.h,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: ColorsManager.white,
+                border: Border.symmetric(
+                  vertical: BorderSide(color: ColorsManager.mainBlue),
+                ),
+              ),
+              child: Text(
+                quantity.toString(),
+                style: TextStyles.font10MainBlueSemiBold,
+              ),
             ),
-          ),
+            // Plus button container with main blue background.
+            GestureDetector(
+              onTap: onIncrement,
+              child: Container(
+                width: 17.w,
+                height: 16.h,
+                alignment: Alignment.center,
+                color: ColorsManager.mainBlue,
+                child: SvgPicture.asset(
+                  'assets/svgs/plus_icon.svg',
+                  width: 10.w,
+                  height: 10.h,
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
