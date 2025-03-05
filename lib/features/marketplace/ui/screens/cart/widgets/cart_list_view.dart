@@ -12,7 +12,7 @@ class CartListView extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.symmetric(vertical: 16.h),
-      itemCount: 15,
+      itemCount: 5,
       separatorBuilder: (context, index) => Padding(
         padding: EdgeInsets.symmetric(vertical: 16.h),
         child: const HorizontalDivider(),
