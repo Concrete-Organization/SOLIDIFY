@@ -22,7 +22,6 @@ mixin _$ApiResult<T> {
     required TResult Function(ApiErrorModel apiErrorModel) failure,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
@@ -36,14 +35,12 @@ mixin _$ApiResult<T> {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Success<T> value) success,
     required TResult Function(Failure<T> value) failure,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Success<T> value)? success,
@@ -71,10 +68,13 @@ class _$ApiResultCopyWithImpl<T, $Res, $Val extends ApiResult<T>>
     implements $ApiResultCopyWith<T, $Res> {
   _$ApiResultCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ApiResult
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -94,6 +94,8 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
       _$SuccessImpl<T> _value, $Res Function(_$SuccessImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,7 +135,9 @@ class _$SuccessImpl<T> implements Success<T> {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
@@ -206,7 +210,10 @@ abstract class Success<T> implements ApiResult<T> {
   const factory Success(final T data) = _$SuccessImpl<T>;
 
   T get data;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApiResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -228,6 +235,8 @@ class __$$FailureImplCopyWithImpl<T, $Res>
       _$FailureImpl<T> _value, $Res Function(_$FailureImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -267,7 +276,9 @@ class _$FailureImpl<T> implements Failure<T> {
   @override
   int get hashCode => Object.hash(runtimeType, apiErrorModel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FailureImplCopyWith<T, _$FailureImpl<T>> get copyWith =>
@@ -340,7 +351,10 @@ abstract class Failure<T> implements ApiResult<T> {
   const factory Failure(final ApiErrorModel apiErrorModel) = _$FailureImpl<T>;
 
   ApiErrorModel get apiErrorModel;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApiResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureImplCopyWith<T, _$FailureImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

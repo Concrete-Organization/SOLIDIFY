@@ -12,6 +12,7 @@ class ApiConstants {
   static const String refreshToken = 'Account/refreshToken';
   static const String predict = 'predict';
   static const String product = 'Product';
+  static const String post = 'Post';
 
   static const String geminiApiUrl =
       "https://generativelanguage.googleapis.com/v1beta/";
