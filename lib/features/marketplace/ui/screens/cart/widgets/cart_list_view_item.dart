@@ -36,18 +36,21 @@ class _CartListViewItemState extends State<CartListViewItem> {
           padding: EdgeInsets.only(right: 30.w),
           child: Row(
             children: [
-              // Product Image Container
               Container(
                 width: 113.w,
                 height: 92.h,
                 decoration: BoxDecoration(
-                  border:
-                      Border.all(color: ColorsManager.mainBlue, width: 1.2.w),
+                  border: Border.all(
+                    color: ColorsManager.mainBlue,
+                    width: 1.2.w,
+                  ),
                   borderRadius: BorderRadius.circular(5.r),
                 ),
                 child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 10.h,
+                  ),
                   child: Image.asset(
                     'assets/images/cement_bag_3x.png',
                     width: 67.w,
@@ -56,7 +59,6 @@ class _CartListViewItemState extends State<CartListViewItem> {
                 ),
               ),
               horizontalSpace(25),
-
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
