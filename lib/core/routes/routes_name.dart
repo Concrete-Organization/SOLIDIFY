@@ -18,4 +18,5 @@ class Routes {
   static const String productCategoryScreen = 'productCategoryScreen';
   static const String productDetailsScreen = 'productDetailsScreen';
   static const String chatScreen = 'chatScreen';
+  static const String cartScreen = 'cartScreen';
 }

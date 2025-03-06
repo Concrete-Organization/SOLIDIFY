@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/features/engineer_layout/engineer_layout.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -11,7 +10,9 @@ import 'package:solidify/features/auth/login/logic/login_cubit.dart';
 import 'package:solidify/features/onboarding/onboarding_screen.dart';
 import 'package:solidify/features/company_layout/company_layout.dart';
 import 'package:solidify/features/chatbot/ui/screens/chat_screen.dart';
+import 'package:solidify/features/engineer_layout/engineer_layout.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
+import 'package:solidify/features/marketplace/ui/screens/cart/cart_screen.dart';
 import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.dart';
 import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
@@ -124,6 +125,10 @@ class AppRoutes {
             create: (context) => getIt<ChatbotCubit>(),
             child: const ChatScreen(),
           ),
+        );
+      case Routes.cartScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CartScreen(),
         );
 
       default:
