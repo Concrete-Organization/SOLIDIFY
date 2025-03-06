@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/features/community/ui/screens/comments_bottom_sheet.dart';
 
 class LikesAndComments extends StatelessWidget {
   final int likesCount;
@@ -24,7 +25,20 @@ class LikesAndComments extends StatelessWidget {
           style: TextStyles.font12LightBlackRegular,
         ),
         horizontalSpace(6),
-        SvgPicture.asset('assets/svgs/comment_icon.svg'),
+        GestureDetector(
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              builder: (context) {
+                return CommentsBottomSheet(
+                  scrollController: ScrollController(),
+                );
+              },
+            );
+          },          child: SvgPicture.asset('assets/svgs/comment_icon.svg'),
+        ),
         horizontalSpace(3),
         Text(
           commentsCount.toString(),
