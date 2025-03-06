@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:solidify/features/community/data/repos/posts_repo.dart';
+import 'package:solidify/features/community/logic/posts_cubit.dart';
 import 'package:solidify/features/marketplace/data/repo/products_list_repo.dart';
 import 'package:solidify/features/marketplace/logic/products_list_cubit/products_list_cubit.dart';
 import '../network/api_service.dart';
@@ -71,5 +73,8 @@ Future<void> setupGetIt() async {
   // products list
   getIt.registerLazySingleton<ProductsListRepo>(() => ProductsListRepo(getIt()));
   getIt.registerFactory<ProductsListCubit>(() => ProductsListCubit(getIt()));
+  // posts
+  getIt.registerLazySingleton<PostsRepo>(() => PostsRepo(getIt()));
+  getIt.registerFactory<PostsCubit>(() => PostsCubit(getIt()));
 
 }

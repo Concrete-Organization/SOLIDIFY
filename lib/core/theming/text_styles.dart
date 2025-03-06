@@ -105,6 +105,11 @@ class TextStyles {
     color: ColorsManager.lightBlack,
     fontWeight: FontWeightHelper.medium,
   );
+  static TextStyle font12LightBlackRegular = GoogleFonts.poppins(
+    fontSize: 12.sp,
+    color: ColorsManager.lightBlack,
+    fontWeight: FontWeightHelper.regular,
+  );
   static TextStyle font20MainlightBlack = GoogleFonts.poppins(
     fontSize: 20.sp,
     color: ColorsManager.lightBlack,
