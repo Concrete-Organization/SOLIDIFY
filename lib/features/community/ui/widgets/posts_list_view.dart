@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
-import 'package:solidify/features/community/data/models/get_posts_response.dart';
+import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
 import 'package:solidify/features/community/ui/widgets/post_item.dart';
 
 class PostsListView extends StatelessWidget {

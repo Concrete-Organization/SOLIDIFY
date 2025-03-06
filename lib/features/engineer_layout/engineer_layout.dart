@@ -6,7 +6,7 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/community/logic/posts_cubit.dart';
-import 'package:solidify/features/community/ui/community_screen.dart';
+import 'package:solidify/features/community/ui/screens/community_screen.dart';
 
 class EngineerLayout extends StatefulWidget {
   const EngineerLayout({super.key});

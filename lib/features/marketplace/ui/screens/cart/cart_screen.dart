@@ -32,7 +32,7 @@ class CartScreen extends StatelessWidget {
               verticalSpace(10),
               Text(
                 'Total',
-                style: TextStyles.font20MainlightBlack,
+                style: TextStyles.font20MainLightBlack,
               ),
               verticalSpace(15),
               Text(
