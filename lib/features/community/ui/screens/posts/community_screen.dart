@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
-import 'package:solidify/features/community/ui/widgets/community_app_bar.dart';
-import 'package:solidify/features/community/ui/widgets/posts_bloc_builder.dart';
+import 'package:solidify/features/community/ui/screens/posts/widgets/community_app_bar.dart';
+import 'package:solidify/features/community/ui/screens/posts/widgets/posts_bloc_builder.dart';
 
 class CommunityScreen extends StatelessWidget {
   const CommunityScreen({super.key});

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 
-import '../../../../core/theming/color_manger.dart';
+import '../../../../../../core/theming/color_manger.dart';
 
 class CommunityAppBar extends StatelessWidget {
   const CommunityAppBar({super.key});
@@ -17,13 +19,18 @@ class CommunityAppBar extends StatelessWidget {
           width: 20.w,
           height: 20.h,
         ),
-        SvgPicture.asset(
-          'assets/svgs/plus_icon.svg',
-          width: 20.w,
-          height: 20.h,
-          colorFilter: ColorFilter.mode(
-            ColorsManager.mainBlue,
-            BlendMode.srcIn,
+        GestureDetector(
+          onTap: (){
+            context.pushNamed(Routes.createPostScreen);
+          },
+          child: SvgPicture.asset(
+            'assets/svgs/plus_icon.svg',
+            width: 20.w,
+            height: 20.h,
+            colorFilter: ColorFilter.mode(
+              ColorsManager.mainBlue,
+              BlendMode.srcIn,
+            ),
           ),
         ),
       ],

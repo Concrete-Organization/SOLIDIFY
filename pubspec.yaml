@@ -76,7 +76,9 @@ dependencies:
   path_provider: ^2.1.5
   # A string-based path manipulation library.
   path: ^1.9.0
+  # library helps you to decode Json Web Tokens, you can also know if a JWT is already expired.
   jwt_decoder: ^2.0.1
+  # support infinite scroll and custom child widget.
   carousel_slider: ^5.0.0
 
 dev_dependencies:
