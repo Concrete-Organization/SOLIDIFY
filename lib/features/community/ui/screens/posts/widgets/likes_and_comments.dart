@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
-import 'package:solidify/features/community/ui/screens/comments_bottom_sheet.dart';
+import 'package:solidify/features/community/ui/screens/comments/comments_bottom_sheet.dart';
 
 class LikesAndComments extends StatelessWidget {
   final int likesCount;

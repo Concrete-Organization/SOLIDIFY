@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/format_date.dart';
-import 'package:solidify/features/community/ui/widgets/comment_item.dart';
+import 'package:solidify/features/community/ui/screens/comments/widgets/comment_item.dart';
 
 class CommentsListView extends StatelessWidget {
   final ScrollController scrollController;

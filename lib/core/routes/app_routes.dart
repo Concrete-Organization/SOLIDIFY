@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/features/community/ui/screens/posts/create_post_screen.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -133,6 +134,10 @@ class AppRoutes {
       case Routes.cartScreen:
         return MaterialPageRoute(
           builder: (context) => const CartScreen(),
+        );
+      case Routes.createPostScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CreatePostScreen(),
         );
 
       default:
