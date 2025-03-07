@@ -14,6 +14,7 @@ class ApiConstants {
   static const String refreshToken = 'Account/refreshToken';
   static const String predict = 'predict';
   static const String product = 'Product';
+  static const String post = 'Post';
 
   /// Returns the endpoint for a category with the given [id].
   static String categoryEndpoint(int id) => "Category/$id";

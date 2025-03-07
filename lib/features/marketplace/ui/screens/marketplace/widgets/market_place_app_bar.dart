@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MarketPlaceAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -14,6 +16,9 @@ class MarketPlaceAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         GestureDetector(
+          onTap: () {
+            context.pushNamed(Routes.cartScreen);
+          },
           child: SvgPicture.asset('assets/svgs/cart_icon.svg'),
         ),
         GestureDetector(
