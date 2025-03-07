@@ -12,6 +12,7 @@ class EngineerAccountSignUpCubit extends Cubit<EngineerAccountSignUpState> {
 
   EngineerAccountSignUpCubit(this._engineerAccountSignUpRepo):super(const EngineerAccountSignUpState.initial());
 
+  TextEditingController fullNameController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -27,6 +28,7 @@ class EngineerAccountSignUpCubit extends Cubit<EngineerAccountSignUpState> {
         email: emailController.text,
         password: passwordController.text,
         confirmPassword: confirmPasswordController.text,
+        fullName: fullNameController.text,
       ),
     );
 

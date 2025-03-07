@@ -8,12 +8,14 @@ class EngineerAccountSignUpRequestModel {
   final String email;
   final String password;
   final String confirmPassword;
+  final String fullName;
 
   EngineerAccountSignUpRequestModel({
     required this.userName,
     required this.email,
     required this.password,
     required this.confirmPassword,
+    required this.fullName,
   });
 
   /// Factory constructor for creating a new `UserSignUpRequestModel` instance

@@ -23,22 +23,19 @@ class ApiErrorModel {
   Map<String, dynamic> toJson() => _$ApiErrorModelToJson(this);
 
   String getAllErrorMessages() {
-    if (errors == null || errors is List && (errors as List).isEmpty) {
-      return message ?? "Unknown Error occurred";
+    if (message != null && message!.isNotEmpty) {
+      return message!;
     }
 
-    if (errors is Map<String, dynamic>) {
-      final errorMessage =
-          (errors as Map<String, dynamic>).entries.map((entry) {
-        final value = entry.value;
-        return "${value.join(',')}";
-      }).join('\n');
-
-      return errorMessage;
-    } else if (errors is List) {
-      return (errors as List).join('\n');
+    if (errors != null) {
+      if (errors is List<String>) {
+        return errors!.join('\n');
+      } else if (errors is Map<String, dynamic>) {
+        return (errors as Map<String, dynamic>).entries.map((e) => e.value)
+            .join('\n');
+      }
     }
 
-    return message ?? "Unknown Error occurred";
+    return "Unknown Error occurred";
   }
 }
