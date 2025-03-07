@@ -1,11 +1,9 @@
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoriesGrid extends StatefulWidget {
   const CategoriesGrid({super.key});
@@ -20,22 +18,37 @@ class _CategoriesGridState extends State<CategoriesGrid>
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
 
-  // Updated categories list includes an 'id' for each category.
   final List<Map<String, String>> categories = [
-    {'id': '0', 'icon': 'assets/images/all_categories_icon.png', 'label': 'All'},
+    {
+      'id': '0',
+      'icon': 'assets/images/all_categories_icon.png',
+      'label': 'All',
+    },
     {
       'id': '1',
       'icon': 'assets/images/coarse_aggregate.png',
-      'label': 'Coarse Aggregate'
+      'label': 'Coarse Aggregate',
     },
-    {'id': '2', 'icon': 'assets/images/cement_icon.png', 'label': 'Cement'},
-    {'id': '3', 'icon': 'assets/images/blast.png', 'label': 'Blast'},
+    {
+      'id': '5',
+      'icon': 'assets/images/cement_icon.png',
+      'label': 'Cement',
+    },
+    {
+      'id': '3',
+      'icon': 'assets/images/blast.png',
+      'label': 'Blast',
+    },
+    {
+      'id': '2',
+      'icon': 'assets/images/superplasticizer_icon.png',
+      'label': 'Superplasticizer',
+    },
     {
       'id': '4',
-      'icon': 'assets/images/superplasticizer_icon.png',
-      'label': 'Superplasticizer'
+      'icon': 'assets/images/fly_ash.png',
+      'label': 'Fly Ash',
     },
-    {'id': '5', 'icon': 'assets/images/fly_ash.png', 'label': 'Fly Ash'},
   ];
 
   @override
@@ -93,7 +106,6 @@ class _CategoriesGridState extends State<CategoriesGrid>
           _controller.reverse().then((_) {
             final selectedCategory = categories[index]['label'];
             final categoryId = categories[index]['id'];
-            // Pass both label and id (converted to int) as arguments
             context.pushNamed(
               Routes.productCategoryScreen,
               arguments: {

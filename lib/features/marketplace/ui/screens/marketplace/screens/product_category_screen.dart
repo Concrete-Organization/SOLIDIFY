@@ -24,7 +24,6 @@ class _ProductCategoryScreenState extends State<ProductCategoryScreen> {
       categoryLabel = args['label'] ?? 'Material';
       categoryId = args['id'];
       if (categoryId != null) {
-        // Trigger the API call via the cubit.
         context.read<ProductCategoryCubit>().fetchProductCategory(categoryId!);
       }
     }

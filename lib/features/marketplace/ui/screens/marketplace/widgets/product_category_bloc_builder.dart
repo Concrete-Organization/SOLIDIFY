@@ -12,8 +12,7 @@ import 'package:solidify/features/marketplace/logic/product_category_cubit.dart/
 class ProductCategoryBlocBuilder extends StatelessWidget {
   final String categoryLabel;
 
-  const ProductCategoryBlocBuilder({Key? key, required this.categoryLabel})
-      : super(key: key);
+  const ProductCategoryBlocBuilder({super.key, required this.categoryLabel});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,6 @@ class ProductCategoryBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         return CustomScrollView(
           slivers: [
-            // Header with search bar and category label
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               sliver: SliverList(
@@ -41,20 +39,29 @@ class ProductCategoryBlocBuilder extends StatelessWidget {
                 ),
               ),
             ),
-            // Grid view based on cubit state
             SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 7.h),
               sliver: state.when(
-                initial: () =>
-                    const SliverToBoxAdapter(child: SizedBox.shrink()),
+                initial: () => const SliverToBoxAdapter(
+                  child: SizedBox.shrink(),
+                ),
                 categoryLoading: () => const SliverToBoxAdapter(
-                    child: Center(child: CircularProgressIndicator())),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
                 categorySuccess: (categoryResponse) {
                   final products = categoryResponse.model.products;
-                  return CategoryProductsGrid(products: products);
+                  return CategoryProductsGrid(
+                    products: products,
+                  );
                 },
                 categoryError: (error) => SliverToBoxAdapter(
-                  child: Center(child: Text('Error: ${error.message}')),
+                  child: Center(
+                    child: Text(
+                      'Error: ${error.message}',
+                    ),
+                  ),
                 ),
               ),
             ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +10,7 @@ import 'package:solidify/features/marketplace/data/models/get_products_by_catego
 class CategoryProductGridViewItem extends StatefulWidget {
   final ProductModel product;
 
-  const CategoryProductGridViewItem({Key? key, required this.product})
-      : super(key: key);
+  const CategoryProductGridViewItem({super.key, required this.product});
 
   @override
   State<CategoryProductGridViewItem> createState() =>

@@ -21,7 +21,6 @@ class QuantitySelector extends StatelessWidget {
     return IntrinsicWidth(
       child: Container(
         decoration: BoxDecoration(
-          // A unified border and rounded corners for the entire widget.
           border: Border.all(color: ColorsManager.mainBlue),
           borderRadius: BorderRadius.circular(4.r),
           color: ColorsManager.white,
@@ -29,7 +28,6 @@ class QuantitySelector extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Minus button container with main blue background.
             GestureDetector(
               onTap: onDecrement,
               child: Container(
@@ -44,7 +42,6 @@ class QuantitySelector extends StatelessWidget {
                 ),
               ),
             ),
-            // Number display container with white background and vertical dividers.
             Container(
               width: 43.w,
               height: 16.h,
@@ -60,7 +57,6 @@ class QuantitySelector extends StatelessWidget {
                 style: TextStyles.font10MainBlueSemiBold,
               ),
             ),
-            // Plus button container with main blue background.
             GestureDetector(
               onTap: onIncrement,
               child: Container(

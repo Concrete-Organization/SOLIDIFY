@@ -6,8 +6,7 @@ import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/cat
 class CategoryProductsGrid extends StatelessWidget {
   final List<ProductModel> products;
 
-  const CategoryProductsGrid({Key? key, required this.products})
-      : super(key: key);
+  const CategoryProductsGrid({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class CategoryProductsGrid extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (context, index) => GestureDetector(
           onTap: () {
-            // Add your navigation logic if needed.
+
           },
           child: CategoryProductGridViewItem(product: products[index]),
         ),
