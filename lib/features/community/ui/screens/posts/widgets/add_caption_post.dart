@@ -8,10 +8,21 @@ import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
 import 'package:solidify/features/community/ui/screens/posts/widgets/images_list_view_picker.dart';
 
-class AddCaptionPost extends StatelessWidget {
+class AddCaptionPost extends StatefulWidget {
   final List<XFile> selectedImages;
 
   const AddCaptionPost({super.key, required this.selectedImages});
+
+  @override
+  State<AddCaptionPost> createState() => _AddCaptionPostState();
+}
+
+class _AddCaptionPostState extends State<AddCaptionPost> {
+  void removeImage(int index) {
+    setState(() {
+      widget.selectedImages.removeAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +51,11 @@ class AddCaptionPost extends StatelessWidget {
               ),
             ),
           ),
-          if (selectedImages.isNotEmpty)
-            ImagesListViewPicker(selectedImages: selectedImages),
+          if (widget.selectedImages.isNotEmpty)
+            ImagesListViewPicker(
+              selectedImages: widget.selectedImages,
+              onRemoveImage: removeImage,
+            ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: AppTextButton(
