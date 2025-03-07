@@ -13,6 +13,7 @@ EngineerAccountSignUpRequestModel _$EngineerAccountSignUpRequestModelFromJson(
       email: json['email'] as String,
       password: json['password'] as String,
       confirmPassword: json['confirmPassword'] as String,
+      fullName: json['fullName'] as String,
     );
 
 Map<String, dynamic> _$EngineerAccountSignUpRequestModelToJson(
@@ -22,4 +23,5 @@ Map<String, dynamic> _$EngineerAccountSignUpRequestModelToJson(
       'email': instance.email,
       'password': instance.password,
       'confirmPassword': instance.confirmPassword,
+      'fullName': instance.fullName,
     };

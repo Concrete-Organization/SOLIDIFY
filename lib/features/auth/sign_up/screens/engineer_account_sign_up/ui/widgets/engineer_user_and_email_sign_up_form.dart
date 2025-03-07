@@ -53,6 +53,17 @@ class _EngineerUserAndEmailSignUpFormState extends State<EngineerUserAndEmailSig
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
+                        'Full Name',
+                        style: TextStyles.font14lightBlackRegular,
+                      ),
+                      verticalSpace(5),
+                      AppTextFormField(
+                        controller: cubit.fullNameController,
+                        hintText: 'Enter your Full Name',
+                        validator: validateName,
+                      ),
+                      verticalSpace(20),
+                      Text(
                         'Username',
                         style: TextStyles.font14lightBlackRegular,
                       ),
