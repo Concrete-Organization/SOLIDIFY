@@ -5,28 +5,40 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
-import 'package:solidify/features/marketplace/data/models/product_list_response_model.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/product_grid_view.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/product_search_bar.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/category_product_grid.dart';
 import 'package:solidify/features/marketplace/logic/product_category_cubit.dart/prodcut_category_cubit.dart';
 import 'package:solidify/features/marketplace/logic/product_category_cubit.dart/product_category_state.dart';
+import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/category_product_grid_view_item.dart';
 
-class ProductCategoryScreen extends StatelessWidget {
+class ProductCategoryScreen extends StatefulWidget {
   const ProductCategoryScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<ProductCategoryScreen> createState() => _ProductCategoryScreenState();
+}
+
+class _ProductCategoryScreenState extends State<ProductCategoryScreen> {
+  int? categoryId;
+  String? categoryLabel;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     final args = ModalRoute.of(context)?.settings.arguments;
-    String categoryLabel = 'Material';
-    int? categoryId;
     if (args != null && args is Map<String, dynamic>) {
       categoryLabel = args['label'] ?? 'Material';
       categoryId = args['id'];
+      // Trigger the API call if a category ID is provided.
+      if (categoryId != null) {
+        context.read<ProductCategoryCubit>().fetchProductCategory(categoryId!);
+      }
     }
+  }
 
-    // The cubit is provided via the route.
-    // The cubit should fetch the products for the given category.
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -58,7 +70,7 @@ class ProductCategoryScreen extends StatelessWidget {
                         const ProductSearchBar(),
                         verticalSpace(15),
                         Text(
-                          categoryLabel,
+                          categoryLabel ?? 'Material',
                           style: TextStyles.font24lightBlackMedium,
                         ),
                         verticalSpace(15),
@@ -66,7 +78,7 @@ class ProductCategoryScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Grid view of products (using cubit state)
+                // Grid view of products based on cubit state
                 SliverPadding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
                   sliver: state.when(
@@ -75,6 +87,7 @@ class ProductCategoryScreen extends StatelessWidget {
                     categoryLoading: () => const SliverToBoxAdapter(
                         child: Center(child: CircularProgressIndicator())),
                     categorySuccess: (categoryResponse) {
+                      // The products are extracted from the category response model.
                       final products = categoryResponse.model.products;
                       return CategoryProductsGrid(products: products);
                     },

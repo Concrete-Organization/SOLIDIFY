@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/solidify.dart';
 import 'core/di/dependency_injection.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/features/bloc_observer.dart';
 import 'package:solidify/core/routes/app_routes.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
@@ -8,6 +10,7 @@ import 'package:solidify/core/helpers/shared_pref_helper.dart';
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
+  Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
 
