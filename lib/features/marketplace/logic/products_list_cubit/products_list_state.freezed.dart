@@ -22,6 +22,9 @@ mixin _$ProductsListState<T> {
     required TResult Function() productsListLoading,
     required TResult Function(List<Product> productsList) productsListSuccess,
     required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function() cartLoading,
+    required TResult Function(PostCartResponseModel response) cartSuccess,
+    required TResult Function(ApiErrorModel error) cartError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +33,9 @@ mixin _$ProductsListState<T> {
     TResult? Function()? productsListLoading,
     TResult? Function(List<Product> productsList)? productsListSuccess,
     TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function()? cartLoading,
+    TResult? Function(PostCartResponseModel response)? cartSuccess,
+    TResult? Function(ApiErrorModel error)? cartError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +44,9 @@ mixin _$ProductsListState<T> {
     TResult Function()? productsListLoading,
     TResult Function(List<Product> productsList)? productsListSuccess,
     TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function()? cartLoading,
+    TResult Function(PostCartResponseModel response)? cartSuccess,
+    TResult Function(ApiErrorModel error)? cartError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +56,9 @@ mixin _$ProductsListState<T> {
     required TResult Function(ProductsListLoading<T> value) productsListLoading,
     required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
     required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +67,9 @@ mixin _$ProductsListState<T> {
     TResult? Function(ProductsListLoading<T> value)? productsListLoading,
     TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
     TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +78,9 @@ mixin _$ProductsListState<T> {
     TResult Function(ProductsListLoading<T> value)? productsListLoading,
     TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
     TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +153,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function() productsListLoading,
     required TResult Function(List<Product> productsList) productsListSuccess,
     required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function() cartLoading,
+    required TResult Function(PostCartResponseModel response) cartSuccess,
+    required TResult Function(ApiErrorModel error) cartError,
   }) {
     return initial();
   }
@@ -146,6 +167,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function()? productsListLoading,
     TResult? Function(List<Product> productsList)? productsListSuccess,
     TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function()? cartLoading,
+    TResult? Function(PostCartResponseModel response)? cartSuccess,
+    TResult? Function(ApiErrorModel error)? cartError,
   }) {
     return initial?.call();
   }
@@ -157,6 +181,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function()? productsListLoading,
     TResult Function(List<Product> productsList)? productsListSuccess,
     TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function()? cartLoading,
+    TResult Function(PostCartResponseModel response)? cartSuccess,
+    TResult Function(ApiErrorModel error)? cartError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -172,6 +199,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(ProductsListLoading<T> value) productsListLoading,
     required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
     required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
   }) {
     return initial(this);
   }
@@ -183,6 +213,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function(ProductsListLoading<T> value)? productsListLoading,
     TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
     TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
   }) {
     return initial?.call(this);
   }
@@ -194,6 +227,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function(ProductsListLoading<T> value)? productsListLoading,
     TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
     TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -254,6 +290,9 @@ class _$ProductsListLoadingImpl<T> implements ProductsListLoading<T> {
     required TResult Function() productsListLoading,
     required TResult Function(List<Product> productsList) productsListSuccess,
     required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function() cartLoading,
+    required TResult Function(PostCartResponseModel response) cartSuccess,
+    required TResult Function(ApiErrorModel error) cartError,
   }) {
     return productsListLoading();
   }
@@ -265,6 +304,9 @@ class _$ProductsListLoadingImpl<T> implements ProductsListLoading<T> {
     TResult? Function()? productsListLoading,
     TResult? Function(List<Product> productsList)? productsListSuccess,
     TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function()? cartLoading,
+    TResult? Function(PostCartResponseModel response)? cartSuccess,
+    TResult? Function(ApiErrorModel error)? cartError,
   }) {
     return productsListLoading?.call();
   }
@@ -276,6 +318,9 @@ class _$ProductsListLoadingImpl<T> implements ProductsListLoading<T> {
     TResult Function()? productsListLoading,
     TResult Function(List<Product> productsList)? productsListSuccess,
     TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function()? cartLoading,
+    TResult Function(PostCartResponseModel response)? cartSuccess,
+    TResult Function(ApiErrorModel error)? cartError,
     required TResult orElse(),
   }) {
     if (productsListLoading != null) {
@@ -291,6 +336,9 @@ class _$ProductsListLoadingImpl<T> implements ProductsListLoading<T> {
     required TResult Function(ProductsListLoading<T> value) productsListLoading,
     required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
     required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
   }) {
     return productsListLoading(this);
   }
@@ -302,6 +350,9 @@ class _$ProductsListLoadingImpl<T> implements ProductsListLoading<T> {
     TResult? Function(ProductsListLoading<T> value)? productsListLoading,
     TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
     TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
   }) {
     return productsListLoading?.call(this);
   }
@@ -313,6 +364,9 @@ class _$ProductsListLoadingImpl<T> implements ProductsListLoading<T> {
     TResult Function(ProductsListLoading<T> value)? productsListLoading,
     TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
     TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
     required TResult orElse(),
   }) {
     if (productsListLoading != null) {
@@ -408,6 +462,9 @@ class _$ProductsListSuccessImpl<T> implements ProductsListSuccess<T> {
     required TResult Function() productsListLoading,
     required TResult Function(List<Product> productsList) productsListSuccess,
     required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function() cartLoading,
+    required TResult Function(PostCartResponseModel response) cartSuccess,
+    required TResult Function(ApiErrorModel error) cartError,
   }) {
     return productsListSuccess(productsList);
   }
@@ -419,6 +476,9 @@ class _$ProductsListSuccessImpl<T> implements ProductsListSuccess<T> {
     TResult? Function()? productsListLoading,
     TResult? Function(List<Product> productsList)? productsListSuccess,
     TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function()? cartLoading,
+    TResult? Function(PostCartResponseModel response)? cartSuccess,
+    TResult? Function(ApiErrorModel error)? cartError,
   }) {
     return productsListSuccess?.call(productsList);
   }
@@ -430,6 +490,9 @@ class _$ProductsListSuccessImpl<T> implements ProductsListSuccess<T> {
     TResult Function()? productsListLoading,
     TResult Function(List<Product> productsList)? productsListSuccess,
     TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function()? cartLoading,
+    TResult Function(PostCartResponseModel response)? cartSuccess,
+    TResult Function(ApiErrorModel error)? cartError,
     required TResult orElse(),
   }) {
     if (productsListSuccess != null) {
@@ -445,6 +508,9 @@ class _$ProductsListSuccessImpl<T> implements ProductsListSuccess<T> {
     required TResult Function(ProductsListLoading<T> value) productsListLoading,
     required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
     required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
   }) {
     return productsListSuccess(this);
   }
@@ -456,6 +522,9 @@ class _$ProductsListSuccessImpl<T> implements ProductsListSuccess<T> {
     TResult? Function(ProductsListLoading<T> value)? productsListLoading,
     TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
     TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
   }) {
     return productsListSuccess?.call(this);
   }
@@ -467,6 +536,9 @@ class _$ProductsListSuccessImpl<T> implements ProductsListSuccess<T> {
     TResult Function(ProductsListLoading<T> value)? productsListLoading,
     TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
     TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
     required TResult orElse(),
   }) {
     if (productsListSuccess != null) {
@@ -563,6 +635,9 @@ class _$ProductsListErrorImpl<T> implements ProductsListError<T> {
     required TResult Function() productsListLoading,
     required TResult Function(List<Product> productsList) productsListSuccess,
     required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function() cartLoading,
+    required TResult Function(PostCartResponseModel response) cartSuccess,
+    required TResult Function(ApiErrorModel error) cartError,
   }) {
     return productsListError(error);
   }
@@ -574,6 +649,9 @@ class _$ProductsListErrorImpl<T> implements ProductsListError<T> {
     TResult? Function()? productsListLoading,
     TResult? Function(List<Product> productsList)? productsListSuccess,
     TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function()? cartLoading,
+    TResult? Function(PostCartResponseModel response)? cartSuccess,
+    TResult? Function(ApiErrorModel error)? cartError,
   }) {
     return productsListError?.call(error);
   }
@@ -585,6 +663,9 @@ class _$ProductsListErrorImpl<T> implements ProductsListError<T> {
     TResult Function()? productsListLoading,
     TResult Function(List<Product> productsList)? productsListSuccess,
     TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function()? cartLoading,
+    TResult Function(PostCartResponseModel response)? cartSuccess,
+    TResult Function(ApiErrorModel error)? cartError,
     required TResult orElse(),
   }) {
     if (productsListError != null) {
@@ -600,6 +681,9 @@ class _$ProductsListErrorImpl<T> implements ProductsListError<T> {
     required TResult Function(ProductsListLoading<T> value) productsListLoading,
     required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
     required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
   }) {
     return productsListError(this);
   }
@@ -611,6 +695,9 @@ class _$ProductsListErrorImpl<T> implements ProductsListError<T> {
     TResult? Function(ProductsListLoading<T> value)? productsListLoading,
     TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
     TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
   }) {
     return productsListError?.call(this);
   }
@@ -622,6 +709,9 @@ class _$ProductsListErrorImpl<T> implements ProductsListError<T> {
     TResult Function(ProductsListLoading<T> value)? productsListLoading,
     TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
     TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
     required TResult orElse(),
   }) {
     if (productsListError != null) {
@@ -642,4 +732,483 @@ abstract class ProductsListError<T> implements ProductsListState<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductsListErrorImplCopyWith<T, _$ProductsListErrorImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CartLoadingImplCopyWith<T, $Res> {
+  factory _$$CartLoadingImplCopyWith(_$CartLoadingImpl<T> value,
+          $Res Function(_$CartLoadingImpl<T>) then) =
+      __$$CartLoadingImplCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$CartLoadingImplCopyWithImpl<T, $Res>
+    extends _$ProductsListStateCopyWithImpl<T, $Res, _$CartLoadingImpl<T>>
+    implements _$$CartLoadingImplCopyWith<T, $Res> {
+  __$$CartLoadingImplCopyWithImpl(
+      _$CartLoadingImpl<T> _value, $Res Function(_$CartLoadingImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CartLoadingImpl<T> implements CartLoading<T> {
+  const _$CartLoadingImpl();
+
+  @override
+  String toString() {
+    return 'ProductsListState<$T>.cartLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CartLoadingImpl<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() productsListLoading,
+    required TResult Function(List<Product> productsList) productsListSuccess,
+    required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function() cartLoading,
+    required TResult Function(PostCartResponseModel response) cartSuccess,
+    required TResult Function(ApiErrorModel error) cartError,
+  }) {
+    return cartLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? productsListLoading,
+    TResult? Function(List<Product> productsList)? productsListSuccess,
+    TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function()? cartLoading,
+    TResult? Function(PostCartResponseModel response)? cartSuccess,
+    TResult? Function(ApiErrorModel error)? cartError,
+  }) {
+    return cartLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? productsListLoading,
+    TResult Function(List<Product> productsList)? productsListSuccess,
+    TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function()? cartLoading,
+    TResult Function(PostCartResponseModel response)? cartSuccess,
+    TResult Function(ApiErrorModel error)? cartError,
+    required TResult orElse(),
+  }) {
+    if (cartLoading != null) {
+      return cartLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(ProductsListLoading<T> value) productsListLoading,
+    required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
+    required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
+  }) {
+    return cartLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(ProductsListLoading<T> value)? productsListLoading,
+    TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
+    TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
+  }) {
+    return cartLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(ProductsListLoading<T> value)? productsListLoading,
+    TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
+    TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
+    required TResult orElse(),
+  }) {
+    if (cartLoading != null) {
+      return cartLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CartLoading<T> implements ProductsListState<T> {
+  const factory CartLoading() = _$CartLoadingImpl<T>;
+}
+
+/// @nodoc
+abstract class _$$CartSuccessImplCopyWith<T, $Res> {
+  factory _$$CartSuccessImplCopyWith(_$CartSuccessImpl<T> value,
+          $Res Function(_$CartSuccessImpl<T>) then) =
+      __$$CartSuccessImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({PostCartResponseModel response});
+}
+
+/// @nodoc
+class __$$CartSuccessImplCopyWithImpl<T, $Res>
+    extends _$ProductsListStateCopyWithImpl<T, $Res, _$CartSuccessImpl<T>>
+    implements _$$CartSuccessImplCopyWith<T, $Res> {
+  __$$CartSuccessImplCopyWithImpl(
+      _$CartSuccessImpl<T> _value, $Res Function(_$CartSuccessImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? response = null,
+  }) {
+    return _then(_$CartSuccessImpl<T>(
+      null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as PostCartResponseModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CartSuccessImpl<T> implements CartSuccess<T> {
+  const _$CartSuccessImpl(this.response);
+
+  @override
+  final PostCartResponseModel response;
+
+  @override
+  String toString() {
+    return 'ProductsListState<$T>.cartSuccess(response: $response)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CartSuccessImpl<T> &&
+            (identical(other.response, response) ||
+                other.response == response));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, response);
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CartSuccessImplCopyWith<T, _$CartSuccessImpl<T>> get copyWith =>
+      __$$CartSuccessImplCopyWithImpl<T, _$CartSuccessImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() productsListLoading,
+    required TResult Function(List<Product> productsList) productsListSuccess,
+    required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function() cartLoading,
+    required TResult Function(PostCartResponseModel response) cartSuccess,
+    required TResult Function(ApiErrorModel error) cartError,
+  }) {
+    return cartSuccess(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? productsListLoading,
+    TResult? Function(List<Product> productsList)? productsListSuccess,
+    TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function()? cartLoading,
+    TResult? Function(PostCartResponseModel response)? cartSuccess,
+    TResult? Function(ApiErrorModel error)? cartError,
+  }) {
+    return cartSuccess?.call(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? productsListLoading,
+    TResult Function(List<Product> productsList)? productsListSuccess,
+    TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function()? cartLoading,
+    TResult Function(PostCartResponseModel response)? cartSuccess,
+    TResult Function(ApiErrorModel error)? cartError,
+    required TResult orElse(),
+  }) {
+    if (cartSuccess != null) {
+      return cartSuccess(response);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(ProductsListLoading<T> value) productsListLoading,
+    required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
+    required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
+  }) {
+    return cartSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(ProductsListLoading<T> value)? productsListLoading,
+    TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
+    TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
+  }) {
+    return cartSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(ProductsListLoading<T> value)? productsListLoading,
+    TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
+    TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
+    required TResult orElse(),
+  }) {
+    if (cartSuccess != null) {
+      return cartSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CartSuccess<T> implements ProductsListState<T> {
+  const factory CartSuccess(final PostCartResponseModel response) =
+      _$CartSuccessImpl<T>;
+
+  PostCartResponseModel get response;
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CartSuccessImplCopyWith<T, _$CartSuccessImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CartErrorImplCopyWith<T, $Res> {
+  factory _$$CartErrorImplCopyWith(
+          _$CartErrorImpl<T> value, $Res Function(_$CartErrorImpl<T>) then) =
+      __$$CartErrorImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({ApiErrorModel error});
+}
+
+/// @nodoc
+class __$$CartErrorImplCopyWithImpl<T, $Res>
+    extends _$ProductsListStateCopyWithImpl<T, $Res, _$CartErrorImpl<T>>
+    implements _$$CartErrorImplCopyWith<T, $Res> {
+  __$$CartErrorImplCopyWithImpl(
+      _$CartErrorImpl<T> _value, $Res Function(_$CartErrorImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$CartErrorImpl<T>(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CartErrorImpl<T> implements CartError<T> {
+  const _$CartErrorImpl({required this.error});
+
+  @override
+  final ApiErrorModel error;
+
+  @override
+  String toString() {
+    return 'ProductsListState<$T>.cartError(error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CartErrorImpl<T> &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CartErrorImplCopyWith<T, _$CartErrorImpl<T>> get copyWith =>
+      __$$CartErrorImplCopyWithImpl<T, _$CartErrorImpl<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() productsListLoading,
+    required TResult Function(List<Product> productsList) productsListSuccess,
+    required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function() cartLoading,
+    required TResult Function(PostCartResponseModel response) cartSuccess,
+    required TResult Function(ApiErrorModel error) cartError,
+  }) {
+    return cartError(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? productsListLoading,
+    TResult? Function(List<Product> productsList)? productsListSuccess,
+    TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function()? cartLoading,
+    TResult? Function(PostCartResponseModel response)? cartSuccess,
+    TResult? Function(ApiErrorModel error)? cartError,
+  }) {
+    return cartError?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? productsListLoading,
+    TResult Function(List<Product> productsList)? productsListSuccess,
+    TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function()? cartLoading,
+    TResult Function(PostCartResponseModel response)? cartSuccess,
+    TResult Function(ApiErrorModel error)? cartError,
+    required TResult orElse(),
+  }) {
+    if (cartError != null) {
+      return cartError(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(ProductsListLoading<T> value) productsListLoading,
+    required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
+    required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
+  }) {
+    return cartError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(ProductsListLoading<T> value)? productsListLoading,
+    TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
+    TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
+  }) {
+    return cartError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(ProductsListLoading<T> value)? productsListLoading,
+    TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
+    TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
+    required TResult orElse(),
+  }) {
+    if (cartError != null) {
+      return cartError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CartError<T> implements ProductsListState<T> {
+  const factory CartError({required final ApiErrorModel error}) =
+      _$CartErrorImpl<T>;
+
+  ApiErrorModel get error;
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CartErrorImplCopyWith<T, _$CartErrorImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
