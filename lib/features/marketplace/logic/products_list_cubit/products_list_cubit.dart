@@ -5,9 +5,8 @@ import 'package:solidify/features/marketplace/logic/products_list_cubit/products
 
 class ProductsListCubit extends Cubit<ProductsListState> {
   final ProductsListRepo _productsListRepo;
-  final CartRepo _cartRepo;
 
-  ProductsListCubit(this._productsListRepo, this._cartRepo)
+  ProductsListCubit(this._productsListRepo)
       : super(const ProductsListState.initial());
 
   Future<void> fetchProductsList() async {
@@ -21,21 +20,6 @@ class ProductsListCubit extends Cubit<ProductsListState> {
       },
       failure: (error) {
         emit(ProductsListState.productsListError(error: error));
-      },
-    );
-  }
-
-  Future<void> addToCart(String id) async {
-    emit(const ProductsListState.cartLoading());
-
-    final result = await _cartRepo.addCartItem(id);
-
-    result.when(
-      success: (response) {
-        emit(ProductsListState.cartSuccess(response));
-      },
-      failure: (error) {
-        emit(ProductsListState.cartError(error: error));
       },
     );
   }

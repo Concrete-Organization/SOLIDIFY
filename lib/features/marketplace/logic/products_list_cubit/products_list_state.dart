@@ -16,13 +16,4 @@ class ProductsListState<T> with _$ProductsListState<T> {
 
   const factory ProductsListState.productsListError(
       {required ApiErrorModel error}) = ProductsListError;
-
-  // Additional states for cart actions:
-  const factory ProductsListState.cartLoading() = CartLoading;
-
-  const factory ProductsListState.cartSuccess(PostCartResponseModel response) =
-      CartSuccess;
-
-  const factory ProductsListState.cartError({required ApiErrorModel error}) =
-      CartError;
 }
