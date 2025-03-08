@@ -56,6 +56,7 @@ class SharedPrefHelper {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getBool(key) ?? defaultValue;
   }
+
   static Future<double> getDouble(String key) async {
     debugPrint('SharedPrefHelper: getDouble with key: $key');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
