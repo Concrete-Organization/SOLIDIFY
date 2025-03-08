@@ -6,19 +6,44 @@ import 'package:solidify/features/marketplace/data/repo/cart_repo.dart';
 class CartCubit extends Cubit<CartState> {
   final CartRepo _cartRepo;
 
-  CartCubit(this._cartRepo) : super(const CartState.initial());
+  CartCubit(this._cartRepo) : super(const CartState.initial()) {
+    _initializeCart();
+  }
 
-  Future<void> addCachedCartItem() async {
-    final productId = await SharedPrefHelper.getProductId();
-    if (productId.isEmpty) {
-      return;
+  Future<void> _initializeCart() async {
+    final items = await _cartRepo.getCartItems();
+    if (items.isNotEmpty) {}
+  }
+
+  Future<void> addCartItem(String id) async {
+    emit(const CartState.loading());
+
+    // Check if product ID is already cached
+    final isCached = await SharedPrefHelper.isProductIdCached(id);
+    if (!isCached) {
+      // If not cached, add it to the cached list for future reference
+      final cachedIds = await SharedPrefHelper.getCachedProductIds();
+      cachedIds.add(id);
+      await SharedPrefHelper.cacheProductIds(cachedIds);
     }
 
-    emit(const CartState.loading());
-    final result = await _cartRepo.addCartItem(productId);
+    // Process the cart item addition
+    final result = await _cartRepo.addCartItem(id);
     result.when(
-      success: (response) => emit(CartState.success(response)),
-      failure: (error) => emit(CartState.error(error: error)),
+      success: (response) {
+        emit(CartState.success(response));
+      },
+      failure: (error) {
+        emit(CartState.error(error: error));
+      },
     );
+  }
+
+  Future<bool> isProductInCart(String id) async {
+    return await _cartRepo.isProductInCart(id);
+  }
+
+  Future<String> getCurrentProductId() async {
+    return await SharedPrefHelper.getProductId();
   }
 }

@@ -13,6 +13,7 @@ import 'package:solidify/features/community/data/repos/posts_repo.dart';
 import 'package:solidify/features/chatbot/data/api/chatbot_api_call.dart';
 import '../../features/auth/reset_password/logic/reset_password_cubit.dart';
 import '../../features/auth/forget_password/logic/forget_password_cubit.dart';
+import 'package:solidify/features/marketplace/logic/cart_cubit/cart_cubit.dart';
 import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
 import 'package:solidify/features/marketplace/data/repo/products_list_repo.dart';
 import '../../features/auth/forget_password/data/repos/forget_password_repo.dart';
@@ -90,4 +91,5 @@ Future<void> setupGetIt() async {
 
   // cart
   getIt.registerLazySingleton<CartRepo>(() => CartRepo(getIt()));
+  getIt.registerFactory<CartCubit>(() => CartCubit(getIt()));
 }
