@@ -16,8 +16,10 @@ class MarketplaceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<CartCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt<CartCubit>()),
+      ],
       child: Scaffold(
         appBar: const MarketPlaceAppBar(),
         body: SafeArea(

@@ -6,12 +6,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/theming/font_weight_helper.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
+import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/features/marketplace/logic/cart_cubit/cart_cubit.dart';
 import 'package:solidify/features/marketplace/logic/cart_cubit/cart_state.dart';
 import 'package:solidify/features/marketplace/data/models/product_list_response_model.dart';
 
 class ProductGridViewItem extends StatefulWidget {
-  final Product product;
+  final dynamic product;
 
   const ProductGridViewItem({super.key, required this.product});
 
@@ -21,25 +22,7 @@ class ProductGridViewItem extends StatefulWidget {
 
 class _ProductGridViewItemState extends State<ProductGridViewItem> {
   bool isFavorite = false;
-  bool _isInCart = false;
   bool _isAddingToCart = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _checkIfInCart();
-  }
-
-  Future<void> _checkIfInCart() async {
-    final cartCubit = context.read<CartCubit>();
-    final isInCart = await cartCubit.isProductInCart(widget.product.id);
-    
-    if (mounted) {
-      setState(() {
-        _isInCart = isInCart;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,44 +30,37 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
       listener: (context, state) {
         state.maybeWhen(
           success: (response) {
-            if (mounted) {
-              setState(() {
-                _isAddingToCart = false;
-                _isInCart = true;
-              });
-              
-              // You could show a snackbar here to indicate success
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('${widget.product.name} added to cart'),
-                  backgroundColor: ColorsManager.mainBlue,
-                  duration: const Duration(seconds: 2),
-                ),
-              );
-            }
+            setState(() {
+              _isAddingToCart = false;
+            });
+
+            // Show success message
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('${widget.product.name} added to cart'),
+                backgroundColor: ColorsManager.mainBlue,
+                duration: const Duration(seconds: 2),
+              ),
+            );
           },
           error: (error) {
-            if (mounted) {
-              setState(() {
-                _isAddingToCart = false;
-              });
-              
-              // Show error message
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Error: ${error.message}'),
-                  backgroundColor: Colors.red,
-                  duration: const Duration(seconds: 2),
-                ),
-              );
-            }
+            setState(() {
+              _isAddingToCart = false;
+            });
+
+            // Show error message
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Error: ${error.message}'),
+                backgroundColor: Colors.red,
+                duration: const Duration(seconds: 2),
+              ),
+            );
           },
           loading: () {
-            if (mounted) {
-              setState(() {
-                _isAddingToCart = true;
-              });
-            }
+            setState(() {
+              _isAddingToCart = true;
+            });
           },
           orElse: () {},
         );
@@ -211,15 +187,11 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
                         : AppTextButton(
                             height: 34.h,
                             borderRadius: 10.r,
-                            textButton: _isInCart ? 'Added to cart' : 'Add to cart',
+                            textButton: 'Add to cart',
                             fontSize: 12.sp,
                             fontWeight: FontWeightHelper.medium,
-                            onPressed: _isInCart
-                                ? null // Disable button if already in cart
-                                : () => _addToCart(context),
-                            backgroundColor: _isInCart
-                                ? ColorsManager.mainBlue.withOpacity(0.5)
-                                : ColorsManager.mainBlue,
+                            onPressed: () => _addToCart(context),
+                            backgroundColor: ColorsManager.mainBlue,
                             padding: EdgeInsets.zero,
                           ),
                   ],
@@ -232,8 +204,12 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
     );
   }
 
-  void _addToCart(BuildContext context) {
-    final cartCubit = context.read<CartCubit>();
-    cartCubit.addCartItem(widget.product.id);
+  void _addToCart(BuildContext context) async {
+    // Save the product ID to SharedPreferences
+    final productId = widget.product.id.toString();
+    await SharedPrefHelper.setProductId(productId);
+
+    // Then call the cart cubit to add the item
+    context.read<CartCubit>().addCartItem(productId);
   }
 }

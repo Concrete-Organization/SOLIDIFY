@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import 'api_error_model.dart';
 
 class ApiErrorHandler {
@@ -15,7 +14,7 @@ class ApiErrorHandler {
         case DioExceptionType.unknown:
           return ApiErrorModel(
               message:
-              "Connection to the server failed due to internet connection");
+                  "Connection to the server failed due to internet connection");
         case DioExceptionType.receiveTimeout:
           return ApiErrorModel(
               message: "Receive timeout in connection with the server");
@@ -34,6 +33,10 @@ class ApiErrorHandler {
 }
 
 ApiErrorModel _handleError(dynamic data) {
+  if (data == null || data is! Map<String, dynamic>) {
+    return ApiErrorModel(message: "Unknown error occurred");
+  }
+
   return ApiErrorModel(
     message: data['message'] ?? "Unknown error occurred",
     statusCode: data['code'],
