@@ -18,4 +18,7 @@ class ApiConstants {
 
   /// Returns the endpoint for a category with the given [id].
   static String categoryEndpoint(int id) => "Category/$id";
+
+  /// Returns the endpoint for a CartItem with the given [id].
+  static String cartItemEndpoint(String id) => "CartItem/$id";
 }

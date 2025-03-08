@@ -9,6 +9,7 @@ import '../../features/auth/otp/data/repos/verify_otp_repo.dart';
 import 'package:solidify/features/community/logic/posts_cubit.dart';
 import 'package:solidify/features/community/logic/posts_cubit.dart';
 import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
+import 'package:solidify/features/marketplace/data/repo/cart_repo.dart';
 import 'package:solidify/features/community/data/repos/posts_repo.dart';
 import 'package:solidify/features/community/data/repos/posts_repo.dart';
 import 'package:solidify/features/chatbot/data/api/chatbot_api_call.dart';
@@ -82,10 +83,13 @@ Future<void> setupGetIt() async {
   // posts
   getIt.registerLazySingleton<PostsRepo>(() => PostsRepo(getIt()));
   getIt.registerFactory<PostsCubit>(() => PostsCubit(getIt()));
-  
+
   // product by  category
   getIt.registerLazySingleton<ProductCategoryRepo>(
       () => ProductCategoryRepo(getIt()));
-      getIt.registerFactory<ProductCategoryCubit>(() => ProductCategoryCubit(getIt()));
+  getIt.registerFactory<ProductCategoryCubit>(
+      () => ProductCategoryCubit(getIt()));
 
+  // cart
+  getIt.registerLazySingleton<CartRepo>(() => CartRepo(getIt()));
 }
