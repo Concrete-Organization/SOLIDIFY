@@ -13,6 +13,7 @@ class SharedPrefKeys {
   static const String role = 'role';
   static const String isLoggedIn = 'isLoggedIn';
   static const String isFirstTime = 'isFirstTime';
+  static const String productId = 'productId';
 }
 
 class SharedPrefHelper {
@@ -125,5 +126,15 @@ class SharedPrefHelper {
       'userName': userName,
       'email': email,
     };
+  }
+
+  static Future<void> setProductId(String id) async {
+    await setData(SharedPrefKeys.productId, id);
+    debugPrint("SharedPrefHelper: Product id set to $id");
+  }
+
+  static Future<String> getProductId() async {
+    debugPrint('SharedPrefHelper: Retrieving product id');
+    return await getString(SharedPrefKeys.productId);
   }
 }
