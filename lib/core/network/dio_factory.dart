@@ -21,8 +21,12 @@ class DioFactory {
     if (_authenticatedDio == null) {
       _authenticatedDio = Dio();
       _authenticatedDio!
-        ..options.followRedirects = false
-        ..options.validateStatus = (status) => status! < 400;
+        ..options.connectTimeout = const Duration(seconds: 30)
+        ..options.receiveTimeout = const Duration(seconds: 30);
+      _authenticatedDio!.interceptors.addAll([
+        PrettyDioLogger(),
+        TokenInterceptor(_authenticatedDio!),
+      ]);
     }
     return _authenticatedDio!;
   }
