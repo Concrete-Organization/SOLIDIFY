@@ -13,6 +13,8 @@ class SharedPrefKeys {
   static const String role = 'role';
   static const String isLoggedIn = 'isLoggedIn';
   static const String isFirstTime = 'isFirstTime';
+  static const String productId = 'productId';
+  static const String cachedProductIds = 'cachedProductIds';
 }
 
 class SharedPrefHelper {
@@ -56,6 +58,7 @@ class SharedPrefHelper {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getBool(key) ?? defaultValue;
   }
+
   static Future<double> getDouble(String key) async {
     debugPrint('SharedPrefHelper: getDouble with key: $key');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -124,5 +127,43 @@ class SharedPrefHelper {
       'userName': userName,
       'email': email,
     };
+  }
+
+  static Future<void> setProductId(String id) async {
+    await setData(SharedPrefKeys.productId, id);
+    debugPrint("SharedPrefHelper: Product id set to $id");
+  }
+
+  static Future<String> getProductId() async {
+    debugPrint('SharedPrefHelper: Retrieving product id');
+    return await getString(SharedPrefKeys.productId);
+  }
+
+  // New methods for caching multiple product IDs
+  static Future<void> cacheProductIds(List<String> ids) async {
+    final idsString = ids.join(',');
+    await setData(SharedPrefKeys.cachedProductIds, idsString);
+    debugPrint("SharedPrefHelper: Cached ${ids.length} product IDs");
+  }
+
+  static Future<List<String>> getCachedProductIds() async {
+    debugPrint('SharedPrefHelper: Retrieving cached product IDs');
+    final idsString = await getString(SharedPrefKeys.cachedProductIds);
+    if (idsString.isEmpty) {
+      return [];
+    }
+    final List<String> ids = idsString.split(',');
+    debugPrint('SharedPrefHelper: Retrieved ${ids.length} cached product IDs');
+    return ids;
+  }
+
+  static Future<bool> isProductIdCached(String id) async {
+    final cachedIds = await getCachedProductIds();
+    return cachedIds.contains(id);
+  }
+
+  static Future<void> clearCachedProductIds() async {
+    await removeData(SharedPrefKeys.cachedProductIds);
+    debugPrint('SharedPrefHelper: Cleared cached product IDs');
   }
 }

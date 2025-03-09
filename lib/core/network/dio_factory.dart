@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'token_interceptor.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
   static Dio? _authenticatedDio;
@@ -21,12 +21,8 @@ class DioFactory {
     if (_authenticatedDio == null) {
       _authenticatedDio = Dio();
       _authenticatedDio!
-        ..options.connectTimeout = const Duration(seconds: 30)
-        ..options.receiveTimeout = const Duration(seconds: 30);
-      _authenticatedDio!.interceptors.addAll([
-        PrettyDioLogger(),
-        TokenInterceptor(_authenticatedDio!),
-      ]);
+        ..options.followRedirects = false
+        ..options.validateStatus = (status) => status! < 400;
     }
     return _authenticatedDio!;
   }
