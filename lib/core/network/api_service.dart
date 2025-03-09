@@ -1,3 +1,4 @@
+import 'package:solidify/core/network/refresh_token_model.dart';
 import 'api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -26,6 +27,11 @@ abstract class ApiService {
   @POST(ApiConstants.login)
   Future<LoginResponseBody> login(
     @Body() LoginRequestBody loginRequestBody,
+  );
+
+  @POST(ApiConstants.refreshToken)
+  Future<RefreshTokenResponseModel> refreshToken(
+    @Body() RefreshTokenRequestModel refreshTokenRequestModel,
   );
 
   @POST(ApiConstants.engineerSignUP)

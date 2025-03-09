@@ -19,7 +19,7 @@ class ImagesListViewPicker extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
       child: SizedBox(
-        height: 150.h,
+        height: MediaQuery.of(context).size.height*0.25,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemCount: selectedImages.length,
@@ -31,8 +31,6 @@ class ImagesListViewPicker extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.r),
                   child: Image.file(
                     File(selectedImages[index].path),
-                    width: 100.w,
-                    height: 150.h,
                     fit: BoxFit.cover,
                   ),
                 ),

@@ -6,28 +6,16 @@ import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
-import 'package:solidify/features/community/ui/screens/posts/widgets/images_list_view_picker.dart';
 
-class AddCaptionPost extends StatefulWidget {
+class AddCaptionPost extends StatelessWidget {
   final List<XFile> selectedImages;
 
   const AddCaptionPost({super.key, required this.selectedImages});
 
   @override
-  State<AddCaptionPost> createState() => _AddCaptionPostState();
-}
-
-class _AddCaptionPostState extends State<AddCaptionPost> {
-  void removeImage(int index) {
-    setState(() {
-      widget.selectedImages.removeAt(index);
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.6,
+      height: MediaQuery.of(context).size.height * 0.5,
       decoration: BoxDecoration(
         color: ColorsManager.mainBlueWith5Opacity,
         border: Border.all(color: ColorsManager.mainBlue),
@@ -51,11 +39,6 @@ class _AddCaptionPostState extends State<AddCaptionPost> {
               ),
             ),
           ),
-          if (widget.selectedImages.isNotEmpty)
-            ImagesListViewPicker(
-              selectedImages: widget.selectedImages,
-              onRemoveImage: removeImage,
-            ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: AppTextButton(
