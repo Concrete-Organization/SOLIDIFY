@@ -98,6 +98,11 @@ class TextStyles {
     color: ColorsManager.secondaryGold,
     fontWeight: FontWeightHelper.bold,
   );
+  static TextStyle font13secondaryGoldMedium = GoogleFonts.poppins(
+    fontSize: 13.sp,
+    color: ColorsManager.secondaryGold,
+    fontWeight: FontWeightHelper.medium,
+  );
 
   // --- Light Black Styles ---
   static TextStyle font12LightBlackMedium = GoogleFonts.poppins(
