@@ -68,5 +68,6 @@ abstract class ApiService {
   @POST("CartItem/{id}")
   Future<PostCartResponseModel> addCartItem(
     @Path("id") String id,
+    @Header('Authorization') String token,
   );
 }

@@ -335,10 +335,14 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<PostCartResponseModel> addCartItem(String id) async {
+  Future<PostCartResponseModel> addCartItem(
+    String id,
+    String token,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<PostCartResponseModel>(Options(
       method: 'POST',
