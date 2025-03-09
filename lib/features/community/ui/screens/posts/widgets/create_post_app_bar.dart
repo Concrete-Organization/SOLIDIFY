@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
+
+import 'discard_change_dialog.dart';
 
 class CreatePostAppBar extends StatefulWidget {
   final Function(List<XFile>) onImagesSelected;
@@ -38,7 +39,12 @@ class _CreatePostAppBarState extends State<CreatePostAppBar> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    context.pop();
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return DiscardChangeDialog();
+                      },
+                    );
                   },
                   child: SvgPicture.asset(
                     'assets/svgs/close.svg',
