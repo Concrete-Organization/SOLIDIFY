@@ -27,6 +27,7 @@ class PostItem extends StatelessWidget {
         LikesAndComments(
           likesCount: post.likesCount,
           commentsCount: post.commentsCount,
+          postId: post.id,
         ),
       ],
     );

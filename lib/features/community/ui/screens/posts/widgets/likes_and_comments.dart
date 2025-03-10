@@ -7,11 +7,13 @@ import 'package:solidify/features/community/ui/screens/comments/comments_bottom_
 class LikesAndComments extends StatelessWidget {
   final int likesCount;
   final int commentsCount;
+  final int postId;
 
   const LikesAndComments({
     super.key,
     required this.likesCount,
     required this.commentsCount,
+    required this.postId,
   });
 
   @override
@@ -34,10 +36,12 @@ class LikesAndComments extends StatelessWidget {
               builder: (context) {
                 return CommentsBottomSheet(
                   scrollController: ScrollController(),
+                  postId: postId,
                 );
               },
             );
-          },          child: SvgPicture.asset('assets/svgs/comment_icon.svg'),
+          },
+          child: SvgPicture.asset('assets/svgs/comment_icon.svg'),
         ),
         horizontalSpace(3),
         Text(

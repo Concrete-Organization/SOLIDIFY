@@ -20,7 +20,7 @@ class DioFactory {
           responseBody: true,
           error: true,
         ),
-        TokenInterceptor(),
+        TokenInterceptor(_publicDio!),
       ]);
     }
     return _publicDio!;
@@ -40,7 +40,7 @@ class DioFactory {
           responseBody: true,
           error: true,
         ),
-        TokenInterceptor(),
+        TokenInterceptor(_authenticatedDio!),
       ]);
     }
     return _authenticatedDio!;

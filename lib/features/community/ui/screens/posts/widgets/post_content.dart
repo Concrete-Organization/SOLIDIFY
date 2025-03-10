@@ -43,7 +43,7 @@ class _PostContentState extends State<PostContent> {
             .any((uri) => Uri.tryParse(uri)?.hasAbsolutePath == true);
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         LayoutBuilder(
           builder: (context, constraints) {
