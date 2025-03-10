@@ -66,16 +66,6 @@ class CategoryProductGridViewItem extends StatelessWidget {
                   },
                 ),
               ),
-              if (isCached) // Display cached indicator
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  child: Icon(
-                    Icons.check_circle,
-                    color: ColorsManager.mainBlue,
-                    size: 20.w,
-                  ),
-                ),
             ],
           ),
           Padding(
