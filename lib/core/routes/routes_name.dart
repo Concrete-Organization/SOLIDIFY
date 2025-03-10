@@ -20,4 +20,8 @@ class Routes {
   static const String chatScreen = 'chatScreen';
   static const String cartScreen = 'cartScreen';
   static const String createPostScreen = 'createPostScreen';
+  static const String addressDetailsScreen = 'addressDetailsScreen';
+  static const String checkoutScreen = 'checkoutScreen';
+  static const String orderDoneScreen = 'orderDoneScreen';
+  static const String paymentScreen = 'paymentScreen';
 }

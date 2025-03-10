@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/theming/color_manger.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomIndicator extends StatelessWidget {
   final int currentPage;
   final int totalPages;
+  final double? width; // Make it optional
 
   const CustomIndicator({
     super.key,
     required this.currentPage,
     required this.totalPages,
+    this.width, // Not required
   });
 
   @override
@@ -18,11 +20,11 @@ class CustomIndicator extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
         totalPages,
-            (index) => AnimatedContainer(
+        (index) => AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           margin: const EdgeInsets.symmetric(horizontal: 4),
           height: 3.h,
-          width: 40.w,
+          width: (width ?? 40).w, 
           decoration: BoxDecoration(
             color: index <= currentPage
                 ? ColorsManager.mainBlue
