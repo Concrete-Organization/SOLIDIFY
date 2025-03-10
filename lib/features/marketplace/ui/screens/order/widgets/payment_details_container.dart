@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
 
@@ -20,6 +21,8 @@ class _PaymentDetailsContainerState extends State<PaymentDetailsContainer> {
   final TextEditingController _cardNumberController = TextEditingController();
   final TextEditingController _expDateController = TextEditingController();
   final TextEditingController _cvcCodeController = TextEditingController();
+
+  bool isSelected = false;
 
   @override
   void initState() {
@@ -51,58 +54,91 @@ class _PaymentDetailsContainerState extends State<PaymentDetailsContainer> {
   Widget build(BuildContext context) {
     return Container(
       width: 353.w,
+      decoration: BoxDecoration(
+        color: ColorsManager.mainBlueWith1Opacity,
+        border: Border.all(
+          color:
+              isSelected ? ColorsManager.secondaryGold : ColorsManager.mainBlue,
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(10.r),
+      ),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8),
+        padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
+            // Card Holder Name Section
             Text(
               'Card Holder Name',
-              style: TextStyles.font12LightBlackMedium,
+              style: TextStyles.font12LightBlackRegular,
             ),
-            verticalSpace(12),
+            verticalSpace(8),
             AppTextFormField(
               controller: _cardHolderNameController,
-              width: 301.w,
+              width: 320.w,
               height: 43.h,
             ),
             verticalSpace(15),
+
             Text(
               'Card Number',
-              style: TextStyles.font12LightBlackMedium,
+              style: TextStyles.font12LightBlackRegular,
             ),
             verticalSpace(8),
             AppTextFormField(
               controller: _cardNumberController,
-              width: 353.w,
-              height: 48.h,
+              width: 320.w,
+              height: 43.h,
             ),
             verticalSpace(15),
+
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Exp Data',
-                  style: TextStyles.font12LightBlackMedium,
+                // Exp Date Column
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Exp Date',
+                        style: TextStyles.font12LightBlackRegular,
+                      ),
+                      verticalSpace(8),
+                      AppTextFormField(
+                        controller: _expDateController,
+                        height: 43.h,
+                        width: 142.w,
+                      ),
+                    ],
+                  ),
                 ),
-                verticalSpace(8),
-                AppTextFormField(
-                  controller: _expDateController,
-                  width: 142.w,
-                  height: 43.h,
-                ),
-                horizontalSpace(30),
-                Text(
-                  'Cvc code',
-                  style: TextStyles.font12LightBlackMedium,
-                ),
-                verticalSpace(8),
-                AppTextFormField(
-                  controller: _cvcCodeController,
-                  width: 142.w,
-                  height: 43.h,
+                horizontalSpace(16),
+
+                // CVC Code Column
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'CVC Code',
+                        style: TextStyles.font12LightBlackRegular,
+                      ),
+                      verticalSpace(8),
+                      AppTextFormField(
+                        controller: _cvcCodeController,
+                        height: 43.h,
+                        width: 142.w,
+                      ),
+                    ],
+                  ),
                 ),
               ],
-            )
+            ),
+
+            verticalSpace(8), // Bottom padding
           ],
         ),
       ),

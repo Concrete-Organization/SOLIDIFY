@@ -32,11 +32,9 @@ class PaymentMethodContainer extends StatelessWidget {
         width: 353.w,
         height: 56.h,
         decoration: BoxDecoration(
-          color: ColorsManager.mainBlueWith1Opacity,
+          color: ColorsManager.mainBlueWith5Opacity,
           border: Border.all(
-            color: isSelected
-                ? ColorsManager.secondaryGold
-                : ColorsManager.mainBlue,
+            color: ColorsManager.mainBlue,
             width: 1,
           ),
           borderRadius: BorderRadius.circular(10.r),
