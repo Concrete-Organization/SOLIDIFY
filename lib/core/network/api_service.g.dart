@@ -337,6 +337,43 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<PostCartResponseModel> addCartItem(
+    String id,
+    String token,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<PostCartResponseModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'CartItem/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late PostCartResponseModel _value;
+    try {
+      _value = PostCartResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<GetPostsResponse> posts() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -370,8 +407,8 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<PostCartResponseModel> addCartItem(
-    String id,
+  Future<GetCommentsResponse> comments(
+    int postId,
     String token,
   ) async {
     final _extra = <String, dynamic>{};
@@ -379,14 +416,14 @@ class _ApiService implements ApiService {
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<PostCartResponseModel>(Options(
-      method: 'POST',
+    final _options = _setStreamType<GetCommentsResponse>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'CartItem/${id}',
+          'Comment/${postId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -396,9 +433,9 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late PostCartResponseModel _value;
+    late GetCommentsResponse _value;
     try {
-      _value = PostCartResponseModel.fromJson(_result.data!);
+      _value = GetCommentsResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

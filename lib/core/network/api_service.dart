@@ -1,4 +1,5 @@
 import 'package:solidify/core/network/refresh_token_model.dart';
+import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
 import 'api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -68,12 +69,18 @@ abstract class ApiService {
     @Path("id") int id,
   );
 
-  @GET(ApiConstants.post)
-  Future<GetPostsResponse> posts();
-
   @POST("CartItem/{id}")
   Future<PostCartResponseModel> addCartItem(
     @Path("id") String id,
+    @Header('Authorization') String token,
+  );
+
+  @GET(ApiConstants.post)
+  Future<GetPostsResponse> posts();
+
+  @GET('${ApiConstants.comment}/{id}')
+  Future<GetCommentsResponse> comments(
+    @Path('id') int postId,
     @Header('Authorization') String token,
   );
 }

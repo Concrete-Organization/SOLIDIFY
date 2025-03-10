@@ -8,10 +8,12 @@ import 'package:solidify/features/community/ui/screens/comments/widgets/comments
 
 class CommentsBottomSheet extends StatelessWidget {
   final ScrollController scrollController;
+  final int postId;
 
   const CommentsBottomSheet({
     super.key,
     required this.scrollController,
+    required this.postId,
   });
 
   @override
@@ -20,7 +22,7 @@ class CommentsBottomSheet extends StatelessWidget {
     final bool keyboardVisible = bottomInset > 0;
 
     final double initialSize = keyboardVisible ? 0.9 : 0.6;
-    final double minChildSize  = keyboardVisible ? 0.9 : 0.3;
+    final double minChildSize = keyboardVisible ? 0.9 : 0.3;
 
     return DraggableScrollableSheet(
       initialChildSize: initialSize,
@@ -48,7 +50,10 @@ class CommentsBottomSheet extends StatelessWidget {
                 ),
                 verticalSpace(19),
                 Expanded(
-                  child: CommentsListView(scrollController: sheetScrollController),
+                  child: CommentsListView(
+                    scrollController: sheetScrollController,
+                    postId: postId,
+                  ),
                 ),
                 const CommentsTextField(),
               ],

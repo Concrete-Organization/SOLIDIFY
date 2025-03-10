@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../../core/network/api_error_model.dart';
-import '../data/model/login_response_body.dart'; // Import the LoginResponseBody
+import '../data/model/login_response_body.dart';
 
 part 'login_state.freezed.dart';
 

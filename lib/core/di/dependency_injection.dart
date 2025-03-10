@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:solidify/features/community/data/repos/comments_repo.dart';
+import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
+import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import '../network/api_service.dart';
 import '../network/dio_factory.dart';
 import '../../features/auth/login/logic/login_cubit.dart';
 import '../../features/auth/otp/logic/verify_otp_cubit.dart';
 import '../../features/auth/login/data/repo/login_repo.dart';
 import '../../features/auth/otp/data/repos/verify_otp_repo.dart';
-import 'package:solidify/features/community/logic/posts_cubit.dart';
 import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
 import 'package:solidify/features/marketplace/data/repo/cart_repo.dart';
 import 'package:solidify/features/community/data/repos/posts_repo.dart';
@@ -82,7 +84,9 @@ Future<void> setupGetIt() async {
   // posts
   getIt.registerLazySingleton<PostsRepo>(() => PostsRepo(getIt()));
   getIt.registerFactory<PostsCubit>(() => PostsCubit(getIt()));
-
+//comment
+  getIt.registerLazySingleton<CommentsRepo>(() => CommentsRepo(getIt()));
+  getIt.registerFactory<CommentsCubit>(() => CommentsCubit(getIt()));
   // product by  category
   getIt.registerLazySingleton<ProductCategoryRepo>(
       () => ProductCategoryRepo(getIt()));
