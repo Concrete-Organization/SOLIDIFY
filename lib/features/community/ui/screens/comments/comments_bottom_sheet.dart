@@ -8,42 +8,56 @@ import 'package:solidify/features/community/ui/screens/comments/widgets/comments
 
 class CommentsBottomSheet extends StatelessWidget {
   final ScrollController scrollController;
+  final int postId;
 
   const CommentsBottomSheet({
     super.key,
     required this.scrollController,
+    required this.postId,
   });
 
   @override
   Widget build(BuildContext context) {
+    final bottomInset = MediaQuery.of(context).viewInsets.bottom;
+    final bool keyboardVisible = bottomInset > 0;
+
+    final double initialSize = keyboardVisible ? 0.9 : 0.6;
+    final double minChildSize = keyboardVisible ? 0.9 : 0.3;
+
     return DraggableScrollableSheet(
-      initialChildSize: 0.6,
-      minChildSize: 0.3,
+      initialChildSize: initialSize,
+      minChildSize: minChildSize,
       maxChildSize: 0.9,
       expand: false,
-      builder: (context, scrollController) {
-        return Container(
-          padding: EdgeInsets.all(16.w),
-          decoration: BoxDecoration(
-            color: ColorsManager.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10.r),
-              topRight: Radius.circular(10.r),
+      builder: (context, sheetScrollController) {
+        return Padding(
+          padding: EdgeInsets.only(bottom: bottomInset),
+          child: Container(
+            padding: EdgeInsets.all(16.w),
+            decoration: BoxDecoration(
+              color: ColorsManager.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10.r),
+                topRight: Radius.circular(10.r),
+              ),
             ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Comments',
-                style: TextStyles.font15lightBlackMedium,
-              ),
-              verticalSpace(19),
-              Expanded(
-                child: CommentsListView(scrollController: scrollController),
-              ),
-              const CommentsTextField(),
-            ],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Comments',
+                  style: TextStyles.font15lightBlackMedium,
+                ),
+                verticalSpace(19),
+                Expanded(
+                  child: CommentsListView(
+                    scrollController: sheetScrollController,
+                    postId: postId,
+                  ),
+                ),
+                const CommentsTextField(),
+              ],
+            ),
           ),
         );
       },

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/features/community/data/repos/posts_repo.dart';
-import 'package:solidify/features/community/logic/posts_state.dart';
+import 'package:solidify/features/community/logic/posts/posts_state.dart';
 
 class PostsCubit extends Cubit<PostsState> {
   final PostsRepo _postsRepo;

@@ -11,4 +11,5 @@ class ColorsManager {
   static Color mainBlueWith50Opacity =
   const Color(0xFF1B4965).withOpacity(0.50);
   static Color secondaryGoldWith10Opacity = Color(0xFFC29818).withOpacity(0.10);
+  static Color red = Color(0xFFC70000);
 }

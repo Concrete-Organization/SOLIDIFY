@@ -20,7 +20,7 @@ class CommunityScreen extends StatelessWidget {
           const Expanded(
             child: PostsBlocBuilder(),
           ),
-          verticalSpace(30),
+          verticalSpace(10),
         ],
       ),
     );

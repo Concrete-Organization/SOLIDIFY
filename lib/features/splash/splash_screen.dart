@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(
-      const Duration(seconds: 3),
+      const Duration(seconds: 2),
           () async {
         final isLoggedIn = await SharedPrefHelper.getBool(SharedPrefKeys.isLoggedIn);
         if (isLoggedIn) {

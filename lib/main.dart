@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:solidify/solidify.dart';
 import 'core/di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:solidify/features/bloc_observer.dart';
+import 'package:solidify/bloc_observer.dart';
 import 'package:solidify/core/routes/app_routes.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
@@ -32,7 +32,7 @@ void main() async {
       initialRoute = Routes.loginScreen;
     }
   } else {
-    initialRoute = isFirstTime ? Routes.onboardingScreen : Routes.loginScreen;
+    initialRoute = isFirstTime ? Routes.splashScreen : Routes.loginScreen;
   }
 
   runApp(

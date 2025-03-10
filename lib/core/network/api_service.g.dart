@@ -58,6 +58,41 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<RefreshTokenResponseModel> refreshToken(
+      RefreshTokenRequestModel refreshTokenRequestModel) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(refreshTokenRequestModel.toJson());
+    final _options = _setStreamType<RefreshTokenResponseModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'Account/refreshToken',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late RefreshTokenResponseModel _value;
+    try {
+      _value = RefreshTokenResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<EngineerAccountSignUpResponseModel> engineerSignUp(
       EngineerAccountSignUpRequestModel
           engineerAccountSignUpRequestModel) async {
@@ -302,6 +337,43 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<PostCartResponseModel> addCartItem(
+    String id,
+    String token,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<PostCartResponseModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'CartItem/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late PostCartResponseModel _value;
+    try {
+      _value = PostCartResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<GetPostsResponse> posts() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -335,23 +407,19 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<PostCartResponseModel> addCartItem(
-    String id,
-    String token,
-  ) async {
+  Future<GetCommentsResponse> comments(int postId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'Authorization': token};
-    _headers.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<PostCartResponseModel>(Options(
-      method: 'POST',
+    final _options = _setStreamType<GetCommentsResponse>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'CartItem/${id}',
+          'Comment/${postId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -361,9 +429,9 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late PostCartResponseModel _value;
+    late GetCommentsResponse _value;
     try {
-      _value = PostCartResponseModel.fromJson(_result.data!);
+      _value = GetCommentsResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
