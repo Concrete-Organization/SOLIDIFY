@@ -21,8 +21,8 @@ class _CategoriesGridState extends State<CategoriesGrid>
   final List<Map<String, String>> categories = [
     {
       'id': '0',
-      'icon': 'assets/images/all_categories_icon.png',
-      'label': 'All',
+      'icon': 'assets/images/sand_icon.png',
+      'label': 'Sand',
     },
     {
       'id': '1',

@@ -29,16 +29,34 @@ ProductCategoryModel _$ProductCategoryModelFromJson(
         Map<String, dynamic> json) =>
     ProductCategoryModel(
       name: json['name'] as String,
-      products: (json['products'] as List<dynamic>)
-          .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      result: ProductResult.fromJson(json['result'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ProductCategoryModelToJson(
         ProductCategoryModel instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'products': instance.products,
+      'result': instance.result,
+    };
+
+ProductResult _$ProductResultFromJson(Map<String, dynamic> json) =>
+    ProductResult(
+      items: (json['items'] as List<dynamic>)
+          .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      itemsCount: (json['itemsCount'] as num).toInt(),
+      itemsFrom: (json['itemsFrom'] as num).toInt(),
+      itemsTo: (json['itemsTo'] as num).toInt(),
+      totalPages: (json['totalPages'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$ProductResultToJson(ProductResult instance) =>
+    <String, dynamic>{
+      'items': instance.items,
+      'itemsCount': instance.itemsCount,
+      'itemsFrom': instance.itemsFrom,
+      'itemsTo': instance.itemsTo,
+      'totalPages': instance.totalPages,
     };
 
 ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(

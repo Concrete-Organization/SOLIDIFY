@@ -51,7 +51,7 @@ class ProductCategoryBlocBuilder extends StatelessWidget {
                   ),
                 ),
                 categorySuccess: (categoryResponse) {
-                  final products = categoryResponse.model.products;
+                  final products = categoryResponse.model.result.items;
                   return CategoryProductsGrid(
                     products: products,
                   );
