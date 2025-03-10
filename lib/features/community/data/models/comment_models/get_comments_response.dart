@@ -48,8 +48,8 @@ class CommentsModel {
 class CommentModel {
   final String creationDate;
   final String? content;
-  final List<CommentModel> replies;
   final int likesCount;
+  final List<ReplyModel> replies;
   final int id;
   final String engineerId;
   final String? engineerName;
@@ -58,8 +58,8 @@ class CommentModel {
   CommentModel({
     required this.creationDate,
     this.content,
-    required this.replies,
     required this.likesCount,
+    required this.replies,
     required this.id,
     required this.engineerId,
     this.engineerName,
@@ -70,4 +70,30 @@ class CommentModel {
       _$CommentModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$CommentModelToJson(this);
+}
+
+@JsonSerializable()
+class ReplyModel {
+  final String content;
+  final String creationDate;
+  final int likesCount;
+  final int id;
+  final String engineerId;
+  final String engineerName;
+  final String? profileImageUrl;
+
+  ReplyModel({
+    required this.content,
+    required this.creationDate,
+    required this.likesCount,
+    required this.id,
+    required this.engineerId,
+    required this.engineerName,
+    this.profileImageUrl,
+  });
+
+  factory ReplyModel.fromJson(Map<String, dynamic> json) =>
+      _$ReplyModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ReplyModelToJson(this);
 }

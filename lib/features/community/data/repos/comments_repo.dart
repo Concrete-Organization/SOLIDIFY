@@ -1,4 +1,3 @@
-import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/network/api_error_handler.dart';
 import 'package:solidify/core/network/api_result.dart';
 import 'package:solidify/core/network/api_service.dart';
@@ -11,8 +10,7 @@ class CommentsRepo {
 
   Future<ApiResult<GetCommentsResponse>> getComments(int postId) async {
     try {
-      final accessToken = await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
-      final response = await _apiService.comments(postId,accessToken);
+      final response = await _apiService.comments(postId);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));

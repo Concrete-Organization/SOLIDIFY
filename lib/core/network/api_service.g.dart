@@ -407,14 +407,10 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<GetCommentsResponse> comments(
-    int postId,
-    String token,
-  ) async {
+  Future<GetCommentsResponse> comments(int postId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'Authorization': token};
-    _headers.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<GetCommentsResponse>(Options(
       method: 'GET',
