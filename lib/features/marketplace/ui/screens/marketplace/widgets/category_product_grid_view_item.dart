@@ -7,19 +7,15 @@ import 'package:solidify/core/theming/font_weight_helper.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/marketplace/data/models/get_products_by_category_response_model.dart';
 
-class CategoryProductGridViewItem extends StatefulWidget {
+class CategoryProductGridViewItem extends StatelessWidget {
   final ProductModel product;
+  final bool isCached;
 
-  const CategoryProductGridViewItem({super.key, required this.product});
-
-  @override
-  State<CategoryProductGridViewItem> createState() =>
-      _CategoryProductGridViewItemState();
-}
-
-class _CategoryProductGridViewItemState
-    extends State<CategoryProductGridViewItem> {
-  bool isFavorite = false;
+  const CategoryProductGridViewItem({
+    super.key,
+    required this.product,
+    required this.isCached,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +47,7 @@ class _CategoryProductGridViewItemState
                   ),
                 ),
                 child: Text(
-                  '${widget.product.discount}%',
+                  '${product.discount}%',
                   style: TextStyles.font10MainBlueRegular,
                 ),
               ),
@@ -60,19 +56,26 @@ class _CategoryProductGridViewItemState
                 child: IconButton(
                   padding: EdgeInsets.zero,
                   icon: Icon(
-                    isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: isFavorite
-                        ? ColorsManager.secondaryGold
-                        : ColorsManager.mainBlue,
+                    Icons.favorite_border, // Default to unfavorite icon
+                    color: ColorsManager.mainBlue,
                     size: 22.w,
                   ),
                   onPressed: () {
-                    setState(() {
-                      isFavorite = !isFavorite;
-                    });
+                    // Handle favorite button press
+                    // Since this is a StatelessWidget, you need to manage state externally
                   },
                 ),
               ),
+              if (isCached) // Display cached indicator
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  child: Icon(
+                    Icons.check_circle,
+                    color: ColorsManager.mainBlue,
+                    size: 20.w,
+                  ),
+                ),
             ],
           ),
           Padding(
@@ -81,7 +84,7 @@ class _CategoryProductGridViewItemState
               width: 68.w,
               height: 92.h,
               child: Image.network(
-                widget.product.imageUri,
+                product.imageUri,
                 fit: BoxFit.contain,
                 errorBuilder: (_, __, ___) => const Icon(Icons.error),
               ),
@@ -108,7 +111,7 @@ class _CategoryProductGridViewItemState
                   Row(
                     children: [
                       Text(
-                        widget.product.brandName ?? '',
+                        product.brandName ?? '',
                         style: TextStyles.font12lightBlackLight,
                       ),
                       const Spacer(),
@@ -119,17 +122,17 @@ class _CategoryProductGridViewItemState
                       ),
                       SizedBox(width: 4.w),
                       Text(
-                        widget.product.rate.toString(),
+                        product.rate.toString(),
                         style: TextStyles.font12MainBlueMedium,
                       ),
                     ],
                   ),
                   Text(
-                    widget.product.name,
+                    product.name,
                     style: TextStyles.font12lightBlackLight,
                   ),
                   Text(
-                    '${widget.product.price} EGP',
+                    '${product.price} EGP',
                     style: TextStyles.font12MainBlueSemiBold,
                   ),
                   AppTextButton(
@@ -138,7 +141,9 @@ class _CategoryProductGridViewItemState
                     textButton: 'Add to cart',
                     fontSize: 12.sp,
                     fontWeight: FontWeightHelper.medium,
-                    onPressed: () {},
+                    onPressed: () {
+                      // Handle add to cart button press
+                    },
                     backgroundColor: ColorsManager.mainBlue,
                     padding: EdgeInsets.zero,
                   ),

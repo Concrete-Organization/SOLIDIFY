@@ -5,19 +5,31 @@ import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/cat
 
 class CategoryProductsGrid extends StatelessWidget {
   final List<ProductModel> products;
+  final List<String> cachedProductIds;
 
-  const CategoryProductsGrid({super.key, required this.products});
+  const CategoryProductsGrid({
+    super.key,
+    required this.products,
+    required this.cachedProductIds,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
       delegate: SliverChildBuilderDelegate(
-        (context, index) => GestureDetector(
-          onTap: () {
-
-          },
-          child: CategoryProductGridViewItem(product: products[index]),
-        ),
+        (context, index) {
+          final product = products[index];
+          final isCached = cachedProductIds.contains(product.id);
+          return GestureDetector(
+            onTap: () {
+              // Handle product tap
+            },
+            child: CategoryProductGridViewItem(
+              product: product,
+              isCached: isCached,
+            ),
+          );
+        },
         childCount: products.length,
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
