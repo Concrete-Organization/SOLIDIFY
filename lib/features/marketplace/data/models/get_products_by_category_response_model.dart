@@ -27,17 +27,39 @@ class GetProductsByCategoryResponseModel {
 @JsonSerializable()
 class ProductCategoryModel {
   final String name;
-  final List<ProductModel> products;
+  final ProductResult result;
 
   ProductCategoryModel({
     required this.name,
-    required this.products,
+    required this.result,
   });
 
   factory ProductCategoryModel.fromJson(Map<String, dynamic> json) =>
       _$ProductCategoryModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductCategoryModelToJson(this);
+}
+
+@JsonSerializable()
+class ProductResult {
+  final List<ProductModel> items;
+  final int itemsCount;
+  final int itemsFrom;
+  final int itemsTo;
+  final int totalPages;
+
+  ProductResult({
+    required this.items,
+    required this.itemsCount,
+    required this.itemsFrom,
+    required this.itemsTo,
+    required this.totalPages,
+  });
+
+  factory ProductResult.fromJson(Map<String, dynamic> json) =>
+      _$ProductResultFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProductResultToJson(this);
 }
 
 @JsonSerializable()
