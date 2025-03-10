@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
-import 'package:solidify/features/community/ui/screens/comments/widgets/comments_list_view.dart';
+import 'package:solidify/features/community/ui/screens/comments/widgets/comments_bloc_builder.dart';
 import 'package:solidify/features/community/ui/screens/comments/widgets/comments_text_field.dart';
 
 class CommentsBottomSheet extends StatelessWidget {
@@ -50,7 +50,7 @@ class CommentsBottomSheet extends StatelessWidget {
                 ),
                 verticalSpace(19),
                 Expanded(
-                  child: CommentsListView(
+                  child: CommentsBlocBuilder(
                     scrollController: sheetScrollController,
                     postId: postId,
                   ),
