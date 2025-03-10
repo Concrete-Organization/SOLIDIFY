@@ -82,7 +82,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     onPressed: _isPaymentDetailsFilled
                         ? () => context.pushNamed(Routes.orderDoneScreen)
                         : null,
-                    textButton: 'Complete Payment',
+                    textButton: 'Checkout',
                   ),
                 ],
               ),

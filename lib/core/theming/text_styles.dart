@@ -41,6 +41,11 @@ class TextStyles {
     color: ColorsManager.mainBlue,
     fontWeight: FontWeightHelper.medium,
   );
+  static TextStyle font20MainBlueBold = GoogleFonts.poppins(
+    fontSize: 20.sp,
+    color: ColorsManager.mainBlue,
+    fontWeight: FontWeightHelper.bold,
+  );
   static TextStyle font15MainBlueRegular = GoogleFonts.poppins(
     fontSize: 15.sp,
     color: ColorsManager.mainBlue,
