@@ -24,10 +24,9 @@ class CategoryProductsGrid extends StatelessWidget {
           final isCached = cachedProductIds.contains(product.id);
           return GestureDetector(
             onTap: () {
-              // Navigate to product details screen
               context.pushNamed(
                 Routes.productDetailsScreen,
-                arguments: product.id, // Pass the product ID
+                arguments: product.id,
               );
             },
             child: CategoryProductGridViewItem(

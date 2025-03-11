@@ -21,7 +21,7 @@ class ReviewCardListView extends StatelessWidget {
             ],
           );
         },
-        childCount: 2, // Replace with actual review count
+        childCount: 2,
       ),
     );
   }
