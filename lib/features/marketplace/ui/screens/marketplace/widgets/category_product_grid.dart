@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/marketplace/data/models/get_products_by_category_response_model.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/category_product_grid_view_item.dart';
@@ -22,7 +24,11 @@ class CategoryProductsGrid extends StatelessWidget {
           final isCached = cachedProductIds.contains(product.id);
           return GestureDetector(
             onTap: () {
-              // Handle product tap
+              // Navigate to product details screen
+              context.pushNamed(
+                Routes.productDetailsScreen,
+                arguments: product.id, // Pass the product ID
+              );
             },
             child: CategoryProductGridViewItem(
               product: product,
