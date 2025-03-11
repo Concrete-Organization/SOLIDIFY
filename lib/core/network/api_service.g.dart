@@ -451,20 +451,12 @@ class _ApiService implements ApiService {
     _data.addAll(createCommentRequest.toJson());
     final _options = _setStreamType<CreateCommentResponse>(Options(
       method: 'POST',
-  Future<GetProductByIdResponseBody> getProductById(String productId) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<GetProductByIdResponseBody>(Options(
-      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
           'Comment/${postId}',
-          'Product/${productId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -477,6 +469,36 @@ class _ApiService implements ApiService {
     late CreateCommentResponse _value;
     try {
       _value = CreateCommentResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<GetProductByIdResponseBody> getProductById(String productId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GetProductByIdResponseBody>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'Product/${productId}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late GetProductByIdResponseBody _value;
     try {
       _value = GetProductByIdResponseBody.fromJson(_result.data!);

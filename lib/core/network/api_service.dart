@@ -5,7 +5,6 @@ import 'package:solidify/features/community/data/models/comment_models/get_comme
 import 'api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:solidify/core/network/refresh_token_model.dart';
 import 'package:solidify/features/auth/login/data/model/login_request_body.dart';
 import 'package:solidify/features/auth/login/data/model/login_response_body.dart';
 import 'package:solidify/features/auth/otp/data/models/verify_otp_request_model.dart';
@@ -14,7 +13,6 @@ import 'package:solidify/features/marketplace/data/models/post_cart_response_mod
 import 'package:solidify/features/marketplace/data/models/product_list_response_model.dart';
 import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
 import 'package:solidify/features/marketplace/data/models/get_product_by_id_response_body.dart';
-import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
 import 'package:solidify/features/auth/reset_password/data/models/reset_password_request_model.dart';
 import 'package:solidify/features/auth/reset_password/data/models/reset_password_response_model.dart';
 import 'package:solidify/features/auth/forget_password/data/models/forget_password_request_model.dart';
@@ -87,16 +85,15 @@ abstract class ApiService {
   Future<GetCommentsResponse> comments(
     @Path('id') int postId,
   );
-@POST('${ApiConstants.comment}/{id}')
-Future<CreateCommentResponse> createComment(
-  @Path('id') int postId,
-  @Body() CreateCommentRequest createCommentRequest,
-);
 
-@GET(ApiConstants.productWithId)
-Future<GetProductByIdResponseBody> getProductById(
-  @Path('id') String productId,
-);
+  @POST('${ApiConstants.comment}/{id}')
+  Future<CreateCommentResponse> createComment(
+    @Path('id') int postId,
+    @Body() CreateCommentRequest createCommentRequest,
+  );
 
+  @GET(ApiConstants.productWithId)
+  Future<GetProductByIdResponseBody> getProductById(
+    @Path('id') String productId,
   );
 }
