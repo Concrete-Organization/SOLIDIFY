@@ -80,6 +80,8 @@ dependencies:
   jwt_decoder: ^2.0.1
   # support infinite scroll and custom child widget.
   carousel_slider: ^5.0.0
+  dio_cookie_manager: ^3.2.0
+  cookie_jar: ^4.0.8
 
 dev_dependencies:
   flutter_test:
