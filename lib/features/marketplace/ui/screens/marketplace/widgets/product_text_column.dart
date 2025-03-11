@@ -8,7 +8,24 @@ import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/expandable_review_text.dart';
 
 class ProductTextColumn extends StatelessWidget {
-  const ProductTextColumn({super.key});
+  final String brandName;
+  final String productName;
+  final double price;
+  final String description;
+  final int measurement;
+  final int rate;
+  final String reviewText; // Add reviewText parameter
+
+  const ProductTextColumn({
+    super.key,
+    required this.brandName,
+    required this.productName,
+    required this.price,
+    required this.description,
+    required this.measurement,
+    required this.rate,
+    required this.reviewText, // Require reviewText
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +35,19 @@ class ProductTextColumn extends StatelessWidget {
         Row(
           children: [
             Text(
-              'Cement',
+              productName,
               style: TextStyles.font15lightBlackMedium,
             ),
             const Spacer(),
             Text(
-              '1,000 EGP',
+              '$price EGP',
               style: TextStyles.font15MainBlueSemiBold,
             ),
           ],
         ),
         verticalSpace(15),
         Text(
-          'Ambuja cement',
+          brandName,
           style: TextStyles.font15MainBlueMedium,
         ),
         verticalSpace(15),
@@ -52,7 +69,7 @@ class ProductTextColumn extends StatelessWidget {
                   ),
                   horizontalSpace(4),
                   Text(
-                    '4.5',
+                    '$rate/5',
                     style: TextStyles.font12lightBlackLight,
                   ),
                 ],
@@ -60,28 +77,20 @@ class ProductTextColumn extends StatelessWidget {
             ),
             horizontalSpace(10),
             Text(
-              '+123 Reviews',
+              '$measurement units available',
               style: TextStyles.font14lightBlackRegular,
             ),
           ],
         ),
         verticalSpace(20),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 6.h),
-              child: SvgPicture.asset(
-                'assets/svgs/review_dot_icon.svg',
-                width: 10.w,
-                height: 10.h,
-              ),
-            ),
-            horizontalSpace(5),
-            const Flexible(
-              child: ExpandableReviewText(),
-            ),
-          ],
+        Text(
+          'Description',
+          style: TextStyles.font15MainBlueSemiBold,
+        ),
+        verticalSpace(8),
+        Text(
+          description,
+          style: TextStyles.font14lightBlackRegular,
         ),
         verticalSpace(20),
         const HorizontalDivider(),
@@ -89,7 +98,7 @@ class ProductTextColumn extends StatelessWidget {
         Row(
           children: [
             Text(
-              'Reviews (+123)',
+              'Reviews',
               style: TextStyles.font15lightBlackMedium,
             ),
             const Spacer(),
@@ -99,6 +108,10 @@ class ProductTextColumn extends StatelessWidget {
             ),
           ],
         ),
+        verticalSpace(10),
+        ExpandableReviewText(
+            reviewText:
+                '$reviewText Ambuja cement offers giant compressive strength top-notch quality, combining strength and flexibility for reliable structural support. The product is consistently high-standard, with timely deliveries and excellent customer service '), // Pass reviewText
       ],
     );
   }

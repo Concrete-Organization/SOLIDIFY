@@ -13,7 +13,8 @@ import 'package:solidify/features/marketplace/logic/cart_cubit/cart_state.dart';
 class ProductGridViewItem extends StatefulWidget {
   final dynamic product;
 
-  const ProductGridViewItem({super.key, required this.product});
+  const ProductGridViewItem(
+      {super.key, required this.product, required int index});
 
   @override
   State<ProductGridViewItem> createState() => _ProductGridViewItemState();

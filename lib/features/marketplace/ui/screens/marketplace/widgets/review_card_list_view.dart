@@ -1,8 +1,7 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'review_card.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ReviewCardListView extends StatelessWidget {
   const ReviewCardListView({super.key});
@@ -18,11 +17,11 @@ class ReviewCardListView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: const ReviewCard(),
               ),
-                verticalSpace(10),
+              verticalSpace(10),
             ],
           );
         },
-        childCount: 2,
+        childCount: 2, // Replace with actual review count
       ),
     );
   }
