@@ -1,3 +1,7 @@
+import 'package:solidify/core/network/refresh_token_model.dart';
+import 'package:solidify/features/community/data/models/comment_models/create_comment_request.dart';
+import 'package:solidify/features/community/data/models/comment_models/create_comment_response.dart';
+import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
 import 'api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -83,8 +87,16 @@ abstract class ApiService {
   Future<GetCommentsResponse> comments(
     @Path('id') int postId,
   );
-  @GET(ApiConstants.productWithId)
-  Future<GetProductByIdResponseBody> getProductById(
-    @Path('id') String productId,
+@POST('${ApiConstants.comment}/{id}')
+Future<CreateCommentResponse> createComment(
+  @Path('id') int postId,
+  @Body() CreateCommentRequest createCommentRequest,
+);
+
+@GET(ApiConstants.productWithId)
+Future<GetProductByIdResponseBody> getProductById(
+  @Path('id') String productId,
+);
+
   );
 }

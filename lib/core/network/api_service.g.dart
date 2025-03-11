@@ -440,6 +440,17 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<CreateCommentResponse> createComment(
+    int postId,
+    CreateCommentRequest createCommentRequest,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(createCommentRequest.toJson());
+    final _options = _setStreamType<CreateCommentResponse>(Options(
+      method: 'POST',
   Future<GetProductByIdResponseBody> getProductById(String productId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -452,6 +463,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
+          'Comment/${postId}',
           'Product/${productId}',
           queryParameters: queryParameters,
           data: _data,
@@ -462,6 +474,9 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CreateCommentResponse _value;
+    try {
+      _value = CreateCommentResponse.fromJson(_result.data!);
     late GetProductByIdResponseBody _value;
     try {
       _value = GetProductByIdResponseBody.fromJson(_result.data!);
