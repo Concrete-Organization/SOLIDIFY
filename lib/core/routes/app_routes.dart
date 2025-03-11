@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/features/community/ui/screens/posts/create_post_screen.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -15,13 +14,19 @@ import 'package:solidify/features/engineer_layout/engineer_layout.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
 import 'package:solidify/features/marketplace/ui/screens/cart/cart_screen.dart';
 import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.dart';
+import 'package:solidify/features/community/ui/screens/posts/create_post_screen.dart';
 import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
+import 'package:solidify/features/marketplace/ui/screens/order/screens/payment_screen.dart';
+import 'package:solidify/features/marketplace/ui/screens/order/screens/checkout_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
+import 'package:solidify/features/marketplace/ui/screens/order/screens/order_done_screen.dart';
 import '../../features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
+import 'package:solidify/features/marketplace/ui/screens/order/screens/address_details_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_result.dart';
+import 'package:solidify/features/marketplace/logic/product_details_cubit/product_details_cubit.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/product_details_screen.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/product_category_screen.dart';
 import 'package:solidify/features/marketplace/logic/product_category_cubit.dart/prodcut_category_cubit.dart';
@@ -119,11 +124,15 @@ class AppRoutes {
           ),
           settings: settings,
         );
+
       case Routes.productDetailsScreen:
         return MaterialPageRoute(
-          builder: (context) => const ProductDetailsScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ProductDetailsCubit>(),
+            child: const ProductDetailsScreen(),
+          ),
+          settings: settings,
         );
-
       case Routes.chatScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
@@ -138,6 +147,22 @@ class AppRoutes {
       case Routes.createPostScreen:
         return MaterialPageRoute(
           builder: (context) => const CreatePostScreen(),
+        );
+      case Routes.addressDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AddressDetailsScreen(),
+        );
+      case Routes.paymentScreen:
+        return MaterialPageRoute(
+          builder: (context) => const PaymentScreen(),
+        );
+      case Routes.orderDoneScreen:
+        return MaterialPageRoute(
+          builder: (context) => const OrderDoneScreen(),
+        );
+      case Routes.checkoutScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CheckoutScreen(),
         );
 
       default:

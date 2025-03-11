@@ -1,8 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:solidify/features/community/data/repos/comments_repo.dart';
-import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
-import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import '../network/api_service.dart';
 import '../network/dio_factory.dart';
 import '../../features/auth/login/logic/login_cubit.dart';
@@ -12,19 +9,24 @@ import '../../features/auth/otp/data/repos/verify_otp_repo.dart';
 import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
 import 'package:solidify/features/marketplace/data/repo/cart_repo.dart';
 import 'package:solidify/features/community/data/repos/posts_repo.dart';
+import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/chatbot/data/api/chatbot_api_call.dart';
+import 'package:solidify/features/community/data/repos/comments_repo.dart';
 import '../../features/auth/reset_password/logic/reset_password_cubit.dart';
 import '../../features/auth/forget_password/logic/forget_password_cubit.dart';
+import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
 import 'package:solidify/features/marketplace/logic/cart_cubit/cart_cubit.dart';
 import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
 import 'package:solidify/features/marketplace/data/repo/products_list_repo.dart';
 import '../../features/auth/forget_password/data/repos/forget_password_repo.dart';
+import 'package:solidify/features/marketplace/data/repo/product_details_repo.dart';
 import 'package:solidify/features/marketplace/data/repo/product_category_repo.dart';
 import 'package:solidify/features/chatbot/data/repos/chatbot_with_gemini_repo.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
 import 'package:solidify/features/concrete_strength_ai/data/repo/concrete_strength_ai_repo.dart';
 import 'package:solidify/features/marketplace/logic/products_list_cubit/products_list_cubit.dart';
 import 'package:solidify/features/concrete_strength_ai/data/api/concrete_strength_ai_api_call.dart';
+import 'package:solidify/features/marketplace/logic/product_details_cubit/product_details_cubit.dart';
 import 'package:solidify/features/marketplace/logic/product_category_cubit.dart/prodcut_category_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/repos/engineer_account_sign_up_repo.dart';
@@ -96,4 +98,10 @@ Future<void> setupGetIt() async {
   // cart
   getIt.registerLazySingleton<CartRepo>(() => CartRepo(getIt()));
   getIt.registerFactory<CartCubit>(() => CartCubit(getIt()));
+
+  // product details
+  getIt.registerLazySingleton<ProductDetailsRepo>(
+      () => ProductDetailsRepo(getIt()));
+  getIt
+      .registerFactory<ProductDetailsCubit>(() => ProductDetailsCubit(getIt()));
 }

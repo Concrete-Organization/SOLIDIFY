@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
@@ -40,7 +42,11 @@ class CartScreen extends StatelessWidget {
                 style: TextStyles.font15MainBlueSemiBold,
               ),
               verticalSpace(15),
-              AppTextButton(onPressed: () {}, textButton: 'Place Order')
+              AppTextButton(
+                  onPressed: () {
+                    context.pushNamed(Routes.addressDetailsScreen);
+                  },
+                  textButton: 'Place Order')
             ],
           ),
         ),

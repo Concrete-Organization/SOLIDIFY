@@ -5,6 +5,8 @@ import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextFormField extends StatelessWidget {
+  final double? width;
+  final double? height;
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
@@ -31,7 +33,6 @@ class AppTextFormField extends StatelessWidget {
   final Iterable<String>? autofillHints;
   final int? maxLines;
   final int? minLines;
-  final double? textFieldHeight;
   final double? borderRadius;
   final InputDecoration? decoration;
   final Color? borderColor;
@@ -39,6 +40,8 @@ class AppTextFormField extends StatelessWidget {
 
   const AppTextFormField({
     super.key,
+    this.width,
+    this.height,
     this.contentPadding,
     this.focusedBorder,
     this.enabledBorder,
@@ -65,59 +68,71 @@ class AppTextFormField extends StatelessWidget {
     this.autofillHints,
     this.maxLines,
     this.minLines,
-    this.textFieldHeight,
     this.borderRadius,
     this.decoration,
     this.borderColor,
-    this.inputFormatters
+    this.inputFormatters,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      cursorColor: ColorsManager.mainBlue,
-      controller: controller,
-      focusNode: focusNode,
-      keyboardType: keyboardType,
-      textInputAction: textInputAction,
-      validator: validator,
-      autofocus: autoFocus ?? false,
-      enabled: enabled ?? true,
-      obscureText: isObscureText ?? false,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      autocorrect: autoCorrect ?? true,
-      enableSuggestions: enableSuggestions ?? true,
-      initialValue: initialValue,
-      onChanged: onChanged,
-      onFieldSubmitted: onFieldSubmitted,
-      onSaved: onSaved,
-      maxLines: maxLines ?? 1,
-      minLines: minLines ?? 1,
-      style: inputTextStyle ?? TextStyles.font12lightBlackLight,
-      autofillHints: autofillHints,
-      inputFormatters: inputFormatters,
-      decoration: decoration ?? InputDecoration(
-        isDense: true,
-        contentPadding: contentPadding ?? EdgeInsets.symmetric(vertical: 13.h, horizontal: 13.w),
-        enabledBorder: enabledBorder ??
-            buildOutlineInputBorder(color: borderColor ?? ColorsManager.mainBlueWith50Opacity),
-        focusedBorder: focusedBorder ??
-            buildOutlineInputBorder(color: borderColor ?? ColorsManager.mainBlue),
-        focusedErrorBorder: buildOutlineInputBorder(color: Colors.red),
-        errorBorder: buildOutlineInputBorder(color: Colors.red),
-        hintStyle: hintStyle ?? TextStyles.font12lightBlackLight.copyWith(
-          color: ColorsManager.lightBlack.withOpacity(0.8),
-        ),
-        hintText: hintText,
-        suffixIcon: suffixIcon,
-        prefixIcon: prefixIcon != null
-            ? Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: prefixIcon,
-        )
-            : null,
-        fillColor: backgroundColor ?? ColorsManager.mainBlueWith1Opacity,
-        filled: true,
+    return SizedBox(
+      width: width ?? double.infinity,
+      height: height ?? 48.h,
+      child: TextFormField(
+        cursorColor: ColorsManager.mainBlue,
+        controller: controller,
+        focusNode: focusNode,
+        keyboardType: keyboardType,
+        textInputAction: textInputAction,
+        validator: validator,
+        autofocus: autoFocus ?? false,
+        enabled: enabled ?? true,
+        obscureText: isObscureText ?? false,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        autocorrect: autoCorrect ?? true,
+        enableSuggestions: enableSuggestions ?? true,
+        initialValue: initialValue,
+        onChanged: onChanged,
+        onFieldSubmitted: onFieldSubmitted,
+        onSaved: onSaved,
+        maxLines: maxLines ?? 1,
+        minLines: minLines ?? 1,
+        style: inputTextStyle ?? TextStyles.font12lightBlackLight,
+        autofillHints: autofillHints,
+        inputFormatters: inputFormatters,
+        decoration: decoration ??
+            InputDecoration(
+              isDense: true,
+              contentPadding: contentPadding ??
+                  EdgeInsets.symmetric(
+                    vertical: 13.h,
+                    horizontal: 13.w,
+                  ),
+              enabledBorder: enabledBorder ??
+                  buildOutlineInputBorder(
+                      color:
+                          borderColor ?? ColorsManager.mainBlueWith50Opacity),
+              focusedBorder: focusedBorder ??
+                  buildOutlineInputBorder(
+                      color: borderColor ?? ColorsManager.mainBlue),
+              focusedErrorBorder: buildOutlineInputBorder(color: Colors.red),
+              errorBorder: buildOutlineInputBorder(color: Colors.red),
+              hintStyle: hintStyle ??
+                  TextStyles.font12lightBlackLight.copyWith(
+                    color: ColorsManager.lightBlack.withOpacity(0.8),
+                  ),
+              hintText: hintText,
+              suffixIcon: suffixIcon,
+              prefixIcon: prefixIcon != null
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15.w),
+                      child: prefixIcon,
+                    )
+                  : null,
+              fillColor: backgroundColor ?? ColorsManager.mainBlueWith1Opacity,
+              filled: true,
+            ),
       ),
     );
   }
