@@ -26,6 +26,7 @@ import 'package:solidify/features/marketplace/ui/screens/order/screens/order_don
 import '../../features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
 import 'package:solidify/features/marketplace/ui/screens/order/screens/address_details_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_result.dart';
+import 'package:solidify/features/marketplace/logic/product_details_cubit/product_details_cubit.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/product_details_screen.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/product_category_screen.dart';
 import 'package:solidify/features/marketplace/logic/product_category_cubit.dart/prodcut_category_cubit.dart';
@@ -123,11 +124,15 @@ class AppRoutes {
           ),
           settings: settings,
         );
+
       case Routes.productDetailsScreen:
         return MaterialPageRoute(
-          builder: (context) => const ProductDetailsScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ProductDetailsCubit>(),
+            child: const ProductDetailsScreen(),
+          ),
+          settings: settings,
         );
-
       case Routes.chatScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
