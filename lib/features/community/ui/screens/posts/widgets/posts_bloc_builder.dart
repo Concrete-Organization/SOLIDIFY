@@ -12,11 +12,31 @@ class PostsBlocBuilder extends StatelessWidget {
     return BlocBuilder<PostsCubit, PostsState>(
       builder: (context, state) {
         return state.when(
-          initial: () => const SizedBox.shrink(),
+          initial: () {
+            // Trigger loading on initial state
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              context.read<PostsCubit>().fetchPosts();
+            });
+            return const Center(child: CircularProgressIndicator());
+          },
           postsLoading: () => const Center(child: CircularProgressIndicator()),
-          postsSuccess: (posts) {
-            print('Rendering ${posts.length} posts');
-            return PostsListView(posts: posts);
+          postsSuccess: (posts, hasMorePosts, currentPage, totalPages) {
+            print('Rendering ${posts.length} posts, page $currentPage/$totalPages');
+            return PostsListView(
+              posts: posts,
+              hasMorePosts: hasMorePosts,
+              loadMorePosts: () => context.read<PostsCubit>().loadMorePosts(),
+              refreshPosts: () => context.read<PostsCubit>().fetchPosts(refresh: true),
+            );
+          },
+          loadingMorePosts: (currentPosts, currentPage) {
+            return PostsListView(
+              posts: currentPosts,
+              hasMorePosts: true,
+              isLoadingMore: true,
+              loadMorePosts: () {}, // Disabled while loading
+              refreshPosts: () => context.read<PostsCubit>().fetchPosts(refresh: true),
+            );
           },
           postsError: (error) => Center(child: Text('Error: ${error.message}')),
           createPostLoading: () => const Center(child: CircularProgressIndicator()),

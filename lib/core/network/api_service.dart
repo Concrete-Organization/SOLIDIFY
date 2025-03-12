@@ -81,7 +81,9 @@ abstract class ApiService {
   );
 
   @GET(ApiConstants.post)
-  Future<GetPostsResponse> posts();
+  Future<GetPostsResponse> posts(
+    @Query('PageNumber') int? page,
+  );
 
   @POST(ApiConstants.post)
   @MultiPart()

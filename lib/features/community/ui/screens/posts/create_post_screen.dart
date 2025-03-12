@@ -43,6 +43,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
       listener: (context, state) {
         state.whenOrNull(
           createPostSuccess: (response) {
+            // Refresh the posts list in the parent screen
+            context.read<PostsCubit>().fetchPosts();
             Navigator.pop(context);
           },
           createPostError: (error) {

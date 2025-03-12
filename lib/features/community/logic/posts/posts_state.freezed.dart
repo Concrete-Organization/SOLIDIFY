@@ -20,7 +20,11 @@ mixin _$PostsState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() postsLoading,
-    required TResult Function(List<PostModel> posts) postsSuccess,
+    required TResult Function(List<PostModel> posts, bool hasMorePosts,
+            int currentPage, int totalPages)
+        postsSuccess,
+    required TResult Function(List<PostModel> currentPosts, int currentPage)
+        loadingMorePosts,
     required TResult Function(ApiErrorModel error) postsError,
     required TResult Function() createPostLoading,
     required TResult Function(CreatePostResponse response) createPostSuccess,
@@ -31,7 +35,11 @@ mixin _$PostsState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? postsLoading,
-    TResult? Function(List<PostModel> posts)? postsSuccess,
+    TResult? Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult? Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult? Function(ApiErrorModel error)? postsError,
     TResult? Function()? createPostLoading,
     TResult? Function(CreatePostResponse response)? createPostSuccess,
@@ -42,7 +50,11 @@ mixin _$PostsState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? postsLoading,
-    TResult Function(List<PostModel> posts)? postsSuccess,
+    TResult Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult Function(ApiErrorModel error)? postsError,
     TResult Function()? createPostLoading,
     TResult Function(CreatePostResponse response)? createPostSuccess,
@@ -55,6 +67,7 @@ mixin _$PostsState<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(PostsLoading<T> value) postsLoading,
     required TResult Function(PostsSuccess<T> value) postsSuccess,
+    required TResult Function(LoadingMorePosts<T> value) loadingMorePosts,
     required TResult Function(PostsError<T> value) postsError,
     required TResult Function(CreatePostLoading<T> value) createPostLoading,
     required TResult Function(CreatePostSuccess<T> value) createPostSuccess,
@@ -66,6 +79,7 @@ mixin _$PostsState<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(PostsLoading<T> value)? postsLoading,
     TResult? Function(PostsSuccess<T> value)? postsSuccess,
+    TResult? Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult? Function(PostsError<T> value)? postsError,
     TResult? Function(CreatePostLoading<T> value)? createPostLoading,
     TResult? Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -77,6 +91,7 @@ mixin _$PostsState<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(PostsLoading<T> value)? postsLoading,
     TResult Function(PostsSuccess<T> value)? postsSuccess,
+    TResult Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult Function(PostsError<T> value)? postsError,
     TResult Function(CreatePostLoading<T> value)? createPostLoading,
     TResult Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -150,7 +165,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() postsLoading,
-    required TResult Function(List<PostModel> posts) postsSuccess,
+    required TResult Function(List<PostModel> posts, bool hasMorePosts,
+            int currentPage, int totalPages)
+        postsSuccess,
+    required TResult Function(List<PostModel> currentPosts, int currentPage)
+        loadingMorePosts,
     required TResult Function(ApiErrorModel error) postsError,
     required TResult Function() createPostLoading,
     required TResult Function(CreatePostResponse response) createPostSuccess,
@@ -164,7 +183,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? postsLoading,
-    TResult? Function(List<PostModel> posts)? postsSuccess,
+    TResult? Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult? Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult? Function(ApiErrorModel error)? postsError,
     TResult? Function()? createPostLoading,
     TResult? Function(CreatePostResponse response)? createPostSuccess,
@@ -178,7 +201,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? postsLoading,
-    TResult Function(List<PostModel> posts)? postsSuccess,
+    TResult Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult Function(ApiErrorModel error)? postsError,
     TResult Function()? createPostLoading,
     TResult Function(CreatePostResponse response)? createPostSuccess,
@@ -197,6 +224,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(PostsLoading<T> value) postsLoading,
     required TResult Function(PostsSuccess<T> value) postsSuccess,
+    required TResult Function(LoadingMorePosts<T> value) loadingMorePosts,
     required TResult Function(PostsError<T> value) postsError,
     required TResult Function(CreatePostLoading<T> value) createPostLoading,
     required TResult Function(CreatePostSuccess<T> value) createPostSuccess,
@@ -211,6 +239,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(PostsLoading<T> value)? postsLoading,
     TResult? Function(PostsSuccess<T> value)? postsSuccess,
+    TResult? Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult? Function(PostsError<T> value)? postsError,
     TResult? Function(CreatePostLoading<T> value)? createPostLoading,
     TResult? Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -225,6 +254,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(PostsLoading<T> value)? postsLoading,
     TResult Function(PostsSuccess<T> value)? postsSuccess,
+    TResult Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult Function(PostsError<T> value)? postsError,
     TResult Function(CreatePostLoading<T> value)? createPostLoading,
     TResult Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -285,7 +315,11 @@ class _$PostsLoadingImpl<T> implements PostsLoading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() postsLoading,
-    required TResult Function(List<PostModel> posts) postsSuccess,
+    required TResult Function(List<PostModel> posts, bool hasMorePosts,
+            int currentPage, int totalPages)
+        postsSuccess,
+    required TResult Function(List<PostModel> currentPosts, int currentPage)
+        loadingMorePosts,
     required TResult Function(ApiErrorModel error) postsError,
     required TResult Function() createPostLoading,
     required TResult Function(CreatePostResponse response) createPostSuccess,
@@ -299,7 +333,11 @@ class _$PostsLoadingImpl<T> implements PostsLoading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? postsLoading,
-    TResult? Function(List<PostModel> posts)? postsSuccess,
+    TResult? Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult? Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult? Function(ApiErrorModel error)? postsError,
     TResult? Function()? createPostLoading,
     TResult? Function(CreatePostResponse response)? createPostSuccess,
@@ -313,7 +351,11 @@ class _$PostsLoadingImpl<T> implements PostsLoading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? postsLoading,
-    TResult Function(List<PostModel> posts)? postsSuccess,
+    TResult Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult Function(ApiErrorModel error)? postsError,
     TResult Function()? createPostLoading,
     TResult Function(CreatePostResponse response)? createPostSuccess,
@@ -332,6 +374,7 @@ class _$PostsLoadingImpl<T> implements PostsLoading<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(PostsLoading<T> value) postsLoading,
     required TResult Function(PostsSuccess<T> value) postsSuccess,
+    required TResult Function(LoadingMorePosts<T> value) loadingMorePosts,
     required TResult Function(PostsError<T> value) postsError,
     required TResult Function(CreatePostLoading<T> value) createPostLoading,
     required TResult Function(CreatePostSuccess<T> value) createPostSuccess,
@@ -346,6 +389,7 @@ class _$PostsLoadingImpl<T> implements PostsLoading<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(PostsLoading<T> value)? postsLoading,
     TResult? Function(PostsSuccess<T> value)? postsSuccess,
+    TResult? Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult? Function(PostsError<T> value)? postsError,
     TResult? Function(CreatePostLoading<T> value)? createPostLoading,
     TResult? Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -360,6 +404,7 @@ class _$PostsLoadingImpl<T> implements PostsLoading<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(PostsLoading<T> value)? postsLoading,
     TResult Function(PostsSuccess<T> value)? postsSuccess,
+    TResult Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult Function(PostsError<T> value)? postsError,
     TResult Function(CreatePostLoading<T> value)? createPostLoading,
     TResult Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -383,7 +428,11 @@ abstract class _$$PostsSuccessImplCopyWith<T, $Res> {
           $Res Function(_$PostsSuccessImpl<T>) then) =
       __$$PostsSuccessImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({List<PostModel> posts});
+  $Res call(
+      {List<PostModel> posts,
+      bool hasMorePosts,
+      int currentPage,
+      int totalPages});
 }
 
 /// @nodoc
@@ -400,12 +449,27 @@ class __$$PostsSuccessImplCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? posts = null,
+    Object? hasMorePosts = null,
+    Object? currentPage = null,
+    Object? totalPages = null,
   }) {
     return _then(_$PostsSuccessImpl<T>(
-      null == posts
+      posts: null == posts
           ? _value._posts
           : posts // ignore: cast_nullable_to_non_nullable
               as List<PostModel>,
+      hasMorePosts: null == hasMorePosts
+          ? _value.hasMorePosts
+          : hasMorePosts // ignore: cast_nullable_to_non_nullable
+              as bool,
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPages: null == totalPages
+          ? _value.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -413,7 +477,12 @@ class __$$PostsSuccessImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$PostsSuccessImpl<T> implements PostsSuccess<T> {
-  const _$PostsSuccessImpl(final List<PostModel> posts) : _posts = posts;
+  const _$PostsSuccessImpl(
+      {required final List<PostModel> posts,
+      required this.hasMorePosts,
+      required this.currentPage,
+      required this.totalPages})
+      : _posts = posts;
 
   final List<PostModel> _posts;
   @override
@@ -424,8 +493,15 @@ class _$PostsSuccessImpl<T> implements PostsSuccess<T> {
   }
 
   @override
+  final bool hasMorePosts;
+  @override
+  final int currentPage;
+  @override
+  final int totalPages;
+
+  @override
   String toString() {
-    return 'PostsState<$T>.postsSuccess(posts: $posts)';
+    return 'PostsState<$T>.postsSuccess(posts: $posts, hasMorePosts: $hasMorePosts, currentPage: $currentPage, totalPages: $totalPages)';
   }
 
   @override
@@ -433,12 +509,22 @@ class _$PostsSuccessImpl<T> implements PostsSuccess<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PostsSuccessImpl<T> &&
-            const DeepCollectionEquality().equals(other._posts, _posts));
+            const DeepCollectionEquality().equals(other._posts, _posts) &&
+            (identical(other.hasMorePosts, hasMorePosts) ||
+                other.hasMorePosts == hasMorePosts) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage) &&
+            (identical(other.totalPages, totalPages) ||
+                other.totalPages == totalPages));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_posts));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_posts),
+      hasMorePosts,
+      currentPage,
+      totalPages);
 
   /// Create a copy of PostsState
   /// with the given fields replaced by the non-null parameter values.
@@ -454,13 +540,17 @@ class _$PostsSuccessImpl<T> implements PostsSuccess<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() postsLoading,
-    required TResult Function(List<PostModel> posts) postsSuccess,
+    required TResult Function(List<PostModel> posts, bool hasMorePosts,
+            int currentPage, int totalPages)
+        postsSuccess,
+    required TResult Function(List<PostModel> currentPosts, int currentPage)
+        loadingMorePosts,
     required TResult Function(ApiErrorModel error) postsError,
     required TResult Function() createPostLoading,
     required TResult Function(CreatePostResponse response) createPostSuccess,
     required TResult Function(ApiErrorModel error) createPostError,
   }) {
-    return postsSuccess(posts);
+    return postsSuccess(posts, hasMorePosts, currentPage, totalPages);
   }
 
   @override
@@ -468,13 +558,17 @@ class _$PostsSuccessImpl<T> implements PostsSuccess<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? postsLoading,
-    TResult? Function(List<PostModel> posts)? postsSuccess,
+    TResult? Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult? Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult? Function(ApiErrorModel error)? postsError,
     TResult? Function()? createPostLoading,
     TResult? Function(CreatePostResponse response)? createPostSuccess,
     TResult? Function(ApiErrorModel error)? createPostError,
   }) {
-    return postsSuccess?.call(posts);
+    return postsSuccess?.call(posts, hasMorePosts, currentPage, totalPages);
   }
 
   @override
@@ -482,7 +576,11 @@ class _$PostsSuccessImpl<T> implements PostsSuccess<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? postsLoading,
-    TResult Function(List<PostModel> posts)? postsSuccess,
+    TResult Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult Function(ApiErrorModel error)? postsError,
     TResult Function()? createPostLoading,
     TResult Function(CreatePostResponse response)? createPostSuccess,
@@ -490,7 +588,7 @@ class _$PostsSuccessImpl<T> implements PostsSuccess<T> {
     required TResult orElse(),
   }) {
     if (postsSuccess != null) {
-      return postsSuccess(posts);
+      return postsSuccess(posts, hasMorePosts, currentPage, totalPages);
     }
     return orElse();
   }
@@ -501,6 +599,7 @@ class _$PostsSuccessImpl<T> implements PostsSuccess<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(PostsLoading<T> value) postsLoading,
     required TResult Function(PostsSuccess<T> value) postsSuccess,
+    required TResult Function(LoadingMorePosts<T> value) loadingMorePosts,
     required TResult Function(PostsError<T> value) postsError,
     required TResult Function(CreatePostLoading<T> value) createPostLoading,
     required TResult Function(CreatePostSuccess<T> value) createPostSuccess,
@@ -515,6 +614,7 @@ class _$PostsSuccessImpl<T> implements PostsSuccess<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(PostsLoading<T> value)? postsLoading,
     TResult? Function(PostsSuccess<T> value)? postsSuccess,
+    TResult? Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult? Function(PostsError<T> value)? postsError,
     TResult? Function(CreatePostLoading<T> value)? createPostLoading,
     TResult? Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -529,6 +629,7 @@ class _$PostsSuccessImpl<T> implements PostsSuccess<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(PostsLoading<T> value)? postsLoading,
     TResult Function(PostsSuccess<T> value)? postsSuccess,
+    TResult Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult Function(PostsError<T> value)? postsError,
     TResult Function(CreatePostLoading<T> value)? createPostLoading,
     TResult Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -543,15 +644,229 @@ class _$PostsSuccessImpl<T> implements PostsSuccess<T> {
 }
 
 abstract class PostsSuccess<T> implements PostsState<T> {
-  const factory PostsSuccess(final List<PostModel> posts) =
-      _$PostsSuccessImpl<T>;
+  const factory PostsSuccess(
+      {required final List<PostModel> posts,
+      required final bool hasMorePosts,
+      required final int currentPage,
+      required final int totalPages}) = _$PostsSuccessImpl<T>;
 
   List<PostModel> get posts;
+  bool get hasMorePosts;
+  int get currentPage;
+  int get totalPages;
 
   /// Create a copy of PostsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PostsSuccessImplCopyWith<T, _$PostsSuccessImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadingMorePostsImplCopyWith<T, $Res> {
+  factory _$$LoadingMorePostsImplCopyWith(_$LoadingMorePostsImpl<T> value,
+          $Res Function(_$LoadingMorePostsImpl<T>) then) =
+      __$$LoadingMorePostsImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({List<PostModel> currentPosts, int currentPage});
+}
+
+/// @nodoc
+class __$$LoadingMorePostsImplCopyWithImpl<T, $Res>
+    extends _$PostsStateCopyWithImpl<T, $Res, _$LoadingMorePostsImpl<T>>
+    implements _$$LoadingMorePostsImplCopyWith<T, $Res> {
+  __$$LoadingMorePostsImplCopyWithImpl(_$LoadingMorePostsImpl<T> _value,
+      $Res Function(_$LoadingMorePostsImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PostsState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currentPosts = null,
+    Object? currentPage = null,
+  }) {
+    return _then(_$LoadingMorePostsImpl<T>(
+      currentPosts: null == currentPosts
+          ? _value._currentPosts
+          : currentPosts // ignore: cast_nullable_to_non_nullable
+              as List<PostModel>,
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadingMorePostsImpl<T> implements LoadingMorePosts<T> {
+  const _$LoadingMorePostsImpl(
+      {required final List<PostModel> currentPosts, required this.currentPage})
+      : _currentPosts = currentPosts;
+
+  final List<PostModel> _currentPosts;
+  @override
+  List<PostModel> get currentPosts {
+    if (_currentPosts is EqualUnmodifiableListView) return _currentPosts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_currentPosts);
+  }
+
+  @override
+  final int currentPage;
+
+  @override
+  String toString() {
+    return 'PostsState<$T>.loadingMorePosts(currentPosts: $currentPosts, currentPage: $currentPage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingMorePostsImpl<T> &&
+            const DeepCollectionEquality()
+                .equals(other._currentPosts, _currentPosts) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_currentPosts), currentPage);
+
+  /// Create a copy of PostsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadingMorePostsImplCopyWith<T, _$LoadingMorePostsImpl<T>> get copyWith =>
+      __$$LoadingMorePostsImplCopyWithImpl<T, _$LoadingMorePostsImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() postsLoading,
+    required TResult Function(List<PostModel> posts, bool hasMorePosts,
+            int currentPage, int totalPages)
+        postsSuccess,
+    required TResult Function(List<PostModel> currentPosts, int currentPage)
+        loadingMorePosts,
+    required TResult Function(ApiErrorModel error) postsError,
+    required TResult Function() createPostLoading,
+    required TResult Function(CreatePostResponse response) createPostSuccess,
+    required TResult Function(ApiErrorModel error) createPostError,
+  }) {
+    return loadingMorePosts(currentPosts, currentPage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? postsLoading,
+    TResult? Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult? Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
+    TResult? Function(ApiErrorModel error)? postsError,
+    TResult? Function()? createPostLoading,
+    TResult? Function(CreatePostResponse response)? createPostSuccess,
+    TResult? Function(ApiErrorModel error)? createPostError,
+  }) {
+    return loadingMorePosts?.call(currentPosts, currentPage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? postsLoading,
+    TResult Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
+    TResult Function(ApiErrorModel error)? postsError,
+    TResult Function()? createPostLoading,
+    TResult Function(CreatePostResponse response)? createPostSuccess,
+    TResult Function(ApiErrorModel error)? createPostError,
+    required TResult orElse(),
+  }) {
+    if (loadingMorePosts != null) {
+      return loadingMorePosts(currentPosts, currentPage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(PostsLoading<T> value) postsLoading,
+    required TResult Function(PostsSuccess<T> value) postsSuccess,
+    required TResult Function(LoadingMorePosts<T> value) loadingMorePosts,
+    required TResult Function(PostsError<T> value) postsError,
+    required TResult Function(CreatePostLoading<T> value) createPostLoading,
+    required TResult Function(CreatePostSuccess<T> value) createPostSuccess,
+    required TResult Function(CreatePostError<T> value) createPostError,
+  }) {
+    return loadingMorePosts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(PostsLoading<T> value)? postsLoading,
+    TResult? Function(PostsSuccess<T> value)? postsSuccess,
+    TResult? Function(LoadingMorePosts<T> value)? loadingMorePosts,
+    TResult? Function(PostsError<T> value)? postsError,
+    TResult? Function(CreatePostLoading<T> value)? createPostLoading,
+    TResult? Function(CreatePostSuccess<T> value)? createPostSuccess,
+    TResult? Function(CreatePostError<T> value)? createPostError,
+  }) {
+    return loadingMorePosts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(PostsLoading<T> value)? postsLoading,
+    TResult Function(PostsSuccess<T> value)? postsSuccess,
+    TResult Function(LoadingMorePosts<T> value)? loadingMorePosts,
+    TResult Function(PostsError<T> value)? postsError,
+    TResult Function(CreatePostLoading<T> value)? createPostLoading,
+    TResult Function(CreatePostSuccess<T> value)? createPostSuccess,
+    TResult Function(CreatePostError<T> value)? createPostError,
+    required TResult orElse(),
+  }) {
+    if (loadingMorePosts != null) {
+      return loadingMorePosts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingMorePosts<T> implements PostsState<T> {
+  const factory LoadingMorePosts(
+      {required final List<PostModel> currentPosts,
+      required final int currentPage}) = _$LoadingMorePostsImpl<T>;
+
+  List<PostModel> get currentPosts;
+  int get currentPage;
+
+  /// Create a copy of PostsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadingMorePostsImplCopyWith<T, _$LoadingMorePostsImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -625,7 +940,11 @@ class _$PostsErrorImpl<T> implements PostsError<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() postsLoading,
-    required TResult Function(List<PostModel> posts) postsSuccess,
+    required TResult Function(List<PostModel> posts, bool hasMorePosts,
+            int currentPage, int totalPages)
+        postsSuccess,
+    required TResult Function(List<PostModel> currentPosts, int currentPage)
+        loadingMorePosts,
     required TResult Function(ApiErrorModel error) postsError,
     required TResult Function() createPostLoading,
     required TResult Function(CreatePostResponse response) createPostSuccess,
@@ -639,7 +958,11 @@ class _$PostsErrorImpl<T> implements PostsError<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? postsLoading,
-    TResult? Function(List<PostModel> posts)? postsSuccess,
+    TResult? Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult? Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult? Function(ApiErrorModel error)? postsError,
     TResult? Function()? createPostLoading,
     TResult? Function(CreatePostResponse response)? createPostSuccess,
@@ -653,7 +976,11 @@ class _$PostsErrorImpl<T> implements PostsError<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? postsLoading,
-    TResult Function(List<PostModel> posts)? postsSuccess,
+    TResult Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult Function(ApiErrorModel error)? postsError,
     TResult Function()? createPostLoading,
     TResult Function(CreatePostResponse response)? createPostSuccess,
@@ -672,6 +999,7 @@ class _$PostsErrorImpl<T> implements PostsError<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(PostsLoading<T> value) postsLoading,
     required TResult Function(PostsSuccess<T> value) postsSuccess,
+    required TResult Function(LoadingMorePosts<T> value) loadingMorePosts,
     required TResult Function(PostsError<T> value) postsError,
     required TResult Function(CreatePostLoading<T> value) createPostLoading,
     required TResult Function(CreatePostSuccess<T> value) createPostSuccess,
@@ -686,6 +1014,7 @@ class _$PostsErrorImpl<T> implements PostsError<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(PostsLoading<T> value)? postsLoading,
     TResult? Function(PostsSuccess<T> value)? postsSuccess,
+    TResult? Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult? Function(PostsError<T> value)? postsError,
     TResult? Function(CreatePostLoading<T> value)? createPostLoading,
     TResult? Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -700,6 +1029,7 @@ class _$PostsErrorImpl<T> implements PostsError<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(PostsLoading<T> value)? postsLoading,
     TResult Function(PostsSuccess<T> value)? postsSuccess,
+    TResult Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult Function(PostsError<T> value)? postsError,
     TResult Function(CreatePostLoading<T> value)? createPostLoading,
     TResult Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -770,7 +1100,11 @@ class _$CreatePostLoadingImpl<T> implements CreatePostLoading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() postsLoading,
-    required TResult Function(List<PostModel> posts) postsSuccess,
+    required TResult Function(List<PostModel> posts, bool hasMorePosts,
+            int currentPage, int totalPages)
+        postsSuccess,
+    required TResult Function(List<PostModel> currentPosts, int currentPage)
+        loadingMorePosts,
     required TResult Function(ApiErrorModel error) postsError,
     required TResult Function() createPostLoading,
     required TResult Function(CreatePostResponse response) createPostSuccess,
@@ -784,7 +1118,11 @@ class _$CreatePostLoadingImpl<T> implements CreatePostLoading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? postsLoading,
-    TResult? Function(List<PostModel> posts)? postsSuccess,
+    TResult? Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult? Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult? Function(ApiErrorModel error)? postsError,
     TResult? Function()? createPostLoading,
     TResult? Function(CreatePostResponse response)? createPostSuccess,
@@ -798,7 +1136,11 @@ class _$CreatePostLoadingImpl<T> implements CreatePostLoading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? postsLoading,
-    TResult Function(List<PostModel> posts)? postsSuccess,
+    TResult Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult Function(ApiErrorModel error)? postsError,
     TResult Function()? createPostLoading,
     TResult Function(CreatePostResponse response)? createPostSuccess,
@@ -817,6 +1159,7 @@ class _$CreatePostLoadingImpl<T> implements CreatePostLoading<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(PostsLoading<T> value) postsLoading,
     required TResult Function(PostsSuccess<T> value) postsSuccess,
+    required TResult Function(LoadingMorePosts<T> value) loadingMorePosts,
     required TResult Function(PostsError<T> value) postsError,
     required TResult Function(CreatePostLoading<T> value) createPostLoading,
     required TResult Function(CreatePostSuccess<T> value) createPostSuccess,
@@ -831,6 +1174,7 @@ class _$CreatePostLoadingImpl<T> implements CreatePostLoading<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(PostsLoading<T> value)? postsLoading,
     TResult? Function(PostsSuccess<T> value)? postsSuccess,
+    TResult? Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult? Function(PostsError<T> value)? postsError,
     TResult? Function(CreatePostLoading<T> value)? createPostLoading,
     TResult? Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -845,6 +1189,7 @@ class _$CreatePostLoadingImpl<T> implements CreatePostLoading<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(PostsLoading<T> value)? postsLoading,
     TResult Function(PostsSuccess<T> value)? postsSuccess,
+    TResult Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult Function(PostsError<T> value)? postsError,
     TResult Function(CreatePostLoading<T> value)? createPostLoading,
     TResult Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -935,7 +1280,11 @@ class _$CreatePostSuccessImpl<T> implements CreatePostSuccess<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() postsLoading,
-    required TResult Function(List<PostModel> posts) postsSuccess,
+    required TResult Function(List<PostModel> posts, bool hasMorePosts,
+            int currentPage, int totalPages)
+        postsSuccess,
+    required TResult Function(List<PostModel> currentPosts, int currentPage)
+        loadingMorePosts,
     required TResult Function(ApiErrorModel error) postsError,
     required TResult Function() createPostLoading,
     required TResult Function(CreatePostResponse response) createPostSuccess,
@@ -949,7 +1298,11 @@ class _$CreatePostSuccessImpl<T> implements CreatePostSuccess<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? postsLoading,
-    TResult? Function(List<PostModel> posts)? postsSuccess,
+    TResult? Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult? Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult? Function(ApiErrorModel error)? postsError,
     TResult? Function()? createPostLoading,
     TResult? Function(CreatePostResponse response)? createPostSuccess,
@@ -963,7 +1316,11 @@ class _$CreatePostSuccessImpl<T> implements CreatePostSuccess<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? postsLoading,
-    TResult Function(List<PostModel> posts)? postsSuccess,
+    TResult Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult Function(ApiErrorModel error)? postsError,
     TResult Function()? createPostLoading,
     TResult Function(CreatePostResponse response)? createPostSuccess,
@@ -982,6 +1339,7 @@ class _$CreatePostSuccessImpl<T> implements CreatePostSuccess<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(PostsLoading<T> value) postsLoading,
     required TResult Function(PostsSuccess<T> value) postsSuccess,
+    required TResult Function(LoadingMorePosts<T> value) loadingMorePosts,
     required TResult Function(PostsError<T> value) postsError,
     required TResult Function(CreatePostLoading<T> value) createPostLoading,
     required TResult Function(CreatePostSuccess<T> value) createPostSuccess,
@@ -996,6 +1354,7 @@ class _$CreatePostSuccessImpl<T> implements CreatePostSuccess<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(PostsLoading<T> value)? postsLoading,
     TResult? Function(PostsSuccess<T> value)? postsSuccess,
+    TResult? Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult? Function(PostsError<T> value)? postsError,
     TResult? Function(CreatePostLoading<T> value)? createPostLoading,
     TResult? Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -1010,6 +1369,7 @@ class _$CreatePostSuccessImpl<T> implements CreatePostSuccess<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(PostsLoading<T> value)? postsLoading,
     TResult Function(PostsSuccess<T> value)? postsSuccess,
+    TResult Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult Function(PostsError<T> value)? postsError,
     TResult Function(CreatePostLoading<T> value)? createPostLoading,
     TResult Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -1107,7 +1467,11 @@ class _$CreatePostErrorImpl<T> implements CreatePostError<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() postsLoading,
-    required TResult Function(List<PostModel> posts) postsSuccess,
+    required TResult Function(List<PostModel> posts, bool hasMorePosts,
+            int currentPage, int totalPages)
+        postsSuccess,
+    required TResult Function(List<PostModel> currentPosts, int currentPage)
+        loadingMorePosts,
     required TResult Function(ApiErrorModel error) postsError,
     required TResult Function() createPostLoading,
     required TResult Function(CreatePostResponse response) createPostSuccess,
@@ -1121,7 +1485,11 @@ class _$CreatePostErrorImpl<T> implements CreatePostError<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? postsLoading,
-    TResult? Function(List<PostModel> posts)? postsSuccess,
+    TResult? Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult? Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult? Function(ApiErrorModel error)? postsError,
     TResult? Function()? createPostLoading,
     TResult? Function(CreatePostResponse response)? createPostSuccess,
@@ -1135,7 +1503,11 @@ class _$CreatePostErrorImpl<T> implements CreatePostError<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? postsLoading,
-    TResult Function(List<PostModel> posts)? postsSuccess,
+    TResult Function(List<PostModel> posts, bool hasMorePosts, int currentPage,
+            int totalPages)?
+        postsSuccess,
+    TResult Function(List<PostModel> currentPosts, int currentPage)?
+        loadingMorePosts,
     TResult Function(ApiErrorModel error)? postsError,
     TResult Function()? createPostLoading,
     TResult Function(CreatePostResponse response)? createPostSuccess,
@@ -1154,6 +1526,7 @@ class _$CreatePostErrorImpl<T> implements CreatePostError<T> {
     required TResult Function(_Initial<T> value) initial,
     required TResult Function(PostsLoading<T> value) postsLoading,
     required TResult Function(PostsSuccess<T> value) postsSuccess,
+    required TResult Function(LoadingMorePosts<T> value) loadingMorePosts,
     required TResult Function(PostsError<T> value) postsError,
     required TResult Function(CreatePostLoading<T> value) createPostLoading,
     required TResult Function(CreatePostSuccess<T> value) createPostSuccess,
@@ -1168,6 +1541,7 @@ class _$CreatePostErrorImpl<T> implements CreatePostError<T> {
     TResult? Function(_Initial<T> value)? initial,
     TResult? Function(PostsLoading<T> value)? postsLoading,
     TResult? Function(PostsSuccess<T> value)? postsSuccess,
+    TResult? Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult? Function(PostsError<T> value)? postsError,
     TResult? Function(CreatePostLoading<T> value)? createPostLoading,
     TResult? Function(CreatePostSuccess<T> value)? createPostSuccess,
@@ -1182,6 +1556,7 @@ class _$CreatePostErrorImpl<T> implements CreatePostError<T> {
     TResult Function(_Initial<T> value)? initial,
     TResult Function(PostsLoading<T> value)? postsLoading,
     TResult Function(PostsSuccess<T> value)? postsSuccess,
+    TResult Function(LoadingMorePosts<T> value)? loadingMorePosts,
     TResult Function(PostsError<T> value)? postsError,
     TResult Function(CreatePostLoading<T> value)? createPostLoading,
     TResult Function(CreatePostSuccess<T> value)? createPostSuccess,

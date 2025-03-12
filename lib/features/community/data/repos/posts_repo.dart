@@ -12,9 +12,9 @@ class PostsRepo {
 
   PostsRepo(this._apiService);
 
-  Future<ApiResult<GetPostsResponse>> getPosts() async {
+  Future<ApiResult<GetPostsResponse>> getPosts({int page = 1}) async {
     try {
-      final response = await _apiService.posts();
+      final response = await _apiService.posts(page);
       response.model.items.sort((a, b) => b.creationDate.compareTo(a.creationDate));
       return ApiResult.success(response);
     } catch (error) {

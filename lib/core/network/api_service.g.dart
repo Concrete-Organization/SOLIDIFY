@@ -374,9 +374,10 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<GetPostsResponse> posts() async {
+  Future<GetPostsResponse> posts(int? page) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'PageNumber': page};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<GetPostsResponse>(Options(
