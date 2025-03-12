@@ -4,10 +4,16 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/features/marketplace/data/models/get_cart_response_model.dart';
 import 'package:solidify/features/marketplace/ui/screens/cart/widgets/quantity_selector.dart';
 
 class CartListViewItem extends StatefulWidget {
-  const CartListViewItem({super.key});
+  final CartItemModel item;
+
+  const CartListViewItem({
+    super.key,
+    required this.item,
+  });
 
   @override
   State<CartListViewItem> createState() => _CartListViewItemState();
@@ -51,10 +57,11 @@ class _CartListViewItemState extends State<CartListViewItem> {
                     horizontal: 10.w,
                     vertical: 10.h,
                   ),
-                  child: Image.asset(
-                    'assets/images/cement_bag_3x.png',
+                  child: Image.network(
+                    widget.item.imageUri,
                     width: 67.w,
                     height: 84.h,
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
@@ -63,12 +70,12 @@ class _CartListViewItemState extends State<CartListViewItem> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Ambuja cement',
+                    widget.item.name,
                     style: TextStyles.font15lightBlackMedium,
                   ),
                   verticalSpace(15),
                   Text(
-                    '1,000',
+                    '${widget.item.price.toStringAsFixed(2)} EGP',
                     style: TextStyles.font15MainBlueSemiBold,
                   ),
                   verticalSpace(15),
