@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 
 class ExpandableReviewText extends StatefulWidget {
-  final String reviewText; // Add reviewText parameter
+  final String productDescription;
 
-  const ExpandableReviewText({super.key, required this.reviewText});
+  const ExpandableReviewText({super.key, required this.productDescription});
 
   @override
   State<ExpandableReviewText> createState() => _ExpandableReviewTextState();
@@ -19,12 +19,13 @@ class _ExpandableReviewTextState extends State<ExpandableReviewText> {
     final TextStyle moreStyle = TextStyles.font13MainBlueMedium;
 
     const int maxChars = 100;
-    final bool needTruncation = widget.reviewText.length > maxChars;
+    final bool needTruncation = widget.productDescription.length > maxChars;
     String displayText;
     if (!isExpanded && needTruncation) {
-      displayText = '${widget.reviewText.substring(0, maxChars).trim()}... ';
+      displayText =
+          '${widget.productDescription.substring(0, maxChars).trim()}... ';
     } else {
-      displayText = widget.reviewText;
+      displayText = widget.productDescription;
     }
 
     return GestureDetector(

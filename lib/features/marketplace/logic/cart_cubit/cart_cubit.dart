@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/core/network/api_error_handler.dart';
-import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/features/marketplace/data/repo/cart_repo.dart';
 import 'package:solidify/features/marketplace/logic/cart_cubit/cart_state.dart';
 
@@ -11,6 +10,7 @@ class CartCubit extends Cubit<CartState> {
 
   CartCubit(this._cartRepo) : super(const CartState.initial());
 
+  /// Add item to cart
   Future<void> addCartItem(String productId) async {
     emit(CartState.loading(productId));
 
@@ -25,11 +25,31 @@ class CartCubit extends Cubit<CartState> {
         },
       );
     } catch (e) {
-      _handleError(productId, ApiErrorHandler.handle(e));
-      emit(CartState.error(
-        productId: productId,
-        error: ApiErrorHandler.handle(e),
-      ));
+      final errorModel = ApiErrorHandler.handle(e);
+      _handleError(productId, errorModel);
+      emit(CartState.error(productId: productId, error: errorModel));
+    }
+  }
+
+  /// Get the entire cart items list
+  Future<void> getCartItems() async {
+    emit(const CartState.cartLoading());
+
+    try {
+      final result = await _cartRepo.getCartList();
+
+      result.when(
+        success: (cartResponse) =>
+            emit(CartState.cartListSuccess(cartResponse)),
+        failure: (error) {
+          _handleError('', error);
+          emit(CartState.cartListError(error));
+        },
+      );
+    } catch (e) {
+      final errorModel = ApiErrorHandler.handle(e);
+      _handleError('', errorModel);
+      emit(CartState.cartListError(errorModel));
     }
   }
 

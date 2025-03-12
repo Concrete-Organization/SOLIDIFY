@@ -22,6 +22,10 @@ mixin _$CartState {
     required TResult Function(String productId) loading,
     required TResult Function(String productId) success,
     required TResult Function(String productId, ApiErrorModel error) error,
+    required TResult Function() cartLoading,
+    required TResult Function(GetCartResponseModel cartResponse)
+        cartListSuccess,
+    required TResult Function(ApiErrorModel error) cartListError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +34,9 @@ mixin _$CartState {
     TResult? Function(String productId)? loading,
     TResult? Function(String productId)? success,
     TResult? Function(String productId, ApiErrorModel error)? error,
+    TResult? Function()? cartLoading,
+    TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult? Function(ApiErrorModel error)? cartListError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +45,9 @@ mixin _$CartState {
     TResult Function(String productId)? loading,
     TResult Function(String productId)? success,
     TResult Function(String productId, ApiErrorModel error)? error,
+    TResult Function()? cartLoading,
+    TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult Function(ApiErrorModel error)? cartListError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +57,9 @@ mixin _$CartState {
     required TResult Function(CartLoading value) loading,
     required TResult Function(CartSuccess value) success,
     required TResult Function(CartError value) error,
+    required TResult Function(CartListLoading value) cartLoading,
+    required TResult Function(CartListSuccess value) cartListSuccess,
+    required TResult Function(CartListError value) cartListError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +68,9 @@ mixin _$CartState {
     TResult? Function(CartLoading value)? loading,
     TResult? Function(CartSuccess value)? success,
     TResult? Function(CartError value)? error,
+    TResult? Function(CartListLoading value)? cartLoading,
+    TResult? Function(CartListSuccess value)? cartListSuccess,
+    TResult? Function(CartListError value)? cartListError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +79,9 @@ mixin _$CartState {
     TResult Function(CartLoading value)? loading,
     TResult Function(CartSuccess value)? success,
     TResult Function(CartError value)? error,
+    TResult Function(CartListLoading value)? cartLoading,
+    TResult Function(CartListSuccess value)? cartListSuccess,
+    TResult Function(CartListError value)? cartListError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +152,10 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String productId) loading,
     required TResult Function(String productId) success,
     required TResult Function(String productId, ApiErrorModel error) error,
+    required TResult Function() cartLoading,
+    required TResult Function(GetCartResponseModel cartResponse)
+        cartListSuccess,
+    required TResult Function(ApiErrorModel error) cartListError,
   }) {
     return initial();
   }
@@ -144,6 +167,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String productId)? loading,
     TResult? Function(String productId)? success,
     TResult? Function(String productId, ApiErrorModel error)? error,
+    TResult? Function()? cartLoading,
+    TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult? Function(ApiErrorModel error)? cartListError,
   }) {
     return initial?.call();
   }
@@ -155,6 +181,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(String productId)? loading,
     TResult Function(String productId)? success,
     TResult Function(String productId, ApiErrorModel error)? error,
+    TResult Function()? cartLoading,
+    TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult Function(ApiErrorModel error)? cartListError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -170,6 +199,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(CartLoading value) loading,
     required TResult Function(CartSuccess value) success,
     required TResult Function(CartError value) error,
+    required TResult Function(CartListLoading value) cartLoading,
+    required TResult Function(CartListSuccess value) cartListSuccess,
+    required TResult Function(CartListError value) cartListError,
   }) {
     return initial(this);
   }
@@ -181,6 +213,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(CartLoading value)? loading,
     TResult? Function(CartSuccess value)? success,
     TResult? Function(CartError value)? error,
+    TResult? Function(CartListLoading value)? cartLoading,
+    TResult? Function(CartListSuccess value)? cartListSuccess,
+    TResult? Function(CartListError value)? cartListError,
   }) {
     return initial?.call(this);
   }
@@ -192,6 +227,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(CartLoading value)? loading,
     TResult Function(CartSuccess value)? success,
     TResult Function(CartError value)? error,
+    TResult Function(CartListLoading value)? cartLoading,
+    TResult Function(CartListSuccess value)? cartListSuccess,
+    TResult Function(CartListError value)? cartListError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -278,6 +316,10 @@ class _$CartLoadingImpl implements CartLoading {
     required TResult Function(String productId) loading,
     required TResult Function(String productId) success,
     required TResult Function(String productId, ApiErrorModel error) error,
+    required TResult Function() cartLoading,
+    required TResult Function(GetCartResponseModel cartResponse)
+        cartListSuccess,
+    required TResult Function(ApiErrorModel error) cartListError,
   }) {
     return loading(productId);
   }
@@ -289,6 +331,9 @@ class _$CartLoadingImpl implements CartLoading {
     TResult? Function(String productId)? loading,
     TResult? Function(String productId)? success,
     TResult? Function(String productId, ApiErrorModel error)? error,
+    TResult? Function()? cartLoading,
+    TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult? Function(ApiErrorModel error)? cartListError,
   }) {
     return loading?.call(productId);
   }
@@ -300,6 +345,9 @@ class _$CartLoadingImpl implements CartLoading {
     TResult Function(String productId)? loading,
     TResult Function(String productId)? success,
     TResult Function(String productId, ApiErrorModel error)? error,
+    TResult Function()? cartLoading,
+    TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult Function(ApiErrorModel error)? cartListError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -315,6 +363,9 @@ class _$CartLoadingImpl implements CartLoading {
     required TResult Function(CartLoading value) loading,
     required TResult Function(CartSuccess value) success,
     required TResult Function(CartError value) error,
+    required TResult Function(CartListLoading value) cartLoading,
+    required TResult Function(CartListSuccess value) cartListSuccess,
+    required TResult Function(CartListError value) cartListError,
   }) {
     return loading(this);
   }
@@ -326,6 +377,9 @@ class _$CartLoadingImpl implements CartLoading {
     TResult? Function(CartLoading value)? loading,
     TResult? Function(CartSuccess value)? success,
     TResult? Function(CartError value)? error,
+    TResult? Function(CartListLoading value)? cartLoading,
+    TResult? Function(CartListSuccess value)? cartListSuccess,
+    TResult? Function(CartListError value)? cartListError,
   }) {
     return loading?.call(this);
   }
@@ -337,6 +391,9 @@ class _$CartLoadingImpl implements CartLoading {
     TResult Function(CartLoading value)? loading,
     TResult Function(CartSuccess value)? success,
     TResult Function(CartError value)? error,
+    TResult Function(CartListLoading value)? cartLoading,
+    TResult Function(CartListSuccess value)? cartListSuccess,
+    TResult Function(CartListError value)? cartListError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -431,6 +488,10 @@ class _$CartSuccessImpl implements CartSuccess {
     required TResult Function(String productId) loading,
     required TResult Function(String productId) success,
     required TResult Function(String productId, ApiErrorModel error) error,
+    required TResult Function() cartLoading,
+    required TResult Function(GetCartResponseModel cartResponse)
+        cartListSuccess,
+    required TResult Function(ApiErrorModel error) cartListError,
   }) {
     return success(productId);
   }
@@ -442,6 +503,9 @@ class _$CartSuccessImpl implements CartSuccess {
     TResult? Function(String productId)? loading,
     TResult? Function(String productId)? success,
     TResult? Function(String productId, ApiErrorModel error)? error,
+    TResult? Function()? cartLoading,
+    TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult? Function(ApiErrorModel error)? cartListError,
   }) {
     return success?.call(productId);
   }
@@ -453,6 +517,9 @@ class _$CartSuccessImpl implements CartSuccess {
     TResult Function(String productId)? loading,
     TResult Function(String productId)? success,
     TResult Function(String productId, ApiErrorModel error)? error,
+    TResult Function()? cartLoading,
+    TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult Function(ApiErrorModel error)? cartListError,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -468,6 +535,9 @@ class _$CartSuccessImpl implements CartSuccess {
     required TResult Function(CartLoading value) loading,
     required TResult Function(CartSuccess value) success,
     required TResult Function(CartError value) error,
+    required TResult Function(CartListLoading value) cartLoading,
+    required TResult Function(CartListSuccess value) cartListSuccess,
+    required TResult Function(CartListError value) cartListError,
   }) {
     return success(this);
   }
@@ -479,6 +549,9 @@ class _$CartSuccessImpl implements CartSuccess {
     TResult? Function(CartLoading value)? loading,
     TResult? Function(CartSuccess value)? success,
     TResult? Function(CartError value)? error,
+    TResult? Function(CartListLoading value)? cartLoading,
+    TResult? Function(CartListSuccess value)? cartListSuccess,
+    TResult? Function(CartListError value)? cartListError,
   }) {
     return success?.call(this);
   }
@@ -490,6 +563,9 @@ class _$CartSuccessImpl implements CartSuccess {
     TResult Function(CartLoading value)? loading,
     TResult Function(CartSuccess value)? success,
     TResult Function(CartError value)? error,
+    TResult Function(CartListLoading value)? cartLoading,
+    TResult Function(CartListSuccess value)? cartListSuccess,
+    TResult Function(CartListError value)? cartListError,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -592,6 +668,10 @@ class _$CartErrorImpl implements CartError {
     required TResult Function(String productId) loading,
     required TResult Function(String productId) success,
     required TResult Function(String productId, ApiErrorModel error) error,
+    required TResult Function() cartLoading,
+    required TResult Function(GetCartResponseModel cartResponse)
+        cartListSuccess,
+    required TResult Function(ApiErrorModel error) cartListError,
   }) {
     return error(productId, this.error);
   }
@@ -603,6 +683,9 @@ class _$CartErrorImpl implements CartError {
     TResult? Function(String productId)? loading,
     TResult? Function(String productId)? success,
     TResult? Function(String productId, ApiErrorModel error)? error,
+    TResult? Function()? cartLoading,
+    TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult? Function(ApiErrorModel error)? cartListError,
   }) {
     return error?.call(productId, this.error);
   }
@@ -614,6 +697,9 @@ class _$CartErrorImpl implements CartError {
     TResult Function(String productId)? loading,
     TResult Function(String productId)? success,
     TResult Function(String productId, ApiErrorModel error)? error,
+    TResult Function()? cartLoading,
+    TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult Function(ApiErrorModel error)? cartListError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -629,6 +715,9 @@ class _$CartErrorImpl implements CartError {
     required TResult Function(CartLoading value) loading,
     required TResult Function(CartSuccess value) success,
     required TResult Function(CartError value) error,
+    required TResult Function(CartListLoading value) cartLoading,
+    required TResult Function(CartListSuccess value) cartListSuccess,
+    required TResult Function(CartListError value) cartListError,
   }) {
     return error(this);
   }
@@ -640,6 +729,9 @@ class _$CartErrorImpl implements CartError {
     TResult? Function(CartLoading value)? loading,
     TResult? Function(CartSuccess value)? success,
     TResult? Function(CartError value)? error,
+    TResult? Function(CartListLoading value)? cartLoading,
+    TResult? Function(CartListSuccess value)? cartListSuccess,
+    TResult? Function(CartListError value)? cartListError,
   }) {
     return error?.call(this);
   }
@@ -651,6 +743,9 @@ class _$CartErrorImpl implements CartError {
     TResult Function(CartLoading value)? loading,
     TResult Function(CartSuccess value)? success,
     TResult Function(CartError value)? error,
+    TResult Function(CartListLoading value)? cartLoading,
+    TResult Function(CartListSuccess value)? cartListSuccess,
+    TResult Function(CartListError value)? cartListError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -672,5 +767,486 @@ abstract class CartError implements CartState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CartErrorImplCopyWith<_$CartErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CartListLoadingImplCopyWith<$Res> {
+  factory _$$CartListLoadingImplCopyWith(_$CartListLoadingImpl value,
+          $Res Function(_$CartListLoadingImpl) then) =
+      __$$CartListLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CartListLoadingImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$CartListLoadingImpl>
+    implements _$$CartListLoadingImplCopyWith<$Res> {
+  __$$CartListLoadingImplCopyWithImpl(
+      _$CartListLoadingImpl _value, $Res Function(_$CartListLoadingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CartListLoadingImpl implements CartListLoading {
+  const _$CartListLoadingImpl();
+
+  @override
+  String toString() {
+    return 'CartState.cartLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CartListLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String productId) loading,
+    required TResult Function(String productId) success,
+    required TResult Function(String productId, ApiErrorModel error) error,
+    required TResult Function() cartLoading,
+    required TResult Function(GetCartResponseModel cartResponse)
+        cartListSuccess,
+    required TResult Function(ApiErrorModel error) cartListError,
+  }) {
+    return cartLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String productId)? loading,
+    TResult? Function(String productId)? success,
+    TResult? Function(String productId, ApiErrorModel error)? error,
+    TResult? Function()? cartLoading,
+    TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult? Function(ApiErrorModel error)? cartListError,
+  }) {
+    return cartLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String productId)? loading,
+    TResult Function(String productId)? success,
+    TResult Function(String productId, ApiErrorModel error)? error,
+    TResult Function()? cartLoading,
+    TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult Function(ApiErrorModel error)? cartListError,
+    required TResult orElse(),
+  }) {
+    if (cartLoading != null) {
+      return cartLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CartLoading value) loading,
+    required TResult Function(CartSuccess value) success,
+    required TResult Function(CartError value) error,
+    required TResult Function(CartListLoading value) cartLoading,
+    required TResult Function(CartListSuccess value) cartListSuccess,
+    required TResult Function(CartListError value) cartListError,
+  }) {
+    return cartLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CartLoading value)? loading,
+    TResult? Function(CartSuccess value)? success,
+    TResult? Function(CartError value)? error,
+    TResult? Function(CartListLoading value)? cartLoading,
+    TResult? Function(CartListSuccess value)? cartListSuccess,
+    TResult? Function(CartListError value)? cartListError,
+  }) {
+    return cartLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CartLoading value)? loading,
+    TResult Function(CartSuccess value)? success,
+    TResult Function(CartError value)? error,
+    TResult Function(CartListLoading value)? cartLoading,
+    TResult Function(CartListSuccess value)? cartListSuccess,
+    TResult Function(CartListError value)? cartListError,
+    required TResult orElse(),
+  }) {
+    if (cartLoading != null) {
+      return cartLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CartListLoading implements CartState {
+  const factory CartListLoading() = _$CartListLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$CartListSuccessImplCopyWith<$Res> {
+  factory _$$CartListSuccessImplCopyWith(_$CartListSuccessImpl value,
+          $Res Function(_$CartListSuccessImpl) then) =
+      __$$CartListSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({GetCartResponseModel cartResponse});
+}
+
+/// @nodoc
+class __$$CartListSuccessImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$CartListSuccessImpl>
+    implements _$$CartListSuccessImplCopyWith<$Res> {
+  __$$CartListSuccessImplCopyWithImpl(
+      _$CartListSuccessImpl _value, $Res Function(_$CartListSuccessImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cartResponse = null,
+  }) {
+    return _then(_$CartListSuccessImpl(
+      null == cartResponse
+          ? _value.cartResponse
+          : cartResponse // ignore: cast_nullable_to_non_nullable
+              as GetCartResponseModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CartListSuccessImpl implements CartListSuccess {
+  const _$CartListSuccessImpl(this.cartResponse);
+
+  @override
+  final GetCartResponseModel cartResponse;
+
+  @override
+  String toString() {
+    return 'CartState.cartListSuccess(cartResponse: $cartResponse)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CartListSuccessImpl &&
+            (identical(other.cartResponse, cartResponse) ||
+                other.cartResponse == cartResponse));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, cartResponse);
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CartListSuccessImplCopyWith<_$CartListSuccessImpl> get copyWith =>
+      __$$CartListSuccessImplCopyWithImpl<_$CartListSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String productId) loading,
+    required TResult Function(String productId) success,
+    required TResult Function(String productId, ApiErrorModel error) error,
+    required TResult Function() cartLoading,
+    required TResult Function(GetCartResponseModel cartResponse)
+        cartListSuccess,
+    required TResult Function(ApiErrorModel error) cartListError,
+  }) {
+    return cartListSuccess(cartResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String productId)? loading,
+    TResult? Function(String productId)? success,
+    TResult? Function(String productId, ApiErrorModel error)? error,
+    TResult? Function()? cartLoading,
+    TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult? Function(ApiErrorModel error)? cartListError,
+  }) {
+    return cartListSuccess?.call(cartResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String productId)? loading,
+    TResult Function(String productId)? success,
+    TResult Function(String productId, ApiErrorModel error)? error,
+    TResult Function()? cartLoading,
+    TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult Function(ApiErrorModel error)? cartListError,
+    required TResult orElse(),
+  }) {
+    if (cartListSuccess != null) {
+      return cartListSuccess(cartResponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CartLoading value) loading,
+    required TResult Function(CartSuccess value) success,
+    required TResult Function(CartError value) error,
+    required TResult Function(CartListLoading value) cartLoading,
+    required TResult Function(CartListSuccess value) cartListSuccess,
+    required TResult Function(CartListError value) cartListError,
+  }) {
+    return cartListSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CartLoading value)? loading,
+    TResult? Function(CartSuccess value)? success,
+    TResult? Function(CartError value)? error,
+    TResult? Function(CartListLoading value)? cartLoading,
+    TResult? Function(CartListSuccess value)? cartListSuccess,
+    TResult? Function(CartListError value)? cartListError,
+  }) {
+    return cartListSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CartLoading value)? loading,
+    TResult Function(CartSuccess value)? success,
+    TResult Function(CartError value)? error,
+    TResult Function(CartListLoading value)? cartLoading,
+    TResult Function(CartListSuccess value)? cartListSuccess,
+    TResult Function(CartListError value)? cartListError,
+    required TResult orElse(),
+  }) {
+    if (cartListSuccess != null) {
+      return cartListSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CartListSuccess implements CartState {
+  const factory CartListSuccess(final GetCartResponseModel cartResponse) =
+      _$CartListSuccessImpl;
+
+  GetCartResponseModel get cartResponse;
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CartListSuccessImplCopyWith<_$CartListSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CartListErrorImplCopyWith<$Res> {
+  factory _$$CartListErrorImplCopyWith(
+          _$CartListErrorImpl value, $Res Function(_$CartListErrorImpl) then) =
+      __$$CartListErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel error});
+}
+
+/// @nodoc
+class __$$CartListErrorImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$CartListErrorImpl>
+    implements _$$CartListErrorImplCopyWith<$Res> {
+  __$$CartListErrorImplCopyWithImpl(
+      _$CartListErrorImpl _value, $Res Function(_$CartListErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$CartListErrorImpl(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CartListErrorImpl implements CartListError {
+  const _$CartListErrorImpl(this.error);
+
+  @override
+  final ApiErrorModel error;
+
+  @override
+  String toString() {
+    return 'CartState.cartListError(error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CartListErrorImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CartListErrorImplCopyWith<_$CartListErrorImpl> get copyWith =>
+      __$$CartListErrorImplCopyWithImpl<_$CartListErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String productId) loading,
+    required TResult Function(String productId) success,
+    required TResult Function(String productId, ApiErrorModel error) error,
+    required TResult Function() cartLoading,
+    required TResult Function(GetCartResponseModel cartResponse)
+        cartListSuccess,
+    required TResult Function(ApiErrorModel error) cartListError,
+  }) {
+    return cartListError(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String productId)? loading,
+    TResult? Function(String productId)? success,
+    TResult? Function(String productId, ApiErrorModel error)? error,
+    TResult? Function()? cartLoading,
+    TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult? Function(ApiErrorModel error)? cartListError,
+  }) {
+    return cartListError?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String productId)? loading,
+    TResult Function(String productId)? success,
+    TResult Function(String productId, ApiErrorModel error)? error,
+    TResult Function()? cartLoading,
+    TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
+    TResult Function(ApiErrorModel error)? cartListError,
+    required TResult orElse(),
+  }) {
+    if (cartListError != null) {
+      return cartListError(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CartLoading value) loading,
+    required TResult Function(CartSuccess value) success,
+    required TResult Function(CartError value) error,
+    required TResult Function(CartListLoading value) cartLoading,
+    required TResult Function(CartListSuccess value) cartListSuccess,
+    required TResult Function(CartListError value) cartListError,
+  }) {
+    return cartListError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CartLoading value)? loading,
+    TResult? Function(CartSuccess value)? success,
+    TResult? Function(CartError value)? error,
+    TResult? Function(CartListLoading value)? cartLoading,
+    TResult? Function(CartListSuccess value)? cartListSuccess,
+    TResult? Function(CartListError value)? cartListError,
+  }) {
+    return cartListError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CartLoading value)? loading,
+    TResult Function(CartSuccess value)? success,
+    TResult Function(CartError value)? error,
+    TResult Function(CartListLoading value)? cartLoading,
+    TResult Function(CartListSuccess value)? cartListSuccess,
+    TResult Function(CartListError value)? cartListError,
+    required TResult orElse(),
+  }) {
+    if (cartListError != null) {
+      return cartListError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CartListError implements CartState {
+  const factory CartListError(final ApiErrorModel error) = _$CartListErrorImpl;
+
+  ApiErrorModel get error;
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CartListErrorImplCopyWith<_$CartListErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
