@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:solidify/core/network/api_error_model.dart';
+import 'package:solidify/features/community/data/models/post_models/create_post_response.dart';
 import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
 
 part 'posts_state.freezed.dart';
@@ -15,4 +16,9 @@ class PostsState<T> with _$PostsState<T> {
 
   const factory PostsState.postsError({required ApiErrorModel error}) =
       PostsError;
+  const factory PostsState.createPostLoading() = CreatePostLoading;
+  const factory PostsState.createPostSuccess(
+      CreatePostResponse response) = CreatePostSuccess;
+  const factory PostsState.createPostError(
+      {required ApiErrorModel error}) = CreatePostError;
 }

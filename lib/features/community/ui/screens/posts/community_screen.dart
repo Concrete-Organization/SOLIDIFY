@@ -4,6 +4,7 @@ import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/community/ui/screens/posts/widgets/community_app_bar.dart';
 import 'package:solidify/features/community/ui/screens/posts/widgets/posts_bloc_builder.dart';
 
+
 class CommunityScreen extends StatelessWidget {
   const CommunityScreen({super.key});
 
@@ -13,13 +14,11 @@ class CommunityScreen extends StatelessWidget {
       child: Column(
         children: [
           verticalSpace(15),
-          CommunityAppBar(),
+          const CommunityAppBar(),
           verticalSpace(17),
-          HorizontalDivider(),
+          const HorizontalDivider(),
           verticalSpace(22),
-          const Expanded(
-            child: PostsBlocBuilder(),
-          ),
+          const Expanded(child: PostsBlocBuilder()),
           verticalSpace(10),
         ],
       ),

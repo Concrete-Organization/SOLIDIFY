@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -146,7 +147,10 @@ class AppRoutes {
         );
       case Routes.createPostScreen:
         return MaterialPageRoute(
-          builder: (context) => const CreatePostScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<PostsCubit>(),
+            child: CreatePostScreen(),
+          ),
         );
       case Routes.addressDetailsScreen:
         return MaterialPageRoute(
