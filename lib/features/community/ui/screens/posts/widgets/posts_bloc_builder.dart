@@ -14,10 +14,17 @@ class PostsBlocBuilder extends StatelessWidget {
         return state.when(
           initial: () => const SizedBox.shrink(),
           postsLoading: () => const Center(child: CircularProgressIndicator()),
-          postsSuccess: (posts) => PostsListView(posts: posts),
-          postsError: (error) => Center(
-            child: Text('Error: ${error.message}'),
-          ),
+          postsSuccess: (posts) {
+            print('Rendering ${posts.length} posts');
+            return PostsListView(posts: posts);
+          },
+          postsError: (error) => Center(child: Text('Error: ${error.message}')),
+          createPostLoading: () => const Center(child: CircularProgressIndicator()),
+          createPostSuccess: (response) {
+            print('Create post success in UI');
+            return const SizedBox.shrink();
+          },
+          createPostError: (error) => Center(child: Text('Error: ${error.message}')),
         );
       },
     );

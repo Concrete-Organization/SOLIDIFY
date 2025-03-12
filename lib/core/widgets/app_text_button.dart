@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../theming/color_manger.dart';
 import '../theming/font_weight_helper.dart';
 import '../theming/text_styles.dart';
@@ -21,6 +20,7 @@ class AppTextButton extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? buttonPadding;
   final bool enabled;
+  final bool isLoading;
 
   const AppTextButton({
     super.key,
@@ -39,6 +39,7 @@ class AppTextButton extends StatelessWidget {
     this.fontWeight,
     this.padding,
     this.buttonPadding,
+    this.isLoading = false,
   });
 
   @override
@@ -47,7 +48,7 @@ class AppTextButton extends StatelessWidget {
       width: width ?? double.infinity,
       height: height ?? 52.h,
       child: ElevatedButton(
-        onPressed: enabled ? onPressed : null,
+        onPressed: enabled && !isLoading ? onPressed : null,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? ColorsManager.mainBlue,
           disabledBackgroundColor: disabledBackgroundColor ??
@@ -60,13 +61,24 @@ class AppTextButton extends StatelessWidget {
             ),
             side: BorderSide(
               width: 2.w,
-              color: (onPressed == null)
+              color: (onPressed == null || isLoading)
                   ? Colors.transparent
                   : borderColor ?? ColorsManager.mainBlue,
             ),
           ),
         ),
-        child: Text(
+        child: isLoading
+            ? SizedBox(
+          width: 20.w,
+          height: 20.h,
+          child: CircularProgressIndicator(
+            strokeWidth: 2,
+            valueColor: AlwaysStoppedAnimation<Color>(
+              textColor ?? ColorsManager.white,
+            ),
+          ),
+        )
+            : Text(
           textButton,
           style: TextStyles.font16WhiteMedium.copyWith(
             color: onPressed == null
