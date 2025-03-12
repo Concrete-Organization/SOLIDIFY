@@ -22,7 +22,11 @@ class _EngineerLayoutState extends State<EngineerLayout> {
     BlocProvider(
       create: (context) => getIt<PostsCubit>()..fetchPosts(),
       child: const CommunityScreen(),
-    ),  ];
+    ),
+    SizedBox.shrink(),
+    SizedBox.shrink(),
+    SizedBox.shrink(),
+  ];
 
   void onItemTapped(int index) {
     setState(() {

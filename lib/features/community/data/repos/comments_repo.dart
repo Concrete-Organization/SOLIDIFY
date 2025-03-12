@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/network/api_error_handler.dart';
 import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/core/network/api_result.dart';
@@ -14,7 +15,9 @@ class CommentsRepo {
 
   Future<ApiResult<GetCommentsResponse>> getComments(int postId) async {
     try {
-      final response = await _apiService.comments(postId);
+      final accessToken =
+          await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
+      final response = await _apiService.comments(postId, accessToken);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
@@ -22,16 +25,18 @@ class CommentsRepo {
   }
 
   Future<ApiResult<CreateCommentResponse>> createComment(
-      CreateCommentRequest createCommentRequest,
-      int postId,
-      ) async {
+    CreateCommentRequest createCommentRequest,
+    int postId,
+  ) async {
     try {
-      final response = await _apiService.createComment(postId, createCommentRequest);
+      final response =
+          await _apiService.createComment(postId, createCommentRequest);
       return ApiResult.success(response);
     } on DioException catch (e) {
       if (e.response?.statusCode == 302) {
         print('Redirected to: ${e.response?.headers['location']}');
-        return ApiResult.failure(ApiErrorModel(message: 'Session expired, please log in again'));
+        return ApiResult.failure(
+            ApiErrorModel(message: 'Session expired, please log in again'));
       }
       return ApiResult.failure(ApiErrorHandler.handle(e));
     } catch (error) {

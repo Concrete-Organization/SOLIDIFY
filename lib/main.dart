@@ -6,12 +6,14 @@ import 'package:solidify/bloc_observer.dart';
 import 'package:solidify/core/routes/app_routes.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
+import 'core/network/dio_factory.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
+  await DioFactory.initCookieJar();
   setupGetIt();
 
   bool isLoggedIn = await SharedPrefHelper.getBool(SharedPrefKeys.isLoggedIn);

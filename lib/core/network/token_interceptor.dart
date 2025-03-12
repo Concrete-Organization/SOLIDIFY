@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:solidify/core/network/api_service.dart';
 import 'package:solidify/core/network/refresh_token_model.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/main.dart';
@@ -106,6 +104,11 @@ class TokenInterceptor extends Interceptor {
       ), true);
     }
   }
+  // @override
+  // void onResponse(Response response, ResponseInterceptorHandler handler) {
+  //   if(response.)
+  //   super.onResponse(response, handler);
+  // }
 
   Future<RefreshTokenResponseModel> _refreshToken(String refreshToken) async {
     final dio = Dio();
@@ -138,54 +141,3 @@ class TokenInterceptor extends Interceptor {
     return skipPaths.any((p) => path.contains(p));
   }
 }
-// class TokenInterceptor extends Interceptor{
-//   static final TokenInterceptor _instance = TokenInterceptor._internal();
-//   final Dio _dio = Dio();
-//   final FlutterSecureStorage _storage = const FlutterSecureStorage();
-//
-//   factory TokenInterceptor() {
-//     return _instance;
-//   }
-//
-//   TokenInterceptor._internal() {
-//     _dio.interceptors.add(InterceptorsWrapper(
-//       onRequest: (options, handler) async {
-//         final accessToken = await _storage.read(key: 'accessToken');
-//         if (accessToken != null) {
-//           options.headers['Authorization'] = 'Bearer $accessToken';
-//         }
-//         return handler.next(options);
-//       },
-//       onError: (error, handler) async {
-//         if (error.response?.statusCode == 401) {
-//           final refreshToken = await _storage.read(key: 'refreshToken');
-//           if (refreshToken != null) {
-//             try {
-//               final newAccessToken = await _refreshToken(refreshToken);
-//               await _storage.write(key: 'accessToken', value: newAccessToken);
-//
-//               error.requestOptions.headers['Authorization'] = 'Bearer $newAccessToken';
-//               final response = await _dio.fetch(error.requestOptions);
-//               return handler.resolve(response);
-//             } catch (e) {
-//               await _storage.deleteAll();
-//               navigatorKey.currentState?.pushNamedAndRemoveUntil(
-//                 Routes.loginScreen,
-//                 (route) => false,
-//               );
-//             }
-//           }
-//         }
-//         return handler.next(error);
-//       },
-//     ));
-//   }
-//
-//   Future<String> _refreshToken(String refreshToken) async {
-//     final response = await ApiService(_dio)
-//         .refreshToken(RefreshTokenRequestModel(refreshToken: refreshToken));
-//
-//     return response.model.accessToken;
-//   }
-//   ApiService get apiService => ApiService(_dio);
-// }
