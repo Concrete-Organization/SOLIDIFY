@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
 import 'package:solidify/features/community/ui/screens/posts/widgets/post_item.dart';
+import 'package:solidify/features/community/ui/screens/posts/widgets/shimmer_post_item.dart';
 
 class PostsListView extends StatefulWidget {
   final List<PostModel> posts;
@@ -40,7 +41,7 @@ class _PostsListViewState extends State<PostsListView> {
 
   void _onScroll() {
     if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent - 200 &&
+            _scrollController.position.maxScrollExtent / 2 &&
         widget.hasMorePosts &&
         !widget.isLoadingMore) {
       widget.loadMorePosts();
@@ -60,10 +61,11 @@ class _PostsListViewState extends State<PostsListView> {
           if (index < widget.posts.length) {
             return PostItem(post: widget.posts[index]);
           } else {
-            // This is the loading indicator at the bottom
             return const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Center(child: CircularProgressIndicator()),
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Center(
+                child: ShimmerPostItem(),
+              ),
             );
           }
         },

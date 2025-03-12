@@ -46,8 +46,6 @@ class PostsCubit extends Cubit<PostsState> {
 
     result.when(
       success: (data) {
-        print('Fetched posts: ${data.model.items.length} items');
-
         if (isLoadingMore) {
           _allPosts = [..._allPosts, ...data.model.items];
         } else {
@@ -65,7 +63,6 @@ class PostsCubit extends Cubit<PostsState> {
         ));
       },
       failure: (error) {
-        print('Fetch posts error: ${error.message}');
         if (isLoadingMore) {
           _currentPage--;
         }
@@ -79,14 +76,12 @@ class PostsCubit extends Cubit<PostsState> {
     final result = await _postsRepo.createPost(requestModel);
     result.when(
       success: (data) async {
-        print('Post created successfully');
         _currentPage = 1;
         _allPosts = [];
         await _loadPosts();
         emit(PostsState.createPostSuccess(data));
       },
       failure: (error) {
-        print('Create post error: ${error.message}');
         emit(PostsState.createPostError(error: error));
       },
     );

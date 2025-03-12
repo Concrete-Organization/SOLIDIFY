@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/network/api_error_handler.dart';
-import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/core/network/api_result.dart';
 import 'package:solidify/core/network/api_service.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_comment_request.dart';
@@ -33,11 +32,6 @@ class CommentsRepo {
           await _apiService.createComment(postId, createCommentRequest);
       return ApiResult.success(response);
     } on DioException catch (e) {
-      if (e.response?.statusCode == 302) {
-        print('Redirected to: ${e.response?.headers['location']}');
-        return ApiResult.failure(
-            ApiErrorModel(message: 'Session expired, please log in again'));
-      }
       return ApiResult.failure(ApiErrorHandler.handle(e));
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));

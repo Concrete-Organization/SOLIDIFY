@@ -15,7 +15,7 @@ class PostsState<T> with _$PostsState<T> {
     required bool hasMorePosts,
     required int currentPage,
     required int totalPages,
-  }) = PostsSuccess<T>;
+  }) = PostsSuccess;
 
   const factory PostsState.loadingMorePosts({
     required List<PostModel> currentPosts,

@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:solidify/core/network/api_error_handler.dart';
-import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/core/network/api_result.dart';
 import 'package:solidify/core/network/api_service.dart';
 import 'package:solidify/features/community/data/models/post_models/create_post_request.dart';
@@ -15,7 +14,8 @@ class PostsRepo {
   Future<ApiResult<GetPostsResponse>> getPosts({int page = 1}) async {
     try {
       final response = await _apiService.posts(page);
-      response.model.items.sort((a, b) => b.creationDate.compareTo(a.creationDate));
+      response.model.items
+          .sort((a, b) => b.creationDate.compareTo(a.creationDate));
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
@@ -29,12 +29,6 @@ class PostsRepo {
       final response = await _apiService.createPost(formData);
       return ApiResult.success(response);
     } on DioException catch (e) {
-      if (e.response?.statusCode == 302) {
-        print('Redirected to: ${e.response?.headers['location']}');
-        return ApiResult.failure(
-          ApiErrorModel(message: 'Session expired, please log in again'),
-        );
-      }
       return ApiResult.failure(ApiErrorHandler.handle(e));
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));

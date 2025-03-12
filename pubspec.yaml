@@ -80,8 +80,12 @@ dependencies:
   jwt_decoder: ^2.0.1
   # support infinite scroll and custom child widget.
   carousel_slider: ^5.0.0
+  # combines cookie_jar and dio, based on the interceptor algorithm.
   dio_cookie_manager: ^3.2.0
+  # cookie manager for http requests in Dart, help you to deal with the cookie policies and persistence.
   cookie_jar: ^4.0.8
+
+
 
 dev_dependencies:
   flutter_test:
