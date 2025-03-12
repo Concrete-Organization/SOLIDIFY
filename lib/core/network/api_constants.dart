@@ -24,4 +24,6 @@ class ApiConstants {
   static String cartItemEndpoint(String id) => "CartItem/$id";
 
   static const String productWithId = "Product/{id}";
+
+  static const String cart = "Cart";
 }

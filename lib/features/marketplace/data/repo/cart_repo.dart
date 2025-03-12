@@ -3,6 +3,7 @@ import 'package:solidify/core/network/api_service.dart';
 import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/core/network/api_error_handler.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
+import 'package:solidify/features/marketplace/data/models/get_cart_response_model.dart';
 import 'package:solidify/features/marketplace/data/models/post_cart_response_model.dart';
 
 class CartRepo {
@@ -12,7 +13,6 @@ class CartRepo {
 
   Future<ApiResult<PostCartResponseModel>> addCartItem(String id) async {
     try {
-      // Get the access token from secure storage
       final accessToken = await SharedPrefHelper.getSecuredString(
         SharedPrefKeys.accessToken,
       );
@@ -23,13 +23,11 @@ class CartRepo {
         );
       }
 
-      // Pass the token to the API service
       final response = await _apiService.addCartItem(
         id,
-        'Bearer $accessToken', // Add the Bearer prefix
+        'Bearer $accessToken',
       );
 
-      // Cache the product ID on successful addition
       final cachedIds = await SharedPrefHelper.getCachedProductIds();
       if (!cachedIds.contains(id)) {
         cachedIds.add(id);
@@ -42,7 +40,16 @@ class CartRepo {
     }
   }
 
-  Future<List<String>> getCartItems() async {
+  Future<ApiResult<GetCartResponseModel>> getCartList() async {
+    try {
+      final response = await _apiService.cartList();
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
+  Future<List<String>> getCachedCartItems() async {
     return await SharedPrefHelper.getCachedProductIds();
   }
 
