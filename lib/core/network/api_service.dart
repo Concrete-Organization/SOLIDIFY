@@ -10,6 +10,7 @@ import 'package:solidify/features/marketplace/data/models/get_cart_response_mode
 import 'package:solidify/features/marketplace/data/models/post_cart_response_model.dart';
 import 'package:solidify/features/marketplace/data/models/product_list_response_model.dart';
 import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
+import 'package:solidify/features/community/data/models/post_models/create_post_response.dart';
 import 'package:solidify/features/marketplace/data/models/get_product_by_id_response_body.dart';
 import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_comment_request.dart';
@@ -82,6 +83,12 @@ abstract class ApiService {
   @GET(ApiConstants.post)
   Future<GetPostsResponse> posts();
 
+  @POST(ApiConstants.post)
+  @MultiPart()
+  Future<CreatePostResponse> createPost(
+    @Body() FormData formData,
+  );
+
   @GET('${ApiConstants.comment}/{id}')
   Future<GetCommentsResponse> comments(
     @Path('id') int postId,
@@ -98,7 +105,4 @@ abstract class ApiService {
   Future<GetProductByIdResponseBody> getProductById(
     @Path('id') String productId,
   );
-    @GET(ApiConstants.cart)
-  Future<GetCartResponseModel> cartList();
-  
 }
