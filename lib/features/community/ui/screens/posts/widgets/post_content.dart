@@ -97,7 +97,6 @@ class _PostContentState extends State<PostContent> {
                     onTap: () => _openFullScreenImage(context),
                     child: CachedNetworkImage(
                       imageUrl: imageUri,
-                      fit: BoxFit.cover,
                       placeholder: (context, url) => Shimmer.fromColors(
                         baseColor: Colors.grey[300]!,
                         highlightColor: Colors.grey[100]!,
@@ -105,7 +104,8 @@ class _PostContentState extends State<PostContent> {
                           color: Colors.white,
                         ),
                       ),
-                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
                   );
                 }).toList(),
@@ -148,4 +148,3 @@ class _PostContentState extends State<PostContent> {
     );
   }
 }
-
