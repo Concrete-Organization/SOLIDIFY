@@ -105,4 +105,7 @@ abstract class ApiService {
   Future<GetProductByIdResponseBody> getProductById(
     @Path('id') String productId,
   );
+
+  @GET(ApiConstants.cart)
+  Future<GetCartResponseModel> cartList();
 }
