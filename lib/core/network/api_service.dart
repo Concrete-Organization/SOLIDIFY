@@ -1,3 +1,5 @@
+import 'package:solidify/features/community/data/models/post_models/like_post_response.dart';
+
 import 'api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -102,6 +104,11 @@ abstract class ApiService {
   Future<CreateCommentResponse> createComment(
     @Path('id') int postId,
     @Body() CreateCommentRequest createCommentRequest,
+  );
+
+  @POST('${ApiConstants.likePost}/{id}')
+  Future<LikePostResponse> likePost(
+    @Path('id') int postId,
   );
 
   @GET(ApiConstants.productWithId)
