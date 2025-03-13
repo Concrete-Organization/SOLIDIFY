@@ -31,7 +31,7 @@ class CommentsListView extends StatelessWidget {
       itemBuilder: (context, index) {
         final comment = comments[index];
         return CommentItem(
-          profileImage: comment.profileImageUrl ?? 'assets/images/app_prof.png',
+          profileImage: comment.profileImageUrl ?? 'assets/svgs/app_prof.svg',
           name: comment.engineerName ?? 'Unknown',
           timeAgo: getRelativeTime(comment.creationDate),
           comment: comment.content ?? 'No content',

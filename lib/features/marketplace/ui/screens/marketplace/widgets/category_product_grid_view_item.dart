@@ -56,13 +56,12 @@ class CategoryProductGridViewItem extends StatelessWidget {
                 child: IconButton(
                   padding: EdgeInsets.zero,
                   icon: Icon(
-                    Icons.favorite_border, // Default to unfavorite icon
+                    Icons.favorite_border,
                     color: ColorsManager.mainBlue,
                     size: 22.w,
                   ),
                   onPressed: () {
-                    // Handle favorite button press
-                    // Since this is a StatelessWidget, you need to manage state externally
+
                   },
                 ),
               ),
@@ -132,7 +131,6 @@ class CategoryProductGridViewItem extends StatelessWidget {
                     fontSize: 12.sp,
                     fontWeight: FontWeightHelper.medium,
                     onPressed: () {
-                      // Handle add to cart button press
                     },
                     backgroundColor: ColorsManager.mainBlue,
                     padding: EdgeInsets.zero,

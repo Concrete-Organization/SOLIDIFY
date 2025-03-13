@@ -35,12 +35,14 @@ class _CommentsTextFieldState extends State<CommentsTextField> {
             verticalSpace(10),
             Row(
               children: [
-                CircleAvatar(
-                  radius: 19.w,
-                  backgroundColor: Colors.black,
+                Padding(
+                  padding: EdgeInsets.only(bottom: 8.h),
                   child: CircleAvatar(
-                    radius: 18.w,
-                    backgroundImage: const AssetImage('assets/images/app_prof.png'),
+                    radius: 20.w,
+                    backgroundColor: Colors.transparent,
+                    child: SvgPicture.asset(
+                      'assets/svgs/app_prof.svg',
+                    ),
                   ),
                 ),
                 horizontalSpace(6),

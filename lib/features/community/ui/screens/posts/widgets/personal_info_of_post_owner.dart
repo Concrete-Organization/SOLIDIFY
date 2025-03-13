@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:solidify/core/helpers/format_date.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 
@@ -21,9 +22,21 @@ class PersonalInfoOfPostOwner extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       leading: CircleAvatar(
         radius: 21.w,
-        backgroundImage: profileImageUrl != null
-            ? NetworkImage(profileImageUrl!)
-            : const AssetImage('assets/images/app_prof.png') as ImageProvider,
+        backgroundColor: Colors.transparent,
+        child: profileImageUrl != null
+            ? ClipOval(
+          child: Image.network(
+            profileImageUrl!,
+            fit: BoxFit.cover,
+            width: 42.w,
+            height: 42.w,
+          ),
+        )
+            : SvgPicture.asset(
+          'assets/svgs/app_prof.svg',
+          width: 42.w,
+          height: 42.w,
+        ),
       ),
       title: Text(
         engineerName,

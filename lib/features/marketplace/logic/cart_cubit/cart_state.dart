@@ -8,7 +8,6 @@ part 'cart_state.freezed.dart';
 class CartState with _$CartState {
   const factory CartState.initial() = _Initial;
 
-  // For adding an item to the cart
   const factory CartState.loading(String productId) = CartLoading;
   const factory CartState.success(String productId) = CartSuccess;
   const factory CartState.error({
@@ -16,7 +15,6 @@ class CartState with _$CartState {
     required ApiErrorModel error,
   }) = CartError;
 
-  // For fetching cart items list
   const factory CartState.cartLoading() = CartListLoading;
   const factory CartState.cartListSuccess(GetCartResponseModel cartResponse) =
       CartListSuccess;

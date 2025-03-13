@@ -44,14 +44,16 @@ class _ReviewCardState extends State<ReviewCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 42.w,
-            height: 42.h,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              color: ColorsManager.mainBlue,
-              image: DecorationImage(
-                image: AssetImage('assets/images/app_prof.png'),
+              color: Colors.transparent,
+            ),
+            child: ClipOval(
+              child: SvgPicture.asset(
+                'assets/svgs/app_prof.svg',
                 fit: BoxFit.cover,
+                width: 42.w,
+                height: 42.h,
               ),
             ),
           ),

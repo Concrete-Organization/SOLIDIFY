@@ -444,10 +444,11 @@ class _ApiService implements ApiService {
   @override
   Future<GetCommentsResponse> comments(
     int postId,
+    int pageNumber,
     String token,
   ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'PageNumber': pageNumber};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;

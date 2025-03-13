@@ -13,8 +13,11 @@ import 'package:solidify/features/marketplace/logic/cart_cubit/cart_state.dart';
 class ProductGridViewItem extends StatefulWidget {
   final dynamic product;
 
-  const ProductGridViewItem(
-      {super.key, required this.product, required int index});
+  const ProductGridViewItem({
+    super.key,
+    required this.product,
+    required int index,
+  });
 
   @override
   State<ProductGridViewItem> createState() => _ProductGridViewItemState();
@@ -34,13 +37,13 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
             if (productId == widget.product.id.toString() &&
                 _currentProductId == productId &&
                 !_localLoading) {
-              _showErrorSnackbar(context, error.message);
+              _showErrorSnackBar(context, error.message);
               _currentProductId = null;
             }
           },
           success: (productId) {
             if (productId == widget.product.id.toString()) {
-              _showSuccessSnackbar(context);
+              _showSuccessSnackBar(context);
               _currentProductId = null;
             }
           },
@@ -203,7 +206,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
       );
 
       if (token.isEmpty) {
-        _showAuthErrorSnackbar(context);
+        _showAuthErrorSnackBar(context);
         return;
       }
 
@@ -213,7 +216,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
     }
   }
 
-  void _showSuccessSnackbar(BuildContext context) {
+  void _showSuccessSnackBar(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('${widget.product.name} added to cart'),
@@ -223,7 +226,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
     );
   }
 
-  void _showErrorSnackbar(BuildContext context, String? message) {
+  void _showErrorSnackBar(BuildContext context, String? message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Error: $message'),
@@ -233,7 +236,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
     );
   }
 
-  void _showAuthErrorSnackbar(BuildContext context) {
+  void _showAuthErrorSnackBar(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Please login to add items to cart'),

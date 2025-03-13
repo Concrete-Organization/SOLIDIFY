@@ -15,7 +15,6 @@ class ProductsListCubit extends Cubit<ProductsListState> {
   Future<void> fetchProductsList() async {
     emit(const ProductsListState.productsListLoading());
 
-    // Try to get cached products first
     final cachedIds = await _getCachedProductIds();
     if (cachedIds.isNotEmpty) {
       // If you want to use cached IDs for something before the API call
@@ -26,7 +25,6 @@ class ProductsListCubit extends Cubit<ProductsListState> {
 
     result.when(
       success: (data) {
-        // Cache the product IDs when successful
         _cacheProductIds(data.model.items);
         emit(ProductsListState.productsListSuccess(data.model.items));
       },
@@ -36,20 +34,14 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     );
   }
 
-  // Cache product IDs
   Future<void> _cacheProductIds(List<dynamic> products) async {
-    // Extract product IDs
     final List<String> productIds = products.map((product) => product.id.toString()).toList();
     
-    // Store as a comma-separated string
     final String idsString = productIds.join(',');
     
-    // Save to SharedPreferences
     await SharedPrefHelper.setData(CACHED_PRODUCT_IDS_KEY, idsString);
-    print('ProductsListCubit: Cached ${productIds.length} product IDs');
   }
 
-  // Retrieve cached product IDs
   Future<List<String>> _getCachedProductIds() async {
     final String idsString = await SharedPrefHelper.getString(CACHED_PRODUCT_IDS_KEY);
     if (idsString.isEmpty) {
@@ -57,19 +49,15 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     }
     
     final List<String> productIds = idsString.split(',');
-    print('ProductsListCubit: Retrieved ${productIds.length} cached product IDs');
     return productIds;
   }
 
-  // You might want to add a method to check if a specific product ID is cached
   Future<bool> isProductCached(String productId) async {
     final cachedIds = await _getCachedProductIds();
     return cachedIds.contains(productId);
   }
   
-  // Clear cached product IDs
   Future<void> clearCachedProductIds() async {
     await SharedPrefHelper.removeData(CACHED_PRODUCT_IDS_KEY);
-    print('ProductsListCubit: Cleared cached product IDs');
   }
 }

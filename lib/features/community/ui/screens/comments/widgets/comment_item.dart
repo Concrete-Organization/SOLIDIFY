@@ -30,12 +30,16 @@ class CommentItem extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 17.w,
-              backgroundImage: AssetImage(profileImage),
+              backgroundColor: Colors.transparent,
+              child: SvgPicture.asset(
+                'assets/svgs/app_prof.svg',
+              ),
             ),
             horizontalSpace(10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                verticalSpace(10),
                 Text(
                   name,
                   style: TextStyles.font10lightBlackRegularWithOpacity,

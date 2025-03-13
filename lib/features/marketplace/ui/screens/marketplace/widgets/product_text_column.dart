@@ -32,6 +32,7 @@ class ProductTextColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Flexible(
               child: Text(
@@ -40,7 +41,6 @@ class ProductTextColumn extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            const Spacer(),
             Text(
               '${price.toStringAsFixed(2)} EGP',
               style: TextStyles.font15MainBlueSemiBold,

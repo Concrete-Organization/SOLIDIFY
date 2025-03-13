@@ -13,7 +13,7 @@ class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
 
   @override
-  _CheckoutScreenState createState() => _CheckoutScreenState();
+  State<CheckoutScreen> createState() => _CheckoutScreenState();
 }
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
@@ -57,8 +57,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     verticalSpace(50),
-                    Text('Payment details',
-                        style: TextStyles.font15lightBlackMedium),
+                    Text(
+                      'Payment details',
+                      style: TextStyles.font15lightBlackMedium,
+                    ),
                     verticalSpace(30),
                     PaymentDetailsContainer(
                       onFieldsFilled: _onPaymentDetailsFilled,

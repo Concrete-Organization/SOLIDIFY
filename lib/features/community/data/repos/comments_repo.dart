@@ -12,17 +12,32 @@ class CommentsRepo {
 
   CommentsRepo(this._apiService);
 
-  Future<ApiResult<GetCommentsResponse>> getComments(int postId) async {
+  Future<ApiResult<GetCommentsResponse>> getComments(int postId, {int page = 1}) async {
     try {
-      final accessToken =
-          await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
-      final response = await _apiService.comments(postId, accessToken);
+      final accessToken = await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
+      final response = await _apiService.comments(postId, page, accessToken);
       return ApiResult.success(response);
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 400 &&
+          e.response?.data['message'] == 'Page Number cannot be greater than Total Pages') {
+        return ApiResult.success(GetCommentsResponse(
+          isSucceeded: true,
+          statusCode: 200,
+          message: '',
+          model: CommentsModel(
+            items: [],
+            itemsCount: 0,
+            itemsFrom: 0,
+            itemsTo: 0,
+            totalPages: 0,
+          ),
+        ));
+      }
+      return ApiResult.failure(ApiErrorHandler.handle(e));
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
-
   Future<ApiResult<CreateCommentResponse>> createComment(
     CreateCommentRequest createCommentRequest,
     int postId,

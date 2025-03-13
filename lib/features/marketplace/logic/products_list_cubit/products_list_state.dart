@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:solidify/core/network/api_error_model.dart';
-import 'package:solidify/features/marketplace/data/models/post_cart_response_model.dart';
 import 'package:solidify/features/marketplace/data/models/product_list_response_model.dart';
 
 part 'products_list_state.freezed.dart';

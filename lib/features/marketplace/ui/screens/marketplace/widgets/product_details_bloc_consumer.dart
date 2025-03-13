@@ -25,7 +25,6 @@ class ProductDetailsBlocConsumer extends StatelessWidget {
           loading: (_) {},
           success: (_) {},
           error: (productId, error) {
-            // Show error message
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Error: ${error.message}')),
             );

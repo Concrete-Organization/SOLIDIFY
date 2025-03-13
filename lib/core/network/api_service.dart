@@ -94,6 +94,7 @@ abstract class ApiService {
   @GET('${ApiConstants.comment}/{id}')
   Future<GetCommentsResponse> comments(
     @Path('id') int postId,
+    @Query('PageNumber') int pageNumber,
     @Header('Authorization') String token,
   );
 
