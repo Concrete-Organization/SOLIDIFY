@@ -15,6 +15,7 @@ class SharedPrefKeys {
   static const String isFirstTime = 'isFirstTime';
   static const String productId = 'productId';
   static const String cachedProductIds = 'cachedProductIds';
+  static const likedPostsKey = 'liked_posts';
 }
 
 class SharedPrefHelper {
@@ -165,5 +166,24 @@ class SharedPrefHelper {
   static Future<void> clearCachedProductIds() async {
     await removeData(SharedPrefKeys.cachedProductIds);
     debugPrint('SharedPrefHelper: Cleared cached product IDs');
+  }
+  static Future<Set<int>> getLikedPosts() async {
+    final prefs = await SharedPreferences.getInstance();
+    final likedList = prefs.getStringList(SharedPrefKeys.likedPostsKey) ?? [];
+    return likedList.map(int.parse).toSet();
+  }
+
+  static Future<void> addLikedPost(int postId) async {
+    final prefs = await SharedPreferences.getInstance();
+    final liked = await getLikedPosts();
+    liked.add(postId);
+    await prefs.setStringList(SharedPrefKeys.likedPostsKey, liked.map((e) => e.toString()).toList());
+  }
+
+  static Future<void> removeLikedPost(int postId) async {
+    final prefs = await SharedPreferences.getInstance();
+    final liked = await getLikedPosts();
+    liked.remove(postId);
+    await prefs.setStringList(SharedPrefKeys.likedPostsKey, liked.map((e) => e.toString()).toList());
   }
 }

@@ -55,8 +55,7 @@ class PostModel {
   final String engineerId;
   final String? engineerName;
   final String? profileImageUrl;
-  @JsonKey(name: 'isLikedByUser')
-  final bool isLikedByUser;
+  bool isLiked;
 
   PostModel({
     required this.creationDate,
@@ -68,37 +67,39 @@ class PostModel {
     required this.engineerId,
     this.engineerName,
     this.profileImageUrl,
-    this.isLikedByUser = false,
+    this.isLiked = false,
   });
 
-  factory PostModel.fromJson(Map<String, dynamic> json) =>
-      _$PostModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostModelToJson(this);
-
   PostModel copyWith({
-    int? id,
-    String? engineerId,
-    String? engineerName,
-    String? profileImageUrl,
     String? creationDate,
     String? content,
     List<String>? imageUris,
-    int? likesCount,
     int? commentsCount,
-    bool? isLikedByUser,
+    String? engineerId,
+    int? id,
+    String? engineerName,
+    int? likesCount,
+    bool? isLiked,
+    String? profileImageUrl,
+
   }) {
     return PostModel(
       id: id ?? this.id,
+      content: content ?? this.content,
+      likesCount: likesCount ?? this.likesCount,
+      isLiked: isLiked ?? this.isLiked,
+      creationDate: creationDate ?? this.creationDate,
+      imageUris: imageUris ?? this.imageUris,
+      commentsCount: commentsCount ?? this.commentsCount,
       engineerId: engineerId ?? this.engineerId,
       engineerName: engineerName ?? this.engineerName,
       profileImageUrl: profileImageUrl ?? this.profileImageUrl,
-      creationDate: creationDate ?? this.creationDate,
-      content: content ?? this.content,
-      imageUris: imageUris ?? this.imageUris,
-      likesCount: likesCount ?? this.likesCount,
-      commentsCount: commentsCount ?? this.commentsCount,
-      isLikedByUser: isLikedByUser ?? this.isLikedByUser,
     );
   }
+
+  factory PostModel.fromJson(Map<String, dynamic> json) =>
+      _$PostModelFromJson(json)..isLiked = false;
+
+  Map<String, dynamic> toJson() => _$PostModelToJson(this);
+
 }

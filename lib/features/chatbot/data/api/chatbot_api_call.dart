@@ -10,7 +10,7 @@ part 'chatbot_api_call.g.dart';
 abstract class ChatbotApiService {
   factory ChatbotApiService(Dio dio, {String baseUrl}) = _ChatbotApiService;
 
-  @POST("models/gemini-1.5-flash:generateContent")
+  @POST("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent")
   Future<ChatbotResponseModel> getChatbotResponse(
     @Body() ChatbotRequestModel chatbotRequestModel,
     @Query("key") String apiKey,
