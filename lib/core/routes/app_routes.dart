@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -13,6 +12,7 @@ import 'package:solidify/features/company_layout/company_layout.dart';
 import 'package:solidify/features/chatbot/ui/screens/chat_screen.dart';
 import 'package:solidify/features/engineer_layout/engineer_layout.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
+import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/marketplace/logic/cart_cubit/cart_cubit.dart';
 import 'package:solidify/features/marketplace/ui/screens/cart/cart_screen.dart';
 import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.dart';
@@ -21,6 +21,7 @@ import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
+import 'package:solidify/features/marketplace/ui/screens/favorites/favorites_screen.dart';
 import 'package:solidify/features/marketplace/ui/screens/order/screens/payment_screen.dart';
 import 'package:solidify/features/marketplace/ui/screens/order/screens/checkout_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
@@ -172,7 +173,10 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const CheckoutScreen(),
         );
-
+      case Routes.favoritesScreen:
+        return MaterialPageRoute(
+          builder: (context) => const FavoritesScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(
