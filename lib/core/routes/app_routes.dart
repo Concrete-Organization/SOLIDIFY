@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
+import 'package:solidify/features/marketplace/ui/screens/favorites/ui/favorites_screen.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -171,6 +172,13 @@ class AppRoutes {
       case Routes.checkoutScreen:
         return MaterialPageRoute(
           builder: (context) => const CheckoutScreen(),
+        );
+      case Routes.favoritesScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<CartCubit>(),
+            child: const FavoritesScreen(),
+          ),
         );
 
       default:

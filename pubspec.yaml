@@ -84,6 +84,8 @@ dependencies:
   dio_cookie_manager: ^3.2.0
   # cookie manager for http requests in Dart, help you to deal with the cookie policies and persistence.
   cookie_jar: ^4.0.8
+  # A wrapper around InheritedWidget to make them easier to use and more reusable.
+  provider: ^6.1.2
 
 
 

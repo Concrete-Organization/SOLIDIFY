@@ -16,10 +16,7 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     emit(const ProductsListState.productsListLoading());
 
     final cachedIds = await _getCachedProductIds();
-    if (cachedIds.isNotEmpty) {
-      // If you want to use cached IDs for something before the API call
-      // You can use them here
-    }
+    if (cachedIds.isNotEmpty) {}
 
     final result = await _productsListRepo.getProductsList();
 
@@ -35,19 +32,21 @@ class ProductsListCubit extends Cubit<ProductsListState> {
   }
 
   Future<void> _cacheProductIds(List<dynamic> products) async {
-    final List<String> productIds = products.map((product) => product.id.toString()).toList();
-    
+    final List<String> productIds =
+    products.map((product) => product.id.toString()).toList();
+
     final String idsString = productIds.join(',');
-    
+
     await SharedPrefHelper.setData(CACHED_PRODUCT_IDS_KEY, idsString);
   }
 
   Future<List<String>> _getCachedProductIds() async {
-    final String idsString = await SharedPrefHelper.getString(CACHED_PRODUCT_IDS_KEY);
+    final String idsString =
+    await SharedPrefHelper.getString(CACHED_PRODUCT_IDS_KEY);
     if (idsString.isEmpty) {
       return [];
     }
-    
+
     final List<String> productIds = idsString.split(',');
     return productIds;
   }
@@ -56,7 +55,7 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     final cachedIds = await _getCachedProductIds();
     return cachedIds.contains(productId);
   }
-  
+
   Future<void> clearCachedProductIds() async {
     await SharedPrefHelper.removeData(CACHED_PRODUCT_IDS_KEY);
   }
