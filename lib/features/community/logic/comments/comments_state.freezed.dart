@@ -15,12 +15,14 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$CommentsState<T> {
+mixin _$CommentsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() commentsLoading,
-    required TResult Function(List<CommentModel> comments) commentsSuccess,
+    required TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)
+        commentsSuccess,
     required TResult Function(ApiErrorModel error) commentsError,
     required TResult Function() createCommentLoading,
     required TResult Function(CreateCommentResponse response)
@@ -32,7 +34,9 @@ mixin _$CommentsState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? commentsLoading,
-    TResult? Function(List<CommentModel> comments)? commentsSuccess,
+    TResult? Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult? Function(ApiErrorModel error)? commentsError,
     TResult? Function()? createCommentLoading,
     TResult? Function(CreateCommentResponse response)? createCommentSuccess,
@@ -43,7 +47,9 @@ mixin _$CommentsState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? commentsLoading,
-    TResult Function(List<CommentModel> comments)? commentsSuccess,
+    TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult Function(ApiErrorModel error)? commentsError,
     TResult Function()? createCommentLoading,
     TResult Function(CreateCommentResponse response)? createCommentSuccess,
@@ -53,52 +59,50 @@ mixin _$CommentsState<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CommentsLoading<T> value) commentsLoading,
-    required TResult Function(CommentsSuccess<T> value) commentsSuccess,
-    required TResult Function(CommentsError<T> value) commentsError,
-    required TResult Function(CreateCommentLoading<T> value)
-        createCommentLoading,
-    required TResult Function(CreateCommentSuccess<T> value)
-        createCommentSuccess,
-    required TResult Function(CreateCommentError<T> value) createCommentError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CommentsLoading value) commentsLoading,
+    required TResult Function(CommentsSuccess value) commentsSuccess,
+    required TResult Function(CommentsError value) commentsError,
+    required TResult Function(CreateCommentLoading value) createCommentLoading,
+    required TResult Function(CreateCommentSuccess value) createCommentSuccess,
+    required TResult Function(CreateCommentError value) createCommentError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CommentsLoading<T> value)? commentsLoading,
-    TResult? Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult? Function(CommentsError<T> value)? commentsError,
-    TResult? Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult? Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult? Function(CreateCommentError<T> value)? createCommentError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CommentsLoading value)? commentsLoading,
+    TResult? Function(CommentsSuccess value)? commentsSuccess,
+    TResult? Function(CommentsError value)? commentsError,
+    TResult? Function(CreateCommentLoading value)? createCommentLoading,
+    TResult? Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult? Function(CreateCommentError value)? createCommentError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CommentsLoading<T> value)? commentsLoading,
-    TResult Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult Function(CommentsError<T> value)? commentsError,
-    TResult Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult Function(CreateCommentError<T> value)? createCommentError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentsLoading value)? commentsLoading,
+    TResult Function(CommentsSuccess value)? commentsSuccess,
+    TResult Function(CommentsError value)? commentsError,
+    TResult Function(CreateCommentLoading value)? createCommentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CreateCommentError value)? createCommentError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CommentsStateCopyWith<T, $Res> {
+abstract class $CommentsStateCopyWith<$Res> {
   factory $CommentsStateCopyWith(
-          CommentsState<T> value, $Res Function(CommentsState<T>) then) =
-      _$CommentsStateCopyWithImpl<T, $Res, CommentsState<T>>;
+          CommentsState value, $Res Function(CommentsState) then) =
+      _$CommentsStateCopyWithImpl<$Res, CommentsState>;
 }
 
 /// @nodoc
-class _$CommentsStateCopyWithImpl<T, $Res, $Val extends CommentsState<T>>
-    implements $CommentsStateCopyWith<T, $Res> {
+class _$CommentsStateCopyWithImpl<$Res, $Val extends CommentsState>
+    implements $CommentsStateCopyWith<$Res> {
   _$CommentsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -111,18 +115,18 @@ class _$CommentsStateCopyWithImpl<T, $Res, $Val extends CommentsState<T>>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<T, $Res> {
+abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-          _$InitialImpl<T> value, $Res Function(_$InitialImpl<T>) then) =
-      __$$InitialImplCopyWithImpl<T, $Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<T, $Res>
-    extends _$CommentsStateCopyWithImpl<T, $Res, _$InitialImpl<T>>
-    implements _$$InitialImplCopyWith<T, $Res> {
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$CommentsStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-      _$InitialImpl<T> _value, $Res Function(_$InitialImpl<T>) _then)
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CommentsState
@@ -131,18 +135,18 @@ class __$$InitialImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$InitialImpl<T> implements _Initial<T> {
+class _$InitialImpl implements _Initial {
   const _$InitialImpl();
 
   @override
   String toString() {
-    return 'CommentsState<$T>.initial()';
+    return 'CommentsState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl<T>);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -153,7 +157,9 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() commentsLoading,
-    required TResult Function(List<CommentModel> comments) commentsSuccess,
+    required TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)
+        commentsSuccess,
     required TResult Function(ApiErrorModel error) commentsError,
     required TResult Function() createCommentLoading,
     required TResult Function(CreateCommentResponse response)
@@ -168,7 +174,9 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? commentsLoading,
-    TResult? Function(List<CommentModel> comments)? commentsSuccess,
+    TResult? Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult? Function(ApiErrorModel error)? commentsError,
     TResult? Function()? createCommentLoading,
     TResult? Function(CreateCommentResponse response)? createCommentSuccess,
@@ -182,7 +190,9 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? commentsLoading,
-    TResult Function(List<CommentModel> comments)? commentsSuccess,
+    TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult Function(ApiErrorModel error)? commentsError,
     TResult Function()? createCommentLoading,
     TResult Function(CreateCommentResponse response)? createCommentSuccess,
@@ -198,15 +208,13 @@ class _$InitialImpl<T> implements _Initial<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CommentsLoading<T> value) commentsLoading,
-    required TResult Function(CommentsSuccess<T> value) commentsSuccess,
-    required TResult Function(CommentsError<T> value) commentsError,
-    required TResult Function(CreateCommentLoading<T> value)
-        createCommentLoading,
-    required TResult Function(CreateCommentSuccess<T> value)
-        createCommentSuccess,
-    required TResult Function(CreateCommentError<T> value) createCommentError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CommentsLoading value) commentsLoading,
+    required TResult Function(CommentsSuccess value) commentsSuccess,
+    required TResult Function(CommentsError value) commentsError,
+    required TResult Function(CreateCommentLoading value) createCommentLoading,
+    required TResult Function(CreateCommentSuccess value) createCommentSuccess,
+    required TResult Function(CreateCommentError value) createCommentError,
   }) {
     return initial(this);
   }
@@ -214,13 +222,13 @@ class _$InitialImpl<T> implements _Initial<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CommentsLoading<T> value)? commentsLoading,
-    TResult? Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult? Function(CommentsError<T> value)? commentsError,
-    TResult? Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult? Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult? Function(CreateCommentError<T> value)? createCommentError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CommentsLoading value)? commentsLoading,
+    TResult? Function(CommentsSuccess value)? commentsSuccess,
+    TResult? Function(CommentsError value)? commentsError,
+    TResult? Function(CreateCommentLoading value)? createCommentLoading,
+    TResult? Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult? Function(CreateCommentError value)? createCommentError,
   }) {
     return initial?.call(this);
   }
@@ -228,13 +236,13 @@ class _$InitialImpl<T> implements _Initial<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CommentsLoading<T> value)? commentsLoading,
-    TResult Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult Function(CommentsError<T> value)? commentsError,
-    TResult Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult Function(CreateCommentError<T> value)? createCommentError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentsLoading value)? commentsLoading,
+    TResult Function(CommentsSuccess value)? commentsSuccess,
+    TResult Function(CommentsError value)? commentsError,
+    TResult Function(CreateCommentLoading value)? createCommentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CreateCommentError value)? createCommentError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -244,23 +252,23 @@ class _$InitialImpl<T> implements _Initial<T> {
   }
 }
 
-abstract class _Initial<T> implements CommentsState<T> {
-  const factory _Initial() = _$InitialImpl<T>;
+abstract class _Initial implements CommentsState {
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$CommentsLoadingImplCopyWith<T, $Res> {
-  factory _$$CommentsLoadingImplCopyWith(_$CommentsLoadingImpl<T> value,
-          $Res Function(_$CommentsLoadingImpl<T>) then) =
-      __$$CommentsLoadingImplCopyWithImpl<T, $Res>;
+abstract class _$$CommentsLoadingImplCopyWith<$Res> {
+  factory _$$CommentsLoadingImplCopyWith(_$CommentsLoadingImpl value,
+          $Res Function(_$CommentsLoadingImpl) then) =
+      __$$CommentsLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CommentsLoadingImplCopyWithImpl<T, $Res>
-    extends _$CommentsStateCopyWithImpl<T, $Res, _$CommentsLoadingImpl<T>>
-    implements _$$CommentsLoadingImplCopyWith<T, $Res> {
-  __$$CommentsLoadingImplCopyWithImpl(_$CommentsLoadingImpl<T> _value,
-      $Res Function(_$CommentsLoadingImpl<T>) _then)
+class __$$CommentsLoadingImplCopyWithImpl<$Res>
+    extends _$CommentsStateCopyWithImpl<$Res, _$CommentsLoadingImpl>
+    implements _$$CommentsLoadingImplCopyWith<$Res> {
+  __$$CommentsLoadingImplCopyWithImpl(
+      _$CommentsLoadingImpl _value, $Res Function(_$CommentsLoadingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CommentsState
@@ -269,18 +277,18 @@ class __$$CommentsLoadingImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$CommentsLoadingImpl<T> implements CommentsLoading<T> {
+class _$CommentsLoadingImpl implements CommentsLoading {
   const _$CommentsLoadingImpl();
 
   @override
   String toString() {
-    return 'CommentsState<$T>.commentsLoading()';
+    return 'CommentsState.commentsLoading()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CommentsLoadingImpl<T>);
+        (other.runtimeType == runtimeType && other is _$CommentsLoadingImpl);
   }
 
   @override
@@ -291,7 +299,9 @@ class _$CommentsLoadingImpl<T> implements CommentsLoading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() commentsLoading,
-    required TResult Function(List<CommentModel> comments) commentsSuccess,
+    required TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)
+        commentsSuccess,
     required TResult Function(ApiErrorModel error) commentsError,
     required TResult Function() createCommentLoading,
     required TResult Function(CreateCommentResponse response)
@@ -306,7 +316,9 @@ class _$CommentsLoadingImpl<T> implements CommentsLoading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? commentsLoading,
-    TResult? Function(List<CommentModel> comments)? commentsSuccess,
+    TResult? Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult? Function(ApiErrorModel error)? commentsError,
     TResult? Function()? createCommentLoading,
     TResult? Function(CreateCommentResponse response)? createCommentSuccess,
@@ -320,7 +332,9 @@ class _$CommentsLoadingImpl<T> implements CommentsLoading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? commentsLoading,
-    TResult Function(List<CommentModel> comments)? commentsSuccess,
+    TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult Function(ApiErrorModel error)? commentsError,
     TResult Function()? createCommentLoading,
     TResult Function(CreateCommentResponse response)? createCommentSuccess,
@@ -336,15 +350,13 @@ class _$CommentsLoadingImpl<T> implements CommentsLoading<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CommentsLoading<T> value) commentsLoading,
-    required TResult Function(CommentsSuccess<T> value) commentsSuccess,
-    required TResult Function(CommentsError<T> value) commentsError,
-    required TResult Function(CreateCommentLoading<T> value)
-        createCommentLoading,
-    required TResult Function(CreateCommentSuccess<T> value)
-        createCommentSuccess,
-    required TResult Function(CreateCommentError<T> value) createCommentError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CommentsLoading value) commentsLoading,
+    required TResult Function(CommentsSuccess value) commentsSuccess,
+    required TResult Function(CommentsError value) commentsError,
+    required TResult Function(CreateCommentLoading value) createCommentLoading,
+    required TResult Function(CreateCommentSuccess value) createCommentSuccess,
+    required TResult Function(CreateCommentError value) createCommentError,
   }) {
     return commentsLoading(this);
   }
@@ -352,13 +364,13 @@ class _$CommentsLoadingImpl<T> implements CommentsLoading<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CommentsLoading<T> value)? commentsLoading,
-    TResult? Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult? Function(CommentsError<T> value)? commentsError,
-    TResult? Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult? Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult? Function(CreateCommentError<T> value)? createCommentError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CommentsLoading value)? commentsLoading,
+    TResult? Function(CommentsSuccess value)? commentsSuccess,
+    TResult? Function(CommentsError value)? commentsError,
+    TResult? Function(CreateCommentLoading value)? createCommentLoading,
+    TResult? Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult? Function(CreateCommentError value)? createCommentError,
   }) {
     return commentsLoading?.call(this);
   }
@@ -366,13 +378,13 @@ class _$CommentsLoadingImpl<T> implements CommentsLoading<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CommentsLoading<T> value)? commentsLoading,
-    TResult Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult Function(CommentsError<T> value)? commentsError,
-    TResult Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult Function(CreateCommentError<T> value)? createCommentError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentsLoading value)? commentsLoading,
+    TResult Function(CommentsSuccess value)? commentsSuccess,
+    TResult Function(CommentsError value)? commentsError,
+    TResult Function(CreateCommentLoading value)? createCommentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CreateCommentError value)? createCommentError,
     required TResult orElse(),
   }) {
     if (commentsLoading != null) {
@@ -382,25 +394,25 @@ class _$CommentsLoadingImpl<T> implements CommentsLoading<T> {
   }
 }
 
-abstract class CommentsLoading<T> implements CommentsState<T> {
-  const factory CommentsLoading() = _$CommentsLoadingImpl<T>;
+abstract class CommentsLoading implements CommentsState {
+  const factory CommentsLoading() = _$CommentsLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$CommentsSuccessImplCopyWith<T, $Res> {
-  factory _$$CommentsSuccessImplCopyWith(_$CommentsSuccessImpl<T> value,
-          $Res Function(_$CommentsSuccessImpl<T>) then) =
-      __$$CommentsSuccessImplCopyWithImpl<T, $Res>;
+abstract class _$$CommentsSuccessImplCopyWith<$Res> {
+  factory _$$CommentsSuccessImplCopyWith(_$CommentsSuccessImpl value,
+          $Res Function(_$CommentsSuccessImpl) then) =
+      __$$CommentsSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CommentModel> comments});
+  $Res call({List<CommentModel> comments, CommentModel? replyingToComment});
 }
 
 /// @nodoc
-class __$$CommentsSuccessImplCopyWithImpl<T, $Res>
-    extends _$CommentsStateCopyWithImpl<T, $Res, _$CommentsSuccessImpl<T>>
-    implements _$$CommentsSuccessImplCopyWith<T, $Res> {
-  __$$CommentsSuccessImplCopyWithImpl(_$CommentsSuccessImpl<T> _value,
-      $Res Function(_$CommentsSuccessImpl<T>) _then)
+class __$$CommentsSuccessImplCopyWithImpl<$Res>
+    extends _$CommentsStateCopyWithImpl<$Res, _$CommentsSuccessImpl>
+    implements _$$CommentsSuccessImplCopyWith<$Res> {
+  __$$CommentsSuccessImplCopyWithImpl(
+      _$CommentsSuccessImpl _value, $Res Function(_$CommentsSuccessImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CommentsState
@@ -409,20 +421,26 @@ class __$$CommentsSuccessImplCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? comments = null,
+    Object? replyingToComment = freezed,
   }) {
-    return _then(_$CommentsSuccessImpl<T>(
-      null == comments
+    return _then(_$CommentsSuccessImpl(
+      comments: null == comments
           ? _value._comments
           : comments // ignore: cast_nullable_to_non_nullable
               as List<CommentModel>,
+      replyingToComment: freezed == replyingToComment
+          ? _value.replyingToComment
+          : replyingToComment // ignore: cast_nullable_to_non_nullable
+              as CommentModel?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$CommentsSuccessImpl<T> implements CommentsSuccess<T> {
-  const _$CommentsSuccessImpl(final List<CommentModel> comments)
+class _$CommentsSuccessImpl implements CommentsSuccess {
+  const _$CommentsSuccessImpl(
+      {required final List<CommentModel> comments, this.replyingToComment})
       : _comments = comments;
 
   final List<CommentModel> _comments;
@@ -434,29 +452,34 @@ class _$CommentsSuccessImpl<T> implements CommentsSuccess<T> {
   }
 
   @override
+  final CommentModel? replyingToComment;
+
+  @override
   String toString() {
-    return 'CommentsState<$T>.commentsSuccess(comments: $comments)';
+    return 'CommentsState.commentsSuccess(comments: $comments, replyingToComment: $replyingToComment)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CommentsSuccessImpl<T> &&
-            const DeepCollectionEquality().equals(other._comments, _comments));
+            other is _$CommentsSuccessImpl &&
+            const DeepCollectionEquality().equals(other._comments, _comments) &&
+            (identical(other.replyingToComment, replyingToComment) ||
+                other.replyingToComment == replyingToComment));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_comments));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_comments), replyingToComment);
 
   /// Create a copy of CommentsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CommentsSuccessImplCopyWith<T, _$CommentsSuccessImpl<T>> get copyWith =>
-      __$$CommentsSuccessImplCopyWithImpl<T, _$CommentsSuccessImpl<T>>(
+  _$$CommentsSuccessImplCopyWith<_$CommentsSuccessImpl> get copyWith =>
+      __$$CommentsSuccessImplCopyWithImpl<_$CommentsSuccessImpl>(
           this, _$identity);
 
   @override
@@ -464,14 +487,16 @@ class _$CommentsSuccessImpl<T> implements CommentsSuccess<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() commentsLoading,
-    required TResult Function(List<CommentModel> comments) commentsSuccess,
+    required TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)
+        commentsSuccess,
     required TResult Function(ApiErrorModel error) commentsError,
     required TResult Function() createCommentLoading,
     required TResult Function(CreateCommentResponse response)
         createCommentSuccess,
     required TResult Function(ApiErrorModel error) createCommentError,
   }) {
-    return commentsSuccess(comments);
+    return commentsSuccess(comments, replyingToComment);
   }
 
   @override
@@ -479,13 +504,15 @@ class _$CommentsSuccessImpl<T> implements CommentsSuccess<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? commentsLoading,
-    TResult? Function(List<CommentModel> comments)? commentsSuccess,
+    TResult? Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult? Function(ApiErrorModel error)? commentsError,
     TResult? Function()? createCommentLoading,
     TResult? Function(CreateCommentResponse response)? createCommentSuccess,
     TResult? Function(ApiErrorModel error)? createCommentError,
   }) {
-    return commentsSuccess?.call(comments);
+    return commentsSuccess?.call(comments, replyingToComment);
   }
 
   @override
@@ -493,7 +520,9 @@ class _$CommentsSuccessImpl<T> implements CommentsSuccess<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? commentsLoading,
-    TResult Function(List<CommentModel> comments)? commentsSuccess,
+    TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult Function(ApiErrorModel error)? commentsError,
     TResult Function()? createCommentLoading,
     TResult Function(CreateCommentResponse response)? createCommentSuccess,
@@ -501,7 +530,7 @@ class _$CommentsSuccessImpl<T> implements CommentsSuccess<T> {
     required TResult orElse(),
   }) {
     if (commentsSuccess != null) {
-      return commentsSuccess(comments);
+      return commentsSuccess(comments, replyingToComment);
     }
     return orElse();
   }
@@ -509,15 +538,13 @@ class _$CommentsSuccessImpl<T> implements CommentsSuccess<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CommentsLoading<T> value) commentsLoading,
-    required TResult Function(CommentsSuccess<T> value) commentsSuccess,
-    required TResult Function(CommentsError<T> value) commentsError,
-    required TResult Function(CreateCommentLoading<T> value)
-        createCommentLoading,
-    required TResult Function(CreateCommentSuccess<T> value)
-        createCommentSuccess,
-    required TResult Function(CreateCommentError<T> value) createCommentError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CommentsLoading value) commentsLoading,
+    required TResult Function(CommentsSuccess value) commentsSuccess,
+    required TResult Function(CommentsError value) commentsError,
+    required TResult Function(CreateCommentLoading value) createCommentLoading,
+    required TResult Function(CreateCommentSuccess value) createCommentSuccess,
+    required TResult Function(CreateCommentError value) createCommentError,
   }) {
     return commentsSuccess(this);
   }
@@ -525,13 +552,13 @@ class _$CommentsSuccessImpl<T> implements CommentsSuccess<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CommentsLoading<T> value)? commentsLoading,
-    TResult? Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult? Function(CommentsError<T> value)? commentsError,
-    TResult? Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult? Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult? Function(CreateCommentError<T> value)? createCommentError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CommentsLoading value)? commentsLoading,
+    TResult? Function(CommentsSuccess value)? commentsSuccess,
+    TResult? Function(CommentsError value)? commentsError,
+    TResult? Function(CreateCommentLoading value)? createCommentLoading,
+    TResult? Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult? Function(CreateCommentError value)? createCommentError,
   }) {
     return commentsSuccess?.call(this);
   }
@@ -539,13 +566,13 @@ class _$CommentsSuccessImpl<T> implements CommentsSuccess<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CommentsLoading<T> value)? commentsLoading,
-    TResult Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult Function(CommentsError<T> value)? commentsError,
-    TResult Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult Function(CreateCommentError<T> value)? createCommentError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentsLoading value)? commentsLoading,
+    TResult Function(CommentsSuccess value)? commentsSuccess,
+    TResult Function(CommentsError value)? commentsError,
+    TResult Function(CreateCommentLoading value)? createCommentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CreateCommentError value)? createCommentError,
     required TResult orElse(),
   }) {
     if (commentsSuccess != null) {
@@ -555,34 +582,36 @@ class _$CommentsSuccessImpl<T> implements CommentsSuccess<T> {
   }
 }
 
-abstract class CommentsSuccess<T> implements CommentsState<T> {
-  const factory CommentsSuccess(final List<CommentModel> comments) =
-      _$CommentsSuccessImpl<T>;
+abstract class CommentsSuccess implements CommentsState {
+  const factory CommentsSuccess(
+      {required final List<CommentModel> comments,
+      final CommentModel? replyingToComment}) = _$CommentsSuccessImpl;
 
   List<CommentModel> get comments;
+  CommentModel? get replyingToComment;
 
   /// Create a copy of CommentsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CommentsSuccessImplCopyWith<T, _$CommentsSuccessImpl<T>> get copyWith =>
+  _$$CommentsSuccessImplCopyWith<_$CommentsSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CommentsErrorImplCopyWith<T, $Res> {
-  factory _$$CommentsErrorImplCopyWith(_$CommentsErrorImpl<T> value,
-          $Res Function(_$CommentsErrorImpl<T>) then) =
-      __$$CommentsErrorImplCopyWithImpl<T, $Res>;
+abstract class _$$CommentsErrorImplCopyWith<$Res> {
+  factory _$$CommentsErrorImplCopyWith(
+          _$CommentsErrorImpl value, $Res Function(_$CommentsErrorImpl) then) =
+      __$$CommentsErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ApiErrorModel error});
 }
 
 /// @nodoc
-class __$$CommentsErrorImplCopyWithImpl<T, $Res>
-    extends _$CommentsStateCopyWithImpl<T, $Res, _$CommentsErrorImpl<T>>
-    implements _$$CommentsErrorImplCopyWith<T, $Res> {
-  __$$CommentsErrorImplCopyWithImpl(_$CommentsErrorImpl<T> _value,
-      $Res Function(_$CommentsErrorImpl<T>) _then)
+class __$$CommentsErrorImplCopyWithImpl<$Res>
+    extends _$CommentsStateCopyWithImpl<$Res, _$CommentsErrorImpl>
+    implements _$$CommentsErrorImplCopyWith<$Res> {
+  __$$CommentsErrorImplCopyWithImpl(
+      _$CommentsErrorImpl _value, $Res Function(_$CommentsErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CommentsState
@@ -592,7 +621,7 @@ class __$$CommentsErrorImplCopyWithImpl<T, $Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$CommentsErrorImpl<T>(
+    return _then(_$CommentsErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -603,7 +632,7 @@ class __$$CommentsErrorImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$CommentsErrorImpl<T> implements CommentsError<T> {
+class _$CommentsErrorImpl implements CommentsError {
   const _$CommentsErrorImpl({required this.error});
 
   @override
@@ -611,14 +640,14 @@ class _$CommentsErrorImpl<T> implements CommentsError<T> {
 
   @override
   String toString() {
-    return 'CommentsState<$T>.commentsError(error: $error)';
+    return 'CommentsState.commentsError(error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CommentsErrorImpl<T> &&
+            other is _$CommentsErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -630,16 +659,17 @@ class _$CommentsErrorImpl<T> implements CommentsError<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CommentsErrorImplCopyWith<T, _$CommentsErrorImpl<T>> get copyWith =>
-      __$$CommentsErrorImplCopyWithImpl<T, _$CommentsErrorImpl<T>>(
-          this, _$identity);
+  _$$CommentsErrorImplCopyWith<_$CommentsErrorImpl> get copyWith =>
+      __$$CommentsErrorImplCopyWithImpl<_$CommentsErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() commentsLoading,
-    required TResult Function(List<CommentModel> comments) commentsSuccess,
+    required TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)
+        commentsSuccess,
     required TResult Function(ApiErrorModel error) commentsError,
     required TResult Function() createCommentLoading,
     required TResult Function(CreateCommentResponse response)
@@ -654,7 +684,9 @@ class _$CommentsErrorImpl<T> implements CommentsError<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? commentsLoading,
-    TResult? Function(List<CommentModel> comments)? commentsSuccess,
+    TResult? Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult? Function(ApiErrorModel error)? commentsError,
     TResult? Function()? createCommentLoading,
     TResult? Function(CreateCommentResponse response)? createCommentSuccess,
@@ -668,7 +700,9 @@ class _$CommentsErrorImpl<T> implements CommentsError<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? commentsLoading,
-    TResult Function(List<CommentModel> comments)? commentsSuccess,
+    TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult Function(ApiErrorModel error)? commentsError,
     TResult Function()? createCommentLoading,
     TResult Function(CreateCommentResponse response)? createCommentSuccess,
@@ -684,15 +718,13 @@ class _$CommentsErrorImpl<T> implements CommentsError<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CommentsLoading<T> value) commentsLoading,
-    required TResult Function(CommentsSuccess<T> value) commentsSuccess,
-    required TResult Function(CommentsError<T> value) commentsError,
-    required TResult Function(CreateCommentLoading<T> value)
-        createCommentLoading,
-    required TResult Function(CreateCommentSuccess<T> value)
-        createCommentSuccess,
-    required TResult Function(CreateCommentError<T> value) createCommentError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CommentsLoading value) commentsLoading,
+    required TResult Function(CommentsSuccess value) commentsSuccess,
+    required TResult Function(CommentsError value) commentsError,
+    required TResult Function(CreateCommentLoading value) createCommentLoading,
+    required TResult Function(CreateCommentSuccess value) createCommentSuccess,
+    required TResult Function(CreateCommentError value) createCommentError,
   }) {
     return commentsError(this);
   }
@@ -700,13 +732,13 @@ class _$CommentsErrorImpl<T> implements CommentsError<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CommentsLoading<T> value)? commentsLoading,
-    TResult? Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult? Function(CommentsError<T> value)? commentsError,
-    TResult? Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult? Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult? Function(CreateCommentError<T> value)? createCommentError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CommentsLoading value)? commentsLoading,
+    TResult? Function(CommentsSuccess value)? commentsSuccess,
+    TResult? Function(CommentsError value)? commentsError,
+    TResult? Function(CreateCommentLoading value)? createCommentLoading,
+    TResult? Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult? Function(CreateCommentError value)? createCommentError,
   }) {
     return commentsError?.call(this);
   }
@@ -714,13 +746,13 @@ class _$CommentsErrorImpl<T> implements CommentsError<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CommentsLoading<T> value)? commentsLoading,
-    TResult Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult Function(CommentsError<T> value)? commentsError,
-    TResult Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult Function(CreateCommentError<T> value)? createCommentError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentsLoading value)? commentsLoading,
+    TResult Function(CommentsSuccess value)? commentsSuccess,
+    TResult Function(CommentsError value)? commentsError,
+    TResult Function(CreateCommentLoading value)? createCommentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CreateCommentError value)? createCommentError,
     required TResult orElse(),
   }) {
     if (commentsError != null) {
@@ -730,33 +762,32 @@ class _$CommentsErrorImpl<T> implements CommentsError<T> {
   }
 }
 
-abstract class CommentsError<T> implements CommentsState<T> {
+abstract class CommentsError implements CommentsState {
   const factory CommentsError({required final ApiErrorModel error}) =
-      _$CommentsErrorImpl<T>;
+      _$CommentsErrorImpl;
 
   ApiErrorModel get error;
 
   /// Create a copy of CommentsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CommentsErrorImplCopyWith<T, _$CommentsErrorImpl<T>> get copyWith =>
+  _$$CommentsErrorImplCopyWith<_$CommentsErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CreateCommentLoadingImplCopyWith<T, $Res> {
-  factory _$$CreateCommentLoadingImplCopyWith(
-          _$CreateCommentLoadingImpl<T> value,
-          $Res Function(_$CreateCommentLoadingImpl<T>) then) =
-      __$$CreateCommentLoadingImplCopyWithImpl<T, $Res>;
+abstract class _$$CreateCommentLoadingImplCopyWith<$Res> {
+  factory _$$CreateCommentLoadingImplCopyWith(_$CreateCommentLoadingImpl value,
+          $Res Function(_$CreateCommentLoadingImpl) then) =
+      __$$CreateCommentLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CreateCommentLoadingImplCopyWithImpl<T, $Res>
-    extends _$CommentsStateCopyWithImpl<T, $Res, _$CreateCommentLoadingImpl<T>>
-    implements _$$CreateCommentLoadingImplCopyWith<T, $Res> {
-  __$$CreateCommentLoadingImplCopyWithImpl(_$CreateCommentLoadingImpl<T> _value,
-      $Res Function(_$CreateCommentLoadingImpl<T>) _then)
+class __$$CreateCommentLoadingImplCopyWithImpl<$Res>
+    extends _$CommentsStateCopyWithImpl<$Res, _$CreateCommentLoadingImpl>
+    implements _$$CreateCommentLoadingImplCopyWith<$Res> {
+  __$$CreateCommentLoadingImplCopyWithImpl(_$CreateCommentLoadingImpl _value,
+      $Res Function(_$CreateCommentLoadingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CommentsState
@@ -765,19 +796,19 @@ class __$$CreateCommentLoadingImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$CreateCommentLoadingImpl<T> implements CreateCommentLoading<T> {
+class _$CreateCommentLoadingImpl implements CreateCommentLoading {
   const _$CreateCommentLoadingImpl();
 
   @override
   String toString() {
-    return 'CommentsState<$T>.createCommentLoading()';
+    return 'CommentsState.createCommentLoading()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateCommentLoadingImpl<T>);
+            other is _$CreateCommentLoadingImpl);
   }
 
   @override
@@ -788,7 +819,9 @@ class _$CreateCommentLoadingImpl<T> implements CreateCommentLoading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() commentsLoading,
-    required TResult Function(List<CommentModel> comments) commentsSuccess,
+    required TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)
+        commentsSuccess,
     required TResult Function(ApiErrorModel error) commentsError,
     required TResult Function() createCommentLoading,
     required TResult Function(CreateCommentResponse response)
@@ -803,7 +836,9 @@ class _$CreateCommentLoadingImpl<T> implements CreateCommentLoading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? commentsLoading,
-    TResult? Function(List<CommentModel> comments)? commentsSuccess,
+    TResult? Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult? Function(ApiErrorModel error)? commentsError,
     TResult? Function()? createCommentLoading,
     TResult? Function(CreateCommentResponse response)? createCommentSuccess,
@@ -817,7 +852,9 @@ class _$CreateCommentLoadingImpl<T> implements CreateCommentLoading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? commentsLoading,
-    TResult Function(List<CommentModel> comments)? commentsSuccess,
+    TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult Function(ApiErrorModel error)? commentsError,
     TResult Function()? createCommentLoading,
     TResult Function(CreateCommentResponse response)? createCommentSuccess,
@@ -833,15 +870,13 @@ class _$CreateCommentLoadingImpl<T> implements CreateCommentLoading<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CommentsLoading<T> value) commentsLoading,
-    required TResult Function(CommentsSuccess<T> value) commentsSuccess,
-    required TResult Function(CommentsError<T> value) commentsError,
-    required TResult Function(CreateCommentLoading<T> value)
-        createCommentLoading,
-    required TResult Function(CreateCommentSuccess<T> value)
-        createCommentSuccess,
-    required TResult Function(CreateCommentError<T> value) createCommentError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CommentsLoading value) commentsLoading,
+    required TResult Function(CommentsSuccess value) commentsSuccess,
+    required TResult Function(CommentsError value) commentsError,
+    required TResult Function(CreateCommentLoading value) createCommentLoading,
+    required TResult Function(CreateCommentSuccess value) createCommentSuccess,
+    required TResult Function(CreateCommentError value) createCommentError,
   }) {
     return createCommentLoading(this);
   }
@@ -849,13 +884,13 @@ class _$CreateCommentLoadingImpl<T> implements CreateCommentLoading<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CommentsLoading<T> value)? commentsLoading,
-    TResult? Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult? Function(CommentsError<T> value)? commentsError,
-    TResult? Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult? Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult? Function(CreateCommentError<T> value)? createCommentError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CommentsLoading value)? commentsLoading,
+    TResult? Function(CommentsSuccess value)? commentsSuccess,
+    TResult? Function(CommentsError value)? commentsError,
+    TResult? Function(CreateCommentLoading value)? createCommentLoading,
+    TResult? Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult? Function(CreateCommentError value)? createCommentError,
   }) {
     return createCommentLoading?.call(this);
   }
@@ -863,13 +898,13 @@ class _$CreateCommentLoadingImpl<T> implements CreateCommentLoading<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CommentsLoading<T> value)? commentsLoading,
-    TResult Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult Function(CommentsError<T> value)? commentsError,
-    TResult Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult Function(CreateCommentError<T> value)? createCommentError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentsLoading value)? commentsLoading,
+    TResult Function(CommentsSuccess value)? commentsSuccess,
+    TResult Function(CommentsError value)? commentsError,
+    TResult Function(CreateCommentLoading value)? createCommentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CreateCommentError value)? createCommentError,
     required TResult orElse(),
   }) {
     if (createCommentLoading != null) {
@@ -879,26 +914,25 @@ class _$CreateCommentLoadingImpl<T> implements CreateCommentLoading<T> {
   }
 }
 
-abstract class CreateCommentLoading<T> implements CommentsState<T> {
-  const factory CreateCommentLoading() = _$CreateCommentLoadingImpl<T>;
+abstract class CreateCommentLoading implements CommentsState {
+  const factory CreateCommentLoading() = _$CreateCommentLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$CreateCommentSuccessImplCopyWith<T, $Res> {
-  factory _$$CreateCommentSuccessImplCopyWith(
-          _$CreateCommentSuccessImpl<T> value,
-          $Res Function(_$CreateCommentSuccessImpl<T>) then) =
-      __$$CreateCommentSuccessImplCopyWithImpl<T, $Res>;
+abstract class _$$CreateCommentSuccessImplCopyWith<$Res> {
+  factory _$$CreateCommentSuccessImplCopyWith(_$CreateCommentSuccessImpl value,
+          $Res Function(_$CreateCommentSuccessImpl) then) =
+      __$$CreateCommentSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CreateCommentResponse response});
 }
 
 /// @nodoc
-class __$$CreateCommentSuccessImplCopyWithImpl<T, $Res>
-    extends _$CommentsStateCopyWithImpl<T, $Res, _$CreateCommentSuccessImpl<T>>
-    implements _$$CreateCommentSuccessImplCopyWith<T, $Res> {
-  __$$CreateCommentSuccessImplCopyWithImpl(_$CreateCommentSuccessImpl<T> _value,
-      $Res Function(_$CreateCommentSuccessImpl<T>) _then)
+class __$$CreateCommentSuccessImplCopyWithImpl<$Res>
+    extends _$CommentsStateCopyWithImpl<$Res, _$CreateCommentSuccessImpl>
+    implements _$$CreateCommentSuccessImplCopyWith<$Res> {
+  __$$CreateCommentSuccessImplCopyWithImpl(_$CreateCommentSuccessImpl _value,
+      $Res Function(_$CreateCommentSuccessImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CommentsState
@@ -908,7 +942,7 @@ class __$$CreateCommentSuccessImplCopyWithImpl<T, $Res>
   $Res call({
     Object? response = null,
   }) {
-    return _then(_$CreateCommentSuccessImpl<T>(
+    return _then(_$CreateCommentSuccessImpl(
       null == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
@@ -919,7 +953,7 @@ class __$$CreateCommentSuccessImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$CreateCommentSuccessImpl<T> implements CreateCommentSuccess<T> {
+class _$CreateCommentSuccessImpl implements CreateCommentSuccess {
   const _$CreateCommentSuccessImpl(this.response);
 
   @override
@@ -927,14 +961,14 @@ class _$CreateCommentSuccessImpl<T> implements CreateCommentSuccess<T> {
 
   @override
   String toString() {
-    return 'CommentsState<$T>.createCommentSuccess(response: $response)';
+    return 'CommentsState.createCommentSuccess(response: $response)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateCommentSuccessImpl<T> &&
+            other is _$CreateCommentSuccessImpl &&
             (identical(other.response, response) ||
                 other.response == response));
   }
@@ -947,16 +981,19 @@ class _$CreateCommentSuccessImpl<T> implements CreateCommentSuccess<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CreateCommentSuccessImplCopyWith<T, _$CreateCommentSuccessImpl<T>>
-      get copyWith => __$$CreateCommentSuccessImplCopyWithImpl<T,
-          _$CreateCommentSuccessImpl<T>>(this, _$identity);
+  _$$CreateCommentSuccessImplCopyWith<_$CreateCommentSuccessImpl>
+      get copyWith =>
+          __$$CreateCommentSuccessImplCopyWithImpl<_$CreateCommentSuccessImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() commentsLoading,
-    required TResult Function(List<CommentModel> comments) commentsSuccess,
+    required TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)
+        commentsSuccess,
     required TResult Function(ApiErrorModel error) commentsError,
     required TResult Function() createCommentLoading,
     required TResult Function(CreateCommentResponse response)
@@ -971,7 +1008,9 @@ class _$CreateCommentSuccessImpl<T> implements CreateCommentSuccess<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? commentsLoading,
-    TResult? Function(List<CommentModel> comments)? commentsSuccess,
+    TResult? Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult? Function(ApiErrorModel error)? commentsError,
     TResult? Function()? createCommentLoading,
     TResult? Function(CreateCommentResponse response)? createCommentSuccess,
@@ -985,7 +1024,9 @@ class _$CreateCommentSuccessImpl<T> implements CreateCommentSuccess<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? commentsLoading,
-    TResult Function(List<CommentModel> comments)? commentsSuccess,
+    TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult Function(ApiErrorModel error)? commentsError,
     TResult Function()? createCommentLoading,
     TResult Function(CreateCommentResponse response)? createCommentSuccess,
@@ -1001,15 +1042,13 @@ class _$CreateCommentSuccessImpl<T> implements CreateCommentSuccess<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CommentsLoading<T> value) commentsLoading,
-    required TResult Function(CommentsSuccess<T> value) commentsSuccess,
-    required TResult Function(CommentsError<T> value) commentsError,
-    required TResult Function(CreateCommentLoading<T> value)
-        createCommentLoading,
-    required TResult Function(CreateCommentSuccess<T> value)
-        createCommentSuccess,
-    required TResult Function(CreateCommentError<T> value) createCommentError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CommentsLoading value) commentsLoading,
+    required TResult Function(CommentsSuccess value) commentsSuccess,
+    required TResult Function(CommentsError value) commentsError,
+    required TResult Function(CreateCommentLoading value) createCommentLoading,
+    required TResult Function(CreateCommentSuccess value) createCommentSuccess,
+    required TResult Function(CreateCommentError value) createCommentError,
   }) {
     return createCommentSuccess(this);
   }
@@ -1017,13 +1056,13 @@ class _$CreateCommentSuccessImpl<T> implements CreateCommentSuccess<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CommentsLoading<T> value)? commentsLoading,
-    TResult? Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult? Function(CommentsError<T> value)? commentsError,
-    TResult? Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult? Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult? Function(CreateCommentError<T> value)? createCommentError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CommentsLoading value)? commentsLoading,
+    TResult? Function(CommentsSuccess value)? commentsSuccess,
+    TResult? Function(CommentsError value)? commentsError,
+    TResult? Function(CreateCommentLoading value)? createCommentLoading,
+    TResult? Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult? Function(CreateCommentError value)? createCommentError,
   }) {
     return createCommentSuccess?.call(this);
   }
@@ -1031,13 +1070,13 @@ class _$CreateCommentSuccessImpl<T> implements CreateCommentSuccess<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CommentsLoading<T> value)? commentsLoading,
-    TResult Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult Function(CommentsError<T> value)? commentsError,
-    TResult Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult Function(CreateCommentError<T> value)? createCommentError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentsLoading value)? commentsLoading,
+    TResult Function(CommentsSuccess value)? commentsSuccess,
+    TResult Function(CommentsError value)? commentsError,
+    TResult Function(CreateCommentLoading value)? createCommentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CreateCommentError value)? createCommentError,
     required TResult orElse(),
   }) {
     if (createCommentSuccess != null) {
@@ -1047,34 +1086,34 @@ class _$CreateCommentSuccessImpl<T> implements CreateCommentSuccess<T> {
   }
 }
 
-abstract class CreateCommentSuccess<T> implements CommentsState<T> {
+abstract class CreateCommentSuccess implements CommentsState {
   const factory CreateCommentSuccess(final CreateCommentResponse response) =
-      _$CreateCommentSuccessImpl<T>;
+      _$CreateCommentSuccessImpl;
 
   CreateCommentResponse get response;
 
   /// Create a copy of CommentsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CreateCommentSuccessImplCopyWith<T, _$CreateCommentSuccessImpl<T>>
+  _$$CreateCommentSuccessImplCopyWith<_$CreateCommentSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CreateCommentErrorImplCopyWith<T, $Res> {
-  factory _$$CreateCommentErrorImplCopyWith(_$CreateCommentErrorImpl<T> value,
-          $Res Function(_$CreateCommentErrorImpl<T>) then) =
-      __$$CreateCommentErrorImplCopyWithImpl<T, $Res>;
+abstract class _$$CreateCommentErrorImplCopyWith<$Res> {
+  factory _$$CreateCommentErrorImplCopyWith(_$CreateCommentErrorImpl value,
+          $Res Function(_$CreateCommentErrorImpl) then) =
+      __$$CreateCommentErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ApiErrorModel error});
 }
 
 /// @nodoc
-class __$$CreateCommentErrorImplCopyWithImpl<T, $Res>
-    extends _$CommentsStateCopyWithImpl<T, $Res, _$CreateCommentErrorImpl<T>>
-    implements _$$CreateCommentErrorImplCopyWith<T, $Res> {
-  __$$CreateCommentErrorImplCopyWithImpl(_$CreateCommentErrorImpl<T> _value,
-      $Res Function(_$CreateCommentErrorImpl<T>) _then)
+class __$$CreateCommentErrorImplCopyWithImpl<$Res>
+    extends _$CommentsStateCopyWithImpl<$Res, _$CreateCommentErrorImpl>
+    implements _$$CreateCommentErrorImplCopyWith<$Res> {
+  __$$CreateCommentErrorImplCopyWithImpl(_$CreateCommentErrorImpl _value,
+      $Res Function(_$CreateCommentErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CommentsState
@@ -1084,7 +1123,7 @@ class __$$CreateCommentErrorImplCopyWithImpl<T, $Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$CreateCommentErrorImpl<T>(
+    return _then(_$CreateCommentErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -1095,7 +1134,7 @@ class __$$CreateCommentErrorImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$CreateCommentErrorImpl<T> implements CreateCommentError<T> {
+class _$CreateCommentErrorImpl implements CreateCommentError {
   const _$CreateCommentErrorImpl({required this.error});
 
   @override
@@ -1103,14 +1142,14 @@ class _$CreateCommentErrorImpl<T> implements CreateCommentError<T> {
 
   @override
   String toString() {
-    return 'CommentsState<$T>.createCommentError(error: $error)';
+    return 'CommentsState.createCommentError(error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateCommentErrorImpl<T> &&
+            other is _$CreateCommentErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -1122,16 +1161,18 @@ class _$CreateCommentErrorImpl<T> implements CreateCommentError<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CreateCommentErrorImplCopyWith<T, _$CreateCommentErrorImpl<T>>
-      get copyWith => __$$CreateCommentErrorImplCopyWithImpl<T,
-          _$CreateCommentErrorImpl<T>>(this, _$identity);
+  _$$CreateCommentErrorImplCopyWith<_$CreateCommentErrorImpl> get copyWith =>
+      __$$CreateCommentErrorImplCopyWithImpl<_$CreateCommentErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() commentsLoading,
-    required TResult Function(List<CommentModel> comments) commentsSuccess,
+    required TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)
+        commentsSuccess,
     required TResult Function(ApiErrorModel error) commentsError,
     required TResult Function() createCommentLoading,
     required TResult Function(CreateCommentResponse response)
@@ -1146,7 +1187,9 @@ class _$CreateCommentErrorImpl<T> implements CreateCommentError<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? commentsLoading,
-    TResult? Function(List<CommentModel> comments)? commentsSuccess,
+    TResult? Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult? Function(ApiErrorModel error)? commentsError,
     TResult? Function()? createCommentLoading,
     TResult? Function(CreateCommentResponse response)? createCommentSuccess,
@@ -1160,7 +1203,9 @@ class _$CreateCommentErrorImpl<T> implements CreateCommentError<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? commentsLoading,
-    TResult Function(List<CommentModel> comments)? commentsSuccess,
+    TResult Function(
+            List<CommentModel> comments, CommentModel? replyingToComment)?
+        commentsSuccess,
     TResult Function(ApiErrorModel error)? commentsError,
     TResult Function()? createCommentLoading,
     TResult Function(CreateCommentResponse response)? createCommentSuccess,
@@ -1176,15 +1221,13 @@ class _$CreateCommentErrorImpl<T> implements CreateCommentError<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CommentsLoading<T> value) commentsLoading,
-    required TResult Function(CommentsSuccess<T> value) commentsSuccess,
-    required TResult Function(CommentsError<T> value) commentsError,
-    required TResult Function(CreateCommentLoading<T> value)
-        createCommentLoading,
-    required TResult Function(CreateCommentSuccess<T> value)
-        createCommentSuccess,
-    required TResult Function(CreateCommentError<T> value) createCommentError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CommentsLoading value) commentsLoading,
+    required TResult Function(CommentsSuccess value) commentsSuccess,
+    required TResult Function(CommentsError value) commentsError,
+    required TResult Function(CreateCommentLoading value) createCommentLoading,
+    required TResult Function(CreateCommentSuccess value) createCommentSuccess,
+    required TResult Function(CreateCommentError value) createCommentError,
   }) {
     return createCommentError(this);
   }
@@ -1192,13 +1235,13 @@ class _$CreateCommentErrorImpl<T> implements CreateCommentError<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CommentsLoading<T> value)? commentsLoading,
-    TResult? Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult? Function(CommentsError<T> value)? commentsError,
-    TResult? Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult? Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult? Function(CreateCommentError<T> value)? createCommentError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CommentsLoading value)? commentsLoading,
+    TResult? Function(CommentsSuccess value)? commentsSuccess,
+    TResult? Function(CommentsError value)? commentsError,
+    TResult? Function(CreateCommentLoading value)? createCommentLoading,
+    TResult? Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult? Function(CreateCommentError value)? createCommentError,
   }) {
     return createCommentError?.call(this);
   }
@@ -1206,13 +1249,13 @@ class _$CreateCommentErrorImpl<T> implements CreateCommentError<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CommentsLoading<T> value)? commentsLoading,
-    TResult Function(CommentsSuccess<T> value)? commentsSuccess,
-    TResult Function(CommentsError<T> value)? commentsError,
-    TResult Function(CreateCommentLoading<T> value)? createCommentLoading,
-    TResult Function(CreateCommentSuccess<T> value)? createCommentSuccess,
-    TResult Function(CreateCommentError<T> value)? createCommentError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentsLoading value)? commentsLoading,
+    TResult Function(CommentsSuccess value)? commentsSuccess,
+    TResult Function(CommentsError value)? commentsError,
+    TResult Function(CreateCommentLoading value)? createCommentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CreateCommentError value)? createCommentError,
     required TResult orElse(),
   }) {
     if (createCommentError != null) {
@@ -1222,15 +1265,15 @@ class _$CreateCommentErrorImpl<T> implements CreateCommentError<T> {
   }
 }
 
-abstract class CreateCommentError<T> implements CommentsState<T> {
+abstract class CreateCommentError implements CommentsState {
   const factory CreateCommentError({required final ApiErrorModel error}) =
-      _$CreateCommentErrorImpl<T>;
+      _$CreateCommentErrorImpl;
 
   ApiErrorModel get error;
 
   /// Create a copy of CommentsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CreateCommentErrorImplCopyWith<T, _$CreateCommentErrorImpl<T>>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$CreateCommentErrorImplCopyWith<_$CreateCommentErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

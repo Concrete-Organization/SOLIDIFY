@@ -8,8 +8,11 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_comment_request.dart';
+import 'package:solidify/features/community/data/models/comment_models/create_reply_request.dart';
+import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
 import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
 import 'package:solidify/features/community/logic/comments/comments_state.dart';
+import 'package:solidify/features/community/ui/screens/comments/widgets/replying_to_row.dart';
 
 class CommentsTextField extends StatefulWidget {
   final int postId;
@@ -24,15 +27,46 @@ class _CommentsTextFieldState extends State<CommentsTextField> {
   final TextEditingController _controller = TextEditingController();
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _handleSend(BuildContext context, CommentModel? replyingToComment) {
+    if (_controller.text.isNotEmpty) {
+      final cubit = context.read<CommentsCubit>();
+      if (replyingToComment != null) {
+        final request = CreateReplyRequest(content: _controller.text);
+        cubit.createReply(request, replyingToComment.id, widget.postId);
+      } else {
+        final request = CreateCommentRequest(content: _controller.text);
+        cubit.createComment(request, widget.postId);
+      }
+      _controller.clear();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CommentsCubit, CommentsState>(
+    return BlocConsumer<CommentsCubit, CommentsState>(
+      listener: (context, state) {
+        if (state is CommentsSuccess && state.replyingToComment == null) {
+          _controller.clear();
+        }
+      },
       builder: (context, state) {
         final isLoading = state is CreateCommentLoading;
+        final replyingToComment = state is CommentsSuccess ? state.replyingToComment : null;
+
         return Column(
           children: [
-            verticalSpace(10),
             const HorizontalDivider(),
             verticalSpace(10),
+            if (replyingToComment != null)
+              ReplyingToRow(
+                engineerName: replyingToComment.engineerName ?? 'Unknown',
+                onCancel: () => context.read<CommentsCubit>().setReplyingToComment(null),
+              ),
             Row(
               children: [
                 Padding(
@@ -40,9 +74,7 @@ class _CommentsTextFieldState extends State<CommentsTextField> {
                   child: CircleAvatar(
                     radius: 20.w,
                     backgroundColor: Colors.transparent,
-                    child: SvgPicture.asset(
-                      'assets/svgs/app_prof.svg',
-                    ),
+                    child: SvgPicture.asset('assets/svgs/app_prof.svg'),
                   ),
                 ),
                 horizontalSpace(6),
@@ -50,26 +82,17 @@ class _CommentsTextFieldState extends State<CommentsTextField> {
                   child: AppTextFormField(
                     contentPadding: EdgeInsetsDirectional.symmetric(horizontal: 10.w),
                     controller: _controller,
-                    hintText: 'Write your comment here...',
+                    hintText: replyingToComment != null
+                        ? 'Reply to ${replyingToComment.engineerName}...'
+                        : 'Write your comment here...',
                     hintStyle: TextStyles.font10lightBlackRegularWithOpacity,
                     backgroundColor: ColorsManager.white,
                     borderRadius: 40.r,
                     suffixIcon: GestureDetector(
-                      onTap: isLoading
-                          ? null
-                          : () {
-                        if (_controller.text.isNotEmpty) {
-                          final request = CreateCommentRequest(content: _controller.text);
-                          BlocProvider.of<CommentsCubit>(context).createComment(request, widget.postId);
-                          _controller.clear();
-                        }
-                      },
+                      onTap: isLoading ? null : () => _handleSend(context, replyingToComment),
                       child: isLoading
                           ? const CircularProgressIndicator()
-                          : SvgPicture.asset(
-                        'assets/svgs/upload_button.svg',
-                        fit: BoxFit.scaleDown,
-                      ),
+                          : SvgPicture.asset('assets/svgs/upload_button.svg', fit: BoxFit.scaleDown),
                     ),
                   ),
                 ),

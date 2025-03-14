@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/auth/login/logic/login_cubit.dart';
 import 'package:solidify/features/auth/login/logic/login_state.dart';
 
@@ -18,7 +19,7 @@ class LoginBlocListener extends StatelessWidget {
             showDialog(
               context: context,
               barrierDismissible: false,
-              builder: (context) => const Center(child: CircularProgressIndicator()),
+              builder: (context) => LoadingCircleIndicator(),
             );
           },
           success: (loginResponse, role) {

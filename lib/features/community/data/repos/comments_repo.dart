@@ -5,6 +5,7 @@ import 'package:solidify/core/network/api_result.dart';
 import 'package:solidify/core/network/api_service.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_comment_request.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_comment_response.dart';
+import 'package:solidify/features/community/data/models/comment_models/create_reply_request.dart';
 import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
 
 class CommentsRepo {
@@ -31,6 +32,20 @@ class CommentsRepo {
     try {
       final response =
           await _apiService.createComment(postId, createCommentRequest);
+      return ApiResult.success(response);
+    } on DioException catch (e) {
+      return ApiResult.failure(ApiErrorHandler.handle(e));
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
+  Future<ApiResult<CreateCommentResponse>> reply(
+      int commentId,
+      CreateReplyRequest replyRequest,
+      ) async {
+    try {
+      final response = await _apiService.reply(commentId, replyRequest);
       return ApiResult.success(response);
     } on DioException catch (e) {
       return ApiResult.failure(ApiErrorHandler.handle(e));

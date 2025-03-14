@@ -8,6 +8,7 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/error_state_message.dart';
+import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/marketplace/logic/cart_cubit/cart_cubit.dart';
 import 'package:solidify/features/marketplace/logic/cart_cubit/cart_state.dart';
 import 'package:solidify/features/marketplace/data/models/get_cart_response_model.dart';
@@ -45,7 +46,7 @@ class CartScreen extends StatelessWidget {
               context.read<CartCubit>().getCartItems();
               return const Center(child: CircularProgressIndicator());
             },
-            cartLoading: () => const Center(child: CircularProgressIndicator()),
+            cartLoading: () => LoadingCircleIndicator(),
             cartListSuccess: (cartResponse) {
               final total = cartResponse.model.totalPrice;
               return _buildCartContent(

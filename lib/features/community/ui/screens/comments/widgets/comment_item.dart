@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:solidify/core/helpers/format_date.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
+import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
+import 'package:solidify/features/community/ui/screens/comments/widgets/replies_toggle.dart';
+import 'package:solidify/features/community/ui/screens/comments/widgets/reply_item.dart';
 
-class CommentItem extends StatelessWidget {
-  final String profileImage;
-  final String name;
-  final String timeAgo;
-  final String comment;
-  final int likes;
+class CommentItem extends StatefulWidget {
+  final CommentModel comment;
 
-  const CommentItem({
-    super.key,
-    required this.profileImage,
-    required this.name,
-    required this.timeAgo,
-    required this.comment,
-    required this.likes,
-  });
+  const CommentItem({super.key, required this.comment});
+
+  @override
+  State<CommentItem> createState() => _CommentItemState();
+}
+
+class _CommentItemState extends State<CommentItem> {
+  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
+    final comment = widget.comment;
+    final repliesCount = comment.replies.length;
+    final hasReplies = repliesCount > 0;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -32,7 +38,7 @@ class CommentItem extends StatelessWidget {
               radius: 17.w,
               backgroundColor: Colors.transparent,
               child: SvgPicture.asset(
-                'assets/svgs/app_prof.svg',
+                comment.profileImageUrl ?? 'assets/svgs/app_prof.svg',
               ),
             ),
             horizontalSpace(10),
@@ -41,12 +47,12 @@ class CommentItem extends StatelessWidget {
               children: [
                 verticalSpace(10),
                 Text(
-                  name,
+                  comment.engineerName ?? 'Unknown',
                   style: TextStyles.font10lightBlackRegularWithOpacity,
                 ),
                 verticalSpace(2),
                 Text(
-                  timeAgo,
+                  getRelativeTime(comment.creationDate),
                   style: TextStyles.font8lightBlackLightWith70Opacity,
                 ),
               ],
@@ -61,7 +67,7 @@ class CommentItem extends StatelessWidget {
             Padding(
               padding: EdgeInsetsDirectional.symmetric(horizontal: 45.w),
               child: Text(
-                comment,
+                comment.content ?? 'No content',
                 style: TextStyles.font10lightBlackRegular,
               ),
             ),
@@ -74,10 +80,9 @@ class CommentItem extends StatelessWidget {
                 ),
                 verticalSpace(1),
                 Text(
-                  likes.toString(),
+                  comment.likesCount.toString(),
                   style: TextStyles.font8lightBlackLightWith70Opacity,
                 ),
-
               ],
             ),
           ],
@@ -86,21 +91,24 @@ class CommentItem extends StatelessWidget {
           padding: EdgeInsetsDirectional.symmetric(horizontal: 45.w),
           child: Row(
             children: [
-              Text(
-                'Replay',
-                style: TextStyles.font8lightBlackLightWith70Opacity,
+              GestureDetector(
+                onTap: () => context.read<CommentsCubit>().setReplyingToComment(comment),
+                child: Text(
+                  'Reply',
+                  style: TextStyles.font8lightBlackLightWith70Opacity,
+                ),
               ),
             ],
           ),
         ),
-        verticalSpace(5),
-        Padding(
-          padding: EdgeInsets.only(left: 50.w),
-          child: Text(
-            'Show 1 more reply',
-            style: TextStyles.font8lightBlackLightWith70Opacity,
+        if (hasReplies)
+          RepliesToggle(
+            isExpanded: isExpanded,
+            repliesCount: repliesCount,
+            onTap: () => setState(() => isExpanded = !isExpanded),
           ),
-        ),
+        if (isExpanded)
+          ...comment.replies.map((reply) => ReplyItem(reply: reply)),
         verticalSpace(16),
       ],
     );

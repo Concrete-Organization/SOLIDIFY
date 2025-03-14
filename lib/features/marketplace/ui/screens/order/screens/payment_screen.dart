@@ -52,8 +52,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     verticalSpace(100),
-                    Text('Select a payment method',
-                        style: TextStyles.font15lightBlackMedium),
+                    Text(
+                      'Select a payment method',
+                      style: TextStyles.font15lightBlackMedium,
+                    ),
                     verticalSpace(17),
                     PaymentMethodContainer(
                       iconPath: 'assets/images/paypal_icon.png',

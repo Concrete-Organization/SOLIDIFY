@@ -44,30 +44,40 @@ class AddressDetailsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     verticalSpace(100),
-                    Text('City', style: TextStyles.font15lightBlackMedium),
+                    Text(
+                      'City',
+                      style: TextStyles.font15lightBlackMedium,
+                    ),
                     verticalSpace(15),
                     AppTextFormField(
                       borderRadius: 10.r,
                       hintText: 'City name here',
                     ),
                     verticalSpace(25),
-                    Text('Street', style: TextStyles.font15lightBlackMedium),
+                    Text(
+                      'Street',
+                      style: TextStyles.font15lightBlackMedium,
+                    ),
                     verticalSpace(15),
                     AppTextFormField(
                       borderRadius: 10.r,
                       hintText: 'Street name here',
                     ),
                     verticalSpace(25),
-                    Text('Postal code',
-                        style: TextStyles.font15lightBlackMedium),
+                    Text(
+                      'Postal code',
+                      style: TextStyles.font15lightBlackMedium,
+                    ),
                     verticalSpace(15),
                     AppTextFormField(
                       borderRadius: 10.r,
                       hintText: 'Postal code here',
                     ),
                     verticalSpace(25),
-                    Text('Phone number',
-                        style: TextStyles.font15lightBlackMedium),
+                    Text(
+                      'Phone number',
+                      style: TextStyles.font15lightBlackMedium,
+                    ),
                     verticalSpace(15),
                     AppTextFormField(
                       borderRadius: 10.r,

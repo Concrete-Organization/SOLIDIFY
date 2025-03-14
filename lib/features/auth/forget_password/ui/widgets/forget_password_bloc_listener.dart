@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import '../../../../../core/routes/routes_name.dart';
 import '../../logic/forget_password_cubit.dart';
 import '../../logic/forget_password_state.dart';
@@ -18,9 +19,7 @@ class ForgetPasswordBlocListener extends StatelessWidget {
             showDialog(
               context: context,
               barrierDismissible: false,
-              builder: (context) => const Center(
-                child: CircularProgressIndicator(),
-              ),
+              builder: (context) => LoadingCircleIndicator(),
             );
           },
           success: (data) {
