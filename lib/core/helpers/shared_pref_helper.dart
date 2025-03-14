@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -17,6 +18,8 @@ class SharedPrefKeys {
   static const String cachedProductIds = 'cachedProductIds';
   static const String favoriteProductIds = 'favoriteProductIds';
   static const likedPostsKey = 'liked_posts';
+  static const String _cartItemsKey = 'cartItems';
+
 }
 
 class SharedPrefHelper {
@@ -141,7 +144,6 @@ class SharedPrefHelper {
     return await getString(SharedPrefKeys.productId);
   }
 
-  // New methods for caching multiple product IDs
   static Future<void> cacheProductIds(List<String> ids) async {
     final idsString = ids.join(',');
     await setData(SharedPrefKeys.cachedProductIds, idsString);
@@ -222,5 +224,33 @@ class SharedPrefHelper {
     final liked = await getLikedPosts();
     liked.remove(postId);
     await prefs.setStringList(SharedPrefKeys.likedPostsKey, liked.map((e) => e.toString()).toList());
+  }
+
+  static Future<void> addCartItem(String productId) async {
+    final data = await SharedPrefHelper.getString(SharedPrefKeys._cartItemsKey);
+    List<String> items = [];
+    if (data.isNotEmpty) {
+      try {
+        items = List<String>.from(json.decode(data));
+      } catch (e) {
+        items = [];
+      }
+    }
+    items.add(productId);
+    await SharedPrefHelper.setData(SharedPrefKeys._cartItemsKey, json.encode(items));
+  }
+
+  static Future<List<String>> getCartItems() async {
+    final data = await SharedPrefHelper.getString(SharedPrefKeys._cartItemsKey);
+    if (data.isEmpty) return [];
+    try {
+      return List<String>.from(json.decode(data));
+    } catch (e) {
+      return [];
+    }
+  }
+
+  static Future<void> clearCart() async {
+    await SharedPrefHelper.removeData(SharedPrefKeys._cartItemsKey);
   }
 }
