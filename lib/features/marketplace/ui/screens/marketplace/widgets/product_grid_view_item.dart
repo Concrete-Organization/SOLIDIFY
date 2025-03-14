@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
@@ -6,22 +7,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/theming/font_weight_helper.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
-import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/features/marketplace/logic/cart_cubit/cart_cubit.dart';
 import 'package:solidify/features/marketplace/logic/cart_cubit/cart_state.dart';
+import 'package:solidify/features/marketplace/data/models/product_list_response_model.dart';
+import 'package:solidify/features/marketplace/ui/screens/favorites/logic/favroites_provider.dart';
 
 class ProductGridViewItem extends StatefulWidget {
-  final dynamic product;
+  final Product product; // Changed from dynamic to Product
+  final int index;
 
-  const ProductGridViewItem(
-      {super.key, required this.product, required int index});
+  const ProductGridViewItem({
+    super.key,
+    required this.product,
+    required this.index,
+  });
 
   @override
   State<ProductGridViewItem> createState() => _ProductGridViewItemState();
 }
 
 class _ProductGridViewItemState extends State<ProductGridViewItem> {
-  bool isFavorite = false;
   String? _currentProductId;
   bool _localLoading = false;
 
@@ -31,7 +36,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
       listener: (context, state) {
         state.maybeWhen(
           error: (productId, error) {
-            if (productId == widget.product.id.toString() &&
+            if (productId == widget.product.id &&
                 _currentProductId == productId &&
                 !_localLoading) {
               _showErrorSnackbar(context, error.message);
@@ -39,7 +44,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
             }
           },
           success: (productId) {
-            if (productId == widget.product.id.toString()) {
+            if (productId == widget.product.id) {
               _showSuccessSnackbar(context);
               _currentProductId = null;
             }
@@ -48,8 +53,10 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
         );
       },
       builder: (context, state) {
-        final isLoading = state is CartLoading &&
-            state.productId == widget.product.id.toString();
+        final favoritesProvider = Provider.of<FavoritesProvider>(context);
+        final isFavorite = favoritesProvider.isFavorite(widget.product.id);
+        final isLoading =
+            state is CartLoading && state.productId == widget.product.id;
 
         return Card(
           margin: EdgeInsets.zero,
@@ -94,7 +101,8 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
                         size: 22.w,
                       ),
                       onPressed: () {
-                        setState(() => isFavorite = !isFavorite);
+                        // Updated to pass the entire product
+                        favoritesProvider.toggleFavorite(widget.product);
                       },
                     ),
                   ),
@@ -192,20 +200,11 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
     if (_localLoading) return;
 
     setState(() => _localLoading = true);
-    _currentProductId = widget.product.id.toString();
+    _currentProductId = widget.product.id;
 
     try {
       final cubit = context.read<CartCubit>();
-      final productId = widget.product.id.toString();
-
-      final token = await SharedPrefHelper.getSecuredString(
-        SharedPrefKeys.accessToken,
-      );
-
-      if (token.isEmpty) {
-        _showAuthErrorSnackbar(context);
-        return;
-      }
+      final productId = widget.product.id;
 
       cubit.addCartItem(productId);
     } finally {
@@ -229,15 +228,6 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
         content: Text('Error: $message'),
         backgroundColor: Colors.red,
         duration: const Duration(seconds: 2),
-      ),
-    );
-  }
-
-  void _showAuthErrorSnackbar(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Please login to add items to cart'),
-        backgroundColor: ColorsManager.mainBlue,
       ),
     );
   }

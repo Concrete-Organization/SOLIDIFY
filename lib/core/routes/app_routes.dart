@@ -175,7 +175,10 @@ class AppRoutes {
         );
       case Routes.favoritesScreen:
         return MaterialPageRoute(
-          builder: (context) => const FavoritesScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<CartCubit>(),
+            child: const FavoritesScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(
