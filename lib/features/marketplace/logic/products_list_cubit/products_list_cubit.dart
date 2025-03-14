@@ -15,7 +15,6 @@ class ProductsListCubit extends Cubit<ProductsListState> {
   Future<void> fetchProductsList() async {
     emit(const ProductsListState.productsListLoading());
 
-    // Try to get cached products first
     final cachedIds = await _getCachedProductIds();
     if (cachedIds.isNotEmpty) {}
 
@@ -23,7 +22,6 @@ class ProductsListCubit extends Cubit<ProductsListState> {
 
     result.when(
       success: (data) {
-        // Cache the product IDs when successful
         _cacheProductIds(data.model.items);
         emit(ProductsListState.productsListSuccess(data.model.items));
       },
