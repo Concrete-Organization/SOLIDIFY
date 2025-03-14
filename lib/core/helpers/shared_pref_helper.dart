@@ -15,10 +15,7 @@ class SharedPrefKeys {
   static const String isFirstTime = 'isFirstTime';
   static const String productId = 'productId';
   static const String cachedProductIds = 'cachedProductIds';
-
-  static const String favoriteProductIds = 'favoriteProductIds';
   static const likedPostsKey = 'liked_posts';
-
 }
 
 class SharedPrefHelper {
@@ -170,43 +167,6 @@ class SharedPrefHelper {
     await removeData(SharedPrefKeys.cachedProductIds);
     debugPrint('SharedPrefHelper: Cleared cached product IDs');
   }
-
-
-  /// Favorite Products Methods
-  static Future<void> toggleFavorite(String productId) async {
-    final favorites = await getFavorites();
-    if (favorites.contains(productId)) {
-      favorites.remove(productId);
-    } else {
-      favorites.add(productId);
-    }
-    await saveFavorites(favorites);
-    debugPrint('SharedPrefHelper: Toggled favorite for product $productId');
-  }
-
-  static Future<bool> isFavorite(String productId) async {
-    final favorites = await getFavorites();
-    return favorites.contains(productId);
-  }
-
-  static Future<List<String>> getFavorites() async {
-    final prefs = await SharedPreferences.getInstance();
-    final favoritesString =
-        prefs.getString(SharedPrefKeys.favoriteProductIds) ?? '';
-    return favoritesString.split(',').where((id) => id.isNotEmpty).toList();
-  }
-
-  static Future<void> saveFavorites(List<String> favorites) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(
-        SharedPrefKeys.favoriteProductIds, favorites.join(','));
-  }
-
-  static Future<void> clearFavorites() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(SharedPrefKeys.favoriteProductIds);
-    debugPrint('SharedPrefHelper: Cleared all favorites');
-
   static Future<Set<int>> getLikedPosts() async {
     final prefs = await SharedPreferences.getInstance();
     final likedList = prefs.getStringList(SharedPrefKeys.likedPostsKey) ?? [];
@@ -225,6 +185,5 @@ class SharedPrefHelper {
     final liked = await getLikedPosts();
     liked.remove(postId);
     await prefs.setStringList(SharedPrefKeys.likedPostsKey, liked.map((e) => e.toString()).toList());
-
   }
 }
