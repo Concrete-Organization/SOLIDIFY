@@ -17,11 +17,10 @@ class ApiConstants {
   static const String post = 'Post';
   static const String comment = 'Comment';
   static const String likePost = 'Like/post';
+  static const String reply = 'reply';
 
-  /// Returns the endpoint for a category with the given [id].
   static String categoryEndpoint(int id) => "Category/$id";
 
-  /// Returns the endpoint for a CartItem with the given [id].
   static String cartItemEndpoint(String id) => "CartItem/$id";
 
   static const String productWithId = "Product/{id}";

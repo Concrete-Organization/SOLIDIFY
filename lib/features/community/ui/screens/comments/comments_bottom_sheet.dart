@@ -29,7 +29,8 @@ class CommentsBottomSheet extends StatelessWidget {
     final double minChildSize = keyboardVisible ? 0.9 : 0.3;
 
     return BlocProvider(
-      create: (context) => getIt<CommentsCubit>()..fetchComments(postId, refresh: true),
+      create: (context) =>
+          getIt<CommentsCubit>()..fetchComments(postId, refresh: true),
       child: BlocListener<CommentsCubit, CommentsState>(
         listener: (context, state) {
           if (state is CreateCommentSuccess) {
@@ -49,7 +50,8 @@ class CommentsBottomSheet extends StatelessWidget {
           expand: false,
           builder: (context, sheetScrollController) {
             return Padding(
-              padding: EdgeInsets.only(bottom: bottomInset),
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
               child: Container(
                 padding: EdgeInsets.all(16.w),
                 decoration: BoxDecoration(
@@ -62,10 +64,15 @@ class CommentsBottomSheet extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('Comments', style: TextStyles.font15lightBlackMedium),
+                    Text(
+                      'Comments',
+                      style: TextStyles.font15lightBlackMedium,
+                    ),
                     verticalSpace(19),
                     Expanded(
-                      child: CommentsBlocBuilder(scrollController: sheetScrollController),
+                      child: CommentsBlocBuilder(
+                        scrollController: sheetScrollController,
+                      ),
                     ),
                     CommentsTextField(postId: postId),
                   ],

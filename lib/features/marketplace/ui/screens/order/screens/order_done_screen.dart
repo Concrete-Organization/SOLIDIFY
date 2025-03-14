@@ -4,7 +4,7 @@ import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solidify/core/widgets/app_text_button.dart'; // Import the AppTextButton
+import 'package:solidify/core/widgets/app_text_button.dart';
 
 class OrderDoneScreen extends StatelessWidget {
   const OrderDoneScreen({super.key});
@@ -38,14 +38,12 @@ class OrderDoneScreen extends StatelessWidget {
               ],
             ),
           ),
-          // Position the button at the bottom of the screen
           Positioned(
             left: 0,
             right: 0,
-            bottom: 30.h, // Adjust the bottom padding as needed
+            bottom: 30.h,
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 20.w), // Add horizontal padding
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: AppTextButton(
                 onPressed: () {
                   context.pushNamed(Routes.companyLayout);

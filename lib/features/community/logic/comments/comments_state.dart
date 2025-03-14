@@ -6,13 +6,15 @@ import 'package:solidify/features/community/data/models/comment_models/get_comme
 part 'comments_state.freezed.dart';
 
 @freezed
-class CommentsState<T> with _$CommentsState<T> {
+class CommentsState with _$CommentsState {
   const factory CommentsState.initial() = _Initial;
 
   const factory CommentsState.commentsLoading() = CommentsLoading;
 
-  const factory CommentsState.commentsSuccess(List<CommentModel> comments) =
-  CommentsSuccess<T>;
+  const factory CommentsState.commentsSuccess({
+    required List<CommentModel> comments,
+    CommentModel? replyingToComment,
+  }) = CommentsSuccess;
 
   const factory CommentsState.commentsError({required ApiErrorModel error}) =
   CommentsError;

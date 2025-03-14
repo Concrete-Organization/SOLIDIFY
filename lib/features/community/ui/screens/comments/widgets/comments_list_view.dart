@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/theming/text_styles.dart';
-import 'package:solidify/core/helpers/format_date.dart';
 import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
 import 'package:solidify/features/community/ui/screens/comments/widgets/comment_item.dart';
 
@@ -24,19 +23,13 @@ class CommentsListView extends StatelessWidget {
         ),
       );
     }
-
     return ListView.builder(
       controller: scrollController,
+      physics: const ClampingScrollPhysics(),
       itemCount: comments.length,
       itemBuilder: (context, index) {
         final comment = comments[index];
-        return CommentItem(
-          profileImage: comment.profileImageUrl ?? 'assets/svgs/app_prof.svg',
-          name: comment.engineerName ?? 'Unknown',
-          timeAgo: getRelativeTime(comment.creationDate),
-          comment: comment.content ?? 'No content',
-          likes: comment.likesCount,
-        );
+        return CommentItem(comment: comment);
       },
     );
   }

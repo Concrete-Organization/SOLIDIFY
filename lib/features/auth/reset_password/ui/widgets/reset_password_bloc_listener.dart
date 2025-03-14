@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 
 import '../../logic/reset_password_cubit.dart';
 import '../../logic/reset_password_state.dart';
@@ -18,9 +19,7 @@ class ResetPasswordBlocListener extends StatelessWidget {
             showDialog(
               context: context,
               barrierDismissible: false,
-              builder: (context) => const Center(
-                child: CircularProgressIndicator(),
-              ),
+              builder: (context) => LoadingCircleIndicator(),
             );
           },
           resetPasswordSuccess: () {

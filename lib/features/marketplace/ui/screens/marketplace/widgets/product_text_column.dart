@@ -47,17 +47,12 @@ class ProductTextColumn extends StatelessWidget {
             ),
           ],
         ),
-
         verticalSpace(15),
-
-        // Brand Name
         Text(
           brandName,
           style: TextStyles.font15MainBlueMedium,
         ),
-
         verticalSpace(15),
-
         Row(
           children: [
             Container(
@@ -89,10 +84,7 @@ class ProductTextColumn extends StatelessWidget {
             ),
           ],
         ),
-
         verticalSpace(20),
-
-        // Single Review Preview
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -113,14 +105,9 @@ class ProductTextColumn extends StatelessWidget {
             ),
           ],
         ),
-
         verticalSpace(20),
-
         const HorizontalDivider(),
-
         verticalSpace(20),
-
-        // Reviews Section Header
         Row(
           children: [
             Text(

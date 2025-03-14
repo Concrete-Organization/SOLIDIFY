@@ -4,6 +4,7 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/core/widgets/error_state_message.dart';
+import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/marketplace/data/models/get_product_by_id_response_body.dart';
 import 'package:solidify/features/marketplace/logic/product_details_cubit/product_details_cubit.dart';
 import 'package:solidify/features/marketplace/logic/product_details_cubit/product_details_state.dart';
@@ -33,8 +34,8 @@ class ProductDetailsBlocConsumer extends StatelessWidget {
       },
       builder: (context, state) {
         return state.when(
-          initial: () => const Center(child: CircularProgressIndicator()),
-          loading: (_) => const Center(child: CircularProgressIndicator()),
+          initial: () => LoadingCircleIndicator(),
+          loading: (_) => LoadingCircleIndicator(),
           success: (product) => _buildProductContent(product),
           error: (productId, error) => ErrorStateMessage(
             message: 'Error: ${error.message}',

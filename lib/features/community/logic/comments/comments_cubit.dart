@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_comment_request.dart';
+import 'package:solidify/features/community/data/models/comment_models/create_reply_request.dart';
 import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
 import 'package:solidify/features/community/data/repos/comments_repo.dart';
 import 'package:solidify/features/community/logic/comments/comments_state.dart';
@@ -31,15 +32,18 @@ class CommentsCubit extends Cubit<CommentsState> {
         _allComments = data.model.items;
         _totalPages = data.model.totalPages;
         _hasMoreComments = _currentPage < _totalPages;
-        emit(CommentsState.commentsSuccess(_allComments));
+        emit(CommentsState.commentsSuccess(comments: _allComments));
       },
       failure: (error) {
         emit(CommentsState.commentsError(error: error));
       },
     );
   }
+
   Future<void> loadMoreComments(int postId) async {
-    if (state is CommentsSuccess && _hasMoreComments && _currentPage < _totalPages) {
+    if (state is CommentsSuccess &&
+        _hasMoreComments &&
+        _currentPage < _totalPages) {
       _currentPage++;
       await _loadComments(postId, isLoadingMore: true);
     }
@@ -59,7 +63,7 @@ class CommentsCubit extends Cubit<CommentsState> {
         _totalPages = data.model.totalPages;
         _hasMoreComments = _currentPage < _totalPages;
 
-        emit(CommentsState.commentsSuccess(_allComments));
+        emit(CommentsState.commentsSuccess(comments: _allComments));
       },
       failure: (error) {
         if (isLoadingMore) {
@@ -70,13 +74,41 @@ class CommentsCubit extends Cubit<CommentsState> {
     );
   }
 
-  Future<void> createComment(CreateCommentRequest requestModel, int postId) async {
+  Future<void> createComment(
+      CreateCommentRequest requestModel, int postId) async {
     emit(const CommentsState.createCommentLoading());
     final result = await _commentsRepo.createComment(requestModel, postId);
 
     result.when(
       success: (data) {
         fetchComments(postId, refresh: true);
+        emit(CommentsState.createCommentSuccess(data));
+      },
+      failure: (error) {
+        emit(CommentsState.createCommentError(error: error));
+      },
+    );
+  }
+
+  void setReplyingToComment(CommentModel? comment) {
+    if (state is CommentsSuccess) {
+      final currentState = state as CommentsSuccess;
+      emit(currentState.copyWith(replyingToComment: comment));
+    }
+  }
+
+  Future<void> createReply(
+      CreateReplyRequest request,
+      int commentId,
+      int postId,
+      ) async {
+    emit(const CommentsState.createCommentLoading());
+    final result = await _commentsRepo.reply(commentId, request);
+
+    result.when(
+      success: (data) {
+        fetchComments(postId, refresh: true);
+        setReplyingToComment(null);
         emit(CommentsState.createCommentSuccess(data));
       },
       failure: (error) {

@@ -5,6 +5,7 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/core/widgets/error_state_message.dart';
+import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/product_search_bar.dart';
 import 'package:solidify/features/marketplace/ui/screens/marketplace/widgets/category_product_grid.dart';
 import 'package:solidify/features/marketplace/logic/product_category_cubit.dart/prodcut_category_cubit.dart';
@@ -47,9 +48,7 @@ class ProductCategoryBlocBuilder extends StatelessWidget {
                   child: SizedBox.shrink(),
                 ),
                 categoryLoading: () => const SliverToBoxAdapter(
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
+                  child: LoadingCircleIndicator(),
                 ),
                 categorySuccess: (categoryResponse, cachedIds) {
                   final products = categoryResponse.model.result.items;
