@@ -1,15 +1,15 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
-import 'package:solidify/core/di/dependency_injection.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
+import 'package:solidify/core/di/dependency_injection.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solidify/features/marketplace/logic/products_list_cubit/products_list_cubit.dart';
 import 'package:solidify/features/profile/ui/profile_screen.dart';
 import 'package:solidify/features/chatbot/ui/screens/chatbot_screen.dart';
-import 'package:solidify/features/marketplace/ui/screens/marketplace/screens/marketplace_screen.dart';
+import 'package:solidify/features/marketplace/marketplace/ui/screens/marketplace_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_get_started.dart';
+import 'package:solidify/features/marketplace/marketplace/logic/products_list_cubit/products_list_cubit.dart';
 
 class CompanyLayout extends StatefulWidget {
   const CompanyLayout({super.key});
