@@ -22,6 +22,9 @@ class MarketPlaceAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: SvgPicture.asset('assets/svgs/cart_icon.svg'),
         ),
         GestureDetector(
+          onTap: () {
+            context.pushNamed(Routes.favoritesScreen);
+          },
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: SvgPicture.asset('assets/svgs/fav_icon.svg'),
