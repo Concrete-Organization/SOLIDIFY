@@ -10,7 +10,6 @@ class CartCubit extends Cubit<CartState> {
 
   CartCubit(this._cartRepo) : super(const CartState.initial());
 
-  /// Add item to cart
   Future<void> addCartItem(String productId) async {
     emit(CartState.loading(productId));
 
@@ -31,7 +30,6 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  /// Get the entire cart items list
   Future<void> getCartItems() async {
     emit(const CartState.cartLoading());
 

@@ -1,8 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:solidify/core/network/api_error_model.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:solidify/core/network/api_error_model.dart';
-import 'package:solidify/features/marketplace/data/models/get_products_by_category_response_model.dart';
 import 'package:solidify/features/marketplace/data/models/get_products_by_category_response_model.dart';
 
 part 'product_category_state.freezed.dart';
@@ -13,7 +10,7 @@ class ProductCategoryState with _$ProductCategoryState {
   const factory ProductCategoryState.categoryLoading() = CategoryLoading;
   const factory ProductCategoryState.categorySuccess(
     GetProductsByCategoryResponseModel response,
-    List<String> cachedProductIds, // Include cached IDs in the success state
+    List<String> cachedProductIds,
   ) = CategorySuccess;
   const factory ProductCategoryState.categoryError({
     required ApiErrorModel error,

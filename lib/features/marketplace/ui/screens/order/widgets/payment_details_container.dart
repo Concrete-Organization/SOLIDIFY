@@ -11,7 +11,7 @@ class PaymentDetailsContainer extends StatefulWidget {
   const PaymentDetailsContainer({super.key, required this.onFieldsFilled});
 
   @override
-  _PaymentDetailsContainerState createState() =>
+  State<PaymentDetailsContainer> createState() =>
       _PaymentDetailsContainerState();
 }
 
@@ -69,7 +69,6 @@ class _PaymentDetailsContainerState extends State<PaymentDetailsContainer> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Card Holder Name Section
             Text(
               'Card Holder Name',
               style: TextStyles.font12LightBlackRegular,
@@ -81,7 +80,6 @@ class _PaymentDetailsContainerState extends State<PaymentDetailsContainer> {
               height: 43.h,
             ),
             verticalSpace(15),
-
             Text(
               'Card Number',
               style: TextStyles.font12LightBlackRegular,
@@ -93,11 +91,9 @@ class _PaymentDetailsContainerState extends State<PaymentDetailsContainer> {
               height: 43.h,
             ),
             verticalSpace(15),
-
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Exp Date Column
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,8 +112,6 @@ class _PaymentDetailsContainerState extends State<PaymentDetailsContainer> {
                   ),
                 ),
                 horizontalSpace(16),
-
-                // CVC Code Column
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,8 +131,7 @@ class _PaymentDetailsContainerState extends State<PaymentDetailsContainer> {
                 ),
               ],
             ),
-
-            verticalSpace(8), // Bottom padding
+            verticalSpace(8),
           ],
         ),
       ),

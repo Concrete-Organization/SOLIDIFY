@@ -5,6 +5,7 @@ import 'package:solidify/core/di/dependency_injection.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/features/chatbot/ui/screens/chatbot_screen.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/community/ui/screens/posts/community_screen.dart';
 
@@ -24,7 +25,7 @@ class _EngineerLayoutState extends State<EngineerLayout> {
       child: const CommunityScreen(),
     ),
     SizedBox.shrink(),
-    SizedBox.shrink(),
+    ChatbotScreen(),
     SizedBox.shrink(),
   ];
 

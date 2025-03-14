@@ -12,11 +12,12 @@ class CommentsRepo {
 
   CommentsRepo(this._apiService);
 
-  Future<ApiResult<GetCommentsResponse>> getComments(int postId) async {
+  Future<ApiResult<GetCommentsResponse>> getComments(int postId,
+      {int page = 1}) async {
     try {
       final accessToken =
           await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
-      final response = await _apiService.comments(postId, accessToken);
+      final response = await _apiService.comments(postId, page, accessToken);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));

@@ -44,7 +44,6 @@ class PaymentMethodContainer extends StatelessWidget {
           child: Row(
             children: [
               Padding(
-                // Use provided padding or default right padding
                 padding: imagePadding ?? EdgeInsets.only(right: 15.w),
                 child: Image.asset(
                   iconPath,

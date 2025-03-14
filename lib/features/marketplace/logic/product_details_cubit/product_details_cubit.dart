@@ -21,7 +21,12 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
             emit(ProductDetailsState.success(response.model)),
         failure: (error) {
           _handleError(productId, error);
-          emit(ProductDetailsState.error(productId: productId, error: error));
+          emit(
+            ProductDetailsState.error(
+              productId: productId,
+              error: error,
+            ),
+          );
         },
       );
     } catch (e) {
@@ -36,7 +41,10 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   void _handleError(String productId, ApiErrorModel error) {
     if (!_isErrorShown) {
       _isErrorShown = true;
-      Future.delayed(const Duration(seconds: 2), () => _isErrorShown = false);
+      Future.delayed(
+        const Duration(seconds: 2),
+        () => _isErrorShown = false,
+      );
     }
   }
 }

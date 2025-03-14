@@ -16,6 +16,7 @@ class ApiConstants {
   static const String product = 'Product';
   static const String post = 'Post';
   static const String comment = 'Comment';
+  static const String likePost = 'Like/post';
 
   /// Returns the endpoint for a category with the given [id].
   static String categoryEndpoint(int id) => "Category/$id";

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
 import 'package:solidify/features/community/ui/screens/posts/widgets/post_item.dart';
 import 'package:solidify/features/community/ui/screens/posts/widgets/shimmer_post_item.dart';
@@ -52,6 +53,8 @@ class _PostsListViewState extends State<PostsListView> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: widget.refreshPosts,
+      color: ColorsManager.white,
+      backgroundColor: ColorsManager.mainBlue,
       child: ListView.separated(
         controller: _scrollController,
         padding: EdgeInsets.zero,

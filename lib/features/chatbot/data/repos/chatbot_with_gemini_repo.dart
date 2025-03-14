@@ -15,7 +15,7 @@ class ChatbotWithGeminiRepo {
     try {
       final response = await _chatbotApiService.getChatbotResponse(
         requestModel,
-        "AIzaSyDZwGdFkTzhPd7FXX1ThTzG_ET2HNCh9wY",
+        "AIzaSyAFzJbX4CDKeqcF7NxGU_7_Y9gtgCtrQqs",
       );
       return ApiResult.success(response);
     } catch (error) {

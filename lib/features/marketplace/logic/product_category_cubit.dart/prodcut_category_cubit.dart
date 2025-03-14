@@ -18,8 +18,12 @@ class ProductCategoryCubit extends Cubit<ProductCategoryState> {
     result.when(
       success: (data) {
         final cachedIds = _cacheProductIds(data.model.result.items);
-        emit(ProductCategoryState.categorySuccess(
-            data, cachedIds)); // Pass cached IDs
+        emit(
+          ProductCategoryState.categorySuccess(
+            data,
+            cachedIds,
+          ),
+        );
       },
       failure: (error) {
         emit(ProductCategoryState.categoryError(error: error));
@@ -30,8 +34,8 @@ class ProductCategoryCubit extends Cubit<ProductCategoryState> {
   List<String> _cacheProductIds(List<ProductModel> products) {
     final List<String> productIds =
         products.map((product) => product.id).toList();
-    SharedPrefHelper.cacheProductIds(productIds); // Cache the IDs
-    return productIds; // Return the cached IDs for immediate use
+    SharedPrefHelper.cacheProductIds(productIds);
+    return productIds;
   }
 
   Future<List<String>> getCachedProductIds() async {
