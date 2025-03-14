@@ -78,7 +78,7 @@ class AppTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? double.infinity,
-      height: height ?? 48.h,
+      height: height,
       child: TextFormField(
         cursorColor: ColorsManager.mainBlue,
         controller: controller,
