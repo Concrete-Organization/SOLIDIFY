@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/theming/text_styles.dart';
-import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/product_grid_view_item.dart';
@@ -42,7 +41,8 @@ class BestSellersScreen extends StatelessWidget {
               products,
               isLoading: true,
             ),
-            marketplaceSuccess: (products) => _buildProductGrid(context, products),
+            marketplaceSuccess: (products) =>
+                _buildProductGrid(context, products),
             bestSellersSuccess: (products, hasReachedMax) => _buildProductGrid(
               context,
               products,
@@ -128,4 +128,3 @@ class BestSellersScreen extends StatelessWidget {
     );
   }
 }
-

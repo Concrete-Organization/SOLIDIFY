@@ -1,7 +1,7 @@
-import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/features/marketplace/favorites/domain/product_entity.dart';
+
 
 class FavoritesProvider extends ChangeNotifier {
   List<ProductEntity> _favoriteProducts = [];

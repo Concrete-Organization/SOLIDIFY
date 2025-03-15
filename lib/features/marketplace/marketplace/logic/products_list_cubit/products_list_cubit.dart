@@ -12,16 +12,13 @@ class ProductsListCubit extends Cubit<ProductsListState> {
 
   ProductsListCubit(this._repo) : super(const ProductsListState.initial());
 
-  /// Fetches products for the Best Sellers screen (starts from Page 1)
   Future<void> fetchBestSellers() async {
-    // Reset pagination state
     _currentPage = 1;
     _hasReachedMax = false;
     _allProducts = [];
 
     emit(const ProductsListState.loading([]));
 
-    // Fetch page 1
     final result = await _repo.getProductsList(_currentPage);
 
     result.when(
@@ -41,7 +38,6 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     );
   }
 
-  /// Loads more products for infinite scroll
   Future<void> loadMoreBestSellers() async {
     if (_hasReachedMax) return;
 
@@ -64,9 +60,7 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     );
   }
 
-  /// Fetches products for the Marketplace screen (Page 1 only)
   Future<void> fetchMarketplaceProducts() async {
-    // Reset pagination state
     _currentPage = 1;
     _hasReachedMax = false;
     _allProducts = [];
