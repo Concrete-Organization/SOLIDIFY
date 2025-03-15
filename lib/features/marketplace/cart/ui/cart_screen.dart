@@ -17,6 +17,7 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   double totalPrice = 0;
+  bool _isDeleting = false; // Track if an item is being deleted
 
   void _updateTotalPrice(double priceChange) {
     setState(() {
@@ -45,20 +46,34 @@ class _CartScreenState extends State<CartScreen> {
                 SnackBar(content: Text('Error: ${error.message}')),
               );
             },
+            cartItemDeleted: (productId) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Product $productId removed from cart')),
+              );
+              // Refresh the cart list after deletion
+              context.read<CartCubit>().getCartItems();
+              setState(() {
+                _isDeleting = false; // Stop local loading
+              });
+            },
           );
         },
         builder: (context, state) {
+          if (_isDeleting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
           return state.when(
             initial: () {
               context.read<CartCubit>().getCartItems();
               return const Center(child: CircularProgressIndicator());
             },
-            cartLoading: () => LoadingCircleIndicator(),
+            cartLoading: () => const LoadingCircleIndicator(),
             cartListSuccess: (cartResponse) {
               if (totalPrice == 0) {
                 totalPrice = cartResponse.model.items.fold(
                   0,
-                      (sum, item) => sum + item.price,
+                  (sum, item) => sum + item.price,
                 );
               }
               return CartContent(
@@ -70,6 +85,9 @@ class _CartScreenState extends State<CartScreen> {
             cartListError: (error) => ErrorStateMessage(
               message: 'Error: ${error.message}',
             ),
+            cartItemDeleted: (_) {
+              return const Center(child: CircularProgressIndicator());
+            },
             loading: (_) => const SizedBox.shrink(),
             success: (_) => const SizedBox.shrink(),
             error: (_, __) => const SizedBox.shrink(),

@@ -19,4 +19,7 @@ class CartState with _$CartState {
   const factory CartState.cartListSuccess(GetCartResponseModel cartResponse) =
       CartListSuccess;
   const factory CartState.cartListError(ApiErrorModel error) = CartListError;
+
+  // Add this new state for successful deletion
+  const factory CartState.cartItemDeleted(String productId) = CartItemDeleted;
 }

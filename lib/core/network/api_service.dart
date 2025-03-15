@@ -153,4 +153,10 @@ abstract class ApiService {
   Future<GetCartResponseModel> cartList(
     @Header('Authorization') String token,
   );
+
+  @DELETE("CartItem/{id}")
+  Future<void> deleteCartItem(
+    @Path("id") String id,
+    @Header('Authorization') String token,
+  );
 }

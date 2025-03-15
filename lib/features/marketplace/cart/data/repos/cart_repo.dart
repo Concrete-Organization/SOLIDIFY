@@ -52,6 +52,36 @@ class CartRepo {
     }
   }
 
+  Future<ApiResult<void>> deleteCartItem(String id) async {
+    try {
+      final accessToken = await SharedPrefHelper.getSecuredString(
+        SharedPrefKeys.accessToken,
+      );
+
+      if (accessToken.isEmpty) {
+        return ApiResult.failure(
+          ApiErrorModel(message: 'Authentication required'),
+        );
+      }
+
+      await _apiService.deleteCartItem(
+        id,
+        'Bearer $accessToken',
+      );
+
+      // Remove the item from the cached list
+      final cachedIds = await SharedPrefHelper.getCachedProductIds();
+      if (cachedIds.contains(id)) {
+        cachedIds.remove(id);
+        await SharedPrefHelper.cacheProductIds(cachedIds);
+      }
+
+      return const ApiResult.success(null); // No response body for DELETE
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
   Future<List<String>> getCachedCartItems() async {
     return await SharedPrefHelper.getCachedProductIds();
   }

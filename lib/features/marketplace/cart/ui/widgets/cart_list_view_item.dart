@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/features/marketplace/cart/ui/widgets/quantity_selector.dart';
 import 'package:solidify/features/marketplace/cart/data/models/get_cart_response_model.dart';
 
 class CartListViewItem extends StatefulWidget {
   final CartItemModel item;
   final Function(double) onPriceUpdated;
+  final Function(String) onItemDeleted; // Callback for item deletion
 
   const CartListViewItem({
     super.key,
     required this.item,
     required this.onPriceUpdated,
+    required this.onItemDeleted,
   });
 
   @override
@@ -24,6 +28,7 @@ class CartListViewItem extends StatefulWidget {
 class _CartListViewItemState extends State<CartListViewItem> {
   int quantity = 1;
   double itemTotalPrice = 0;
+  bool _isDeleting = false; // Track if this item is being deleted
 
   @override
   void initState() {
@@ -47,6 +52,25 @@ class _CartListViewItemState extends State<CartListViewItem> {
         widget.onPriceUpdated(-widget.item.price);
       });
     }
+  }
+
+  void _deleteItem() async {
+    setState(() {
+      _isDeleting = true; // Show loading for this item
+    });
+
+    // Update the total price
+    widget.onPriceUpdated(-itemTotalPrice);
+
+    // Notify the parent about the deletion
+    widget.onItemDeleted(widget.item.id);
+
+    // Call the deleteCartItem method
+    await context.read<CartCubit>().deleteCartItem(widget.item.id);
+
+    setState(() {
+      _isDeleting = false; // Hide loading
+    });
   }
 
   @override
@@ -91,7 +115,6 @@ class _CartListViewItemState extends State<CartListViewItem> {
                   verticalSpace(15),
                   Text(
                     '${itemTotalPrice.toStringAsFixed(2)} EGP',
-                    // Display updated price
                     style: TextStyles.font15MainBlueSemiBold,
                   ),
                   verticalSpace(15),
@@ -108,7 +131,12 @@ class _CartListViewItemState extends State<CartListViewItem> {
         Positioned(
           top: 0,
           right: 0,
-          child: SvgPicture.asset('assets/svgs/delete_icon.svg'),
+          child: _isDeleting
+              ? const CircularProgressIndicator() // Show loading for this item
+              : GestureDetector(
+                  onTap: _deleteItem,
+                  child: SvgPicture.asset('assets/svgs/delete_icon.svg'),
+                ),
         ),
       ],
     );
