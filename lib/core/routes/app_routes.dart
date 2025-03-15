@@ -137,8 +137,15 @@ class AppRoutes {
 
       case Routes.productDetailsScreen:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<ProductDetailsCubit>(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<ProductDetailsCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<CartCubit>(),
+              ),
+            ],
             child: const ProductDetailsScreen(),
           ),
           settings: settings,
