@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:solidify/features/marketplace/favorites/domain/product_entity.dart';
 
 part 'get_products_by_category_response_model.g.dart';
 
@@ -90,4 +91,19 @@ class ProductModel {
       _$ProductModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductModelToJson(this);
+}
+
+// Extension added here
+extension ProductModelToEntity on ProductModel {
+  ProductEntity toEntity() => ProductEntity(
+        id: id,
+        name: name,
+        price: price,
+        description: description,
+        measurement: measurement,
+        imageUri: imageUri,
+        rate: rate,
+        discount: discount,
+        brandName: brandName ?? '',
+      );
 }

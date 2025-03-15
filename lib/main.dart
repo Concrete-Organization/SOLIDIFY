@@ -42,7 +42,7 @@ void main() async {
 
   runApp(
     ChangeNotifierProvider(
-      create: (context) => FavoritesProvider(getIt<ProductsListRepo>()),
+      create: (context) => FavoritesProvider(),
       child: SolidifyApp(
         appRoutes: AppRoutes(),
         initialRoute: initialRoute,

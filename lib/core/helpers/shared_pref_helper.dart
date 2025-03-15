@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:solidify/features/marketplace/favorites/domain/product_entity.dart';
 
 class SharedPrefKeys {
   static const String userId = 'userId';
@@ -19,6 +20,7 @@ class SharedPrefKeys {
   static const String favoriteProductIds = 'favoriteProductIds';
   static const String likedPostsKey = 'liked_posts';
   static const String _cartItemsKey = 'cartItems';
+  static const String favorites = 'favorites';
 }
 
 class SharedPrefHelper {
@@ -170,34 +172,34 @@ class SharedPrefHelper {
     debugPrint('SharedPrefHelper: Cleared cached product IDs');
   }
 
-  static Future<void> toggleFavorite(String productId) async {
-    final favorites = await getFavorites();
-    if (favorites.contains(productId)) {
-      favorites.remove(productId);
-    } else {
-      favorites.add(productId);
-    }
-    await saveFavorites(favorites);
-    debugPrint('SharedPrefHelper: Toggled favorite for product $productId');
-  }
+  // static Future<void> toggleFavorite(String productId) async {
+  //   final favorites = await getFavorites();
+  //   if (favorites.contains(productId)) {
+  //     favorites.remove(productId);
+  //   } else {
+  //     favorites.add(productId);
+  //   }
+  //   await saveFavorites(favorites);
+  //   debugPrint('SharedPrefHelper: Toggled favorite for product $productId');
+  // }
 
-  static Future<bool> isFavorite(String productId) async {
-    final favorites = await getFavorites();
-    return favorites.contains(productId);
-  }
+  // static Future<bool> isFavorite(String productId) async {
+  //   final favorites = await getFavorites();
+  //   return favorites.contains(productId);
+  // }
 
-  static Future<List<String>> getFavorites() async {
-    final prefs = await SharedPreferences.getInstance();
-    final favoritesString =
-        prefs.getString(SharedPrefKeys.favoriteProductIds) ?? '';
-    return favoritesString.split(',').where((id) => id.isNotEmpty).toList();
-  }
+  // static Future<List<String>> getFavorites() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final favoritesString =
+  //       prefs.getString(SharedPrefKeys.favoriteProductIds) ?? '';
+  //   return favoritesString.split(',').where((id) => id.isNotEmpty).toList();
+  // }
 
-  static Future<void> saveFavorites(List<String> favorites) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(
-        SharedPrefKeys.favoriteProductIds, favorites.join(','));
-  }
+  // static Future<void> saveFavorites(List<String> favorites) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   await prefs.setString(
+  //       SharedPrefKeys.favoriteProductIds, favorites.join(','));
+  // }
 
   static Future<Set<int>> getLikedPosts() async {
     final prefs = await SharedPreferences.getInstance();
@@ -248,5 +250,21 @@ class SharedPrefHelper {
 
   static Future<void> clearCart() async {
     await SharedPrefHelper.removeData(SharedPrefKeys._cartItemsKey);
+  }
+
+  static Future<void> saveFavorites(List<ProductEntity> favorites) async {
+    final prefs = await SharedPreferences.getInstance();
+    final favoritesJson = favorites.map((e) => jsonEncode(e.toJson())).toList();
+    await prefs.setStringList(SharedPrefKeys.favorites, favoritesJson);
+    debugPrint('Saved ${favorites.length} favorites with full product data');
+  }
+
+  static Future<List<ProductEntity>> getFavorites() async {
+    final prefs = await SharedPreferences.getInstance();
+    final favoritesJson = prefs.getStringList(SharedPrefKeys.favorites) ?? [];
+    return favoritesJson.map((jsonString) {
+      final json = jsonDecode(jsonString) as Map<String, dynamic>;
+      return ProductEntity.fromJson(json);
+    }).toList();
   }
 }
