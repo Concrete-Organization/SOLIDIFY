@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:solidify/features/marketplace/favorites/domain/product_entity.dart';
 
 part 'product_list_response_model.g.dart';
 
@@ -16,7 +17,8 @@ class ProductListResponseModel {
     required this.model,
   });
 
-  factory ProductListResponseModel.fromJson(Map<String, dynamic> json) => _$ProductListResponseModelFromJson(json);
+  factory ProductListResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductListResponseModelFromJson(json);
   Map<String, dynamic> toJson() => _$ProductListResponseModelToJson(this);
 }
 
@@ -36,10 +38,10 @@ class ProductListModel {
     required this.totalPages,
   });
 
-  factory ProductListModel.fromJson(Map<String, dynamic> json) => _$ProductListModelFromJson(json);
+  factory ProductListModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductListModelFromJson(json);
   Map<String, dynamic> toJson() => _$ProductListModelToJson(this);
 }
-
 
 @JsonSerializable()
 class Product {
@@ -65,8 +67,22 @@ class Product {
     required this.brandName,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
   Map<String, dynamic> toJson() => _$ProductToJson(this);
 }
 
-
+// Extension added here
+extension ProductToEntity on Product {
+  ProductEntity toEntity() => ProductEntity(
+        id: id,
+        name: name,
+        price: price,
+        description: description,
+        measurement: measurement,
+        imageUri: imageUri,
+        rate: rate,
+        discount: discount,
+        brandName: brandName,
+      );
+}

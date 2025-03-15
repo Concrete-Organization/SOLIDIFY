@@ -4,9 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
+import 'package:solidify/features/marketplace/cart/logic/cart_state.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/product_details_bloc_consumer.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_details_cubit/product_details_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_details_cubit/product_details_state.dart';
@@ -55,9 +57,34 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             child: state.when(
               initial: () => const SizedBox.shrink(),
               loading: (_) => const SizedBox.shrink(),
-              success: (product) => AppTextButton(
-                onPressed: () => _addToCart(context, product.id),
-                textButton: 'Add to cart',
+              success: (product) => BlocListener<CartCubit, CartState>(
+                listener: (context, cartState) {
+                  cartState.maybeWhen(
+                    success: (productId) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('${product.name} added to cart'),
+                          backgroundColor: ColorsManager.mainBlue,
+                          duration: const Duration(seconds: 2),
+                        ),
+                      );
+                    },
+                    error: (productId, error) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Error: ${error.message}'),
+                          backgroundColor: Colors.red,
+                          duration: const Duration(seconds: 2),
+                        ),
+                      );
+                    },
+                    orElse: () {},
+                  );
+                },
+                child: AppTextButton(
+                  onPressed: () => _addToCart(context, product.id),
+                  textButton: 'Add to cart',
+                ),
               ),
               error: (productId, error) => const SizedBox.shrink(),
             ),

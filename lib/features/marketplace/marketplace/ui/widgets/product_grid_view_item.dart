@@ -54,7 +54,9 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
       },
       builder: (context, state) {
         final favoritesProvider = Provider.of<FavoritesProvider>(context);
-        final isFavorite = favoritesProvider.isFavorite(widget.product.id);
+        final productEntity =
+            widget.product.toEntity(); // Convert to ProductEntity
+        final isFavorite = favoritesProvider.isFavorite(productEntity.id);
         final isLoading =
             state is CartLoading && state.productId == widget.product.id;
 
@@ -101,8 +103,8 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
                         size: 22.w,
                       ),
                       onPressed: () {
-                        // Updated to pass the entire product
-                        favoritesProvider.toggleFavorite(widget.product);
+                        favoritesProvider
+                            .toggleFavorite(productEntity); // Use ProductEntity
                       },
                     ),
                   ),

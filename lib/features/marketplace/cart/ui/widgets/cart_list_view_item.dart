@@ -9,10 +9,12 @@ import 'package:solidify/features/marketplace/cart/data/models/get_cart_response
 
 class CartListViewItem extends StatefulWidget {
   final CartItemModel item;
+  final Function(double) onPriceUpdated; // Callback to update total price
 
   const CartListViewItem({
     super.key,
     required this.item,
+    required this.onPriceUpdated,
   });
 
   @override
@@ -20,18 +22,32 @@ class CartListViewItem extends StatefulWidget {
 }
 
 class _CartListViewItemState extends State<CartListViewItem> {
-  int quantity = 0;
+  int quantity = 1; // Start with a default quantity of 1
+  double itemTotalPrice = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    itemTotalPrice = widget.item.price; // Initialize with the base price
+  }
 
   void _increment() {
     setState(() {
       quantity++;
+      itemTotalPrice = widget.item.price * quantity; // Update total price
+      widget.onPriceUpdated(widget.item.price); // Notify parent of price change
     });
   }
 
   void _decrement() {
-    setState(() {
-      if (quantity > 0) quantity--;
-    });
+    if (quantity > 1) {
+      setState(() {
+        quantity--;
+        itemTotalPrice = widget.item.price * quantity; // Update total price
+        widget.onPriceUpdated(
+            -widget.item.price); // Notify parent of price change
+      });
+    }
   }
 
   @override
@@ -75,7 +91,7 @@ class _CartListViewItemState extends State<CartListViewItem> {
                   ),
                   verticalSpace(15),
                   Text(
-                    '${widget.item.price.toStringAsFixed(2)} EGP',
+                    '${itemTotalPrice.toStringAsFixed(2)} EGP', // Display updated price
                     style: TextStyles.font15MainBlueSemiBold,
                   ),
                   verticalSpace(15),
