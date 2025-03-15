@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/format_date.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/widgets/expandable_text.dart';
 import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
 import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
 import 'package:solidify/features/community/ui/screens/comments/widgets/replies_toggle.dart';
@@ -64,13 +65,18 @@ class _CommentItemState extends State<CommentItem> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.symmetric(horizontal: 45.w),
-              child: Text(
-                comment.content ?? 'No content',
-                style: TextStyles.font10lightBlackRegular,
+            Expanded(
+              child: Padding(
+                padding: EdgeInsetsDirectional.symmetric(horizontal: 45.w),
+                child: ExpandableText(
+                  text: comment.content ?? 'No content',
+                  style: TextStyles.font10lightBlackRegular,
+                  maxLines: 3,
+                  fontSize: 8,
+                ),
               ),
             ),
+
             Column(
               children: [
                 SvgPicture.asset(
@@ -87,6 +93,7 @@ class _CommentItemState extends State<CommentItem> {
             ),
           ],
         ),
+        verticalSpace(5),
         Padding(
           padding: EdgeInsetsDirectional.symmetric(horizontal: 45.w),
           child: Row(

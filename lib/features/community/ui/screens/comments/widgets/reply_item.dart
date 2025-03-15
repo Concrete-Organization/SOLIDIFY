@@ -46,16 +46,19 @@ class ReplyItem extends StatelessWidget {
             ],
           ),
           verticalSpace(4),
-          verticalSpace(4),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsets.only(left: 30.w),
-                child: Text(
-                  reply.content,
-                  style: TextStyles.font10lightBlackRegular,
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 30.w),
+                  child: Text(
+                    reply.content,
+                    style: TextStyles.font10lightBlackRegular,
+                    maxLines: 20,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ),
               Column(

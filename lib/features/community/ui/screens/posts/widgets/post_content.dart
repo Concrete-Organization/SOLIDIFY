@@ -6,6 +6,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/widgets/expandable_text.dart';
 import 'full_screen_image_screen.dart';
 
 class PostContent extends StatefulWidget {
@@ -24,7 +25,6 @@ class PostContent extends StatefulWidget {
 
 class _PostContentState extends State<PostContent> {
   int _currentIndex = 0;
-  bool _isExpanded = false;
 
   void _openFullScreenImage(BuildContext context) {
     Navigator.push(
@@ -41,51 +41,16 @@ class _PostContentState extends State<PostContent> {
   @override
   Widget build(BuildContext context) {
     bool hasValidImages = widget.imageUris.isNotEmpty &&
-        widget.imageUris
-            .any((uri) => Uri.tryParse(uri)?.hasAbsolutePath == true);
+        widget.imageUris.any((uri) => Uri.tryParse(uri)?.hasAbsolutePath == true);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        LayoutBuilder(
-          builder: (context, constraints) {
-            final textSpan = TextSpan(
-              text: widget.content,
-              style: TextStyles.font12LightBlackRegular,
-            );
-            final textPainter = TextPainter(
-              text: textSpan,
-              maxLines: 3,
-              textDirection: TextDirection.ltr,
-            );
-            textPainter.layout(maxWidth: constraints.maxWidth);
-            final isTextOverflowing = textPainter.didExceedMaxLines;
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _isExpanded = !_isExpanded;
-                });
-              },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.content,
-                    style: TextStyles.font12LightBlackRegular,
-                    maxLines: _isExpanded ? null : 3,
-                    overflow: _isExpanded
-                        ? TextOverflow.visible
-                        : TextOverflow.ellipsis,
-                  ),
-                  if (isTextOverflowing)
-                    Text(
-                      _isExpanded ? "Less" : "See more...",
-                      style: TextStyles.font12MainBlueSemiBold,
-                    ),
-                ],
-              ),
-            );
-          },
+        ExpandableText(
+          text: widget.content,
+          style: TextStyles.font12LightBlackRegular,
+          maxLines: 3,
+          fontSize: 12,
         ),
         verticalSpace(9),
         if (hasValidImages)
@@ -105,7 +70,7 @@ class _PostContentState extends State<PostContent> {
                         ),
                       ),
                       errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      const Icon(Icons.error),
                     ),
                   );
                 }).toList(),
