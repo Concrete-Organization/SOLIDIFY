@@ -785,10 +785,11 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<GetCartResponseModel> cartList() async {
+  Future<GetCartResponseModel> cartList(String token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<GetCartResponseModel>(Options(
       method: 'GET',

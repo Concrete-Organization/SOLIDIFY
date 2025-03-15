@@ -150,5 +150,7 @@ abstract class ApiService {
   );
 
   @GET(ApiConstants.cart)
-  Future<GetCartResponseModel> cartList();
+  Future<GetCartResponseModel> cartList(
+    @Header('Authorization') String token,
+  );
 }

@@ -42,7 +42,10 @@ class CartRepo {
 
   Future<ApiResult<GetCartResponseModel>> getCartList() async {
     try {
-      final response = await _apiService.cartList();
+      final accessToken = await SharedPrefHelper.getSecuredString(
+        SharedPrefKeys.accessToken,
+      );
+      final response = await _apiService.cartList(accessToken);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
