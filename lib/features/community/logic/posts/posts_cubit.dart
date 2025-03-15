@@ -14,10 +14,10 @@ class PostsCubit extends Cubit<PostsState> {
   Set<int> _likedPosts = {};
 
   PostsCubit(this._postsRepo) : super(const PostsState.initial()) {
-    _loadLikedPosts();
+    _initializeLikedPosts();
   }
 
-  Future<void> _loadLikedPosts() async {
+  Future<void> _initializeLikedPosts() async {
     _likedPosts = await SharedPrefHelper.getLikedPosts();
   }
 
@@ -48,12 +48,18 @@ class PostsCubit extends Cubit<PostsState> {
   }
 
   Future<void> _loadPosts({bool isLoadingMore = false}) async {
-    final result = await _postsRepo.getPosts(
-      page: _currentPage,
-    );
+    final result = await _postsRepo.getPosts(page: _currentPage);
 
     result.when(
       success: (data) {
+        final serverLikedPosts = data.model.items
+            .where((post) => post.isLiked)
+            .map((post) => post.id)
+            .toSet();
+
+        _likedPosts.addAll(serverLikedPosts);
+        SharedPrefHelper.updateLikedPosts(_likedPosts);
+
         final newPosts = data.model.items.map((post) {
           return post.copyWith(
             isLiked: _likedPosts.contains(post.id),
@@ -77,9 +83,7 @@ class PostsCubit extends Cubit<PostsState> {
         ));
       },
       failure: (error) {
-        if (isLoadingMore) {
-          _currentPage--;
-        }
+        if (isLoadingMore) _currentPage--;
         emit(PostsState.postsError(error: error));
       },
     );
@@ -103,23 +107,9 @@ class PostsCubit extends Cubit<PostsState> {
 
   Future<void> likePost(int postId) async {
     try {
-      if (_likedPosts.contains(postId)) {
-        await unlikePost(postId);
-        return;
-      }
-
       _updateLocalLike(postId, true);
       await SharedPrefHelper.addLikedPost(postId);
-
-      final result = await _postsRepo.likePost(postId);
-      result.when(
-        success: (_) {},
-        failure: (error) async{
-          // Rollback on error
-          _updateLocalLike(postId, false);
-          await SharedPrefHelper.removeLikedPost(postId);
-        },
-      );
+      await _postsRepo.likePost(postId);
     } catch (error) {
       _updateLocalLike(postId, false);
       await SharedPrefHelper.removeLikedPost(postId);
@@ -130,15 +120,7 @@ class PostsCubit extends Cubit<PostsState> {
     try {
       _updateLocalLike(postId, false);
       await SharedPrefHelper.removeLikedPost(postId);
-
-      final result = await _postsRepo.unlikePost(postId);
-      result.when(
-        success: (_) {},
-        failure: (error) async{
-          _updateLocalLike(postId, true);
-          await SharedPrefHelper.addLikedPost(postId);
-        },
-      );
+      await _postsRepo.unlikePost(postId);
     } catch (error) {
       _updateLocalLike(postId, true);
       await SharedPrefHelper.addLikedPost(postId);
@@ -155,12 +137,6 @@ class PostsCubit extends Cubit<PostsState> {
       }
       return post;
     }).toList();
-
-    if (isLiked) {
-      _likedPosts.add(postId);
-    } else {
-      _likedPosts.remove(postId);
-    }
 
     emit(PostsState.postsSuccess(
       posts: _allPosts,

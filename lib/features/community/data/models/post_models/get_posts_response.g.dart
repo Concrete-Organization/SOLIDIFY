@@ -52,7 +52,7 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) => PostModel(
       engineerId: json['engineerId'] as String,
       engineerName: json['engineerName'] as String?,
       profileImageUrl: json['profileImageUrl'] as String?,
-      isLiked: json['isLiked'] as bool? ?? false,
+      isLiked: json['isLiked'] as bool,
     );
 
 Map<String, dynamic> _$PostModelToJson(PostModel instance) => <String, dynamic>{

@@ -9,7 +9,7 @@ import 'package:solidify/features/marketplace/cart/data/models/get_cart_response
 
 class CartListViewItem extends StatefulWidget {
   final CartItemModel item;
-  final Function(double) onPriceUpdated; // Callback to update total price
+  final Function(double) onPriceUpdated;
 
   const CartListViewItem({
     super.key,
@@ -22,20 +22,20 @@ class CartListViewItem extends StatefulWidget {
 }
 
 class _CartListViewItemState extends State<CartListViewItem> {
-  int quantity = 1; // Start with a default quantity of 1
+  int quantity = 1;
   double itemTotalPrice = 0;
 
   @override
   void initState() {
     super.initState();
-    itemTotalPrice = widget.item.price; // Initialize with the base price
+    itemTotalPrice = widget.item.price;
   }
 
   void _increment() {
     setState(() {
       quantity++;
-      itemTotalPrice = widget.item.price * quantity; // Update total price
-      widget.onPriceUpdated(widget.item.price); // Notify parent of price change
+      itemTotalPrice = widget.item.price * quantity;
+      widget.onPriceUpdated(widget.item.price);
     });
   }
 
@@ -43,9 +43,8 @@ class _CartListViewItemState extends State<CartListViewItem> {
     if (quantity > 1) {
       setState(() {
         quantity--;
-        itemTotalPrice = widget.item.price * quantity; // Update total price
-        widget.onPriceUpdated(
-            -widget.item.price); // Notify parent of price change
+        itemTotalPrice = widget.item.price * quantity;
+        widget.onPriceUpdated(-widget.item.price);
       });
     }
   }
@@ -91,7 +90,8 @@ class _CartListViewItemState extends State<CartListViewItem> {
                   ),
                   verticalSpace(15),
                   Text(
-                    '${itemTotalPrice.toStringAsFixed(2)} EGP', // Display updated price
+                    '${itemTotalPrice.toStringAsFixed(2)} EGP',
+                    // Display updated price
                     style: TextStyles.font15MainBlueSemiBold,
                   ),
                   verticalSpace(15),

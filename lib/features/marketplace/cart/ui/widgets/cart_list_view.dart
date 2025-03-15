@@ -6,7 +6,7 @@ import 'package:solidify/features/marketplace/cart/data/models/get_cart_response
 
 class CartListView extends StatelessWidget {
   final List<CartItemModel> items;
-  final Function(double) onPriceUpdated; // Callback to update total price
+  final Function(double) onPriceUpdated;
 
   const CartListView({
     super.key,
@@ -27,7 +27,7 @@ class CartListView extends StatelessWidget {
       ),
       itemBuilder: (context, index) => CartListViewItem(
         item: items[index],
-        onPriceUpdated: onPriceUpdated, // Pass callback to each item
+        onPriceUpdated: onPriceUpdated,
       ),
     );
   }
