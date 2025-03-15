@@ -67,10 +67,8 @@ class _CartScreenState extends State<CartScreen> {
                 onPriceUpdated: _updateTotalPrice,
               );
             },
-            cartListError: (error) => SliverToBoxAdapter(
-              child: ErrorStateMessage(
-                message: 'Error: ${error.message}',
-              ),
+            cartListError: (error) => ErrorStateMessage(
+              message: 'Error: ${error.message}',
             ),
             loading: (_) => const SizedBox.shrink(),
             success: (_) => const SizedBox.shrink(),
