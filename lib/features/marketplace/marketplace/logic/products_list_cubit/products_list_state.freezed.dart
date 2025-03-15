@@ -15,70 +15,78 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ProductsListState<T> {
+mixin _$ProductsListState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() productsListLoading,
-    required TResult Function(List<Product> productsList) productsListSuccess,
-    required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function(List<Product> products) loading,
+    required TResult Function(List<Product> products) marketplaceSuccess,
+    required TResult Function(List<Product> products, bool hasReachedMax)
+        bestSellersSuccess,
+    required TResult Function(ApiErrorModel error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? productsListLoading,
-    TResult? Function(List<Product> productsList)? productsListSuccess,
-    TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function(List<Product> products)? loading,
+    TResult? Function(List<Product> products)? marketplaceSuccess,
+    TResult? Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult? Function(ApiErrorModel error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? productsListLoading,
-    TResult Function(List<Product> productsList)? productsListSuccess,
-    TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function(List<Product> products)? loading,
+    TResult Function(List<Product> products)? marketplaceSuccess,
+    TResult Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult Function(ApiErrorModel error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(ProductsListLoading<T> value) productsListLoading,
-    required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
-    required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(ProductsListLoading value) loading,
+    required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
+    required TResult Function(BestSellersSuccess value) bestSellersSuccess,
+    required TResult Function(ProductsListError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(ProductsListLoading<T> value)? productsListLoading,
-    TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
-    TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(ProductsListLoading value)? loading,
+    TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult? Function(ProductsListError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(ProductsListLoading<T> value)? productsListLoading,
-    TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
-    TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(ProductsListLoading value)? loading,
+    TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult Function(ProductsListError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductsListStateCopyWith<T, $Res> {
-  factory $ProductsListStateCopyWith(ProductsListState<T> value,
-          $Res Function(ProductsListState<T>) then) =
-      _$ProductsListStateCopyWithImpl<T, $Res, ProductsListState<T>>;
+abstract class $ProductsListStateCopyWith<$Res> {
+  factory $ProductsListStateCopyWith(
+          ProductsListState value, $Res Function(ProductsListState) then) =
+      _$ProductsListStateCopyWithImpl<$Res, ProductsListState>;
 }
 
 /// @nodoc
-class _$ProductsListStateCopyWithImpl<T, $Res,
-        $Val extends ProductsListState<T>>
-    implements $ProductsListStateCopyWith<T, $Res> {
+class _$ProductsListStateCopyWithImpl<$Res, $Val extends ProductsListState>
+    implements $ProductsListStateCopyWith<$Res> {
   _$ProductsListStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -91,18 +99,18 @@ class _$ProductsListStateCopyWithImpl<T, $Res,
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<T, $Res> {
+abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-          _$InitialImpl<T> value, $Res Function(_$InitialImpl<T>) then) =
-      __$$InitialImplCopyWithImpl<T, $Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<T, $Res>
-    extends _$ProductsListStateCopyWithImpl<T, $Res, _$InitialImpl<T>>
-    implements _$$InitialImplCopyWith<T, $Res> {
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$ProductsListStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-      _$InitialImpl<T> _value, $Res Function(_$InitialImpl<T>) _then)
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ProductsListState
@@ -111,18 +119,18 @@ class __$$InitialImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$InitialImpl<T> implements _Initial<T> {
+class _$InitialImpl implements _Initial {
   const _$InitialImpl();
 
   @override
   String toString() {
-    return 'ProductsListState<$T>.initial()';
+    return 'ProductsListState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl<T>);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -132,9 +140,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() productsListLoading,
-    required TResult Function(List<Product> productsList) productsListSuccess,
-    required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function(List<Product> products) loading,
+    required TResult Function(List<Product> products) marketplaceSuccess,
+    required TResult Function(List<Product> products, bool hasReachedMax)
+        bestSellersSuccess,
+    required TResult Function(ApiErrorModel error) error,
   }) {
     return initial();
   }
@@ -143,9 +153,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? productsListLoading,
-    TResult? Function(List<Product> productsList)? productsListSuccess,
-    TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function(List<Product> products)? loading,
+    TResult? Function(List<Product> products)? marketplaceSuccess,
+    TResult? Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult? Function(ApiErrorModel error)? error,
   }) {
     return initial?.call();
   }
@@ -154,9 +166,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? productsListLoading,
-    TResult Function(List<Product> productsList)? productsListSuccess,
-    TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function(List<Product> products)? loading,
+    TResult Function(List<Product> products)? marketplaceSuccess,
+    TResult Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult Function(ApiErrorModel error)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -168,10 +182,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(ProductsListLoading<T> value) productsListLoading,
-    required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
-    required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(ProductsListLoading value) loading,
+    required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
+    required TResult Function(BestSellersSuccess value) bestSellersSuccess,
+    required TResult Function(ProductsListError value) error,
   }) {
     return initial(this);
   }
@@ -179,10 +194,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(ProductsListLoading<T> value)? productsListLoading,
-    TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
-    TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(ProductsListLoading value)? loading,
+    TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult? Function(ProductsListError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -190,10 +206,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(ProductsListLoading<T> value)? productsListLoading,
-    TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
-    TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(ProductsListLoading value)? loading,
+    TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult Function(ProductsListError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -203,145 +220,25 @@ class _$InitialImpl<T> implements _Initial<T> {
   }
 }
 
-abstract class _Initial<T> implements ProductsListState<T> {
-  const factory _Initial() = _$InitialImpl<T>;
+abstract class _Initial implements ProductsListState {
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$ProductsListLoadingImplCopyWith<T, $Res> {
-  factory _$$ProductsListLoadingImplCopyWith(_$ProductsListLoadingImpl<T> value,
-          $Res Function(_$ProductsListLoadingImpl<T>) then) =
-      __$$ProductsListLoadingImplCopyWithImpl<T, $Res>;
-}
-
-/// @nodoc
-class __$$ProductsListLoadingImplCopyWithImpl<T, $Res>
-    extends _$ProductsListStateCopyWithImpl<T, $Res,
-        _$ProductsListLoadingImpl<T>>
-    implements _$$ProductsListLoadingImplCopyWith<T, $Res> {
-  __$$ProductsListLoadingImplCopyWithImpl(_$ProductsListLoadingImpl<T> _value,
-      $Res Function(_$ProductsListLoadingImpl<T>) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ProductsListState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$ProductsListLoadingImpl<T> implements ProductsListLoading<T> {
-  const _$ProductsListLoadingImpl();
-
-  @override
-  String toString() {
-    return 'ProductsListState<$T>.productsListLoading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ProductsListLoadingImpl<T>);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() productsListLoading,
-    required TResult Function(List<Product> productsList) productsListSuccess,
-    required TResult Function(ApiErrorModel error) productsListError,
-  }) {
-    return productsListLoading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? productsListLoading,
-    TResult? Function(List<Product> productsList)? productsListSuccess,
-    TResult? Function(ApiErrorModel error)? productsListError,
-  }) {
-    return productsListLoading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? productsListLoading,
-    TResult Function(List<Product> productsList)? productsListSuccess,
-    TResult Function(ApiErrorModel error)? productsListError,
-    required TResult orElse(),
-  }) {
-    if (productsListLoading != null) {
-      return productsListLoading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(ProductsListLoading<T> value) productsListLoading,
-    required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
-    required TResult Function(ProductsListError<T> value) productsListError,
-  }) {
-    return productsListLoading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(ProductsListLoading<T> value)? productsListLoading,
-    TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
-    TResult? Function(ProductsListError<T> value)? productsListError,
-  }) {
-    return productsListLoading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(ProductsListLoading<T> value)? productsListLoading,
-    TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
-    TResult Function(ProductsListError<T> value)? productsListError,
-    required TResult orElse(),
-  }) {
-    if (productsListLoading != null) {
-      return productsListLoading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ProductsListLoading<T> implements ProductsListState<T> {
-  const factory ProductsListLoading() = _$ProductsListLoadingImpl<T>;
-}
-
-/// @nodoc
-abstract class _$$ProductsListSuccessImplCopyWith<T, $Res> {
-  factory _$$ProductsListSuccessImplCopyWith(_$ProductsListSuccessImpl<T> value,
-          $Res Function(_$ProductsListSuccessImpl<T>) then) =
-      __$$ProductsListSuccessImplCopyWithImpl<T, $Res>;
+abstract class _$$ProductsListLoadingImplCopyWith<$Res> {
+  factory _$$ProductsListLoadingImplCopyWith(_$ProductsListLoadingImpl value,
+          $Res Function(_$ProductsListLoadingImpl) then) =
+      __$$ProductsListLoadingImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Product> productsList});
+  $Res call({List<Product> products});
 }
 
 /// @nodoc
-class __$$ProductsListSuccessImplCopyWithImpl<T, $Res>
-    extends _$ProductsListStateCopyWithImpl<T, $Res,
-        _$ProductsListSuccessImpl<T>>
-    implements _$$ProductsListSuccessImplCopyWith<T, $Res> {
-  __$$ProductsListSuccessImplCopyWithImpl(_$ProductsListSuccessImpl<T> _value,
-      $Res Function(_$ProductsListSuccessImpl<T>) _then)
+class __$$ProductsListLoadingImplCopyWithImpl<$Res>
+    extends _$ProductsListStateCopyWithImpl<$Res, _$ProductsListLoadingImpl>
+    implements _$$ProductsListLoadingImplCopyWith<$Res> {
+  __$$ProductsListLoadingImplCopyWithImpl(_$ProductsListLoadingImpl _value,
+      $Res Function(_$ProductsListLoadingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ProductsListState
@@ -349,12 +246,12 @@ class __$$ProductsListSuccessImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productsList = null,
+    Object? products = null,
   }) {
-    return _then(_$ProductsListSuccessImpl<T>(
-      null == productsList
-          ? _value._productsList
-          : productsList // ignore: cast_nullable_to_non_nullable
+    return _then(_$ProductsListLoadingImpl(
+      null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
               as List<Product>,
     ));
   }
@@ -362,78 +259,83 @@ class __$$ProductsListSuccessImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ProductsListSuccessImpl<T> implements ProductsListSuccess<T> {
-  const _$ProductsListSuccessImpl(final List<Product> productsList)
-      : _productsList = productsList;
+class _$ProductsListLoadingImpl implements ProductsListLoading {
+  const _$ProductsListLoadingImpl(final List<Product> products)
+      : _products = products;
 
-  final List<Product> _productsList;
+  final List<Product> _products;
   @override
-  List<Product> get productsList {
-    if (_productsList is EqualUnmodifiableListView) return _productsList;
+  List<Product> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_productsList);
+    return EqualUnmodifiableListView(_products);
   }
 
   @override
   String toString() {
-    return 'ProductsListState<$T>.productsListSuccess(productsList: $productsList)';
+    return 'ProductsListState.loading(products: $products)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductsListSuccessImpl<T> &&
-            const DeepCollectionEquality()
-                .equals(other._productsList, _productsList));
+            other is _$ProductsListLoadingImpl &&
+            const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_productsList));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
 
   /// Create a copy of ProductsListState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductsListSuccessImplCopyWith<T, _$ProductsListSuccessImpl<T>>
-      get copyWith => __$$ProductsListSuccessImplCopyWithImpl<T,
-          _$ProductsListSuccessImpl<T>>(this, _$identity);
+  _$$ProductsListLoadingImplCopyWith<_$ProductsListLoadingImpl> get copyWith =>
+      __$$ProductsListLoadingImplCopyWithImpl<_$ProductsListLoadingImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() productsListLoading,
-    required TResult Function(List<Product> productsList) productsListSuccess,
-    required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function(List<Product> products) loading,
+    required TResult Function(List<Product> products) marketplaceSuccess,
+    required TResult Function(List<Product> products, bool hasReachedMax)
+        bestSellersSuccess,
+    required TResult Function(ApiErrorModel error) error,
   }) {
-    return productsListSuccess(productsList);
+    return loading(products);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? productsListLoading,
-    TResult? Function(List<Product> productsList)? productsListSuccess,
-    TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function(List<Product> products)? loading,
+    TResult? Function(List<Product> products)? marketplaceSuccess,
+    TResult? Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult? Function(ApiErrorModel error)? error,
   }) {
-    return productsListSuccess?.call(productsList);
+    return loading?.call(products);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? productsListLoading,
-    TResult Function(List<Product> productsList)? productsListSuccess,
-    TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function(List<Product> products)? loading,
+    TResult Function(List<Product> products)? marketplaceSuccess,
+    TResult Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult Function(ApiErrorModel error)? error,
     required TResult orElse(),
   }) {
-    if (productsListSuccess != null) {
-      return productsListSuccess(productsList);
+    if (loading != null) {
+      return loading(products);
     }
     return orElse();
   }
@@ -441,69 +343,425 @@ class _$ProductsListSuccessImpl<T> implements ProductsListSuccess<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(ProductsListLoading<T> value) productsListLoading,
-    required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
-    required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(ProductsListLoading value) loading,
+    required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
+    required TResult Function(BestSellersSuccess value) bestSellersSuccess,
+    required TResult Function(ProductsListError value) error,
   }) {
-    return productsListSuccess(this);
+    return loading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(ProductsListLoading<T> value)? productsListLoading,
-    TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
-    TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(ProductsListLoading value)? loading,
+    TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult? Function(ProductsListError value)? error,
   }) {
-    return productsListSuccess?.call(this);
+    return loading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(ProductsListLoading<T> value)? productsListLoading,
-    TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
-    TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(ProductsListLoading value)? loading,
+    TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult Function(ProductsListError value)? error,
     required TResult orElse(),
   }) {
-    if (productsListSuccess != null) {
-      return productsListSuccess(this);
+    if (loading != null) {
+      return loading(this);
     }
     return orElse();
   }
 }
 
-abstract class ProductsListSuccess<T> implements ProductsListState<T> {
-  const factory ProductsListSuccess(final List<Product> productsList) =
-      _$ProductsListSuccessImpl<T>;
+abstract class ProductsListLoading implements ProductsListState {
+  const factory ProductsListLoading(final List<Product> products) =
+      _$ProductsListLoadingImpl;
 
-  List<Product> get productsList;
+  List<Product> get products;
 
   /// Create a copy of ProductsListState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductsListSuccessImplCopyWith<T, _$ProductsListSuccessImpl<T>>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ProductsListLoadingImplCopyWith<_$ProductsListLoadingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ProductsListErrorImplCopyWith<T, $Res> {
-  factory _$$ProductsListErrorImplCopyWith(_$ProductsListErrorImpl<T> value,
-          $Res Function(_$ProductsListErrorImpl<T>) then) =
-      __$$ProductsListErrorImplCopyWithImpl<T, $Res>;
+abstract class _$$MarketplaceSuccessImplCopyWith<$Res> {
+  factory _$$MarketplaceSuccessImplCopyWith(_$MarketplaceSuccessImpl value,
+          $Res Function(_$MarketplaceSuccessImpl) then) =
+      __$$MarketplaceSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Product> products});
+}
+
+/// @nodoc
+class __$$MarketplaceSuccessImplCopyWithImpl<$Res>
+    extends _$ProductsListStateCopyWithImpl<$Res, _$MarketplaceSuccessImpl>
+    implements _$$MarketplaceSuccessImplCopyWith<$Res> {
+  __$$MarketplaceSuccessImplCopyWithImpl(_$MarketplaceSuccessImpl _value,
+      $Res Function(_$MarketplaceSuccessImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? products = null,
+  }) {
+    return _then(_$MarketplaceSuccessImpl(
+      null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MarketplaceSuccessImpl implements MarketplaceSuccess {
+  const _$MarketplaceSuccessImpl(final List<Product> products)
+      : _products = products;
+
+  final List<Product> _products;
+  @override
+  List<Product> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
+
+  @override
+  String toString() {
+    return 'ProductsListState.marketplaceSuccess(products: $products)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MarketplaceSuccessImpl &&
+            const DeepCollectionEquality().equals(other._products, _products));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MarketplaceSuccessImplCopyWith<_$MarketplaceSuccessImpl> get copyWith =>
+      __$$MarketplaceSuccessImplCopyWithImpl<_$MarketplaceSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<Product> products) loading,
+    required TResult Function(List<Product> products) marketplaceSuccess,
+    required TResult Function(List<Product> products, bool hasReachedMax)
+        bestSellersSuccess,
+    required TResult Function(ApiErrorModel error) error,
+  }) {
+    return marketplaceSuccess(products);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(List<Product> products)? loading,
+    TResult? Function(List<Product> products)? marketplaceSuccess,
+    TResult? Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult? Function(ApiErrorModel error)? error,
+  }) {
+    return marketplaceSuccess?.call(products);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<Product> products)? loading,
+    TResult Function(List<Product> products)? marketplaceSuccess,
+    TResult Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult Function(ApiErrorModel error)? error,
+    required TResult orElse(),
+  }) {
+    if (marketplaceSuccess != null) {
+      return marketplaceSuccess(products);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(ProductsListLoading value) loading,
+    required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
+    required TResult Function(BestSellersSuccess value) bestSellersSuccess,
+    required TResult Function(ProductsListError value) error,
+  }) {
+    return marketplaceSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(ProductsListLoading value)? loading,
+    TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult? Function(ProductsListError value)? error,
+  }) {
+    return marketplaceSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ProductsListLoading value)? loading,
+    TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult Function(ProductsListError value)? error,
+    required TResult orElse(),
+  }) {
+    if (marketplaceSuccess != null) {
+      return marketplaceSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MarketplaceSuccess implements ProductsListState {
+  const factory MarketplaceSuccess(final List<Product> products) =
+      _$MarketplaceSuccessImpl;
+
+  List<Product> get products;
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MarketplaceSuccessImplCopyWith<_$MarketplaceSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BestSellersSuccessImplCopyWith<$Res> {
+  factory _$$BestSellersSuccessImplCopyWith(_$BestSellersSuccessImpl value,
+          $Res Function(_$BestSellersSuccessImpl) then) =
+      __$$BestSellersSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Product> products, bool hasReachedMax});
+}
+
+/// @nodoc
+class __$$BestSellersSuccessImplCopyWithImpl<$Res>
+    extends _$ProductsListStateCopyWithImpl<$Res, _$BestSellersSuccessImpl>
+    implements _$$BestSellersSuccessImplCopyWith<$Res> {
+  __$$BestSellersSuccessImplCopyWithImpl(_$BestSellersSuccessImpl _value,
+      $Res Function(_$BestSellersSuccessImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? products = null,
+    Object? hasReachedMax = null,
+  }) {
+    return _then(_$BestSellersSuccessImpl(
+      null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+      null == hasReachedMax
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BestSellersSuccessImpl implements BestSellersSuccess {
+  const _$BestSellersSuccessImpl(
+      final List<Product> products, this.hasReachedMax)
+      : _products = products;
+
+  final List<Product> _products;
+  @override
+  List<Product> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
+
+  @override
+  final bool hasReachedMax;
+
+  @override
+  String toString() {
+    return 'ProductsListState.bestSellersSuccess(products: $products, hasReachedMax: $hasReachedMax)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BestSellersSuccessImpl &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            (identical(other.hasReachedMax, hasReachedMax) ||
+                other.hasReachedMax == hasReachedMax));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_products), hasReachedMax);
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BestSellersSuccessImplCopyWith<_$BestSellersSuccessImpl> get copyWith =>
+      __$$BestSellersSuccessImplCopyWithImpl<_$BestSellersSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<Product> products) loading,
+    required TResult Function(List<Product> products) marketplaceSuccess,
+    required TResult Function(List<Product> products, bool hasReachedMax)
+        bestSellersSuccess,
+    required TResult Function(ApiErrorModel error) error,
+  }) {
+    return bestSellersSuccess(products, hasReachedMax);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(List<Product> products)? loading,
+    TResult? Function(List<Product> products)? marketplaceSuccess,
+    TResult? Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult? Function(ApiErrorModel error)? error,
+  }) {
+    return bestSellersSuccess?.call(products, hasReachedMax);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<Product> products)? loading,
+    TResult Function(List<Product> products)? marketplaceSuccess,
+    TResult Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult Function(ApiErrorModel error)? error,
+    required TResult orElse(),
+  }) {
+    if (bestSellersSuccess != null) {
+      return bestSellersSuccess(products, hasReachedMax);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(ProductsListLoading value) loading,
+    required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
+    required TResult Function(BestSellersSuccess value) bestSellersSuccess,
+    required TResult Function(ProductsListError value) error,
+  }) {
+    return bestSellersSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(ProductsListLoading value)? loading,
+    TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult? Function(ProductsListError value)? error,
+  }) {
+    return bestSellersSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ProductsListLoading value)? loading,
+    TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult Function(ProductsListError value)? error,
+    required TResult orElse(),
+  }) {
+    if (bestSellersSuccess != null) {
+      return bestSellersSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BestSellersSuccess implements ProductsListState {
+  const factory BestSellersSuccess(
+          final List<Product> products, final bool hasReachedMax) =
+      _$BestSellersSuccessImpl;
+
+  List<Product> get products;
+  bool get hasReachedMax;
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BestSellersSuccessImplCopyWith<_$BestSellersSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ProductsListErrorImplCopyWith<$Res> {
+  factory _$$ProductsListErrorImplCopyWith(_$ProductsListErrorImpl value,
+          $Res Function(_$ProductsListErrorImpl) then) =
+      __$$ProductsListErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ApiErrorModel error});
 }
 
 /// @nodoc
-class __$$ProductsListErrorImplCopyWithImpl<T, $Res>
-    extends _$ProductsListStateCopyWithImpl<T, $Res, _$ProductsListErrorImpl<T>>
-    implements _$$ProductsListErrorImplCopyWith<T, $Res> {
-  __$$ProductsListErrorImplCopyWithImpl(_$ProductsListErrorImpl<T> _value,
-      $Res Function(_$ProductsListErrorImpl<T>) _then)
+class __$$ProductsListErrorImplCopyWithImpl<$Res>
+    extends _$ProductsListStateCopyWithImpl<$Res, _$ProductsListErrorImpl>
+    implements _$$ProductsListErrorImplCopyWith<$Res> {
+  __$$ProductsListErrorImplCopyWithImpl(_$ProductsListErrorImpl _value,
+      $Res Function(_$ProductsListErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ProductsListState
@@ -513,8 +771,8 @@ class __$$ProductsListErrorImplCopyWithImpl<T, $Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$ProductsListErrorImpl<T>(
-      error: null == error
+    return _then(_$ProductsListErrorImpl(
+      null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as ApiErrorModel,
@@ -524,22 +782,22 @@ class __$$ProductsListErrorImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ProductsListErrorImpl<T> implements ProductsListError<T> {
-  const _$ProductsListErrorImpl({required this.error});
+class _$ProductsListErrorImpl implements ProductsListError {
+  const _$ProductsListErrorImpl(this.error);
 
   @override
   final ApiErrorModel error;
 
   @override
   String toString() {
-    return 'ProductsListState<$T>.productsListError(error: $error)';
+    return 'ProductsListState.error(error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductsListErrorImpl<T> &&
+            other is _$ProductsListErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -551,44 +809,49 @@ class _$ProductsListErrorImpl<T> implements ProductsListError<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductsListErrorImplCopyWith<T, _$ProductsListErrorImpl<T>>
-      get copyWith =>
-          __$$ProductsListErrorImplCopyWithImpl<T, _$ProductsListErrorImpl<T>>(
-              this, _$identity);
+  _$$ProductsListErrorImplCopyWith<_$ProductsListErrorImpl> get copyWith =>
+      __$$ProductsListErrorImplCopyWithImpl<_$ProductsListErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() productsListLoading,
-    required TResult Function(List<Product> productsList) productsListSuccess,
-    required TResult Function(ApiErrorModel error) productsListError,
+    required TResult Function(List<Product> products) loading,
+    required TResult Function(List<Product> products) marketplaceSuccess,
+    required TResult Function(List<Product> products, bool hasReachedMax)
+        bestSellersSuccess,
+    required TResult Function(ApiErrorModel error) error,
   }) {
-    return productsListError(error);
+    return error(this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? productsListLoading,
-    TResult? Function(List<Product> productsList)? productsListSuccess,
-    TResult? Function(ApiErrorModel error)? productsListError,
+    TResult? Function(List<Product> products)? loading,
+    TResult? Function(List<Product> products)? marketplaceSuccess,
+    TResult? Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult? Function(ApiErrorModel error)? error,
   }) {
-    return productsListError?.call(error);
+    return error?.call(this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? productsListLoading,
-    TResult Function(List<Product> productsList)? productsListSuccess,
-    TResult Function(ApiErrorModel error)? productsListError,
+    TResult Function(List<Product> products)? loading,
+    TResult Function(List<Product> products)? marketplaceSuccess,
+    TResult Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult Function(ApiErrorModel error)? error,
     required TResult orElse(),
   }) {
-    if (productsListError != null) {
-      return productsListError(error);
+    if (error != null) {
+      return error(this.error);
     }
     return orElse();
   }
@@ -596,50 +859,53 @@ class _$ProductsListErrorImpl<T> implements ProductsListError<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(ProductsListLoading<T> value) productsListLoading,
-    required TResult Function(ProductsListSuccess<T> value) productsListSuccess,
-    required TResult Function(ProductsListError<T> value) productsListError,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(ProductsListLoading value) loading,
+    required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
+    required TResult Function(BestSellersSuccess value) bestSellersSuccess,
+    required TResult Function(ProductsListError value) error,
   }) {
-    return productsListError(this);
+    return error(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(ProductsListLoading<T> value)? productsListLoading,
-    TResult? Function(ProductsListSuccess<T> value)? productsListSuccess,
-    TResult? Function(ProductsListError<T> value)? productsListError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(ProductsListLoading value)? loading,
+    TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult? Function(ProductsListError value)? error,
   }) {
-    return productsListError?.call(this);
+    return error?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(ProductsListLoading<T> value)? productsListLoading,
-    TResult Function(ProductsListSuccess<T> value)? productsListSuccess,
-    TResult Function(ProductsListError<T> value)? productsListError,
+    TResult Function(_Initial value)? initial,
+    TResult Function(ProductsListLoading value)? loading,
+    TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult Function(ProductsListError value)? error,
     required TResult orElse(),
   }) {
-    if (productsListError != null) {
-      return productsListError(this);
+    if (error != null) {
+      return error(this);
     }
     return orElse();
   }
 }
 
-abstract class ProductsListError<T> implements ProductsListState<T> {
-  const factory ProductsListError({required final ApiErrorModel error}) =
-      _$ProductsListErrorImpl<T>;
+abstract class ProductsListError implements ProductsListState {
+  const factory ProductsListError(final ApiErrorModel error) =
+      _$ProductsListErrorImpl;
 
   ApiErrorModel get error;
 
   /// Create a copy of ProductsListState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductsListErrorImplCopyWith<T, _$ProductsListErrorImpl<T>>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ProductsListErrorImplCopyWith<_$ProductsListErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
