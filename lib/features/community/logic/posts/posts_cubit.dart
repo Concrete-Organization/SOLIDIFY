@@ -8,10 +8,12 @@ import 'package:solidify/features/community/logic/posts/posts_state.dart';
 class PostsCubit extends Cubit<PostsState> {
   final PostsRepo _postsRepo;
   List<PostModel> _allPosts = [];
+  List<PostModel> _allUnfilteredPosts = [];
   int _currentPage = 1;
   int _totalPages = 1;
   bool _hasMorePosts = true;
   Set<int> _likedPosts = {};
+  String _currentSearchQuery = '';
 
   PostsCubit(this._postsRepo) : super(const PostsState.initial()) {
     _initializeLikedPosts();
@@ -25,6 +27,8 @@ class PostsCubit extends Cubit<PostsState> {
     if (refresh) {
       _currentPage = 1;
       _allPosts = [];
+      _allUnfilteredPosts = [];
+      _currentSearchQuery = '';
       emit(const PostsState.postsLoading());
     } else if (state is PostsSuccess) {
       return;
@@ -68,19 +72,25 @@ class PostsCubit extends Cubit<PostsState> {
 
         if (isLoadingMore) {
           _allPosts = [..._allPosts, ...newPosts];
+          _allUnfilteredPosts = [..._allUnfilteredPosts, ...newPosts];
         } else {
           _allPosts = newPosts;
+          _allUnfilteredPosts = newPosts;
         }
 
         _totalPages = data.model.totalPages;
         _hasMorePosts = _currentPage < _totalPages;
 
-        emit(PostsState.postsSuccess(
-          posts: _allPosts,
-          hasMorePosts: _hasMorePosts,
-          currentPage: _currentPage,
-          totalPages: _totalPages,
-        ));
+        if (_currentSearchQuery.isNotEmpty) {
+          searchPosts(_currentSearchQuery);
+        } else {
+          emit(PostsState.postsSuccess(
+            posts: _allPosts,
+            hasMorePosts: _hasMorePosts,
+            currentPage: _currentPage,
+            totalPages: _totalPages,
+          ));
+        }
       },
       failure: (error) {
         if (isLoadingMore) _currentPage--;
@@ -96,6 +106,8 @@ class PostsCubit extends Cubit<PostsState> {
       success: (data) async {
         _currentPage = 1;
         _allPosts = [];
+        _allUnfilteredPosts = [];
+        _currentSearchQuery = '';
         await _loadPosts();
         emit(PostsState.createPostSuccess(data));
       },
@@ -138,8 +150,59 @@ class PostsCubit extends Cubit<PostsState> {
       return post;
     }).toList();
 
+    _allUnfilteredPosts = _allUnfilteredPosts.map((post) {
+      if (post.id == postId) {
+        return post.copyWith(
+          isLiked: isLiked,
+          likesCount: isLiked ? post.likesCount + 1 : post.likesCount - 1,
+        );
+      }
+      return post;
+    }).toList();
+
+    if (_currentSearchQuery.isNotEmpty) {
+      searchPosts(_currentSearchQuery);
+    } else {
+      emit(PostsState.postsSuccess(
+        posts: _allPosts,
+        hasMorePosts: _hasMorePosts,
+        currentPage: _currentPage,
+        totalPages: _totalPages,
+      ));
+    }
+  }
+
+  Future<void> searchPosts(String query) async {
+    _currentSearchQuery = query.toLowerCase();
+
+    if (_currentSearchQuery.isEmpty) {
+      emit(PostsState.postsSuccess(
+        posts: _allUnfilteredPosts,
+        hasMorePosts: _hasMorePosts,
+        currentPage: _currentPage,
+        totalPages: _totalPages,
+      ));
+      return;
+    }
+
+    final filteredPosts = _allUnfilteredPosts.where((post) {
+      final nameMatch = post.engineerName?.toLowerCase().contains(_currentSearchQuery) ?? false;
+      final contentMatch = post.content?.toLowerCase().contains(_currentSearchQuery) ?? false;
+      return nameMatch || contentMatch;
+    }).toList();
+
     emit(PostsState.postsSuccess(
-      posts: _allPosts,
+      posts: filteredPosts,
+      hasMorePosts: false,
+      currentPage: _currentPage,
+      totalPages: _totalPages,
+    ));
+  }
+
+  void clearSearch() {
+    _currentSearchQuery = '';
+    emit(PostsState.postsSuccess(
+      posts: _allUnfilteredPosts,
       hasMorePosts: _hasMorePosts,
       currentPage: _currentPage,
       totalPages: _totalPages,

@@ -37,6 +37,7 @@ class AppTextFormField extends StatelessWidget {
   final InputDecoration? decoration;
   final Color? borderColor;
   final List<TextInputFormatter>? inputFormatters;
+  final InputBorder? border;
 
   const AppTextFormField({
     super.key,
@@ -72,6 +73,7 @@ class AppTextFormField extends StatelessWidget {
     this.decoration,
     this.borderColor,
     this.inputFormatters,
+    this.border,
   });
 
   @override
@@ -104,6 +106,7 @@ class AppTextFormField extends StatelessWidget {
         decoration: decoration ??
             InputDecoration(
               isDense: true,
+              border: border,
               contentPadding: contentPadding ??
                   EdgeInsets.symmetric(
                     vertical: 13.h,
