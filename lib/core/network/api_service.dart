@@ -68,8 +68,11 @@ abstract class ApiService {
     @Body() ResetPasswordRequestModel resetPasswordRequestModel,
   );
 
+  // In api_service.dart
   @GET(ApiConstants.product)
-  Future<ProductListResponseModel> productsList();
+  Future<ProductListResponseModel> productsList(
+    @Query('PageNumber') int page, // Add page parameter
+  );
 
   @GET("Category/{id}")
   Future<GetProductsByCategoryResponseModel> getCategory(

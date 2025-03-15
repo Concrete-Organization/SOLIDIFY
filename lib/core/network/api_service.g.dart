@@ -271,9 +271,9 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ProductListResponseModel> productsList() async {
+  Future<ProductListResponseModel> productsList(int page) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'PageNumber': page};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<ProductListResponseModel>(Options(

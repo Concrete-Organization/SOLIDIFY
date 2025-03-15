@@ -8,9 +8,9 @@ class ProductsListRepo {
 
   ProductsListRepo(this._apiService);
 
-  Future<ApiResult<ProductListResponseModel>> getProductsList() async {
+  Future<ApiResult<ProductListResponseModel>> getProductsList(int page) async {
     try {
-      final response = await _apiService.productsList();
+      final response = await _apiService.productsList(page);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));

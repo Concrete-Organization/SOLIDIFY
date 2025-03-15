@@ -13,13 +13,19 @@ class MarketplaceBlocBuilder extends StatelessWidget {
     return BlocBuilder<ProductsListCubit, ProductsListState>(
       builder: (context, state) {
         return state.when(
-          initial: () => const SliverToBoxAdapter(child: SizedBox.shrink()),
-          productsListLoading: () => const SliverToBoxAdapter(
+          initial: () {
+            // Fetch marketplace products when the state is initial
+            context.read<ProductsListCubit>().fetchMarketplaceProducts();
+            return const SliverToBoxAdapter(child: SizedBox.shrink());
+          },
+          loading: (products) => const SliverToBoxAdapter(
             child: LoadingCircleIndicator(),
           ),
-          productsListSuccess: (products) =>
-              ProductGridView(products: products),
-          productsListError: (error) => SliverToBoxAdapter(
+          marketplaceSuccess: (products) => ProductGridView(products: products),
+          bestSellersSuccess: (_, __) => const SliverToBoxAdapter(
+            child: SizedBox.shrink(),
+          ),
+          error: (error) => SliverToBoxAdapter(
             child: Center(child: Text('Error: ${error.message}')),
           ),
         );

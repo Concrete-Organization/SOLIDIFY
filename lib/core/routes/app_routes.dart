@@ -27,10 +27,12 @@ import 'package:solidify/features/auth/forget_password/logic/forget_password_cub
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/address_details_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
+import 'package:solidify/features/marketplace/marketplace/ui/screens/best_sellers_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/product_details_screen.dart';
 import '../../features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/product_category_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_result.dart';
+import 'package:solidify/features/marketplace/marketplace/logic/products_list_cubit/products_list_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
 import '../../features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_details_cubit/product_details_cubit.dart';
@@ -192,6 +194,20 @@ class AppRoutes {
           builder: (context) => BlocProvider(
             create: (context) => getIt<CartCubit>(),
             child: const FavoritesScreen(),
+          ),
+        );
+      case Routes.bestSellersScreen:
+        return MaterialPageRoute(
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<ProductsListCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<CartCubit>(),
+              ),
+            ],
+            child: const BestSellersScreen(),
           ),
         );
 

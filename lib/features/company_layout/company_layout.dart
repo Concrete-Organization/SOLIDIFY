@@ -23,7 +23,8 @@ class _CompanyLayoutState extends State<CompanyLayout> {
 
   final List<Widget> screens = [
     BlocProvider(
-      create: (context) => getIt<ProductsListCubit>()..fetchProductsList(),
+      create: (context) =>
+          getIt<ProductsListCubit>()..fetchMarketplaceProducts(),
       child: const MarketplaceScreen(),
     ),
     const ConcreteStrengthAiGetStarted(),

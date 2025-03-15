@@ -5,14 +5,16 @@ import 'package:solidify/features/marketplace/marketplace/data/models/product_li
 part 'products_list_state.freezed.dart';
 
 @freezed
-class ProductsListState<T> with _$ProductsListState<T> {
+class ProductsListState with _$ProductsListState {
   const factory ProductsListState.initial() = _Initial;
-
-  const factory ProductsListState.productsListLoading() = ProductsListLoading;
-
-  const factory ProductsListState.productsListSuccess(
-      List<Product> productsList) = ProductsListSuccess<T>;
-
-  const factory ProductsListState.productsListError(
-      {required ApiErrorModel error}) = ProductsListError;
+  const factory ProductsListState.loading(List<Product> products) =
+      ProductsListLoading;
+  const factory ProductsListState.marketplaceSuccess(List<Product> products) =
+      MarketplaceSuccess;
+  const factory ProductsListState.bestSellersSuccess(
+    List<Product> products,
+    bool hasReachedMax,
+  ) = BestSellersSuccess;
+  const factory ProductsListState.error(ApiErrorModel error) =
+      ProductsListError;
 }
