@@ -25,4 +25,5 @@ class Routes {
   static const String orderDoneScreen = 'orderDoneScreen';
   static const String paymentScreen = 'paymentScreen';
   static const String favoritesScreen = 'favoritesScreen';
+  static const String bestSellersScreen = 'bestSellersScreen';
 }

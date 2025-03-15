@@ -27,6 +27,7 @@ import 'package:solidify/features/auth/forget_password/logic/forget_password_cub
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/address_details_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
+import 'package:solidify/features/marketplace/marketplace/ui/screens/best_sellers_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/product_details_screen.dart';
 import '../../features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/product_category_screen.dart';
@@ -193,6 +194,10 @@ class AppRoutes {
             create: (context) => getIt<CartCubit>(),
             child: const FavoritesScreen(),
           ),
+        );
+      case Routes.bestSellersScreen:
+        return MaterialPageRoute(
+          builder: (context) => const BestSellersScreen(),
         );
 
       default:

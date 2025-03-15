@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/di/dependency_injection.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,9 +61,14 @@ class MarketplaceScreen extends StatelessWidget {
                             style: TextStyles.font15lightBlackSemiBold,
                           ),
                           const Spacer(),
-                          Text(
-                            'View All',
-                            style: TextStyles.font13MainBlueMedium,
+                          GestureDetector(
+                            onTap: () {
+                              context.pushNamed(Routes.bestSellersScreen);
+                            },
+                            child: Text(
+                              'View All',
+                              style: TextStyles.font13MainBlueMedium,
+                            ),
                           ),
                         ],
                       ),
