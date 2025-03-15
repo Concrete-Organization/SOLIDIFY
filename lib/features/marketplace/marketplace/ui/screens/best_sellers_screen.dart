@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
@@ -86,9 +88,18 @@ class BestSellersScreen extends StatelessWidget {
                 childAspectRatio: 0.6,
               ),
               delegate: SliverChildBuilderDelegate(
-                (context, index) => ProductGridViewItem(
-                  product: products[index],
-                  index: index,
+                (context, index) => GestureDetector(
+                  onTap: () {
+                    // Navigate to product details screen
+                    context.pushNamed(
+                      Routes.productDetailsScreen,
+                      arguments: products[index].id,
+                    );
+                  },
+                  child: ProductGridViewItem(
+                    product: products[index],
+                    index: index,
+                  ),
                 ),
                 childCount: products.length,
               ),

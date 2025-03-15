@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
@@ -30,21 +32,30 @@ class _FavoriteProductItemState extends State<FavoriteProductItem> {
       listener: _cartStateListener,
       builder: (context, state) {
         final favoritesProvider = Provider.of<FavoritesProvider>(context);
-        final isLoading = state is CartLoading && 
-                        state.productId == widget.product.id;
+        final isLoading =
+            state is CartLoading && state.productId == widget.product.id;
 
-        return Card(
-          margin: EdgeInsets.zero,
-          color: ColorsManager.white,
-          elevation: 4,
-          shape: _buildCardShape(),
-          child: Column(
-            children: [
-              _buildProductHeader(favoritesProvider),
-              _buildProductImage(),
-              const HorizontalDivider(),
-              _buildProductDetails(isLoading),
-            ],
+        return GestureDetector(
+          onTap: () {
+            // Navigate to product details screen
+            context.pushNamed(
+              Routes.productDetailsScreen,
+              arguments: widget.product.id,
+            );
+          },
+          child: Card(
+            margin: EdgeInsets.zero,
+            color: ColorsManager.white,
+            elevation: 4,
+            shape: _buildCardShape(),
+            child: Column(
+              children: [
+                _buildProductHeader(favoritesProvider),
+                _buildProductImage(),
+                const HorizontalDivider(),
+                _buildProductDetails(isLoading),
+              ],
+            ),
           ),
         );
       },
@@ -54,8 +65,8 @@ class _FavoriteProductItemState extends State<FavoriteProductItem> {
   void _cartStateListener(BuildContext context, CartState state) {
     state.maybeWhen(
       error: (productId, error) {
-        if (productId == widget.product.id && 
-            _currentProductId == productId && 
+        if (productId == widget.product.id &&
+            _currentProductId == productId &&
             !_localLoading) {
           _showErrorSnackbar(context, error.message);
           _currentProductId = null;
@@ -149,7 +160,7 @@ class _FavoriteProductItemState extends State<FavoriteProductItem> {
           children: [
             _buildBrandRow(),
             Text(widget.product.name, style: TextStyles.font12lightBlackLight),
-            Text('${widget.product.price} EGP', 
+            Text('${widget.product.price} EGP',
                 style: TextStyles.font12MainBlueSemiBold),
             _buildAddToCartButton(isLoading),
           ],
@@ -159,7 +170,7 @@ class _FavoriteProductItemState extends State<FavoriteProductItem> {
   }
 
   BoxDecoration _buildDetailsDecoration() {
-    return  BoxDecoration(
+    return BoxDecoration(
       color: ColorsManager.mainBlueWith1Opacity,
       borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(10),
@@ -171,12 +182,11 @@ class _FavoriteProductItemState extends State<FavoriteProductItem> {
   Widget _buildBrandRow() {
     return Row(
       children: [
-        Text(widget.product.brandName, 
-            style: TextStyles.font12lightBlackLight),
+        Text(widget.product.brandName, style: TextStyles.font12lightBlackLight),
         const Spacer(),
         const Icon(Icons.star, color: ColorsManager.secondaryGold, size: 16),
         const SizedBox(width: 4),
-        Text(widget.product.rate.toString(), 
+        Text(widget.product.rate.toString(),
             style: TextStyles.font12MainBlueMedium),
       ],
     );
