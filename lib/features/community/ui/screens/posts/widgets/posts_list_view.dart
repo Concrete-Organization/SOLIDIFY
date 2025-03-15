@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
+import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
 import 'package:solidify/features/community/ui/screens/posts/widgets/post_item.dart';
 import 'package:solidify/features/community/ui/screens/posts/widgets/shimmer_post_item.dart';
@@ -51,6 +52,26 @@ class _PostsListViewState extends State<PostsListView> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.posts.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.search_off,
+              size: 50,
+              color: ColorsManager.mainBlue.withOpacity(0.7),
+            ),
+            verticalSpace(16),
+            Text(
+              'No posts or users\nfound matching your search',
+              style: TextStyles.font14lightBlackRegular,
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      );
+    }
     return RefreshIndicator(
       onRefresh: widget.refreshPosts,
       color: ColorsManager.white,
