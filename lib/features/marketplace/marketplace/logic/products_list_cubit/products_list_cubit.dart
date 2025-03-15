@@ -12,8 +12,55 @@ class ProductsListCubit extends Cubit<ProductsListState> {
 
   ProductsListCubit(this._repo) : super(const ProductsListState.initial());
 
+  Future<void> fetchBestSellers() async {
+    _currentPage = 1;
+    _hasReachedMax = false;
+    _allProducts = [];
+
+    emit(const ProductsListState.loading([]));
+
+    final result = await _repo.getProductsList(_currentPage);
+
+    result.when(
+      success: (response) {
+        _cacheProductIds(response.model.items);
+
+        _allProducts = response.model.items;
+        _currentPage++;
+        _hasReachedMax = response.model.totalPages <= _currentPage;
+
+        emit(
+            ProductsListState.bestSellersSuccess(_allProducts, _hasReachedMax));
+      },
+      failure: (error) {
+        emit(ProductsListState.error(error));
+      },
+    );
+  }
+
+  Future<void> loadMoreBestSellers() async {
+    if (_hasReachedMax) return;
+
+    emit(ProductsListState.loading(_allProducts));
+
+    final result = await _repo.getProductsList(_currentPage);
+
+    result.when(
+      success: (response) {
+        _allProducts.addAll(response.model.items);
+        _currentPage++;
+        _hasReachedMax = response.model.totalPages < _currentPage;
+
+        emit(
+            ProductsListState.bestSellersSuccess(_allProducts, _hasReachedMax));
+      },
+      failure: (error) {
+        emit(ProductsListState.error(error));
+      },
+    );
+  }
+
   Future<void> fetchMarketplaceProducts() async {
-    // Reset pagination state
     _currentPage = 1;
     _hasReachedMax = false;
     _allProducts = [];
@@ -39,33 +86,6 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     );
   }
 
-  Future<void> loadBestSellers() async {
-    if (_hasReachedMax) return;
-
-    emit(ProductsListState.loading(_allProducts));
-
-    final result = await _repo.getProductsList(_currentPage);
-
-    result.when(
-      success: (response) {
-        // Append new products to the list
-        _allProducts.addAll(response.model.items);
-
-        // Update pagination state
-        _currentPage++;
-        _hasReachedMax = response.model.totalPages < _currentPage;
-
-        // Emit success state for Best Sellers
-        emit(
-            ProductsListState.bestSellersSuccess(_allProducts, _hasReachedMax));
-      },
-      failure: (error) {
-        // Emit error state with existing products
-        emit(ProductsListState.error(error));
-      },
-    );
-  }
-
   Future<void> _cacheProductIds(List<Product> products) async {
     final List<String> productIds =
         products.map((product) => product.id).toList();
@@ -73,7 +93,6 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     await SharedPrefHelper.setData('cached_product_ids', idsString);
   }
 
-  /// Retrieves cached product IDs from SharedPreferences
   Future<List<String>> _getCachedProductIds() async {
     final String idsString =
         await SharedPrefHelper.getString('cached_product_ids');
@@ -81,13 +100,11 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     return idsString.split(',');
   }
 
-  /// Checks if a product is cached
   Future<bool> isProductCached(String productId) async {
     final cachedIds = await _getCachedProductIds();
     return cachedIds.contains(productId);
   }
 
-  /// Clears cached product IDs
   Future<void> clearCachedProductIds() async {
     await SharedPrefHelper.removeData('cached_product_ids');
   }

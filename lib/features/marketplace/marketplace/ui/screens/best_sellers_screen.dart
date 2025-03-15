@@ -1,8 +1,10 @@
-import 'package:path/path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/product_grid_view_item.dart';
 import 'package:solidify/features/marketplace/marketplace/data/models/product_list_response_model.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/products_list_cubit/products_list_cubit.dart';
@@ -33,24 +35,35 @@ class BestSellersScreen extends StatelessWidget {
         builder: (context, state) {
           return state.when(
             initial: () {
-              BlocProvider.of<ProductsListCubit>(context).loadBestSellers();
-              return const Center(child: CircularProgressIndicator());
+              BlocProvider.of<ProductsListCubit>(context).fetchBestSellers();
+              return const LoadingCircleIndicator();
             },
-            loading: (products) => _buildProductGrid(products, isLoading: true),
-            marketplaceSuccess: (products) => _buildProductGrid(products),
-            bestSellersSuccess: (products, hasReachedMax) =>
-                _buildProductGrid(products, hasReachedMax: hasReachedMax),
-            error: (error) => _buildProductGrid([], showError: true),
+            loading: (products) => _buildProductGrid(
+              context,
+              products,
+              isLoading: true,
+            ),
+            marketplaceSuccess: (products) =>
+                _buildProductGrid(context, products),
+            bestSellersSuccess: (products, hasReachedMax) => _buildProductGrid(
+              context,
+              products,
+              hasReachedMax: hasReachedMax,
+            ),
+            error: (error) => _buildProductGrid(context, [], showError: true),
           );
         },
       ),
     );
   }
 
-  Widget _buildProductGrid(List<Product> products,
-      {bool isLoading = false,
-      bool hasReachedMax = false,
-      bool showError = false}) {
+  Widget _buildProductGrid(
+    BuildContext context,
+    List<Product> products, {
+    bool isLoading = false,
+    bool hasReachedMax = false,
+    bool showError = false,
+  }) {
     final scrollController = ScrollController();
 
     return NotificationListener<ScrollNotification>(
@@ -58,49 +71,67 @@ class BestSellersScreen extends StatelessWidget {
         if (notification is ScrollEndNotification &&
             notification.metrics.pixels ==
                 notification.metrics.maxScrollExtent) {
-          BlocProvider.of<ProductsListCubit>(context as BuildContext)
-              .loadBestSellers();
+          BlocProvider.of<ProductsListCubit>(context).loadMoreBestSellers();
         }
         return false;
       },
-      child: Column(
-        children: [
-          Expanded(
-            child: GridView.builder(
-              controller: scrollController,
-              padding: EdgeInsets.all(16.w),
+      child: CustomScrollView(
+        controller: scrollController,
+        slivers: [
+          SliverPadding(
+            padding: EdgeInsets.all(16.w),
+            sliver: SliverGrid(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 15.w,
                 mainAxisSpacing: 15.h,
                 childAspectRatio: 0.6,
               ),
-              itemCount: products.length + (isLoading ? 1 : 0),
-              itemBuilder: (context, index) {
-                if (index >= products.length) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                return ProductGridViewItem(
-                  product: products[index],
-                  index: index,
-                );
-              },
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => GestureDetector(
+                  onTap: () {
+                    // Navigate to product details screen
+                    context.pushNamed(
+                      Routes.productDetailsScreen,
+                      arguments: products[index].id,
+                    );
+                  },
+                  child: ProductGridViewItem(
+                    product: products[index],
+                    index: index,
+                  ),
+                ),
+                childCount: products.length,
+              ),
             ),
           ),
-          if (showError)
-            Padding(
-              padding: EdgeInsets.all(16.w),
-              child: Text(
-                'Error loading products',
-                style: TextStyles.font14RedRegular,
+          if (isLoading)
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 20.h),
+                child: const LoadingCircleIndicator(),
               ),
             ),
           if (hasReachedMax)
-            Padding(
-              padding: EdgeInsets.all(16.w),
-              child: Text(
-                'No more products to load',
-                style: TextStyles.font15MainBlueMedium,
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.all(16.w),
+                child: Text(
+                  'No more products to load',
+                  style: TextStyles.font15MainBlueMedium,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          if (showError)
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.all(16.w),
+                child: Text(
+                  'Error loading products',
+                  style: TextStyles.font14RedRegular,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
         ],
