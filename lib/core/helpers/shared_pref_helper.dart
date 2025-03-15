@@ -17,9 +17,8 @@ class SharedPrefKeys {
   static const String productId = 'productId';
   static const String cachedProductIds = 'cachedProductIds';
   static const String favoriteProductIds = 'favoriteProductIds';
-  static const likedPostsKey = 'liked_posts';
+  static const String likedPostsKey = 'liked_posts';
   static const String _cartItemsKey = 'cartItems';
-
 }
 
 class SharedPrefHelper {
@@ -200,12 +199,6 @@ class SharedPrefHelper {
         SharedPrefKeys.favoriteProductIds, favorites.join(','));
   }
 
-  static Future<void> clearFavorites() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(SharedPrefKeys.favoriteProductIds);
-    debugPrint('SharedPrefHelper: Cleared all favorites');
-  }
-
   static Future<Set<int>> getLikedPosts() async {
     final prefs = await SharedPreferences.getInstance();
     final likedList = prefs.getStringList(SharedPrefKeys.likedPostsKey) ?? [];
@@ -216,14 +209,16 @@ class SharedPrefHelper {
     final prefs = await SharedPreferences.getInstance();
     final liked = await getLikedPosts();
     liked.add(postId);
-    await prefs.setStringList(SharedPrefKeys.likedPostsKey, liked.map((e) => e.toString()).toList());
+    await prefs.setStringList(
+        SharedPrefKeys.likedPostsKey, liked.map((e) => e.toString()).toList());
   }
 
   static Future<void> removeLikedPost(int postId) async {
     final prefs = await SharedPreferences.getInstance();
     final liked = await getLikedPosts();
     liked.remove(postId);
-    await prefs.setStringList(SharedPrefKeys.likedPostsKey, liked.map((e) => e.toString()).toList());
+    await prefs.setStringList(
+        SharedPrefKeys.likedPostsKey, liked.map((e) => e.toString()).toList());
   }
 
   static Future<void> addCartItem(String productId) async {
@@ -237,7 +232,8 @@ class SharedPrefHelper {
       }
     }
     items.add(productId);
-    await SharedPrefHelper.setData(SharedPrefKeys._cartItemsKey, json.encode(items));
+    await SharedPrefHelper.setData(
+        SharedPrefKeys._cartItemsKey, json.encode(items));
   }
 
   static Future<List<String>> getCartItems() async {

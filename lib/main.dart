@@ -9,6 +9,7 @@ import 'package:solidify/core/routes/app_routes.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'features/marketplace/favorites/logic/favorites_provider.dart'; // Add this import
+import 'package:solidify/features/marketplace/marketplace/data/repos/products_list_repo.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -41,7 +42,7 @@ void main() async {
 
   runApp(
     ChangeNotifierProvider(
-      create: (context) => FavoritesProvider(),
+      create: (context) => FavoritesProvider(getIt<ProductsListRepo>()),
       child: SolidifyApp(
         appRoutes: AppRoutes(),
         initialRoute: initialRoute,
