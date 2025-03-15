@@ -124,6 +124,26 @@ abstract class ApiService {
     @Path('id') int postId,
   );
 
+  @POST('${ApiConstants.likeComment}/{commentId}')
+  Future<LikePostResponse> likeComment(
+    @Path('commentId') int commentId,
+  );
+
+  @DELETE('${ApiConstants.likeComment}/{commentId}')
+  Future<LikePostResponse> deleteLikeComment(
+    @Path('commentId') int commentId,
+  );
+
+  @POST('${ApiConstants.likeReply}/{replyId}')
+  Future<LikePostResponse> likeReply(
+    @Path('replyId') int replyId,
+  );
+
+  @DELETE('${ApiConstants.likeReply}/{replyId}')
+  Future<LikePostResponse> deleteLikeReply(
+    @Path('replyId') int replyId,
+  );
+
   @GET(ApiConstants.productWithId)
   Future<GetProductByIdResponseBody> getProductById(
     @Path('id') String productId,

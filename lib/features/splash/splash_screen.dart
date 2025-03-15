@@ -16,10 +16,12 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(
       const Duration(seconds: 2),
-          () async {
-        final isLoggedIn = await SharedPrefHelper.getBool(SharedPrefKeys.isLoggedIn);
+      () async {
+        final isLoggedIn =
+            await SharedPrefHelper.getBool(SharedPrefKeys.isLoggedIn);
         if (isLoggedIn) {
-          final role = await SharedPrefHelper.getSecuredString(SharedPrefKeys.role);
+          final role =
+              await SharedPrefHelper.getSecuredString(SharedPrefKeys.role);
           if (role == 'Company') {
             context.pushReplacementNamed(Routes.companyLayout);
           } else if (role == 'Engineer') {
@@ -37,7 +39,8 @@ class _SplashScreenState extends State<SplashScreen> {
           );
         }
       },
-    );  }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

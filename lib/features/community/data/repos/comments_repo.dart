@@ -7,6 +7,7 @@ import 'package:solidify/features/community/data/models/comment_models/create_co
 import 'package:solidify/features/community/data/models/comment_models/create_comment_response.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_reply_request.dart';
 import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
+import 'package:solidify/features/community/data/models/post_models/like_post_response.dart';
 
 class CommentsRepo {
   final ApiService _apiService;
@@ -49,6 +50,42 @@ class CommentsRepo {
       return ApiResult.success(response);
     } on DioException catch (e) {
       return ApiResult.failure(ApiErrorHandler.handle(e));
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
+  Future<ApiResult<LikePostResponse>> likeComment(int commentId) async {
+    try {
+      final response = await _apiService.likeComment(commentId);
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
+  Future<ApiResult<LikePostResponse>> unlikeComment(int commentId) async {
+    try {
+      final response = await _apiService.deleteLikeComment(commentId);
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
+  Future<ApiResult<LikePostResponse>> likeReply(int replyId) async {
+    try {
+      final response = await _apiService.likeReply(replyId);
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
+  Future<ApiResult<LikePostResponse>> unlikeReply(int replyId) async {
+    try {
+      final response = await _apiService.deleteLikeReply(replyId);
+      return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }

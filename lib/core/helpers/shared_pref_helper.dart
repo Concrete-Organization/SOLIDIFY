@@ -19,6 +19,8 @@ class SharedPrefKeys {
   static const String cachedProductIds = 'cachedProductIds';
   static const String favoriteProductIds = 'favoriteProductIds';
   static const String likedPostsKey = 'liked_posts';
+  static const likedCommentsKey = 'liked_comments';
+  static const likedRepliesKey = 'liked_replies';
   static const String _cartItemsKey = 'cartItems';
   static const String favorites = 'favorites';
 }
@@ -200,6 +202,58 @@ class SharedPrefHelper {
     liked.remove(postId);
     await prefs.setStringList(
         SharedPrefKeys.likedPostsKey, liked.map((e) => e.toString()).toList());
+  }
+
+  static Future<void> addLikedComment(int commentId) async {
+    final liked = await getLikedComments();
+    liked.add(commentId);
+    await updateLikedComments(liked);
+  }
+
+  static Future<void> removeLikedComment(int commentId) async {
+    final liked = await getLikedComments();
+    liked.remove(commentId);
+    await updateLikedComments(liked);
+  }
+
+  static Future<Set<int>> getLikedComments() async {
+    final prefs = await SharedPreferences.getInstance();
+    final likedList = prefs.getStringList(SharedPrefKeys.likedCommentsKey) ?? [];
+    return likedList.map(int.parse).toSet();
+  }
+
+  static Future<void> updateLikedComments(Set<int> likedComments) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(
+      SharedPrefKeys.likedCommentsKey,
+      likedComments.map((e) => e.toString()).toList(),
+    );
+  }
+
+  static Future<void> addLikedReply(int replyId) async {
+    final liked = await getLikedReplies();
+    liked.add(replyId);
+    await updateLikedReplies(liked);
+  }
+
+  static Future<void> removeLikedReply(int replyId) async {
+    final liked = await getLikedReplies();
+    liked.remove(replyId);
+    await updateLikedReplies(liked);
+  }
+
+  static Future<Set<int>> getLikedReplies() async {
+    final prefs = await SharedPreferences.getInstance();
+    final likedList = prefs.getStringList(SharedPrefKeys.likedRepliesKey) ?? [];
+    return likedList.map(int.parse).toSet();
+  }
+
+  static Future<void> updateLikedReplies(Set<int> likedReplies) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(
+      SharedPrefKeys.likedRepliesKey,
+      likedReplies.map((e) => e.toString()).toList(),
+    );
   }
 
   static Future<void> addCartItem(String productId) async {

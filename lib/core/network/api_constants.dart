@@ -17,6 +17,8 @@ class ApiConstants {
   static const String post = 'Post';
   static const String comment = 'Comment';
   static const String likePost = 'Like/post';
+  static const String likeComment = 'Like/comment';
+  static const String likeReply = 'Like/reply';
   static const String reply = 'reply';
 
   static String categoryEndpoint(int id) => "Category/$id";

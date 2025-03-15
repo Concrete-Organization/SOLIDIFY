@@ -79,10 +79,15 @@ class _CommentItemState extends State<CommentItem> {
 
             Column(
               children: [
-                SvgPicture.asset(
-                  'assets/svgs/fav_icon.svg',
-                  width: 16.w,
-                  height: 16.h,
+                GestureDetector(
+                  onTap: () => _handleLikeComment(context, comment.id),
+                  child: SvgPicture.asset(
+                    comment.isLiked
+                        ? 'assets/svgs/fill_fav_icon.svg'
+                        : 'assets/svgs/fav_icon.svg',
+                    width: 16.w,
+                    height: 16.h,
+                  ),
                 ),
                 verticalSpace(1),
                 Text(
@@ -119,5 +124,14 @@ class _CommentItemState extends State<CommentItem> {
         verticalSpace(16),
       ],
     );
+  }
+
+  void _handleLikeComment(BuildContext context, int commentId) {
+    final cubit = context.read<CommentsCubit>();
+    if (widget.comment.isLiked) {
+      cubit.unlikeComment(commentId);
+    } else {
+      cubit.likeComment(commentId);
+    }
   }
 }

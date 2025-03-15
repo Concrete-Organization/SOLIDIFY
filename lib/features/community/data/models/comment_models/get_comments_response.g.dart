@@ -47,6 +47,7 @@ CommentModel _$CommentModelFromJson(Map<String, dynamic> json) => CommentModel(
       creationDate: json['creationDate'] as String,
       content: json['content'] as String?,
       likesCount: (json['likesCount'] as num).toInt(),
+      isLiked: json['isLiked'] as bool,
       replies: (json['replies'] as List<dynamic>)
           .map((e) => ReplyModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -61,6 +62,7 @@ Map<String, dynamic> _$CommentModelToJson(CommentModel instance) =>
       'creationDate': instance.creationDate,
       'content': instance.content,
       'likesCount': instance.likesCount,
+      'isLiked': instance.isLiked,
       'replies': instance.replies,
       'id': instance.id,
       'engineerId': instance.engineerId,
@@ -72,6 +74,7 @@ ReplyModel _$ReplyModelFromJson(Map<String, dynamic> json) => ReplyModel(
       content: json['content'] as String,
       creationDate: json['creationDate'] as String,
       likesCount: (json['likesCount'] as num).toInt(),
+      isLiked: json['isLiked'] as bool,
       id: (json['id'] as num).toInt(),
       engineerId: json['engineerId'] as String,
       engineerName: json['engineerName'] as String,
@@ -83,6 +86,7 @@ Map<String, dynamic> _$ReplyModelToJson(ReplyModel instance) =>
       'content': instance.content,
       'creationDate': instance.creationDate,
       'likesCount': instance.likesCount,
+      'isLiked': instance.isLiked,
       'id': instance.id,
       'engineerId': instance.engineerId,
       'engineerName': instance.engineerName,

@@ -49,6 +49,7 @@ class CommentModel {
   final String creationDate;
   final String? content;
   final int likesCount;
+  final bool isLiked;
   final List<ReplyModel> replies;
   final int id;
   final String engineerId;
@@ -59,12 +60,37 @@ class CommentModel {
     required this.creationDate,
     this.content,
     required this.likesCount,
+    required this.isLiked,
     required this.replies,
     required this.id,
     required this.engineerId,
     this.engineerName,
     this.profileImageUrl,
   });
+
+  CommentModel copyWith({
+    String? creationDate,
+    String? content,
+    int? likesCount,
+    bool? isLiked,
+    List<ReplyModel>? replies,
+    int? id,
+    String? engineerId,
+    String? engineerName,
+    String? profileImageUrl,
+  }) {
+    return CommentModel(
+      creationDate: creationDate ?? this.creationDate,
+      content: content ?? this.content,
+      likesCount: likesCount ?? this.likesCount,
+      isLiked: isLiked ?? this.isLiked,
+      replies: replies ?? this.replies,
+      id: id ?? this.id,
+      engineerId: engineerId ?? this.engineerId,
+      engineerName: engineerName ?? this.engineerName,
+      profileImageUrl: profileImageUrl ?? this.profileImageUrl,
+    );
+  }
 
   factory CommentModel.fromJson(Map<String, dynamic> json) =>
       _$CommentModelFromJson(json);
@@ -77,6 +103,7 @@ class ReplyModel {
   final String content;
   final String creationDate;
   final int likesCount;
+  final bool isLiked;
   final int id;
   final String engineerId;
   final String engineerName;
@@ -86,11 +113,34 @@ class ReplyModel {
     required this.content,
     required this.creationDate,
     required this.likesCount,
+    required this.isLiked,
     required this.id,
     required this.engineerId,
     required this.engineerName,
     this.profileImageUrl,
   });
+
+  ReplyModel copyWith({
+    String? content,
+    String? creationDate,
+    int? likesCount,
+    bool? isLiked,
+    int? id,
+    String? engineerId,
+    String? engineerName,
+    String? profileImageUrl,
+  }) {
+    return ReplyModel(
+      content: content ?? this.content,
+      creationDate: creationDate ?? this.creationDate,
+      likesCount: likesCount ?? this.likesCount,
+      isLiked: isLiked ?? this.isLiked,
+      id: id ?? this.id,
+      engineerId: engineerId ?? this.engineerId,
+      engineerName: engineerName ?? this.engineerName,
+      profileImageUrl: profileImageUrl ?? this.profileImageUrl,
+    );
+  }
 
   factory ReplyModel.fromJson(Map<String, dynamic> json) =>
       _$ReplyModelFromJson(json);
