@@ -14,8 +14,21 @@ import 'package:solidify/features/marketplace/cart/logic/cart_state.dart';
 import 'package:solidify/features/marketplace/cart/ui/widgets/cart_list_view.dart';
 import 'package:solidify/features/marketplace/cart/data/models/get_cart_response_model.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
+
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  double totalPrice = 0;
+
+  void _updateTotalPrice(double priceChange) {
+    setState(() {
+      totalPrice += priceChange;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +61,24 @@ class CartScreen extends StatelessWidget {
             },
             cartLoading: () => LoadingCircleIndicator(),
             cartListSuccess: (cartResponse) {
-              final total = cartResponse.model.totalPrice;
+              // Initialize total price with the sum of all items' prices
+              if (totalPrice == 0) {
+                totalPrice = cartResponse.model.items.fold(
+                  0,
+                  (sum, item) => sum + item.price,
+                );
+              }
               return _buildCartContent(
-                  context, cartResponse.model.items, total);
+                context,
+                cartResponse.model.items,
+                totalPrice,
+              );
             },
             cartListError: (error) => SliverToBoxAdapter(
-                child: ErrorStateMessage(
-              message: 'Error: ${error.message}',
-            )),
+              child: ErrorStateMessage(
+                message: 'Error: ${error.message}',
+              ),
+            ),
             loading: (_) => const SizedBox.shrink(),
             success: (_) => const SizedBox.shrink(),
             error: (_, __) => const SizedBox.shrink(),
@@ -66,14 +89,21 @@ class CartScreen extends StatelessWidget {
   }
 
   Widget _buildCartContent(
-      BuildContext context, List<CartItemModel> items, double total) {
+    BuildContext context,
+    List<CartItemModel> items,
+    double total,
+  ) {
     return SafeArea(
       child: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CartListView(items: items),
+            CartListView(
+              items: items,
+              onPriceUpdated:
+                  _updateTotalPrice, // Pass callback to update total price
+            ),
             verticalSpace(10),
             Text(
               'Total',
@@ -81,7 +111,7 @@ class CartScreen extends StatelessWidget {
             ),
             verticalSpace(15),
             Text(
-              '${total.toStringAsFixed(2)} EGP',
+              '${total.toStringAsFixed(2)} EGP', // Display updated total price
               style: TextStyles.font15MainBlueSemiBold,
             ),
             verticalSpace(15),

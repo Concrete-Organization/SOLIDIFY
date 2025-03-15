@@ -6,7 +6,13 @@ import 'package:solidify/features/marketplace/cart/data/models/get_cart_response
 
 class CartListView extends StatelessWidget {
   final List<CartItemModel> items;
-  const CartListView({super.key, required this.items});
+  final Function(double) onPriceUpdated; // Callback to update total price
+
+  const CartListView({
+    super.key,
+    required this.items,
+    required this.onPriceUpdated,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,10 @@ class CartListView extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 16.h),
         child: const HorizontalDivider(),
       ),
-      itemBuilder: (context, index) => CartListViewItem(item: items[index]),
+      itemBuilder: (context, index) => CartListViewItem(
+        item: items[index],
+        onPriceUpdated: onPriceUpdated, // Pass callback to each item
+      ),
     );
   }
 }
