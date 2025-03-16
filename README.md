@@ -1,4 +1,4 @@
-# solidify
+# SOLIDIFY
 
 A new Flutter project.
 
