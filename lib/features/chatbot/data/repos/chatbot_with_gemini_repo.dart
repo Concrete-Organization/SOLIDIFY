@@ -4,7 +4,6 @@ import 'package:solidify/features/chatbot/data/api/chatbot_api_call.dart';
 import 'package:solidify/features/chatbot/data/models/chatbot_request_model.dart';
 import 'package:solidify/features/chatbot/data/models/chatbot_response_model.dart';
 
-
 class ChatbotWithGeminiRepo {
   final ChatbotApiService _chatbotApiService;
 
@@ -15,7 +14,7 @@ class ChatbotWithGeminiRepo {
     try {
       final response = await _chatbotApiService.getChatbotResponse(
         requestModel,
-        "AIzaSyAFzJbX4CDKeqcF7NxGU_7_Y9gtgCtrQqs",
+        "AIzaSyDN6pgOLokvY2PQtTm9Foy61JYPIIXplLY",
       );
       return ApiResult.success(response);
     } catch (error) {

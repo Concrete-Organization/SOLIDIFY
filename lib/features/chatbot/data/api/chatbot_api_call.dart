@@ -12,7 +12,7 @@ abstract class ChatbotApiService {
 
   @POST("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent")
   Future<ChatbotResponseModel> getChatbotResponse(
-    @Body() ChatbotRequestModel chatbotRequestModel,
-    @Query("key") String apiKey,
-  );
+      @Body() ChatbotRequestModel chatbotRequestModel,
+      @Query("key") String apiKey,
+      );
 }

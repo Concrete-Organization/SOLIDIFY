@@ -26,14 +26,12 @@ class DioFactory {
         ..options.connectTimeout = const Duration(seconds: 30)
         ..options.receiveTimeout = const Duration(seconds: 30);
       _publicDio!.interceptors.addAll([
-        CookieManager(_cookieJar!),
         PrettyDioLogger(
           requestHeader: true,
           responseHeader: true,
           responseBody: true,
           requestBody: true,
         ),
-        TokenInterceptor(_publicDio!),
       ]);
     }
     return _publicDio!;
