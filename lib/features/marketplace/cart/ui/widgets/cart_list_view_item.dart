@@ -66,7 +66,9 @@ class _CartListViewItemState extends State<CartListViewItem> {
     widget.onItemDeleted(widget.item.id);
 
     // Call the deleteCartItem method
-    await context.read<CartCubit>().deleteCartItem(widget.item.id);
+    await context
+        .read<CartCubit>()
+        .deleteCartItem(widget.item.id, widget.item.name);
 
     setState(() {
       _isDeleting = false; // Hide loading

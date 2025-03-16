@@ -51,7 +51,7 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  Future<void> deleteCartItem(String productId) async {
+  Future<void> deleteCartItem(String productId, String name) async {
     emit(CartState.loading(productId));
 
     try {
@@ -59,8 +59,10 @@ class CartCubit extends Cubit<CartState> {
 
       result.when(
         success: (_) async {
-          emit(CartState.cartItemDeleted(productId));
+          // Emit the cartItemDeleted state with productId and name
+          emit(CartState.cartItemDeleted(productId, name));
 
+          // Refresh the cart list after deletion
           await getCartItems();
         },
         failure: (error) {

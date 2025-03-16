@@ -26,7 +26,8 @@ mixin _$CartState {
     required TResult Function(GetCartResponseModel cartResponse)
         cartListSuccess,
     required TResult Function(ApiErrorModel error) cartListError,
-    required TResult Function(String productId) cartItemDeleted,
+    required TResult Function(String productId, String productName)
+        cartItemDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,7 +39,7 @@ mixin _$CartState {
     TResult? Function()? cartLoading,
     TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult? Function(ApiErrorModel error)? cartListError,
-    TResult? Function(String productId)? cartItemDeleted,
+    TResult? Function(String productId, String productName)? cartItemDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,7 +51,7 @@ mixin _$CartState {
     TResult Function()? cartLoading,
     TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult Function(ApiErrorModel error)? cartListError,
-    TResult Function(String productId)? cartItemDeleted,
+    TResult Function(String productId, String productName)? cartItemDeleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -162,7 +163,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(GetCartResponseModel cartResponse)
         cartListSuccess,
     required TResult Function(ApiErrorModel error) cartListError,
-    required TResult Function(String productId) cartItemDeleted,
+    required TResult Function(String productId, String productName)
+        cartItemDeleted,
   }) {
     return initial();
   }
@@ -177,7 +179,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? cartLoading,
     TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult? Function(ApiErrorModel error)? cartListError,
-    TResult? Function(String productId)? cartItemDeleted,
+    TResult? Function(String productId, String productName)? cartItemDeleted,
   }) {
     return initial?.call();
   }
@@ -192,7 +194,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? cartLoading,
     TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult Function(ApiErrorModel error)? cartListError,
-    TResult Function(String productId)? cartItemDeleted,
+    TResult Function(String productId, String productName)? cartItemDeleted,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -332,7 +334,8 @@ class _$CartLoadingImpl implements CartLoading {
     required TResult Function(GetCartResponseModel cartResponse)
         cartListSuccess,
     required TResult Function(ApiErrorModel error) cartListError,
-    required TResult Function(String productId) cartItemDeleted,
+    required TResult Function(String productId, String productName)
+        cartItemDeleted,
   }) {
     return loading(productId);
   }
@@ -347,7 +350,7 @@ class _$CartLoadingImpl implements CartLoading {
     TResult? Function()? cartLoading,
     TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult? Function(ApiErrorModel error)? cartListError,
-    TResult? Function(String productId)? cartItemDeleted,
+    TResult? Function(String productId, String productName)? cartItemDeleted,
   }) {
     return loading?.call(productId);
   }
@@ -362,7 +365,7 @@ class _$CartLoadingImpl implements CartLoading {
     TResult Function()? cartLoading,
     TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult Function(ApiErrorModel error)? cartListError,
-    TResult Function(String productId)? cartItemDeleted,
+    TResult Function(String productId, String productName)? cartItemDeleted,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -510,7 +513,8 @@ class _$CartSuccessImpl implements CartSuccess {
     required TResult Function(GetCartResponseModel cartResponse)
         cartListSuccess,
     required TResult Function(ApiErrorModel error) cartListError,
-    required TResult Function(String productId) cartItemDeleted,
+    required TResult Function(String productId, String productName)
+        cartItemDeleted,
   }) {
     return success(productId);
   }
@@ -525,7 +529,7 @@ class _$CartSuccessImpl implements CartSuccess {
     TResult? Function()? cartLoading,
     TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult? Function(ApiErrorModel error)? cartListError,
-    TResult? Function(String productId)? cartItemDeleted,
+    TResult? Function(String productId, String productName)? cartItemDeleted,
   }) {
     return success?.call(productId);
   }
@@ -540,7 +544,7 @@ class _$CartSuccessImpl implements CartSuccess {
     TResult Function()? cartLoading,
     TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult Function(ApiErrorModel error)? cartListError,
-    TResult Function(String productId)? cartItemDeleted,
+    TResult Function(String productId, String productName)? cartItemDeleted,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -696,7 +700,8 @@ class _$CartErrorImpl implements CartError {
     required TResult Function(GetCartResponseModel cartResponse)
         cartListSuccess,
     required TResult Function(ApiErrorModel error) cartListError,
-    required TResult Function(String productId) cartItemDeleted,
+    required TResult Function(String productId, String productName)
+        cartItemDeleted,
   }) {
     return error(productId, this.error);
   }
@@ -711,7 +716,7 @@ class _$CartErrorImpl implements CartError {
     TResult? Function()? cartLoading,
     TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult? Function(ApiErrorModel error)? cartListError,
-    TResult? Function(String productId)? cartItemDeleted,
+    TResult? Function(String productId, String productName)? cartItemDeleted,
   }) {
     return error?.call(productId, this.error);
   }
@@ -726,7 +731,7 @@ class _$CartErrorImpl implements CartError {
     TResult Function()? cartLoading,
     TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult Function(ApiErrorModel error)? cartListError,
-    TResult Function(String productId)? cartItemDeleted,
+    TResult Function(String productId, String productName)? cartItemDeleted,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -849,7 +854,8 @@ class _$CartListLoadingImpl implements CartListLoading {
     required TResult Function(GetCartResponseModel cartResponse)
         cartListSuccess,
     required TResult Function(ApiErrorModel error) cartListError,
-    required TResult Function(String productId) cartItemDeleted,
+    required TResult Function(String productId, String productName)
+        cartItemDeleted,
   }) {
     return cartLoading();
   }
@@ -864,7 +870,7 @@ class _$CartListLoadingImpl implements CartListLoading {
     TResult? Function()? cartLoading,
     TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult? Function(ApiErrorModel error)? cartListError,
-    TResult? Function(String productId)? cartItemDeleted,
+    TResult? Function(String productId, String productName)? cartItemDeleted,
   }) {
     return cartLoading?.call();
   }
@@ -879,7 +885,7 @@ class _$CartListLoadingImpl implements CartListLoading {
     TResult Function()? cartLoading,
     TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult Function(ApiErrorModel error)? cartListError,
-    TResult Function(String productId)? cartItemDeleted,
+    TResult Function(String productId, String productName)? cartItemDeleted,
     required TResult orElse(),
   }) {
     if (cartLoading != null) {
@@ -1020,7 +1026,8 @@ class _$CartListSuccessImpl implements CartListSuccess {
     required TResult Function(GetCartResponseModel cartResponse)
         cartListSuccess,
     required TResult Function(ApiErrorModel error) cartListError,
-    required TResult Function(String productId) cartItemDeleted,
+    required TResult Function(String productId, String productName)
+        cartItemDeleted,
   }) {
     return cartListSuccess(cartResponse);
   }
@@ -1035,7 +1042,7 @@ class _$CartListSuccessImpl implements CartListSuccess {
     TResult? Function()? cartLoading,
     TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult? Function(ApiErrorModel error)? cartListError,
-    TResult? Function(String productId)? cartItemDeleted,
+    TResult? Function(String productId, String productName)? cartItemDeleted,
   }) {
     return cartListSuccess?.call(cartResponse);
   }
@@ -1050,7 +1057,7 @@ class _$CartListSuccessImpl implements CartListSuccess {
     TResult Function()? cartLoading,
     TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult Function(ApiErrorModel error)? cartListError,
-    TResult Function(String productId)? cartItemDeleted,
+    TResult Function(String productId, String productName)? cartItemDeleted,
     required TResult orElse(),
   }) {
     if (cartListSuccess != null) {
@@ -1198,7 +1205,8 @@ class _$CartListErrorImpl implements CartListError {
     required TResult Function(GetCartResponseModel cartResponse)
         cartListSuccess,
     required TResult Function(ApiErrorModel error) cartListError,
-    required TResult Function(String productId) cartItemDeleted,
+    required TResult Function(String productId, String productName)
+        cartItemDeleted,
   }) {
     return cartListError(this.error);
   }
@@ -1213,7 +1221,7 @@ class _$CartListErrorImpl implements CartListError {
     TResult? Function()? cartLoading,
     TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult? Function(ApiErrorModel error)? cartListError,
-    TResult? Function(String productId)? cartItemDeleted,
+    TResult? Function(String productId, String productName)? cartItemDeleted,
   }) {
     return cartListError?.call(this.error);
   }
@@ -1228,7 +1236,7 @@ class _$CartListErrorImpl implements CartListError {
     TResult Function()? cartLoading,
     TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult Function(ApiErrorModel error)? cartListError,
-    TResult Function(String productId)? cartItemDeleted,
+    TResult Function(String productId, String productName)? cartItemDeleted,
     required TResult orElse(),
   }) {
     if (cartListError != null) {
@@ -1305,7 +1313,7 @@ abstract class _$$CartItemDeletedImplCopyWith<$Res> {
           $Res Function(_$CartItemDeletedImpl) then) =
       __$$CartItemDeletedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String productId});
+  $Res call({String productId, String productName});
 }
 
 /// @nodoc
@@ -1322,11 +1330,16 @@ class __$$CartItemDeletedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? productId = null,
+    Object? productName = null,
   }) {
     return _then(_$CartItemDeletedImpl(
       null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == productName
+          ? _value.productName
+          : productName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -1335,14 +1348,16 @@ class __$$CartItemDeletedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CartItemDeletedImpl implements CartItemDeleted {
-  const _$CartItemDeletedImpl(this.productId);
+  const _$CartItemDeletedImpl(this.productId, this.productName);
 
   @override
   final String productId;
+  @override
+  final String productName;
 
   @override
   String toString() {
-    return 'CartState.cartItemDeleted(productId: $productId)';
+    return 'CartState.cartItemDeleted(productId: $productId, productName: $productName)';
   }
 
   @override
@@ -1351,11 +1366,13 @@ class _$CartItemDeletedImpl implements CartItemDeleted {
         (other.runtimeType == runtimeType &&
             other is _$CartItemDeletedImpl &&
             (identical(other.productId, productId) ||
-                other.productId == productId));
+                other.productId == productId) &&
+            (identical(other.productName, productName) ||
+                other.productName == productName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productId);
+  int get hashCode => Object.hash(runtimeType, productId, productName);
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
@@ -1377,9 +1394,10 @@ class _$CartItemDeletedImpl implements CartItemDeleted {
     required TResult Function(GetCartResponseModel cartResponse)
         cartListSuccess,
     required TResult Function(ApiErrorModel error) cartListError,
-    required TResult Function(String productId) cartItemDeleted,
+    required TResult Function(String productId, String productName)
+        cartItemDeleted,
   }) {
-    return cartItemDeleted(productId);
+    return cartItemDeleted(productId, productName);
   }
 
   @override
@@ -1392,9 +1410,9 @@ class _$CartItemDeletedImpl implements CartItemDeleted {
     TResult? Function()? cartLoading,
     TResult? Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult? Function(ApiErrorModel error)? cartListError,
-    TResult? Function(String productId)? cartItemDeleted,
+    TResult? Function(String productId, String productName)? cartItemDeleted,
   }) {
-    return cartItemDeleted?.call(productId);
+    return cartItemDeleted?.call(productId, productName);
   }
 
   @override
@@ -1407,11 +1425,11 @@ class _$CartItemDeletedImpl implements CartItemDeleted {
     TResult Function()? cartLoading,
     TResult Function(GetCartResponseModel cartResponse)? cartListSuccess,
     TResult Function(ApiErrorModel error)? cartListError,
-    TResult Function(String productId)? cartItemDeleted,
+    TResult Function(String productId, String productName)? cartItemDeleted,
     required TResult orElse(),
   }) {
     if (cartItemDeleted != null) {
-      return cartItemDeleted(productId);
+      return cartItemDeleted(productId, productName);
     }
     return orElse();
   }
@@ -1467,9 +1485,11 @@ class _$CartItemDeletedImpl implements CartItemDeleted {
 }
 
 abstract class CartItemDeleted implements CartState {
-  const factory CartItemDeleted(final String productId) = _$CartItemDeletedImpl;
+  const factory CartItemDeleted(
+      final String productId, final String productName) = _$CartItemDeletedImpl;
 
   String get productId;
+  String get productName;
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.

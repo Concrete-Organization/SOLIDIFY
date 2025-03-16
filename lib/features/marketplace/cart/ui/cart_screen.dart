@@ -6,6 +6,7 @@ import 'package:solidify/core/widgets/error_state_message.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_state.dart';
+import 'package:solidify/core/theming/color_manger.dart'; // Import ColorsManager
 import 'package:solidify/features/marketplace/cart/ui/widgets/cart_content.dart';
 
 class CartScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   double totalPrice = 0;
-  bool _isDeleting = false; // Track if an item is being deleted
+  bool _isDeleting = false;
 
   void _updateTotalPrice(double priceChange) {
     setState(() {
@@ -46,14 +47,17 @@ class _CartScreenState extends State<CartScreen> {
                 SnackBar(content: Text('Error: ${error.message}')),
               );
             },
-            cartItemDeleted: (productId) {
+            cartItemDeleted: (productId, productName) {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Product $productId removed from cart')),
+                SnackBar(
+                  content: Text('$productName removed from cart'),
+                  backgroundColor: ColorsManager.mainBlue, // Set color
+                ),
               );
               // Refresh the cart list after deletion
               context.read<CartCubit>().getCartItems();
               setState(() {
-                _isDeleting = false; // Stop local loading
+                _isDeleting = false;
               });
             },
           );
@@ -85,7 +89,7 @@ class _CartScreenState extends State<CartScreen> {
             cartListError: (error) => ErrorStateMessage(
               message: 'Error: ${error.message}',
             ),
-            cartItemDeleted: (_) {
+            cartItemDeleted: (_, __) {
               return const Center(child: CircularProgressIndicator());
             },
             loading: (_) => const SizedBox.shrink(),
