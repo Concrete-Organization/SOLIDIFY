@@ -34,6 +34,8 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
       rate: (json['rate'] as num).toInt(),
       discount: (json['discount'] as num).toInt(),
       brandName: json['brandName'] as String?,
+      reviews: json['reviews'] as List<dynamic>,
+      reviewsCount: (json['reviewsCount'] as num).toInt(),
     );
 
 Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
@@ -47,4 +49,6 @@ Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
       'rate': instance.rate,
       'discount': instance.discount,
       'brandName': instance.brandName,
+      'reviews': instance.reviews,
+      'reviewsCount': instance.reviewsCount,
     };

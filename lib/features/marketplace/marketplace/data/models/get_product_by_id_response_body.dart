@@ -33,6 +33,8 @@ class ProductModel {
   final int rate;
   final int discount;
   final String? brandName;
+  final List<dynamic> reviews; // Assuming reviews can be any type of object
+  final int reviewsCount;
 
   ProductModel({
     required this.id,
@@ -44,6 +46,8 @@ class ProductModel {
     required this.rate,
     required this.discount,
     this.brandName,
+    required this.reviews,
+    required this.reviewsCount,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
