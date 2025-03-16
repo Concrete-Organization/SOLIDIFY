@@ -19,4 +19,8 @@ class CartState with _$CartState {
   const factory CartState.cartListSuccess(GetCartResponseModel cartResponse) =
       CartListSuccess;
   const factory CartState.cartListError(ApiErrorModel error) = CartListError;
+
+  // Add productName to cartItemDeleted
+  const factory CartState.cartItemDeleted(
+      String productId, String productName) = CartItemDeleted;
 }

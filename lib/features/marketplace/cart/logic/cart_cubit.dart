@@ -51,6 +51,32 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
+  Future<void> deleteCartItem(String productId, String name) async {
+    emit(CartState.loading(productId));
+
+    try {
+      final result = await _cartRepo.deleteCartItem(productId);
+
+      result.when(
+        success: (_) async {
+          // Emit the cartItemDeleted state with productId and name
+          emit(CartState.cartItemDeleted(productId, name));
+
+          // Refresh the cart list after deletion
+          await getCartItems();
+        },
+        failure: (error) {
+          _handleError(productId, error);
+          emit(CartState.error(productId: productId, error: error));
+        },
+      );
+    } catch (e) {
+      final errorModel = ApiErrorHandler.handle(e);
+      _handleError(productId, errorModel);
+      emit(CartState.error(productId: productId, error: errorModel));
+    }
+  }
+
   void _handleError(String productId, ApiErrorModel error) {
     if (!_isErrorShown) {
       _isErrorShown = true;

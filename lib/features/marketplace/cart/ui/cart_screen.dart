@@ -6,6 +6,7 @@ import 'package:solidify/core/widgets/error_state_message.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_state.dart';
+import 'package:solidify/core/theming/color_manger.dart'; // Import ColorsManager
 import 'package:solidify/features/marketplace/cart/ui/widgets/cart_content.dart';
 
 class CartScreen extends StatefulWidget {
@@ -17,6 +18,7 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   double totalPrice = 0;
+  bool _isDeleting = false;
 
   void _updateTotalPrice(double priceChange) {
     setState(() {
@@ -45,20 +47,37 @@ class _CartScreenState extends State<CartScreen> {
                 SnackBar(content: Text('Error: ${error.message}')),
               );
             },
+            cartItemDeleted: (productId, productName) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('$productName removed from cart'),
+                  backgroundColor: ColorsManager.mainBlue, // Set color
+                ),
+              );
+              // Refresh the cart list after deletion
+              context.read<CartCubit>().getCartItems();
+              setState(() {
+                _isDeleting = false;
+              });
+            },
           );
         },
         builder: (context, state) {
+          if (_isDeleting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
           return state.when(
             initial: () {
               context.read<CartCubit>().getCartItems();
               return const Center(child: CircularProgressIndicator());
             },
-            cartLoading: () => LoadingCircleIndicator(),
+            cartLoading: () => const LoadingCircleIndicator(),
             cartListSuccess: (cartResponse) {
               if (totalPrice == 0) {
                 totalPrice = cartResponse.model.items.fold(
                   0,
-                      (sum, item) => sum + item.price,
+                  (sum, item) => sum + item.price,
                 );
               }
               return CartContent(
@@ -70,6 +89,9 @@ class _CartScreenState extends State<CartScreen> {
             cartListError: (error) => ErrorStateMessage(
               message: 'Error: ${error.message}',
             ),
+            cartItemDeleted: (_, __) {
+              return const Center(child: CircularProgressIndicator());
+            },
             loading: (_) => const SizedBox.shrink(),
             success: (_) => const SizedBox.shrink(),
             error: (_, __) => const SizedBox.shrink(),

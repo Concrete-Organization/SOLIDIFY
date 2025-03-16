@@ -7,11 +7,13 @@ import 'package:solidify/features/marketplace/cart/data/models/get_cart_response
 class CartListView extends StatelessWidget {
   final List<CartItemModel> items;
   final Function(double) onPriceUpdated;
+  final Function(String) onItemDeleted; // Callback for item deletion
 
   const CartListView({
     super.key,
     required this.items,
     required this.onPriceUpdated,
+    required this.onItemDeleted,
   });
 
   @override
@@ -28,6 +30,7 @@ class CartListView extends StatelessWidget {
       itemBuilder: (context, index) => CartListViewItem(
         item: items[index],
         onPriceUpdated: onPriceUpdated,
+        onItemDeleted: onItemDeleted,
       ),
     );
   }
