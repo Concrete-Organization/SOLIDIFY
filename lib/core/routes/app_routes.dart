@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
-import 'package:solidify/features/splash/splash_screen.dart';
 import 'package:solidify/features/auth/otp/ui/otp_screen.dart';
 import 'package:solidify/features/auth/login/ui/login_screen.dart';
 import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
@@ -44,10 +43,6 @@ import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_
 class AppRoutes {
   Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.splashScreen:
-        return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
-        );
       case Routes.onboardingScreen:
         return MaterialPageRoute(
           builder: (context) => const OnboardingScreen(),
