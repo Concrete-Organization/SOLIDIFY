@@ -12,7 +12,7 @@ import 'package:solidify/features/marketplace/cart/data/models/get_cart_response
 class CartListViewItem extends StatefulWidget {
   final CartItemModel item;
   final Function(double) onPriceUpdated;
-  final Function(String) onItemDeleted; // Callback for item deletion
+  final Function(String) onItemDeleted;
 
   const CartListViewItem({
     super.key,
@@ -28,12 +28,13 @@ class CartListViewItem extends StatefulWidget {
 class _CartListViewItemState extends State<CartListViewItem> {
   int quantity = 1;
   double itemTotalPrice = 0;
-  bool _isDeleting = false; // Track if this item is being deleted
+  bool _isDeleting = false;
 
   @override
   void initState() {
     super.initState();
-    itemTotalPrice = widget.item.price;
+    quantity = widget.item.quantity;
+    itemTotalPrice = widget.item.price * quantity;
   }
 
   void _increment() {
@@ -56,22 +57,18 @@ class _CartListViewItemState extends State<CartListViewItem> {
 
   void _deleteItem() async {
     setState(() {
-      _isDeleting = true; // Show loading for this item
+      _isDeleting = true;
     });
-
-    // Update the total price
     widget.onPriceUpdated(-itemTotalPrice);
-
-    // Notify the parent about the deletion
     widget.onItemDeleted(widget.item.id);
 
-    // Call the deleteCartItem method
-    await context
-        .read<CartCubit>()
-        .deleteCartItem(widget.item.id, widget.item.name);
+    await context.read<CartCubit>().deleteCartItem(
+      widget.item.id,
+      widget.item.name,
+    );
 
     setState(() {
-      _isDeleting = false; // Hide loading
+      _isDeleting = false;
     });
   }
 
@@ -134,11 +131,11 @@ class _CartListViewItemState extends State<CartListViewItem> {
           top: 0,
           right: 0,
           child: _isDeleting
-              ? const CircularProgressIndicator() // Show loading for this item
+              ? const CircularProgressIndicator()
               : GestureDetector(
-                  onTap: _deleteItem,
-                  child: SvgPicture.asset('assets/svgs/delete_icon.svg'),
-                ),
+            onTap: _deleteItem,
+            child: SvgPicture.asset('assets/svgs/delete_icon.svg'),
+          ),
         ),
       ],
     );

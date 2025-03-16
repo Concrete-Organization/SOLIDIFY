@@ -51,10 +51,9 @@ class _CartScreenState extends State<CartScreen> {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text('$productName removed from cart'),
-                  backgroundColor: ColorsManager.mainBlue, // Set color
+                  backgroundColor: ColorsManager.mainBlue,
                 ),
               );
-              // Refresh the cart list after deletion
               context.read<CartCubit>().getCartItems();
               setState(() {
                 _isDeleting = false;
@@ -77,7 +76,7 @@ class _CartScreenState extends State<CartScreen> {
               if (totalPrice == 0) {
                 totalPrice = cartResponse.model.items.fold(
                   0,
-                  (sum, item) => sum + item.price,
+                      (sum, item) => sum + (item.price * item.quantity),
                 );
               }
               return CartContent(

@@ -35,11 +35,18 @@ class _CartContentState extends State<CartContent> {
     _total = widget.total;
   }
 
-  void _onItemDeleted(String itemId) {
-    // Find the item being deleted
-    final deletedItem = _items.firstWhere((item) => item.id == itemId);
+  @override
+  void didUpdateWidget(CartContent oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.total != oldWidget.total) {
+      setState(() {
+        _total = widget.total;
+      });
+    }
+  }
 
-    // Update the total price
+  void _onItemDeleted(String itemId) {
+    final deletedItem = _items.firstWhere((item) => item.id == itemId);
     setState(() {
       _items.removeWhere((item) => item.id == itemId);
       _total -= deletedItem.price * deletedItem.quantity;
@@ -58,7 +65,7 @@ class _CartContentState extends State<CartContent> {
               CartListView(
                 items: _items,
                 onPriceUpdated: widget.onPriceUpdated,
-                onItemDeleted: _onItemDeleted, // Pass the callback
+                onItemDeleted: _onItemDeleted,
               ),
               Text(
                 'Total',
