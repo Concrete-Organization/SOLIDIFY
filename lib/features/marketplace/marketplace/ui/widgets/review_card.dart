@@ -20,8 +20,10 @@ class _ReviewCardState extends State<ReviewCard> {
 
   @override
   Widget build(BuildContext context) {
-    final reviewText = widget.review.message;
-    const int maxChars = 70;
+    final String reviewText =
+        '${widget.review.message}This product is amazing! This product is so good! It exceeded all my expectations. The quality is top-notch, and the delivery was super fast. I highly recommend it to anyone looking for a reliable and durable product. The customer service was also excellent, and they were very helpful throughout the process. Overall';
+
+    const int maxChars = 70; // Truncate after 70 characters
     final bool needTruncation = reviewText.length > maxChars;
     String displayText;
     if (!isExpanded && needTruncation) {
@@ -30,105 +32,102 @@ class _ReviewCardState extends State<ReviewCard> {
       displayText = reviewText;
     }
 
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: MediaQuery.of(context).size.width *
-            0.8, // Limit width to 80% of screen
-      ),
-      child: Container(
-        padding: EdgeInsets.all(12.h),
-        decoration: BoxDecoration(
-          color: ColorsManager.mainBlueWith1Opacity,
-          border: Border.all(
-            color: ColorsManager.mainBlue,
-            width: 1.w,
-          ),
-          borderRadius: BorderRadius.circular(10.r),
+    return Container(
+      padding: EdgeInsets.all(12.h),
+      decoration: BoxDecoration(
+        color: ColorsManager.mainBlueWith1Opacity,
+        border: Border.all(
+          color: ColorsManager.mainBlue,
+          width: 1.w,
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Profile image
-            Container(
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.transparent,
-              ),
-              child: ClipOval(
-                child: widget.review.profileImageUrl != null
-                    ? Image.network(
-                        widget.review.profileImageUrl!,
-                        width: 42.w,
-                        height: 42.h,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          // Fallback to a default image if the network image fails to load
-                          return SvgPicture.asset(
-                            'assets/svgs/app_prof.svg',
-                            fit: BoxFit.cover,
-                            width: 42.w,
-                            height: 42.h,
-                          );
-                        },
-                      )
-                    : SvgPicture.asset(
-                        'assets/svgs/app_prof.svg',
-                        fit: BoxFit.cover,
-                        width: 42.w,
-                        height: 42.h,
-                      ),
-              ),
+        borderRadius: BorderRadius.circular(10.r),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Profile image
+          Container(
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.transparent,
             ),
-            horizontalSpace(12),
-            // Review content
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.review.companyName,
-                    style: TextStyles.font12LightBlackMedium,
-                  ),
-                  verticalSpace(4),
-                  Row(
-                    children: List.generate(widget.review.userRate.clamp(0, 5),
-                        (index) {
-                      return Padding(
-                        padding: EdgeInsets.only(right: 4.w),
-                        child: SvgPicture.asset(
-                          'assets/svgs/star_icon.svg',
-                          width: 12.w,
-                          height: 12.h,
-                        ),
-                      );
-                    }),
-                  ),
-                  verticalSpace(4),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isExpanded = !isExpanded;
-                      });
-                    },
-                    child: RichText(
-                      text: TextSpan(
-                        style: TextStyles.font13lightBlackRegular,
-                        children: [
-                          TextSpan(text: displayText),
-                          if (needTruncation)
-                            TextSpan(
-                              text: isExpanded ? ' less' : ' more',
-                              style: TextStyles.font13MainBlueMedium,
-                            ),
-                        ],
+            child: ClipOval(
+              child: widget.review.profileImageUrl != null
+                  ? Image.network(
+                      widget.review.profileImageUrl!,
+                      width: 42.w,
+                      height: 42.h,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        // Fallback to a default image if the network image fails to load
+                        return SvgPicture.asset(
+                          'assets/svgs/app_prof.svg',
+                          fit: BoxFit.cover,
+                          width: 42.w,
+                          height: 42.h,
+                        );
+                      },
+                    )
+                  : SvgPicture.asset(
+                      'assets/svgs/app_prof.svg',
+                      fit: BoxFit.cover,
+                      width: 42.w,
+                      height: 42.h,
+                    ),
+            ),
+          ),
+          horizontalSpace(12),
+          // Review content
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Company name from ReviewModel
+                Text(
+                  widget.review.companyName,
+                  style: TextStyles.font12LightBlackMedium,
+                ),
+                verticalSpace(4),
+                // Star rating from ReviewModel
+                Row(
+                  children: List.generate(widget.review.userRate.clamp(0, 5),
+                      (index) {
+                    return Padding(
+                      padding: EdgeInsets.only(right: 4.w),
+                      child: SvgPicture.asset(
+                        'assets/svgs/star_icon.svg',
+                        width: 12.w,
+                        height: 12.h,
                       ),
+                    );
+                  }),
+                ),
+                verticalSpace(4),
+                // Review text with expand/collapse functionality
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isExpanded = !isExpanded;
+                    });
+                  },
+                  child: RichText(
+                    text: TextSpan(
+                      style: TextStyles.font13lightBlackRegular,
+                      children: [
+                        TextSpan(text: displayText),
+                        if (needTruncation)
+                          TextSpan(
+                            text: isExpanded ? ' less' : ' more',
+                            style: TextStyles.font13MainBlueMedium,
+                          ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
