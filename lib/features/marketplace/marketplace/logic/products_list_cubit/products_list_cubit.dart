@@ -12,6 +12,7 @@ class ProductsListCubit extends Cubit<ProductsListState> {
 
   ProductsListCubit(this._repo) : super(const ProductsListState.initial());
 
+  // Fetch best sellers (used in BestSellersScreen)
   Future<void> fetchBestSellers() async {
     _currentPage = 1;
     _hasReachedMax = false;
@@ -38,6 +39,7 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     );
   }
 
+  // Load more best sellers (used in BestSellersScreen)
   Future<void> loadMoreBestSellers() async {
     if (_hasReachedMax) return;
 
@@ -60,6 +62,7 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     );
   }
 
+  // Fetch marketplace products (used in other screens)
   Future<void> fetchMarketplaceProducts() async {
     _currentPage = 1;
     _hasReachedMax = false;
@@ -67,7 +70,6 @@ class ProductsListCubit extends Cubit<ProductsListState> {
 
     emit(const ProductsListState.loading([]));
 
-    // Fetch page 1
     final result = await _repo.getProductsList(_currentPage);
 
     result.when(
@@ -86,6 +88,15 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     );
   }
 
+  // Check if we need to load more products (used in BestSellersScreen)
+  void checkAndLoadMore(int index) {
+    // Load more if the user is near the end of the list
+    if (index >= _allProducts.length - 5 && !_hasReachedMax) {
+      loadMoreBestSellers();
+    }
+  }
+
+  // Cache product IDs for later use
   Future<void> _cacheProductIds(List<Product> products) async {
     final List<String> productIds =
         products.map((product) => product.id).toList();
@@ -93,6 +104,7 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     await SharedPrefHelper.setData('cached_product_ids', idsString);
   }
 
+  // Get cached product IDs
   Future<List<String>> _getCachedProductIds() async {
     final String idsString =
         await SharedPrefHelper.getString('cached_product_ids');
@@ -100,11 +112,13 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     return idsString.split(',');
   }
 
+  // Check if a product is cached
   Future<bool> isProductCached(String productId) async {
     final cachedIds = await _getCachedProductIds();
     return cachedIds.contains(productId);
   }
 
+  // Clear cached product IDs
   Future<void> clearCachedProductIds() async {
     await SharedPrefHelper.removeData('cached_product_ids');
   }
