@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:solidify/core/helpers/spacing.dart';
 import '../../../../core/theming/color_manger.dart';
 import '../../../../core/theming/text_styles.dart';
 
@@ -41,7 +42,7 @@ class UploadContainer extends StatelessWidget {
               )
             else if (isUploaded)
               const Icon(Icons.file_present, color: Colors.blue),
-            SizedBox(width: 10.w),
+            horizontalSpace(10),
             Text(
               isUploaded ? uploadedFileName ?? 'Uploaded' : 'Upload here',
               overflow: TextOverflow.ellipsis,

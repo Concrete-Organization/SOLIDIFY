@@ -26,4 +26,7 @@ class Routes {
   static const String paymentScreen = 'paymentScreen';
   static const String favoritesScreen = 'favoritesScreen';
   static const String bestSellersScreen = 'bestSellersScreen';
+  static const String crackDetectionChooseUploadingImageScreen = 'crackDetectionChooseUploadingImageScreen';
+  static const String uploadCrackGalleryImageScreen = 'uploadCrackGalleryImageScreen';
+  static const String crackDetectionResultScreen = 'crackDetectionResultScreen';
 }
