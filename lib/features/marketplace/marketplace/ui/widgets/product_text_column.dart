@@ -1,11 +1,14 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/expandable_review_text.dart';
+import 'package:solidify/features/marketplace/marketplace/data/models/get_product_by_id_response_body.dart';
 
 class ProductTextColumn extends StatelessWidget {
   final String brandName;
@@ -13,8 +16,9 @@ class ProductTextColumn extends StatelessWidget {
   final double price;
   final String description;
   final int rate;
-
   final String productDescription;
+  final List<ReviewModel>
+      reviews; // Add a parameter to accept the full list of reviews
 
   const ProductTextColumn({
     super.key,
@@ -24,6 +28,7 @@ class ProductTextColumn extends StatelessWidget {
     required this.description,
     required this.rate,
     required this.productDescription,
+    required this.reviews, // Pass the full list of reviews
   });
 
   @override
@@ -79,7 +84,7 @@ class ProductTextColumn extends StatelessWidget {
             ),
             horizontalSpace(10),
             Text(
-              '+123 Reviews',
+              '+${reviews.length} Reviews', // Display the total number of reviews
               style: TextStyles.font14lightBlackRegular,
             ),
           ],
@@ -111,13 +116,19 @@ class ProductTextColumn extends StatelessWidget {
         Row(
           children: [
             Text(
-              'Reviews (+123)',
+              'Reviews (+${reviews.length})', // Display the total number of reviews
               style: TextStyles.font15lightBlackMedium,
             ),
             const Spacer(),
-            Text(
-              'View All',
-              style: TextStyles.font13MainBlueMedium,
+            GestureDetector(
+              onTap: () {
+                // Navigate to the ReviewsScreen and pass the full list of reviews
+                context.pushNamed(Routes.reviewsScreen, arguments: reviews);
+              },
+              child: Text(
+                'View All',
+                style: TextStyles.font13MainBlueMedium,
+              ),
             ),
           ],
         ),

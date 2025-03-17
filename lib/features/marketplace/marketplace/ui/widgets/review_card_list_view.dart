@@ -12,7 +12,8 @@ class ReviewCardListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Get the last 2 reviews
-    final lastTwoReviews = reviews.length > 2 ? reviews.sublist(reviews.length - 2) : reviews;
+    final lastTwoReviews =
+        reviews.length > 2 ? reviews.sublist(reviews.length - 2) : reviews;
 
     return SliverList(
       delegate: SliverChildBuilderDelegate(

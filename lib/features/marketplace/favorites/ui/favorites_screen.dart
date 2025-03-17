@@ -1,5 +1,8 @@
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/features/marketplace/favorites/domain/product_entity.dart';
 import 'package:solidify/features/marketplace/favorites/logic/favorites_provider.dart';
 import 'package:solidify/features/marketplace/favorites/ui/widgets/favorites_empty.dart';
@@ -12,7 +15,16 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorites'),
+        title: Text(
+          'Favorites',
+          style: TextStyles.font18MainSemiBold,
+        ),
+        leading: GestureDetector(
+          onTap: () {
+            context.pop();
+          },
+          child: SvgPicture.asset('assets/svgs/back_arrow.svg'),
+        ),
       ),
       body: Consumer<FavoritesProvider>(
         builder: (context, favoritesProvider, _) {
