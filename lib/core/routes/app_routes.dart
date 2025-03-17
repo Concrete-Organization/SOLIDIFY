@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/features/crack_detection/ui/screens/crack_detection_choose_uploading_image.dart';
+import 'package:solidify/features/crack_detection/ui/screens/crack_detection_result_screen.dart';
+import 'package:solidify/features/crack_detection/ui/screens/upload_crack_gallery_image.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -205,7 +208,18 @@ class AppRoutes {
             child: const BestSellersScreen(),
           ),
         );
-
+      case Routes.crackDetectionChooseUploadingImageScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CrackDetectionChooseUploadingImage(),
+        );
+      case Routes.uploadCrackGalleryImageScreen:
+        return MaterialPageRoute(
+          builder: (context) => const UploadCrackGalleryImage(),
+        );
+      case Routes.crackDetectionResultScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CrackDetectionResultScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(
