@@ -9,6 +9,8 @@ import 'package:solidify/features/chatbot/ui/screens/chatbot_screen.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/community/ui/screens/posts/community_screen.dart';
 import 'package:solidify/features/crack_detection/ui/screens/crack_detection_get_started.dart';
+import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
+import 'package:solidify/features/profile_engineer/ui/profile_engineer_screen.dart';
 
 class EngineerLayout extends StatefulWidget {
   const EngineerLayout({super.key});
@@ -27,7 +29,10 @@ class _EngineerLayoutState extends State<EngineerLayout> {
     ),
     CrackDetectionGetStarted(),
     ChatbotScreen(),
-    SizedBox.shrink(),
+    BlocProvider(
+      create: (context) => getIt<EngineerProfileCubit>(),
+      child: const ProfileEngineerScreen(),
+    ),
   ];
 
   void onItemTapped(int index) {
@@ -39,12 +44,9 @@ class _EngineerLayoutState extends State<EngineerLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: IndexedStack(
-          index: selectedIndex,
-          children: screens,
-        ),
+      body: IndexedStack(
+        index: selectedIndex,
+        children: screens,
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(

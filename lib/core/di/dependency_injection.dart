@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:solidify/features/profile_engineer/data/repo/engineer_profile_repo.dart';
+import 'package:solidify/features/profile_engineer/logic/engineer_posts/engineer_posts_cubit.dart';
+import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
 import '../network/api_service.dart';
 import '../network/dio_factory.dart';
 import '../../features/auth/login/logic/login_cubit.dart';
@@ -94,14 +97,16 @@ Future<void> setupGetIt() async {
       () => ProductCategoryRepo(getIt()));
   getIt.registerFactory<ProductCategoryCubit>(
       () => ProductCategoryCubit(getIt()));
-
   // cart
   getIt.registerLazySingleton<CartRepo>(() => CartRepo(getIt()));
   getIt.registerFactory<CartCubit>(() => CartCubit(getIt()));
-
   // product details
   getIt.registerLazySingleton<ProductDetailsRepo>(
       () => ProductDetailsRepo(getIt()));
   getIt
       .registerFactory<ProductDetailsCubit>(() => ProductDetailsCubit(getIt()));
+  // engineer profile
+  getIt.registerLazySingleton<EngineerProfileRepo>(() => EngineerProfileRepo(getIt()));
+  getIt.registerFactory<EngineerProfileCubit>(() => EngineerProfileCubit(getIt()));
+  getIt.registerFactory<EngineerPostsCubit>(() => EngineerPostsCubit(getIt<PostsRepo>()));
 }

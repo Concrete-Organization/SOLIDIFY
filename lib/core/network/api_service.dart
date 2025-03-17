@@ -1,3 +1,5 @@
+import 'package:solidify/features/profile_engineer/data/models/get_engineer_profile_response.dart';
+
 import 'api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -158,5 +160,10 @@ abstract class ApiService {
   Future<void> deleteCartItem(
     @Path("id") String id,
     @Header('Authorization') String token,
+  );
+
+  @GET('${ApiConstants.engineerProfile}/{id}')
+  Future<GetEngineerProfileResponse> engineerProfile(
+    @Path('id') String id,
   );
 }
