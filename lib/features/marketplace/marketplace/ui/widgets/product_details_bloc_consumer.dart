@@ -74,7 +74,7 @@ class ProductDetailsBlocConsumer extends StatelessWidget {
           ),
         ),
         SliverToBoxAdapter(child: verticalSpace(14)),
-        const ReviewCardListView(),
+        ReviewCardListView(reviews: product.reviews), // Pass reviews here
       ],
     );
   }

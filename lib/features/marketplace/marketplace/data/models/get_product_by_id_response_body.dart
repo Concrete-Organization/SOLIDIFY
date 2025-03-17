@@ -33,7 +33,7 @@ class ProductModel {
   final int rate;
   final int discount;
   final String? brandName;
-  final List<dynamic> reviews; // Assuming reviews can be any type of object
+  final List<ReviewModel> reviews;
   final int reviewsCount;
 
   ProductModel({
@@ -54,4 +54,28 @@ class ProductModel {
       _$ProductModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductModelToJson(this);
+}
+
+@JsonSerializable()
+class ReviewModel {
+  final String id;
+  final String message;
+  final int userRate;
+  final String concreteCompanyId;
+  final String companyName;
+  final String? profileImageUrl;
+
+  ReviewModel({
+    required this.id,
+    required this.message,
+    required this.userRate,
+    required this.concreteCompanyId,
+    required this.companyName,
+    this.profileImageUrl,
+  });
+
+  factory ReviewModel.fromJson(Map<String, dynamic> json) =>
+      _$ReviewModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ReviewModelToJson(this);
 }

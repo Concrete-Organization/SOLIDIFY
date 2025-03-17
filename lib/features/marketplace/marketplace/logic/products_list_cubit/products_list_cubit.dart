@@ -12,7 +12,6 @@ class ProductsListCubit extends Cubit<ProductsListState> {
 
   ProductsListCubit(this._repo) : super(const ProductsListState.initial());
 
-  // Fetch best sellers (used in BestSellersScreen)
   Future<void> fetchBestSellers() async {
     _currentPage = 1;
     _hasReachedMax = false;
@@ -39,7 +38,6 @@ class ProductsListCubit extends Cubit<ProductsListState> {
     );
   }
 
-  // Load more best sellers (used in BestSellersScreen)
   Future<void> loadMoreBestSellers() async {
     if (_hasReachedMax) return;
 
