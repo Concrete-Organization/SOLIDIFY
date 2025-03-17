@@ -20,12 +20,9 @@ class ApiConstants {
   static const String likeComment = 'Like/comment';
   static const String likeReply = 'Like/reply';
   static const String reply = 'reply';
-
   static String categoryEndpoint(int id) => "Category/$id";
-
   static String cartItemEndpoint(String id) => "CartItem/$id";
-
   static const String productWithId = "Product/{id}";
-
   static const String cart = "Cart";
+  static const String engineerProfile = "EngineerProfile";
 }

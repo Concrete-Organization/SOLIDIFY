@@ -212,5 +212,9 @@ class TextStyles {
     color: ColorsManager.red,
     fontWeight: FontWeightHelper.regular,
   );
-
+  static TextStyle font12WhiteMedium = GoogleFonts.poppins(
+    fontSize: 12.sp,
+    color: ColorsManager.white,
+    fontWeight: FontWeightHelper.medium,
+  );
 }

@@ -226,8 +226,7 @@ class AppRoutes {
         final List<ReviewModel> reviews =
             settings.arguments as List<ReviewModel>;
         return MaterialPageRoute(
-          builder: (context) =>
-              ReviewsScreen(reviews: reviews), // Pass reviews to ReviewsScreen
+          builder: (context) => ReviewsScreen(reviews: reviews),
         );
       default:
         return MaterialPageRoute(
