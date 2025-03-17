@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/features/app_flows_layouts/company_layout.dart';
-import 'package:solidify/features/app_flows_layouts/engineer_layout.dart';
-import 'package:solidify/features/crack_detection/ui/screens/crack_detection_choose_uploading_image.dart';
-import 'package:solidify/features/crack_detection/ui/screens/crack_detection_result_screen.dart';
-import 'package:solidify/features/crack_detection/ui/screens/upload_crack_gallery_image.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -15,6 +10,8 @@ import 'package:solidify/features/onboarding/onboarding_screen.dart';
 import 'package:solidify/features/chatbot/ui/screens/chat_screen.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
 import 'package:solidify/features/marketplace/cart/ui/cart_screen.dart';
+import 'package:solidify/features/app_flows_layouts/company_layout.dart';
+import 'package:solidify/features/app_flows_layouts/engineer_layout.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/features/marketplace/order/screens/payment_screen.dart';
@@ -28,12 +25,17 @@ import 'package:solidify/features/auth/forget_password/ui/forget_password_screen
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/address_details_screen.dart';
+import 'package:solidify/features/marketplace/marketplace/ui/screens/reviews_screen.dart';
+import 'package:solidify/features/crack_detection/ui/screens/upload_crack_gallery_image.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/best_sellers_screen.dart';
+import 'package:solidify/features/crack_detection/ui/screens/crack_detection_result_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/product_details_screen.dart';
 import '../../features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/product_category_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_result.dart';
+import 'package:solidify/features/crack_detection/ui/screens/crack_detection_choose_uploading_image.dart';
+import 'package:solidify/features/marketplace/marketplace/data/models/get_product_by_id_response_body.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/products_list_cubit/products_list_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
 import '../../features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
@@ -219,6 +221,13 @@ class AppRoutes {
       case Routes.crackDetectionResultScreen:
         return MaterialPageRoute(
           builder: (context) => const CrackDetectionResultScreen(),
+        );
+      case Routes.reviewsScreen:
+        final List<ReviewModel> reviews =
+            settings.arguments as List<ReviewModel>;
+        return MaterialPageRoute(
+          builder: (context) =>
+              ReviewsScreen(reviews: reviews), // Pass reviews to ReviewsScreen
         );
       default:
         return MaterialPageRoute(

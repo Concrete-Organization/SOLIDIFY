@@ -93,7 +93,6 @@ class ProductModel {
   Map<String, dynamic> toJson() => _$ProductModelToJson(this);
 }
 
-// Extension added here
 extension ProductModelToEntity on ProductModel {
   ProductEntity toEntity() => ProductEntity(
         id: id,

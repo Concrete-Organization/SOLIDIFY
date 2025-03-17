@@ -68,10 +68,15 @@ class BestSellersScreen extends StatelessWidget {
 
     return NotificationListener<ScrollNotification>(
       onNotification: (notification) {
-        if (notification is ScrollEndNotification &&
-            notification.metrics.pixels ==
-                notification.metrics.maxScrollExtent) {
-          BlocProvider.of<ProductsListCubit>(context).loadMoreBestSellers();
+        if (notification is ScrollUpdateNotification) {
+          final maxScroll = notification.metrics.maxScrollExtent;
+          final currentScroll = notification.metrics.pixels;
+          final threshold =
+              maxScroll * 0.8; // Load more when 80% of the list is scrolled
+
+          if (currentScroll >= threshold && !hasReachedMax) {
+            BlocProvider.of<ProductsListCubit>(context).loadMoreBestSellers();
+          }
         }
         return false;
       },
@@ -88,30 +93,28 @@ class BestSellersScreen extends StatelessWidget {
                 childAspectRatio: 0.6,
               ),
               delegate: SliverChildBuilderDelegate(
-                (context, index) => GestureDetector(
-                  onTap: () {
-                    // Navigate to product details screen
-                    context.pushNamed(
-                      Routes.productDetailsScreen,
-                      arguments: products[index].id,
-                    );
-                  },
-                  child: ProductGridViewItem(
-                    product: products[index],
-                    index: index,
-                  ),
-                ),
+                (context, index) {
+                  // Check and load more if the user is near the end
+                  BlocProvider.of<ProductsListCubit>(context)
+                      .checkAndLoadMore(index);
+
+                  return GestureDetector(
+                    onTap: () {
+                      context.pushNamed(
+                        Routes.productDetailsScreen,
+                        arguments: products[index].id,
+                      );
+                    },
+                    child: ProductGridViewItem(
+                      product: products[index],
+                      index: index,
+                    ),
+                  );
+                },
                 childCount: products.length,
               ),
             ),
           ),
-          if (isLoading)
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 20.h),
-                child: const LoadingCircleIndicator(),
-              ),
-            ),
           if (hasReachedMax)
             SliverToBoxAdapter(
               child: Padding(

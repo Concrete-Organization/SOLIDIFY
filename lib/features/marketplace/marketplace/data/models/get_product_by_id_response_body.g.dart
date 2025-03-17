@@ -34,6 +34,10 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
       rate: (json['rate'] as num).toInt(),
       discount: (json['discount'] as num).toInt(),
       brandName: json['brandName'] as String?,
+      reviews: (json['reviews'] as List<dynamic>)
+          .map((e) => ReviewModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      reviewsCount: (json['reviewsCount'] as num).toInt(),
     );
 
 Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
@@ -47,4 +51,25 @@ Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
       'rate': instance.rate,
       'discount': instance.discount,
       'brandName': instance.brandName,
+      'reviews': instance.reviews,
+      'reviewsCount': instance.reviewsCount,
+    };
+
+ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) => ReviewModel(
+      id: json['id'] as String,
+      message: json['message'] as String,
+      userRate: (json['userRate'] as num).toInt(),
+      concreteCompanyId: json['concreteCompanyId'] as String,
+      companyName: json['companyName'] as String,
+      profileImageUrl: json['profileImageUrl'] as String?,
+    );
+
+Map<String, dynamic> _$ReviewModelToJson(ReviewModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'message': instance.message,
+      'userRate': instance.userRate,
+      'concreteCompanyId': instance.concreteCompanyId,
+      'companyName': instance.companyName,
+      'profileImageUrl': instance.profileImageUrl,
     };

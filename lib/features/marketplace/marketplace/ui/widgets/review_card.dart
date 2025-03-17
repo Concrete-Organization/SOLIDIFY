@@ -4,9 +4,12 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/features/marketplace/marketplace/data/models/get_product_by_id_response_body.dart';
 
 class ReviewCard extends StatefulWidget {
-  const ReviewCard({super.key});
+  final ReviewModel review;
+
+  const ReviewCard({super.key, required this.review});
 
   @override
   State<ReviewCard> createState() => _ReviewCardState();
@@ -15,13 +18,12 @@ class ReviewCard extends StatefulWidget {
 class _ReviewCardState extends State<ReviewCard> {
   bool isExpanded = false;
 
-  final String reviewText =
-      "Ambuja cement met all my expectations, ensuring no delays "
-      "or safety compromises.";
-
   @override
   Widget build(BuildContext context) {
-    const int maxChars = 70;
+    final String reviewText =
+        '${widget.review.message}This product is amazing! This product is so good! It exceeded all my expectations. The quality is top-notch, and the delivery was super fast. I highly recommend it to anyone looking for a reliable and durable product. The customer service was also excellent, and they were very helpful throughout the process. Overall';
+
+    const int maxChars = 70; // Truncate after 70 characters
     final bool needTruncation = reviewText.length > maxChars;
     String displayText;
     if (!isExpanded && needTruncation) {
@@ -43,32 +45,53 @@ class _ReviewCardState extends State<ReviewCard> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Profile image
           Container(
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.transparent,
             ),
             child: ClipOval(
-              child: SvgPicture.asset(
-                'assets/svgs/app_prof.svg',
-                fit: BoxFit.cover,
-                width: 42.w,
-                height: 42.h,
-              ),
+              child: widget.review.profileImageUrl != null
+                  ? Image.network(
+                      widget.review.profileImageUrl!,
+                      width: 42.w,
+                      height: 42.h,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        // Fallback to a default image if the network image fails to load
+                        return SvgPicture.asset(
+                          'assets/svgs/app_prof.svg',
+                          fit: BoxFit.cover,
+                          width: 42.w,
+                          height: 42.h,
+                        );
+                      },
+                    )
+                  : SvgPicture.asset(
+                      'assets/svgs/app_prof.svg',
+                      fit: BoxFit.cover,
+                      width: 42.w,
+                      height: 42.h,
+                    ),
             ),
           ),
           horizontalSpace(12),
+          // Review content
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Company name from ReviewModel
                 Text(
-                  'Ahmed Adel',
+                  widget.review.companyName,
                   style: TextStyles.font12LightBlackMedium,
                 ),
                 verticalSpace(4),
+                // Star rating from ReviewModel
                 Row(
-                  children: List.generate(5, (index) {
+                  children: List.generate(widget.review.userRate.clamp(0, 5),
+                      (index) {
                     return Padding(
                       padding: EdgeInsets.only(right: 4.w),
                       child: SvgPicture.asset(
@@ -80,6 +103,7 @@ class _ReviewCardState extends State<ReviewCard> {
                   }),
                 ),
                 verticalSpace(4),
+                // Review text with expand/collapse functionality
                 GestureDetector(
                   onTap: () {
                     setState(() {

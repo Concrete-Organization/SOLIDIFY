@@ -70,11 +70,13 @@ class ProductDetailsBlocConsumer extends StatelessWidget {
               description: product.description,
               productDescription: product.description,
               rate: product.rate,
+              reviews: product.reviews, // Pass the full list of reviews
             ),
           ),
         ),
         SliverToBoxAdapter(child: verticalSpace(14)),
-        const ReviewCardListView(),
+        ReviewCardListView(
+            reviews: product.reviews), // Pass the full list of reviews
       ],
     );
   }
