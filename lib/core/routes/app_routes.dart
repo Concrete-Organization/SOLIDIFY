@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/features/app_flows_layouts/company_layout.dart';
+import 'package:solidify/features/app_flows_layouts/engineer_layout.dart';
+import 'package:solidify/features/crack_detection/ui/screens/crack_detection_choose_uploading_image.dart';
+import 'package:solidify/features/crack_detection/ui/screens/crack_detection_result_screen.dart';
+import 'package:solidify/features/crack_detection/ui/screens/upload_crack_gallery_image.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -7,9 +12,7 @@ import 'package:solidify/features/auth/login/ui/login_screen.dart';
 import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
 import 'package:solidify/features/auth/login/logic/login_cubit.dart';
 import 'package:solidify/features/onboarding/onboarding_screen.dart';
-import 'package:solidify/features/company_layout/company_layout.dart';
 import 'package:solidify/features/chatbot/ui/screens/chat_screen.dart';
-import 'package:solidify/features/engineer_layout/engineer_layout.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
 import 'package:solidify/features/marketplace/cart/ui/cart_screen.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
@@ -205,7 +208,18 @@ class AppRoutes {
             child: const BestSellersScreen(),
           ),
         );
-
+      case Routes.crackDetectionChooseUploadingImageScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CrackDetectionChooseUploadingImage(),
+        );
+      case Routes.uploadCrackGalleryImageScreen:
+        return MaterialPageRoute(
+          builder: (context) => const UploadCrackGalleryImage(),
+        );
+      case Routes.crackDetectionResultScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CrackDetectionResultScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(

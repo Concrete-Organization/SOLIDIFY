@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/chatbot/ui/screens/chatbot_screen.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/community/ui/screens/posts/community_screen.dart';
+import 'package:solidify/features/crack_detection/ui/screens/crack_detection_get_started.dart';
 
 class EngineerLayout extends StatefulWidget {
   const EngineerLayout({super.key});
@@ -24,7 +25,7 @@ class _EngineerLayoutState extends State<EngineerLayout> {
       create: (context) => getIt<PostsCubit>()..fetchPosts(),
       child: const CommunityScreen(),
     ),
-    SizedBox.shrink(),
+    CrackDetectionGetStarted(),
     ChatbotScreen(),
     SizedBox.shrink(),
   ];
