@@ -1,14 +1,11 @@
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
-import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/review_card.dart';
 import 'package:solidify/features/marketplace/marketplace/data/models/get_product_by_id_response_body.dart';
 
 class ReviewsScreen extends StatelessWidget {
-  final List<ReviewModel>
-      reviews; // Add a parameter to accept the full list of reviews
+  final List<ReviewModel> reviews;
 
   const ReviewsScreen({super.key, required this.reviews});
 
@@ -19,15 +16,6 @@ class ReviewsScreen extends StatelessWidget {
         title: Text(
           'Reviews',
           style: TextStyles.font18MainSemiBold,
-        ),
-        leading: GestureDetector(
-          onTap: () {
-            context.pop();
-          },
-          child: SizedBox(
-              width: 10.w,
-              height: 10.h,
-              child: SvgPicture.asset('assets/svgs/back_arrow.svg')),
         ),
       ),
       body: ListView.builder(

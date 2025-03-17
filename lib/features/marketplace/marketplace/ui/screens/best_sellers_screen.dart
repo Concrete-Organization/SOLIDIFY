@@ -71,8 +71,7 @@ class BestSellersScreen extends StatelessWidget {
         if (notification is ScrollUpdateNotification) {
           final maxScroll = notification.metrics.maxScrollExtent;
           final currentScroll = notification.metrics.pixels;
-          final threshold =
-              maxScroll * 0.8; // Load more when 80% of the list is scrolled
+          final threshold = maxScroll * 0.8;
 
           if (currentScroll >= threshold && !hasReachedMax) {
             BlocProvider.of<ProductsListCubit>(context).loadMoreBestSellers();
@@ -94,7 +93,6 @@ class BestSellersScreen extends StatelessWidget {
               ),
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  // Check and load more if the user is near the end
                   BlocProvider.of<ProductsListCubit>(context)
                       .checkAndLoadMore(index);
 
