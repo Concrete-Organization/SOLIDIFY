@@ -23,6 +23,7 @@ import 'package:solidify/features/profile_company/ui/screens/orders_list_screen.
 import 'package:solidify/features/community/ui/screens/posts/create_post_screen.dart';
 import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
+import 'package:solidify/features/profile_company/ui/screens/notifications_screen.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/address_details_screen.dart';
@@ -232,6 +233,10 @@ class AppRoutes {
               case Routes.ordersListScreen:
         return MaterialPageRoute(
           builder: (context) => const OrdersListScreen(),
+        );
+         case Routes.notificationsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const NotificationsScreen(),
         );
 
       default:

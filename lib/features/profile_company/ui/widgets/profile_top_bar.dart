@@ -1,5 +1,7 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileTopBar extends StatelessWidget {
@@ -13,7 +15,11 @@ class ProfileTopBar extends StatelessWidget {
         children: [
           SvgPicture.asset('assets/svgs/settings_icon.svg'),
           Spacer(),
-          SvgPicture.asset('assets/svgs/notification_icon.svg'),
+          GestureDetector(
+              onTap: () {
+                context.pushNamed(Routes.notificationsScreen);
+              },
+              child: SvgPicture.asset('assets/svgs/notification_icon.svg')),
         ],
       ),
     );
