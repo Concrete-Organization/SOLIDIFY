@@ -1,6 +1,8 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,9 +41,14 @@ class ProfileCompanyScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              'Show All',
-                              style: TextStyles.font12MainBlueMedium,
+                            GestureDetector(
+                              onTap: () {
+                                context.pushNamed(Routes.ordersListScreen);
+                              },
+                              child: Text(
+                                'Show All',
+                                style: TextStyles.font12MainBlueMedium,
+                              ),
                             ),
                             horizontalSpace(10),
                             SvgPicture.asset('assets/svgs/see_all_arrow.svg')

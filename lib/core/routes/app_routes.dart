@@ -19,6 +19,7 @@ import 'package:solidify/features/marketplace/favorites/ui/favorites_screen.dart
 import 'package:solidify/features/marketplace/order/screens/checkout_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/order_done_screen.dart';
 import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.dart';
+import 'package:solidify/features/profile_company/ui/screens/orders_list_screen.dart';
 import 'package:solidify/features/community/ui/screens/posts/create_post_screen.dart';
 import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
@@ -228,6 +229,11 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => ReviewsScreen(reviews: reviews),
         );
+              case Routes.ordersListScreen:
+        return MaterialPageRoute(
+          builder: (context) => const OrdersListScreen(),
+        );
+
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(

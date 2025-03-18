@@ -32,4 +32,5 @@ class Routes {
       'uploadCrackGalleryImageScreen';
   static const String crackDetectionResultScreen = 'crackDetectionResultScreen';
   static const String reviewsScreen = 'reviewsScreen';
+  static const String ordersListScreen = 'ordersListScreen';
 }
