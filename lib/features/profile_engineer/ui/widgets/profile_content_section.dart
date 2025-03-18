@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/di/dependency_injection.dart';
-import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/features/profile_engineer/logic/engineer_comments/engineer_comments_cubit.dart';
 import 'package:solidify/features/profile_engineer/logic/engineer_posts/engineer_posts_cubit.dart';
-import 'engineer_posts_list.dart';
+import 'package:solidify/features/profile_engineer/ui/widgets/engineer_comments_list.dart';
+import 'latest_post_section.dart';
 
 class ProfileContentSection extends StatefulWidget {
   final int currentTabIndex;
@@ -25,14 +26,14 @@ class _ProfileContentSectionState extends State<ProfileContentSection> {
     return Expanded(
       child: widget.currentTabIndex == 0
           ? BlocProvider(
-        create: (context) => getIt<EngineerPostsCubit>()..fetchEngineerPosts(widget.engineerId),
-        child: const EngineerPostsList(),
+        create: (context) => getIt<EngineerPostsCubit>()
+          ..fetchEngineerPosts(widget.engineerId),
+        child: LatestPostSection(engineerId: widget.engineerId),
       )
-          : Center(
-        child: Text(
-          'Comments section coming soon',
-          style: TextStyles.font15MainBlueMedium,
-        ),
+          : BlocProvider(
+        create: (context) => getIt<EngineerCommentsCubit>()
+          ..fetchEngineerComments(widget.engineerId),
+        child: const EngineerCommentsList(),
       ),
     );
   }

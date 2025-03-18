@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,18 +28,13 @@ class ProfileEngineerNameAndImage extends StatelessWidget {
               radius: 37.5.r,
               child: profileImageUrl != null && profileImageUrl!.isNotEmpty
                   ? ClipOval(
-                child: Image.network(
-                  profileImageUrl!,
+                child: CachedNetworkImage(
+                  imageUrl: profileImageUrl!,
                   width: 75.w,
                   height: 75.h,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return SvgPicture.asset('assets/svgs/app_prof.svg');
-                  },
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return Center(child: CircularProgressIndicator());
-                  },
+                  errorWidget: (context, url, error) =>
+                      SvgPicture.asset('assets/svgs/app_prof.svg'),
                 ),
               )
                   : SvgPicture.asset('assets/svgs/app_prof.svg'),
