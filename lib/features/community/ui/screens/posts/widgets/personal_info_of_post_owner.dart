@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,18 +26,23 @@ class PersonalInfoOfPostOwner extends StatelessWidget {
         backgroundColor: Colors.transparent,
         child: profileImageUrl != null
             ? ClipOval(
-          child: Image.network(
-            profileImageUrl!,
-            fit: BoxFit.cover,
-            width: 42.w,
-            height: 42.w,
-          ),
-        )
+                child: CachedNetworkImage(
+                  imageUrl: profileImageUrl!,
+                  fit: BoxFit.cover,
+                  width: 42.w,
+                  height: 42.w,
+                  errorWidget: (context, url, error) => SvgPicture.asset(
+                    'assets/svgs/app_prof.svg',
+                    width: 42.w,
+                    height: 42.w,
+                  ),
+                ),
+              )
             : SvgPicture.asset(
-          'assets/svgs/app_prof.svg',
-          width: 42.w,
-          height: 42.w,
-        ),
+                'assets/svgs/app_prof.svg',
+                width: 42.w,
+                height: 42.w,
+              ),
       ),
       title: Text(
         engineerName,

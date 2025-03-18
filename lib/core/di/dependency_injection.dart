@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:solidify/features/profile_engineer/data/repo/engineer_profile_repo.dart';
+import 'package:solidify/features/profile_engineer/logic/engineer_comments/engineer_comments_cubit.dart';
 import 'package:solidify/features/profile_engineer/logic/engineer_posts/engineer_posts_cubit.dart';
 import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
 import '../network/api_service.dart';
@@ -109,4 +110,5 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<EngineerProfileRepo>(() => EngineerProfileRepo(getIt()));
   getIt.registerFactory<EngineerProfileCubit>(() => EngineerProfileCubit(getIt()));
   getIt.registerFactory<EngineerPostsCubit>(() => EngineerPostsCubit(getIt<PostsRepo>()));
-}
+  getIt.registerLazySingleton<EngineerCommentsCubit>(
+          () => EngineerCommentsCubit(getIt<PostsRepo>(), getIt<CommentsRepo>()));}

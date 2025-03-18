@@ -38,9 +38,18 @@ class _CommentItemState extends State<CommentItem> {
             CircleAvatar(
               radius: 17.w,
               backgroundColor: Colors.transparent,
-              child: SvgPicture.asset(
-                comment.profileImageUrl ?? 'assets/svgs/app_prof.svg',
-              ),
+              child: comment.profileImageUrl != null &&
+                  Uri.tryParse(comment.profileImageUrl!)?.hasAbsolutePath == true
+                  ? ClipRRect(
+                borderRadius: BorderRadius.circular(17.w),
+                child: Image.network(
+                  comment.profileImageUrl!,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) =>
+                      SvgPicture.asset('assets/svgs/app_prof.svg'),
+                ),
+              )
+                  : SvgPicture.asset('assets/svgs/app_prof.svg'),
             ),
             horizontalSpace(10),
             Column(
