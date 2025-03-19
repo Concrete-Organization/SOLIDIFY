@@ -1,17 +1,18 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/features/community/data/repos/posts_repo.dart';
-import 'package:solidify/features/profile_engineer/logic/engineer_posts/engineer_posts_state.dart';
+import 'package:solidify/features/profile_engineer/logic/profile_engineer_posts/profile_engineer_posts_state.dart';
 
-class EngineerPostsCubit extends Cubit<EngineerPostsState> {
+class ProfileEngineerPostsCubit extends Cubit<ProfileEngineerPostsState> {
   final PostsRepo _postsRepo;
   String? _engineerId;
 
-  EngineerPostsCubit(this._postsRepo) : super(const EngineerPostsState.initial());
+  ProfileEngineerPostsCubit(this._postsRepo)
+      : super(const ProfileEngineerPostsState.initial());
 
   Future<void> fetchEngineerPosts(String engineerId) async {
     _engineerId = engineerId;
-    emit(const EngineerPostsState.loading());
+    emit(const ProfileEngineerPostsState.loading());
     await _loadPosts();
   }
 
@@ -22,7 +23,11 @@ class EngineerPostsCubit extends Cubit<EngineerPostsState> {
 
   Future<void> _loadPosts() async {
     if (_engineerId == null) {
-      emit(EngineerPostsState.error(ApiErrorModel(message: 'Engineer ID not provided')));
+      emit(
+        ProfileEngineerPostsState.error(
+          ApiErrorModel(message: 'Engineer ID not provided'),
+        ),
+      );
       return;
     }
 
@@ -36,10 +41,10 @@ class EngineerPostsCubit extends Cubit<EngineerPostsState> {
 
         engineerPosts.sort((a, b) => b.creationDate.compareTo(a.creationDate));
 
-        emit(EngineerPostsState.success(engineerPosts));
+        emit(ProfileEngineerPostsState.success(engineerPosts));
       },
       failure: (error) {
-        emit(EngineerPostsState.error(error));
+        emit(ProfileEngineerPostsState.error(error));
       },
     );
   }

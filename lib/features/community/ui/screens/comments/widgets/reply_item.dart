@@ -5,6 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/format_date.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/widgets/custom_network_cached_app_profile_pic.dart';
+import 'package:solidify/core/widgets/expandable_text.dart';
 import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
 import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
 
@@ -23,17 +25,15 @@ class ReplyItem extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CircleAvatar(
-                radius: 12.w,
-                backgroundColor: Colors.transparent,
-                child: SvgPicture.asset(
-                  reply.profileImageUrl ?? 'assets/svgs/app_prof.svg',
-                ),
+              CustomNetworkCachedAppProfilePic(
+                profileImageUrl: reply.profileImageUrl,
+                radius: 17,
               ),
-              horizontalSpace(8),
+              horizontalSpace(10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  verticalSpace(10),
                   Text(
                     reply.engineerName,
                     style: TextStyles.font10lightBlackRegularWithOpacity,
@@ -47,19 +47,19 @@ class ReplyItem extends StatelessWidget {
               ),
             ],
           ),
-          verticalSpace(4),
+          verticalSpace(5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(left: 30.w),
-                  child: Text(
-                    reply.content,
+                  padding: EdgeInsets.symmetric(horizontal: 45.w),
+                  child: ExpandableText(
+                    text: reply.content,
                     style: TextStyles.font10lightBlackRegular,
-                    maxLines: 20,
-                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
+                    fontSize: 8,
                   ),
                 ),
               ),
@@ -75,7 +75,7 @@ class ReplyItem extends StatelessWidget {
                       height: 14.h,
                     ),
                   ),
-                  horizontalSpace(1),
+                  verticalSpace(1),
                   Text(
                     reply.likesCount.toString(),
                     style: TextStyles.font8lightBlackLightWith70Opacity,
@@ -84,7 +84,6 @@ class ReplyItem extends StatelessWidget {
               ),
             ],
           ),
-          verticalSpace(8),
         ],
       ),
     );

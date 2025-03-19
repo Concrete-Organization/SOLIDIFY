@@ -5,8 +5,8 @@ import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 
-class EmptyPostsState extends StatelessWidget {
-  const EmptyPostsState({super.key});
+class EmptyProfilePostsState extends StatelessWidget {
+  const EmptyProfilePostsState({super.key});
 
   @override
   Widget build(BuildContext context) {

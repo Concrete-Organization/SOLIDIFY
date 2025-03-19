@@ -60,9 +60,9 @@ class ShimmerCommentItem extends StatelessWidget {
                     height: 16.h,
                     color: Colors.grey,
                   ),
-                  SizedBox(height: 1.h),
+                  verticalSpace(1),
                   Container(
-                    width: 20.w,
+                    width: 8.w,
                     height: 8.h,
                     color: Colors.grey,
                   ),

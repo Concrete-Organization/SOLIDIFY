@@ -1,9 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:solidify/features/profile_engineer/data/repo/engineer_profile_repo.dart';
-import 'package:solidify/features/profile_engineer/logic/engineer_comments/engineer_comments_cubit.dart';
-import 'package:solidify/features/profile_engineer/logic/engineer_posts/engineer_posts_cubit.dart';
-import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
 import '../network/api_service.dart';
 import '../network/dio_factory.dart';
 import '../../features/auth/login/logic/login_cubit.dart';
@@ -36,6 +32,10 @@ import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/repos/engineer_account_sign_up_repo.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/logic/concrete_company_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/data/repos/concrete_company_account_repo.dart';
+import 'package:solidify/features/profile_engineer/data/repo/engineer_profile_repo.dart';
+import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
+import 'package:solidify/features/profile_engineer/logic/profile_engineer_comments/profile_engineer_comments_cubit.dart';
+import 'package:solidify/features/profile_engineer/logic/profile_engineer_posts/profile_engineer_posts_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -107,8 +107,12 @@ Future<void> setupGetIt() async {
   getIt
       .registerFactory<ProductDetailsCubit>(() => ProductDetailsCubit(getIt()));
   // engineer profile
-  getIt.registerLazySingleton<EngineerProfileRepo>(() => EngineerProfileRepo(getIt()));
-  getIt.registerFactory<EngineerProfileCubit>(() => EngineerProfileCubit(getIt()));
-  getIt.registerFactory<EngineerPostsCubit>(() => EngineerPostsCubit(getIt<PostsRepo>()));
-  getIt.registerLazySingleton<EngineerCommentsCubit>(
-          () => EngineerCommentsCubit(getIt<PostsRepo>(), getIt<CommentsRepo>()));}
+  getIt.registerLazySingleton<EngineerProfileRepo>(
+      () => EngineerProfileRepo(getIt()));
+  getIt.registerFactory<EngineerProfileCubit>(
+      () => EngineerProfileCubit(getIt()));
+  getIt.registerFactory<ProfileEngineerPostsCubit>(
+      () => ProfileEngineerPostsCubit(getIt<PostsRepo>()));
+  getIt.registerFactory<ProfileEngineerCommentsCubit>(
+      () => ProfileEngineerCommentsCubit(getIt<PostsRepo>(), getIt<CommentsRepo>()));
+}
