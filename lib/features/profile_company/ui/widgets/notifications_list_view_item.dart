@@ -21,37 +21,52 @@ class NotificationsListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity, // Ensures the container takes full width
-      padding: EdgeInsets.all(12.w),
+      width: double.infinity, // Span full width
+      padding:
+          EdgeInsets.symmetric(vertical: 12.h), // Remove horizontal padding
       decoration: BoxDecoration(
         color: isHighlighted
             ? ColorsManager.mainBlueWith15Opacity
             : Colors.transparent,
-        borderRadius: BorderRadius.circular(8.r),
+        border: isHighlighted
+            ? Border(
+                top: BorderSide(
+                  color: ColorsManager.mainBlue.withOpacity(0.2),
+                  width: 1.w,
+                ),
+                bottom: BorderSide(
+                  color: ColorsManager.mainBlue.withOpacity(0.2),
+                  width: 1.w,
+                ),
+              )
+            : null,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Title and timeAgo on the same row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                title,
-                style: TextStyles.font15lightBlackMedium,
-              ),
-              Text(
-                timeAgo,
-                style: TextStyles.font12lightBlackLight,
-              ),
-            ],
-          ),
-          verticalSpace(8),
-          Text(
-            message,
-            style: TextStyles.font12lightBlackRegular,
-          ),
-        ],
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            horizontal: 18.w), // Add padding only for content
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: TextStyles.font15lightBlackMedium,
+                ),
+                Text(
+                  timeAgo,
+                  style: TextStyles.font12lightBlackLight,
+                ),
+              ],
+            ),
+            verticalSpace(8),
+            Text(
+              message,
+              style: TextStyles.font12lightBlackRegular,
+            ),
+          ],
+        ),
       ),
     );
   }
