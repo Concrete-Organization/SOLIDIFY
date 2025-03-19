@@ -14,7 +14,7 @@ class PostsBlocBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PostsCubit, PostsState>(
       builder: (context, state) {
-        return state.when(
+        return state.maybeWhen(
           initial: () {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               context.read<PostsCubit>().fetchPosts();
@@ -53,6 +53,9 @@ class PostsBlocBuilder extends StatelessWidget {
           createPostLoading: () => LoadingCircleIndicator(),
           createPostSuccess: (response) => const SizedBox.shrink(),
           createPostError: (error) => Center(child: Text('${error.message}')),
+          orElse: (){
+            return SizedBox.shrink();
+          },
         );
       },
     );

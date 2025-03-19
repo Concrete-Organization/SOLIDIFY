@@ -36,7 +36,7 @@ class PostsCubit extends Cubit<PostsState> {
       emit(const PostsState.postsLoading());
     }
 
-    await _loadPosts();
+    await loadPosts();
   }
 
   Future<void> loadMorePosts() async {
@@ -47,11 +47,11 @@ class PostsCubit extends Cubit<PostsState> {
       ));
 
       _currentPage++;
-      await _loadPosts(isLoadingMore: true);
+      await loadPosts(isLoadingMore: true);
     }
   }
 
-  Future<void> _loadPosts({bool isLoadingMore = false}) async {
+  Future<void> loadPosts({bool isLoadingMore = false}) async {
     final result = await _postsRepo.getPosts(page: _currentPage);
 
     result.when(
@@ -104,12 +104,12 @@ class PostsCubit extends Cubit<PostsState> {
     final result = await _postsRepo.createPost(requestModel);
     result.when(
       success: (data) async {
+        emit(PostsState.createPostSuccess(data));
         _currentPage = 1;
         _allPosts = [];
         _allUnfilteredPosts = [];
         _currentSearchQuery = '';
-        await _loadPosts();
-        emit(PostsState.createPostSuccess(data));
+        await loadPosts();
       },
       failure: (error) {
         emit(PostsState.createPostError(error: error));

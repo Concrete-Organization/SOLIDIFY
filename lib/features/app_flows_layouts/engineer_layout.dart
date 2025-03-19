@@ -20,20 +20,35 @@ class EngineerLayout extends StatefulWidget {
 }
 
 class _EngineerLayoutState extends State<EngineerLayout> {
+  @override
+  void initState() {
+    final profileCubit = getIt<EngineerProfileCubit>();
+    final postsCubit = getIt<PostsCubit>();
+    screens = [
+      MultiBlocProvider(
+        providers: [
+          BlocProvider.value(
+            value: postsCubit,
+          ),
+          BlocProvider.value(
+            value: profileCubit,
+          ),
+        ],
+        child: const CommunityScreen(),
+      ),
+      CrackDetectionGetStarted(),
+      ChatbotScreen(),
+      BlocProvider.value(
+        value: profileCubit,
+        child: const ProfileEngineerScreen(),
+      ),
+    ];
+    super.initState();
+  }
+
   int selectedIndex = 0;
 
-  final List<Widget> screens = [
-    BlocProvider(
-      create: (context) => getIt<PostsCubit>()..fetchPosts(),
-      child: const CommunityScreen(),
-    ),
-    CrackDetectionGetStarted(),
-    ChatbotScreen(),
-    BlocProvider(
-      create: (context) => getIt<EngineerProfileCubit>(),
-      child: const ProfileEngineerScreen(),
-    ),
-  ];
+  List<Widget> screens = [];
 
   void onItemTapped(int index) {
     setState(() {
