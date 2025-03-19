@@ -14,6 +14,7 @@ import 'package:solidify/features/app_flows_layouts/company_layout.dart';
 import 'package:solidify/features/app_flows_layouts/engineer_layout.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
+import 'package:solidify/features/profile_company/ui/screens/about_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/payment_screen.dart';
 import 'package:solidify/features/marketplace/favorites/ui/favorites_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/checkout_screen.dart';
@@ -23,6 +24,7 @@ import 'package:solidify/features/profile_company/ui/screens/orders_list_screen.
 import 'package:solidify/features/community/ui/screens/posts/create_post_screen.dart';
 import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
+import 'package:solidify/features/profile_company/ui/screens/order_details_screen.dart';
 import 'package:solidify/features/profile_company/ui/screens/notifications_screen.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
@@ -230,15 +232,23 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => ReviewsScreen(reviews: reviews),
         );
-              case Routes.ordersListScreen:
+      case Routes.ordersListScreen:
         return MaterialPageRoute(
           builder: (context) => const OrdersListScreen(),
         );
-         case Routes.notificationsScreen:
+      case Routes.notificationsScreen:
         return MaterialPageRoute(
           builder: (context) => const NotificationsScreen(),
         );
 
+      case Routes.orderDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const OrderDetailsScreen(),
+        );
+      case Routes.aboutScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AboutScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(

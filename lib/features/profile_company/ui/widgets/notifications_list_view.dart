@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/profile_company/ui/widgets/notifications_list_view_item.dart';
+
 
 class NotificationsListView extends StatelessWidget {
   const NotificationsListView({super.key});
@@ -11,14 +10,21 @@ class NotificationsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 18.h),
+      padding: EdgeInsets.zero,
       itemCount: 4,
-      separatorBuilder: (context, index) => Column(
-        children: [
-          verticalSpace(10),
-          HorizontalDivider(),
-        ],
-      ),
+      separatorBuilder: (context, index) {
+        if (index >= 2) {
+          return Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.h),
+            child: Divider(
+              height: 1.h,
+              color: ColorsManager.mainBlueWith2Opacity,
+              thickness: 0.5.w,
+            ),
+          );
+        }
+        return const SizedBox.shrink();
+      },
       itemBuilder: (context, index) {
         return NotificationsListViewItem(
           title: _getTitle(index),
@@ -35,11 +41,11 @@ class NotificationsListView extends StatelessWidget {
       case 0:
         return 'New Order Received! 🌟️';
       case 1:
-        return 'Order Dispatched 🌟️';
+        return 'Order Dispatched 🚚';
       case 2:
-        return 'Unusual Login Detected 🌟️';
+        return 'Unusual Login Detected 🔒';
       case 3:
-        return 'System Maintenance 🌟️';
+        return 'System Maintenance 🛠️';
       default:
         return 'Notification';
     }
