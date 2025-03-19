@@ -5,7 +5,7 @@ import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/community/logic/posts/posts_state.dart';
 import 'package:solidify/features/community/ui/screens/posts/widgets/posts_list_view.dart';
-import 'package:solidify/features/community/ui/screens/posts/widgets/shimmer_post_item.dart';
+import 'package:solidify/core/widgets/shimmer_post_item.dart';
 
 class PostsBlocBuilder extends StatelessWidget {
   const PostsBlocBuilder({super.key});

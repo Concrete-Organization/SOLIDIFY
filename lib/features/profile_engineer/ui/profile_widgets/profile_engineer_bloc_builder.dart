@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
 import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_state.dart';
-import 'package:solidify/features/profile_engineer/ui/widgets/profile_engineer_name_and_image.dart';
+import 'package:solidify/features/profile_engineer/ui/profile_widgets/profile_engineer_name_and_image.dart';
 
 class ProfileEngineerBlocBuilder extends StatelessWidget {
   const ProfileEngineerBlocBuilder({super.key});

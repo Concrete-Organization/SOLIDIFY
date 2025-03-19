@@ -32,15 +32,7 @@ class ErrorStateMessage extends StatelessWidget {
             style: TextStyles.font14RedRegular.copyWith(
               fontWeight: FontWeight.bold,
               fontSize: 16.sp,
-              shadows: [
-                Shadow(
-                  color: Colors.black26,
-                  offset: Offset(1, 1),
-                  blurRadius: 2,
-                ),
-              ],
             ),
-
           ),
         ],
       ),

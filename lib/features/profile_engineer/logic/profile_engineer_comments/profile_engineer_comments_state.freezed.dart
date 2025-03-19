@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'engineer_posts_state.dart';
+part of 'profile_engineer_comments_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,13 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$EngineerPostsState {
+mixin _$ProfileEngineerCommentsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PostModel> posts) success,
+    required TResult Function(List<CommentWithPost> comments, bool hasMore)
+        success,
     required TResult Function(ApiErrorModel error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +29,7 @@ mixin _$EngineerPostsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PostModel> posts)? success,
+    TResult? Function(List<CommentWithPost> comments, bool hasMore)? success,
     TResult? Function(ApiErrorModel error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +37,7 @@ mixin _$EngineerPostsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PostModel> posts)? success,
+    TResult Function(List<CommentWithPost> comments, bool hasMore)? success,
     TResult Function(ApiErrorModel error)? error,
     required TResult orElse(),
   }) =>
@@ -69,23 +70,26 @@ mixin _$EngineerPostsState {
 }
 
 /// @nodoc
-abstract class $EngineerPostsStateCopyWith<$Res> {
-  factory $EngineerPostsStateCopyWith(
-          EngineerPostsState value, $Res Function(EngineerPostsState) then) =
-      _$EngineerPostsStateCopyWithImpl<$Res, EngineerPostsState>;
+abstract class $ProfileEngineerCommentsStateCopyWith<$Res> {
+  factory $ProfileEngineerCommentsStateCopyWith(
+          ProfileEngineerCommentsState value,
+          $Res Function(ProfileEngineerCommentsState) then) =
+      _$ProfileEngineerCommentsStateCopyWithImpl<$Res,
+          ProfileEngineerCommentsState>;
 }
 
 /// @nodoc
-class _$EngineerPostsStateCopyWithImpl<$Res, $Val extends EngineerPostsState>
-    implements $EngineerPostsStateCopyWith<$Res> {
-  _$EngineerPostsStateCopyWithImpl(this._value, this._then);
+class _$ProfileEngineerCommentsStateCopyWithImpl<$Res,
+        $Val extends ProfileEngineerCommentsState>
+    implements $ProfileEngineerCommentsStateCopyWith<$Res> {
+  _$ProfileEngineerCommentsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of EngineerPostsState
+  /// Create a copy of ProfileEngineerCommentsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -98,13 +102,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$EngineerPostsStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$ProfileEngineerCommentsStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of EngineerPostsState
+  /// Create a copy of ProfileEngineerCommentsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -115,7 +119,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'EngineerPostsState.initial()';
+    return 'ProfileEngineerCommentsState.initial()';
   }
 
   @override
@@ -132,7 +136,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PostModel> posts) success,
+    required TResult Function(List<CommentWithPost> comments, bool hasMore)
+        success,
     required TResult Function(ApiErrorModel error) error,
   }) {
     return initial();
@@ -143,7 +148,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PostModel> posts)? success,
+    TResult? Function(List<CommentWithPost> comments, bool hasMore)? success,
     TResult? Function(ApiErrorModel error)? error,
   }) {
     return initial?.call();
@@ -154,7 +159,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PostModel> posts)? success,
+    TResult Function(List<CommentWithPost> comments, bool hasMore)? success,
     TResult Function(ApiErrorModel error)? error,
     required TResult orElse(),
   }) {
@@ -202,7 +207,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements EngineerPostsState {
+abstract class _Initial implements ProfileEngineerCommentsState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -215,13 +220,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$EngineerPostsStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$ProfileEngineerCommentsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of EngineerPostsState
+  /// Create a copy of ProfileEngineerCommentsState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -232,7 +237,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'EngineerPostsState.loading()';
+    return 'ProfileEngineerCommentsState.loading()';
   }
 
   @override
@@ -249,7 +254,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PostModel> posts) success,
+    required TResult Function(List<CommentWithPost> comments, bool hasMore)
+        success,
     required TResult Function(ApiErrorModel error) error,
   }) {
     return loading();
@@ -260,7 +266,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PostModel> posts)? success,
+    TResult? Function(List<CommentWithPost> comments, bool hasMore)? success,
     TResult? Function(ApiErrorModel error)? error,
   }) {
     return loading?.call();
@@ -271,7 +277,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PostModel> posts)? success,
+    TResult Function(List<CommentWithPost> comments, bool hasMore)? success,
     TResult Function(ApiErrorModel error)? error,
     required TResult orElse(),
   }) {
@@ -319,7 +325,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements EngineerPostsState {
+abstract class _Loading implements ProfileEngineerCommentsState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -329,29 +335,34 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PostModel> posts});
+  $Res call({List<CommentWithPost> comments, bool hasMore});
 }
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$EngineerPostsStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$ProfileEngineerCommentsStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of EngineerPostsState
+  /// Create a copy of ProfileEngineerCommentsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? posts = null,
+    Object? comments = null,
+    Object? hasMore = null,
   }) {
     return _then(_$SuccessImpl(
-      null == posts
-          ? _value._posts
-          : posts // ignore: cast_nullable_to_non_nullable
-              as List<PostModel>,
+      null == comments
+          ? _value._comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<CommentWithPost>,
+      null == hasMore
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -359,19 +370,23 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<PostModel> posts) : _posts = posts;
+  const _$SuccessImpl(final List<CommentWithPost> comments, this.hasMore)
+      : _comments = comments;
 
-  final List<PostModel> _posts;
+  final List<CommentWithPost> _comments;
   @override
-  List<PostModel> get posts {
-    if (_posts is EqualUnmodifiableListView) return _posts;
+  List<CommentWithPost> get comments {
+    if (_comments is EqualUnmodifiableListView) return _comments;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_posts);
+    return EqualUnmodifiableListView(_comments);
   }
 
   @override
+  final bool hasMore;
+
+  @override
   String toString() {
-    return 'EngineerPostsState.success(posts: $posts)';
+    return 'ProfileEngineerCommentsState.success(comments: $comments, hasMore: $hasMore)';
   }
 
   @override
@@ -379,14 +394,15 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._posts, _posts));
+            const DeepCollectionEquality().equals(other._comments, _comments) &&
+            (identical(other.hasMore, hasMore) || other.hasMore == hasMore));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_posts));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_comments), hasMore);
 
-  /// Create a copy of EngineerPostsState
+  /// Create a copy of ProfileEngineerCommentsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -399,10 +415,11 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PostModel> posts) success,
+    required TResult Function(List<CommentWithPost> comments, bool hasMore)
+        success,
     required TResult Function(ApiErrorModel error) error,
   }) {
-    return success(posts);
+    return success(comments, hasMore);
   }
 
   @override
@@ -410,10 +427,10 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PostModel> posts)? success,
+    TResult? Function(List<CommentWithPost> comments, bool hasMore)? success,
     TResult? Function(ApiErrorModel error)? error,
   }) {
-    return success?.call(posts);
+    return success?.call(comments, hasMore);
   }
 
   @override
@@ -421,12 +438,12 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PostModel> posts)? success,
+    TResult Function(List<CommentWithPost> comments, bool hasMore)? success,
     TResult Function(ApiErrorModel error)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(posts);
+      return success(comments, hasMore);
     }
     return orElse();
   }
@@ -469,12 +486,14 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements EngineerPostsState {
-  const factory _Success(final List<PostModel> posts) = _$SuccessImpl;
+abstract class _Success implements ProfileEngineerCommentsState {
+  const factory _Success(
+      final List<CommentWithPost> comments, final bool hasMore) = _$SuccessImpl;
 
-  List<PostModel> get posts;
+  List<CommentWithPost> get comments;
+  bool get hasMore;
 
-  /// Create a copy of EngineerPostsState
+  /// Create a copy of ProfileEngineerCommentsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
@@ -492,13 +511,13 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$EngineerPostsStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$ProfileEngineerCommentsStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of EngineerPostsState
+  /// Create a copy of ProfileEngineerCommentsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -524,7 +543,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'EngineerPostsState.error(error: $error)';
+    return 'ProfileEngineerCommentsState.error(error: $error)';
   }
 
   @override
@@ -538,7 +557,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  /// Create a copy of EngineerPostsState
+  /// Create a copy of ProfileEngineerCommentsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -551,7 +570,8 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PostModel> posts) success,
+    required TResult Function(List<CommentWithPost> comments, bool hasMore)
+        success,
     required TResult Function(ApiErrorModel error) error,
   }) {
     return error(this.error);
@@ -562,7 +582,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PostModel> posts)? success,
+    TResult? Function(List<CommentWithPost> comments, bool hasMore)? success,
     TResult? Function(ApiErrorModel error)? error,
   }) {
     return error?.call(this.error);
@@ -573,7 +593,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PostModel> posts)? success,
+    TResult Function(List<CommentWithPost> comments, bool hasMore)? success,
     TResult Function(ApiErrorModel error)? error,
     required TResult orElse(),
   }) {
@@ -621,12 +641,12 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements EngineerPostsState {
+abstract class _Error implements ProfileEngineerCommentsState {
   const factory _Error(final ApiErrorModel error) = _$ErrorImpl;
 
   ApiErrorModel get error;
 
-  /// Create a copy of EngineerPostsState
+  /// Create a copy of ProfileEngineerCommentsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>

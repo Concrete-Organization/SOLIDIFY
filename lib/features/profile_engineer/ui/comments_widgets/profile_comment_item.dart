@@ -1,10 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/format_date.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/widgets/custom_network_cached_app_profile_pic.dart';
 import 'package:solidify/core/widgets/expandable_text.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
@@ -22,24 +21,9 @@ class ProfileCommentItem extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-              radius: 17.w,
-              backgroundColor: Colors.transparent,
-              child: comment.profileImageUrl != null &&
-                      Uri.tryParse(comment.profileImageUrl!)?.hasAbsolutePath ==
-                          true
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(17.w),
-                      child: CachedNetworkImage(
-                        imageUrl: comment.profileImageUrl!,
-                        width: 34.w,
-                        height: 34.w,
-                        fit: BoxFit.cover,
-                        errorWidget: (context, url, error) =>
-                            SvgPicture.asset('assets/svgs/app_prof.svg'),
-                      ),
-                    )
-                  : SvgPicture.asset('assets/svgs/app_prof.svg'),
+            CustomNetworkCachedAppProfilePic(
+              profileImageUrl: comment.profileImageUrl,
+              radius: 17,
             ),
             horizontalSpace(10),
             Column(

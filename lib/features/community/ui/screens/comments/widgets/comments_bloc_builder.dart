@@ -4,7 +4,7 @@ import 'package:solidify/core/widgets/error_state_message.dart';
 import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
 import 'package:solidify/features/community/logic/comments/comments_state.dart';
 import 'package:solidify/features/community/ui/screens/comments/widgets/comments_list_view.dart';
-import 'package:solidify/features/community/ui/screens/comments/widgets/shimmer_comment_item.dart';
+import 'package:solidify/core/widgets/shimmer_comment_item.dart';
 
 class CommentsBlocBuilder extends StatelessWidget {
   final ScrollController scrollController;

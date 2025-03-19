@@ -6,7 +6,6 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
-import 'package:solidify/features/community/logic/comments/comments_state.dart';
 import 'package:solidify/features/community/ui/screens/comments/widgets/comments_bloc_builder.dart';
 import 'package:solidify/features/community/ui/screens/comments/widgets/comments_text_field.dart';
 
@@ -29,58 +28,49 @@ class CommentsBottomSheet extends StatelessWidget {
     final double minChildSize = keyboardVisible ? 0.9 : 0.3;
 
     return BlocProvider(
-      create: (context) =>
-          getIt<CommentsCubit>()..fetchComments(postId, refresh: true),
-      child: BlocListener<CommentsCubit, CommentsState>(
-        listener: (context, state) {
-          if (state is CreateCommentSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Comment added successfully')),
-            );
-          } else if (state is CreateCommentError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.error.getAllErrorMessages())),
-            );
-          }
-        },
-        child: DraggableScrollableSheet(
-          initialChildSize: initialSize,
-          minChildSize: minChildSize,
-          maxChildSize: 0.9,
-          expand: false,
-          builder: (context, sheetScrollController) {
-            return Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: Container(
-                padding: EdgeInsets.all(16.w),
-                decoration: BoxDecoration(
-                  color: ColorsManager.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.r),
-                    topRight: Radius.circular(10.r),
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Comments',
-                      style: TextStyles.font15lightBlackMedium,
-                    ),
-                    verticalSpace(19),
-                    Expanded(
-                      child: CommentsBlocBuilder(
-                        scrollController: sheetScrollController,
-                      ),
-                    ),
-                    CommentsTextField(postId: postId),
-                  ],
+      create: (context) => getIt<CommentsCubit>()
+        ..fetchComments(
+          postId,
+          refresh: true,
+        ),
+      child: DraggableScrollableSheet(
+        initialChildSize: initialSize,
+        minChildSize: minChildSize,
+        maxChildSize: 0.9,
+        expand: false,
+        builder: (context, sheetScrollController) {
+          return Padding(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: Container(
+              padding: EdgeInsets.all(16.w),
+              decoration: BoxDecoration(
+                color: ColorsManager.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10.r),
+                  topRight: Radius.circular(10.r),
                 ),
               ),
-            );
-          },
-        ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Comments',
+                    style: TextStyles.font15lightBlackMedium,
+                  ),
+                  verticalSpace(19),
+                  Expanded(
+                    child: CommentsBlocBuilder(
+                      scrollController: sheetScrollController,
+                    ),
+                  ),
+                  CommentsTextField(postId: postId),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }
