@@ -19,46 +19,72 @@ class ProfileCompanyScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Stack(
             children: [
-              const ProfileTopBar(),
-              verticalSpace(10),
-              HorizontalDivider(
-                color: ColorsManager.mainBlueWith50Opacity,
-              ),
-              verticalSpace(20),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 18.h),
-                child: Center(
-                  child: Column(
-                    children: [
-                      const Center(child: SelectedOrderContainer()),
-                      verticalSpace(30),
-                      const OrderListView(itemsToShow: 2),
-                      verticalSpace(35),
-                      GestureDetector(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                context.pushNamed(Routes.ordersListScreen);
-                              },
-                              child: Text(
-                                'Show All',
-                                style: TextStyles.font12MainBlueMedium,
-                              ),
-                            ),
-                            horizontalSpace(10),
-                            SvgPicture.asset('assets/svgs/see_all_arrow.svg')
-                          ],
-                        ),
-                      )
+              // Parchment paper background layer
+              Container(
+                width: 1.sw, // Full screen width
+                height: 800.h, // Match the 800dp height from XML
+                margin:
+                    EdgeInsets.only(top: 852.h), // Match the 852dp marginTop
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xFFF5F1E9)
+                          .withOpacity(0.9), // Off-white parchment tone
+                      Color(0xFFEDE1D4)
+                          .withOpacity(0.9), // Slightly darker off-white
                     ],
+                    stops: const [0.0, 1.0], // Smooth transition
                   ),
                 ),
-              )
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const ProfileTopBar(),
+                  verticalSpace(10),
+                  HorizontalDivider(
+                    color: ColorsManager.mainBlueWith50Opacity,
+                  ),
+                  verticalSpace(20),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 18.w, vertical: 18.h),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          const SelectedOrderContainer(),
+                          verticalSpace(30),
+                          const OrderListView(itemsToShow: 2),
+                          verticalSpace(35),
+                          GestureDetector(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    context.pushNamed(Routes.ordersListScreen);
+                                  },
+                                  child: Text(
+                                    'Show All',
+                                    style: TextStyles.font12MainBlueMedium,
+                                  ),
+                                ),
+                                horizontalSpace(10),
+                                SvgPicture.asset(
+                                    'assets/svgs/see_all_arrow.svg')
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
