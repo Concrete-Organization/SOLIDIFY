@@ -12,7 +12,7 @@ class OrderNumberContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 353.w,
-      height: 110.h, // Increased height to prevent overflow
+      height: 110.h,
       decoration: BoxDecoration(
         border: Border.all(
           color: ColorsManager.mainBlue,
