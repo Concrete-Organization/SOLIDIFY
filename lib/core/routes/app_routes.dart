@@ -14,6 +14,7 @@ import 'package:solidify/features/app_flows_layouts/company_layout.dart';
 import 'package:solidify/features/app_flows_layouts/engineer_layout.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
+import 'package:solidify/features/profile_company/ui/screens/about_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/payment_screen.dart';
 import 'package:solidify/features/marketplace/favorites/ui/favorites_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/checkout_screen.dart';
@@ -231,18 +232,22 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => ReviewsScreen(reviews: reviews),
         );
-              case Routes.ordersListScreen:
+      case Routes.ordersListScreen:
         return MaterialPageRoute(
           builder: (context) => const OrdersListScreen(),
         );
-         case Routes.notificationsScreen:
+      case Routes.notificationsScreen:
         return MaterialPageRoute(
           builder: (context) => const NotificationsScreen(),
         );
 
-         case Routes.orderDetailsScreen:
+      case Routes.orderDetailsScreen:
         return MaterialPageRoute(
           builder: (context) => const OrderDetailsScreen(),
+        );
+      case Routes.aboutScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AboutScreen(),
         );
       default:
         return MaterialPageRoute(

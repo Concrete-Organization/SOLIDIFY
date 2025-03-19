@@ -21,23 +21,19 @@ class ProfileCompanyScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Stack(
             children: [
-              // Parchment paper background layer
               Container(
-                width: 1.sw, // Full screen width
-                height: 800.h, // Match the 800dp height from XML
-                margin:
-                    EdgeInsets.only(top: 852.h), // Match the 852dp marginTop
+                width: 1.sw,
+                height: 800.h,
+                margin: EdgeInsets.only(top: 852.h),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Color(0xFFF5F1E9)
-                          .withOpacity(0.9), // Off-white parchment tone
-                      Color(0xFFEDE1D4)
-                          .withOpacity(0.9), // Slightly darker off-white
+                      Color(0xFFF5F1E9).withOpacity(0.9),
+                      Color(0xFFEDE1D4).withOpacity(0.9),
                     ],
-                    stops: const [0.0, 1.0], // Smooth transition
+                    stops: const [0.0, 1.0],
                   ),
                 ),
               ),
