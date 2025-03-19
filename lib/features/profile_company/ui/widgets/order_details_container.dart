@@ -48,9 +48,6 @@ class OrderDetailsContainer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Completed Order
-
-                // Total Container
                 Container(
                   width: 133.w,
                   height: 31.h,
@@ -73,9 +70,14 @@ class OrderDetailsContainer extends StatelessWidget {
                     ],
                   ),
                 ),
-                Text(
-                  'Completed order 😊',
-                  style: TextStyles.font12secondaryGoldMedium,
+                Row(
+                  children: [
+                    Text(
+                      'Completed order ',
+                      style: TextStyles.font12secondaryGoldMedium,
+                    ),
+                    SvgPicture.asset('assets/svgs/complete_order_icon.svg')
+                  ],
                 ),
               ],
             ),

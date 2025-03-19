@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore_for_file: deprecated_member_use
 
 class ColorsManager {
   static const Color mainBlue = Color(0xFF1B4965);
@@ -16,4 +17,5 @@ class ColorsManager {
 
   static Color secondaryGoldWith10Opacity = Color(0xFFC29818).withOpacity(0.10);
   static Color red = Color(0xFFC70000);
+  static Color cancelRed = Color(0xFFEB2A2A);
 }
