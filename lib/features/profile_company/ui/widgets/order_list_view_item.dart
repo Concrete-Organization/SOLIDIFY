@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,8 +38,7 @@ class OrderListViewItem extends StatelessWidget {
           ),
           verticalSpace(10),
           Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: 12.w), // Add horizontal padding here
+            padding: EdgeInsets.symmetric(horizontal: 12.w),
             child: _buildDetailRow(
               'Date',
               'May5,2025',
@@ -70,11 +71,13 @@ class OrderListViewItem extends StatelessWidget {
           verticalSpace(12), // Reduced spacing
           Center(
             child: AppTextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.pushNamed(Routes.orderDetailsScreen);
+              },
               width: 225.w,
-              height: 42.h, // Reduced button height
+              height: 42.h,
               textButton: 'View order details',
-              fontSize: 14, // Reduced font size
+              fontSize: 14,
               padding: EdgeInsets.symmetric(vertical: 8.h), // Adjusted padding
             ),
           ),
