@@ -34,4 +34,5 @@ class Routes {
   static const String reviewsScreen = 'reviewsScreen';
   static const String ordersListScreen = 'ordersListScreen';
   static const String notificationsScreen = 'notificationsScreen';
+  static const String orderDetailsScreen = 'orderDetailsScreen';
 }

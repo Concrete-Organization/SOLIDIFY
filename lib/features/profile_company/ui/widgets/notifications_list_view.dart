@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/profile_company/ui/widgets/notifications_list_view_item.dart';
+
 
 class NotificationsListView extends StatelessWidget {
   const NotificationsListView({super.key});
@@ -10,10 +10,9 @@ class NotificationsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      padding: EdgeInsets.zero, // Remove padding from the list
+      padding: EdgeInsets.zero,
       itemCount: 4,
       separatorBuilder: (context, index) {
-        // Add a subtle divider only between non-highlighted items
         if (index >= 2) {
           return Padding(
             padding: EdgeInsets.symmetric(vertical: 8.h),
@@ -24,7 +23,7 @@ class NotificationsListView extends StatelessWidget {
             ),
           );
         }
-        return const SizedBox.shrink(); // No divider for highlighted items
+        return const SizedBox.shrink();
       },
       itemBuilder: (context, index) {
         return NotificationsListViewItem(
