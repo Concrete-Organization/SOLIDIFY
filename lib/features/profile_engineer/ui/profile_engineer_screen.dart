@@ -9,6 +9,10 @@ import 'package:solidify/features/profile_engineer/ui/profile_widgets/profile_co
 import 'package:solidify/features/profile_engineer/ui/profile_widgets/profile_engineer_app_bar.dart';
 import 'package:solidify/features/profile_engineer/ui/profile_widgets/profile_engineer_bloc_builder.dart';
 
+import '../../../core/di/dependency_injection.dart';
+import '../logic/profile_engineer_comments/profile_engineer_comments_cubit.dart';
+import '../logic/profile_engineer_posts/profile_engineer_posts_cubit.dart';
+
 class ProfileEngineerScreen extends StatefulWidget {
   const ProfileEngineerScreen({super.key});
 
@@ -65,9 +69,19 @@ class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
             verticalSpace(16),
             if (_userId.isNotEmpty)
               Expanded(
-                child: ProfileContentPostsOrComments(
-                  currentTabIndex: _currentTabIndex,
-                  engineerId: _userId,
+                child: MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                        create: (context) => getIt<ProfileEngineerPostsCubit>()
+                    ),
+                    BlocProvider(
+                        create: (context) => getIt<ProfileEngineerCommentsCubit>()
+                    ),
+                  ],
+                  child: ProfileContentPostsOrComments(
+                    currentTabIndex: _currentTabIndex,
+                    engineerId: _userId,
+                  ),
                 ),
               ),
           ],

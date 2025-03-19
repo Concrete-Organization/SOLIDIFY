@@ -1,5 +1,3 @@
-import 'package:solidify/features/profile_engineer/data/models/get_engineer_profile_response.dart';
-
 import 'api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -27,6 +25,8 @@ import 'package:solidify/features/marketplace/marketplace/data/models/get_produc
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/models/engineer_account_sign_up_request_model.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/models/engineer_account_sign_up_response_model.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/data/models/concrete_company_account_sign_up_response_model.dart';
+import 'package:solidify/features/profile_engineer/data/models/get_engineer_profile_response.dart';
+import 'package:solidify/features/profile_engineer/data/models/update_engineer_profile_response.dart';
 
 part 'api_service.g.dart';
 
@@ -165,5 +165,12 @@ abstract class ApiService {
   @GET('${ApiConstants.engineerProfile}/{id}')
   Future<GetEngineerProfileResponse> engineerProfile(
     @Path('id') String id,
+  );
+
+  @PATCH('${ApiConstants.engineerProfile}/{id}')
+  @MultiPart()
+  Future<UpdateEngineerProfileResponse> updateEngineerProfile(
+    @Path('id') String id,
+    @Body() FormData formData,
   );
 }

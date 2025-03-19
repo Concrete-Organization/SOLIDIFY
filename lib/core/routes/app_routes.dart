@@ -171,9 +171,10 @@ class AppRoutes {
           ),
         );
       case Routes.createPostScreen:
+        final postsCubit = settings.arguments as PostsCubit;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<PostsCubit>(),
+          builder: (context) => BlocProvider.value(
+            value: postsCubit,
             child: CreatePostScreen(),
           ),
         );

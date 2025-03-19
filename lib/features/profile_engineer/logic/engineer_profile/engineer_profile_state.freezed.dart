@@ -20,7 +20,9 @@ mixin _$EngineerProfileState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GetEngineerProfileResponse profile) success,
+    required TResult Function(
+            String engineerId, GetEngineerProfileResponse profile)
+        success,
     required TResult Function(ApiErrorModel error) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +30,8 @@ mixin _$EngineerProfileState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GetEngineerProfileResponse profile)? success,
+    TResult? Function(String engineerId, GetEngineerProfileResponse profile)?
+        success,
     TResult? Function(ApiErrorModel error)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +39,8 @@ mixin _$EngineerProfileState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GetEngineerProfileResponse profile)? success,
+    TResult Function(String engineerId, GetEngineerProfileResponse profile)?
+        success,
     TResult Function(ApiErrorModel error)? failure,
     required TResult orElse(),
   }) =>
@@ -133,7 +137,9 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GetEngineerProfileResponse profile) success,
+    required TResult Function(
+            String engineerId, GetEngineerProfileResponse profile)
+        success,
     required TResult Function(ApiErrorModel error) failure,
   }) {
     return initial();
@@ -144,7 +150,8 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GetEngineerProfileResponse profile)? success,
+    TResult? Function(String engineerId, GetEngineerProfileResponse profile)?
+        success,
     TResult? Function(ApiErrorModel error)? failure,
   }) {
     return initial?.call();
@@ -155,7 +162,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GetEngineerProfileResponse profile)? success,
+    TResult Function(String engineerId, GetEngineerProfileResponse profile)?
+        success,
     TResult Function(ApiErrorModel error)? failure,
     required TResult orElse(),
   }) {
@@ -250,7 +258,9 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GetEngineerProfileResponse profile) success,
+    required TResult Function(
+            String engineerId, GetEngineerProfileResponse profile)
+        success,
     required TResult Function(ApiErrorModel error) failure,
   }) {
     return loading();
@@ -261,7 +271,8 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GetEngineerProfileResponse profile)? success,
+    TResult? Function(String engineerId, GetEngineerProfileResponse profile)?
+        success,
     TResult? Function(ApiErrorModel error)? failure,
   }) {
     return loading?.call();
@@ -272,7 +283,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GetEngineerProfileResponse profile)? success,
+    TResult Function(String engineerId, GetEngineerProfileResponse profile)?
+        success,
     TResult Function(ApiErrorModel error)? failure,
     required TResult orElse(),
   }) {
@@ -330,7 +342,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({GetEngineerProfileResponse profile});
+  $Res call({String engineerId, GetEngineerProfileResponse profile});
 }
 
 /// @nodoc
@@ -346,9 +358,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? engineerId = null,
     Object? profile = null,
   }) {
     return _then(_$SuccessImpl(
+      null == engineerId
+          ? _value.engineerId
+          : engineerId // ignore: cast_nullable_to_non_nullable
+              as String,
       null == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
@@ -360,14 +377,16 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.profile);
+  const _$SuccessImpl(this.engineerId, this.profile);
 
+  @override
+  final String engineerId;
   @override
   final GetEngineerProfileResponse profile;
 
   @override
   String toString() {
-    return 'EngineerProfileState.success(profile: $profile)';
+    return 'EngineerProfileState.success(engineerId: $engineerId, profile: $profile)';
   }
 
   @override
@@ -375,11 +394,13 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
+            (identical(other.engineerId, engineerId) ||
+                other.engineerId == engineerId) &&
             (identical(other.profile, profile) || other.profile == profile));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, profile);
+  int get hashCode => Object.hash(runtimeType, engineerId, profile);
 
   /// Create a copy of EngineerProfileState
   /// with the given fields replaced by the non-null parameter values.
@@ -394,10 +415,12 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GetEngineerProfileResponse profile) success,
+    required TResult Function(
+            String engineerId, GetEngineerProfileResponse profile)
+        success,
     required TResult Function(ApiErrorModel error) failure,
   }) {
-    return success(profile);
+    return success(engineerId, profile);
   }
 
   @override
@@ -405,10 +428,11 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GetEngineerProfileResponse profile)? success,
+    TResult? Function(String engineerId, GetEngineerProfileResponse profile)?
+        success,
     TResult? Function(ApiErrorModel error)? failure,
   }) {
-    return success?.call(profile);
+    return success?.call(engineerId, profile);
   }
 
   @override
@@ -416,12 +440,13 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GetEngineerProfileResponse profile)? success,
+    TResult Function(String engineerId, GetEngineerProfileResponse profile)?
+        success,
     TResult Function(ApiErrorModel error)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(profile);
+      return success(engineerId, profile);
     }
     return orElse();
   }
@@ -465,9 +490,11 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements EngineerProfileState {
-  const factory _Success(final GetEngineerProfileResponse profile) =
+  const factory _Success(
+          final String engineerId, final GetEngineerProfileResponse profile) =
       _$SuccessImpl;
 
+  String get engineerId;
   GetEngineerProfileResponse get profile;
 
   /// Create a copy of EngineerProfileState
@@ -547,7 +574,9 @@ class _$FailureImpl implements Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(GetEngineerProfileResponse profile) success,
+    required TResult Function(
+            String engineerId, GetEngineerProfileResponse profile)
+        success,
     required TResult Function(ApiErrorModel error) failure,
   }) {
     return failure(error);
@@ -558,7 +587,8 @@ class _$FailureImpl implements Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(GetEngineerProfileResponse profile)? success,
+    TResult? Function(String engineerId, GetEngineerProfileResponse profile)?
+        success,
     TResult? Function(ApiErrorModel error)? failure,
   }) {
     return failure?.call(error);
@@ -569,7 +599,8 @@ class _$FailureImpl implements Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(GetEngineerProfileResponse profile)? success,
+    TResult Function(String engineerId, GetEngineerProfileResponse profile)?
+        success,
     TResult Function(ApiErrorModel error)? failure,
     required TResult orElse(),
   }) {

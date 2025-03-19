@@ -13,15 +13,18 @@ class ProfileEngineerBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           loading: () => const Center(child: CircularProgressIndicator()),
-          success: (profile) => ProfileEngineerNameAndImage(
+          success: (engineerId, profile) => ProfileEngineerNameAndImage(
             engineerName: profile.model?.engineerName ?? 'Unknown',
             profileImageUrl: profile.model?.profileImageUrl,
+            engineerId: engineerId,
           ),
           failure: (error) => ProfileEngineerNameAndImage(
             engineerName: 'Error loading profile',
+            engineerId: '',
           ),
           orElse: () => const ProfileEngineerNameAndImage(
             engineerName: 'Loading...',
+            engineerId: '',
           ),
         );
       },
