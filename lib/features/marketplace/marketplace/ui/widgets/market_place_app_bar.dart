@@ -11,7 +11,9 @@ class MarketPlaceAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          context.pushNamed(Routes.searchScreen);
+        },
         icon: SvgPicture.asset('assets/svgs/search_icon.svg'),
       ),
       actions: [

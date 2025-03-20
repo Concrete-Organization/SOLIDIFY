@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/core/widgets/error_state_message.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
-import 'package:solidify/features/marketplace/marketplace/ui/widgets/product_search_bar.dart';
+import 'package:solidify/features/marketplace/search/widgets/search_with_fillter_bar.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/category_product_grid.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_category_cubit.dart/prodcut_category_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_category_cubit.dart/product_category_state.dart';
@@ -30,7 +32,13 @@ class ProductCategoryBlocBuilder extends StatelessWidget {
                     verticalSpace(5),
                     const HorizontalDivider(),
                     verticalSpace(21),
-                    const ProductSearchBar(),
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to the SearchWithFillterScreen
+                        context.pushNamed(Routes.searchWithFillterScreen);
+                      },
+                      child: const SearchWithFillterBar(),
+                    ),
                     verticalSpace(15),
                     Text(
                       categoryLabel,

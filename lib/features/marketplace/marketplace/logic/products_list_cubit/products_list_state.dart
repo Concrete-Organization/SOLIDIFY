@@ -12,9 +12,9 @@ class ProductsListState with _$ProductsListState {
   const factory ProductsListState.marketplaceSuccess(List<Product> products) =
       MarketplaceSuccess;
   const factory ProductsListState.bestSellersSuccess(
-    List<Product> products,
-    bool hasReachedMax,
-  ) = BestSellersSuccess;
+      List<Product> products, bool hasReachedMax) = BestSellersSuccess;
   const factory ProductsListState.error(ApiErrorModel error) =
       ProductsListError;
+  const factory ProductsListState.searchSuccess(List<Product> products) =
+      SearchSuccess; // New state
 }

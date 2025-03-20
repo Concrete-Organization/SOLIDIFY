@@ -233,6 +233,11 @@ class TextStyles {
     color: ColorsManager.white,
     fontWeight: FontWeightHelper.medium,
   );
+  static TextStyle font12WhiteRegular = GoogleFonts.poppins(
+    fontSize: 12.sp,
+    color: ColorsManager.white,
+    fontWeight: FontWeightHelper.regular,
+  );
   static TextStyle font15RedMedium = GoogleFonts.poppins(
     fontSize: 15.sp,
     color: ColorsManager.cancelRed,

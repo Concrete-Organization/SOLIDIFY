@@ -24,6 +24,7 @@ mixin _$ProductsListState {
     required TResult Function(List<Product> products, bool hasReachedMax)
         bestSellersSuccess,
     required TResult Function(ApiErrorModel error) error,
+    required TResult Function(List<Product> products) searchSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$ProductsListState {
     TResult? Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult? Function(ApiErrorModel error)? error,
+    TResult? Function(List<Product> products)? searchSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$ProductsListState {
     TResult Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult Function(ApiErrorModel error)? error,
+    TResult Function(List<Product> products)? searchSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +57,7 @@ mixin _$ProductsListState {
     required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
     required TResult Function(BestSellersSuccess value) bestSellersSuccess,
     required TResult Function(ProductsListError value) error,
+    required TResult Function(SearchSuccess value) searchSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +67,7 @@ mixin _$ProductsListState {
     TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult? Function(ProductsListError value)? error,
+    TResult? Function(SearchSuccess value)? searchSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +77,7 @@ mixin _$ProductsListState {
     TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult Function(ProductsListError value)? error,
+    TResult Function(SearchSuccess value)? searchSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,6 +151,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<Product> products, bool hasReachedMax)
         bestSellersSuccess,
     required TResult Function(ApiErrorModel error) error,
+    required TResult Function(List<Product> products) searchSuccess,
   }) {
     return initial();
   }
@@ -158,6 +165,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult? Function(ApiErrorModel error)? error,
+    TResult? Function(List<Product> products)? searchSuccess,
   }) {
     return initial?.call();
   }
@@ -171,6 +179,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult Function(ApiErrorModel error)? error,
+    TResult Function(List<Product> products)? searchSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -187,6 +196,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
     required TResult Function(BestSellersSuccess value) bestSellersSuccess,
     required TResult Function(ProductsListError value) error,
+    required TResult Function(SearchSuccess value) searchSuccess,
   }) {
     return initial(this);
   }
@@ -199,6 +209,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult? Function(ProductsListError value)? error,
+    TResult? Function(SearchSuccess value)? searchSuccess,
   }) {
     return initial?.call(this);
   }
@@ -211,6 +222,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult Function(ProductsListError value)? error,
+    TResult Function(SearchSuccess value)? searchSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -306,6 +318,7 @@ class _$ProductsListLoadingImpl implements ProductsListLoading {
     required TResult Function(List<Product> products, bool hasReachedMax)
         bestSellersSuccess,
     required TResult Function(ApiErrorModel error) error,
+    required TResult Function(List<Product> products) searchSuccess,
   }) {
     return loading(products);
   }
@@ -319,6 +332,7 @@ class _$ProductsListLoadingImpl implements ProductsListLoading {
     TResult? Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult? Function(ApiErrorModel error)? error,
+    TResult? Function(List<Product> products)? searchSuccess,
   }) {
     return loading?.call(products);
   }
@@ -332,6 +346,7 @@ class _$ProductsListLoadingImpl implements ProductsListLoading {
     TResult Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult Function(ApiErrorModel error)? error,
+    TResult Function(List<Product> products)? searchSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -348,6 +363,7 @@ class _$ProductsListLoadingImpl implements ProductsListLoading {
     required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
     required TResult Function(BestSellersSuccess value) bestSellersSuccess,
     required TResult Function(ProductsListError value) error,
+    required TResult Function(SearchSuccess value) searchSuccess,
   }) {
     return loading(this);
   }
@@ -360,6 +376,7 @@ class _$ProductsListLoadingImpl implements ProductsListLoading {
     TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult? Function(ProductsListError value)? error,
+    TResult? Function(SearchSuccess value)? searchSuccess,
   }) {
     return loading?.call(this);
   }
@@ -372,6 +389,7 @@ class _$ProductsListLoadingImpl implements ProductsListLoading {
     TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult Function(ProductsListError value)? error,
+    TResult Function(SearchSuccess value)? searchSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -476,6 +494,7 @@ class _$MarketplaceSuccessImpl implements MarketplaceSuccess {
     required TResult Function(List<Product> products, bool hasReachedMax)
         bestSellersSuccess,
     required TResult Function(ApiErrorModel error) error,
+    required TResult Function(List<Product> products) searchSuccess,
   }) {
     return marketplaceSuccess(products);
   }
@@ -489,6 +508,7 @@ class _$MarketplaceSuccessImpl implements MarketplaceSuccess {
     TResult? Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult? Function(ApiErrorModel error)? error,
+    TResult? Function(List<Product> products)? searchSuccess,
   }) {
     return marketplaceSuccess?.call(products);
   }
@@ -502,6 +522,7 @@ class _$MarketplaceSuccessImpl implements MarketplaceSuccess {
     TResult Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult Function(ApiErrorModel error)? error,
+    TResult Function(List<Product> products)? searchSuccess,
     required TResult orElse(),
   }) {
     if (marketplaceSuccess != null) {
@@ -518,6 +539,7 @@ class _$MarketplaceSuccessImpl implements MarketplaceSuccess {
     required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
     required TResult Function(BestSellersSuccess value) bestSellersSuccess,
     required TResult Function(ProductsListError value) error,
+    required TResult Function(SearchSuccess value) searchSuccess,
   }) {
     return marketplaceSuccess(this);
   }
@@ -530,6 +552,7 @@ class _$MarketplaceSuccessImpl implements MarketplaceSuccess {
     TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult? Function(ProductsListError value)? error,
+    TResult? Function(SearchSuccess value)? searchSuccess,
   }) {
     return marketplaceSuccess?.call(this);
   }
@@ -542,6 +565,7 @@ class _$MarketplaceSuccessImpl implements MarketplaceSuccess {
     TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult Function(ProductsListError value)? error,
+    TResult Function(SearchSuccess value)? searchSuccess,
     required TResult orElse(),
   }) {
     if (marketplaceSuccess != null) {
@@ -657,6 +681,7 @@ class _$BestSellersSuccessImpl implements BestSellersSuccess {
     required TResult Function(List<Product> products, bool hasReachedMax)
         bestSellersSuccess,
     required TResult Function(ApiErrorModel error) error,
+    required TResult Function(List<Product> products) searchSuccess,
   }) {
     return bestSellersSuccess(products, hasReachedMax);
   }
@@ -670,6 +695,7 @@ class _$BestSellersSuccessImpl implements BestSellersSuccess {
     TResult? Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult? Function(ApiErrorModel error)? error,
+    TResult? Function(List<Product> products)? searchSuccess,
   }) {
     return bestSellersSuccess?.call(products, hasReachedMax);
   }
@@ -683,6 +709,7 @@ class _$BestSellersSuccessImpl implements BestSellersSuccess {
     TResult Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult Function(ApiErrorModel error)? error,
+    TResult Function(List<Product> products)? searchSuccess,
     required TResult orElse(),
   }) {
     if (bestSellersSuccess != null) {
@@ -699,6 +726,7 @@ class _$BestSellersSuccessImpl implements BestSellersSuccess {
     required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
     required TResult Function(BestSellersSuccess value) bestSellersSuccess,
     required TResult Function(ProductsListError value) error,
+    required TResult Function(SearchSuccess value) searchSuccess,
   }) {
     return bestSellersSuccess(this);
   }
@@ -711,6 +739,7 @@ class _$BestSellersSuccessImpl implements BestSellersSuccess {
     TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult? Function(ProductsListError value)? error,
+    TResult? Function(SearchSuccess value)? searchSuccess,
   }) {
     return bestSellersSuccess?.call(this);
   }
@@ -723,6 +752,7 @@ class _$BestSellersSuccessImpl implements BestSellersSuccess {
     TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult Function(ProductsListError value)? error,
+    TResult Function(SearchSuccess value)? searchSuccess,
     required TResult orElse(),
   }) {
     if (bestSellersSuccess != null) {
@@ -822,6 +852,7 @@ class _$ProductsListErrorImpl implements ProductsListError {
     required TResult Function(List<Product> products, bool hasReachedMax)
         bestSellersSuccess,
     required TResult Function(ApiErrorModel error) error,
+    required TResult Function(List<Product> products) searchSuccess,
   }) {
     return error(this.error);
   }
@@ -835,6 +866,7 @@ class _$ProductsListErrorImpl implements ProductsListError {
     TResult? Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult? Function(ApiErrorModel error)? error,
+    TResult? Function(List<Product> products)? searchSuccess,
   }) {
     return error?.call(this.error);
   }
@@ -848,6 +880,7 @@ class _$ProductsListErrorImpl implements ProductsListError {
     TResult Function(List<Product> products, bool hasReachedMax)?
         bestSellersSuccess,
     TResult Function(ApiErrorModel error)? error,
+    TResult Function(List<Product> products)? searchSuccess,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -864,6 +897,7 @@ class _$ProductsListErrorImpl implements ProductsListError {
     required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
     required TResult Function(BestSellersSuccess value) bestSellersSuccess,
     required TResult Function(ProductsListError value) error,
+    required TResult Function(SearchSuccess value) searchSuccess,
   }) {
     return error(this);
   }
@@ -876,6 +910,7 @@ class _$ProductsListErrorImpl implements ProductsListError {
     TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult? Function(ProductsListError value)? error,
+    TResult? Function(SearchSuccess value)? searchSuccess,
   }) {
     return error?.call(this);
   }
@@ -888,6 +923,7 @@ class _$ProductsListErrorImpl implements ProductsListError {
     TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
     TResult Function(BestSellersSuccess value)? bestSellersSuccess,
     TResult Function(ProductsListError value)? error,
+    TResult Function(SearchSuccess value)? searchSuccess,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -907,5 +943,180 @@ abstract class ProductsListError implements ProductsListState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductsListErrorImplCopyWith<_$ProductsListErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchSuccessImplCopyWith<$Res> {
+  factory _$$SearchSuccessImplCopyWith(
+          _$SearchSuccessImpl value, $Res Function(_$SearchSuccessImpl) then) =
+      __$$SearchSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Product> products});
+}
+
+/// @nodoc
+class __$$SearchSuccessImplCopyWithImpl<$Res>
+    extends _$ProductsListStateCopyWithImpl<$Res, _$SearchSuccessImpl>
+    implements _$$SearchSuccessImplCopyWith<$Res> {
+  __$$SearchSuccessImplCopyWithImpl(
+      _$SearchSuccessImpl _value, $Res Function(_$SearchSuccessImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? products = null,
+  }) {
+    return _then(_$SearchSuccessImpl(
+      null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchSuccessImpl implements SearchSuccess {
+  const _$SearchSuccessImpl(final List<Product> products)
+      : _products = products;
+
+  final List<Product> _products;
+  @override
+  List<Product> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
+
+  @override
+  String toString() {
+    return 'ProductsListState.searchSuccess(products: $products)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchSuccessImpl &&
+            const DeepCollectionEquality().equals(other._products, _products));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_products));
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchSuccessImplCopyWith<_$SearchSuccessImpl> get copyWith =>
+      __$$SearchSuccessImplCopyWithImpl<_$SearchSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<Product> products) loading,
+    required TResult Function(List<Product> products) marketplaceSuccess,
+    required TResult Function(List<Product> products, bool hasReachedMax)
+        bestSellersSuccess,
+    required TResult Function(ApiErrorModel error) error,
+    required TResult Function(List<Product> products) searchSuccess,
+  }) {
+    return searchSuccess(products);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(List<Product> products)? loading,
+    TResult? Function(List<Product> products)? marketplaceSuccess,
+    TResult? Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult? Function(ApiErrorModel error)? error,
+    TResult? Function(List<Product> products)? searchSuccess,
+  }) {
+    return searchSuccess?.call(products);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<Product> products)? loading,
+    TResult Function(List<Product> products)? marketplaceSuccess,
+    TResult Function(List<Product> products, bool hasReachedMax)?
+        bestSellersSuccess,
+    TResult Function(ApiErrorModel error)? error,
+    TResult Function(List<Product> products)? searchSuccess,
+    required TResult orElse(),
+  }) {
+    if (searchSuccess != null) {
+      return searchSuccess(products);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(ProductsListLoading value) loading,
+    required TResult Function(MarketplaceSuccess value) marketplaceSuccess,
+    required TResult Function(BestSellersSuccess value) bestSellersSuccess,
+    required TResult Function(ProductsListError value) error,
+    required TResult Function(SearchSuccess value) searchSuccess,
+  }) {
+    return searchSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(ProductsListLoading value)? loading,
+    TResult? Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult? Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult? Function(ProductsListError value)? error,
+    TResult? Function(SearchSuccess value)? searchSuccess,
+  }) {
+    return searchSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ProductsListLoading value)? loading,
+    TResult Function(MarketplaceSuccess value)? marketplaceSuccess,
+    TResult Function(BestSellersSuccess value)? bestSellersSuccess,
+    TResult Function(ProductsListError value)? error,
+    TResult Function(SearchSuccess value)? searchSuccess,
+    required TResult orElse(),
+  }) {
+    if (searchSuccess != null) {
+      return searchSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchSuccess implements ProductsListState {
+  const factory SearchSuccess(final List<Product> products) =
+      _$SearchSuccessImpl;
+
+  List<Product> get products;
+
+  /// Create a copy of ProductsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchSuccessImplCopyWith<_$SearchSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
