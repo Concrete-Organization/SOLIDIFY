@@ -79,7 +79,10 @@ class ConcreteCompanySignUpCubit extends Cubit<ConcreteCompanyAccountSignUpState
           shared_prefs.SharedPrefKeys.refreshTokenExpiration,
           businessSignUpResponse.model.authResponse.refreshTokenExpiration,
         );
-
+        await SharedPrefHelper.setData(
+            SharedPrefKeys.joinedDate,
+            DateTime.now().toString()
+        );
         await SharedPrefHelper.setSecuredString(SharedPrefKeys.role, 'Company');
         await SharedPrefHelper.setData(SharedPrefKeys.isLoggedIn, true);
 

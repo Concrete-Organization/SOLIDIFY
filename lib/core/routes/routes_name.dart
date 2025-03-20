@@ -38,7 +38,12 @@ class Routes {
   static const String aboutScreen = 'aboutScreen';
   static const String helpScreen = 'helpScreen';
   static const String privacyPolicyScreen = 'privacyPolicyScreen';
+
   static const String addAccountScreen = 'addAccountScreen';
   static const String searchScreen = 'searchScreen';
   static const String searchWithFillterScreen = 'searchWithFillterScreen';
+
+  static const String aboutYourAccountScreen = 'aboutYourAccountScreen';
+  static const String accountTypeScreen = 'accountTypeScreen';
+
 }

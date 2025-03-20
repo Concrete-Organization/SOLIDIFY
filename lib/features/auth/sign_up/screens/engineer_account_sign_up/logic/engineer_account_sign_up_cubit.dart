@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart' as shared_prefs;
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/models/engineer_account_sign_up_request_model.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/repos/engineer_account_sign_up_repo.dart';
@@ -49,14 +50,26 @@ class EngineerAccountSignUpCubit extends Cubit<EngineerAccountSignUpState> {
         shared_prefs.SharedPrefKeys.refreshTokenExpiration,
         signupResponse.model.refreshTokenExpiration,
       );
-
+      await SharedPrefHelper.setData(
+          SharedPrefKeys.joinedDate,
+          DateTime.now().toString()
+      );
       await SharedPrefHelper.setSecuredString(SharedPrefKeys.role, 'Engineer');
       await SharedPrefHelper.setData(SharedPrefKeys.isLoggedIn, true);
 
+      Map<String, dynamic> decodedToken = JwtDecoder.decode(signupResponse.model.accessToken);
+      String userId = decodedToken['sub'] ?? decodedToken['Id'];
+      String userName = decodedToken['User Name'];
+      String email = decodedToken['Email'];
+
+      await SharedPrefHelper.saveUserDetails(
+        id: userId,
+        userName: userName,
+        email: email,
+      );
 
       emit(EngineerAccountSignUpState.engineerSignUpSuccess(signupResponse));
     }, failure: (error) {
       emit(EngineerAccountSignUpState.engineerSignUpError(error: error));
     });
-  }
-}
+  }}

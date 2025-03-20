@@ -8,7 +8,7 @@ import 'dart:io';
 
 class EngineerProfileCubit extends Cubit<EngineerProfileState> {
   final EngineerProfileRepo _engineerProfileRepo;
-  late GetEngineerProfileResponse userData;
+  GetEngineerProfileResponse? userData;
 
   EngineerProfileCubit(this._engineerProfileRepo)
       : super(const EngineerProfileState.initial());
