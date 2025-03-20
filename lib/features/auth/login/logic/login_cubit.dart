@@ -60,6 +60,10 @@ class LoginCubit extends Cubit<LoginState> {
           SharedPrefKeys.role,
           role,
         );
+        await SharedPrefHelper.setData(
+            SharedPrefKeys.joinedDate,
+            DateTime.now().toString()
+        );
 
         await SharedPrefHelper.setData(SharedPrefKeys.isLoggedIn, true);
 

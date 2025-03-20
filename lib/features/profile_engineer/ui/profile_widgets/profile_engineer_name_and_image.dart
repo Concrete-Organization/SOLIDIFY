@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:solidify/core/di/dependency_injection.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';

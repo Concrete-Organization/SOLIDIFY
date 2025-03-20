@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
-import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 
@@ -26,15 +24,6 @@ class EmptyProfilePostsState extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           verticalSpace(10),
-          TextButton(
-            onPressed: () {
-              context.pushNamed(Routes.createPostScreen);
-            },
-            child: Text(
-              'Create your first post',
-              style: TextStyles.font15MainBlueMedium,
-            ),
-          ),
         ],
       ),
     );
