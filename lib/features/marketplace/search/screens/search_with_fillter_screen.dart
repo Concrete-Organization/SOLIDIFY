@@ -17,7 +17,7 @@ class SearchWithFillterScreen extends StatefulWidget {
 }
 
 class _SearchWithFillterScreenState extends State<SearchWithFillterScreen> {
-  List<String> selectedFilters = ['Cement']; // Initial filter as per screenshot
+  List<String> selectedFilters = ['Cement'];
 
   void addFilter(String filter) {
     setState(() {
@@ -38,7 +38,7 @@ class _SearchWithFillterScreenState extends State<SearchWithFillterScreen> {
     return Scaffold(
       appBar: const FillterTopBar(),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
