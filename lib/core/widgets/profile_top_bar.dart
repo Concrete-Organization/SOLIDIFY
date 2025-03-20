@@ -1,6 +1,8 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 
 class ProfileTopBar extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -18,10 +20,16 @@ class ProfileTopBar extends StatelessWidget {
             onTap: () => scaffoldKey.currentState?.openDrawer(),
             child: SvgPicture.asset('assets/svgs/settings.svg'),
           ),
-          SvgPicture.asset('assets/svgs/notification.svg'),
+          GestureDetector(
+            onTap: (){
+              context.pushNamed(Routes.notificationsScreen);
+            },
+            child: SvgPicture.asset(
+              'assets/svgs/notification.svg',
+            ),
+          ),
         ],
       ),
     );
   }
 }
-

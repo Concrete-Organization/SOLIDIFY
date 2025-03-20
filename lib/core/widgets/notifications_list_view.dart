@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solidify/features/profile_company/ui/widgets/notifications_list_view_item.dart';
+import 'package:solidify/core/widgets/notifications_list_view_item.dart';
 
 
 class NotificationsListView extends StatelessWidget {

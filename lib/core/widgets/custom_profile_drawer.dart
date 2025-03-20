@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/drawer_item.dart';
@@ -66,16 +67,25 @@ class CustomProfileDrawer extends StatelessWidget {
                   icon: 'assets/svgs/about_icon.svg',
                   title: 'About',
                   titleStyle: TextStyles.font15lightBlackMedium,
+                  onTap: (){
+                    context.pushNamed(Routes.aboutScreen);
+                  },
                 ),
                 DrawerItem(
                   icon: 'assets/svgs/help_icon.svg',
                   title: 'Help',
                   titleStyle: TextStyles.font15lightBlackMedium,
+                  onTap: (){
+                    context.pushNamed(Routes.helpScreen);
+                  },
                 ),
                 DrawerItem(
                   icon: 'assets/svgs/privacy_policy_icon.svg',
                   title: 'Privacy Policy',
                   titleStyle: TextStyles.font15lightBlackMedium,
+                  onTap: (){
+                    context.pushNamed(Routes.privacyPolicyScreen);
+                  },
                 ),
                 verticalSpace(9),
                 Padding(

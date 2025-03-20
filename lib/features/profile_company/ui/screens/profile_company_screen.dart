@@ -34,7 +34,7 @@ class _ProfileCompanyScreenState extends State<ProfileCompanyScreen> {
           _isDrawerOpen = isOpen;
         });
       },
-      drawerScrimColor: Colors.transparent, // اجعل الخلفية شفافة لرؤية البلور
+      drawerScrimColor: Colors.transparent,
       body: Stack(
         children: [
           SafeArea(
@@ -94,7 +94,7 @@ class _ProfileCompanyScreenState extends State<ProfileCompanyScreen> {
             BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
               child: Container(
-                color: Colors.black.withOpacity(0.2), // إضافة تأثير شفافية خفيف
+                color: Colors.black.withOpacity(0.2),
               ),
             ),
         ],
