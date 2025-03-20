@@ -9,11 +9,36 @@ import 'package:solidify/features/marketplace/marketplace/ui/widgets/rating_sect
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/write_review_part.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/prodcut_row_for_review.dart';
 
-class WriteReviewScreen extends StatelessWidget {
+class WriteReviewScreen extends StatefulWidget {
   const WriteReviewScreen({super.key});
 
   @override
+  _WriteReviewScreenState createState() => _WriteReviewScreenState();
+}
+
+class _WriteReviewScreenState extends State<WriteReviewScreen> {
+  final TextEditingController _reviewController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    // Listen for changes in the review text
+    _reviewController.addListener(() {
+      setState(() {}); // Rebuild to update the submit button state
+    });
+  }
+
+  @override
+  void dispose() {
+    _reviewController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // Disable the submit button if review text is empty.
+    bool isButtonEnabled = _reviewController.text.trim().isNotEmpty;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -30,15 +55,28 @@ class WriteReviewScreen extends StatelessWidget {
               verticalSpace(35),
               ProdcutRowForReview(),
               verticalSpace(20),
-              HorizontalDivider(),
+              const HorizontalDivider(),
               verticalSpace(25),
-              WriteReviewPart(),
+
+              WriteReviewPart(controller: _reviewController),
               verticalSpace(30),
               RatingSection(),
-              Spacer(),
-              AppTextButton(onPressed: () {}, textButton: 'Submit')
+              verticalSpace(30),
+              // The button is now moved to bottomNavigationBar
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(20.w),
+        child: AppTextButton(
+          onPressed: isButtonEnabled
+              ? () {
+                  // Do your submission logic here
+                  print("Submitting review: ${_reviewController.text}");
+                }
+              : null, // When null, the button is disabled
+          textButton: 'Submit',
         ),
       ),
     );

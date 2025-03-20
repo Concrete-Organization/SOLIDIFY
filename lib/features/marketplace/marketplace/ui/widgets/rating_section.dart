@@ -13,9 +13,8 @@ class RatingSection extends StatefulWidget {
 
 class _RatingSectionState extends State<RatingSection> {
   int _rating = 0;
-  final double _starSize = 40.0; // Adjust the star size as needed
+  final double _starSize = 40.0;
 
-  // Update the rating based on the x-coordinate of the gesture.
   void _updateRating(Offset localPosition) {
     // Calculate new rating based on position relative to star width.
     int newRating = (localPosition.dx / _starSize).ceil();
@@ -29,6 +28,7 @@ class _RatingSectionState extends State<RatingSection> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Rate this product',

@@ -1,12 +1,11 @@
-import 'package:path/path.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 
 class OrderDetailsContainer extends StatelessWidget {
@@ -24,6 +23,7 @@ class OrderDetailsContainer extends StatelessWidget {
       child: Column(
         children: [
           _buildProductItem(
+            context: context,
             image: 'assets/images/cement_bag_3x.png',
             name: 'Ambuja cement',
             price: '1,000 EGP',
@@ -31,6 +31,7 @@ class OrderDetailsContainer extends StatelessWidget {
           ),
           const HorizontalDivider(thickness: 0.6),
           _buildProductItem(
+            context: context,
             image: 'assets/images/cement_bag_3x.png',
             name: 'Fly ash',
             price: '1,000 EGP',
@@ -38,12 +39,12 @@ class OrderDetailsContainer extends StatelessWidget {
           ),
           const HorizontalDivider(thickness: 0.6),
           _buildProductItem(
+            context: context,
             image: 'assets/images/cement_bag_3x.png',
             name: 'White cement',
             price: '900 EGP',
             qty: '1',
           ),
-
           const HorizontalDivider(thickness: 0.6),
           // Total and Completed Order Row
           Padding(
@@ -91,6 +92,7 @@ class OrderDetailsContainer extends StatelessWidget {
   }
 
   Widget _buildProductItem({
+    required BuildContext context,
     required String image,
     required String name,
     required String price,
@@ -126,7 +128,6 @@ class OrderDetailsContainer extends StatelessWidget {
             ],
           ),
           const Spacer(),
-
           GestureDetector(
             onTap: () {
               context.pushNamed(Routes.writeReviewScreen);
