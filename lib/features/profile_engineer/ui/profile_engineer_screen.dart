@@ -1,8 +1,10 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/di/dependency_injection.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/widgets/custom_profile_drawer.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/core/widgets/profile_top_bar.dart';
 import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
@@ -23,6 +25,7 @@ class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
   int _currentTabIndex = 0;
   String _userId = '';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _isDrawerOpen = false;
 
 
   @override
@@ -45,6 +48,14 @@ class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
+        drawer: CustomProfileDrawer(),
+        onDrawerChanged: (isOpen) {
+          setState(() {
+            _isDrawerOpen = isOpen;
+          });
+        },
+        drawerScrimColor: Colors.transparent,
         body: Column(
           children: [
             verticalSpace(13),
@@ -86,6 +97,13 @@ class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
                     currentTabIndex: _currentTabIndex,
                     engineerId: _userId,
                   ),
+                ),
+              ),
+            if (_isDrawerOpen)
+              BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                child: Container(
+                  color: Colors.black.withOpacity(0.2),
                 ),
               ),
           ],
