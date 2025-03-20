@@ -30,7 +30,7 @@ class ProductCategoryBlocBuilder extends StatelessWidget {
                     verticalSpace(5),
                     const HorizontalDivider(),
                     verticalSpace(21),
-                    const ProductSearchBar(),
+                    // const ProductSearchBar(),
                     verticalSpace(15),
                     Text(
                       categoryLabel,

@@ -24,6 +24,7 @@ class MarketplaceBlocBuilder extends StatelessWidget {
           bestSellersSuccess: (_, __) => const SliverToBoxAdapter(
             child: SizedBox.shrink(),
           ),
+          searchSuccess: (products) => ProductGridView(products: products),
           error: (error) => SliverToBoxAdapter(
             child: Center(child: Text('Error: ${error.message}')),
           ),

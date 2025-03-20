@@ -12,6 +12,12 @@ class ProductGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (products.isEmpty) {
+      return const SliverToBoxAdapter(
+        child: Center(child: Text('No products found')),
+      );
+    }
+
     return SliverGrid(
       delegate: SliverChildBuilderDelegate(
         (context, index) => GestureDetector(

@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
 
 class ProductSearchBar extends StatelessWidget {
-  const ProductSearchBar({super.key});
+  final Function(String) onSearch;
+
+  const ProductSearchBar({super.key, required this.onSearch});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,7 @@ class ProductSearchBar extends StatelessWidget {
         'assets/svgs/lets-icons_filter.svg',
         fit: BoxFit.scaleDown,
       ),
+      onChanged: onSearch, // Call the onSearch callback when the text changes
     );
   }
 }

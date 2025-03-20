@@ -251,12 +251,21 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const AboutScreen(),
         );
-          case Routes.searchScreen:
+      case Routes.searchScreen:
         return MaterialPageRoute(
-          builder: (context) => const SearchScreen(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<ProductsListCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<CartCubit>(),
+              ),
+            ],
+            child: const SearchScreen(),
+          ),
         );
-        
-        
+
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(
