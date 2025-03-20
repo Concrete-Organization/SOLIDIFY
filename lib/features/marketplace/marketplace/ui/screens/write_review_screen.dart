@@ -22,9 +22,9 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
   @override
   void initState() {
     super.initState();
-    // Listen for changes in the review text
+
     _reviewController.addListener(() {
-      setState(() {}); // Rebuild to update the submit button state
+      setState(() {});
     });
   }
 
@@ -36,7 +36,6 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Disable the submit button if review text is empty.
     bool isButtonEnabled = _reviewController.text.trim().isNotEmpty;
 
     return Scaffold(
@@ -57,12 +56,10 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
               verticalSpace(20),
               const HorizontalDivider(),
               verticalSpace(25),
-
               WriteReviewPart(controller: _reviewController),
               verticalSpace(30),
               RatingSection(),
               verticalSpace(30),
-              // The button is now moved to bottomNavigationBar
             ],
           ),
         ),
@@ -70,12 +67,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(20.w),
         child: AppTextButton(
-          onPressed: isButtonEnabled
-              ? () {
-                  // Do your submission logic here
-                  print("Submitting review: ${_reviewController.text}");
-                }
-              : null, // When null, the button is disabled
+          onPressed: isButtonEnabled ? () {} : null,
           textButton: 'Submit',
         ),
       ),
