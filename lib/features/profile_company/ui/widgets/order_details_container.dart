@@ -1,9 +1,12 @@
+import 'package:path/path.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 
 class OrderDetailsContainer extends StatelessWidget {
@@ -123,27 +126,32 @@ class OrderDetailsContainer extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          // Write Review Button
-          Container(
-            width: 112.w,
-            height: 27.h,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 0.4.w,
-                color: ColorsManager.mainBlue,
-              ),
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset('assets/svgs/write_icon.svg'),
-                horizontalSpace(5),
-                Text(
-                  'Write a review',
-                  style: TextStyles.font10MainBlueMedium,
+
+          GestureDetector(
+            onTap: () {
+              context.pushNamed(Routes.writeReviewScreen);
+            },
+            child: Container(
+              width: 112.w,
+              height: 27.h,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 0.4.w,
+                  color: ColorsManager.mainBlue,
                 ),
-              ],
+                borderRadius: BorderRadius.circular(12.r),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset('assets/svgs/write_icon.svg'),
+                  horizontalSpace(5),
+                  Text(
+                    'Write a review',
+                    style: TextStyles.font10MainBlueMedium,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
