@@ -274,7 +274,7 @@ class AppRoutes {
       case Routes.searchWithFillterScreen:
         return MaterialPageRoute(
           builder: (context) => const SearchWithFillterScreen(),
-
+        );
       case Routes.helpScreen:
         return MaterialPageRoute(
           builder: (context) => const HelpScreen(),
