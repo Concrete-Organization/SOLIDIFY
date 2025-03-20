@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/color_manger.dart';
@@ -9,6 +10,11 @@ import 'package:solidify/core/widgets/horizontal_divider.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
+
+  Future<String> _getAppVersion() async {
+    final packageInfo = await PackageInfo.fromPlatform();
+    return packageInfo.version;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +50,28 @@ class AboutScreen extends StatelessWidget {
                 color: ColorsManager.mainBlueWith2Opacity,
                 thickness: 0.6,
               ),
-              CustomAboutRow(
-                title: 'Version',
-                value: '0.0.0000',
-                hasArrow: false,
-                onTap: () {
-
+              FutureBuilder<String>(
+                future: _getAppVersion(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return CustomAboutRow(
+                      title: 'Version',
+                      value: 'Loading...',
+                      hasArrow: false,
+                    );
+                  } else if (snapshot.hasError) {
+                    return CustomAboutRow(
+                      title: 'Version',
+                      value: 'Error',
+                      hasArrow: false,
+                    );
+                  } else {
+                    return CustomAboutRow(
+                      title: 'Version',
+                      value: snapshot.data ?? 'Unknown',
+                      hasArrow: false,
+                    );
+                  }
                 },
               ),
             ],
