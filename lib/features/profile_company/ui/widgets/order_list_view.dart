@@ -7,16 +7,16 @@ class OrderListView extends StatelessWidget {
 
   const OrderListView({
     super.key,
-    this.itemsToShow = 2, // Default show 2 items
+    this.itemsToShow = 2,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      physics: const NeverScrollableScrollPhysics(), // Disable scrolling
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: itemsToShow,
-      separatorBuilder: (context, index) => verticalSpace(20),
+      separatorBuilder: (context, index) => verticalSpace(30),
       itemBuilder: (context, index) => OrderListViewItem(),
     );
   }

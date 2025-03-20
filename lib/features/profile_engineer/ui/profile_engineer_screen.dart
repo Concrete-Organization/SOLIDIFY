@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/di/dependency_injection.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
+import 'package:solidify/core/widgets/profile_top_bar.dart';
 import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
-import 'package:solidify/features/profile_engineer/ui/profile_widgets/custom_tab_toggle.dart';
+import 'package:solidify/features/profile_engineer/logic/profile_engineer_comments/profile_engineer_comments_cubit.dart';
+import 'package:solidify/features/profile_engineer/logic/profile_engineer_posts/profile_engineer_posts_cubit.dart';
+import 'package:solidify/core/widgets/custom_tab_toggle.dart';
 import 'package:solidify/features/profile_engineer/ui/profile_widgets/profile_content_posts_or_comments.dart';
-import 'package:solidify/features/profile_engineer/ui/profile_widgets/profile_engineer_app_bar.dart';
 import 'package:solidify/features/profile_engineer/ui/profile_widgets/profile_engineer_bloc_builder.dart';
-
-import '../../../core/di/dependency_injection.dart';
-import '../logic/profile_engineer_comments/profile_engineer_comments_cubit.dart';
-import '../logic/profile_engineer_posts/profile_engineer_posts_cubit.dart';
 
 class ProfileEngineerScreen extends StatefulWidget {
   const ProfileEngineerScreen({super.key});
@@ -23,6 +22,8 @@ class ProfileEngineerScreen extends StatefulWidget {
 class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
   int _currentTabIndex = 0;
   String _userId = '';
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 
   @override
   void initState() {
@@ -46,7 +47,10 @@ class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
       child: Scaffold(
         body: Column(
           children: [
-            ProfileEngineerAppBar(),
+            verticalSpace(13),
+            ProfileTopBar(
+              scaffoldKey: _scaffoldKey,
+            ),
             verticalSpace(13),
             HorizontalDivider(
               thickness: 0.5,

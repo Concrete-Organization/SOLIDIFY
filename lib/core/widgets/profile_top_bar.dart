@@ -1,9 +1,11 @@
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class ProfileEngineerAppBar extends StatelessWidget {
-  const ProfileEngineerAppBar({super.key});
+class ProfileTopBar extends StatelessWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
+  const ProfileTopBar({super.key, required this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +14,14 @@ class ProfileEngineerAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SvgPicture.asset('assets/svgs/settings.svg'),
+          GestureDetector(
+            onTap: () => scaffoldKey.currentState?.openDrawer(),
+            child: SvgPicture.asset('assets/svgs/settings.svg'),
+          ),
           SvgPicture.asset('assets/svgs/notification.svg'),
         ],
       ),
     );
   }
 }
+

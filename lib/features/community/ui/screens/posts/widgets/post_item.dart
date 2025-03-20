@@ -24,7 +24,7 @@ class PostItem extends StatelessWidget {
               profileImageUrl: context
                   .read<EngineerProfileCubit>()
                   .userData
-                  .model
+                  ?.model
                   ?.profileImageUrl ??
                   post.profileImageUrl,
               creationDate: post.creationDate,
