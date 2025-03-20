@@ -1,6 +1,8 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,6 +23,7 @@ class OrderDetailsContainer extends StatelessWidget {
       child: Column(
         children: [
           _buildProductItem(
+            context: context,
             image: 'assets/images/cement_bag_3x.png',
             name: 'Ambuja cement',
             price: '1,000 EGP',
@@ -28,6 +31,7 @@ class OrderDetailsContainer extends StatelessWidget {
           ),
           const HorizontalDivider(thickness: 0.6),
           _buildProductItem(
+            context: context,
             image: 'assets/images/cement_bag_3x.png',
             name: 'Fly ash',
             price: '1,000 EGP',
@@ -35,12 +39,12 @@ class OrderDetailsContainer extends StatelessWidget {
           ),
           const HorizontalDivider(thickness: 0.6),
           _buildProductItem(
+            context: context,
             image: 'assets/images/cement_bag_3x.png',
             name: 'White cement',
             price: '900 EGP',
             qty: '1',
           ),
-
           const HorizontalDivider(thickness: 0.6),
           // Total and Completed Order Row
           Padding(
@@ -88,6 +92,7 @@ class OrderDetailsContainer extends StatelessWidget {
   }
 
   Widget _buildProductItem({
+    required BuildContext context,
     required String image,
     required String name,
     required String price,
@@ -98,7 +103,6 @@ class OrderDetailsContainer extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          // Product Image
           Container(
             width: 74.w,
             height: 60.h,
@@ -124,27 +128,31 @@ class OrderDetailsContainer extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          // Write Review Button
-          Container(
-            width: 112.w,
-            height: 27.h,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 0.4.w,
-                color: ColorsManager.mainBlue,
-              ),
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset('assets/svgs/write_icon.svg'),
-                horizontalSpace(5),
-                Text(
-                  'Write a review',
-                  style: TextStyles.font10MainBlueMedium,
+          GestureDetector(
+            onTap: () {
+              context.pushNamed(Routes.writeReviewScreen);
+            },
+            child: Container(
+              width: 112.w,
+              height: 27.h,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 0.4.w,
+                  color: ColorsManager.mainBlue,
                 ),
-              ],
+                borderRadius: BorderRadius.circular(12.r),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset('assets/svgs/write_icon.svg'),
+                  horizontalSpace(5),
+                  Text(
+                    'Write a review',
+                    style: TextStyles.font10MainBlueMedium,
+                  ),
+                ],
+              ),
             ),
           ),
         ],

@@ -45,5 +45,5 @@ class Routes {
 
   static const String aboutYourAccountScreen = 'aboutYourAccountScreen';
   static const String accountTypeScreen = 'accountTypeScreen';
-
+  static const String writeReviewScreen = 'writeReviewScreen';
 }
