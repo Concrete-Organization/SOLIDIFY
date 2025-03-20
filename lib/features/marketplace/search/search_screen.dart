@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solidify/core/widgets/app_text_form_field.dart';
+import 'package:solidify/features/marketplace/marketplace/ui/widgets/product_search_bar.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -13,12 +13,7 @@ class SearchScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           children: [
-            AppTextFormField(
-              width: 353.w,
-              height: 45.h,
-              borderRadius: 25.r,
-              hintText: 'search any item',
-            )
+            ProductSearchBar(),
           ],
         ),
       )),

@@ -14,7 +14,6 @@ class MarketplaceBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () {
-            // Fetch marketplace products when the state is initial
             context.read<ProductsListCubit>().fetchMarketplaceProducts();
             return const SliverToBoxAdapter(child: SizedBox.shrink());
           },
