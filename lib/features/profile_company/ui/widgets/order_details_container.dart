@@ -98,7 +98,6 @@ class OrderDetailsContainer extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          // Product Image
           Container(
             width: 74.w,
             height: 60.h,
