@@ -33,10 +33,8 @@ class SearchScreen extends StatelessWidget {
                 },
               ),
 
-              // Vertical Spacing (35 pixels)
               verticalSpace(35),
 
-              // Products or Messages
               Expanded(
                 child: BlocBuilder<ProductsListCubit, ProductsListState>(
                   builder: (context, state) {
