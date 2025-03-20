@@ -23,6 +23,7 @@ class SharedPrefKeys {
   static const likedRepliesKey = 'liked_replies';
   static const String _cartItemsKey = 'cartItems';
   static const String favorites = 'favorites';
+  static const String joinedDate = 'joinedDate';
 }
 
 class SharedPrefHelper {

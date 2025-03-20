@@ -18,11 +18,8 @@ class EngineerAccountSignUpRequestModel {
     required this.fullName,
   });
 
-  /// Factory constructor for creating a new `UserSignUpRequestModel` instance
-  /// from a JSON map.
   factory EngineerAccountSignUpRequestModel.fromJson(Map<String, dynamic> json) =>
       _$EngineerAccountSignUpRequestModelFromJson(json);
 
-  /// A method to convert this object to JSON.
   Map<String, dynamic> toJson() => _$EngineerAccountSignUpRequestModelToJson(this);
 }

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/core/core_screens/about_your_account_screen.dart';
+import 'package:solidify/core/core_screens/account_type_screen.dart';
+import 'package:solidify/core/core_screens/help_screen.dart';
+import 'package:solidify/core/core_screens/privacy_policy_screen.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -249,6 +253,22 @@ class AppRoutes {
       case Routes.aboutScreen:
         return MaterialPageRoute(
           builder: (context) => const AboutScreen(),
+        );
+      case Routes.helpScreen:
+        return MaterialPageRoute(
+          builder: (context) => const HelpScreen(),
+        );
+      case Routes.privacyPolicyScreen:
+        return MaterialPageRoute(
+          builder: (context) => const PrivacyPolicyScreen(),
+        );
+      case Routes.aboutYourAccountScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AboutYourAccountScreen(),
+        );
+      case Routes.accountTypeScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AccountTypeScreen(),
         );
       default:
         return MaterialPageRoute(

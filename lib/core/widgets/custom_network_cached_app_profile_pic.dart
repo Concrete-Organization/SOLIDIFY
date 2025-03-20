@@ -19,7 +19,7 @@ class CustomNetworkCachedAppProfilePic extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: radius.w,
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.transparent,
       child: profileImageUrl != null
           ? ClipOval(
               child: CachedNetworkImage(

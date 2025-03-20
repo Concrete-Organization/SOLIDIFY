@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:solidify/core/helpers/logout_helper.dart';
 import 'package:solidify/core/network/refresh_token_model.dart';
-import 'package:solidify/core/routes/routes_name.dart';
-import 'package:solidify/main.dart';
 
 import '../helpers/shared_pref_helper.dart';
 import 'api_constants.dart';
@@ -104,11 +103,6 @@ class TokenInterceptor extends Interceptor {
       ), true);
     }
   }
-  // @override
-  // void onResponse(Response response, ResponseInterceptorHandler handler) {
-  //   if(response.)
-  //   super.onResponse(response, handler);
-  // }
 
   Future<RefreshTokenResponseModel> _refreshToken(String refreshToken) async {
     final dio = Dio();
@@ -120,13 +114,7 @@ class TokenInterceptor extends Interceptor {
   }
 
   void _logoutUser() async {
-    await SharedPrefHelper.clearAllSecuredData();
-    await SharedPrefHelper.clearAllData();
-    await SharedPrefHelper.setData(SharedPrefKeys.isLoggedIn, false);
-    navigatorKey.currentState?.pushNamedAndRemoveUntil(
-      Routes.loginScreen,
-          (route) => false,
-    );
+    await LogoutHelper.logout();
   }
 
   bool _shouldSkipInterceptor(String path) {

@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/helpers/logout_helper.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/drawer_item.dart';
+import 'package:solidify/core/widgets/horizontal_divider.dart';
+import 'package:solidify/core/widgets/logout_dialog.dart';
 
 class CustomProfileDrawer extends StatelessWidget {
   const CustomProfileDrawer({super.key});
@@ -67,7 +70,7 @@ class CustomProfileDrawer extends StatelessWidget {
                   icon: 'assets/svgs/about_icon.svg',
                   title: 'About',
                   titleStyle: TextStyles.font15lightBlackMedium,
-                  onTap: (){
+                  onTap: () {
                     context.pushNamed(Routes.aboutScreen);
                   },
                 ),
@@ -75,7 +78,7 @@ class CustomProfileDrawer extends StatelessWidget {
                   icon: 'assets/svgs/help_icon.svg',
                   title: 'Help',
                   titleStyle: TextStyles.font15lightBlackMedium,
-                  onTap: (){
+                  onTap: () {
                     context.pushNamed(Routes.helpScreen);
                   },
                 ),
@@ -83,7 +86,7 @@ class CustomProfileDrawer extends StatelessWidget {
                   icon: 'assets/svgs/privacy_policy_icon.svg',
                   title: 'Privacy Policy',
                   titleStyle: TextStyles.font15lightBlackMedium,
-                  onTap: (){
+                  onTap: () {
                     context.pushNamed(Routes.privacyPolicyScreen);
                   },
                 ),
@@ -102,13 +105,19 @@ class CustomProfileDrawer extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 12.w),
                   child: Text(
                     'Add account',
-                    style: TextStyles.font15MainBlueMedium
+                    style: TextStyles.font15MainBlueMedium,
                   ),
                 ),
                 DrawerItem(
                   icon: 'assets/svgs/log_out_icon.svg',
                   title: 'Log Out',
                   titleStyle: TextStyles.font15RedMedium,
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => LogoutDialog(),
+                    );
+                  },
                 ),
               ],
             ),
