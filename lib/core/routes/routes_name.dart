@@ -40,4 +40,5 @@ class Routes {
   static const String privacyPolicyScreen = 'privacyPolicyScreen';
   static const String addAccountScreen = 'addAccountScreen';
   static const String searchScreen = 'searchScreen';
+  static const String searchWithFillterScreen = 'searchWithFillterScreen';
 }

@@ -12,11 +12,11 @@ import 'package:solidify/core/core_screens/notifications_screen.dart';
 import 'package:solidify/features/chatbot/ui/screens/chat_screen.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
 import 'package:solidify/features/marketplace/cart/ui/cart_screen.dart';
-import 'package:solidify/features/marketplace/search/search_screen.dart';
 import 'package:solidify/features/app_flows_layouts/company_layout.dart';
 import 'package:solidify/features/app_flows_layouts/engineer_layout.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
+import 'package:solidify/features/marketplace/search/screens/search_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/payment_screen.dart';
 import 'package:solidify/features/marketplace/favorites/ui/favorites_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/checkout_screen.dart';
@@ -31,6 +31,7 @@ import 'package:solidify/features/auth/forget_password/logic/forget_password_cub
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/address_details_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/reviews_screen.dart';
+import 'package:solidify/features/marketplace/search/screens/search_with_fillter_screen.dart';
 import 'package:solidify/features/crack_detection/ui/screens/upload_crack_gallery_image.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/best_sellers_screen.dart';
@@ -265,7 +266,10 @@ class AppRoutes {
             child: const SearchScreen(),
           ),
         );
-
+      case Routes.searchWithFillterScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SearchWithFillterScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(
