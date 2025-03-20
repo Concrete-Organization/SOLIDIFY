@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/core/core_screens/about_screen.dart';
 import 'package:solidify/features/auth/otp/ui/otp_screen.dart';
 import 'package:solidify/features/auth/login/ui/login_screen.dart';
 import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
 import 'package:solidify/features/auth/login/logic/login_cubit.dart';
 import 'package:solidify/features/onboarding/onboarding_screen.dart';
+import 'package:solidify/core/core_screens/notifications_screen.dart';
 import 'package:solidify/features/chatbot/ui/screens/chat_screen.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
 import 'package:solidify/features/marketplace/cart/ui/cart_screen.dart';
+import 'package:solidify/features/marketplace/search/search_screen.dart';
 import 'package:solidify/features/app_flows_layouts/company_layout.dart';
 import 'package:solidify/features/app_flows_layouts/engineer_layout.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
-import 'package:solidify/core/core_screens/about_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/payment_screen.dart';
 import 'package:solidify/features/marketplace/favorites/ui/favorites_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/checkout_screen.dart';
@@ -25,7 +27,6 @@ import 'package:solidify/features/community/ui/screens/posts/create_post_screen.
 import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
 import 'package:solidify/features/profile_company/ui/screens/order_details_screen.dart';
-import 'package:solidify/core/core_screens/notifications_screen.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/address_details_screen.dart';
@@ -250,6 +251,12 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const AboutScreen(),
         );
+          case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SearchScreen(),
+        );
+        
+        
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(

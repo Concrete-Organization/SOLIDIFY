@@ -1,6 +1,8 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/product_category_bloc_builder.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_category_cubit.dart/prodcut_category_cubit.dart';
@@ -35,6 +37,9 @@ class _ProductCategoryScreenState extends State<ProductCategoryScreen> {
       appBar: AppBar(
         actions: [
           GestureDetector(
+            onTap: () {
+              context.pushNamed(Routes.cartScreen);
+            },
             child: SvgPicture.asset('assets/svgs/cart_icon.svg'),
           ),
           Padding(
