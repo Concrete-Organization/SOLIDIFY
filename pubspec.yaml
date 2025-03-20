@@ -88,6 +88,8 @@ dependencies:
   provider: ^6.1.2
   # Customize Flutter's default white native splash screen with background color and splash image
   flutter_native_splash: ^2.4.4
+  # Flutter plugin for querying information about the application package
+  package_info_plus: ^8.3.0
 
 
 
