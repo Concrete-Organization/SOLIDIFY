@@ -1,26 +1,48 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FillterNameContainer extends StatelessWidget {
-  const FillterNameContainer({super.key});
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
+  final double width;
+  final double height;
+
+  const FillterNameContainer({
+    super.key,
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+    required this.width,
+    required this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 137.w,
-      height: 28.h,
-      decoration: BoxDecoration(
-          color: ColorsManager.mainBlueWith1Opacity,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: isSelected
+              ? ColorsManager.secondaryGold
+              : ColorsManager.mainBlueWith1Opacity,
           border: Border.all(
             color: ColorsManager.lightBlack,
           ),
-          borderRadius: BorderRadius.circular(8.r)),
-      child: Center(
-        child: Text(
-          'All categories',
-          style: TextStyles.font12LightBlackRegular,
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: isSelected
+                ? TextStyles.font12WhiteRegular
+                : TextStyles.font12LightBlackRegular,
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
