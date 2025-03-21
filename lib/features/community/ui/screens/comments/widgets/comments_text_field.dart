@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
+import 'package:solidify/core/widgets/custom_network_cached_app_profile_pic.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_comment_request.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_reply_request.dart';
@@ -25,6 +27,20 @@ class CommentsTextField extends StatefulWidget {
 
 class _CommentsTextFieldState extends State<CommentsTextField> {
   final TextEditingController _controller = TextEditingController();
+  String? currentUserProfileImageUrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchCurrentUserProfileImageUrl();
+  }
+
+  Future<void> _fetchCurrentUserProfileImageUrl() async {
+    currentUserProfileImageUrl = await SharedPrefHelper.getString(SharedPrefKeys.profileImageUrl);
+    if (mounted) {
+      setState(() {});
+    }
+  }
 
   @override
   void dispose() {
@@ -71,10 +87,9 @@ class _CommentsTextFieldState extends State<CommentsTextField> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(bottom: 8.h),
-                  child: CircleAvatar(
-                    radius: 20.w,
-                    backgroundColor: Colors.transparent,
-                    child: SvgPicture.asset('assets/svgs/app_prof.svg'),
+                  child: CustomNetworkCachedAppProfilePic(
+                    profileImageUrl: currentUserProfileImageUrl,
+                    radius: 20,
                   ),
                 ),
                 horizontalSpace(6),

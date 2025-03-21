@@ -68,7 +68,7 @@ class LogoutDialog extends StatelessWidget {
               style: TextStyles.font12MainBlueMedium,
             ),
           ),
-          verticalSpace(14),
+          verticalSpace(20),
         ],
       ),
     );

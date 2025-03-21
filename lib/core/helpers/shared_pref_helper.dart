@@ -24,6 +24,7 @@ class SharedPrefKeys {
   static const String _cartItemsKey = 'cartItems';
   static const String favorites = 'favorites';
   static const String joinedDate = 'joinedDate';
+  static const String profileImageUrl = 'profileImageUrl';
 }
 
 class SharedPrefHelper {
@@ -120,21 +121,27 @@ class SharedPrefHelper {
     required String id,
     required String userName,
     required String email,
+    String? profileImageUrl,
   }) async {
     await setSecuredString(SharedPrefKeys.userId, id);
     await setSecuredString(SharedPrefKeys.userName, userName);
     await setSecuredString(SharedPrefKeys.email, email);
+    if (profileImageUrl != null) {
+      await setData(SharedPrefKeys.profileImageUrl, profileImageUrl);
+    }
   }
 
   static Future<Map<String, String>> getUserDetails() async {
     final userId = await getSecuredString(SharedPrefKeys.userId);
     final userName = await getSecuredString(SharedPrefKeys.userName);
     final email = await getSecuredString(SharedPrefKeys.email);
+    final profileImageUrl = await getSecuredString(SharedPrefKeys.profileImageUrl);
 
     return {
       'userId': userId,
       'userName': userName,
       'email': email,
+      'profileImageUrl': profileImageUrl,
     };
   }
 

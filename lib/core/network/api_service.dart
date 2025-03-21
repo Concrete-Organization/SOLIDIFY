@@ -27,6 +27,7 @@ import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/data/models/concrete_company_account_sign_up_response_model.dart';
 import 'package:solidify/features/profile_engineer/data/models/get_engineer_profile_response.dart';
 import 'package:solidify/features/profile_engineer/data/models/update_engineer_profile_response.dart';
+import 'package:solidify/features/profile_engineer/data/models/delete_engineer_profile_response.dart';
 
 part 'api_service.g.dart';
 
@@ -172,5 +173,10 @@ abstract class ApiService {
   Future<UpdateEngineerProfileResponse> updateEngineerProfile(
     @Path('id') String id,
     @Body() FormData formData,
+  );
+
+  @DELETE('${ApiConstants.engineerProfile}/{id}')
+  Future<DeleteEngineerProfileResponse> deleteEngineerProfile(
+    @Path('id') String id,
   );
 }

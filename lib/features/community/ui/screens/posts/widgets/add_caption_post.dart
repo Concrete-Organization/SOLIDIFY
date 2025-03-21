@@ -26,7 +26,6 @@ class AddCaptionPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height*0.5,
       decoration: BoxDecoration(
         color: ColorsManager.mainBlueWith5Opacity,
         border: Border.all(color: ColorsManager.mainBlue),
@@ -36,6 +35,7 @@ class AddCaptionPost extends StatelessWidget {
         ),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
             child: Padding(
@@ -80,7 +80,7 @@ class AddCaptionPost extends StatelessWidget {
               },
             ),
           ),
-          verticalSpace(48),
+          verticalSpace(40),
         ],
       ),
     );
