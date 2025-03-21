@@ -7,7 +7,6 @@ import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/custom_network_cached_app_profile_pic.dart';
 import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
-import 'package:solidify/features/profile_engineer/ui/change_profile_pic_screen.dart';
 import 'package:solidify/features/profile_engineer/ui/profile_widgets/option_of_bottom_sheet_for_change_image.dart';
 
 class ProfileEngineerNameAndImage extends StatelessWidget {
@@ -69,68 +68,42 @@ class ProfileEngineerNameAndImage extends StatelessWidget {
     showModalBottomSheet(
       backgroundColor: ColorsManager.white,
       context: context,
-      builder: (context) =>
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: ColorsManager.mainBlue,
-                width: 1.5,
-              ),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.r),
-                topRight: Radius.circular(20.r),
-              ),
-            ),
-            padding: EdgeInsets.only(left: 20.w, top: 15.h, bottom: 25.h),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                OptionOfBottomSheetForChangeImage(
-                  icon: Icons.camera_alt,
-                  iconColor: ColorsManager.mainBlue,
-                  text: 'Take a Photo',
-                  onTap: () => _handleCamera(context),
-                ),
-                OptionOfBottomSheetForChangeImage(
-                  icon: Icons.photo_rounded,
-                  iconColor: ColorsManager.mainBlue,
-                  text: 'Choose existing Photo',
-                  onTap: () => _handleGallery(context,cubit),
-                ),
-                OptionOfBottomSheetForChangeImage(
-                  icon: Icons.delete,
-                  iconColor: ColorsManager.red,
-                  text: 'Remove Background picture',
-                  onTap: () => _handleRemoveImage(context),
-                ),
-              ],
-            ),
+      builder: (context) => Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: ColorsManager.mainBlue,
+            width: 1.5,
           ),
-    );
-  }
-
-  void _handleGallery(BuildContext context, EngineerProfileCubit cubit) {
-    Navigator.pop(context);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) =>
-            BlocProvider.value(
-              value: cubit,
-              child: ChangeProfilePicScreen(
-                currentImageUrl: profileImageUrl,
-                engineerId: engineerId,
-              ),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.r),
+            topRight: Radius.circular(20.r),
+          ),
+        ),
+        padding: EdgeInsets.only(left: 20.w, top: 15.h, bottom: 25.h),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            OptionOfBottomSheetForChangeImage(
+              icon: Icons.camera_alt,
+              iconColor: ColorsManager.mainBlue,
+              text: 'Take a Photo',
+              onTap: () => cubit.handleCameraUpdate(engineerId, context),
             ),
+            OptionOfBottomSheetForChangeImage(
+              icon: Icons.photo_rounded,
+              iconColor: ColorsManager.mainBlue,
+              text: 'Choose existing Photo',
+              onTap: () => cubit.handleGalleryUpdate(engineerId, context),
+            ),
+            OptionOfBottomSheetForChangeImage(
+              icon: Icons.delete,
+              iconColor: ColorsManager.red,
+              text: 'Remove Background picture',
+              onTap: () => cubit.handleRemoveImage(engineerId, context),
+            ),
+          ],
+        ),
       ),
     );
-  }
-
-  void _handleCamera(BuildContext context) {
-    // TODO: Implement camera functionality
-  }
-
-  void _handleRemoveImage(BuildContext context) {
-    // TODO: Implement remove image functionality
   }
 }

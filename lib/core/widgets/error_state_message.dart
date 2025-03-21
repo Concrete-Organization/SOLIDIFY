@@ -16,25 +16,28 @@ class ErrorStateMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (lottieAssetPath != null)
-            Lottie.asset(
-              lottieAssetPath!,
-              repeat: true,
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (lottieAssetPath != null)
+              Lottie.asset(
+                lottieAssetPath!,
+                repeat: true,
+              ),
+            verticalSpace(16),
+            Text(
+              message,
+              textAlign: TextAlign.center,
+              style: TextStyles.font14RedRegular.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: 16.sp,
+              ),
             ),
-          verticalSpace(16),
-          Text(
-            message,
-            textAlign: TextAlign.center,
-            style: TextStyles.font14RedRegular.copyWith(
-              fontWeight: FontWeight.bold,
-              fontSize: 16.sp,
-            ),
-          ),
-        ],
+            verticalSpace(16),
+          ],
+        ),
       ),
     );
   }

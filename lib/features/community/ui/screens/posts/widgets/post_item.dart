@@ -21,12 +21,7 @@ class PostItem extends StatelessWidget {
           builder: (context, state) {
             return PersonalInfoOfPostOwner(
               engineerName: post.engineerName ?? 'Unknown',
-              profileImageUrl: context
-                  .read<EngineerProfileCubit>()
-                  .userData
-                  ?.model
-                  ?.profileImageUrl ??
-                  post.profileImageUrl,
+              profileImageUrl: post.profileImageUrl,
               creationDate: post.creationDate,
             );
           },

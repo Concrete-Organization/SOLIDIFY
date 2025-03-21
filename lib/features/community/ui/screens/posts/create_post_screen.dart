@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/community/logic/posts/posts_state.dart';
@@ -52,6 +53,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
         );
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         body: Column(
           children: [
             CreatePostAppBar(onImagesSelected: updateSelectedImages),
@@ -60,10 +62,12 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                 selectedImages: selectedImages,
                 onRemoveImage: removeImage,
               ),
-            const Spacer(),
-            AddCaptionPost(
-              selectedImages: selectedImages,
-              captionController: _captionController,
+            verticalSpace(10),
+            Expanded(
+              child: AddCaptionPost(
+                selectedImages: selectedImages,
+                captionController: _captionController,
+              ),
             ),
           ],
         ),

@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/extensions.dart';
-import 'package:solidify/core/helpers/logout_helper.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/drawer_item.dart';
-import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/core/widgets/logout_dialog.dart';
 
 class CustomProfileDrawer extends StatelessWidget {
