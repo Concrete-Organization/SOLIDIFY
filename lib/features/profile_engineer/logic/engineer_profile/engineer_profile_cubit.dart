@@ -9,7 +9,6 @@ import 'package:solidify/features/profile_engineer/data/models/update_engineer_p
 import 'package:solidify/features/profile_engineer/data/repo/engineer_profile_repo.dart';
 import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_state.dart';
 import 'dart:io';
-
 import 'package:solidify/features/profile_engineer/ui/change_profile_pic_screen.dart';
 
 class EngineerProfileCubit extends Cubit<EngineerProfileState> {
