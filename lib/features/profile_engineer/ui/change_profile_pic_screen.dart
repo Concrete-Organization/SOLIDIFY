@@ -3,8 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/custom_network_cached_app_profile_pic.dart';
@@ -34,9 +36,31 @@ class _ChangeProfilePicScreenState extends State<ChangeProfilePicScreen> {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      setState(() {
-        _selectedImage = File(pickedFile.path);
-      });
+      final croppedFile = await ImageCropper().cropImage(
+        sourcePath: pickedFile.path,
+        aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
+        uiSettings: [
+          AndroidUiSettings(
+            toolbarTitle: 'Crop Image',
+            toolbarColor: ColorsManager.mainBlue,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.square,
+            lockAspectRatio: true,
+            showCropGrid: true,
+          ),
+          IOSUiSettings(
+            title: 'Crop Image',
+            aspectRatioLockEnabled: true,
+            showCancelConfirmationDialog: true,
+          ),
+        ],
+      );
+
+      if (croppedFile != null) {
+        setState(() {
+          _selectedImage = File(croppedFile.path);
+        });
+      }
     }
   }
 
@@ -57,8 +81,7 @@ class _ChangeProfilePicScreenState extends State<ChangeProfilePicScreen> {
       listener: (context, state) {
         if (_isUpdating) {
           state.maybeWhen(
-            loading: () {
-            },
+            loading: () {},
             success: (engineerId, profile) {
               setState(() {
                 _isUpdating = false;
