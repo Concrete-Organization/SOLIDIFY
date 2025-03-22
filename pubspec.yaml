@@ -90,6 +90,7 @@ dependencies:
   flutter_native_splash: ^2.4.4
   # Flutter plugin for querying information about the application package
   package_info_plus: ^8.3.0
+  image_cropper: ^9.0.0
 
 
 

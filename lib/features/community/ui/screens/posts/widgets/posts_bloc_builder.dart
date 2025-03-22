@@ -45,7 +45,7 @@ class PostsBlocBuilder extends StatelessWidget {
             final errorMessage = error.getAllErrorMessages();
             return ErrorStateMessage(
               message: errorMessage,
-              lottieAssetPath: errorMessage == "Connection to server failed"
+              lottieAssetPath: errorMessage == "Something went wrong"
                   ? 'assets/lottie/error_animation.json'
                   : null,
             );
