@@ -62,7 +62,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                 selectedImages: selectedImages,
                 onRemoveImage: removeImage,
               ),
-            verticalSpace(10),
+            if (selectedImages.isEmpty)
+              verticalSpace(MediaQuery.of(context).size.height*0.2),
             Expanded(
               child: AddCaptionPost(
                 selectedImages: selectedImages,
