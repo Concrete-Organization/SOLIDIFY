@@ -16,5 +16,5 @@ class ProductsListState with _$ProductsListState {
   const factory ProductsListState.error(ApiErrorModel error) =
       ProductsListError;
   const factory ProductsListState.searchSuccess(List<Product> products) =
-      SearchSuccess; // New state
+      SearchSuccess;
 }

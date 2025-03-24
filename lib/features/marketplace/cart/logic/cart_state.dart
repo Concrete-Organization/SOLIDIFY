@@ -20,7 +20,6 @@ class CartState with _$CartState {
       CartListSuccess;
   const factory CartState.cartListError(ApiErrorModel error) = CartListError;
 
-  // Add productName to cartItemDeleted
   const factory CartState.cartItemDeleted(
       String productId, String productName) = CartItemDeleted;
 }

@@ -51,7 +51,7 @@ class BestSellersScreen extends StatelessWidget {
               hasReachedMax: hasReachedMax,
             ),
             searchSuccess: (products) =>
-                _buildProductGrid(context, products), // Handle search results
+                _buildProductGrid(context, products),
             error: (error) => _buildProductGrid(context, [], showError: true),
           );
         },

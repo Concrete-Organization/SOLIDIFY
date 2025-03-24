@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solidify/features/marketplace/search/widgets/fillter_name_container.dart';
+import 'package:solidify/features/marketplace/search/widgets/filter_name_container.dart';
 
 class FilterSection extends StatelessWidget {
   final String title;
@@ -51,7 +51,7 @@ class FilterSection extends StatelessWidget {
         final item = entry.value;
         return Column(
           children: [
-            FillterNameContainer(
+            FilterNameContainer(
               label: item['label'],
               isSelected: selectedFilters.contains(item['label']),
               onTap: () => onFilterSelected(item['label']),
@@ -76,7 +76,7 @@ class FilterSection extends StatelessWidget {
             final item = entry.value;
             return Column(
               children: [
-                FillterNameContainer(
+                FilterNameContainer(
                   label: item['label'],
                   isSelected: selectedFilters.contains(item['label']),
                   onTap: () => onFilterSelected(item['label']),
@@ -95,7 +95,7 @@ class FilterSection extends StatelessWidget {
             final item = entry.value;
             return Column(
               children: [
-                FillterNameContainer(
+                FilterNameContainer(
                   label: item['label'],
                   isSelected: selectedFilters.contains(item['label']),
                   onTap: () => onFilterSelected(item['label']),

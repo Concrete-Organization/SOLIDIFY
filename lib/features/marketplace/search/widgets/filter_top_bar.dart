@@ -4,8 +4,8 @@ import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FillterTopBar extends StatelessWidget implements PreferredSizeWidget {
-  const FillterTopBar({super.key});
+class FilterTopBar extends StatelessWidget implements PreferredSizeWidget {
+  const FilterTopBar({super.key});
 
   @override
   Widget build(BuildContext context) {

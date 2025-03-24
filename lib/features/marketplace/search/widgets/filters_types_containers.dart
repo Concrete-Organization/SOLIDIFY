@@ -5,11 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/marketplace/search/widgets/filter_section.dart';
 
-class FilltersTypesContainers extends StatelessWidget {
+class FiltersTypesContainers extends StatelessWidget {
   final Function(String) onFilterSelected;
   final List<String> selectedFilters;
 
-  const FilltersTypesContainers({
+  const FiltersTypesContainers({
     super.key,
     required this.onFilterSelected,
     required this.selectedFilters,

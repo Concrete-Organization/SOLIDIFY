@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 
@@ -16,7 +17,7 @@ class FavoritesEmpty extends StatelessWidget {
             size: 64,
             color: ColorsManager.mainBlue,
           ),
-          const SizedBox(height: 16),
+          verticalSpace(16),
           Text(
             'No favorites yet',
             style: TextStyles.font15lightBlackRegular,

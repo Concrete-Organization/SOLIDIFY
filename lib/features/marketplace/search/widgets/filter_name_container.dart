@@ -3,14 +3,14 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FillterNameContainer extends StatelessWidget {
+class FilterNameContainer extends StatelessWidget {
   final String label;
   final bool isSelected;
   final VoidCallback onTap;
   final double width;
   final double height;
 
-  const FillterNameContainer({
+  const FilterNameContainer({
     super.key,
     required this.label,
     required this.isSelected,

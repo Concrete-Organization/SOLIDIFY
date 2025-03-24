@@ -27,7 +27,7 @@ import 'package:solidify/features/marketplace/marketplace/data/repos/product_cat
 import 'package:solidify/features/concrete_strength_ai/data/api/concrete_strength_ai_api_call.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/products_list_cubit/products_list_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_details_cubit/product_details_cubit.dart';
-import 'package:solidify/features/marketplace/marketplace/logic/product_category_cubit.dart/prodcut_category_cubit.dart';
+import 'package:solidify/features/marketplace/marketplace/logic/product_category_cubit.dart/product_category_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/repos/engineer_account_sign_up_repo.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/logic/concrete_company_sign_up_cubit.dart';

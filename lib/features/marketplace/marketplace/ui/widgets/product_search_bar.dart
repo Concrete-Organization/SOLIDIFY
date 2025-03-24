@@ -17,15 +17,15 @@ class ProductSearchBar extends StatelessWidget {
       borderRadius: 25.r,
       prefixIcon: SvgPicture.asset('assets/svgs/search_icon.svg'),
       suffixIcon: GestureDetector(
-         onTap: () {
-                          context.pushNamed(Routes.searchWithFillterScreen);
-                        },
+        onTap: () {
+          context.pushNamed(Routes.searchWithFillterScreen);
+        },
         child: SvgPicture.asset(
           'assets/svgs/lets-icons_filter.svg',
           fit: BoxFit.scaleDown,
         ),
       ),
-      onChanged: onSearch, // Call the onSearch callback when the text changes
+      onChanged: onSearch,
     );
   }
 }

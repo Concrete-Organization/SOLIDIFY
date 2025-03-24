@@ -23,7 +23,7 @@ class _ReviewCardState extends State<ReviewCard> {
     final String reviewText =
         '${widget.review.message}This product is amazing! This product is so good! It exceeded all my expectations. The quality is top-notch, and the delivery was super fast. I highly recommend it to anyone looking for a reliable and durable product. The customer service was also excellent, and they were very helpful throughout the process. Overall';
 
-    const int maxChars = 70; // Truncate after 70 characters
+    const int maxChars = 70;
     final bool needTruncation = reviewText.length > maxChars;
     String displayText;
     if (!isExpanded && needTruncation) {
@@ -59,7 +59,6 @@ class _ReviewCardState extends State<ReviewCard> {
                       height: 42.h,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
-                        // Fallback to a default image if the network image fails to load
                         return SvgPicture.asset(
                           'assets/svgs/app_prof.svg',
                           fit: BoxFit.cover,
@@ -82,13 +81,11 @@ class _ReviewCardState extends State<ReviewCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Company name from ReviewModel
                 Text(
                   widget.review.companyName,
                   style: TextStyles.font12LightBlackMedium,
                 ),
                 verticalSpace(4),
-                // Star rating from ReviewModel
                 Row(
                   children: List.generate(widget.review.userRate.clamp(0, 5),
                       (index) {
@@ -103,7 +100,6 @@ class _ReviewCardState extends State<ReviewCard> {
                   }),
                 ),
                 verticalSpace(4),
-                // Review text with expand/collapse functionality
                 GestureDetector(
                   onTap: () {
                     setState(() {

@@ -7,7 +7,9 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/theming/font_weight_helper.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
+import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_state.dart';
 import 'package:solidify/features/marketplace/favorites/domain/product_entity.dart';
@@ -37,7 +39,6 @@ class _FavoriteProductItemState extends State<FavoriteProductItem> {
 
         return GestureDetector(
           onTap: () {
-            // Navigate to product details screen
             context.pushNamed(
               Routes.productDetailsScreen,
               arguments: widget.product.id,
@@ -68,13 +69,13 @@ class _FavoriteProductItemState extends State<FavoriteProductItem> {
         if (productId == widget.product.id &&
             _currentProductId == productId &&
             !_localLoading) {
-          _showErrorSnackbar(context, error.message);
+          _showErrorSnackBar(context, error.message);
           _currentProductId = null;
         }
       },
       success: (productId) {
         if (productId == widget.product.id) {
-          _showSuccessSnackbar(context);
+          _showSuccessSnackBar(context);
           _currentProductId = null;
         }
       },
@@ -159,9 +160,14 @@ class _FavoriteProductItemState extends State<FavoriteProductItem> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildBrandRow(),
-            Text(widget.product.name, style: TextStyles.font12lightBlackLight),
-            Text('${widget.product.price} EGP',
-                style: TextStyles.font12MainBlueSemiBold),
+            Text(
+              widget.product.name,
+              style: TextStyles.font12lightBlackLight,
+            ),
+            Text(
+              '${widget.product.price} EGP',
+              style: TextStyles.font12MainBlueSemiBold,
+            ),
             _buildAddToCartButton(isLoading),
           ],
         ),
@@ -182,19 +188,28 @@ class _FavoriteProductItemState extends State<FavoriteProductItem> {
   Widget _buildBrandRow() {
     return Row(
       children: [
-        Text(widget.product.brandName, style: TextStyles.font12lightBlackLight),
+        Text(
+          widget.product.brandName,
+          style: TextStyles.font12lightBlackLight,
+        ),
         const Spacer(),
-        const Icon(Icons.star, color: ColorsManager.secondaryGold, size: 16),
+        const Icon(
+          Icons.star,
+          color: ColorsManager.secondaryGold,
+          size: 16,
+        ),
         const SizedBox(width: 4),
-        Text(widget.product.rate.toString(),
-            style: TextStyles.font12MainBlueMedium),
+        Text(
+          widget.product.rate.toString(),
+          style: TextStyles.font12MainBlueMedium,
+        ),
       ],
     );
   }
 
   Widget _buildAddToCartButton(bool isLoading) {
     return isLoading || _localLoading
-        ? const _LoadingIndicator()
+        ? LoadingCircleIndicator()
         : AppTextButton(
             height: 34,
             borderRadius: 10,
@@ -220,38 +235,18 @@ class _FavoriteProductItemState extends State<FavoriteProductItem> {
     }
   }
 
-  void _showSuccessSnackbar(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('${widget.product.name} added to cart'),
-        backgroundColor: ColorsManager.mainBlue,
-        duration: const Duration(seconds: 2),
-      ),
+  void _showSuccessSnackBar(BuildContext context) {
+    CustomSnackBar.showInfo(
+      context,
+      '${widget.product.name} added to cart',
     );
   }
 
-  void _showErrorSnackbar(BuildContext context, String? message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Error: $message'),
-        backgroundColor: Colors.red,
-        duration: const Duration(seconds: 2),
-      ),
+  void _showErrorSnackBar(BuildContext context, String? message) {
+    CustomSnackBar.showError(
+      context,
+      'Error: $message',
     );
   }
 }
 
-class _LoadingIndicator extends StatelessWidget {
-  const _LoadingIndicator();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: SizedBox(
-        width: 20,
-        height: 20,
-        child: CircularProgressIndicator(strokeWidth: 2),
-      ),
-    );
-  }
-}

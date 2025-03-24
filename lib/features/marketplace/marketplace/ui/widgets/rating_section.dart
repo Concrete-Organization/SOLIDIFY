@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
@@ -8,7 +8,7 @@ class RatingSection extends StatefulWidget {
   const RatingSection({super.key});
 
   @override
-  _RatingSectionState createState() => _RatingSectionState();
+  State<RatingSection> createState() => _RatingSectionState();
 }
 
 class _RatingSectionState extends State<RatingSection> {
@@ -16,9 +16,7 @@ class _RatingSectionState extends State<RatingSection> {
   final double _starSize = 40.0;
 
   void _updateRating(Offset localPosition) {
-    // Calculate new rating based on position relative to star width.
     int newRating = (localPosition.dx / _starSize).ceil();
-    // Clamp the rating between 0 and 5
     newRating = newRating.clamp(0, 5);
     setState(() {
       _rating = newRating;
@@ -36,14 +34,11 @@ class _RatingSectionState extends State<RatingSection> {
         ),
         verticalSpace(15),
         GestureDetector(
-          // When user slides horizontally
           onHorizontalDragUpdate: (details) {
-            // Convert global position to local coordinates relative to this widget
             final localPosition = (context.findRenderObject() as RenderBox)
                 .globalToLocal(details.globalPosition);
             _updateRating(localPosition);
           },
-          // Also respond to direct taps
           onTapDown: (details) {
             final localPosition = (context.findRenderObject() as RenderBox)
                 .globalToLocal(details.globalPosition);
@@ -56,8 +51,12 @@ class _RatingSectionState extends State<RatingSection> {
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: SvgPicture.asset(
                   'assets/svgs/empty_star_icon.svg',
-                  // If the star's index is less than the current rating, color it secondaryGold.
-                  color: index < _rating ? ColorsManager.secondaryGold : null,
+                  colorFilter: ColorFilter.mode(
+                    index < _rating
+                        ? ColorsManager.secondaryGold
+                        : ColorsManager.mainBlue,
+                    BlendMode.srcIn,
+                  ),
                   width: _starSize,
                   height: _starSize,
                 ),

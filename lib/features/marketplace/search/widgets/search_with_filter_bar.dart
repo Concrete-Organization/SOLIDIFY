@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
 
-class SearchWithFillterBar extends StatelessWidget {
-  const SearchWithFillterBar({super.key});
+class SearchWithFilterBar extends StatelessWidget {
+  const SearchWithFilterBar({super.key});
 
   @override
   Widget build(BuildContext context) {

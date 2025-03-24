@@ -4,11 +4,11 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FilltersTextRow extends StatelessWidget {
+class FiltersTextRow extends StatelessWidget {
   final List<String> selectedFilters;
   final Function(String) onRemove;
 
-  const FilltersTextRow({
+  const FiltersTextRow({
     super.key,
     required this.selectedFilters,
     required this.onRemove,
