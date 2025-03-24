@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
-import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_state.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/product_details_bloc_consumer.dart';
@@ -61,21 +61,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 listener: (context, cartState) {
                   cartState.maybeWhen(
                     success: (productId) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('${product.name} added to cart'),
-                          backgroundColor: ColorsManager.mainBlue,
-                          duration: const Duration(seconds: 2),
-                        ),
+                      CustomSnackBar.showInfo(
+                        context,
+                        '${product.name} added to cart',
                       );
                     },
                     error: (productId, error) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Error: ${error.message}'),
-                          backgroundColor: Colors.red,
-                          duration: const Duration(seconds: 2),
-                        ),
+                      CustomSnackBar.showInfo(
+                        context,
+                        'Error: ${error.message}',
                       );
                     },
                     orElse: () {},
