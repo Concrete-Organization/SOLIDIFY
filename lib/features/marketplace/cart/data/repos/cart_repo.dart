@@ -69,14 +69,13 @@ class CartRepo {
         'Bearer $accessToken',
       );
 
-      // Remove the item from the cached list
       final cachedIds = await SharedPrefHelper.getCachedProductIds();
       if (cachedIds.contains(id)) {
         cachedIds.remove(id);
         await SharedPrefHelper.cacheProductIds(cachedIds);
       }
 
-      return const ApiResult.success(null); // No response body for DELETE
+      return const ApiResult.success(null);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }

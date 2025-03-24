@@ -3,20 +3,20 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
-import 'package:solidify/features/marketplace/search/widgets/fillter_top_bar.dart';
-import 'package:solidify/features/marketplace/search/widgets/fillters_text_row.dart';
-import 'package:solidify/features/marketplace/search/widgets/search_with_fillter_bar.dart';
-import 'package:solidify/features/marketplace/search/widgets/fillters_types_containers.dart';
+import 'package:solidify/features/marketplace/search/widgets/filter_top_bar.dart';
+import 'package:solidify/features/marketplace/search/widgets/filters_text_row.dart';
+import 'package:solidify/features/marketplace/search/widgets/search_with_filter_bar.dart';
+import 'package:solidify/features/marketplace/search/widgets/filters_types_containers.dart';
 
-class SearchWithFillterScreen extends StatefulWidget {
-  const SearchWithFillterScreen({super.key});
+class SearchWithFilterScreen extends StatefulWidget {
+  const SearchWithFilterScreen({super.key});
 
   @override
-  State<SearchWithFillterScreen> createState() =>
-      _SearchWithFillterScreenState();
+  State<SearchWithFilterScreen> createState() =>
+      _SearchWithFilterScreenState();
 }
 
-class _SearchWithFillterScreenState extends State<SearchWithFillterScreen> {
+class _SearchWithFilterScreenState extends State<SearchWithFilterScreen> {
   List<String> selectedFilters = ['Cement'];
 
   void addFilter(String filter) {
@@ -36,7 +36,7 @@ class _SearchWithFillterScreenState extends State<SearchWithFillterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const FillterTopBar(),
+      appBar: const FilterTopBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
         child: SingleChildScrollView(
@@ -45,9 +45,9 @@ class _SearchWithFillterScreenState extends State<SearchWithFillterScreen> {
             children: [
               const HorizontalDivider(),
               verticalSpace(15),
-              const SearchWithFillterBar(),
+              const SearchWithFilterBar(),
               verticalSpace(8),
-              FilltersTextRow(
+              FiltersTextRow(
                 selectedFilters: selectedFilters,
                 onRemove: removeFilter,
               ),
@@ -56,7 +56,7 @@ class _SearchWithFillterScreenState extends State<SearchWithFillterScreen> {
                 color: ColorsManager.mainBlueWith50Opacity,
               ),
               verticalSpace(25),
-              FilltersTypesContainers(
+              FiltersTypesContainers(
                 onFilterSelected: addFilter,
                 selectedFilters: selectedFilters,
               ),

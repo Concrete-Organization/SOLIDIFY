@@ -17,8 +17,7 @@ class ProductTextColumn extends StatelessWidget {
   final String description;
   final int rate;
   final String productDescription;
-  final List<ReviewModel>
-      reviews; // Add a parameter to accept the full list of reviews
+  final List<ReviewModel> reviews;
 
   const ProductTextColumn({
     super.key,
@@ -28,7 +27,7 @@ class ProductTextColumn extends StatelessWidget {
     required this.description,
     required this.rate,
     required this.productDescription,
-    required this.reviews, // Pass the full list of reviews
+    required this.reviews,
   });
 
   @override
@@ -84,7 +83,7 @@ class ProductTextColumn extends StatelessWidget {
             ),
             horizontalSpace(10),
             Text(
-              '+${reviews.length} Reviews', // Display the total number of reviews
+              '+${reviews.length} Reviews',
               style: TextStyles.font14lightBlackRegular,
             ),
           ],
@@ -116,13 +115,12 @@ class ProductTextColumn extends StatelessWidget {
         Row(
           children: [
             Text(
-              'Reviews (+${reviews.length})', // Display the total number of reviews
+              'Reviews (+${reviews.length})',
               style: TextStyles.font15lightBlackMedium,
             ),
             const Spacer(),
             GestureDetector(
               onTap: () {
-                // Navigate to the ReviewsScreen and pass the full list of reviews
                 context.pushNamed(Routes.reviewsScreen, arguments: reviews);
               },
               child: Text(

@@ -59,10 +59,7 @@ class CartCubit extends Cubit<CartState> {
 
       result.when(
         success: (_) async {
-          // Emit the cartItemDeleted state with productId and name
           emit(CartState.cartItemDeleted(productId, name));
-
-          // Refresh the cart list after deletion
           await getCartItems();
         },
         failure: (error) {

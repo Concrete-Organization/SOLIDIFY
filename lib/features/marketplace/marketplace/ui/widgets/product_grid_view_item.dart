@@ -6,6 +6,7 @@ import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/theming/font_weight_helper.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_state.dart';
@@ -39,13 +40,13 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
             if (productId == widget.product.id &&
                 _currentProductId == productId &&
                 !_localLoading) {
-              _showErrorSnackbar(context, error.message);
+              _showErrorSnackBar(context, error.message);
               _currentProductId = null;
             }
           },
           success: (productId) {
             if (productId == widget.product.id) {
-              _showSuccessSnackbar(context);
+              _showSuccessSnackBar(context);
               _currentProductId = null;
             }
           },
@@ -54,8 +55,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
       },
       builder: (context, state) {
         final favoritesProvider = Provider.of<FavoritesProvider>(context);
-        final productEntity =
-            widget.product.toEntity(); // Convert to ProductEntity
+        final productEntity = widget.product.toEntity();
         final isFavorite = favoritesProvider.isFavorite(productEntity.id);
         final isLoading =
             state is CartLoading && state.productId == widget.product.id;
@@ -103,8 +103,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
                         size: 22.w,
                       ),
                       onPressed: () {
-                        favoritesProvider
-                            .toggleFavorite(productEntity); // Use ProductEntity
+                        favoritesProvider.toggleFavorite(productEntity);
                       },
                     ),
                   ),
@@ -214,23 +213,17 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
     }
   }
 
-  void _showSuccessSnackbar(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('${widget.product.name} added to cart'),
-        backgroundColor: ColorsManager.mainBlue,
-        duration: const Duration(seconds: 2),
-      ),
+  void _showSuccessSnackBar(BuildContext context) {
+    CustomSnackBar.showInfo(
+      context,
+      '${widget.product.name} added to cart',
     );
   }
 
-  void _showErrorSnackbar(BuildContext context, String? message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Error: $message'),
-        backgroundColor: Colors.red,
-        duration: const Duration(seconds: 2),
-      ),
+  void _showErrorSnackBar(BuildContext context, String? message) {
+    CustomSnackBar.showError(
+      context,
+      'Error: $message',
     );
   }
 }

@@ -21,7 +21,6 @@ class SearchScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           child: Column(
             children: [
-              // Search Bar
               ProductSearchBar(
                 onSearch: (query) {
                   context
@@ -32,9 +31,7 @@ class SearchScreen extends StatelessWidget {
                   });
                 },
               ),
-
               verticalSpace(35),
-
               Expanded(
                 child: BlocBuilder<ProductsListCubit, ProductsListState>(
                   builder: (context, state) {

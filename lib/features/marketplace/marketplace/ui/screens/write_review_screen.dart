@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
@@ -7,13 +6,13 @@ import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/rating_section.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/write_review_part.dart';
-import 'package:solidify/features/marketplace/marketplace/ui/widgets/prodcut_row_for_review.dart';
+import 'package:solidify/features/marketplace/marketplace/ui/widgets/product_row_for_review.dart';
 
 class WriteReviewScreen extends StatefulWidget {
   const WriteReviewScreen({super.key});
 
   @override
-  _WriteReviewScreenState createState() => _WriteReviewScreenState();
+  State<WriteReviewScreen> createState() => _WriteReviewScreenState();
 }
 
 class _WriteReviewScreenState extends State<WriteReviewScreen> {
@@ -22,7 +21,6 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
   @override
   void initState() {
     super.initState();
-
     _reviewController.addListener(() {
       setState(() {});
     });
@@ -52,7 +50,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               verticalSpace(35),
-              ProdcutRowForReview(),
+              ProductRowForReview(),
               verticalSpace(20),
               const HorizontalDivider(),
               verticalSpace(25),

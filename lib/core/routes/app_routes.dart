@@ -35,7 +35,7 @@ import 'package:solidify/features/auth/forget_password/logic/forget_password_cub
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/marketplace/order/screens/address_details_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/reviews_screen.dart';
-import 'package:solidify/features/marketplace/search/screens/search_with_fillter_screen.dart';
+import 'package:solidify/features/marketplace/search/screens/search_with_filter_screen.dart';
 import 'package:solidify/features/crack_detection/ui/screens/upload_crack_gallery_image.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/write_review_screen.dart';
@@ -52,7 +52,7 @@ import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/se
 import '../../features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_details_cubit/product_details_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/ui/engineer_account_sign_up_screen.dart';
-import 'package:solidify/features/marketplace/marketplace/logic/product_category_cubit.dart/prodcut_category_cubit.dart';
+import 'package:solidify/features/marketplace/marketplace/logic/product_category_cubit.dart/product_category_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/ui/concrete_company_sign_up_screen.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/logic/concrete_company_sign_up_cubit.dart';
 
@@ -274,7 +274,7 @@ class AppRoutes {
         );
       case Routes.searchWithFillterScreen:
         return MaterialPageRoute(
-          builder: (context) => const SearchWithFillterScreen(),
+          builder: (context) => const SearchWithFilterScreen(),
         );
       case Routes.helpScreen:
         return MaterialPageRoute(

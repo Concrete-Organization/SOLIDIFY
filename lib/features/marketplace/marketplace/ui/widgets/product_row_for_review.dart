@@ -4,8 +4,8 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ProdcutRowForReview extends StatelessWidget {
-  const ProdcutRowForReview({super.key});
+class ProductRowForReview extends StatelessWidget {
+  const ProductRowForReview({super.key});
 
   @override
   Widget build(BuildContext context) {

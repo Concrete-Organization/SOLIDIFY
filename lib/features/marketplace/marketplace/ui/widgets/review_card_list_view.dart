@@ -11,7 +11,6 @@ class ReviewCardListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get the last 2 reviews
     final lastTwoReviews =
         reviews.length > 2 ? reviews.sublist(reviews.length - 2) : reviews;
 
@@ -23,13 +22,13 @@ class ReviewCardListView extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: ReviewCard(review: review), // Pass review to ReviewCard
+                child: ReviewCard(review: review),
               ),
               verticalSpace(10),
             ],
           );
         },
-        childCount: lastTwoReviews.length, // Only show the last 2 reviews
+        childCount: lastTwoReviews.length,
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 
 class CustomSnackBar {
@@ -88,8 +89,8 @@ class CustomSnackBar {
     _showSnackBar(
       context,
       message,
-      Colors.blue.shade500,
-      Icons.info_outline,
+      ColorsManager.mainBlue,
+      Icons.check_circle,
     );
   }
 }
