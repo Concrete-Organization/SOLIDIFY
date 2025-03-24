@@ -35,7 +35,7 @@ class ReplyItem extends StatelessWidget {
                 children: [
                   verticalSpace(10),
                   Text(
-                    reply.engineerName,
+                    reply.engineerName ?? 'Unknown',
                     style: TextStyles.font10lightBlackRegularWithOpacity,
                   ),
                   verticalSpace(2),

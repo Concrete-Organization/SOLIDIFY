@@ -77,7 +77,7 @@ ReplyModel _$ReplyModelFromJson(Map<String, dynamic> json) => ReplyModel(
       isLiked: json['isLiked'] as bool,
       id: (json['id'] as num).toInt(),
       engineerId: json['engineerId'] as String,
-      engineerName: json['engineerName'] as String,
+      engineerName: json['engineerName'] as String?,
       profileImageUrl: json['profileImageUrl'] as String?,
     );
 

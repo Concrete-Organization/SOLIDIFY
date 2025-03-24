@@ -106,7 +106,7 @@ class ReplyModel {
   final bool isLiked;
   final int id;
   final String engineerId;
-  final String engineerName;
+  final String? engineerName;
   final String? profileImageUrl;
 
   ReplyModel({
