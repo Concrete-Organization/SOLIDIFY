@@ -11,12 +11,12 @@ android {
     ndkVersion = "28.0.13004108"
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21  // Updated to match your JDK 21.0.1
+        targetCompatibility = JavaVersion.VERSION_21  // Updated to match your JDK 21.0.1
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "21"  // Updated to match your JDK 21.0.1
     }
 
     defaultConfig {
