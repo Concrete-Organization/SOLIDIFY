@@ -1,6 +1,6 @@
 String getRelativeTime(String date) {
   try {
-    final parsedDate = DateTime.parse(date).add(Duration(hours: 1));
+    final parsedDate = DateTime.parse(date).add(Duration(hours: 2));
     final localDate = parsedDate.toLocal();
     final now = DateTime.now();
     final difference = now.difference(localDate);

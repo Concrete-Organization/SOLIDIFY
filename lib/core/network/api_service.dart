@@ -90,6 +90,7 @@ abstract class ApiService {
   @GET(ApiConstants.post)
   Future<GetPostsResponse> posts(
     @Query('PageNumber') int? page,
+    @Header('Authorization') String token,
   );
 
   @POST(ApiConstants.post)

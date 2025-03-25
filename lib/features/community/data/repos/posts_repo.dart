@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/network/api_error_handler.dart';
 import 'package:solidify/core/network/api_result.dart';
 import 'package:solidify/core/network/api_service.dart';
@@ -14,7 +15,8 @@ class PostsRepo {
 
   Future<ApiResult<GetPostsResponse>> getPosts({int page = 1}) async {
     try {
-      final response = await _apiService.posts(page);
+      final accessToken = await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
+      final response = await _apiService.posts(page,accessToken);
       response.model.items
           .sort((a, b) => b.creationDate.compareTo(a.creationDate));
       return ApiResult.success(response);

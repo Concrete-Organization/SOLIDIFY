@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:solidify/core/helpers/logout_helper.dart';
 import 'package:solidify/core/network/refresh_token_model.dart';
-
 import '../helpers/shared_pref_helper.dart';
 import 'api_constants.dart';
 
@@ -101,6 +100,29 @@ class TokenInterceptor extends Interceptor {
         requestOptions: options,
         error: 'Waiting for token refresh',
       ), true);
+    }
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
+    if (err.response?.statusCode == 401) {
+      print('Server returned 401, attempting token refresh');
+      final refreshToken = await SharedPrefHelper.getSecuredString(SharedPrefKeys.refreshToken);
+      try {
+        final newTokens = await _refreshToken(refreshToken);
+        await SharedPrefHelper.setSecuredString(SharedPrefKeys.accessToken, newTokens.model.accessToken);
+        await SharedPrefHelper.setSecuredString(SharedPrefKeys.refreshToken, newTokens.model.refreshToken);
+        await SharedPrefHelper.setSecuredString(SharedPrefKeys.expiresOn, newTokens.model.expiresOn.toIso8601String());
+        await SharedPrefHelper.setSecuredString(SharedPrefKeys.refreshTokenExpiration, newTokens.model.refreshTokenExpiration.toIso8601String());
+        err.requestOptions.headers['Authorization'] = 'Bearer ${newTokens.model.accessToken}';
+        final response = await _dio.fetch(err.requestOptions);
+        handler.resolve(response);
+      } catch (e) {
+        _logoutUser();
+        handler.next(err);
+      }
+    } else {
+      handler.next(err);
     }
   }
 
