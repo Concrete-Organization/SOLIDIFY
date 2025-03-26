@@ -15,3 +15,16 @@ Data Layer: Handles data sources such as APIs. This layer includes data models a
 By using Clean Architecture, the project achieves a clear separation between business logic and UI, making it scalable, testable, and easy to maintain.
 
 ![SOLIDIFY (1)](https://github.com/user-attachments/assets/e837916d-6476-4bdd-a1d5-d576beecd3e1)
+
+## 📥  Installation
+
+1. **Clone the Repo:**
+
+   Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/Concrete-Organization/SOLIDIFY.git
+
+2. **Install Dependencies:**
+   ```bash
+   flutter pub get
