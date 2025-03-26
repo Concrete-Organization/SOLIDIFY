@@ -13,3 +13,5 @@ Logic Layer: Contains state management of app using (flutter_bloc).
 Data Layer: Handles data sources such as APIs. This layer includes data models and repositories.
 
 By using Clean Architecture, the project achieves a clear separation between business logic and UI, making it scalable, testable, and easy to maintain.
+
+![SOLIDIFY (1)](https://github.com/user-attachments/assets/e837916d-6476-4bdd-a1d5-d576beecd3e1)
