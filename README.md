@@ -1,16 +1,15 @@
-# SOLIDIFY
+# 📱 SOLIDIFY APP OVERVIEW
 
-A new Flutter project.
+SOLIDIFY is a mobile application developed using Flutter, designed to revolutionize the construction industry in Egypt by addressing the critical issue of poor concrete quality. The app empowers engineers, concrete companies, and material suppliers with AI-powered tools to estimate concrete strength, a marketplace to source quality materials, and a collaborative community for knowledge sharing. By integrating these features, Solidify aims to reduce building collapses, save costs, and promote sustainable construction practices.
 
-## Getting Started
+## 🎨  System Design
 
-This project is a starting point for a Flutter application.
+The app is built using the Clean Architecture pattern, which promotes separation of concerns and makes the codebase more maintainable and testable. This architecture divides the project into three main layers:
 
-A few resources to get you started if this is your first Flutter project:
+UI Layer: Manages the UI and handles user interactions. This layer includes views and widgets.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Logic Layer: Contains state management of app using (flutter_bloc).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Data Layer: Handles data sources such as APIs. This layer includes data models and repositories.
+
+By using Clean Architecture, the project achieves a clear separation between business logic and UI, making it scalable, testable, and easy to maintain.
