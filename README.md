@@ -28,3 +28,68 @@ By using Clean Architecture, the project achieves a clear separation between bus
 2. **Install Dependencies:**
    ```bash
    flutter pub get
+
+## 📚 **Features**
+
+**🗺️ App Flows Layouts:**  
+A streamlined design for easy navigation between app sections.
+
+**🔐 Authentication:**  
+A secure login system allowing users to create accounts as either concrete companies or engineers. It includes features like "Forgot Password" with OTP (One-Time Password) and password reset for added security.
+
+**🤖 Chatbot:**  
+An AI-powered helper that gives instant answers and advice on topics like concrete quality and project management. Users can ask questions and get personalized tips anytime, making it a handy tool for quick support on the go.
+
+**🌐 Community:**  
+A dedicated space for engineers to connect, share ideas, and solve problems together.
+
+**🧱 Concrete Strength AI:**  
+An intelligent tool that combines concrete mix design with AI-powered strength prediction, ensuring strong and project-appropriate mixes while guaranteeing safety.
+
+**🏚️ Crack Detection:**  
+A smart feature that detects cracks in concrete by analyzing images and suggests solutions to maintain structural integrity.
+
+**🛒 Marketplace:**  
+An in-app store for purchasing high-quality building materials, added by suppliers through their dashboard, with options for comparison and reviews.
+
+**🌄 Onboarding:**  
+A quick guide for new users to easily understand how to use the app from the start.
+
+**🏢 Company Profile:**  
+A space for concrete companies to track their orders (active and completed) and add reviews to completed orders.
+
+**👷‍♂️ Engineer Profile:**  
+A personal space for engineers to change their profile picture and view their posts and comments for easy reference.
+
+## 🧩 Dependencies
+
+The project utilizes various dependencies to enhance functionality and streamline development. These dependencies may be expanded as the project evolves:
+
+- **build_runner:** Build System for Dart code generation and modular compilation.
+- **flutter_bloc:** State Management.
+- **freezed, freezed_annotation:** Code Generation.
+- **get_it:** Dependency Injection.
+- **json_serializable, json_annotation:** Automatically generate code for converting to and from JSON.
+- **dio, retrofit, retrofit_generator, pretty_dio_logger:** Networking.
+- **intl, easy_localization:** Localization.
+- **flutter_svg:** SVG Rendering.
+- **flutter_screenutil:** Screen Adaptation.
+- **cached_network_image:** Image Caching.
+- **shared_preferences:** Local Storage.
+- **flutter_secure_storage:** Secure Storage.
+- **Lottie:** Loading Animations Effects.
+- **shimmer:** Loading Indicators.
+- **google_fonts:** Custom Fonts.
+- **image_picker:** Image Selection from Gallery or Camera.
+- **file_picker:** File Selection.
+- **path_provider:** Access Device File System Paths.
+- **path:** Path Manipulation.
+- **jwt_decoder:** JWT Token Parsing and Expiration Check.
+- **carousel_slider:** Infinite Scroll and Custom Widgets.
+- **dio_cookie_manager, cookie_jar:** Cookie Management for HTTP Requests.
+- **provider:** State Management.
+- **flutter_native_splash:** Splash Screen Customization.
+- **package_info_plus:** App Package Information.
+- **image_cropper:** Image Cropping.
+
+
