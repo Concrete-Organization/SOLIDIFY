@@ -31,34 +31,34 @@ By using Clean Architecture, the project achieves a clear separation between bus
 
 ## 📚 **Features**
 
-**🗺️ App Flows Layouts:**  
+- **🗺️ App Flows Layouts:**  
 A streamlined design for easy navigation between app sections.
 
-**🔐 Authentication:**  
+- **🔐 Authentication:**  
 A secure login system allowing users to create accounts as either concrete companies or engineers. It includes features like "Forgot Password" with OTP (One-Time Password) and password reset for added security.
 
-**🤖 Chatbot:**  
+- **🤖 Chatbot:**  
 An AI-powered helper that gives instant answers and advice on topics like concrete quality and project management. Users can ask questions and get personalized tips anytime, making it a handy tool for quick support on the go.
 
-**🌐 Community:**  
+- **🌐 Community:**  
 A dedicated space for engineers to connect, share ideas, and solve problems together.
 
-**🧱 Concrete Strength AI:**  
+- **🧱 Concrete Strength AI:**  
 An intelligent tool that combines concrete mix design with AI-powered strength prediction, ensuring strong and project-appropriate mixes while guaranteeing safety.
 
-**🏚️ Crack Detection:**  
+- **🏚️ Crack Detection:**  
 A smart feature that detects cracks in concrete by analyzing images and suggests solutions to maintain structural integrity.
 
-**🛒 Marketplace:**  
+- **🛒 Marketplace:**  
 An in-app store for purchasing high-quality building materials, added by suppliers through their dashboard, with options for comparison and reviews.
 
-**🌄 Onboarding:**  
+- **🌄 Onboarding:**  
 A quick guide for new users to easily understand how to use the app from the start.
 
-**🏢 Company Profile:**  
+- **🏢 Company Profile:**  
 A space for concrete companies to track their orders (active and completed) and add reviews to completed orders.
 
-**👷‍♂️ Engineer Profile:**  
+- **👷‍♂️ Engineer Profile:**  
 A personal space for engineers to change their profile picture and view their posts and comments for easy reference.
 
 ## 🧩 Dependencies
