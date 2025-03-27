@@ -19,23 +19,24 @@ import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
 import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
 import '../../features/auth/forget_password/data/repos/forget_password_repo.dart';
 import 'package:solidify/features/chatbot/data/repos/chatbot_with_gemini_repo.dart';
+import 'package:solidify/features/profile_engineer/data/repo/engineer_profile_repo.dart';
+import 'package:solidify/features/marketplace/order/data/repos/shipping_address_repo.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/data/repos/products_list_repo.dart';
 import 'package:solidify/features/marketplace/marketplace/data/repos/product_details_repo.dart';
 import 'package:solidify/features/concrete_strength_ai/data/repo/concrete_strength_ai_repo.dart';
 import 'package:solidify/features/marketplace/marketplace/data/repos/product_category_repo.dart';
 import 'package:solidify/features/concrete_strength_ai/data/api/concrete_strength_ai_api_call.dart';
+import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/products_list_cubit/products_list_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_details_cubit/product_details_cubit.dart';
+import 'package:solidify/features/profile_engineer/logic/profile_engineer_posts/profile_engineer_posts_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_category_cubit.dart/product_category_cubit.dart';
+import 'package:solidify/features/profile_engineer/logic/profile_engineer_comments/profile_engineer_comments_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/repos/engineer_account_sign_up_repo.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/logic/concrete_company_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/data/repos/concrete_company_account_repo.dart';
-import 'package:solidify/features/profile_engineer/data/repo/engineer_profile_repo.dart';
-import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
-import 'package:solidify/features/profile_engineer/logic/profile_engineer_comments/profile_engineer_comments_cubit.dart';
-import 'package:solidify/features/profile_engineer/logic/profile_engineer_posts/profile_engineer_posts_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -113,6 +114,10 @@ Future<void> setupGetIt() async {
       () => EngineerProfileCubit(getIt()));
   getIt.registerFactory<ProfileEngineerPostsCubit>(
       () => ProfileEngineerPostsCubit(getIt<PostsRepo>()));
-  getIt.registerFactory<ProfileEngineerCommentsCubit>(
-      () => ProfileEngineerCommentsCubit(getIt<PostsRepo>(), getIt<CommentsRepo>()));
+  getIt.registerFactory<ProfileEngineerCommentsCubit>(() =>
+      ProfileEngineerCommentsCubit(getIt<PostsRepo>(), getIt<CommentsRepo>()));
+
+  // shipping address
+  getIt.registerLazySingleton<ShippingAddressRepo>(
+      () => ShippingAddressRepo(getIt()));
 }
