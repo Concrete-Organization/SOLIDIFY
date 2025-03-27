@@ -19,6 +19,7 @@ import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
 import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
 import '../../features/auth/forget_password/data/repos/forget_password_repo.dart';
 import 'package:solidify/features/chatbot/data/repos/chatbot_with_gemini_repo.dart';
+import 'package:solidify/features/marketplace/order/logic/shipping_address_cubit.dart';
 import 'package:solidify/features/profile_engineer/data/repo/engineer_profile_repo.dart';
 import 'package:solidify/features/marketplace/order/data/repos/shipping_address_repo.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
@@ -120,4 +121,7 @@ Future<void> setupGetIt() async {
   // shipping address
   getIt.registerLazySingleton<ShippingAddressRepo>(
       () => ShippingAddressRepo(getIt()));
+
+  getIt.registerFactory<ShippingAddressCubit>(
+      () => ShippingAddressCubit(getIt()));
 }

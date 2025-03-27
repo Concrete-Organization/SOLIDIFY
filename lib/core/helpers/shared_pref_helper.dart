@@ -25,6 +25,8 @@ class SharedPrefKeys {
   static const String favorites = 'favorites';
   static const String joinedDate = 'joinedDate';
   static const String profileImageUrl = 'profileImageUrl';
+  static const String selectedShippingAddressId = 'selectedShippingAddressId';
+  static const String shippingAddresses = 'shippingAddresses';
 }
 
 class SharedPrefHelper {
@@ -309,5 +311,17 @@ class SharedPrefHelper {
       final json = jsonDecode(jsonString) as Map<String, dynamic>;
       return ProductEntity.fromJson(json);
     }).toList();
+  }
+
+  static Future<void> cacheShippingAddressId(String id) async {
+    await setData(SharedPrefKeys.selectedShippingAddressId, id);
+  }
+
+  static Future<String> getCachedShippingAddressId() async {
+    return await getString(SharedPrefKeys.selectedShippingAddressId);
+  }
+
+  static Future<void> clearCachedShippingAddressId() async {
+    await removeData(SharedPrefKeys.selectedShippingAddressId);
   }
 }
