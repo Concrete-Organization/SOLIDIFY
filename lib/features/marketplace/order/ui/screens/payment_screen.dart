@@ -8,7 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/custom_indicator.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
-import 'package:solidify/features/marketplace/order/widgets/payment_method_container.dart';
+import 'package:solidify/features/marketplace/order/ui/widgets/payment_method_container.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});

@@ -135,7 +135,8 @@ class SharedPrefHelper {
     final userId = await getSecuredString(SharedPrefKeys.userId);
     final userName = await getSecuredString(SharedPrefKeys.userName);
     final email = await getSecuredString(SharedPrefKeys.email);
-    final profileImageUrl = await getSecuredString(SharedPrefKeys.profileImageUrl);
+    final profileImageUrl =
+        await getSecuredString(SharedPrefKeys.profileImageUrl);
 
     return {
       'userId': userId,
@@ -226,7 +227,8 @@ class SharedPrefHelper {
 
   static Future<Set<int>> getLikedComments() async {
     final prefs = await SharedPreferences.getInstance();
-    final likedList = prefs.getStringList(SharedPrefKeys.likedCommentsKey) ?? [];
+    final likedList =
+        prefs.getStringList(SharedPrefKeys.likedCommentsKey) ?? [];
     return likedList.map(int.parse).toSet();
   }
 
