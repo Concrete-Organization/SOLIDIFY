@@ -1,12 +1,12 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/features/marketplace/order/logic/shipping_address_cubit.dart';
 import 'package:solidify/features/marketplace/order/ui/widgets/shipping_address_bloc_consumer.dart';
-
-
 
 class ShippingAddressScreen extends StatefulWidget {
   const ShippingAddressScreen({super.key});
@@ -16,19 +16,14 @@ class ShippingAddressScreen extends StatefulWidget {
 }
 
 class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
-  final TextEditingController _cityController = TextEditingController();
-  final TextEditingController _streetController = TextEditingController();
-  final TextEditingController _postalCodeController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+
+  late ShippingAddressCubit cubit;
+
 
   @override
-  void dispose() {
-    _cityController.dispose();
-    _streetController.dispose();
-    _postalCodeController.dispose();
-    _phoneController.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+    cubit = context.read<ShippingAddressCubit>();
   }
 
   @override
@@ -54,11 +49,11 @@ class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
         ],
       ),
       body: ShippingAddressBlocConsumer(
-        formKey: _formKey,
-        cityController: _cityController,
-        streetController: _streetController,
-        postalCodeController: _postalCodeController,
-        phoneController: _phoneController,
+        formKey: cubit.addressFormKey,
+        cityController: cubit.cityController,
+        streetController: cubit.streetController,
+        postalCodeController: cubit.postalCodeController,
+        phoneController: cubit.phoneController,
       ),
     );
   }

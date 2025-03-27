@@ -43,7 +43,7 @@ String? validateAddress(String? value) {
   } else if (value.length < 5) {
     return 'Address must be at least 5 characters';
   } else if (!AppRegex.isAddressValid(value)) {
-    return 'Enter a valid address (letters, numbers, spaces, and basic punctuation)';
+    return 'Enter a valid address \n(letters, numbers, spaces, and basic punctuation)';
   }
   return null;
 }
@@ -72,3 +72,22 @@ String? validateConcreteAiNumber(String? value) {
   }
   return null;
 }
+
+String? validatePostalCode(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Postal code is required';
+  } else if (!RegExp(r'^\d{5}$').hasMatch(value)) {
+    return 'Enter a valid 5-digit postal code';
+  }
+  return null;
+}
+
+String? validateEgyptianPhoneNumber(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Phone number is required';
+  } else if (!RegExp(r'^(010|011|012|015)\d{8}$').hasMatch(value)) {
+    return 'Enter a valid Egyptian phone number\n(11 digits starting with 010, 011, 012, or 015)';
+  }
+  return null;
+}
+

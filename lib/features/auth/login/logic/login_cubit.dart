@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/jwt_helper.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
@@ -8,6 +9,10 @@ import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepo _loginRepo;
+  final formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
 
   LoginCubit(this._loginRepo) : super(const LoginState.initial());
 
@@ -16,8 +21,8 @@ class LoginCubit extends Cubit<LoginState> {
 
     final response = await _loginRepo.login(
       LoginRequestBody(
-        email: email,
-        password: password,
+        email: emailController.text,
+        password: passwordController.text,
       ),
     );
 
@@ -76,5 +81,12 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginState.error(error: error));
       },
     );
+  }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
   }
 }

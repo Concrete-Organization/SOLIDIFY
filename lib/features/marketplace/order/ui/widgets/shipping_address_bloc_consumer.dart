@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/app_validation.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
@@ -33,7 +34,7 @@ class ShippingAddressBlocConsumer extends StatelessWidget {
       context,
       'Address saved successfully!',
     );
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       if (context.mounted) {
         Navigator.of(context).pushNamed(Routes.paymentScreen);
       }
@@ -71,68 +72,48 @@ class ShippingAddressBlocConsumer extends StatelessWidget {
                           'City',
                           style: TextStyles.font15lightBlackMedium,
                         ),
-                        verticalSpace(15),
+                        verticalSpace(13),
                         AppTextFormField(
                           controller: cityController,
                           borderRadius: 10.r,
                           hintText: 'City name here',
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your city';
-                            }
-                            return null;
-                          },
+                          validator: (value) => validateAddress(value),
                         ),
-                        verticalSpace(25),
+                        verticalSpace(13),
                         Text(
                           'Street',
                           style: TextStyles.font15lightBlackMedium,
                         ),
-                        verticalSpace(15),
+                        verticalSpace(13),
                         AppTextFormField(
                           controller: streetController,
                           borderRadius: 10.r,
                           hintText: 'Street name here',
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your street';
-                            }
-                            return null;
-                          },
+                          validator: (value) => validateAddress(value),
                         ),
-                        verticalSpace(25),
+                        verticalSpace(13),
                         Text(
                           'Postal code',
                           style: TextStyles.font15lightBlackMedium,
                         ),
-                        verticalSpace(15),
+                        verticalSpace(13),
                         AppTextFormField(
                           controller: postalCodeController,
                           borderRadius: 10.r,
                           hintText: 'Postal code here',
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your postal code';
-                            }
-                            return null;
-                          },
+                          validator: (value) => validatePostalCode(value),
                         ),
-                        verticalSpace(25),
+                        verticalSpace(13),
                         Text(
                           'Phone number',
                           style: TextStyles.font15lightBlackMedium,
                         ),
-                        verticalSpace(15),
+                        verticalSpace(13),
                         AppTextFormField(
                           controller: phoneController,
                           borderRadius: 10.r,
                           hintText: 'Phone number here',
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your phone number';
-                            }
-                            return null;
-                          },
+                          validator: (value) => validateEgyptianPhoneNumber(value),
                         ),
                       ],
                     ),
@@ -153,9 +134,7 @@ class ShippingAddressBlocConsumer extends StatelessWidget {
                         orElse: () => AppTextButton(
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              context
-                                  .read<ShippingAddressCubit>()
-                                  .createShippingAddress(
+                              context.read<ShippingAddressCubit>().createShippingAddress(
                                     city: cityController.text,
                                     street: streetController.text,
                                     postalCode: postalCodeController.text,

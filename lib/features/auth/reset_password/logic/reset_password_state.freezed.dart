@@ -20,7 +20,9 @@ mixin _$ResetPasswordState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingStoredData,
-    required TResult Function() storedDataLoaded,
+    required TResult Function(
+            bool isPasswordHidden, bool isConfirmPasswordHidden)
+        storedDataLoaded,
     required TResult Function() resetPasswordLoading,
     required TResult Function() resetPasswordSuccess,
     required TResult Function(ApiErrorModel error) error,
@@ -30,7 +32,8 @@ mixin _$ResetPasswordState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingStoredData,
-    TResult? Function()? storedDataLoaded,
+    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult? Function()? resetPasswordLoading,
     TResult? Function()? resetPasswordSuccess,
     TResult? Function(ApiErrorModel error)? error,
@@ -40,7 +43,8 @@ mixin _$ResetPasswordState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingStoredData,
-    TResult Function()? storedDataLoaded,
+    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult Function()? resetPasswordLoading,
     TResult Function()? resetPasswordSuccess,
     TResult Function(ApiErrorModel error)? error,
@@ -145,7 +149,9 @@ class _$ResetPasswordInitialImpl implements ResetPasswordInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingStoredData,
-    required TResult Function() storedDataLoaded,
+    required TResult Function(
+            bool isPasswordHidden, bool isConfirmPasswordHidden)
+        storedDataLoaded,
     required TResult Function() resetPasswordLoading,
     required TResult Function() resetPasswordSuccess,
     required TResult Function(ApiErrorModel error) error,
@@ -158,7 +164,8 @@ class _$ResetPasswordInitialImpl implements ResetPasswordInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingStoredData,
-    TResult? Function()? storedDataLoaded,
+    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult? Function()? resetPasswordLoading,
     TResult? Function()? resetPasswordSuccess,
     TResult? Function(ApiErrorModel error)? error,
@@ -171,7 +178,8 @@ class _$ResetPasswordInitialImpl implements ResetPasswordInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingStoredData,
-    TResult Function()? storedDataLoaded,
+    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult Function()? resetPasswordLoading,
     TResult Function()? resetPasswordSuccess,
     TResult Function(ApiErrorModel error)? error,
@@ -274,7 +282,9 @@ class _$LoadingStoredDataImpl implements LoadingStoredData {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingStoredData,
-    required TResult Function() storedDataLoaded,
+    required TResult Function(
+            bool isPasswordHidden, bool isConfirmPasswordHidden)
+        storedDataLoaded,
     required TResult Function() resetPasswordLoading,
     required TResult Function() resetPasswordSuccess,
     required TResult Function(ApiErrorModel error) error,
@@ -287,7 +297,8 @@ class _$LoadingStoredDataImpl implements LoadingStoredData {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingStoredData,
-    TResult? Function()? storedDataLoaded,
+    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult? Function()? resetPasswordLoading,
     TResult? Function()? resetPasswordSuccess,
     TResult? Function(ApiErrorModel error)? error,
@@ -300,7 +311,8 @@ class _$LoadingStoredDataImpl implements LoadingStoredData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingStoredData,
-    TResult Function()? storedDataLoaded,
+    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult Function()? resetPasswordLoading,
     TResult Function()? resetPasswordSuccess,
     TResult Function(ApiErrorModel error)? error,
@@ -365,6 +377,8 @@ abstract class _$$StoredDataLoadedImplCopyWith<$Res> {
   factory _$$StoredDataLoadedImplCopyWith(_$StoredDataLoadedImpl value,
           $Res Function(_$StoredDataLoadedImpl) then) =
       __$$StoredDataLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isPasswordHidden, bool isConfirmPasswordHidden});
 }
 
 /// @nodoc
@@ -377,38 +391,79 @@ class __$$StoredDataLoadedImplCopyWithImpl<$Res>
 
   /// Create a copy of ResetPasswordState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isPasswordHidden = null,
+    Object? isConfirmPasswordHidden = null,
+  }) {
+    return _then(_$StoredDataLoadedImpl(
+      isPasswordHidden: null == isPasswordHidden
+          ? _value.isPasswordHidden
+          : isPasswordHidden // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isConfirmPasswordHidden: null == isConfirmPasswordHidden
+          ? _value.isConfirmPasswordHidden
+          : isConfirmPasswordHidden // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$StoredDataLoadedImpl implements StoredDataLoaded {
-  const _$StoredDataLoadedImpl();
+  const _$StoredDataLoadedImpl(
+      {required this.isPasswordHidden, required this.isConfirmPasswordHidden});
+
+  @override
+  final bool isPasswordHidden;
+  @override
+  final bool isConfirmPasswordHidden;
 
   @override
   String toString() {
-    return 'ResetPasswordState.storedDataLoaded()';
+    return 'ResetPasswordState.storedDataLoaded(isPasswordHidden: $isPasswordHidden, isConfirmPasswordHidden: $isConfirmPasswordHidden)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StoredDataLoadedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$StoredDataLoadedImpl &&
+            (identical(other.isPasswordHidden, isPasswordHidden) ||
+                other.isPasswordHidden == isPasswordHidden) &&
+            (identical(
+                    other.isConfirmPasswordHidden, isConfirmPasswordHidden) ||
+                other.isConfirmPasswordHidden == isConfirmPasswordHidden));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, isPasswordHidden, isConfirmPasswordHidden);
+
+  /// Create a copy of ResetPasswordState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StoredDataLoadedImplCopyWith<_$StoredDataLoadedImpl> get copyWith =>
+      __$$StoredDataLoadedImplCopyWithImpl<_$StoredDataLoadedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingStoredData,
-    required TResult Function() storedDataLoaded,
+    required TResult Function(
+            bool isPasswordHidden, bool isConfirmPasswordHidden)
+        storedDataLoaded,
     required TResult Function() resetPasswordLoading,
     required TResult Function() resetPasswordSuccess,
     required TResult Function(ApiErrorModel error) error,
   }) {
-    return storedDataLoaded();
+    return storedDataLoaded(isPasswordHidden, isConfirmPasswordHidden);
   }
 
   @override
@@ -416,12 +471,13 @@ class _$StoredDataLoadedImpl implements StoredDataLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingStoredData,
-    TResult? Function()? storedDataLoaded,
+    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult? Function()? resetPasswordLoading,
     TResult? Function()? resetPasswordSuccess,
     TResult? Function(ApiErrorModel error)? error,
   }) {
-    return storedDataLoaded?.call();
+    return storedDataLoaded?.call(isPasswordHidden, isConfirmPasswordHidden);
   }
 
   @override
@@ -429,14 +485,15 @@ class _$StoredDataLoadedImpl implements StoredDataLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingStoredData,
-    TResult Function()? storedDataLoaded,
+    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult Function()? resetPasswordLoading,
     TResult Function()? resetPasswordSuccess,
     TResult Function(ApiErrorModel error)? error,
     required TResult orElse(),
   }) {
     if (storedDataLoaded != null) {
-      return storedDataLoaded();
+      return storedDataLoaded(isPasswordHidden, isConfirmPasswordHidden);
     }
     return orElse();
   }
@@ -486,7 +543,18 @@ class _$StoredDataLoadedImpl implements StoredDataLoaded {
 }
 
 abstract class StoredDataLoaded implements ResetPasswordState {
-  const factory StoredDataLoaded() = _$StoredDataLoadedImpl;
+  const factory StoredDataLoaded(
+      {required final bool isPasswordHidden,
+      required final bool isConfirmPasswordHidden}) = _$StoredDataLoadedImpl;
+
+  bool get isPasswordHidden;
+  bool get isConfirmPasswordHidden;
+
+  /// Create a copy of ResetPasswordState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StoredDataLoadedImplCopyWith<_$StoredDataLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -533,7 +601,9 @@ class _$ResetPasswordLoadingImpl implements ResetPasswordLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingStoredData,
-    required TResult Function() storedDataLoaded,
+    required TResult Function(
+            bool isPasswordHidden, bool isConfirmPasswordHidden)
+        storedDataLoaded,
     required TResult Function() resetPasswordLoading,
     required TResult Function() resetPasswordSuccess,
     required TResult Function(ApiErrorModel error) error,
@@ -546,7 +616,8 @@ class _$ResetPasswordLoadingImpl implements ResetPasswordLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingStoredData,
-    TResult? Function()? storedDataLoaded,
+    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult? Function()? resetPasswordLoading,
     TResult? Function()? resetPasswordSuccess,
     TResult? Function(ApiErrorModel error)? error,
@@ -559,7 +630,8 @@ class _$ResetPasswordLoadingImpl implements ResetPasswordLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingStoredData,
-    TResult Function()? storedDataLoaded,
+    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult Function()? resetPasswordLoading,
     TResult Function()? resetPasswordSuccess,
     TResult Function(ApiErrorModel error)? error,
@@ -663,7 +735,9 @@ class _$ResetPasswordSuccessImpl implements ResetPasswordSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingStoredData,
-    required TResult Function() storedDataLoaded,
+    required TResult Function(
+            bool isPasswordHidden, bool isConfirmPasswordHidden)
+        storedDataLoaded,
     required TResult Function() resetPasswordLoading,
     required TResult Function() resetPasswordSuccess,
     required TResult Function(ApiErrorModel error) error,
@@ -676,7 +750,8 @@ class _$ResetPasswordSuccessImpl implements ResetPasswordSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingStoredData,
-    TResult? Function()? storedDataLoaded,
+    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult? Function()? resetPasswordLoading,
     TResult? Function()? resetPasswordSuccess,
     TResult? Function(ApiErrorModel error)? error,
@@ -689,7 +764,8 @@ class _$ResetPasswordSuccessImpl implements ResetPasswordSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingStoredData,
-    TResult Function()? storedDataLoaded,
+    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult Function()? resetPasswordLoading,
     TResult Function()? resetPasswordSuccess,
     TResult Function(ApiErrorModel error)? error,
@@ -820,7 +896,9 @@ class _$ResetPasswordErrorImpl implements ResetPasswordError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingStoredData,
-    required TResult Function() storedDataLoaded,
+    required TResult Function(
+            bool isPasswordHidden, bool isConfirmPasswordHidden)
+        storedDataLoaded,
     required TResult Function() resetPasswordLoading,
     required TResult Function() resetPasswordSuccess,
     required TResult Function(ApiErrorModel error) error,
@@ -833,7 +911,8 @@ class _$ResetPasswordErrorImpl implements ResetPasswordError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadingStoredData,
-    TResult? Function()? storedDataLoaded,
+    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult? Function()? resetPasswordLoading,
     TResult? Function()? resetPasswordSuccess,
     TResult? Function(ApiErrorModel error)? error,
@@ -846,7 +925,8 @@ class _$ResetPasswordErrorImpl implements ResetPasswordError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadingStoredData,
-    TResult Function()? storedDataLoaded,
+    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+        storedDataLoaded,
     TResult Function()? resetPasswordLoading,
     TResult Function()? resetPasswordSuccess,
     TResult Function(ApiErrorModel error)? error,

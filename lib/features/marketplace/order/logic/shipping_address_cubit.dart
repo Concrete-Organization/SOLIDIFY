@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'shipping_address_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
@@ -10,6 +11,12 @@ class ShippingAddressCubit extends Cubit<ShippingAddressState> {
   ShippingAddressCubit(this._shippingAddressRepo)
       : super(const ShippingAddressState.initial());
 
+  TextEditingController cityController = TextEditingController();
+  TextEditingController streetController = TextEditingController();
+  TextEditingController postalCodeController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  final GlobalKey<FormState> addressFormKey = GlobalKey<FormState>();
+
   Future<void> createShippingAddress({
     required String city,
     required String street,
@@ -19,16 +26,18 @@ class ShippingAddressCubit extends Cubit<ShippingAddressState> {
 
     final response = await _shippingAddressRepo.createShippingAddress(
       ShippingAddressRequestModel(
-        city: city,
-        street: street,
-        postalCode: postalCode,
+        city: cityController.text,
+        street: streetController.text,
+        postalCode: postalCodeController.text,
       ),
     );
 
     response.when(
       success: (response) async {
         await SharedPrefHelper.setData(
-            'selectedShippingAddressId', response.model.id.toString());
+          'selectedShippingAddressId',
+          response.model.id.toString(),
+        );
 
         emit(ShippingAddressState.success(response: response));
       },
@@ -36,5 +45,14 @@ class ShippingAddressCubit extends Cubit<ShippingAddressState> {
         emit(ShippingAddressState.error(error: error));
       },
     );
+  }
+
+  @override
+  Future<void> close() {
+    cityController.dispose();
+    streetController.dispose();
+    postalCodeController.dispose();
+    phoneController.dispose();
+    return super.close();
   }
 }

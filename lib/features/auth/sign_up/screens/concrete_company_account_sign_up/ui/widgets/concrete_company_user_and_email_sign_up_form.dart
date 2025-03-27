@@ -17,7 +17,6 @@ class _ConcreteCompanySignUpFormState extends State<ConcreteCompanyUserAndEmailS
 
   late ConcreteCompanySignUpCubit cubit;
 
-
   @override
   void initState() {
     super.initState();

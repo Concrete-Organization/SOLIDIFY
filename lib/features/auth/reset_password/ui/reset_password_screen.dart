@@ -23,8 +23,12 @@ class ResetPasswordScreen extends StatelessWidget {
               return state.when(
                 initial: () => const SizedBox.shrink(),
                 loadingStoredData: () => const Center(child: CircularProgressIndicator()),
-                storedDataLoaded: () => _buildContent(),
-                resetPasswordLoading: () => _buildContent(),
+                storedDataLoaded: (isPasswordHidden, isConfirmPasswordHidden) =>
+                    _buildContent(isPasswordHidden, isConfirmPasswordHidden),
+                resetPasswordLoading: () => _buildContent(
+                  context.read<ResetPasswordCubit>().isPasswordHidden,
+                  context.read<ResetPasswordCubit>().isConfirmPasswordHidden,
+                ),
                 resetPasswordSuccess: () => const SizedBox.shrink(),
                 error: (error) => Center(child: Text(error.getAllErrorMessages())),
               );
@@ -35,7 +39,7 @@ class ResetPasswordScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(bool isPasswordHidden, bool isConfirmPasswordHidden) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -55,8 +59,11 @@ class ResetPasswordScreen extends StatelessWidget {
           style: TextStyles.font12lightBlackLight,
         ),
         verticalSpace(16),
-        const Expanded(
-          child: ResetPasswordForm(),
+        Expanded(
+          child: ResetPasswordForm(
+            isPasswordHidden: isPasswordHidden,
+            isConfirmPasswordHidden: isConfirmPasswordHidden,
+          ),
         ),
         const ResetPasswordBlocListener(),
       ],

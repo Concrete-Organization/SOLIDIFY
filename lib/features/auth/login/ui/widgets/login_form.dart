@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:solidify/core/helpers/app_validation.dart';
 import 'package:solidify/core/helpers/extensions.dart';
-import '../../../../../core/helpers/app_regex.dart';
-import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/routes/routes_name.dart';
-import '../../../../../core/theming/color_manger.dart';
-import '../../../../../core/theming/text_styles.dart';
-import '../../../../../core/widgets/app_text_form_field.dart';
+import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/core/theming/color_manger.dart';
+import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/widgets/app_text_form_field.dart';
 
 class LoginForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;
@@ -41,14 +41,7 @@ class _LoginFormState extends State<LoginForm> {
           AppTextFormField(
             hintText: 'Enter your email',
             controller: widget.emailController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your email';
-              } else if (!AppRegex.isEmailValid(value)) {
-                return 'Please enter a valid email address';
-              }
-              return null;
-            },
+            validator: validateEmail,
           ),
           verticalSpace(18),
           Text(
@@ -59,14 +52,7 @@ class _LoginFormState extends State<LoginForm> {
           AppTextFormField(
             hintText: 'Enter your password',
             controller: widget.passwordController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your password';
-              } else if (!AppRegex.isPasswordValid(value)) {
-                return 'Password must be at least 8 characters long, include:\nan upper case letter, a number, and a special character';
-              }
-              return null;
-            },
+            validator: validatePassword,
             isObscureText: isObscureText,
             suffixIcon: GestureDetector(
               onTap: () {

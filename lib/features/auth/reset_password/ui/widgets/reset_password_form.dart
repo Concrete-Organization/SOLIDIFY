@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/app_validation.dart';
-import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theming/color_manger.dart';
 import '../../../../../core/theming/text_styles.dart';
@@ -10,58 +9,32 @@ import '../../../../../core/widgets/app_text_form_field.dart';
 import '../../logic/reset_password_cubit.dart';
 
 class ResetPasswordForm extends StatefulWidget {
-  const ResetPasswordForm({super.key});
+  final bool isPasswordHidden;
+  final bool isConfirmPasswordHidden;
+
+  const ResetPasswordForm({
+    super.key,
+    required this.isPasswordHidden,
+    required this.isConfirmPasswordHidden,
+  });
 
   @override
   State<ResetPasswordForm> createState() => _ResetPasswordFormState();
 }
 
 class _ResetPasswordFormState extends State<ResetPasswordForm> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _newPasswordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
-  bool _isPasswordHidden = true;
-  bool _isConfirmPasswordHidden = true;
+  late ResetPasswordCubit cubit;
 
-  void togglePasswordVisibility() {
-    setState(() {
-      _isPasswordHidden = !_isPasswordHidden;
-    });
-  }
-
-  void toggleConfirmPasswordVisibility() {
-    setState(() {
-      _isConfirmPasswordHidden = !_isConfirmPasswordHidden;
-    });
-  }
-
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      final String newPassword = _newPasswordController.text;
-      final String confirmPassword = _confirmPasswordController.text;
-      if (newPassword.isEmpty || confirmPassword.isEmpty) {
-        CustomSnackBar.showError(
-          context,
-          'Please fill in both password fields',
-        );
-        return;
-      }
-      if (newPassword != confirmPassword) {
-        CustomSnackBar.showError(
-          context,
-          'Passwords do not match',
-        );
-        return;
-      }
-      context.read<ResetPasswordCubit>().resetPassword(newPassword, confirmPassword);
-    }
+  @override
+  void initState() {
+    cubit = BlocProvider.of<ResetPasswordCubit>(context);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: cubit.formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -71,20 +44,20 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
           ),
           verticalSpace(5),
           AppTextFormField(
-            controller: _newPasswordController,
+            controller: cubit.newPasswordController,
             hintText: 'Password',
-            isObscureText: _isPasswordHidden,
+            isObscureText: widget.isPasswordHidden,
             validator: validatePassword,
             suffixIcon: IconButton(
               icon: Icon(
-                _isPasswordHidden
+                widget.isPasswordHidden
                     ? Icons.visibility_off_outlined
                     : Icons.visibility_outlined,
-                color: _isPasswordHidden
+                color: widget.isPasswordHidden
                     ? ColorsManager.mainBlue
                     : ColorsManager.secondaryGold,
               ),
-              onPressed: togglePasswordVisibility,
+              onPressed: cubit.togglePasswordVisibility,
             ),
           ),
           verticalSpace(20),
@@ -94,28 +67,28 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
           ),
           verticalSpace(5),
           AppTextFormField(
-            controller: _confirmPasswordController,
+            controller: cubit.confirmPasswordController,
             hintText: 'Confirm Password',
-            isObscureText: _isConfirmPasswordHidden,
+            isObscureText: widget.isConfirmPasswordHidden,
             validator: (value) => validateConfirmPassword(
               value,
-              _newPasswordController.text,
+              cubit.confirmPasswordController.text,
             ),
             suffixIcon: IconButton(
               icon: Icon(
-                _isConfirmPasswordHidden
+                widget.isConfirmPasswordHidden
                     ? Icons.visibility_off_outlined
                     : Icons.visibility_outlined,
-                color: _isPasswordHidden
+                color: widget.isConfirmPasswordHidden
                     ? ColorsManager.mainBlue
                     : ColorsManager.secondaryGold,
               ),
-              onPressed: toggleConfirmPasswordVisibility,
+              onPressed: cubit.toggleConfirmPasswordVisibility,
             ),
           ),
           const Spacer(),
           AppTextButton(
-            onPressed: _submitForm,
+            onPressed: cubit.resetPassword,
             textButton: 'Done',
           ),
           verticalSpace(20),

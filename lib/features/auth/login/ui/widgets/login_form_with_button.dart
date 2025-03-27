@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/widgets/app_text_button.dart';
+import 'package:solidify/features/auth/login/logic/login_cubit.dart';
 import 'package:solidify/features/auth/login/ui/widgets/login_form.dart';
-import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/widgets/app_text_button.dart';
-import '../../logic/login_cubit.dart';
 
 class LoginFormWithButton extends StatefulWidget {
   const LoginFormWithButton({super.key});
@@ -13,21 +13,19 @@ class LoginFormWithButton extends StatefulWidget {
 }
 
 class _LoginFormWithButtonState extends State<LoginFormWithButton> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+
+  late LoginCubit cubit;
 
   @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
+  void initState() {
+    cubit = BlocProvider.of<LoginCubit>(context);
+    super.initState();
   }
 
   void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      final email = _emailController.text;
-      final password = _passwordController.text;
+    if (cubit.formKey.currentState!.validate()) {
+      final email = cubit.emailController.text;
+      final password = cubit.passwordController.text;
       context.read<LoginCubit>().emitLoginStates(email, password);
     }
   }
@@ -36,9 +34,9 @@ class _LoginFormWithButtonState extends State<LoginFormWithButton> {
     return Column(
       children: [
         LoginForm(
-          formKey: _formKey,
-          emailController: _emailController,
-          passwordController: _passwordController,
+          formKey: cubit.formKey,
+          emailController: cubit.emailController,
+          passwordController: cubit.passwordController,
         ),
         verticalSpace(46),
         AppTextButton(

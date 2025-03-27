@@ -30,4 +30,9 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
       failure: (error) => emit(ForgetPasswordState.error(error: error)),
     );
   }
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    return super.close();
+  }
 }
