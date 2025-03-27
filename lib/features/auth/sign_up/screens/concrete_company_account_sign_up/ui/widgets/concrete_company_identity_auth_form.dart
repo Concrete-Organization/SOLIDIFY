@@ -85,7 +85,6 @@ class _IdentityAuthFormState extends State<ConcreteCompanyIdentityAuthForm> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Company Name
                       Text(
                         'Company official name',
                         style: TextStyles.font14lightBlackRegular,
