@@ -21,20 +21,21 @@ import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/core/core_screens/about_your_account_screen.dart';
 import 'package:solidify/features/marketplace/search/screens/search_screen.dart';
-import 'package:solidify/features/marketplace/order/screens/payment_screen.dart';
 import 'package:solidify/features/marketplace/favorites/ui/favorites_screen.dart';
-import 'package:solidify/features/marketplace/order/screens/checkout_screen.dart';
-import 'package:solidify/features/marketplace/order/screens/order_done_screen.dart';
+import 'package:solidify/features/marketplace/order/ui/screens/payment_screen.dart';
+import 'package:solidify/features/marketplace/order/ui/screens/checkout_screen.dart';
 import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.dart';
 import 'package:solidify/features/profile_company/ui/screens/orders_list_screen.dart';
 import 'package:solidify/features/community/ui/screens/posts/create_post_screen.dart';
+import 'package:solidify/features/marketplace/order/logic/shipping_address_cubit.dart';
+import 'package:solidify/features/marketplace/order/ui/screens/order_done_screen.dart';
 import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
 import 'package:solidify/features/profile_company/ui/screens/order_details_screen.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
-import 'package:solidify/features/marketplace/order/screens/address_details_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/reviews_screen.dart';
+import 'package:solidify/features/marketplace/order/ui/screens/address_details_screen.dart';
 import 'package:solidify/features/marketplace/search/screens/search_with_filter_screen.dart';
 import 'package:solidify/features/crack_detection/ui/screens/upload_crack_gallery_image.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
@@ -187,7 +188,10 @@ class AppRoutes {
         );
       case Routes.addressDetailsScreen:
         return MaterialPageRoute(
-          builder: (context) => const AddressDetailsScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ShippingAddressCubit>(),
+            child: const ShippingAddressScreen(),
+          ),
         );
       case Routes.paymentScreen:
         return MaterialPageRoute(
@@ -291,12 +295,10 @@ class AppRoutes {
       case Routes.accountTypeScreen:
         return MaterialPageRoute(
           builder: (context) => const AccountTypeScreen(),
-
         );
-        case Routes.writeReviewScreen:
+      case Routes.writeReviewScreen:
         return MaterialPageRoute(
           builder: (context) => const WriteReviewScreen(),
-
         );
       default:
         return MaterialPageRoute(

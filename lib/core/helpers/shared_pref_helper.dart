@@ -25,6 +25,8 @@ class SharedPrefKeys {
   static const String favorites = 'favorites';
   static const String joinedDate = 'joinedDate';
   static const String profileImageUrl = 'profileImageUrl';
+  static const String selectedShippingAddressId = 'selectedShippingAddressId';
+  static const String shippingAddresses = 'shippingAddresses';
 }
 
 class SharedPrefHelper {
@@ -135,7 +137,8 @@ class SharedPrefHelper {
     final userId = await getSecuredString(SharedPrefKeys.userId);
     final userName = await getSecuredString(SharedPrefKeys.userName);
     final email = await getSecuredString(SharedPrefKeys.email);
-    final profileImageUrl = await getSecuredString(SharedPrefKeys.profileImageUrl);
+    final profileImageUrl =
+        await getSecuredString(SharedPrefKeys.profileImageUrl);
 
     return {
       'userId': userId,
@@ -226,7 +229,8 @@ class SharedPrefHelper {
 
   static Future<Set<int>> getLikedComments() async {
     final prefs = await SharedPreferences.getInstance();
-    final likedList = prefs.getStringList(SharedPrefKeys.likedCommentsKey) ?? [];
+    final likedList =
+        prefs.getStringList(SharedPrefKeys.likedCommentsKey) ?? [];
     return likedList.map(int.parse).toSet();
   }
 
@@ -307,5 +311,17 @@ class SharedPrefHelper {
       final json = jsonDecode(jsonString) as Map<String, dynamic>;
       return ProductEntity.fromJson(json);
     }).toList();
+  }
+
+  static Future<void> cacheShippingAddressId(String id) async {
+    await setData(SharedPrefKeys.selectedShippingAddressId, id);
+  }
+
+  static Future<String> getCachedShippingAddressId() async {
+    return await getString(SharedPrefKeys.selectedShippingAddressId);
+  }
+
+  static Future<void> clearCachedShippingAddressId() async {
+    await removeData(SharedPrefKeys.selectedShippingAddressId);
   }
 }

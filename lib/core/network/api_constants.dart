@@ -25,4 +25,5 @@ class ApiConstants {
   static const String productWithId = "Product/{id}";
   static const String cart = "Cart";
   static const String engineerProfile = "EngineerProfile";
+  static const String shippingAddress = "ShippingAddress";
 }

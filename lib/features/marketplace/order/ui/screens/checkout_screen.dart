@@ -7,7 +7,7 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/custom_indicator.dart';
-import 'package:solidify/features/marketplace/order/widgets/payment_details_container.dart';
+import 'package:solidify/features/marketplace/order/ui/widgets/payment_details_container.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
