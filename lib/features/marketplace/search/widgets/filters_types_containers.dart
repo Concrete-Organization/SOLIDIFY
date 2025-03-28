@@ -6,13 +6,21 @@ import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/marketplace/search/widgets/filter_section.dart';
 
 class FiltersTypesContainers extends StatelessWidget {
-  final Function(String) onFilterSelected;
-  final List<String> selectedFilters;
+  final Function(String) onCategorySelected;
+  final Function(String) onBrandSelected;
+  final Function(String) onPriceSelected;
+  final List<String> selectedCategories;
+  final List<String> selectedBrands;
+  final String? selectedPriceRange;
 
   const FiltersTypesContainers({
     super.key,
-    required this.onFilterSelected,
-    required this.selectedFilters,
+    required this.onCategorySelected,
+    required this.onBrandSelected,
+    required this.onPriceSelected,
+    required this.selectedCategories,
+    required this.selectedBrands,
+    required this.selectedPriceRange,
   });
 
   @override
@@ -52,8 +60,8 @@ class FiltersTypesContainers extends StatelessWidget {
             title: 'Categories',
             items: categoryItems,
             columns: 2,
-            selectedFilters: selectedFilters,
-            onFilterSelected: onFilterSelected,
+            selectedFilters: selectedCategories,
+            onFilterSelected: onCategorySelected,
           ),
           verticalSpace(20),
           HorizontalDivider(
@@ -64,8 +72,8 @@ class FiltersTypesContainers extends StatelessWidget {
             title: 'Brand name',
             items: brandItems,
             columns: 1,
-            selectedFilters: selectedFilters,
-            onFilterSelected: onFilterSelected,
+            selectedFilters: selectedBrands,
+            onFilterSelected: onBrandSelected,
           ),
           verticalSpace(20),
           HorizontalDivider(
@@ -76,8 +84,9 @@ class FiltersTypesContainers extends StatelessWidget {
             title: 'Prices',
             items: priceItems,
             columns: 2,
-            selectedFilters: selectedFilters,
-            onFilterSelected: onFilterSelected,
+            selectedFilters:
+                selectedPriceRange != null ? [selectedPriceRange!] : [],
+            onFilterSelected: onPriceSelected,
           ),
         ],
       ),

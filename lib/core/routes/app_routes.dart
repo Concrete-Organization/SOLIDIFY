@@ -20,6 +20,7 @@ import 'package:solidify/features/app_flows_layouts/engineer_layout.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/core/core_screens/about_your_account_screen.dart';
+import 'package:solidify/features/marketplace/search/logic/search_cubit.dart';
 import 'package:solidify/features/marketplace/search/screens/search_screen.dart';
 import 'package:solidify/features/marketplace/favorites/ui/favorites_screen.dart';
 import 'package:solidify/features/marketplace/order/ui/screens/payment_screen.dart';
@@ -278,7 +279,17 @@ class AppRoutes {
         );
       case Routes.searchWithFillterScreen:
         return MaterialPageRoute(
-          builder: (context) => const SearchWithFilterScreen(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<SearchCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<CartCubit>(),
+              ),
+            ],
+            child: const SearchWithFilterScreen(),
+          ),
         );
       case Routes.helpScreen:
         return MaterialPageRoute(

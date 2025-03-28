@@ -8,7 +8,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/core/widgets/error_state_message.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
-import 'package:solidify/features/marketplace/search/widgets/search_with_filter_bar.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/category_product_grid.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_category_cubit.dart/product_category_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_category_cubit.dart/product_category_state.dart';
@@ -36,7 +35,7 @@ class ProductCategoryBlocBuilder extends StatelessWidget {
                       onTap: () {
                         context.pushNamed(Routes.searchWithFillterScreen);
                       },
-                      child: const SearchWithFilterBar(),
+                      // child: const SearchWithFilterBar(),
                     ),
                     verticalSpace(15),
                     Text(

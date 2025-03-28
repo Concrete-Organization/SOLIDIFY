@@ -13,6 +13,7 @@ import 'package:solidify/features/chatbot/data/api/chatbot_api_call.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/features/community/data/repos/comments_repo.dart';
 import '../../features/auth/reset_password/logic/reset_password_cubit.dart';
+import 'package:solidify/features/marketplace/search/logic/search_cubit.dart';
 import '../../features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/marketplace/cart/data/repos/cart_repo.dart';
 import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
@@ -128,4 +129,6 @@ Future<void> setupGetIt() async {
 
   // search
   getIt.registerLazySingleton<SearchRepo>(() => SearchRepo(getIt()));
+
+  getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt()));
 }
