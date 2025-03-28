@@ -113,7 +113,8 @@ class ShippingAddressBlocConsumer extends StatelessWidget {
                           controller: phoneController,
                           borderRadius: 10.r,
                           hintText: 'Phone number here',
-                          validator: (value) => validateEgyptianPhoneNumber(value),
+                          validator: (value) =>
+                              validateEgyptianPhoneNumber(value),
                         ),
                       ],
                     ),
@@ -134,10 +135,13 @@ class ShippingAddressBlocConsumer extends StatelessWidget {
                         orElse: () => AppTextButton(
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              context.read<ShippingAddressCubit>().createShippingAddress(
+                              context
+                                  .read<ShippingAddressCubit>()
+                                  .createShippingAddress(
                                     city: cityController.text,
                                     street: streetController.text,
                                     postalCode: postalCodeController.text,
+                                    phoneNumber: phoneController.text,
                                   );
                             }
                           },

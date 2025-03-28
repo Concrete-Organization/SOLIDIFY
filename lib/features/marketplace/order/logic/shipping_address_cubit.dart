@@ -21,6 +21,7 @@ class ShippingAddressCubit extends Cubit<ShippingAddressState> {
     required String city,
     required String street,
     required String postalCode,
+    required String phoneNumber,
   }) async {
     emit(const ShippingAddressState.loading());
 
