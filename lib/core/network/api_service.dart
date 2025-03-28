@@ -187,4 +187,13 @@ abstract class ApiService {
   Future<ShippingAddressResponseModel> createShippingAddress(
     @Body() ShippingAddressRequestModel request,
   );
+  @GET(ApiConstants.product)
+  Future<ProductListResponseModel> searchProducts(
+    @Query('PageNumber') int page,
+    @Query('MinPrice') double? minPrice,
+    @Query('MaxPrice') double? maxPrice,
+    @Query('SearchedPhrase') String? searchedPhrase,
+    @Query('CategoryName') String? categoryName,
+    @Query('BrandName') String? brandName,
+  );
 }
