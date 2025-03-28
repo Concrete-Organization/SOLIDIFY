@@ -29,6 +29,7 @@ class ShippingAddressCubit extends Cubit<ShippingAddressState> {
         city: cityController.text,
         street: streetController.text,
         postalCode: postalCodeController.text,
+        phoneNumber: phoneController.text
       ),
     );
 

@@ -12,6 +12,7 @@ ShippingAddressRequestModel _$ShippingAddressRequestModelFromJson(
       city: json['city'] as String,
       street: json['street'] as String,
       postalCode: json['postalCode'] as String,
+      phoneNumber: json['phoneNumber'] as String,
     );
 
 Map<String, dynamic> _$ShippingAddressRequestModelToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$ShippingAddressRequestModelToJson(
       'city': instance.city,
       'street': instance.street,
       'postalCode': instance.postalCode,
+      'phoneNumber': instance.phoneNumber,
     };
