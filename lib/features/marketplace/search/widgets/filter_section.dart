@@ -10,6 +10,8 @@ class FilterSection extends StatelessWidget {
   final int columns;
   final List<String> selectedFilters;
   final Function(String) onFilterSelected;
+  final bool isOpen;
+  final VoidCallback onToggle;
 
   const FilterSection({
     super.key,
@@ -18,28 +20,44 @@ class FilterSection extends StatelessWidget {
     required this.columns,
     required this.selectedFilters,
     required this.onFilterSelected,
+    required this.isOpen,
+    required this.onToggle,
   });
 
   @override
   Widget build(BuildContext context) {
     final int midPoint =
-        (columns == 2) ? (items.length / 2).ceil() : items.length;
+    (columns == 2) ? (items.length / 2).ceil() : items.length;
     final List<Map<String, dynamic>> firstColumnItems =
-        items.sublist(0, midPoint);
+    items.sublist(0, midPoint);
     final List<Map<String, dynamic>> secondColumnItems =
-        (columns == 2) ? items.sublist(midPoint) : [];
+    (columns == 2) ? items.sublist(midPoint) : [];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: TextStyles.font15lightBlackSemiBold,
+        GestureDetector(
+          onTap: onToggle,
+          child: Row(
+            children: [
+              Icon(
+                isOpen ? Icons.arrow_drop_down : Icons.arrow_right,
+                color: Colors.black,
+              ),
+              horizontalSpace(5),
+              Text(
+                title,
+                style: TextStyles.font15lightBlackSemiBold,
+              ),
+            ],
+          ),
         ),
-        verticalSpace(10),
-        columns == 1
-            ? _buildSingleColumn(firstColumnItems)
-            : _buildTwoColumns(firstColumnItems, secondColumnItems),
+        if (isOpen) ...[
+          verticalSpace(10),
+          columns == 1
+              ? _buildSingleColumn(firstColumnItems)
+              : _buildTwoColumns(firstColumnItems, secondColumnItems),
+        ],
       ],
     );
   }

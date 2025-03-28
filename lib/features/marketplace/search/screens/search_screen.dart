@@ -18,9 +18,10 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             children: [
+              verticalSpace(15),
               ProductSearchBar(
                 onSearch: (query) {
                   context

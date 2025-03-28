@@ -1,18 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/features/marketplace/search/logic/search_state.dart';
 import 'package:solidify/features/marketplace/search/data/repos/search_repo.dart';
 
 class SearchCubit extends Cubit<SearchState> {
   final SearchRepo _searchRepo;
   String? _currentSearchQuery;
-  List<String> _selectedCategories = [];
-  List<String> _selectedBrands = [];
+  final List<String> _selectedCategories = [];
+  final List<String> _selectedBrands = [];
   String? _selectedPriceRange;
 
   SearchCubit(this._searchRepo) : super(const SearchState.initial());
 
-  // Getters for private fields
   List<String> get selectedCategories => _selectedCategories;
   List<String> get selectedBrands => _selectedBrands;
   String? get selectedPriceRange => _selectedPriceRange;
@@ -44,7 +42,13 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   void updatePriceFilter(String price) {
-    _selectedPriceRange = price == 'All prices' ? null : price;
+    if (price == 'All prices') {
+      _selectedPriceRange = null;
+    } else if (_selectedPriceRange == price) {
+      _selectedPriceRange = null;
+    } else {
+      _selectedPriceRange = price;
+    }
     _performSearch();
   }
 

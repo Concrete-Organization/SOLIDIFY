@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/spacing.dart';
-import 'package:solidify/core/helpers/extensions.dart';
-import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/custom_snack_bar.dart';
@@ -15,7 +13,6 @@ import 'package:solidify/features/marketplace/search/widgets/filters_text_row.da
 import 'package:solidify/features/marketplace/search/widgets/search_with_filter_bar.dart';
 import 'package:solidify/features/marketplace/search/widgets/filters_types_containers.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/product_grid_view.dart';
-import 'package:solidify/features/marketplace/marketplace/data/models/product_list_response_model.dart';
 
 class SearchWithFilterScreen extends StatefulWidget {
   const SearchWithFilterScreen({super.key});
@@ -59,7 +56,6 @@ class _SearchWithFilterScreenState extends State<SearchWithFilterScreen> {
 
           return CustomScrollView(
             slivers: [
-              // Filter Section (fixed at top)
               SliverPadding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
                 sliver: SliverToBoxAdapter(
@@ -105,8 +101,6 @@ class _SearchWithFilterScreenState extends State<SearchWithFilterScreen> {
                   ),
                 ),
               ),
-
-              // Results Section
               state.when(
                 initial: () => SliverPadding(
                   padding: EdgeInsets.all(20.w),

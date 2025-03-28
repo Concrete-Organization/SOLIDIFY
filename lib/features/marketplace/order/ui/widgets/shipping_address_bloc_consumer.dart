@@ -34,11 +34,9 @@ class ShippingAddressBlocConsumer extends StatelessWidget {
       context,
       'Address saved successfully!',
     );
-    Future.delayed(const Duration(seconds: 3), () {
-      if (context.mounted) {
-        Navigator.of(context).pushNamed(Routes.paymentScreen);
-      }
-    });
+    if (context.mounted) {
+      Navigator.of(context).pushNamed(Routes.paymentScreen);
+    }
   }
 
   @override
@@ -138,14 +136,14 @@ class ShippingAddressBlocConsumer extends StatelessWidget {
                               context
                                   .read<ShippingAddressCubit>()
                                   .createShippingAddress(
-                                    city: cityController.text,
-                                    street: streetController.text,
-                                    postalCode: postalCodeController.text,
-                                    phoneNumber: phoneController.text,
-                                  );
+                                city: cityController.text,
+                                street: streetController.text,
+                                postalCode: postalCodeController.text,
+                                phoneNumber: phoneController.text,
+                              );
                             }
                           },
-                          textButton: 'next',
+                          textButton: 'Next',
                         ),
                       ),
                     ],

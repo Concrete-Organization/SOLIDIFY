@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/marketplace/search/widgets/filter_section.dart';
 
-class FiltersTypesContainers extends StatelessWidget {
+class FiltersTypesContainers extends StatefulWidget {
   final Function(String) onCategorySelected;
   final Function(String) onBrandSelected;
   final Function(String) onPriceSelected;
@@ -22,6 +22,15 @@ class FiltersTypesContainers extends StatelessWidget {
     required this.selectedBrands,
     required this.selectedPriceRange,
   });
+
+  @override
+  _FiltersTypesContainersState createState() => _FiltersTypesContainersState();
+}
+
+class _FiltersTypesContainersState extends State<FiltersTypesContainers> {
+  bool _isCategoriesOpen = false;
+  bool _isBrandsOpen = false;
+  bool _isPricesOpen = false;
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +69,14 @@ class FiltersTypesContainers extends StatelessWidget {
             title: 'Categories',
             items: categoryItems,
             columns: 2,
-            selectedFilters: selectedCategories,
-            onFilterSelected: onCategorySelected,
+            selectedFilters: widget.selectedCategories,
+            onFilterSelected: widget.onCategorySelected,
+            isOpen: _isCategoriesOpen,
+            onToggle: () {
+              setState(() {
+                _isCategoriesOpen = !_isCategoriesOpen;
+              });
+            },
           ),
           verticalSpace(20),
           HorizontalDivider(
@@ -72,8 +87,14 @@ class FiltersTypesContainers extends StatelessWidget {
             title: 'Brand name',
             items: brandItems,
             columns: 1,
-            selectedFilters: selectedBrands,
-            onFilterSelected: onBrandSelected,
+            selectedFilters: widget.selectedBrands,
+            onFilterSelected: widget.onBrandSelected,
+            isOpen: _isBrandsOpen,
+            onToggle: () {
+              setState(() {
+                _isBrandsOpen = !_isBrandsOpen;
+              });
+            },
           ),
           verticalSpace(20),
           HorizontalDivider(
@@ -84,9 +105,16 @@ class FiltersTypesContainers extends StatelessWidget {
             title: 'Prices',
             items: priceItems,
             columns: 2,
-            selectedFilters:
-                selectedPriceRange != null ? [selectedPriceRange!] : [],
-            onFilterSelected: onPriceSelected,
+            selectedFilters: widget.selectedPriceRange != null
+                ? [widget.selectedPriceRange!]
+                : [],
+            onFilterSelected: widget.onPriceSelected,
+            isOpen: _isPricesOpen,
+            onToggle: () {
+              setState(() {
+                _isPricesOpen = !_isPricesOpen;
+              });
+            },
           ),
         ],
       ),

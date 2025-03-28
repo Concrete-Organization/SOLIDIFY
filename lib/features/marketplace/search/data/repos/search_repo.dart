@@ -17,7 +17,7 @@ class SearchRepo {
   }) async {
     try {
       final response = await _apiService.searchProducts(
-        1, // page number
+        1,
         minPrice,
         maxPrice,
         searchedPhrase,

@@ -16,7 +16,7 @@ class CustomSnackBar {
       backgroundColor: Colors.transparent,
       behavior: SnackBarBehavior.floating,
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: Stack(
         clipBehavior: Clip.none,
         children: [

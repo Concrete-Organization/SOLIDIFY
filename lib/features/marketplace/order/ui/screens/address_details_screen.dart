@@ -19,7 +19,6 @@ class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
 
   late ShippingAddressCubit cubit;
 
-
   @override
   void initState() {
     super.initState();
@@ -30,10 +29,6 @@ class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: SvgPicture.asset('assets/svgs/back_arrow.svg'),
-        ),
         title: Text(
           'Address details',
           style: TextStyles.font18MainSemiBold,
