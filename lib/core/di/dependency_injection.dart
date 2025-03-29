@@ -94,7 +94,7 @@ Future<void> setupGetIt() async {
   // posts
   getIt.registerLazySingleton<PostsRepo>(() => PostsRepo(getIt()));
   getIt.registerFactory<PostsCubit>(() => PostsCubit(getIt()));
-//comment
+  //comment
   getIt.registerLazySingleton<CommentsRepo>(() => CommentsRepo(getIt()));
   getIt.registerFactory<CommentsCubit>(() => CommentsCubit(getIt()));
   // product by  category
@@ -119,16 +119,12 @@ Future<void> setupGetIt() async {
       () => ProfileEngineerPostsCubit(getIt<PostsRepo>()));
   getIt.registerFactory<ProfileEngineerCommentsCubit>(() =>
       ProfileEngineerCommentsCubit(getIt<PostsRepo>(), getIt<CommentsRepo>()));
-
   // shipping address
   getIt.registerLazySingleton<ShippingAddressRepo>(
       () => ShippingAddressRepo(getIt()));
-
   getIt.registerFactory<ShippingAddressCubit>(
       () => ShippingAddressCubit(getIt()));
-
   // search
   getIt.registerLazySingleton<SearchRepo>(() => SearchRepo(getIt()));
-
   getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt()));
 }

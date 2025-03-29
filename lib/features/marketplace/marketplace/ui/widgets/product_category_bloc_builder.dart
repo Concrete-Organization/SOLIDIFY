@@ -33,7 +33,7 @@ class ProductCategoryBlocBuilder extends StatelessWidget {
                     verticalSpace(21),
                     GestureDetector(
                       onTap: () {
-                        context.pushNamed(Routes.searchWithFillterScreen);
+                        context.pushNamed(Routes.searchWithFilterScreen);
                       },
                       // child: const SearchWithFilterBar(),
                     ),

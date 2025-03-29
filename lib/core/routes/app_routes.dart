@@ -253,7 +253,6 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const NotificationsScreen(),
         );
-
       case Routes.orderDetailsScreen:
         return MaterialPageRoute(
           builder: (context) => const OrderDetailsScreen(),
@@ -262,7 +261,6 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const AboutScreen(),
         );
-
       case Routes.searchScreen:
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
@@ -277,7 +275,7 @@ class AppRoutes {
             child: const SearchScreen(),
           ),
         );
-      case Routes.searchWithFillterScreen:
+      case Routes.searchWithFilterScreen:
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
             providers: [

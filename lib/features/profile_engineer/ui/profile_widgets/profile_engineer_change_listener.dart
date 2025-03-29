@@ -17,11 +17,9 @@ class ProfileEngineerChangeListener extends StatelessWidget {
             context
                 .read<ProfileEngineerPostsCubit>()
                 .fetchEngineerPosts(engineerId);
-
             context
                 .read<ProfileEngineerCommentsCubit>()
                 .fetchEngineerComments(engineerId);
-
           },
           orElse: () {},
         );

@@ -41,7 +41,7 @@ class Routes {
 
   static const String addAccountScreen = 'addAccountScreen';
   static const String searchScreen = 'searchScreen';
-  static const String searchWithFillterScreen = 'searchWithFillterScreen';
+  static const String searchWithFilterScreen = 'searchWithFilterScreen';
 
   static const String aboutYourAccountScreen = 'aboutYourAccountScreen';
   static const String accountTypeScreen = 'accountTypeScreen';

@@ -18,7 +18,7 @@ class ProductSearchBar extends StatelessWidget {
       prefixIcon: SvgPicture.asset('assets/svgs/search_icon.svg'),
       suffixIcon: GestureDetector(
         onTap: () {
-          context.pushNamed(Routes.searchWithFillterScreen);
+          context.pushNamed(Routes.searchWithFilterScreen);
         },
         child: SvgPicture.asset(
           'assets/svgs/lets-icons_filter.svg',
