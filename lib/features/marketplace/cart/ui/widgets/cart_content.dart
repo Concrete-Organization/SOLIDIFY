@@ -59,56 +59,55 @@ class _CartContentState extends State<CartContent> {
     return SafeArea(
       child: _items.isEmpty
           ? Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.remove_shopping_cart_outlined,
-              size: 70,
-              color: Colors.grey,
-            ),
-            verticalSpace(20),
-            Text(
-              'No Items Added to Cart',
-              style: TextStyles.font16lightBlackRegular.copyWith(
-                color: ColorsManager.lightBlack.withOpacity(0.7)
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.remove_shopping_cart_outlined,
+                    size: 70,
+                    color: Colors.grey,
+                  ),
+                  verticalSpace(20),
+                  Text(
+                    'No Items Added to Cart',
+                    style: TextStyles.font16lightBlackRegular.copyWith(
+                        color: ColorsManager.lightBlack.withOpacity(0.7)),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
-      )
+            )
           : Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CartListView(
-                items: _items,
-                onPriceUpdated: widget.onPriceUpdated,
-                onItemDeleted: _onItemDeleted,
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CartListView(
+                      items: _items,
+                      onPriceUpdated: widget.onPriceUpdated,
+                      onItemDeleted: _onItemDeleted,
+                    ),
+                    Text(
+                      'Total',
+                      style: TextStyles.font20MainLightBlack,
+                    ),
+                    verticalSpace(15),
+                    Text(
+                      '${_total.toStringAsFixed(2)} EGP',
+                      style: TextStyles.font15MainBlueSemiBold,
+                    ),
+                    verticalSpace(15),
+                    AppTextButton(
+                      onPressed: () {
+                        context.pushNamed(Routes.addressDetailsScreen);
+                      },
+                      textButton: 'Place Order',
+                    ),
+                    verticalSpace(36),
+                  ],
+                ),
               ),
-              Text(
-                'Total',
-                style: TextStyles.font20MainLightBlack,
-              ),
-              verticalSpace(15),
-              Text(
-                '${_total.toStringAsFixed(2)} EGP',
-                style: TextStyles.font15MainBlueSemiBold,
-              ),
-              verticalSpace(15),
-              AppTextButton(
-                onPressed: () {
-                  context.pushNamed(Routes.addressDetailsScreen);
-                },
-                textButton: 'Place Order',
-              ),
-              verticalSpace(36),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 }
