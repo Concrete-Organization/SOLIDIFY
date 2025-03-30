@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:solidify/core/helpers/app_validation.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/helpers/app_validation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/custom_indicator.dart';
 import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
-import 'package:solidify/features/marketplace/order/logic/shipping_address_cubit.dart';
-import 'package:solidify/features/marketplace/order/logic/shipping_address_state.dart';
+import 'package:solidify/features/marketplace/order/logic/shipping_address_cubit/shipping_address_cubit.dart';
+import 'package:solidify/features/marketplace/order/logic/shipping_address_cubit/shipping_address_state.dart';
 
 class ShippingAddressBlocConsumer extends StatelessWidget {
   final GlobalKey<FormState> formKey;
@@ -136,11 +136,11 @@ class ShippingAddressBlocConsumer extends StatelessWidget {
                               context
                                   .read<ShippingAddressCubit>()
                                   .createShippingAddress(
-                                city: cityController.text,
-                                street: streetController.text,
-                                postalCode: postalCodeController.text,
-                                phoneNumber: phoneController.text,
-                              );
+                                    city: cityController.text,
+                                    street: streetController.text,
+                                    postalCode: postalCodeController.text,
+                                    phoneNumber: phoneController.text,
+                                  );
                             }
                           },
                           textButton: 'Next',
