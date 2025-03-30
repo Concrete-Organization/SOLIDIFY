@@ -28,10 +28,10 @@ import 'package:solidify/features/marketplace/order/ui/screens/checkout_screen.d
 import 'package:solidify/features/auth/reset_password/ui/reset_password_screen.dart';
 import 'package:solidify/features/profile_company/ui/screens/orders_list_screen.dart';
 import 'package:solidify/features/community/ui/screens/posts/create_post_screen.dart';
-import 'package:solidify/features/marketplace/order/logic/shipping_address_cubit.dart';
 import 'package:solidify/features/marketplace/order/ui/screens/order_done_screen.dart';
 import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/auth/forget_password/ui/forget_password_screen.dart';
+import 'package:solidify/features/marketplace/order/logic/order_cubit/order_cubit.dart';
 import 'package:solidify/features/profile_company/ui/screens/order_details_screen.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
@@ -49,6 +49,7 @@ import 'package:solidify/features/marketplace/marketplace/ui/screens/product_cat
 import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_result.dart';
 import 'package:solidify/features/crack_detection/ui/screens/crack_detection_choose_uploading_image.dart';
 import 'package:solidify/features/marketplace/marketplace/data/models/get_product_by_id_response_body.dart';
+import 'package:solidify/features/marketplace/order/logic/shipping_address_cubit/shipping_address_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/products_list_cubit/products_list_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
 import '../../features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
@@ -196,7 +197,10 @@ class AppRoutes {
         );
       case Routes.paymentScreen:
         return MaterialPageRoute(
-          builder: (context) => const PaymentScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<OrderCubit>(),
+            child: const PaymentScreen(),
+          ),
         );
       case Routes.orderDoneScreen:
         return MaterialPageRoute(

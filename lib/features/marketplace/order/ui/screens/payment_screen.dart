@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
+import 'package:get_it/get_it.dart'; // Add this import
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/custom_indicator.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
+import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
+import 'package:solidify/features/marketplace/order/data/repos/order_repo.dart';
+import 'package:solidify/features/marketplace/order/data/models/order_post_request.dart';
 import 'package:solidify/features/marketplace/order/ui/widgets/payment_method_container.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -19,6 +24,66 @@ class PaymentScreen extends StatefulWidget {
 
 class _PaymentScreenState extends State<PaymentScreen> {
   String? _selectedPaymentMethod;
+  bool _isProcessing = false;
+  final OrderRepo _orderRepo = GetIt.instance<OrderRepo>();
+
+  Future<void> _placeCodOrder(BuildContext context) async {
+    setState(() => _isProcessing = true);
+
+    try {
+      final addressId = await SharedPrefHelper.getCachedShippingAddressId();
+      final token =
+          await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
+
+      if (addressId.isEmpty) {
+        if (mounted) {
+          CustomSnackBar.showError(
+              context, 'Please select a shipping address first');
+        }
+        return;
+      }
+
+      final response = await _orderRepo.createOrder(
+        // Use the injected repo
+        OrderPostRequest(shippingAddressId: int.parse(addressId)),
+        'Bearer $token',
+      );
+
+      response.when(
+        success: (response) {
+          if (response.isSucceeded) {
+            if (mounted) {
+              CustomSnackBar.showSuccess(context, 'Order placed successfully!');
+              // Delay navigation slightly to allow snackbar to be visible
+              Future.delayed(const Duration(seconds: 2), () {
+                if (mounted) {
+                  context.pushNamed(Routes.orderDoneScreen);
+                }
+              });
+            }
+          } else {
+            if (mounted) {
+              CustomSnackBar.showError(context, response.message);
+            }
+          }
+        },
+        failure: (error) {
+          if (mounted) {
+            CustomSnackBar.showError(context, 'Error: ${error.message}');
+          }
+        },
+      );
+    } catch (e) {
+      if (mounted) {
+        CustomSnackBar.showError(
+            context, 'Failed to place order: ${e.toString()}');
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isProcessing = false);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +108,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 17.w, vertical: 17.h),
+        padding: EdgeInsets.only(
+          left: 17.w,
+          right: 17.w,
+          top: 17.h,
+          bottom: 90.h,
+        ),
         child: Column(
           children: [
             Expanded(
@@ -102,18 +172,21 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     width: 20,
                   ),
                   verticalSpace(60),
-                  AppTextButton(
-                    onPressed: _selectedPaymentMethod != null
-                        ? () {
-                            if (_selectedPaymentMethod == 'Cash on Delivery') {
-                              context.pushNamed(Routes.orderDoneScreen);
-                            } else {
-                              context.pushNamed(Routes.checkoutScreen);
-                            }
-                          }
-                        : null,
-                    textButton: 'Next',
-                  ),
+                  _isProcessing
+                      ? const CircularProgressIndicator()
+                      : AppTextButton(
+                          onPressed: _selectedPaymentMethod != null
+                              ? () {
+                                  if (_selectedPaymentMethod ==
+                                      'Cash on Delivery') {
+                                    _placeCodOrder(context);
+                                  } else {
+                                    context.pushNamed(Routes.checkoutScreen);
+                                  }
+                                }
+                              : null,
+                          textButton: 'Next',
+                        ),
                 ],
               ),
             ),

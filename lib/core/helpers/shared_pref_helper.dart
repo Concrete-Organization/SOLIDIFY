@@ -27,6 +27,8 @@ class SharedPrefKeys {
   static const String profileImageUrl = 'profileImageUrl';
   static const String selectedShippingAddressId = 'selectedShippingAddressId';
   static const String shippingAddresses = 'shippingAddresses';
+  static const String currentOrderId = 'currentOrderId';
+  static const String orderHistory = 'orderHistory';
 }
 
 class SharedPrefHelper {
@@ -323,5 +325,37 @@ class SharedPrefHelper {
 
   static Future<void> clearCachedShippingAddressId() async {
     await removeData(SharedPrefKeys.selectedShippingAddressId);
+  }
+
+  static Future<void> cacheOrderId(String id) async {
+    await setData(SharedPrefKeys.currentOrderId, id);
+  }
+
+  static Future<String> getCachedOrderId() async {
+    return await getString(SharedPrefKeys.currentOrderId);
+  }
+
+  static Future<void> clearCachedOrderId() async {
+    await removeData(SharedPrefKeys.currentOrderId);
+  }
+
+  static Future<void> saveOrderToHistory(Map<String, dynamic> orderData) async {
+    final orders = await getOrderHistory();
+    orders.add(orderData);
+    await setData(
+      SharedPrefKeys.orderHistory,
+      json.encode(orders),
+    );
+  }
+
+  static Future<List<Map<String, dynamic>>> getOrderHistory() async {
+    final data = await getString(SharedPrefKeys.orderHistory);
+    if (data.isEmpty) return [];
+    try {
+      final List<dynamic> jsonList = json.decode(data);
+      return jsonList.cast<Map<String, dynamic>>();
+    } catch (e) {
+      return [];
+    }
   }
 }
