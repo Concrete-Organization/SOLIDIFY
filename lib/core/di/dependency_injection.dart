@@ -22,6 +22,7 @@ import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
 import 'package:solidify/features/marketplace/search/data/repos/search_repo.dart';
 import '../../features/auth/forget_password/data/repos/forget_password_repo.dart';
 import 'package:solidify/features/chatbot/data/repos/chatbot_with_gemini_repo.dart';
+import 'package:solidify/features/marketplace/order/logic/order_cubit/order_cubit.dart';
 import 'package:solidify/features/profile_engineer/data/repo/engineer_profile_repo.dart';
 import 'package:solidify/features/marketplace/order/data/repos/shipping_address_repo.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
@@ -134,4 +135,5 @@ Future<void> setupGetIt() async {
 
   // order
   getIt.registerLazySingleton<OrderRepo>(() => OrderRepo(getIt()));
+  getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
 }

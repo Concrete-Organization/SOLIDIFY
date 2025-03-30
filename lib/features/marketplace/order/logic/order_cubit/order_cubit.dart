@@ -53,10 +53,8 @@ class OrderCubit extends Cubit<OrderState> {
     );
   }
 
-  // Helper to extract order ID from message if needed
   String? _extractOrderId(String message) {
     try {
-      // Example: "Order #[325a3858-7a35-49f9-a672-df8fc1e3b727] Created successfully"
       final regex = RegExp(r'#\[([^\]]+)\]');
       final match = regex.firstMatch(message);
       return match?.group(1);
