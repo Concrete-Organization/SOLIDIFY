@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
@@ -56,7 +57,27 @@ class _CartContentState extends State<CartContent> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
+      child: _items.isEmpty
+          ? Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.remove_shopping_cart_outlined,
+              size: 70,
+              color: Colors.grey,
+            ),
+            verticalSpace(20),
+            Text(
+              'No Items Added to Cart',
+              style: TextStyles.font16lightBlackRegular.copyWith(
+                color: ColorsManager.lightBlack.withOpacity(0.7)
+              ),
+            ),
+          ],
+        ),
+      )
+          : Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: SingleChildScrollView(
           child: Column(

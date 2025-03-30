@@ -62,13 +62,12 @@ class _CartScreenState extends State<CartScreen> {
         },
         builder: (context, state) {
           if (_isDeleting) {
-            return const Center(child: CircularProgressIndicator());
+            return LoadingCircleIndicator();
           }
-
           return state.when(
             initial: () {
               context.read<CartCubit>().getCartItems();
-              return const Center(child: CircularProgressIndicator());
+              return LoadingCircleIndicator();
             },
             cartLoading: () => const LoadingCircleIndicator(),
             cartListSuccess: (cartResponse) {
