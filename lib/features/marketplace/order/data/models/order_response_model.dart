@@ -7,7 +7,7 @@ class OrderResponseModel {
   final bool isSucceeded;
   final int statusCode;
   final String message;
-  final dynamic model; // Can be specified as a concrete type if needed
+  final dynamic model;
 
   OrderResponseModel({
     required this.isSucceeded,

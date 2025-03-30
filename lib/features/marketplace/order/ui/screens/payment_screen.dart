@@ -36,15 +36,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
           await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
 
       if (addressId.isEmpty) {
-        if (mounted) {
+        if (context.mounted) {
           CustomSnackBar.showError(
-              context, 'Please select a shipping address first');
+            context,
+            'Please select a shipping address first',
+          );
         }
         return;
       }
 
       final response = await _orderRepo.createOrder(
-        // Use the injected repo
         OrderPostRequest(shippingAddressId: int.parse(addressId)),
         'Bearer $token',
       );
@@ -54,29 +55,36 @@ class _PaymentScreenState extends State<PaymentScreen> {
           if (response.isSucceeded) {
             if (mounted) {
               CustomSnackBar.showSuccess(context, 'Order placed successfully!');
-              // Delay navigation slightly to allow snackbar to be visible
               Future.delayed(const Duration(seconds: 2), () {
-                if (mounted) {
+                if (context.mounted) {
                   context.pushNamed(Routes.orderDoneScreen);
                 }
               });
             }
           } else {
             if (mounted) {
-              CustomSnackBar.showError(context, response.message);
+              CustomSnackBar.showError(
+                context,
+                response.message,
+              );
             }
           }
         },
         failure: (error) {
           if (mounted) {
-            CustomSnackBar.showError(context, 'Error: ${error.message}');
+            CustomSnackBar.showError(
+              context,
+              'Error: ${error.message}',
+            );
           }
         },
       );
     } catch (e) {
-      if (mounted) {
+      if (context.mounted) {
         CustomSnackBar.showError(
-            context, 'Failed to place order: ${e.toString()}');
+          context,
+          'Failed to place order: ${e.toString()}',
+        );
       }
     } finally {
       if (mounted) {

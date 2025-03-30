@@ -31,16 +31,18 @@ class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
   @override
   void initState() {
     super.initState();
-    _loadEngineerProfile();
+    _loadEngineerProfile(context);
   }
 
-  Future<void> _loadEngineerProfile() async {
+  Future<void> _loadEngineerProfile(BuildContext context) async {
     final userDetails = await SharedPrefHelper.getUserDetails();
     setState(() {
       _userId = userDetails['userId'] ?? '';
     });
     if (_userId.isNotEmpty) {
-      context.read<EngineerProfileCubit>().fetchEngineerProfile(_userId);
+      if(context.mounted){
+        context.read<EngineerProfileCubit>().fetchEngineerProfile(_userId);
+      }
     }
   }
 

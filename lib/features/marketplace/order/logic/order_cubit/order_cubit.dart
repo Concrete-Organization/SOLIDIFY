@@ -19,7 +19,6 @@ class OrderCubit extends Cubit<OrderState> {
   }) async {
     emit(const OrderState.loading());
 
-    // Get the cached address ID if not provided
     final addressId = shippingAddressId.toString().isNotEmpty
         ? shippingAddressId
         : int.tryParse(await SharedPrefHelper.getCachedShippingAddressId()) ??
