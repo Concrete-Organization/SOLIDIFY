@@ -67,6 +67,7 @@ The project utilizes various dependencies to enhance functionality and streamlin
 
 - **build_runner:** Build System for Dart code generation and modular compilation.
 - **flutter_bloc:** State Management.
+- **provider:** State Management.
 - **freezed, freezed_annotation:** Code Generation.
 - **get_it:** Dependency Injection.
 - **json_serializable, json_annotation:** Automatically generate code for converting to and from JSON.
@@ -87,7 +88,6 @@ The project utilizes various dependencies to enhance functionality and streamlin
 - **jwt_decoder:** JWT Token Parsing and Expiration Check.
 - **carousel_slider:** Infinite Scroll and Custom Widgets.
 - **dio_cookie_manager, cookie_jar:** Cookie Management for HTTP Requests.
-- **provider:** State Management.
 - **flutter_native_splash:** Splash Screen Customization.
 - **package_info_plus:** App Package Information.
 - **image_cropper:** Image Cropping.
