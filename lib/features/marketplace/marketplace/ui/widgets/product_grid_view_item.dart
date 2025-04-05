@@ -57,9 +57,7 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
         final favoritesProvider = Provider.of<FavoritesProvider>(context);
         final productEntity = widget.product.toEntity();
         final isFavorite = favoritesProvider.isFavorite(productEntity.id);
-        final isLoading =
-            state is CartLoading && state.productId == widget.product.id;
-
+        final isLoading = state is CartLoading && state.productId == widget.product.id;
         return Card(
           margin: EdgeInsets.zero,
           color: ColorsManager.white,
