@@ -29,10 +29,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: SvgPicture.asset('assets/svgs/back_arrow.svg'),
-        ),
         title: Text(
           'Checkout',
           style: TextStyles.font18MainSemiBold,
