@@ -15,6 +15,7 @@ import 'package:solidify/features/marketplace/cart/data/models/get_cart_response
 import 'package:solidify/features/marketplace/cart/data/models/post_cart_response_model.dart';
 import 'package:solidify/features/community/data/models/post_models/create_post_response.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_reply_request.dart';
+import 'package:solidify/features/profile_company/data/models/get_order_by_id_response_model.dart';
 import 'package:solidify/features/community/data/models/comment_models/get_comments_response.dart';
 import 'package:solidify/features/profile_engineer/data/models/get_engineer_profile_response.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_comment_request.dart';
@@ -208,6 +209,11 @@ abstract class ApiService {
   @GET(ApiConstants.order)
   Future<GetOrderResponseModel> getOrders(
     @Query('PageNumber') int page,
+    @Header('Authorization') String token,
+  );
+  @GET('${ApiConstants.order}/{id}')
+  Future<GetOrderByIdResponseModel> getOrderById(
+    @Path('id') String orderId,
     @Header('Authorization') String token,
   );
 }
