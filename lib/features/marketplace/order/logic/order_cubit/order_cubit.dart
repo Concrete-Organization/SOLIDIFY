@@ -25,24 +25,27 @@ class OrderCubit extends Cubit<OrderState> {
             0;
 
     final response = await _orderRepo.createOrder(
-      OrderPostRequest(
-        shippingAddressId: addressId,
-      ),
+      OrderPostRequest(shippingAddressId: addressId),
       await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken),
     );
 
     response.when(
       success: (response) async {
         if (response.isSucceeded) {
-          await SharedPrefHelper.setData(
-            'currentOrderId',
-            _extractOrderId(response.message) ?? '',
-          );
+          final orderId = _extractOrderId(response.message);
+          if (orderId != null) {
+            await SharedPrefHelper.setData('currentOrderId', orderId);
+            // Optionally add to cached order IDs
+            final currentIds = await SharedPrefHelper.getCachedOrderIds();
+            if (!currentIds.contains(orderId)) {
+              currentIds.add(orderId);
+              await SharedPrefHelper.cacheOrderIds(currentIds);
+            }
+          }
           emit(OrderState.createSuccess(response: response));
         } else {
           emit(OrderState.createError(
-            error: ApiErrorModel(message: response.message),
-          ));
+              error: ApiErrorModel(message: response.message)));
         }
       },
       failure: (error) {
@@ -54,25 +57,37 @@ class OrderCubit extends Cubit<OrderState> {
   Future<void> getOrders({int page = 1}) async {
     emit(const OrderState.getOrdersLoading());
 
-    final response = await _orderRepo.getOrders(
-      page,
-      await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken),
-    );
+    final token =
+        await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
+    if (token.isEmpty) {
+      emit(OrderState.getOrdersError(
+        error: ApiErrorModel(message: 'No authentication token found'),
+      ));
+      return;
+    }
+
+    final response = await _orderRepo.getOrders(page, token);
 
     response.when(
-      success: (response) {
+      success: (response) async {
         if (response.isSucceeded) {
+          // Cache the order IDs from the response
+          final orderIds = response.model.items.map((item) => item.id).toList();
+          await SharedPrefHelper.cacheOrderIds(orderIds);
           emit(OrderState.getOrdersSuccess(response: response));
         } else {
           emit(OrderState.getOrdersError(
-            error: ApiErrorModel(message: response.message),
-          ));
+              error: ApiErrorModel(message: response.message)));
         }
       },
       failure: (error) {
         emit(OrderState.getOrdersError(error: error));
       },
     );
+  }
+
+  Future<List<String>> getCachedOrderIds() async {
+    return await SharedPrefHelper.getCachedOrderIds();
   }
 
   String? _extractOrderId(String message) {
