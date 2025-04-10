@@ -8,6 +8,7 @@ import 'package:solidify/features/auth/otp/data/models/verify_otp_request_model.
 import 'package:solidify/features/auth/otp/data/models/verify_otp_response_model.dart';
 import 'package:solidify/features/marketplace/order/data/models/order_post_request.dart';
 import 'package:solidify/features/marketplace/order/data/models/order_response_model.dart';
+import 'package:solidify/features/profile_company/data/models/get_order_response_model.dart';
 import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
 import 'package:solidify/features/community/data/models/post_models/like_post_response.dart';
 import 'package:solidify/features/marketplace/cart/data/models/get_cart_response_model.dart';
@@ -32,7 +33,6 @@ import 'package:solidify/features/marketplace/marketplace/data/models/get_produc
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/models/engineer_account_sign_up_request_model.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/models/engineer_account_sign_up_response_model.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/data/models/concrete_company_account_sign_up_response_model.dart';
-
 
 part 'api_service.g.dart';
 
@@ -203,6 +203,11 @@ abstract class ApiService {
   @POST(ApiConstants.order)
   Future<OrderResponseModel> createOrder(
     @Body() OrderPostRequest request,
+    @Header('Authorization') String token,
+  );
+  @GET(ApiConstants.order)
+  Future<GetOrderResponseModel> getOrders(
+    @Query('PageNumber') int page,
     @Header('Authorization') String token,
   );
 }
