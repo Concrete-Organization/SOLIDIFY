@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/spacing.dart';
-import 'package:solidify/core/helpers/extensions.dart';
-import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
@@ -31,12 +29,6 @@ class ProductCategoryBlocBuilder extends StatelessWidget {
                     verticalSpace(5),
                     const HorizontalDivider(),
                     verticalSpace(21),
-                    GestureDetector(
-                      onTap: () {
-                        context.pushNamed(Routes.searchWithFilterScreen);
-                      },
-                      // child: const SearchWithFilterBar(),
-                    ),
                     verticalSpace(15),
                     Text(
                       categoryLabel,
@@ -58,16 +50,22 @@ class ProductCategoryBlocBuilder extends StatelessWidget {
                 ),
                 categorySuccess: (categoryResponse, cachedIds) {
                   final products = categoryResponse.model.result.items;
+
                   return CategoryProductsGrid(
                     products: products,
                     cachedProductIds: cachedIds,
                   );
                 },
                 categoryError: (error) => SliverToBoxAdapter(
-                    child: ErrorStateMessage(
-                  message: 'Error: ${error.message}',
-                )),
+                  child: ErrorStateMessage(
+                    message: 'Error: ${error.message}',
+                  ),
+                ),
               ),
+            ),
+            const SliverFillRemaining(
+              hasScrollBody: false,
+              child: SizedBox.shrink(),
             ),
           ],
         );

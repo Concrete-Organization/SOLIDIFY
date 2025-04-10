@@ -37,6 +37,7 @@ import 'package:solidify/features/auth/forget_password/logic/forget_password_cub
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/reviews_screen.dart';
 import 'package:solidify/features/marketplace/order/ui/screens/address_details_screen.dart';
+import 'package:solidify/features/profile_company/data/models/get_order_response_model.dart';
 import 'package:solidify/features/marketplace/search/screens/search_with_filter_screen.dart';
 import 'package:solidify/features/crack_detection/ui/screens/upload_crack_gallery_image.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
@@ -251,7 +252,10 @@ class AppRoutes {
         );
       case Routes.ordersListScreen:
         return MaterialPageRoute(
-          builder: (context) => const OrdersListScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<OrderCubit>(),
+            child: const OrdersListScreen(),
+          ),
         );
       case Routes.notificationsScreen:
         return MaterialPageRoute(

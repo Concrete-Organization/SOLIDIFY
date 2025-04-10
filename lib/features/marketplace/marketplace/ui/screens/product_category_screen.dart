@@ -40,12 +40,21 @@ class _ProductCategoryScreenState extends State<ProductCategoryScreen> {
             onTap: () {
               context.pushNamed(Routes.cartScreen);
             },
-            child: SvgPicture.asset('assets/svgs/cart_icon.svg'),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: SvgPicture.asset('assets/svgs/cart_icon.svg'),
+            ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: GestureDetector(
-              child: SvgPicture.asset('assets/svgs/list_icon.svg'),
+              onTap: () {
+                context.pushNamed(Routes.favoritesScreen);
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: SvgPicture.asset('assets/svgs/fav_icon.svg'),
+              ),
             ),
           ),
         ],
