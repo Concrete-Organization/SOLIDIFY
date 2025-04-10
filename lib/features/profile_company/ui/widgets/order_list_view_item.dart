@@ -7,9 +7,16 @@ import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/features/profile_company/ui/widgets/order_state_details_row.dart';
+import 'package:solidify/features/profile_company/data/models/get_order_response_model.dart';
 
 class OrderListViewItem extends StatelessWidget {
-  const OrderListViewItem({super.key});
+  final OrderItem order;
+
+  const OrderListViewItem({super.key, required this.order});
+
+  String _getStatusText(int status) {
+    return status == 0 ? 'Pending' : 'Completed';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,19 +36,19 @@ class OrderListViewItem extends StatelessWidget {
         children: [
           OrderStateDetailsRow(
             label: 'Order number',
-            value: '#123456394',
+            value: '#${order.id.substring(0, 8)}', // Shortened for display
             valueStyle: TextStyles.font12MainBlueMedium,
           ),
           verticalSpace(10),
           OrderStateDetailsRow(
             label: 'Date',
-            value: '5 May,2025',
+            value: order.orderDate.toString().substring(0, 10),
             valueStyle: TextStyles.font12MainBlueMedium,
           ),
           verticalSpace(10),
           OrderStateDetailsRow(
             label: 'Order status',
-            value: 'Shipped',
+            value: _getStatusText(order.orderStatus),
             valueStyle: TextStyles.font12secondaryGoldMedium,
           ),
           verticalSpace(10),
@@ -52,7 +59,7 @@ class OrderListViewItem extends StatelessWidget {
             ),
             child: OrderStateDetailsRow(
               label: 'Total',
-              value: '7,900 EGP',
+              value: '${order.totalPrice.toStringAsFixed(2)} EGP',
               valueStyle: TextStyles.font12MainBlueSemiBold,
               applyVerticalPadding: true,
             ),
