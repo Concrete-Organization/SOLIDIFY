@@ -6,6 +6,7 @@ import 'package:solidify/features/profile_company/data/repos/order_details_repo.
 
 class OrderDetailsCubit extends Cubit<OrderDetailsState> {
   final OrderDetailsRepo _orderDetailsRepo;
+  List<String> productIds = [];
 
   OrderDetailsCubit(this._orderDetailsRepo)
       : super(const OrderDetailsState.initial());
@@ -27,6 +28,8 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
     response.when(
       success: (response) {
         if (response.isSucceeded) {
+          productIds =
+              response.model.orderItems.map((item) => item.productId).toList();
           emit(OrderDetailsState.success(response: response));
         } else {
           emit(OrderDetailsState.error(
@@ -38,5 +41,9 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
         emit(OrderDetailsState.error(error: error));
       },
     );
+  }
+
+  String? getProductId(int index) {
+    return index < productIds.length ? productIds[index] : null;
   }
 }

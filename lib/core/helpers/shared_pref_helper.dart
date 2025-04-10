@@ -29,6 +29,8 @@ class SharedPrefKeys {
   static const String shippingAddresses = 'shippingAddresses';
   static const String currentOrderId = 'currentOrderId';
   static const String orderHistory = 'orderHistory';
+  static const String cachedOrderIds =
+      'cachedOrderIds'; // New key for order IDs
 }
 
 class SharedPrefHelper {
@@ -105,7 +107,7 @@ class SharedPrefHelper {
   }
 
   static Future<String> getEmail() async {
-    debugPrint('SharedPrefHelper : Retrieving email');
+    debugPrint('SharedPrefHelper: Retrieving email');
     return await getString('email');
   }
 
@@ -116,7 +118,7 @@ class SharedPrefHelper {
   }
 
   static Future<String?> getSurveyResult() async {
-    debugPrint('SharedPrefHelper : Retrieving survey result');
+    debugPrint('SharedPrefHelper: Retrieving survey result');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getString('surveyResult');
   }
@@ -141,7 +143,6 @@ class SharedPrefHelper {
     final email = await getSecuredString(SharedPrefKeys.email);
     final profileImageUrl =
         await getSecuredString(SharedPrefKeys.profileImageUrl);
-
     return {
       'userId': userId,
       'userName': userName,
@@ -169,9 +170,7 @@ class SharedPrefHelper {
   static Future<List<String>> getCachedProductIds() async {
     debugPrint('SharedPrefHelper: Retrieving cached product IDs');
     final idsString = await getString(SharedPrefKeys.cachedProductIds);
-    if (idsString.isEmpty) {
-      return [];
-    }
+    if (idsString.isEmpty) return [];
     final List<String> ids = idsString.split(',');
     debugPrint('SharedPrefHelper: Retrieved ${ids.length} cached product IDs');
     return ids;
@@ -185,6 +184,33 @@ class SharedPrefHelper {
   static Future<void> clearCachedProductIds() async {
     await removeData(SharedPrefKeys.cachedProductIds);
     debugPrint('SharedPrefHelper: Cleared cached product IDs');
+  }
+
+  // New methods for caching order IDs
+  static Future<void> cacheOrderIds(List<String> ids) async {
+    final idsString = json.encode(ids); // Store as JSON to handle UUIDs safely
+    await setData(SharedPrefKeys.cachedOrderIds, idsString);
+    debugPrint("SharedPrefHelper: Cached ${ids.length} order IDs");
+  }
+
+  static Future<List<String>> getCachedOrderIds() async {
+    debugPrint('SharedPrefHelper: Retrieving cached order IDs');
+    final idsString = await getString(SharedPrefKeys.cachedOrderIds);
+    if (idsString.isEmpty) return [];
+    try {
+      final List<dynamic> decoded = json.decode(idsString);
+      final List<String> ids = decoded.cast<String>();
+      debugPrint('SharedPrefHelper: Retrieved ${ids.length} cached order IDs');
+      return ids;
+    } catch (e) {
+      debugPrint('SharedPrefHelper: Error decoding cached order IDs: $e');
+      return [];
+    }
+  }
+
+  static Future<void> clearCachedOrderIds() async {
+    await removeData(SharedPrefKeys.cachedOrderIds);
+    debugPrint('SharedPrefHelper: Cleared cached order IDs');
   }
 
   static Future<void> updateLikedPosts(Set<int> likedPosts) async {
@@ -342,10 +368,7 @@ class SharedPrefHelper {
   static Future<void> saveOrderToHistory(Map<String, dynamic> orderData) async {
     final orders = await getOrderHistory();
     orders.add(orderData);
-    await setData(
-      SharedPrefKeys.orderHistory,
-      json.encode(orders),
-    );
+    await setData(SharedPrefKeys.orderHistory, json.encode(orders));
   }
 
   static Future<List<Map<String, dynamic>>> getOrderHistory() async {

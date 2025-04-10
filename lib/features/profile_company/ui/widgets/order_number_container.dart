@@ -6,7 +6,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 
 class OrderNumberContainer extends StatelessWidget {
-  const OrderNumberContainer({super.key});
+  final String orderId;
+  final DateTime orderDate;
+  final String shippingAddress;
+
+  const OrderNumberContainer({
+    super.key,
+    required this.orderId,
+    required this.orderDate,
+    required this.shippingAddress,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +40,12 @@ class OrderNumberContainer extends StatelessWidget {
                   'Order num: ',
                   style: TextStyles.font12LightBlackMedium,
                 ),
-                Text(
-                  '#123456394',
-                  style: TextStyles.font12MainBlueRegular,
+                Expanded(
+                  child: Text(
+                    '#${_truncateOrderId(orderId)}',
+                    style: TextStyles.font12MainBlueRegular,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
                 const Spacer(),
                 Text(
@@ -41,7 +53,7 @@ class OrderNumberContainer extends StatelessWidget {
                   style: TextStyles.font12LightBlackMedium,
                 ),
                 Text(
-                  'May5,2025',
+                  _formatDate(orderDate),
                   style: TextStyles.font12MainBlueRegular,
                 ),
               ],
@@ -61,16 +73,28 @@ class OrderNumberContainer extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 12.w,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: 12.w),
             child: Text(
-              '4517 Washington Ave. Manchester, Kentucky 39495',
+              shippingAddress,
               style: TextStyles.font12MainBlueRegular,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
             ),
           ),
         ],
       ),
     );
+  }
+
+  String _truncateOrderId(String id) {
+    return id.length > 10 ? id.substring(0, 10) : id;
+  }
+
+  String _formatDate(DateTime date) {
+    try {
+      return '${date.day}/${date.month}/${date.year}';
+    } catch (e) {
+      return 'Invalid Date';
+    }
   }
 }

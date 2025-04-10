@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart'; 
 import 'package:json_annotation/json_annotation.dart';
 import 'package:solidify/features/marketplace/order/data/models/shipping_address_request_model.dart';
 
@@ -23,13 +24,13 @@ class GetOrderByIdResponseModel {
   Map<String, dynamic> toJson() => _$GetOrderByIdResponseModelToJson(this);
 }
 
-// Order model
 @JsonSerializable()
 class OrderModel {
   final String id;
   final double totalPrice;
   final int orderStatus;
-  final String orderDate;
+  @JsonKey(fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
+  final DateTime orderDate; // Changed to DateTime
   final List<OrderItemDetails> orderItems;
   final ShippingAddressRequestModel shippingAddress;
 
@@ -42,10 +43,11 @@ class OrderModel {
     required this.shippingAddress,
   });
 
-  factory OrderModel.fromJson(Map<String, dynamic> json) =>
-      _$OrderModelFromJson(json);
-
+  factory OrderModel.fromJson(Map<String, dynamic> json) => _$OrderModelFromJson(json);
   Map<String, dynamic> toJson() => _$OrderModelToJson(this);
+
+  static DateTime _dateTimeFromJson(String date) => DateTime.parse(date);
+  static String _dateTimeToJson(DateTime date) => date.toIso8601String();
 }
 
 @JsonSerializable()
@@ -62,8 +64,6 @@ class OrderItemDetails {
     required this.price,
   });
 
-  factory OrderItemDetails.fromJson(Map<String, dynamic> json) =>
-      _$OrderItemDetailsFromJson(json);
-
+  factory OrderItemDetails.fromJson(Map<String, dynamic> json) => _$OrderItemDetailsFromJson(json);
   Map<String, dynamic> toJson() => _$OrderItemDetailsToJson(this);
 }

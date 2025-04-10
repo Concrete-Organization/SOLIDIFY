@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:solidify/core/shared_screens/about_screen.dart';
-import 'package:solidify/core/shared_screens/about_your_account_screen.dart';
-import 'package:solidify/core/shared_screens/account_type_screen.dart';
-import 'package:solidify/core/shared_screens/help_screen.dart';
-import 'package:solidify/core/shared_screens/notifications_screen.dart';
-import 'package:solidify/core/shared_screens/privacy_policy_screen.dart';
 import '../di/dependency_injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/core/shared_screens/help_screen.dart';
 import 'package:solidify/features/auth/otp/ui/otp_screen.dart';
+import 'package:solidify/core/shared_screens/about_screen.dart';
 import 'package:solidify/features/auth/login/ui/login_screen.dart';
 import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
 import 'package:solidify/features/auth/login/logic/login_cubit.dart';
 import 'package:solidify/features/onboarding/onboarding_screen.dart';
+import 'package:solidify/core/shared_screens/account_type_screen.dart';
 import 'package:solidify/features/chatbot/ui/screens/chat_screen.dart';
+import 'package:solidify/core/shared_screens/notifications_screen.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
 import 'package:solidify/features/marketplace/cart/ui/cart_screen.dart';
+import 'package:solidify/core/shared_screens/privacy_policy_screen.dart';
 import 'package:solidify/features/app_flows_layouts/company_layout.dart';
 import 'package:solidify/features/app_flows_layouts/engineer_layout.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
+import 'package:solidify/core/shared_screens/about_your_account_screen.dart';
 import 'package:solidify/features/marketplace/search/logic/search_cubit.dart';
 import 'package:solidify/features/marketplace/search/screens/search_screen.dart';
+import 'package:solidify/features/profile_company/logic/order_details_cubit.dart';
 import 'package:solidify/features/marketplace/favorites/ui/favorites_screen.dart';
 import 'package:solidify/features/marketplace/order/ui/screens/payment_screen.dart';
 import 'package:solidify/features/marketplace/order/ui/screens/checkout_screen.dart';
@@ -37,7 +38,6 @@ import 'package:solidify/features/auth/forget_password/logic/forget_password_cub
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/reviews_screen.dart';
 import 'package:solidify/features/marketplace/order/ui/screens/address_details_screen.dart';
-import 'package:solidify/features/profile_company/data/models/get_order_response_model.dart';
 import 'package:solidify/features/marketplace/search/screens/search_with_filter_screen.dart';
 import 'package:solidify/features/crack_detection/ui/screens/upload_crack_gallery_image.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
@@ -262,8 +262,19 @@ class AppRoutes {
           builder: (context) => const NotificationsScreen(),
         );
       case Routes.orderDetailsScreen:
+        final orderId = settings.arguments as String?;
         return MaterialPageRoute(
-          builder: (context) => const OrderDetailsScreen(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<OrderCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<OrderDetailsCubit>(),
+              ),
+            ],
+            child: OrderDetailsScreen(orderId: orderId ?? ''),
+          ),
         );
       case Routes.aboutScreen:
         return MaterialPageRoute(

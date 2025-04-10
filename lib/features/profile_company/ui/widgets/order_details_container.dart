@@ -1,5 +1,6 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/helpers/extensions.dart';
@@ -7,9 +8,20 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
+import 'package:solidify/features/profile_company/logic/order_details_cubit.dart';
+import 'package:solidify/features/profile_company/data/models/get_order_by_id_response_model.dart';
 
 class OrderDetailsContainer extends StatelessWidget {
-  const OrderDetailsContainer({super.key});
+  final List<OrderItemDetails> orderItems;
+  final double totalPrice;
+  final int orderStatus;
+
+  const OrderDetailsContainer({
+    super.key,
+    required this.orderItems,
+    required this.totalPrice,
+    required this.orderStatus,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,31 +34,23 @@ class OrderDetailsContainer extends StatelessWidget {
       ),
       child: Column(
         children: [
-          _buildProductItem(
-            context: context,
-            image: 'assets/images/cement_bag_3x.png',
-            name: 'Ambuja cement',
-            price: '1,000 EGP',
-            qty: '5',
+          ...List.generate(
+            orderItems.length,
+            (index) => Column(
+              children: [
+                _buildProductItem(
+                  context: context,
+                  name: orderItems[index].name,
+                  price: '${orderItems[index].price} EGP',
+                  qty: orderItems[index].quantity.toString(),
+                  index: index,
+                ),
+                if (index < orderItems.length - 1)
+                  const HorizontalDivider(thickness: 0.6),
+              ],
+            ),
           ),
           const HorizontalDivider(thickness: 0.6),
-          _buildProductItem(
-            context: context,
-            image: 'assets/images/cement_bag_3x.png',
-            name: 'Fly ash',
-            price: '1,000 EGP',
-            qty: '2',
-          ),
-          const HorizontalDivider(thickness: 0.6),
-          _buildProductItem(
-            context: context,
-            image: 'assets/images/cement_bag_3x.png',
-            name: 'White cement',
-            price: '900 EGP',
-            qty: '1',
-          ),
-          const HorizontalDivider(thickness: 0.6),
-          // Total and Completed Order Row
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
             child: Row(
@@ -68,7 +72,7 @@ class OrderDetailsContainer extends StatelessWidget {
                         style: TextStyles.font12LightBlackMedium,
                       ),
                       Text(
-                        '7,900EGP',
+                        '$totalPrice EGP',
                         style: TextStyles.font12MainBlueMedium,
                       ),
                     ],
@@ -77,10 +81,11 @@ class OrderDetailsContainer extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Completed order ',
+                      _getStatusText(orderStatus),
                       style: TextStyles.font12secondaryGoldMedium,
                     ),
-                    SvgPicture.asset('assets/svgs/complete_order_icon.svg')
+                    if (orderStatus == 0)
+                      SvgPicture.asset('assets/svgs/complete_order_icon.svg'),
                   ],
                 ),
               ],
@@ -93,10 +98,10 @@ class OrderDetailsContainer extends StatelessWidget {
 
   Widget _buildProductItem({
     required BuildContext context,
-    required String image,
     required String name,
     required String price,
     required String qty,
+    required int index,
   }) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
@@ -113,10 +118,9 @@ class OrderDetailsContainer extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(5.r),
             ),
-            child: Image.asset(image),
+            child: Image.asset('assets/images/cement_bag_3x.png'),
           ),
           horizontalSpace(15),
-          // Product Details
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -130,7 +134,12 @@ class OrderDetailsContainer extends StatelessWidget {
           const Spacer(),
           GestureDetector(
             onTap: () {
-              context.pushNamed(Routes.writeReviewScreen);
+              final productId =
+                  context.read<OrderDetailsCubit>().getProductId(index);
+              if (productId != null) {
+                context.pushNamed(Routes.writeReviewScreen,
+                    arguments: productId);
+              }
             },
             child: Container(
               width: 112.w,
@@ -158,5 +167,18 @@ class OrderDetailsContainer extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _getStatusText(int status) {
+    switch (status) {
+      case 0:
+        return 'Completed order';
+      case 1:
+        return 'Pending order';
+      case 2:
+        return 'Shipped order';
+      default:
+        return 'Unknown status';
+    }
   }
 }

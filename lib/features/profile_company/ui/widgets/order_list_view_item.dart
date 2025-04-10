@@ -68,7 +68,8 @@ class OrderListViewItem extends StatelessWidget {
           Center(
             child: AppTextButton(
               onPressed: () {
-                context.pushNamed(Routes.orderDetailsScreen);
+                context.pushNamed(Routes.orderDetailsScreen,
+                    arguments: order.id);
               },
               width: 225.w,
               height: 42.h,
