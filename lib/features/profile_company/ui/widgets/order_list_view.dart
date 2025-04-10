@@ -5,7 +5,7 @@ import 'package:solidify/features/profile_company/data/models/get_order_response
 
 class OrderListView extends StatelessWidget {
   final int itemsToShow;
-  final List<OrderItem>? orders; // Made optional
+  final List<OrderItem>? orders;
 
   const OrderListView({
     super.key,

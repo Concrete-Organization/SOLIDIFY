@@ -96,7 +96,6 @@ class _ProfileCompanyScreenState extends State<ProfileCompanyScreen> {
                             onTap: () {
                               state.maybeWhen(
                                 getOrdersSuccess: (response) {
-                                  // Pass all orders to OrdersListScreen
                                   context.pushNamed(
                                     Routes.ordersListScreen,
                                     arguments: response.model.items,

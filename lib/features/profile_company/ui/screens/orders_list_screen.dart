@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/features/marketplace/order/logic/order_cubit/order_cubit.dart';
 import 'package:solidify/features/marketplace/order/logic/order_cubit/order_state.dart';
 import 'package:solidify/features/profile_company/ui/widgets/order_list_view_item.dart';
-import 'package:solidify/features/profile_company/data/models/get_order_response_model.dart';
 
 class OrdersListScreen extends StatefulWidget {
   const OrdersListScreen({super.key});
@@ -26,7 +25,10 @@ class _OrdersListScreenState extends State<OrdersListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('All Orders', style: TextStyles.font18MainSemiBold),
+        title: Text(
+          'All Orders',
+          style: TextStyles.font18MainSemiBold,
+        ),
       ),
       body: BlocBuilder<OrderCubit, OrderState>(
         builder: (context, state) {
