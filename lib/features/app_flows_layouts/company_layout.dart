@@ -30,7 +30,10 @@ class _CompanyLayoutState extends State<CompanyLayout> {
     ),
     const ConcreteStrengthAiGetStarted(),
     const ChatbotScreen(),
-    const ProfileCompanyScreen(), // No local BlocProvider here
+    BlocProvider(
+      create: (context) => getIt<OrderCubit>(),
+      child: const ProfileCompanyScreen(),
+    ),
   ];
 
   void onItemTapped(int index) {
@@ -41,91 +44,87 @@ class _CompanyLayoutState extends State<CompanyLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          getIt<OrderCubit>(), // Single instance for all children
-      child: Scaffold(
-        body: IndexedStack(
-          index: selectedIndex,
-          children: screens,
+    return Scaffold(
+      body: IndexedStack(
+        index: selectedIndex,
+        children: screens,
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: ColorsManager.mainBlueWith5Opacity,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(40.r),
+            topRight: Radius.circular(40.r),
+          ),
+          border: const Border(
+            top: BorderSide(
+              color: ColorsManager.mainBlue,
+              width: .8,
+            ),
+          ),
         ),
-        bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            color: ColorsManager.mainBlueWith5Opacity,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40.r),
-              topRight: Radius.circular(40.r),
+        child: BottomNavigationBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          type: BottomNavigationBarType.fixed,
+          currentIndex: selectedIndex,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedItemColor: ColorsManager.secondaryGold,
+          unselectedItemColor: ColorsManager.mainBlue,
+          selectedLabelStyle: TextStyles.font13MainBlueMedium,
+          unselectedLabelStyle: TextStyles.font13MainBlueMedium,
+          onTap: onItemTapped,
+          items: [
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/svgs/home.svg',
+                colorFilter: ColorFilter.mode(
+                  selectedIndex == 0
+                      ? ColorsManager.secondaryGold
+                      : ColorsManager.mainBlue,
+                  BlendMode.srcIn,
+                ),
+              ),
+              label: 'Market',
             ),
-            border: const Border(
-              top: BorderSide(
-                color: ColorsManager.mainBlue,
-                width: .8,
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/svgs/ai.svg',
+                colorFilter: ColorFilter.mode(
+                  selectedIndex == 1
+                      ? ColorsManager.secondaryGold
+                      : ColorsManager.mainBlue,
+                  BlendMode.srcIn,
+                ),
               ),
+              label: 'Ai',
             ),
-          ),
-          child: BottomNavigationBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            type: BottomNavigationBarType.fixed,
-            currentIndex: selectedIndex,
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
-            selectedItemColor: ColorsManager.secondaryGold,
-            unselectedItemColor: ColorsManager.mainBlue,
-            selectedLabelStyle: TextStyles.font13MainBlueMedium,
-            unselectedLabelStyle: TextStyles.font13MainBlueMedium,
-            onTap: onItemTapped,
-            items: [
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/svgs/home.svg',
-                  colorFilter: ColorFilter.mode(
-                    selectedIndex == 0
-                        ? ColorsManager.secondaryGold
-                        : ColorsManager.mainBlue,
-                    BlendMode.srcIn,
-                  ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/svgs/chatbot_icon.svg',
+                colorFilter: ColorFilter.mode(
+                  selectedIndex == 2
+                      ? ColorsManager.secondaryGold
+                      : ColorsManager.mainBlue,
+                  BlendMode.srcIn,
                 ),
-                label: 'Market',
               ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/svgs/ai.svg',
-                  colorFilter: ColorFilter.mode(
-                    selectedIndex == 1
-                        ? ColorsManager.secondaryGold
-                        : ColorsManager.mainBlue,
-                    BlendMode.srcIn,
-                  ),
+              label: 'Chatbot',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/svgs/profile_icon.svg',
+                colorFilter: ColorFilter.mode(
+                  selectedIndex == 3
+                      ? ColorsManager.secondaryGold
+                      : ColorsManager.mainBlue,
+                  BlendMode.srcIn,
                 ),
-                label: 'Ai',
               ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/svgs/chatbot_icon.svg',
-                  colorFilter: ColorFilter.mode(
-                    selectedIndex == 2
-                        ? ColorsManager.secondaryGold
-                        : ColorsManager.mainBlue,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                label: 'Chatbot',
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/svgs/profile_icon.svg',
-                  colorFilter: ColorFilter.mode(
-                    selectedIndex == 3
-                        ? ColorsManager.secondaryGold
-                        : ColorsManager.mainBlue,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                label: 'Profile',
-              ),
-            ],
-          ),
+              label: 'Profile',
+            ),
+          ],
         ),
       ),
     );
