@@ -17,7 +17,7 @@ class OrderCubit extends Cubit<OrderState> {
     required int shippingAddressId,
     String? notes,
   }) async {
-    emit(const OrderState.loading());
+    emit(const OrderState.createLoading());
 
     final addressId = shippingAddressId.toString().isNotEmpty
         ? shippingAddressId
@@ -38,16 +38,39 @@ class OrderCubit extends Cubit<OrderState> {
             'currentOrderId',
             _extractOrderId(response.message) ?? '',
           );
-
-          emit(OrderState.success(response: response));
+          emit(OrderState.createSuccess(response: response));
         } else {
-          emit(OrderState.error(
+          emit(OrderState.createError(
             error: ApiErrorModel(message: response.message),
           ));
         }
       },
       failure: (error) {
-        emit(OrderState.error(error: error));
+        emit(OrderState.createError(error: error));
+      },
+    );
+  }
+
+  Future<void> getOrders({int page = 1}) async {
+    emit(const OrderState.getOrdersLoading());
+
+    final response = await _orderRepo.getOrders(
+      page,
+      await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken),
+    );
+
+    response.when(
+      success: (response) {
+        if (response.isSucceeded) {
+          emit(OrderState.getOrdersSuccess(response: response));
+        } else {
+          emit(OrderState.getOrdersError(
+            error: ApiErrorModel(message: response.message),
+          ));
+        }
+      },
+      failure: (error) {
+        emit(OrderState.getOrdersError(error: error));
       },
     );
   }
