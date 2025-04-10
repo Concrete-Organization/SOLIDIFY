@@ -47,7 +47,7 @@ class OrderModel {
 @JsonSerializable()
 class OrderItem {
   final String id;
-  final double totalPrice; // Using double for decimal numbers
+  final double totalPrice;
   final int orderStatus;
   final DateTime orderDate;
 

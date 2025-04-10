@@ -36,7 +36,7 @@ class OrderListViewItem extends StatelessWidget {
         children: [
           OrderStateDetailsRow(
             label: 'Order number',
-            value: '#${order.id.substring(0, 8)}', // Shortened for display
+            value: '#${order.id.substring(0, 8)}',
             valueStyle: TextStyles.font12MainBlueMedium,
           ),
           verticalSpace(10),

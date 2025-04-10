@@ -9,20 +9,22 @@ part 'order_state.freezed.dart';
 class OrderState with _$OrderState {
   const factory OrderState.initial() = _Initial;
 
-  // Create order states
   const factory OrderState.createLoading() = _CreateLoading;
+
   const factory OrderState.createSuccess({
     required OrderResponseModel response,
   }) = _CreateSuccess;
+
   const factory OrderState.createError({
     required ApiErrorModel error,
   }) = _CreateError;
 
-  // Get orders states
   const factory OrderState.getOrdersLoading() = _GetOrdersLoading;
+
   const factory OrderState.getOrdersSuccess({
     required GetOrderResponseModel response,
   }) = _GetOrdersSuccess;
+
   const factory OrderState.getOrdersError({
     required ApiErrorModel error,
   }) = _GetOrdersError;

@@ -46,7 +46,6 @@ class OrderDetailsContainer extends StatelessWidget {
             qty: '1',
           ),
           const HorizontalDivider(thickness: 0.6),
-          // Total and Completed Order Row
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
             child: Row(
