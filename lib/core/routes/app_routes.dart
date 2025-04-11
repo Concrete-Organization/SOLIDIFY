@@ -43,6 +43,7 @@ import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_a
 import 'package:solidify/features/marketplace/marketplace/ui/screens/write_review_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/best_sellers_screen.dart';
 import 'package:solidify/features/crack_detection/ui/screens/crack_detection_result_screen.dart';
+import 'package:solidify/features/profile_company/logic/post_review_cubit/post_review_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/product_details_screen.dart';
 import '../../features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/product_category_screen.dart';
@@ -325,8 +326,18 @@ class AppRoutes {
           builder: (context) => const AccountTypeScreen(),
         );
       case Routes.writeReviewScreen:
+        final productId = settings.arguments as String?;
+        if (productId == null) {
+          return MaterialPageRoute(
+            builder: (context) => const Scaffold(
+                body: Center(child: Text('No product ID provided'))),
+          );
+        }
         return MaterialPageRoute(
-          builder: (context) => const WriteReviewScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<PostReviewCubit>(),
+            child: WriteReviewScreen(productId: productId),
+          ),
         );
       default:
         return MaterialPageRoute(
