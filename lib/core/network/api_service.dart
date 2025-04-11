@@ -12,7 +12,9 @@ import 'package:solidify/features/profile_company/data/models/get_order_response
 import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
 import 'package:solidify/features/community/data/models/post_models/like_post_response.dart';
 import 'package:solidify/features/marketplace/cart/data/models/get_cart_response_model.dart';
+import 'package:solidify/features/profile_company/data/models/post_review_request_model.dart';
 import 'package:solidify/features/marketplace/cart/data/models/post_cart_response_model.dart';
+import 'package:solidify/features/profile_company/data/models/post_review_response_model.dart';
 import 'package:solidify/features/community/data/models/post_models/create_post_response.dart';
 import 'package:solidify/features/community/data/models/comment_models/create_reply_request.dart';
 import 'package:solidify/features/profile_company/data/models/get_order_by_id_response_model.dart';
@@ -214,6 +216,12 @@ abstract class ApiService {
   @GET('${ApiConstants.order}/{id}')
   Future<GetOrderByIdResponseModel> getOrderById(
     @Path('id') String orderId,
+    @Header('Authorization') String token,
+  );
+  @POST('${ApiConstants.reviews}/{productId}')
+  Future<PostReviewResponseModel> postReview(
+    @Path('productId') String productId,
+    @Body() PostReviewRequestModel request,
     @Header('Authorization') String token,
   );
 }
