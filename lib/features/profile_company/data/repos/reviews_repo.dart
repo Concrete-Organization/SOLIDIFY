@@ -1,8 +1,8 @@
 import 'package:solidify/core/network/api_result.dart';
 import 'package:solidify/core/network/api_service.dart';
 import 'package:solidify/core/network/api_error_handler.dart';
-import 'package:solidify/features/profile_company/data/models/post_review_request_model.dart'; // As specified
-import 'package:solidify/features/profile_company/data/models/post_review_response_model.dart'; // Assumed response model
+import 'package:solidify/features/profile_company/data/models/post_review_request_model.dart';
+import 'package:solidify/features/profile_company/data/models/post_review_response_model.dart';
 
 class ReviewsRepo {
   final ApiService _apiService;
