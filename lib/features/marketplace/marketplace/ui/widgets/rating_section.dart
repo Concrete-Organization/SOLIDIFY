@@ -5,7 +5,9 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 
 class RatingSection extends StatefulWidget {
-  const RatingSection({super.key});
+  final Function(int) onRatingChanged;
+
+  const RatingSection({super.key, required this.onRatingChanged});
 
   @override
   State<RatingSection> createState() => _RatingSectionState();
@@ -20,6 +22,7 @@ class _RatingSectionState extends State<RatingSection> {
     newRating = newRating.clamp(0, 5);
     setState(() {
       _rating = newRating;
+      widget.onRatingChanged(_rating);
     });
   }
 

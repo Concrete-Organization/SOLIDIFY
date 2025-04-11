@@ -8,8 +8,8 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
-import 'package:solidify/features/profile_company/logic/order_details_cubit.dart';
 import 'package:solidify/features/profile_company/data/models/get_order_by_id_response_model.dart';
+import 'package:solidify/features/profile_company/logic/order_details_cubit/order_details_cubit.dart';
 
 class OrderDetailsContainer extends StatelessWidget {
   final List<OrderItemDetails> orderItems;

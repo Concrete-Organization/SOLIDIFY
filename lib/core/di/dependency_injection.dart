@@ -16,10 +16,10 @@ import '../../features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/marketplace/search/logic/search_cubit.dart';
 import '../../features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/marketplace/cart/data/repos/cart_repo.dart';
+import 'package:solidify/features/profile_company/data/repos/reviews_repo.dart';
 import 'package:solidify/features/marketplace/order/data/repos/order_repo.dart';
 import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
 import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
-import 'package:solidify/features/profile_company/logic/order_details_cubit.dart';
 import 'package:solidify/features/marketplace/search/data/repos/search_repo.dart';
 import '../../features/auth/forget_password/data/repos/forget_password_repo.dart';
 import 'package:solidify/features/chatbot/data/repos/chatbot_with_gemini_repo.dart';
@@ -32,7 +32,9 @@ import 'package:solidify/features/marketplace/marketplace/data/repos/products_li
 import 'package:solidify/features/marketplace/marketplace/data/repos/product_details_repo.dart';
 import 'package:solidify/features/concrete_strength_ai/data/repo/concrete_strength_ai_repo.dart';
 import 'package:solidify/features/marketplace/marketplace/data/repos/product_category_repo.dart';
+import 'package:solidify/features/profile_company/logic/post_review_cubit/post_review_cubit.dart';
 import 'package:solidify/features/concrete_strength_ai/data/api/concrete_strength_ai_api_call.dart';
+import 'package:solidify/features/profile_company/logic/order_details_cubit/order_details_cubit.dart';
 import 'package:solidify/features/profile_engineer/logic/engineer_profile/engineer_profile_cubit.dart';
 import 'package:solidify/features/marketplace/order/logic/shipping_address_cubit/shipping_address_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/products_list_cubit/products_list_cubit.dart';
@@ -139,4 +141,9 @@ Future<void> setupGetIt() async {
   getIt
       .registerLazySingleton<OrderDetailsRepo>(() => OrderDetailsRepo(getIt()));
   getIt.registerFactory<OrderDetailsCubit>(() => OrderDetailsCubit(getIt()));
+
+// review
+  getIt.registerLazySingleton<ReviewsRepo>(() => ReviewsRepo(getIt()));
+  getIt.registerLazySingleton<PostReviewCubit>(
+      () => PostReviewCubit(getIt<ReviewsRepo>()));
 }
