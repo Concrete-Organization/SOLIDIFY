@@ -21,9 +21,8 @@ class ProfileEngineerAllPosts extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => getIt<ProfileEngineerPostsCubit>()
-          ..fetchEngineerPosts(
-            engineerId,
-          ),
+          ..setEngineerId(engineerId)
+          ..fetchEngineerPosts(),
         child: const ProfileEngineerAllPostsBlocBuilder(),
       ),
     );

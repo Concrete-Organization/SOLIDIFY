@@ -84,6 +84,7 @@ class OrderDetailsContainer extends StatelessWidget {
                       _getStatusText(orderStatus),
                       style: TextStyles.font12secondaryGoldMedium,
                     ),
+                    horizontalSpace(3),
                     if (orderStatus == 0)
                       SvgPicture.asset('assets/svgs/complete_order_icon.svg'),
                   ],

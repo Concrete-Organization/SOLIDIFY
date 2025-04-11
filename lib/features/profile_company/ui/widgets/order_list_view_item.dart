@@ -68,13 +68,14 @@ class OrderListViewItem extends StatelessWidget {
           Center(
             child: AppTextButton(
               onPressed: () {
-                context.pushNamed(Routes.orderDetailsScreen,
-                    arguments: order.id);
+                context.pushNamed(
+                  Routes.orderDetailsScreen,
+                  arguments: order.id,
+                );
               },
-              width: 225.w,
-              height: 42.h,
+              width: 255.w,
+              height: 38.h,
               textButton: 'View order details',
-              fontSize: 14,
               padding: EdgeInsets.symmetric(vertical: 8.h),
             ),
           ),

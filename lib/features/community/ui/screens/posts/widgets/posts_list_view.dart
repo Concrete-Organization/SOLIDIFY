@@ -83,7 +83,9 @@ class _PostsListViewState extends State<PostsListView> {
         separatorBuilder: (_, __) => verticalSpace(30),
         itemBuilder: (context, index) {
           if (index < widget.posts.length) {
-            return PostItem(post: widget.posts[index]);
+            return PostItem(
+              post: widget.posts[index],
+            );
           } else {
             return const Padding(
               padding: EdgeInsets.symmetric(vertical: 16),

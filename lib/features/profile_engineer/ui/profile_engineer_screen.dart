@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:solidify/core/di/dependency_injection.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/widgets/custom_profile_drawer.dart';
@@ -27,7 +26,6 @@ class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _isDrawerOpen = false;
 
-
   @override
   void initState() {
     super.initState();
@@ -40,8 +38,11 @@ class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
       _userId = userDetails['userId'] ?? '';
     });
     if (_userId.isNotEmpty) {
-      if(context.mounted){
+      if (context.mounted) {
         context.read<EngineerProfileCubit>().fetchEngineerProfile(_userId);
+        context.read<ProfileEngineerPostsCubit>().setEngineerId(_userId);
+        context.read<ProfileEngineerPostsCubit>().fetchEngineerPosts();
+        context.read<ProfileEngineerCommentsCubit>().fetchEngineerComments(_userId);
       }
     }
   }
@@ -61,13 +62,9 @@ class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
         body: Column(
           children: [
             verticalSpace(13),
-            ProfileTopBar(
-              scaffoldKey: _scaffoldKey,
-            ),
+            ProfileTopBar(scaffoldKey: _scaffoldKey),
             verticalSpace(13),
-            HorizontalDivider(
-              thickness: 0.5,
-            ),
+            HorizontalDivider(thickness: 0.5),
             verticalSpace(28),
             ProfileEngineerBlocBuilder(),
             verticalSpace(21),
@@ -80,19 +77,17 @@ class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
               },
             ),
             verticalSpace(21),
-            HorizontalDivider(
-              thickness: 0.2,
-            ),
+            HorizontalDivider(thickness: 0.2),
             verticalSpace(16),
             if (_userId.isNotEmpty)
               Expanded(
                 child: MultiBlocProvider(
                   providers: [
-                    BlocProvider(
-                        create: (context) => getIt<ProfileEngineerPostsCubit>()
+                    BlocProvider.value(
+                      value: context.read<ProfileEngineerPostsCubit>(),
                     ),
-                    BlocProvider(
-                        create: (context) => getIt<ProfileEngineerCommentsCubit>()
+                    BlocProvider.value(
+                      value: context.read<ProfileEngineerCommentsCubit>(),
                     ),
                   ],
                   child: ProfileContentPostsOrComments(
@@ -104,9 +99,7 @@ class _ProfileEngineerScreenState extends State<ProfileEngineerScreen> {
             if (_isDrawerOpen)
               BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                child: Container(
-                  color: Colors.black.withOpacity(0.2),
-                ),
+                child: Container(color: Colors.black.withOpacity(0.2)),
               ),
           ],
         ),

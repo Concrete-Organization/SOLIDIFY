@@ -26,7 +26,9 @@ class ProfileEngineerAllPostsListSuccessState extends StatelessWidget {
         itemCount: posts.length,
         separatorBuilder: (_, __) => verticalSpace(30),
         itemBuilder: (context, index) {
-          return ProfilePostItem(post: posts[index]);
+          return ProfilePostItem(
+            post: posts[index],
+          );
         },
       ),
     );

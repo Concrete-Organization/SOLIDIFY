@@ -20,8 +20,6 @@ class OrderNumberContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 353.w,
-      height: 110.h,
       decoration: BoxDecoration(
         border: Border.all(
           color: ColorsManager.mainBlue,
@@ -33,7 +31,7 @@ class OrderNumberContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+            padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 7.h),
             child: Row(
               children: [
                 Text(
@@ -59,14 +57,12 @@ class OrderNumberContainer extends StatelessWidget {
               ],
             ),
           ),
-          verticalSpace(6),
           const HorizontalDivider(
             color: ColorsManager.mainBlue,
             thickness: 0.7,
           ),
-          verticalSpace(6),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+            padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 7.h),
             child: Text(
               'Shipping address:',
               style: TextStyles.font12LightBlackMedium,
@@ -81,6 +77,7 @@ class OrderNumberContainer extends StatelessWidget {
               maxLines: 1,
             ),
           ),
+          verticalSpace(7),
         ],
       ),
     );

@@ -25,7 +25,10 @@ class OrderStateDetailsRow extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Text(label, style: TextStyles.font12LightBlackMedium),
+          Text(
+            label,
+            style: TextStyles.font12LightBlackMedium,
+          ),
           const Spacer(),
           Text(
             value,

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/features/profile_company/ui/widgets/cancel_order_button.dart';
 import 'package:solidify/features/marketplace/order/logic/order_cubit/order_cubit.dart';
@@ -81,10 +80,10 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
             loading: () => const Center(child: CircularProgressIndicator()),
             success: (response) => SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Column(
                   children: [
-                    verticalSpace(20),
+                    verticalSpace(30),
                     OrderNumberContainer(
                       orderId: response.model.id,
                       orderDate: response.model.orderDate,
@@ -93,7 +92,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     ),
                     verticalSpace(15),
                     const HorizontalDivider(),
-                    verticalSpace(30),
+                    verticalSpace(15),
                     OrderDetailsContainer(
                       orderItems: response.model.orderItems,
                       totalPrice: response.model.totalPrice,

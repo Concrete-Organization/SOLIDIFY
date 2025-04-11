@@ -9,7 +9,7 @@ class CancelOrderButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 205,
+      width: 205.w,
       height: 42.h,
       decoration: BoxDecoration(
         border: Border.all(color: ColorsManager.cancelRed),

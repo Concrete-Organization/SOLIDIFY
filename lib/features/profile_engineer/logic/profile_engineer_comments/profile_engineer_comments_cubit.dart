@@ -15,6 +15,8 @@ class ProfileEngineerCommentsCubit extends Cubit<ProfileEngineerCommentsState> {
   ProfileEngineerCommentsCubit(this._postsRepo, this._commentsRepo)
       : super(const ProfileEngineerCommentsState.initial());
 
+  String? get engineerId => _engineerId;
+
   Future<void> fetchEngineerComments(String engineerId) async {
     _engineerId = engineerId;
     _currentPostPage = 1;

@@ -10,8 +10,19 @@ class ProfileEngineerPostsCubit extends Cubit<ProfileEngineerPostsState> {
   ProfileEngineerPostsCubit(this._postsRepo)
       : super(const ProfileEngineerPostsState.initial());
 
-  Future<void> fetchEngineerPosts(String engineerId) async {
+  void setEngineerId(String engineerId) {
     _engineerId = engineerId;
+  }
+
+  Future<void> fetchEngineerPosts() async {
+    if (_engineerId == null) {
+      emit(
+        ProfileEngineerPostsState.error(
+          ApiErrorModel(message: 'Engineer ID not set'),
+        ),
+      );
+      return;
+    }
     emit(const ProfileEngineerPostsState.loading());
     await _loadPosts();
   }
@@ -22,15 +33,6 @@ class ProfileEngineerPostsCubit extends Cubit<ProfileEngineerPostsState> {
   }
 
   Future<void> _loadPosts() async {
-    if (_engineerId == null) {
-      emit(
-        ProfileEngineerPostsState.error(
-          ApiErrorModel(message: 'Engineer ID not provided'),
-        ),
-      );
-      return;
-    }
-
     final result = await _postsRepo.getPosts();
 
     result.when(
@@ -38,9 +40,7 @@ class ProfileEngineerPostsCubit extends Cubit<ProfileEngineerPostsState> {
         final engineerPosts = data.model.items
             .where((post) => post.engineerId == _engineerId)
             .toList();
-
         engineerPosts.sort((a, b) => b.creationDate.compareTo(a.creationDate));
-
         emit(ProfileEngineerPostsState.success(engineerPosts));
       },
       failure: (error) {

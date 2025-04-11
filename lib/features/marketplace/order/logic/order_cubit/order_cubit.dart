@@ -35,7 +35,6 @@ class OrderCubit extends Cubit<OrderState> {
           final orderId = _extractOrderId(response.message);
           if (orderId != null) {
             await SharedPrefHelper.setData('currentOrderId', orderId);
-            // Optionally add to cached order IDs
             final currentIds = await SharedPrefHelper.getCachedOrderIds();
             if (!currentIds.contains(orderId)) {
               currentIds.add(orderId);
@@ -45,7 +44,8 @@ class OrderCubit extends Cubit<OrderState> {
           emit(OrderState.createSuccess(response: response));
         } else {
           emit(OrderState.createError(
-              error: ApiErrorModel(message: response.message)));
+            error: ApiErrorModel(message: response.message),
+          ));
         }
       },
       failure: (error) {
