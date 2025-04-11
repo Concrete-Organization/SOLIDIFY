@@ -22,7 +22,6 @@ import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/core/shared_screens/about_your_account_screen.dart';
 import 'package:solidify/features/marketplace/search/logic/search_cubit.dart';
 import 'package:solidify/features/marketplace/search/screens/search_screen.dart';
-import 'package:solidify/features/profile_company/logic/order_details_cubit.dart';
 import 'package:solidify/features/marketplace/favorites/ui/favorites_screen.dart';
 import 'package:solidify/features/marketplace/order/ui/screens/payment_screen.dart';
 import 'package:solidify/features/marketplace/order/ui/screens/checkout_screen.dart';
@@ -48,6 +47,7 @@ import 'package:solidify/features/marketplace/marketplace/ui/screens/product_det
 import '../../features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/product_category_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_result.dart';
+import 'package:solidify/features/profile_company/logic/order_details_cubit/order_details_cubit.dart';
 import 'package:solidify/features/crack_detection/ui/screens/crack_detection_choose_uploading_image.dart';
 import 'package:solidify/features/marketplace/marketplace/data/models/get_product_by_id_response_body.dart';
 import 'package:solidify/features/marketplace/order/logic/shipping_address_cubit/shipping_address_cubit.dart';

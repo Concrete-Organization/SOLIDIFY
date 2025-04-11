@@ -5,12 +5,12 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
-import 'package:solidify/features/profile_company/logic/order_details_cubit.dart';
-import 'package:solidify/features/profile_company/logic/order_details_state.dart';
 import 'package:solidify/features/profile_company/ui/widgets/cancel_order_button.dart';
 import 'package:solidify/features/marketplace/order/logic/order_cubit/order_cubit.dart';
 import 'package:solidify/features/profile_company/ui/widgets/order_number_container.dart';
 import 'package:solidify/features/profile_company/ui/widgets/order_details_container.dart';
+import 'package:solidify/features/profile_company/logic/order_details_cubit/order_details_cubit.dart';
+import 'package:solidify/features/profile_company/logic/order_details_cubit/order_details_state.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
   final String orderId;
