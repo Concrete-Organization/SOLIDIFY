@@ -4,7 +4,7 @@ part 'post_review_request_model.g.dart';
 
 @JsonSerializable()
 class PostReviewRequestModel {
-  @JsonKey(name: 'Message') // Match JSON key exactly
+  @JsonKey(name: 'Message')
   final String message;
   @JsonKey(name: 'userRate')
   final int userRate;

@@ -7,7 +7,7 @@ class PostReviewResponseModel {
   final bool isSucceeded;
   final int statusCode;
   final String message;
-  final dynamic model; // Use dynamic since it's null in the example
+  final dynamic model;
 
   PostReviewResponseModel({
     required this.isSucceeded,
