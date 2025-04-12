@@ -36,6 +36,6 @@ class ApiErrorModel {
       }
     }
 
-    return "Unknown Error occurred";
+    return "";
   }
 }
