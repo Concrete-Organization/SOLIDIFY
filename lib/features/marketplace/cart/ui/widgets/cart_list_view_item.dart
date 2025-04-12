@@ -37,20 +37,49 @@ class _CartListViewItemState extends State<CartListViewItem> {
     itemTotalPrice = widget.item.price * quantity;
   }
 
-  void _increment() {
+  void _increment() async {
+    final previousQuantity = quantity;
+
     setState(() {
       quantity++;
       itemTotalPrice = widget.item.price * quantity;
       widget.onPriceUpdated(widget.item.price);
     });
-  }
 
-  void _decrement() {
-    if (quantity > 1) {
+    final success = await context
+        .read<CartCubit>()
+        .incrementCartItem(widget.item.id, quantity);
+
+    if (!success && mounted) {
       setState(() {
-        quantity--;
+        quantity = previousQuantity;
         itemTotalPrice = widget.item.price * quantity;
         widget.onPriceUpdated(-widget.item.price);
+      });
+    }
+  }
+
+  void _decrement() async {
+    if (quantity <= 1) return;
+
+    final previousQuantity = quantity;
+
+    setState(() {
+      quantity--;
+      itemTotalPrice = widget.item.price * quantity;
+      widget.onPriceUpdated(-widget.item.price);
+    });
+
+    final success = await context
+        .read<CartCubit>()
+        .decrementCartItem(widget.item.id, quantity);
+
+    if (!success && mounted) {
+      // Revert quantity on failure
+      setState(() {
+        quantity = previousQuantity;
+        itemTotalPrice = widget.item.price * quantity;
+        widget.onPriceUpdated(widget.item.price);
       });
     }
   }
@@ -63,9 +92,9 @@ class _CartListViewItemState extends State<CartListViewItem> {
     widget.onItemDeleted(widget.item.id);
 
     await context.read<CartCubit>().deleteCartItem(
-      widget.item.id,
-      widget.item.name,
-    );
+          widget.item.id,
+          widget.item.name,
+        );
 
     setState(() {
       _isDeleting = false;
@@ -133,9 +162,9 @@ class _CartListViewItemState extends State<CartListViewItem> {
           child: _isDeleting
               ? const CircularProgressIndicator()
               : GestureDetector(
-            onTap: _deleteItem,
-            child: SvgPicture.asset('assets/svgs/delete_icon.svg'),
-          ),
+                  onTap: _deleteItem,
+                  child: SvgPicture.asset('assets/svgs/delete_icon.svg'),
+                ),
         ),
       ],
     );
