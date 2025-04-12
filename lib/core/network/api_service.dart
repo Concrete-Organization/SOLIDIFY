@@ -224,4 +224,14 @@ abstract class ApiService {
     @Body() PostReviewRequestModel request,
     @Header('Authorization') String token,
   );
+  @POST("CartItem/{id}/increment")
+  Future<void> incrementCartItem(
+    @Path("id") String id,
+    @Header('Authorization') String token,
+  );
+  @POST("CartItem/{id}/decrement")
+  Future<void> decrementCartItem(
+    @Path("id") String id,
+    @Header('Authorization') String token,
+  );
 }
