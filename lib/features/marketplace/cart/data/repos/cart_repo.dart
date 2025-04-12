@@ -81,6 +81,52 @@ class CartRepo {
     }
   }
 
+  Future<ApiResult<void>> incrementCartItem(String id) async {
+    try {
+      final accessToken = await SharedPrefHelper.getSecuredString(
+        SharedPrefKeys.accessToken,
+      );
+
+      if (accessToken.isEmpty) {
+        return ApiResult.failure(
+          ApiErrorModel(message: 'Authentication required'),
+        );
+      }
+
+      await _apiService.incrementCartItem(
+        id,
+        'Bearer $accessToken',
+      );
+
+      return const ApiResult.success(null);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
+  Future<ApiResult<void>> decrementCartItem(String id) async {
+    try {
+      final accessToken = await SharedPrefHelper.getSecuredString(
+        SharedPrefKeys.accessToken,
+      );
+
+      if (accessToken.isEmpty) {
+        return ApiResult.failure(
+          ApiErrorModel(message: 'Authentication required'),
+        );
+      }
+
+      await _apiService.decrementCartItem(
+        id,
+        'Bearer $accessToken',
+      );
+
+      return const ApiResult.success(null);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
   Future<List<String>> getCachedCartItems() async {
     return await SharedPrefHelper.getCachedProductIds();
   }

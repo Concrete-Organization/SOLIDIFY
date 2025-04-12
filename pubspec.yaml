@@ -91,6 +91,10 @@ dependencies:
   package_info_plus: ^8.3.0
   # Flutter plugin for Android, iOS and Web supports cropping images
   image_cropper: ^9.0.0
+  #RxDart is an implementation of the popular ReactiveX api for asynchronous programming, leveraging the native Dart Streams api.
+  rxdart: ^0.27.7
+  #Collections and utilities functions and classes related to collections
+  collection: ^1.18.0
 
 
 

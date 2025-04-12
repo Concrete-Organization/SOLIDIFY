@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
-import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/features/marketplace/cart/ui/widgets/cart_list_view.dart';
@@ -42,6 +42,11 @@ class _CartContentState extends State<CartContent> {
     if (widget.total != oldWidget.total) {
       setState(() {
         _total = widget.total;
+      });
+    }
+    if (widget.items != oldWidget.items) {
+      setState(() {
+        _items = widget.items;
       });
     }
   }
