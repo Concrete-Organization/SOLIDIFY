@@ -1,12 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:solidify/core/helpers/logout_helper.dart';
 import 'package:solidify/core/network/refresh_token_model.dart';
+import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/main.dart';
 import '../helpers/shared_pref_helper.dart';
 import 'api_constants.dart';
 
 class TokenInterceptor extends Interceptor {
   final Dio _dio;
   bool _isRefreshing = false;
+  bool _isDialogShown = false;
   final List<RequestOptions> _requestsQueue = [];
 
   TokenInterceptor(this._dio);
@@ -44,7 +48,7 @@ class TokenInterceptor extends Interceptor {
 
     if (refreshExpires.isBefore(now)) {
       print('Refresh token expired, logging out');
-      _logoutUser();
+      _showSessionExpiredDialog();
       return handler.reject(DioException(
         requestOptions: options,
         error: 'Session expired. Please login again.',
@@ -92,35 +96,26 @@ class TokenInterceptor extends Interceptor {
         print('Refresh failed: $e');
         _isRefreshing = false;
         _requestsQueue.clear();
-        _logoutUser();
+        _showSessionExpiredDialog();
         handler.reject(DioException(requestOptions: options, error: e));
       }
     } else {
-      handler.reject(DioException(
-        requestOptions: options,
-        error: 'Waiting for token refresh',
-      ), true);
+      handler.reject(
+        DioException(
+          requestOptions: options,
+          error: 'Waiting for token refresh',
+        ),
+        true,
+      );
     }
   }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
-    if (err.response?.statusCode == 401) {
-      print('Server returned 401, attempting token refresh');
-      final refreshToken = await SharedPrefHelper.getSecuredString(SharedPrefKeys.refreshToken);
-      try {
-        final newTokens = await _refreshToken(refreshToken);
-        await SharedPrefHelper.setSecuredString(SharedPrefKeys.accessToken, newTokens.model.accessToken);
-        await SharedPrefHelper.setSecuredString(SharedPrefKeys.refreshToken, newTokens.model.refreshToken);
-        await SharedPrefHelper.setSecuredString(SharedPrefKeys.expiresOn, newTokens.model.expiresOn.toIso8601String());
-        await SharedPrefHelper.setSecuredString(SharedPrefKeys.refreshTokenExpiration, newTokens.model.refreshTokenExpiration.toIso8601String());
-        err.requestOptions.headers['Authorization'] = 'Bearer ${newTokens.model.accessToken}';
-        final response = await _dio.fetch(err.requestOptions);
-        handler.resolve(response);
-      } catch (e) {
-        _logoutUser();
-        handler.next(err);
-      }
+    if (err.response?.statusCode == 401 && !_isDialogShown) {
+      print('Server returned 401, showing session expired dialog');
+      _showSessionExpiredDialog();
+      handler.reject(err);
     } else {
       handler.next(err);
     }
@@ -135,8 +130,64 @@ class TokenInterceptor extends Interceptor {
     return RefreshTokenResponseModel.fromJson(response.data);
   }
 
-  void _logoutUser() async {
+  Future<void> _logoutUser() async {
     await LogoutHelper.logout();
+  }
+
+  void _showSessionExpiredDialog() {
+    if (_isDialogShown) return;
+    _isDialogShown = true;
+
+    final context = navigatorKey.currentContext;
+    if (context != null) {
+      showCupertinoDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (dialogContext) {
+          return CupertinoAlertDialog(
+            title: const Text(
+              'Session Expired',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 17,
+              ),
+            ),
+            content: const Padding(
+              padding: EdgeInsets.only(top: 8),
+              child: Text(
+                'Your session has expired. Please login again.',
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 13,
+                ),
+              ),
+            ),
+            actions: [
+              CupertinoDialogAction(
+                isDefaultAction: true,
+                onPressed: () async {
+                  _isDialogShown = false;
+                  Navigator.of(dialogContext).pop();
+                  await _logoutUser();
+                  navigatorKey.currentState?.pushNamedAndRemoveUntil(
+                    Routes.loginScreen,
+                        (route) => false,
+                  );
+                },
+                child: const Text(
+                  'OK',
+                  style: TextStyle(
+                    color: CupertinoColors.activeBlue,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   bool _shouldSkipInterceptor(String path) {
