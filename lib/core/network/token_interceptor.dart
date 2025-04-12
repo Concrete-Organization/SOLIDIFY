@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart'; // Changed to use Cupertino
+import 'package:flutter/cupertino.dart';
 import 'package:solidify/core/helpers/logout_helper.dart';
 import 'package:solidify/core/network/refresh_token_model.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -37,17 +37,12 @@ class TokenInterceptor extends Interceptor {
     final refreshExpires = DateTime.parse(refreshExpiresStr);
     final now = DateTime.now().toUtc();
 
-    print('Token: $accessToken');
-    print('Expires On: $expiresOnStr, Current Time: $now');
-
     if (expiresOn.isAfter(now)) {
       options.headers['Authorization'] = 'Bearer $accessToken';
-      print('Token is valid, proceeding with request');
       return handler.next(options);
     }
 
     if (refreshExpires.isBefore(now)) {
-      print('Refresh token expired, logging out');
       _showSessionExpiredDialog();
       return handler.reject(DioException(
         requestOptions: options,
@@ -59,7 +54,6 @@ class TokenInterceptor extends Interceptor {
     if (!_isRefreshing) {
       _isRefreshing = true;
       try {
-        print('Token expired, attempting refresh with $refreshToken');
         final newTokens = await _refreshToken(refreshToken);
 
         await SharedPrefHelper.setSecuredString(
@@ -79,7 +73,6 @@ class TokenInterceptor extends Interceptor {
           newTokens.model.refreshTokenExpiration.toIso8601String(),
         );
 
-        print('Refresh successful: ${newTokens.model.accessToken}');
         _isRefreshing = false;
         for (var request in _requestsQueue) {
           request.headers['Authorization'] = 'Bearer ${newTokens.model.accessToken}';
@@ -93,7 +86,6 @@ class TokenInterceptor extends Interceptor {
         _requestsQueue.clear();
         handler.next(options);
       } catch (e) {
-        print('Refresh failed: $e');
         _isRefreshing = false;
         _requestsQueue.clear();
         _showSessionExpiredDialog();
@@ -113,7 +105,6 @@ class TokenInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     if (err.response?.statusCode == 401 && !_isDialogShown) {
-      print('Server returned 401, showing session expired dialog');
       _showSessionExpiredDialog();
       handler.reject(err);
     } else {
