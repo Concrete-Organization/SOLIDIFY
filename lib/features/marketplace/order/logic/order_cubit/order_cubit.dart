@@ -71,7 +71,6 @@ class OrderCubit extends Cubit<OrderState> {
     response.when(
       success: (response) async {
         if (response.isSucceeded) {
-          // Cache the order IDs from the response
           final orderIds = response.model.items.map((item) => item.id).toList();
           await SharedPrefHelper.cacheOrderIds(orderIds);
           emit(OrderState.getOrdersSuccess(response: response));

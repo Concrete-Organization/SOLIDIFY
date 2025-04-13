@@ -75,7 +75,6 @@ class _CartListViewItemState extends State<CartListViewItem> {
         .decrementCartItem(widget.item.id, quantity);
 
     if (!success && mounted) {
-      // Revert quantity on failure
       setState(() {
         quantity = previousQuantity;
         itemTotalPrice = widget.item.price * quantity;

@@ -80,9 +80,9 @@ class _ProfileCompanyScreenState extends State<ProfileCompanyScreen> {
                             getOrdersSuccess: (response) => OrderListView(
                               itemsToShow: 2,
                               orders: response.model.items
-                                  .where((order) =>
-                                      order.orderStatus == _currentTabIndex)
-                                  .toList(),
+                                  .where((order) => order.orderStatus == _currentTabIndex)
+                                  .toList()
+                                ..sort((a, b) => b.orderDate.compareTo(a.orderDate)),
                             ),
                             getOrdersError: (error) => Center(
                               child: Text('Error: ${error.message}'),
