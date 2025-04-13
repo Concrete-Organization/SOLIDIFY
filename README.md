@@ -91,5 +91,7 @@ The project utilizes various dependencies to enhance functionality and streamlin
 - **flutter_native_splash:** Splash Screen Customization.
 - **package_info_plus:** App Package Information.
 - **image_cropper:** Image Cropping.
+- **rxdart:** Reactive Functional Programming for Streams.
+- **collection:** Additional collection utilities and enhancements for Dart core collections.
 
 
