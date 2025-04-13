@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart'; 
 import 'package:json_annotation/json_annotation.dart';
 import 'package:solidify/features/marketplace/order/data/models/shipping_address_request_model.dart';
 
@@ -30,7 +29,7 @@ class OrderModel {
   final double totalPrice;
   final int orderStatus;
   @JsonKey(fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
-  final DateTime orderDate; // Changed to DateTime
+  final DateTime orderDate;
   final List<OrderItemDetails> orderItems;
   final ShippingAddressRequestModel shippingAddress;
 
@@ -56,12 +55,14 @@ class OrderItemDetails {
   final String name;
   final int quantity;
   final double price;
+  final String imageUri;
 
   OrderItemDetails({
     required this.productId,
     required this.name,
     required this.quantity,
     required this.price,
+    required this.imageUri,
   });
 
   factory OrderItemDetails.fromJson(Map<String, dynamic> json) => _$OrderItemDetailsFromJson(json);
