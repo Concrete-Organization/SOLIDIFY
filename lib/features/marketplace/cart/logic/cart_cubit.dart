@@ -24,7 +24,6 @@ class CartCubit extends Cubit<CartState> {
       final productId = data['productId'] as String;
       final targetQuantity = data['targetQuantity'] as int;
       _syncQuantity(productId, targetQuantity).then((success) {
-        // Complete the pending sync operation
         _pendingSyncs[productId]?.complete(success);
         _pendingSyncs.remove(productId);
       });
@@ -36,7 +35,6 @@ class CartCubit extends Cubit<CartState> {
       final productId = data['productId'] as String;
       final targetQuantity = data['targetQuantity'] as int;
       _syncQuantity(productId, targetQuantity).then((success) {
-        // Complete the pending sync operation
         _pendingSyncs[productId]?.complete(success);
         _pendingSyncs.remove(productId);
       });
@@ -108,9 +106,7 @@ class CartCubit extends Cubit<CartState> {
   }
 
   Future<bool> incrementCartItem(String productId, int targetQuantity) async {
-    print(
-        'incrementCartItem called with productId: $productId, type: ${productId.runtimeType}');
-    final safeProductId = productId.toString(); // Ensure it's a String
+    final safeProductId = productId.toString();
 
     final completer = Completer<bool>();
     _pendingSyncs[safeProductId] = completer;
@@ -124,11 +120,7 @@ class CartCubit extends Cubit<CartState> {
   }
 
   Future<bool> decrementCartItem(String productId, int targetQuantity) async {
-    print(
-        'decrementCartItem called with productId: $productId, type: ${productId.runtimeType}');
-    final safeProductId = productId.toString(); // Ensure it's a String
-
-    // Create a completer for this sync operation
+    final safeProductId = productId.toString();
     final completer = Completer<bool>();
     _pendingSyncs[safeProductId] = completer;
 
@@ -166,7 +158,6 @@ class CartCubit extends Cubit<CartState> {
       if (difference == 0) return true;
 
       if (difference > 0) {
-        // Need to increment
         for (int i = 0; i < difference; i++) {
           final result = await _cartRepo.incrementCartItem(productId);
           if (!result.isSuccess) {
@@ -175,7 +166,6 @@ class CartCubit extends Cubit<CartState> {
           }
         }
       } else {
-        // Need to decrement
         for (int i = 0; i < -difference; i++) {
           final result = await _cartRepo.decrementCartItem(productId);
           if (!result.isSuccess) {
@@ -187,7 +177,6 @@ class CartCubit extends Cubit<CartState> {
 
       return true;
     } catch (e) {
-      print('Error syncing quantity for productId $productId: $e');
       await getCartItems();
       return false;
     }
@@ -205,7 +194,9 @@ class CartCubit extends Cubit<CartState> {
     _incrementController.close();
     _decrementController.close();
 
-    _pendingSyncs.values.forEach((completer) => completer.complete(false));
+    for (var completer in _pendingSyncs.values) {
+      completer.complete(false);
+    }
     _pendingSyncs.clear();
     return super.close();
   }

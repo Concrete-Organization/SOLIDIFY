@@ -26,7 +26,6 @@ class OrderDetailsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 353.w,
       decoration: BoxDecoration(
         color: ColorsManager.mainBlueWith5Opacity,
         border: Border.all(color: ColorsManager.mainBlue),
