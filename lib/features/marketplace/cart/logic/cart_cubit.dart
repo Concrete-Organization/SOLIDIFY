@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:rxdart/rxdart.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/network/api_result.dart';
@@ -7,46 +6,18 @@ import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/core/network/api_error_handler.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_state.dart';
 import 'package:solidify/features/marketplace/cart/data/repos/cart_repo.dart';
+import 'package:solidify/features/marketplace/cart/data/models/get_cart_response_model.dart';
 
 class CartCubit extends Cubit<CartState> {
   final CartRepo _cartRepo;
   bool _isErrorShown = false;
 
-  final _incrementController = StreamController<Map<String, dynamic>>();
-  final _decrementController = StreamController<Map<String, dynamic>>();
-
-  final Map<String, Completer<bool>> _pendingSyncs = {};
-
-  CartCubit(this._cartRepo) : super(const CartState.initial()) {
-    _incrementController.stream
-        .debounceTime(const Duration(milliseconds: 500))
-        .listen((data) {
-      final productId = data['productId'] as String;
-      final targetQuantity = data['targetQuantity'] as int;
-      _syncQuantity(productId, targetQuantity).then((success) {
-        _pendingSyncs[productId]?.complete(success);
-        _pendingSyncs.remove(productId);
-      });
-    });
-
-    _decrementController.stream
-        .debounceTime(const Duration(milliseconds: 500))
-        .listen((data) {
-      final productId = data['productId'] as String;
-      final targetQuantity = data['targetQuantity'] as int;
-      _syncQuantity(productId, targetQuantity).then((success) {
-        _pendingSyncs[productId]?.complete(success);
-        _pendingSyncs.remove(productId);
-      });
-    });
-  }
+  CartCubit(this._cartRepo) : super(const CartState.initial());
 
   Future<void> addCartItem(String productId) async {
     emit(CartState.loading(productId));
-
     try {
       final result = await _cartRepo.addCartItem(productId);
-
       result.when(
         success: (_) => emit(CartState.success(productId)),
         failure: (error) {
@@ -63,10 +34,8 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> getCartItems() async {
     emit(const CartState.cartLoading());
-
     try {
       final result = await _cartRepo.getCartList();
-
       result.when(
         success: (cartResponse) =>
             emit(CartState.cartListSuccess(cartResponse)),
@@ -84,10 +53,8 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> deleteCartItem(String productId, String name) async {
     emit(CartState.loading(productId));
-
     try {
       final result = await _cartRepo.deleteCartItem(productId);
-
       result.when(
         success: (_) async {
           emit(CartState.cartItemDeleted(productId, name));
@@ -106,80 +73,163 @@ class CartCubit extends Cubit<CartState> {
   }
 
   Future<bool> incrementCartItem(String productId, int targetQuantity) async {
-    final safeProductId = productId.toString();
+    final currentCart = state.maybeWhen(
+      cartListSuccess: (cartResponse) => cartResponse,
+      orElse: () => null,
+    );
 
-    final completer = Completer<bool>();
-    _pendingSyncs[safeProductId] = completer;
-
-    _incrementController.add({
-      'productId': safeProductId,
-      'targetQuantity': targetQuantity,
-    });
-
-    return completer.future;
-  }
-
-  Future<bool> decrementCartItem(String productId, int targetQuantity) async {
-    final safeProductId = productId.toString();
-    final completer = Completer<bool>();
-    _pendingSyncs[safeProductId] = completer;
-
-    _decrementController.add({
-      'productId': safeProductId,
-      'targetQuantity': targetQuantity,
-    });
-
-    return completer.future;
-  }
-
-  Future<bool> _syncQuantity(String productId, int targetQuantity) async {
-    try {
-      final currentCart = state.maybeWhen(
-        cartListSuccess: (cartResponse) => cartResponse,
-        orElse: () => null,
-      );
-
-      if (currentCart == null) {
-        await getCartItems();
-        return false;
-      }
-
-      final currentItem = currentCart.model.items
-          .firstWhereOrNull((item) => item.id == productId);
-
-      if (currentItem == null) {
-        await getCartItems();
-        return false;
-      }
-
-      final currentQuantity = currentItem.quantity;
-      final difference = targetQuantity - currentQuantity;
-
-      if (difference == 0) return true;
-
-      if (difference > 0) {
-        for (int i = 0; i < difference; i++) {
-          final result = await _cartRepo.incrementCartItem(productId);
-          if (!result.isSuccess) {
-            await getCartItems();
-            return false;
-          }
-        }
-      } else {
-        for (int i = 0; i < -difference; i++) {
-          final result = await _cartRepo.decrementCartItem(productId);
-          if (!result.isSuccess) {
-            await getCartItems();
-            return false;
-          }
-        }
-      }
-
-      return true;
-    } catch (e) {
+    if (currentCart == null) {
       await getCartItems();
       return false;
     }
+
+    final currentItem = currentCart.model.items
+        .firstWhereOrNull((item) => item.id == productId);
+    if (currentItem == null) {
+      await getCartItems();
+      return false;
+    }
+
+    final currentQuantity = currentItem.quantity;
+    final difference = targetQuantity - currentQuantity;
+
+    final updatedItems = currentCart.model.items.map((item) {
+      if (item.id == productId) {
+        return CartItemModel(
+          id: item.id,
+          name: item.name,
+          quantity: targetQuantity,
+          price: item.price,
+          imageUri: item.imageUri,
+        );
+      }
+      return item;
+    }).toList();
+
+    final newTotalPrice = calculateTotalPrice(updatedItems);
+
+    final updatedCartModel = CartModel(
+      totalPrice: newTotalPrice,
+      items: updatedItems,
+    );
+
+    final updatedCartResponse = GetCartResponseModel(
+      isSucceeded: currentCart.isSucceeded,
+      statusCode: currentCart.statusCode,
+      message: currentCart.message,
+      model: updatedCartModel,
+    );
+
+    emit(CartState.cartListSuccess(updatedCartResponse));
+
+    bool success = true;
+    if (difference > 0) {
+      for (int i = 0; i < difference; i++) {
+        final result = await _cartRepo.incrementCartItem(productId);
+        if (!result.isSuccess) {
+          success = false;
+          break;
+        }
+      }
+    } else if (difference < 0) {
+      for (int i = 0; i < -difference; i++) {
+        final result = await _cartRepo.decrementCartItem(productId);
+        if (!result.isSuccess) {
+          success = false;
+          break;
+        }
+      }
+    }
+
+    if (!success) {
+      await getCartItems();
+    }
+
+    return success;
+  }
+
+  Future<bool> decrementCartItem(String productId, int targetQuantity) async {
+    final currentCart = state.maybeWhen(
+      cartListSuccess: (cartResponse) => cartResponse,
+      orElse: () => null,
+    );
+
+    if (currentCart == null) {
+      await getCartItems();
+      return false;
+    }
+
+    final currentItem = currentCart.model.items
+        .firstWhereOrNull((item) => item.id == productId);
+    if (currentItem == null) {
+      await getCartItems();
+      return false;
+    }
+
+    final currentQuantity = currentItem.quantity;
+    final difference = targetQuantity - currentQuantity;
+
+    final updatedItems = currentCart.model.items.map((item) {
+      if (item.id == productId) {
+        return CartItemModel(
+          id: item.id,
+          name: item.name,
+          quantity: targetQuantity,
+          price: item.price,
+          imageUri: item.imageUri,
+        );
+      }
+      return item;
+    }).toList();
+
+    final newTotalPrice = calculateTotalPrice(updatedItems);
+
+    final updatedCartModel = CartModel(
+      totalPrice: newTotalPrice,
+      items: updatedItems,
+    );
+
+    final updatedCartResponse = GetCartResponseModel(
+      isSucceeded: currentCart.isSucceeded,
+      statusCode: currentCart.statusCode,
+      message: currentCart.message,
+      model: updatedCartModel,
+    );
+
+    emit(CartState.cartListSuccess(updatedCartResponse));
+
+    bool success = true;
+    if (difference > 0) {
+      for (int i = 0; i < difference; i++) {
+        final result = await _cartRepo.incrementCartItem(productId);
+        if (!result.isSuccess) {
+          success = false;
+          break;
+        }
+      }
+    } else if (difference < 0) {
+      for (int i = 0; i < -difference; i++) {
+        final result = await _cartRepo.decrementCartItem(productId);
+        if (!result.isSuccess) {
+          success = false;
+          break;
+        }
+      }
+    }
+
+    if (!success) {
+      await getCartItems();
+    }
+
+    return success;
+  }
+
+  Future<void> waitForSyncs() async {
+    await getCartItems();
+  }
+
+  double calculateTotalPrice(List<CartItemModel> items) {
+    return items.fold(0.0, (sum, item) => sum + (item.price * item.quantity));
   }
 
   void _handleError(String productId, ApiErrorModel error) {
@@ -191,13 +241,6 @@ class CartCubit extends Cubit<CartState> {
 
   @override
   Future<void> close() {
-    _incrementController.close();
-    _decrementController.close();
-
-    for (var completer in _pendingSyncs.values) {
-      completer.complete(false);
-    }
-    _pendingSyncs.clear();
     return super.close();
   }
 }
