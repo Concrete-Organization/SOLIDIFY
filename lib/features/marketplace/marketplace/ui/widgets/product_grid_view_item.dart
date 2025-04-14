@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -112,10 +114,18 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
                 child: SizedBox(
                   width: 68.w,
                   height: 92.h,
-                  child: Image.network(
-                    widget.product.imageUri,
+                  child: CachedNetworkImage(
+                    imageUrl: widget.product.imageUri,
                     fit: BoxFit.contain,
-                    errorBuilder: (_, __, ___) => const Icon(Icons.error),
+                    placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        color: Colors.white,
+                      ),
+                    ),
+                    errorWidget: (context, url, error) =>
+                    const Icon(Icons.error),
                   ),
                 ),
               ),
@@ -140,8 +150,12 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
                       Row(
                         children: [
                           Text(
-                            widget.product.brandName,
+                            widget.product.brandName.length > 15
+                                ? '${widget.product.brandName.substring(0, 15)}...'
+                                : widget.product.brandName,
                             style: TextStyles.font12lightBlackLight,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                           const Spacer(),
                           const Icon(
@@ -157,7 +171,9 @@ class _ProductGridViewItemState extends State<ProductGridViewItem> {
                         ],
                       ),
                       Text(
-                        widget.product.name,
+                        widget.product.name.length > 15
+                            ? '${widget.product.name.substring(0, 15)}...'
+                            : widget.product.name,
                         style: TextStyles.font12lightBlackLight,
                       ),
                       Text(
