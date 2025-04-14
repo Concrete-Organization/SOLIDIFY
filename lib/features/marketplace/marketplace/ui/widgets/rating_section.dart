@@ -16,10 +16,13 @@ class RatingSection extends StatefulWidget {
 class _RatingSectionState extends State<RatingSection> {
   int _rating = 0;
   final double _starSize = 40.0;
+  final double _padding = 4.0;
 
   void _updateRating(Offset localPosition) {
-    int newRating = (localPosition.dx / _starSize).ceil();
+    final starTotalWidth = _starSize + (_padding * 2);
+    int newRating = (localPosition.dx / starTotalWidth).floor() + 1;
     newRating = newRating.clamp(0, 5);
+
     setState(() {
       _rating = newRating;
       widget.onRatingChanged(_rating);
@@ -53,7 +56,9 @@ class _RatingSectionState extends State<RatingSection> {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: SvgPicture.asset(
-                  'assets/svgs/empty_star_icon.svg',
+                  index < _rating
+                      ? 'assets/svgs/fill_star_icon.svg'
+                      : 'assets/svgs/empty_star_icon.svg',
                   colorFilter: ColorFilter.mode(
                     index < _rating
                         ? ColorsManager.secondaryGold

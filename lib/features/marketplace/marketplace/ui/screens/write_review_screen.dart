@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
-import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/rating_section.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/write_review_part.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/product_row_for_review.dart';
@@ -88,29 +87,21 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
                   RatingSection(
                     onRatingChanged: _updateRating,
                   ),
-                  verticalSpace(30),
-                  state.maybeWhen(
-                    loading: () =>
-                        const Center(child: LoadingCircleIndicator()),
-                    orElse: () => const SizedBox.shrink(),
+                  verticalSpace(148),
+                  AppTextButton(
+                    onPressed: isButtonEnabled
+                        ? () {
+                      context.read<PostReviewCubit>().postReview(
+                        productId: widget.productId,
+                        message: _reviewController.text.trim(),
+                        userRate: _rating,
+                      );
+                    }
+                        : null,
+                    textButton: 'Submit',
                   ),
                 ],
               ),
-            ),
-          ),
-          bottomNavigationBar: Padding(
-            padding: EdgeInsets.all(20.w),
-            child: AppTextButton(
-              onPressed: isButtonEnabled
-                  ? () {
-                      context.read<PostReviewCubit>().postReview(
-                            productId: widget.productId,
-                            message: _reviewController.text.trim(),
-                            userRate: _rating,
-                          );
-                    }
-                  : null,
-              textButton: 'Submit',
             ),
           ),
         );

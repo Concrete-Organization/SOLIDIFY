@@ -11,7 +11,6 @@ class ProductRowForReview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // Product Image
         Container(
           width: 74.w,
           height: 60.h,
@@ -26,10 +25,17 @@ class ProductRowForReview extends StatelessWidget {
         ),
         horizontalSpace(15),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Ambuja cement', style: TextStyles.font12LightBlackMedium),
+            Text(
+              'Ambuja cement',
+              style: TextStyles.font12LightBlackMedium,
+            ),
             verticalSpace(20),
-            Text('1,000 EGP', style: TextStyles.font12MainBlueMedium),
+            Text(
+              '1,000 EGP',
+              style: TextStyles.font12MainBlueMedium,
+            ),
           ],
         )
       ],

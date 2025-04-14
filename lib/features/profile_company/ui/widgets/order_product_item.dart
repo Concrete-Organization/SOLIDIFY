@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
@@ -45,7 +47,18 @@ class OrderProductItem extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(5.r),
             ),
-            child: Image.network(imageUri),
+            child: CachedNetworkImage(
+              imageUrl: imageUri,
+              fit: BoxFit.contain,
+              placeholder: (context, url) => Shimmer.fromColors(
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+                child: Container(
+                  color: Colors.white,
+                ),
+              ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
           ),
           horizontalSpace(15),
           Column(
