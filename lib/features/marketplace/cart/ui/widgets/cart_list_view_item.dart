@@ -51,11 +51,14 @@ class _CartListViewItemState extends State<CartListViewItem> {
         .incrementCartItem(widget.item.id, quantity);
 
     if (!success && mounted) {
+      // Revert quantity on failure
       setState(() {
         quantity = previousQuantity;
         itemTotalPrice = widget.item.price * quantity;
         widget.onPriceUpdated(-widget.item.price);
       });
+      // Refresh cart to ensure consistency
+      await context.read<CartCubit>().getCartItems();
     }
   }
 
@@ -75,11 +78,14 @@ class _CartListViewItemState extends State<CartListViewItem> {
         .decrementCartItem(widget.item.id, quantity);
 
     if (!success && mounted) {
+      // Revert quantity on failure
       setState(() {
         quantity = previousQuantity;
         itemTotalPrice = widget.item.price * quantity;
         widget.onPriceUpdated(widget.item.price);
       });
+      // Refresh cart to ensure consistency
+      await context.read<CartCubit>().getCartItems();
     }
   }
 
