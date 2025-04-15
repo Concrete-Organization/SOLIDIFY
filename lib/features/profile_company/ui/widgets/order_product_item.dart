@@ -61,26 +61,30 @@ class OrderProductItem extends StatelessWidget {
             ),
           ),
           horizontalSpace(15),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                name,
-                style: TextStyles.font12LightBlackMedium,
-              ),
-              verticalSpace(8),
-              Text(
-                price,
-                style: TextStyles.font12MainBlueMedium,
-              ),
-              verticalSpace(8),
-              Text(
-                'Qty: $qty',
-                style: TextStyles.font12LightBlackMedium,
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: TextStyles.font12LightBlackMedium,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
+                verticalSpace(8),
+                Text(
+                  price,
+                  style: TextStyles.font12MainBlueMedium,
+                  maxLines: 1,
+                ),
+                verticalSpace(8),
+                Text(
+                  'Qty: $qty',
+                  style: TextStyles.font12LightBlackMedium,
+                ),
+              ],
+            ),
           ),
-          const Spacer(),
           GestureDetector(
             onTap: () {
               final productId =
