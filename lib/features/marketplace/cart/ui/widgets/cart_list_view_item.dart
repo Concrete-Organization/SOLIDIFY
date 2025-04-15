@@ -51,13 +51,11 @@ class _CartListViewItemState extends State<CartListViewItem> {
         .incrementCartItem(widget.item.id, quantity);
 
     if (!success && mounted) {
-      // Revert quantity on failure
       setState(() {
         quantity = previousQuantity;
         itemTotalPrice = widget.item.price * quantity;
         widget.onPriceUpdated(-widget.item.price);
       });
-      // Refresh cart to ensure consistency
       await context.read<CartCubit>().getCartItems();
     }
   }
@@ -78,13 +76,11 @@ class _CartListViewItemState extends State<CartListViewItem> {
         .decrementCartItem(widget.item.id, quantity);
 
     if (!success && mounted) {
-      // Revert quantity on failure
       setState(() {
         quantity = previousQuantity;
         itemTotalPrice = widget.item.price * quantity;
         widget.onPriceUpdated(widget.item.price);
       });
-      // Refresh cart to ensure consistency
       await context.read<CartCubit>().getCartItems();
     }
   }
@@ -138,25 +134,29 @@ class _CartListViewItemState extends State<CartListViewItem> {
                 ),
               ),
               horizontalSpace(25),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.item.name,
-                    style: TextStyles.font15lightBlackMedium,
-                  ),
-                  verticalSpace(15),
-                  Text(
-                    '${itemTotalPrice.toStringAsFixed(2)} EGP',
-                    style: TextStyles.font15MainBlueSemiBold,
-                  ),
-                  verticalSpace(15),
-                  QuantitySelector(
-                    quantity: quantity,
-                    onIncrement: _increment,
-                    onDecrement: _decrement,
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.item.name,
+                      style: TextStyles.font15lightBlackMedium,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                    verticalSpace(15),
+                    Text(
+                      '${itemTotalPrice.toStringAsFixed(2)} EGP',
+                      style: TextStyles.font15MainBlueSemiBold,
+                    ),
+                    verticalSpace(15),
+                    QuantitySelector(
+                      quantity: quantity,
+                      onIncrement: _increment,
+                      onDecrement: _decrement,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

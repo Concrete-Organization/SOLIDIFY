@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// ignore_for_file: deprecated_member_use
 
 class ColorsManager {
   static const Color mainBlue = Color(0xFF1B4965);
