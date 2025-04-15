@@ -82,7 +82,7 @@ class OrderDetailsContainer extends StatelessWidget {
                     ),
                     horizontalSpace(3),
                     if (orderStatus == 0)
-                      SvgPicture.asset('assets/svgs/complete_order_icon.svg'),
+                      SvgPicture.asset('assets/svgs/active_order_icon.svg'),
                   ],
                 ),
               ],
@@ -96,7 +96,7 @@ class OrderDetailsContainer extends StatelessWidget {
   String _getStatusText(int status) {
     switch (status) {
       case 0:
-        return 'Completed order';
+        return 'Active order';
       case 1:
         return 'Pending order';
       case 2:
