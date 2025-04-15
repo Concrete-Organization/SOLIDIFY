@@ -3,7 +3,7 @@ class ProductEntity {
   final String name;
   final double price;
   final String description;
-  final int measurement;
+  final String measurement;
   final String imageUri;
   final int rate;
   final int discount;
@@ -38,7 +38,7 @@ class ProductEntity {
         name: json['name'],
         price: json['price'] as double,
         description: json['description'],
-        measurement: json['measurement'] as int,
+        measurement: json['measurement'],
         imageUri: json['imageUri'],
         rate: json['rate'] as int,
         discount: json['discount'] as int,

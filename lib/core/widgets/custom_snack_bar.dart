@@ -25,8 +25,8 @@ class CustomSnackBar {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  bgColor.withOpacity(0.9),
-                  bgColor.withOpacity(0.7),
+                  bgColor.withValues(alpha: 0.9),
+                  bgColor.withValues(alpha: 0.7),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -34,7 +34,7 @@ class CustomSnackBar {
               borderRadius: BorderRadius.circular(14.r),
               boxShadow: [
                 BoxShadow(
-                  color: bgColor.withOpacity(0.3),
+                  color: bgColor.withValues(alpha: 0.3),
                   blurRadius: 10.r,
                   spreadRadius: 2,
                   offset: const Offset(0, 4),

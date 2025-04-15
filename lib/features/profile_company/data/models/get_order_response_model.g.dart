@@ -46,7 +46,7 @@ Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
 OrderItem _$OrderItemFromJson(Map<String, dynamic> json) => OrderItem(
       id: json['id'] as String,
       totalPrice: (json['totalPrice'] as num).toDouble(),
-      orderStatus: (json['orderStatus'] as num).toInt(),
+      orderStatus: json['orderStatus'] as String,
       orderDate: DateTime.parse(json['orderDate'] as String),
     );
 

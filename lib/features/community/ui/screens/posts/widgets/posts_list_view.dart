@@ -60,7 +60,7 @@ class _PostsListViewState extends State<PostsListView> {
             Icon(
               Icons.search_off,
               size: 50,
-              color: ColorsManager.mainBlue.withOpacity(0.7),
+              color: ColorsManager.mainBlue.withValues(alpha: 0.7),
             ),
             verticalSpace(16),
             Text(

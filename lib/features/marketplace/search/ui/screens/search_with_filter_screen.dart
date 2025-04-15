@@ -8,11 +8,11 @@ import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/marketplace/search/logic/search_cubit.dart';
 import 'package:solidify/features/marketplace/search/logic/search_state.dart';
-import 'package:solidify/features/marketplace/search/widgets/filter_top_bar.dart';
-import 'package:solidify/features/marketplace/search/widgets/filters_text_row.dart';
-import 'package:solidify/features/marketplace/search/widgets/search_with_filter_bar.dart';
-import 'package:solidify/features/marketplace/search/widgets/filters_types_containers.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/widgets/product_grid_view.dart';
+import 'package:solidify/features/marketplace/search/ui/widgets/filter_top_bar.dart';
+import 'package:solidify/features/marketplace/search/ui/widgets/filters_text_row.dart';
+import 'package:solidify/features/marketplace/search/ui/widgets/filters_types_containers.dart';
+import 'package:solidify/features/marketplace/search/ui/widgets/search_with_filter_bar.dart';
 
 class SearchWithFilterScreen extends StatefulWidget {
   const SearchWithFilterScreen({super.key});

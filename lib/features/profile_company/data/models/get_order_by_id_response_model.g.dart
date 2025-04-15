@@ -27,7 +27,7 @@ Map<String, dynamic> _$GetOrderByIdResponseModelToJson(
 OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
       id: json['id'] as String,
       totalPrice: (json['totalPrice'] as num).toDouble(),
-      orderStatus: (json['orderStatus'] as num).toInt(),
+      orderStatus: json['orderStatus'] as String,
       orderDate: OrderModel._dateTimeFromJson(json['orderDate'] as String),
       orderItems: (json['orderItems'] as List<dynamic>)
           .map((e) => OrderItemDetails.fromJson(e as Map<String, dynamic>))

@@ -49,7 +49,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       name: json['name'] as String,
       price: (json['price'] as num).toDouble(),
       description: json['description'] as String,
-      measurement: (json['measurement'] as num).toInt(),
+      measurement: json['measurement'] as String,
       imageUri: json['imageUri'] as String,
       rate: (json['rate'] as num).toInt(),
       discount: (json['discount'] as num).toInt(),

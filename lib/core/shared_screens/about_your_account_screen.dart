@@ -48,7 +48,7 @@ class AboutYourAccountScreen extends StatelessWidget {
                   trailing: Text(
                     date,
                     style: TextStyles.font12LightBlackRegular.copyWith(
-                      color: ColorsManager.lightBlack.withOpacity(0.8),
+                      color: ColorsManager.lightBlack.withValues(alpha: 0.8),
                     ),
                   ),
                 ),

@@ -39,8 +39,8 @@ dependencies:
   flutter_bloc: ^9.0.0
   provider: ^6.1.2
   # Code generator (mainly used with cubit & retrofit)
-  freezed: ^2.5.7
-  freezed_annotation: ^2.4.4
+  freezed: ^3.0.6
+  freezed_annotation: ^3.0.0
   # for dependency injection
   get_it: ^8.0.2
   # Classes and helper functions that support JSON code generation via the `json_serializable` package.
@@ -72,7 +72,7 @@ dependencies:
   # Flutter plugin for selecting images from the Android and iOS image library, and taking new pictures with the camera.
   image_picker: ^1.1.2
   # A package that allows you to use a native file explorer to pick single or multiple absolute file paths, with extension filtering support.
-  file_picker: ^9.0.0
+  file_picker: ^10.1.2
   # Flutter plugin for getting commonly used locations on host platform file systems, such as the temp and app data directories.
   path_provider: ^2.1.5
   # A string-based path manipulation library.
@@ -92,7 +92,7 @@ dependencies:
   # Flutter plugin for Android, iOS and Web supports cropping images
   image_cropper: ^9.0.0
   #RxDart is an implementation of the popular ReactiveX api for asynchronous programming, leveraging the native Dart Streams api.
-  rxdart: ^0.27.7
+  rxdart: ^0.28.0
   #Collections and utilities functions and classes related to collections
   collection: ^1.18.0
 

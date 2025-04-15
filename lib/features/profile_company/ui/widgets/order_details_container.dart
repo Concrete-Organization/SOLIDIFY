@@ -11,7 +11,7 @@ import 'package:solidify/features/profile_company/ui/widgets/order_product_item.
 class OrderDetailsContainer extends StatelessWidget {
   final List<OrderItemDetails> orderItems;
   final double totalPrice;
-  final int orderStatus;
+  final String orderStatus;
 
   const OrderDetailsContainer({
     super.key,
@@ -81,7 +81,7 @@ class OrderDetailsContainer extends StatelessWidget {
                       style: TextStyles.font12secondaryGoldMedium,
                     ),
                     horizontalSpace(3),
-                    if (orderStatus == 0)
+                    if (orderStatus == 'Pending')
                       SvgPicture.asset('assets/svgs/active_order_icon.svg'),
                   ],
                 ),
@@ -93,14 +93,14 @@ class OrderDetailsContainer extends StatelessWidget {
     );
   }
 
-  String _getStatusText(int status) {
+  String _getStatusText(String status) {
     switch (status) {
-      case 0:
+      case 'Pending':
         return 'Active order';
-      case 1:
-        return 'Pending order';
-      case 2:
-        return 'Shipped order';
+      case 'Shipped':
+        return 'Completed order';
+      case 'Cancelled':
+        return 'Cancelled order';
       default:
         return 'Unknown status';
     }

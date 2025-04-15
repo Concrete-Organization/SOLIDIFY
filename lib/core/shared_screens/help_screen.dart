@@ -35,7 +35,7 @@ class HelpScreen extends StatelessWidget {
                 'please contact our support team.',
                 textAlign: TextAlign.center,
                 style: TextStyles.font12MainBlueMedium.copyWith(
-                  color: ColorsManager.mainBlue.withOpacity(0.8),
+                  color: ColorsManager.mainBlue.withValues(alpha: 0.8),
                 ),
               ),
               verticalSpace(17),

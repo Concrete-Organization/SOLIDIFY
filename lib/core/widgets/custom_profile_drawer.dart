@@ -25,12 +25,12 @@ class CustomProfileDrawer extends StatelessWidget {
           gradient: LinearGradient(
             colors: [
               Colors.white,
-              Colors.white.withOpacity(0.95),
-              Colors.white.withOpacity(0.6),
-              Colors.white.withOpacity(0.5),
-              Colors.white.withOpacity(0.1),
-              Colors.white.withOpacity(0.1),
-              Colors.white.withOpacity(0.1),
+              Colors.white.withValues(alpha: 0.95),
+              Colors.white.withValues(alpha: 0.6),
+              Colors.white.withValues(alpha: 0.5),
+              Colors.white.withValues(alpha: 0.1),
+              Colors.white.withValues(alpha: 0.1),
+              Colors.white.withValues(alpha: 0.1),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -60,7 +60,7 @@ class CustomProfileDrawer extends StatelessWidget {
                   child: Text(
                     'More info and support',
                     style: TextStyles.font12LightBlackRegular.copyWith(
-                      color: ColorsManager.lightBlack.withOpacity(0.8),
+                      color: ColorsManager.lightBlack.withValues(alpha: 0.8),
                     ),
                   ),
                 ),
@@ -94,7 +94,7 @@ class CustomProfileDrawer extends StatelessWidget {
                   child: Text(
                     'Login',
                     style: TextStyles.font12LightBlackRegular.copyWith(
-                      color: ColorsManager.lightBlack.withOpacity(0.8),
+                      color: ColorsManager.lightBlack.withValues(alpha: 0.8),
                     ),
                   ),
                 ),

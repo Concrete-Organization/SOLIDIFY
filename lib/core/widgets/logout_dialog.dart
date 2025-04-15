@@ -32,7 +32,7 @@ class LogoutDialog extends StatelessWidget {
             style:
             TextStyles.font14lightBlackRegular.copyWith(
               color:
-              ColorsManager.lightBlack.withOpacity(0.8),
+              ColorsManager.lightBlack.withValues(alpha: 0.8),
             ),
           ),
           verticalSpace(15),

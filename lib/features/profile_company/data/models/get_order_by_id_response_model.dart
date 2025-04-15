@@ -27,7 +27,7 @@ class GetOrderByIdResponseModel {
 class OrderModel {
   final String id;
   final double totalPrice;
-  final int orderStatus;
+  final String orderStatus;
   @JsonKey(fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
   final DateTime orderDate;
   final List<OrderItemDetails> orderItems;

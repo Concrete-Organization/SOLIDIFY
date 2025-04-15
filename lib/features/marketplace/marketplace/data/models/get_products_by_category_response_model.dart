@@ -69,7 +69,7 @@ class ProductModel {
   final String name;
   final double price;
   final String description;
-  final int measurement;
+  final String measurement;
   final String imageUri;
   final int rate;
   final int discount;

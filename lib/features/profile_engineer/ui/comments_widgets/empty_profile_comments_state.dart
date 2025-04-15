@@ -15,7 +15,7 @@ class EmptyProfileCommentsState extends StatelessWidget {
           Icon(
             Icons.comment,
             size: 50,
-            color: ColorsManager.mainBlue.withOpacity(0.7),
+            color: ColorsManager.mainBlue.withValues(alpha: 0.7),
           ),
           verticalSpace(16),
           Text(

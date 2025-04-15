@@ -48,7 +48,7 @@ class OrderModel {
 class OrderItem {
   final String id;
   final double totalPrice;
-  final int orderStatus;
+  final String orderStatus;
   final DateTime orderDate;
 
   OrderItem({

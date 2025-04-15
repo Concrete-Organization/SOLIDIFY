@@ -123,7 +123,7 @@ class AppTextFormField extends StatelessWidget {
               errorBorder: buildOutlineInputBorder(color: Colors.red),
               hintStyle: hintStyle ??
                   TextStyles.font12lightBlackLight.copyWith(
-                    color: ColorsManager.lightBlack.withOpacity(0.8),
+                    color: ColorsManager.lightBlack.withValues(alpha: 0.8),
                   ),
               hintText: hintText,
               suffixIcon: suffixIcon,

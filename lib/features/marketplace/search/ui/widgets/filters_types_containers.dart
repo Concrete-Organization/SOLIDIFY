@@ -3,7 +3,7 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
-import 'package:solidify/features/marketplace/search/widgets/filter_section.dart';
+import 'package:solidify/features/marketplace/search/ui/widgets/filter_section.dart';
 
 class FiltersTypesContainers extends StatefulWidget {
   final Function(String) onCategorySelected;
@@ -24,7 +24,7 @@ class FiltersTypesContainers extends StatefulWidget {
   });
 
   @override
-  _FiltersTypesContainersState createState() => _FiltersTypesContainersState();
+  State<FiltersTypesContainers> createState() => _FiltersTypesContainersState();
 }
 
 class _FiltersTypesContainersState extends State<FiltersTypesContainers> {

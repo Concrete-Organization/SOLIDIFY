@@ -28,7 +28,7 @@ class TitleAndSubtitleCoreProfileItem extends StatelessWidget {
         Text(
           subtitle,
           style: TextStyles.font12LightBlackRegular.copyWith(
-            color: ColorsManager.lightBlack.withOpacity(0.8),
+            color: ColorsManager.lightBlack.withValues(alpha: 0.8),
           ),
         ),
         verticalSpace(11),

@@ -21,8 +21,8 @@ mixin _$ResetPasswordState {
     required TResult Function() initial,
     required TResult Function() loadingStoredData,
     required TResult Function(
-            bool isPasswordHidden, bool isConfirmPasswordHidden)
-        storedDataLoaded,
+        bool isPasswordHidden, bool isConfirmPasswordHidden)
+    storedDataLoaded,
     required TResult Function() resetPasswordLoading,
     required TResult Function() resetPasswordSuccess,
     required TResult Function(ApiErrorModel error) error,
@@ -33,7 +33,7 @@ mixin _$ResetPasswordState {
     TResult? Function()? initial,
     TResult? Function()? loadingStoredData,
     TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
+    storedDataLoaded,
     TResult? Function()? resetPasswordLoading,
     TResult? Function()? resetPasswordSuccess,
     TResult? Function(ApiErrorModel error)? error,
@@ -41,956 +41,956 @@ mixin _$ResetPasswordState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadingStoredData,
-    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult Function()? resetPasswordLoading,
-    TResult Function()? resetPasswordSuccess,
-    TResult Function(ApiErrorModel error)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResetPasswordInitial value) initial,
-    required TResult Function(LoadingStoredData value) loadingStoredData,
-    required TResult Function(StoredDataLoaded value) storedDataLoaded,
-    required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
-    required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
-    required TResult Function(ResetPasswordError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResetPasswordInitial value)? initial,
-    TResult? Function(LoadingStoredData value)? loadingStoredData,
-    TResult? Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult? Function(ResetPasswordError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResetPasswordInitial value)? initial,
-    TResult Function(LoadingStoredData value)? loadingStoredData,
-    TResult Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult Function(ResetPasswordError value)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult Function()? initial,
+  TResult Function()? loadingStoredData,
+  TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+  storedDataLoaded,
+  TResult Function()? resetPasswordLoading,
+  TResult Function()? resetPasswordSuccess,
+  TResult Function(ApiErrorModel error)? error,
+  required TResult orElse(),
+}) =>
+throw _privateConstructorUsedError;
+@optionalTypeArgs
+TResult map<TResult extends Object?>({
+  required TResult Function(ResetPasswordInitial value) initial,
+  required TResult Function(LoadingStoredData value) loadingStoredData,
+  required TResult Function(StoredDataLoaded value) storedDataLoaded,
+  required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
+  required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
+  required TResult Function(ResetPasswordError value) error,
+}) =>
+    throw _privateConstructorUsedError;
+@optionalTypeArgs
+TResult? mapOrNull<TResult extends Object?>({
+  TResult? Function(ResetPasswordInitial value)? initial,
+  TResult? Function(LoadingStoredData value)? loadingStoredData,
+  TResult? Function(StoredDataLoaded value)? storedDataLoaded,
+  TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
+  TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+  TResult? Function(ResetPasswordError value)? error,
+}) =>
+    throw _privateConstructorUsedError;
+@optionalTypeArgs
+TResult maybeMap<TResult extends Object?>({
+TResult Function(ResetPasswordInitial value)? initial,
+TResult Function(LoadingStoredData value)? loadingStoredData,
+TResult Function(StoredDataLoaded value)? storedDataLoaded,
+TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult Function(ResetPasswordError value)? error,
+required TResult orElse(),
+}) =>
+throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ResetPasswordStateCopyWith<$Res> {
-  factory $ResetPasswordStateCopyWith(
-          ResetPasswordState value, $Res Function(ResetPasswordState) then) =
-      _$ResetPasswordStateCopyWithImpl<$Res, ResetPasswordState>;
+factory $ResetPasswordStateCopyWith(
+ResetPasswordState value, $Res Function(ResetPasswordState) then) =
+_$ResetPasswordStateCopyWithImpl<$Res, ResetPasswordState>;
 }
 
 /// @nodoc
 class _$ResetPasswordStateCopyWithImpl<$Res, $Val extends ResetPasswordState>
-    implements $ResetPasswordStateCopyWith<$Res> {
-  _$ResetPasswordStateCopyWithImpl(this._value, this._then);
+implements $ResetPasswordStateCopyWith<$Res> {
+_$ResetPasswordStateCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+// ignore: unused_field
+final $Val _value;
+// ignore: unused_field
+final $Res Function($Val) _then;
 
-  /// Create a copy of ResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
+/// Create a copy of ResetPasswordState
+/// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$ResetPasswordInitialImplCopyWith<$Res> {
-  factory _$$ResetPasswordInitialImplCopyWith(_$ResetPasswordInitialImpl value,
-          $Res Function(_$ResetPasswordInitialImpl) then) =
-      __$$ResetPasswordInitialImplCopyWithImpl<$Res>;
+factory _$$ResetPasswordInitialImplCopyWith(_$ResetPasswordInitialImpl value,
+$Res Function(_$ResetPasswordInitialImpl) then) =
+__$$ResetPasswordInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$ResetPasswordInitialImplCopyWithImpl<$Res>
-    extends _$ResetPasswordStateCopyWithImpl<$Res, _$ResetPasswordInitialImpl>
-    implements _$$ResetPasswordInitialImplCopyWith<$Res> {
-  __$$ResetPasswordInitialImplCopyWithImpl(_$ResetPasswordInitialImpl _value,
-      $Res Function(_$ResetPasswordInitialImpl) _then)
-      : super(_value, _then);
+extends _$ResetPasswordStateCopyWithImpl<$Res, _$ResetPasswordInitialImpl>
+implements _$$ResetPasswordInitialImplCopyWith<$Res> {
+__$$ResetPasswordInitialImplCopyWithImpl(_$ResetPasswordInitialImpl _value,
+$Res Function(_$ResetPasswordInitialImpl) _then)
+    : super(_value, _then);
 
-  /// Create a copy of ResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
+/// Create a copy of ResetPasswordState
+/// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
 class _$ResetPasswordInitialImpl implements ResetPasswordInitial {
-  const _$ResetPasswordInitialImpl();
+const _$ResetPasswordInitialImpl();
 
-  @override
-  String toString() {
-    return 'ResetPasswordState.initial()';
-  }
+@override
+String toString() {
+return 'ResetPasswordState.initial()';
+}
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ResetPasswordInitialImpl);
-  }
+@override
+bool operator ==(Object other) {
+return identical(this, other) ||
+(other.runtimeType == runtimeType &&
+other is _$ResetPasswordInitialImpl);
+}
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadingStoredData,
-    required TResult Function(
-            bool isPasswordHidden, bool isConfirmPasswordHidden)
-        storedDataLoaded,
-    required TResult Function() resetPasswordLoading,
-    required TResult Function() resetPasswordSuccess,
-    required TResult Function(ApiErrorModel error) error,
-  }) {
-    return initial();
-  }
+@override
+@optionalTypeArgs
+TResult when<TResult extends Object?>({
+required TResult Function() initial,
+required TResult Function() loadingStoredData,
+required TResult Function(
+bool isPasswordHidden, bool isConfirmPasswordHidden)
+storedDataLoaded,
+required TResult Function() resetPasswordLoading,
+required TResult Function() resetPasswordSuccess,
+required TResult Function(ApiErrorModel error) error,
+}) {
+return initial();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loadingStoredData,
-    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult? Function()? resetPasswordLoading,
-    TResult? Function()? resetPasswordSuccess,
-    TResult? Function(ApiErrorModel error)? error,
-  }) {
-    return initial?.call();
-  }
+@override
+@optionalTypeArgs
+TResult? whenOrNull<TResult extends Object?>({
+TResult? Function()? initial,
+TResult? Function()? loadingStoredData,
+TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult? Function()? resetPasswordLoading,
+TResult? Function()? resetPasswordSuccess,
+TResult? Function(ApiErrorModel error)? error,
+}) {
+return initial?.call();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadingStoredData,
-    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult Function()? resetPasswordLoading,
-    TResult Function()? resetPasswordSuccess,
-    TResult Function(ApiErrorModel error)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeWhen<TResult extends Object?>({
+TResult Function()? initial,
+TResult Function()? loadingStoredData,
+TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult Function()? resetPasswordLoading,
+TResult Function()? resetPasswordSuccess,
+TResult Function(ApiErrorModel error)? error,
+required TResult orElse(),
+}) {
+if (initial != null) {
+return initial();
+}
+return orElse();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResetPasswordInitial value) initial,
-    required TResult Function(LoadingStoredData value) loadingStoredData,
-    required TResult Function(StoredDataLoaded value) storedDataLoaded,
-    required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
-    required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
-    required TResult Function(ResetPasswordError value) error,
-  }) {
-    return initial(this);
-  }
+@override
+@optionalTypeArgs
+TResult map<TResult extends Object?>({
+required TResult Function(ResetPasswordInitial value) initial,
+required TResult Function(LoadingStoredData value) loadingStoredData,
+required TResult Function(StoredDataLoaded value) storedDataLoaded,
+required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
+required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
+required TResult Function(ResetPasswordError value) error,
+}) {
+return initial(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResetPasswordInitial value)? initial,
-    TResult? Function(LoadingStoredData value)? loadingStoredData,
-    TResult? Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult? Function(ResetPasswordError value)? error,
-  }) {
-    return initial?.call(this);
-  }
+@override
+@optionalTypeArgs
+TResult? mapOrNull<TResult extends Object?>({
+TResult? Function(ResetPasswordInitial value)? initial,
+TResult? Function(LoadingStoredData value)? loadingStoredData,
+TResult? Function(StoredDataLoaded value)? storedDataLoaded,
+TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult? Function(ResetPasswordError value)? error,
+}) {
+return initial?.call(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResetPasswordInitial value)? initial,
-    TResult Function(LoadingStoredData value)? loadingStoredData,
-    TResult Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult Function(ResetPasswordError value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeMap<TResult extends Object?>({
+TResult Function(ResetPasswordInitial value)? initial,
+TResult Function(LoadingStoredData value)? loadingStoredData,
+TResult Function(StoredDataLoaded value)? storedDataLoaded,
+TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult Function(ResetPasswordError value)? error,
+required TResult orElse(),
+}) {
+if (initial != null) {
+return initial(this);
+}
+return orElse();
+}
 }
 
 abstract class ResetPasswordInitial implements ResetPasswordState {
-  const factory ResetPasswordInitial() = _$ResetPasswordInitialImpl;
+const factory ResetPasswordInitial() = _$ResetPasswordInitialImpl;
 }
 
 /// @nodoc
 abstract class _$$LoadingStoredDataImplCopyWith<$Res> {
-  factory _$$LoadingStoredDataImplCopyWith(_$LoadingStoredDataImpl value,
-          $Res Function(_$LoadingStoredDataImpl) then) =
-      __$$LoadingStoredDataImplCopyWithImpl<$Res>;
+factory _$$LoadingStoredDataImplCopyWith(_$LoadingStoredDataImpl value,
+$Res Function(_$LoadingStoredDataImpl) then) =
+__$$LoadingStoredDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$LoadingStoredDataImplCopyWithImpl<$Res>
-    extends _$ResetPasswordStateCopyWithImpl<$Res, _$LoadingStoredDataImpl>
-    implements _$$LoadingStoredDataImplCopyWith<$Res> {
-  __$$LoadingStoredDataImplCopyWithImpl(_$LoadingStoredDataImpl _value,
-      $Res Function(_$LoadingStoredDataImpl) _then)
-      : super(_value, _then);
+extends _$ResetPasswordStateCopyWithImpl<$Res, _$LoadingStoredDataImpl>
+implements _$$LoadingStoredDataImplCopyWith<$Res> {
+__$$LoadingStoredDataImplCopyWithImpl(_$LoadingStoredDataImpl _value,
+$Res Function(_$LoadingStoredDataImpl) _then)
+    : super(_value, _then);
 
-  /// Create a copy of ResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
+/// Create a copy of ResetPasswordState
+/// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
 class _$LoadingStoredDataImpl implements LoadingStoredData {
-  const _$LoadingStoredDataImpl();
+const _$LoadingStoredDataImpl();
 
-  @override
-  String toString() {
-    return 'ResetPasswordState.loadingStoredData()';
-  }
+@override
+String toString() {
+return 'ResetPasswordState.loadingStoredData()';
+}
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingStoredDataImpl);
-  }
+@override
+bool operator ==(Object other) {
+return identical(this, other) ||
+(other.runtimeType == runtimeType && other is _$LoadingStoredDataImpl);
+}
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadingStoredData,
-    required TResult Function(
-            bool isPasswordHidden, bool isConfirmPasswordHidden)
-        storedDataLoaded,
-    required TResult Function() resetPasswordLoading,
-    required TResult Function() resetPasswordSuccess,
-    required TResult Function(ApiErrorModel error) error,
-  }) {
-    return loadingStoredData();
-  }
+@override
+@optionalTypeArgs
+TResult when<TResult extends Object?>({
+required TResult Function() initial,
+required TResult Function() loadingStoredData,
+required TResult Function(
+bool isPasswordHidden, bool isConfirmPasswordHidden)
+storedDataLoaded,
+required TResult Function() resetPasswordLoading,
+required TResult Function() resetPasswordSuccess,
+required TResult Function(ApiErrorModel error) error,
+}) {
+return loadingStoredData();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loadingStoredData,
-    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult? Function()? resetPasswordLoading,
-    TResult? Function()? resetPasswordSuccess,
-    TResult? Function(ApiErrorModel error)? error,
-  }) {
-    return loadingStoredData?.call();
-  }
+@override
+@optionalTypeArgs
+TResult? whenOrNull<TResult extends Object?>({
+TResult? Function()? initial,
+TResult? Function()? loadingStoredData,
+TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult? Function()? resetPasswordLoading,
+TResult? Function()? resetPasswordSuccess,
+TResult? Function(ApiErrorModel error)? error,
+}) {
+return loadingStoredData?.call();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadingStoredData,
-    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult Function()? resetPasswordLoading,
-    TResult Function()? resetPasswordSuccess,
-    TResult Function(ApiErrorModel error)? error,
-    required TResult orElse(),
-  }) {
-    if (loadingStoredData != null) {
-      return loadingStoredData();
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeWhen<TResult extends Object?>({
+TResult Function()? initial,
+TResult Function()? loadingStoredData,
+TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult Function()? resetPasswordLoading,
+TResult Function()? resetPasswordSuccess,
+TResult Function(ApiErrorModel error)? error,
+required TResult orElse(),
+}) {
+if (loadingStoredData != null) {
+return loadingStoredData();
+}
+return orElse();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResetPasswordInitial value) initial,
-    required TResult Function(LoadingStoredData value) loadingStoredData,
-    required TResult Function(StoredDataLoaded value) storedDataLoaded,
-    required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
-    required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
-    required TResult Function(ResetPasswordError value) error,
-  }) {
-    return loadingStoredData(this);
-  }
+@override
+@optionalTypeArgs
+TResult map<TResult extends Object?>({
+required TResult Function(ResetPasswordInitial value) initial,
+required TResult Function(LoadingStoredData value) loadingStoredData,
+required TResult Function(StoredDataLoaded value) storedDataLoaded,
+required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
+required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
+required TResult Function(ResetPasswordError value) error,
+}) {
+return loadingStoredData(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResetPasswordInitial value)? initial,
-    TResult? Function(LoadingStoredData value)? loadingStoredData,
-    TResult? Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult? Function(ResetPasswordError value)? error,
-  }) {
-    return loadingStoredData?.call(this);
-  }
+@override
+@optionalTypeArgs
+TResult? mapOrNull<TResult extends Object?>({
+TResult? Function(ResetPasswordInitial value)? initial,
+TResult? Function(LoadingStoredData value)? loadingStoredData,
+TResult? Function(StoredDataLoaded value)? storedDataLoaded,
+TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult? Function(ResetPasswordError value)? error,
+}) {
+return loadingStoredData?.call(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResetPasswordInitial value)? initial,
-    TResult Function(LoadingStoredData value)? loadingStoredData,
-    TResult Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult Function(ResetPasswordError value)? error,
-    required TResult orElse(),
-  }) {
-    if (loadingStoredData != null) {
-      return loadingStoredData(this);
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeMap<TResult extends Object?>({
+TResult Function(ResetPasswordInitial value)? initial,
+TResult Function(LoadingStoredData value)? loadingStoredData,
+TResult Function(StoredDataLoaded value)? storedDataLoaded,
+TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult Function(ResetPasswordError value)? error,
+required TResult orElse(),
+}) {
+if (loadingStoredData != null) {
+return loadingStoredData(this);
+}
+return orElse();
+}
 }
 
 abstract class LoadingStoredData implements ResetPasswordState {
-  const factory LoadingStoredData() = _$LoadingStoredDataImpl;
+const factory LoadingStoredData() = _$LoadingStoredDataImpl;
 }
 
 /// @nodoc
 abstract class _$$StoredDataLoadedImplCopyWith<$Res> {
-  factory _$$StoredDataLoadedImplCopyWith(_$StoredDataLoadedImpl value,
-          $Res Function(_$StoredDataLoadedImpl) then) =
-      __$$StoredDataLoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool isPasswordHidden, bool isConfirmPasswordHidden});
+factory _$$StoredDataLoadedImplCopyWith(_$StoredDataLoadedImpl value,
+$Res Function(_$StoredDataLoadedImpl) then) =
+__$$StoredDataLoadedImplCopyWithImpl<$Res>;
+@useResult
+$Res call({bool isPasswordHidden, bool isConfirmPasswordHidden});
 }
 
 /// @nodoc
 class __$$StoredDataLoadedImplCopyWithImpl<$Res>
-    extends _$ResetPasswordStateCopyWithImpl<$Res, _$StoredDataLoadedImpl>
-    implements _$$StoredDataLoadedImplCopyWith<$Res> {
-  __$$StoredDataLoadedImplCopyWithImpl(_$StoredDataLoadedImpl _value,
-      $Res Function(_$StoredDataLoadedImpl) _then)
-      : super(_value, _then);
+extends _$ResetPasswordStateCopyWithImpl<$Res, _$StoredDataLoadedImpl>
+implements _$$StoredDataLoadedImplCopyWith<$Res> {
+__$$StoredDataLoadedImplCopyWithImpl(_$StoredDataLoadedImpl _value,
+$Res Function(_$StoredDataLoadedImpl) _then)
+    : super(_value, _then);
 
-  /// Create a copy of ResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isPasswordHidden = null,
-    Object? isConfirmPasswordHidden = null,
-  }) {
-    return _then(_$StoredDataLoadedImpl(
-      isPasswordHidden: null == isPasswordHidden
-          ? _value.isPasswordHidden
-          : isPasswordHidden // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isConfirmPasswordHidden: null == isConfirmPasswordHidden
-          ? _value.isConfirmPasswordHidden
-          : isConfirmPasswordHidden // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
+/// Create a copy of ResetPasswordState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline')
+@override
+$Res call({
+Object? isPasswordHidden = null,
+Object? isConfirmPasswordHidden = null,
+}) {
+return _then(_$StoredDataLoadedImpl(
+isPasswordHidden: null == isPasswordHidden
+? _value.isPasswordHidden
+    : isPasswordHidden // ignore: cast_nullable_to_non_nullable
+as bool,
+isConfirmPasswordHidden: null == isConfirmPasswordHidden
+? _value.isConfirmPasswordHidden
+    : isConfirmPasswordHidden // ignore: cast_nullable_to_non_nullable
+as bool,
+));
+}
 }
 
 /// @nodoc
 
 class _$StoredDataLoadedImpl implements StoredDataLoaded {
-  const _$StoredDataLoadedImpl(
-      {required this.isPasswordHidden, required this.isConfirmPasswordHidden});
+const _$StoredDataLoadedImpl(
+{required this.isPasswordHidden, required this.isConfirmPasswordHidden});
 
-  @override
-  final bool isPasswordHidden;
-  @override
-  final bool isConfirmPasswordHidden;
+@override
+final bool isPasswordHidden;
+@override
+final bool isConfirmPasswordHidden;
 
-  @override
-  String toString() {
-    return 'ResetPasswordState.storedDataLoaded(isPasswordHidden: $isPasswordHidden, isConfirmPasswordHidden: $isConfirmPasswordHidden)';
-  }
+@override
+String toString() {
+return 'ResetPasswordState.storedDataLoaded(isPasswordHidden: $isPasswordHidden, isConfirmPasswordHidden: $isConfirmPasswordHidden)';
+}
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StoredDataLoadedImpl &&
-            (identical(other.isPasswordHidden, isPasswordHidden) ||
-                other.isPasswordHidden == isPasswordHidden) &&
-            (identical(
-                    other.isConfirmPasswordHidden, isConfirmPasswordHidden) ||
-                other.isConfirmPasswordHidden == isConfirmPasswordHidden));
-  }
+@override
+bool operator ==(Object other) {
+return identical(this, other) ||
+(other.runtimeType == runtimeType &&
+other is _$StoredDataLoadedImpl &&
+(identical(other.isPasswordHidden, isPasswordHidden) ||
+other.isPasswordHidden == isPasswordHidden) &&
+(identical(
+other.isConfirmPasswordHidden, isConfirmPasswordHidden) ||
+other.isConfirmPasswordHidden == isConfirmPasswordHidden));
+}
 
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, isPasswordHidden, isConfirmPasswordHidden);
+@override
+int get hashCode =>
+Object.hash(runtimeType, isPasswordHidden, isConfirmPasswordHidden);
 
-  /// Create a copy of ResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StoredDataLoadedImplCopyWith<_$StoredDataLoadedImpl> get copyWith =>
-      __$$StoredDataLoadedImplCopyWithImpl<_$StoredDataLoadedImpl>(
-          this, _$identity);
+/// Create a copy of ResetPasswordState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+@pragma('vm:prefer-inline')
+_$$StoredDataLoadedImplCopyWith<_$StoredDataLoadedImpl> get copyWith =>
+__$$StoredDataLoadedImplCopyWithImpl<_$StoredDataLoadedImpl>(
+this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadingStoredData,
-    required TResult Function(
-            bool isPasswordHidden, bool isConfirmPasswordHidden)
-        storedDataLoaded,
-    required TResult Function() resetPasswordLoading,
-    required TResult Function() resetPasswordSuccess,
-    required TResult Function(ApiErrorModel error) error,
-  }) {
-    return storedDataLoaded(isPasswordHidden, isConfirmPasswordHidden);
-  }
+@override
+@optionalTypeArgs
+TResult when<TResult extends Object?>({
+required TResult Function() initial,
+required TResult Function() loadingStoredData,
+required TResult Function(
+bool isPasswordHidden, bool isConfirmPasswordHidden)
+storedDataLoaded,
+required TResult Function() resetPasswordLoading,
+required TResult Function() resetPasswordSuccess,
+required TResult Function(ApiErrorModel error) error,
+}) {
+return storedDataLoaded(isPasswordHidden, isConfirmPasswordHidden);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loadingStoredData,
-    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult? Function()? resetPasswordLoading,
-    TResult? Function()? resetPasswordSuccess,
-    TResult? Function(ApiErrorModel error)? error,
-  }) {
-    return storedDataLoaded?.call(isPasswordHidden, isConfirmPasswordHidden);
-  }
+@override
+@optionalTypeArgs
+TResult? whenOrNull<TResult extends Object?>({
+TResult? Function()? initial,
+TResult? Function()? loadingStoredData,
+TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult? Function()? resetPasswordLoading,
+TResult? Function()? resetPasswordSuccess,
+TResult? Function(ApiErrorModel error)? error,
+}) {
+return storedDataLoaded?.call(isPasswordHidden, isConfirmPasswordHidden);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadingStoredData,
-    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult Function()? resetPasswordLoading,
-    TResult Function()? resetPasswordSuccess,
-    TResult Function(ApiErrorModel error)? error,
-    required TResult orElse(),
-  }) {
-    if (storedDataLoaded != null) {
-      return storedDataLoaded(isPasswordHidden, isConfirmPasswordHidden);
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeWhen<TResult extends Object?>({
+TResult Function()? initial,
+TResult Function()? loadingStoredData,
+TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult Function()? resetPasswordLoading,
+TResult Function()? resetPasswordSuccess,
+TResult Function(ApiErrorModel error)? error,
+required TResult orElse(),
+}) {
+if (storedDataLoaded != null) {
+return storedDataLoaded(isPasswordHidden, isConfirmPasswordHidden);
+}
+return orElse();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResetPasswordInitial value) initial,
-    required TResult Function(LoadingStoredData value) loadingStoredData,
-    required TResult Function(StoredDataLoaded value) storedDataLoaded,
-    required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
-    required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
-    required TResult Function(ResetPasswordError value) error,
-  }) {
-    return storedDataLoaded(this);
-  }
+@override
+@optionalTypeArgs
+TResult map<TResult extends Object?>({
+required TResult Function(ResetPasswordInitial value) initial,
+required TResult Function(LoadingStoredData value) loadingStoredData,
+required TResult Function(StoredDataLoaded value) storedDataLoaded,
+required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
+required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
+required TResult Function(ResetPasswordError value) error,
+}) {
+return storedDataLoaded(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResetPasswordInitial value)? initial,
-    TResult? Function(LoadingStoredData value)? loadingStoredData,
-    TResult? Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult? Function(ResetPasswordError value)? error,
-  }) {
-    return storedDataLoaded?.call(this);
-  }
+@override
+@optionalTypeArgs
+TResult? mapOrNull<TResult extends Object?>({
+TResult? Function(ResetPasswordInitial value)? initial,
+TResult? Function(LoadingStoredData value)? loadingStoredData,
+TResult? Function(StoredDataLoaded value)? storedDataLoaded,
+TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult? Function(ResetPasswordError value)? error,
+}) {
+return storedDataLoaded?.call(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResetPasswordInitial value)? initial,
-    TResult Function(LoadingStoredData value)? loadingStoredData,
-    TResult Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult Function(ResetPasswordError value)? error,
-    required TResult orElse(),
-  }) {
-    if (storedDataLoaded != null) {
-      return storedDataLoaded(this);
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeMap<TResult extends Object?>({
+TResult Function(ResetPasswordInitial value)? initial,
+TResult Function(LoadingStoredData value)? loadingStoredData,
+TResult Function(StoredDataLoaded value)? storedDataLoaded,
+TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult Function(ResetPasswordError value)? error,
+required TResult orElse(),
+}) {
+if (storedDataLoaded != null) {
+return storedDataLoaded(this);
+}
+return orElse();
+}
 }
 
 abstract class StoredDataLoaded implements ResetPasswordState {
-  const factory StoredDataLoaded(
-      {required final bool isPasswordHidden,
-      required final bool isConfirmPasswordHidden}) = _$StoredDataLoadedImpl;
+const factory StoredDataLoaded(
+{required final bool isPasswordHidden,
+required final bool isConfirmPasswordHidden}) = _$StoredDataLoadedImpl;
 
-  bool get isPasswordHidden;
-  bool get isConfirmPasswordHidden;
+bool get isPasswordHidden;
+bool get isConfirmPasswordHidden;
 
-  /// Create a copy of ResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StoredDataLoadedImplCopyWith<_$StoredDataLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+/// Create a copy of ResetPasswordState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+_$$StoredDataLoadedImplCopyWith<_$StoredDataLoadedImpl> get copyWith =>
+throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ResetPasswordLoadingImplCopyWith<$Res> {
-  factory _$$ResetPasswordLoadingImplCopyWith(_$ResetPasswordLoadingImpl value,
-          $Res Function(_$ResetPasswordLoadingImpl) then) =
-      __$$ResetPasswordLoadingImplCopyWithImpl<$Res>;
+factory _$$ResetPasswordLoadingImplCopyWith(_$ResetPasswordLoadingImpl value,
+$Res Function(_$ResetPasswordLoadingImpl) then) =
+__$$ResetPasswordLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$ResetPasswordLoadingImplCopyWithImpl<$Res>
-    extends _$ResetPasswordStateCopyWithImpl<$Res, _$ResetPasswordLoadingImpl>
-    implements _$$ResetPasswordLoadingImplCopyWith<$Res> {
-  __$$ResetPasswordLoadingImplCopyWithImpl(_$ResetPasswordLoadingImpl _value,
-      $Res Function(_$ResetPasswordLoadingImpl) _then)
-      : super(_value, _then);
+extends _$ResetPasswordStateCopyWithImpl<$Res, _$ResetPasswordLoadingImpl>
+implements _$$ResetPasswordLoadingImplCopyWith<$Res> {
+__$$ResetPasswordLoadingImplCopyWithImpl(_$ResetPasswordLoadingImpl _value,
+$Res Function(_$ResetPasswordLoadingImpl) _then)
+    : super(_value, _then);
 
-  /// Create a copy of ResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
+/// Create a copy of ResetPasswordState
+/// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
 class _$ResetPasswordLoadingImpl implements ResetPasswordLoading {
-  const _$ResetPasswordLoadingImpl();
+const _$ResetPasswordLoadingImpl();
 
-  @override
-  String toString() {
-    return 'ResetPasswordState.resetPasswordLoading()';
-  }
+@override
+String toString() {
+return 'ResetPasswordState.resetPasswordLoading()';
+}
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ResetPasswordLoadingImpl);
-  }
+@override
+bool operator ==(Object other) {
+return identical(this, other) ||
+(other.runtimeType == runtimeType &&
+other is _$ResetPasswordLoadingImpl);
+}
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadingStoredData,
-    required TResult Function(
-            bool isPasswordHidden, bool isConfirmPasswordHidden)
-        storedDataLoaded,
-    required TResult Function() resetPasswordLoading,
-    required TResult Function() resetPasswordSuccess,
-    required TResult Function(ApiErrorModel error) error,
-  }) {
-    return resetPasswordLoading();
-  }
+@override
+@optionalTypeArgs
+TResult when<TResult extends Object?>({
+required TResult Function() initial,
+required TResult Function() loadingStoredData,
+required TResult Function(
+bool isPasswordHidden, bool isConfirmPasswordHidden)
+storedDataLoaded,
+required TResult Function() resetPasswordLoading,
+required TResult Function() resetPasswordSuccess,
+required TResult Function(ApiErrorModel error) error,
+}) {
+return resetPasswordLoading();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loadingStoredData,
-    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult? Function()? resetPasswordLoading,
-    TResult? Function()? resetPasswordSuccess,
-    TResult? Function(ApiErrorModel error)? error,
-  }) {
-    return resetPasswordLoading?.call();
-  }
+@override
+@optionalTypeArgs
+TResult? whenOrNull<TResult extends Object?>({
+TResult? Function()? initial,
+TResult? Function()? loadingStoredData,
+TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult? Function()? resetPasswordLoading,
+TResult? Function()? resetPasswordSuccess,
+TResult? Function(ApiErrorModel error)? error,
+}) {
+return resetPasswordLoading?.call();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadingStoredData,
-    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult Function()? resetPasswordLoading,
-    TResult Function()? resetPasswordSuccess,
-    TResult Function(ApiErrorModel error)? error,
-    required TResult orElse(),
-  }) {
-    if (resetPasswordLoading != null) {
-      return resetPasswordLoading();
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeWhen<TResult extends Object?>({
+TResult Function()? initial,
+TResult Function()? loadingStoredData,
+TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult Function()? resetPasswordLoading,
+TResult Function()? resetPasswordSuccess,
+TResult Function(ApiErrorModel error)? error,
+required TResult orElse(),
+}) {
+if (resetPasswordLoading != null) {
+return resetPasswordLoading();
+}
+return orElse();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResetPasswordInitial value) initial,
-    required TResult Function(LoadingStoredData value) loadingStoredData,
-    required TResult Function(StoredDataLoaded value) storedDataLoaded,
-    required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
-    required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
-    required TResult Function(ResetPasswordError value) error,
-  }) {
-    return resetPasswordLoading(this);
-  }
+@override
+@optionalTypeArgs
+TResult map<TResult extends Object?>({
+required TResult Function(ResetPasswordInitial value) initial,
+required TResult Function(LoadingStoredData value) loadingStoredData,
+required TResult Function(StoredDataLoaded value) storedDataLoaded,
+required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
+required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
+required TResult Function(ResetPasswordError value) error,
+}) {
+return resetPasswordLoading(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResetPasswordInitial value)? initial,
-    TResult? Function(LoadingStoredData value)? loadingStoredData,
-    TResult? Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult? Function(ResetPasswordError value)? error,
-  }) {
-    return resetPasswordLoading?.call(this);
-  }
+@override
+@optionalTypeArgs
+TResult? mapOrNull<TResult extends Object?>({
+TResult? Function(ResetPasswordInitial value)? initial,
+TResult? Function(LoadingStoredData value)? loadingStoredData,
+TResult? Function(StoredDataLoaded value)? storedDataLoaded,
+TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult? Function(ResetPasswordError value)? error,
+}) {
+return resetPasswordLoading?.call(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResetPasswordInitial value)? initial,
-    TResult Function(LoadingStoredData value)? loadingStoredData,
-    TResult Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult Function(ResetPasswordError value)? error,
-    required TResult orElse(),
-  }) {
-    if (resetPasswordLoading != null) {
-      return resetPasswordLoading(this);
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeMap<TResult extends Object?>({
+TResult Function(ResetPasswordInitial value)? initial,
+TResult Function(LoadingStoredData value)? loadingStoredData,
+TResult Function(StoredDataLoaded value)? storedDataLoaded,
+TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult Function(ResetPasswordError value)? error,
+required TResult orElse(),
+}) {
+if (resetPasswordLoading != null) {
+return resetPasswordLoading(this);
+}
+return orElse();
+}
 }
 
 abstract class ResetPasswordLoading implements ResetPasswordState {
-  const factory ResetPasswordLoading() = _$ResetPasswordLoadingImpl;
+const factory ResetPasswordLoading() = _$ResetPasswordLoadingImpl;
 }
 
 /// @nodoc
 abstract class _$$ResetPasswordSuccessImplCopyWith<$Res> {
-  factory _$$ResetPasswordSuccessImplCopyWith(_$ResetPasswordSuccessImpl value,
-          $Res Function(_$ResetPasswordSuccessImpl) then) =
-      __$$ResetPasswordSuccessImplCopyWithImpl<$Res>;
+factory _$$ResetPasswordSuccessImplCopyWith(_$ResetPasswordSuccessImpl value,
+$Res Function(_$ResetPasswordSuccessImpl) then) =
+__$$ResetPasswordSuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$ResetPasswordSuccessImplCopyWithImpl<$Res>
-    extends _$ResetPasswordStateCopyWithImpl<$Res, _$ResetPasswordSuccessImpl>
-    implements _$$ResetPasswordSuccessImplCopyWith<$Res> {
-  __$$ResetPasswordSuccessImplCopyWithImpl(_$ResetPasswordSuccessImpl _value,
-      $Res Function(_$ResetPasswordSuccessImpl) _then)
-      : super(_value, _then);
+extends _$ResetPasswordStateCopyWithImpl<$Res, _$ResetPasswordSuccessImpl>
+implements _$$ResetPasswordSuccessImplCopyWith<$Res> {
+__$$ResetPasswordSuccessImplCopyWithImpl(_$ResetPasswordSuccessImpl _value,
+$Res Function(_$ResetPasswordSuccessImpl) _then)
+    : super(_value, _then);
 
-  /// Create a copy of ResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
+/// Create a copy of ResetPasswordState
+/// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
 class _$ResetPasswordSuccessImpl implements ResetPasswordSuccess {
-  const _$ResetPasswordSuccessImpl();
+const _$ResetPasswordSuccessImpl();
 
-  @override
-  String toString() {
-    return 'ResetPasswordState.resetPasswordSuccess()';
-  }
+@override
+String toString() {
+return 'ResetPasswordState.resetPasswordSuccess()';
+}
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ResetPasswordSuccessImpl);
-  }
+@override
+bool operator ==(Object other) {
+return identical(this, other) ||
+(other.runtimeType == runtimeType &&
+other is _$ResetPasswordSuccessImpl);
+}
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadingStoredData,
-    required TResult Function(
-            bool isPasswordHidden, bool isConfirmPasswordHidden)
-        storedDataLoaded,
-    required TResult Function() resetPasswordLoading,
-    required TResult Function() resetPasswordSuccess,
-    required TResult Function(ApiErrorModel error) error,
-  }) {
-    return resetPasswordSuccess();
-  }
+@override
+@optionalTypeArgs
+TResult when<TResult extends Object?>({
+required TResult Function() initial,
+required TResult Function() loadingStoredData,
+required TResult Function(
+bool isPasswordHidden, bool isConfirmPasswordHidden)
+storedDataLoaded,
+required TResult Function() resetPasswordLoading,
+required TResult Function() resetPasswordSuccess,
+required TResult Function(ApiErrorModel error) error,
+}) {
+return resetPasswordSuccess();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loadingStoredData,
-    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult? Function()? resetPasswordLoading,
-    TResult? Function()? resetPasswordSuccess,
-    TResult? Function(ApiErrorModel error)? error,
-  }) {
-    return resetPasswordSuccess?.call();
-  }
+@override
+@optionalTypeArgs
+TResult? whenOrNull<TResult extends Object?>({
+TResult? Function()? initial,
+TResult? Function()? loadingStoredData,
+TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult? Function()? resetPasswordLoading,
+TResult? Function()? resetPasswordSuccess,
+TResult? Function(ApiErrorModel error)? error,
+}) {
+return resetPasswordSuccess?.call();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadingStoredData,
-    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult Function()? resetPasswordLoading,
-    TResult Function()? resetPasswordSuccess,
-    TResult Function(ApiErrorModel error)? error,
-    required TResult orElse(),
-  }) {
-    if (resetPasswordSuccess != null) {
-      return resetPasswordSuccess();
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeWhen<TResult extends Object?>({
+TResult Function()? initial,
+TResult Function()? loadingStoredData,
+TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult Function()? resetPasswordLoading,
+TResult Function()? resetPasswordSuccess,
+TResult Function(ApiErrorModel error)? error,
+required TResult orElse(),
+}) {
+if (resetPasswordSuccess != null) {
+return resetPasswordSuccess();
+}
+return orElse();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResetPasswordInitial value) initial,
-    required TResult Function(LoadingStoredData value) loadingStoredData,
-    required TResult Function(StoredDataLoaded value) storedDataLoaded,
-    required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
-    required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
-    required TResult Function(ResetPasswordError value) error,
-  }) {
-    return resetPasswordSuccess(this);
-  }
+@override
+@optionalTypeArgs
+TResult map<TResult extends Object?>({
+required TResult Function(ResetPasswordInitial value) initial,
+required TResult Function(LoadingStoredData value) loadingStoredData,
+required TResult Function(StoredDataLoaded value) storedDataLoaded,
+required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
+required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
+required TResult Function(ResetPasswordError value) error,
+}) {
+return resetPasswordSuccess(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResetPasswordInitial value)? initial,
-    TResult? Function(LoadingStoredData value)? loadingStoredData,
-    TResult? Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult? Function(ResetPasswordError value)? error,
-  }) {
-    return resetPasswordSuccess?.call(this);
-  }
+@override
+@optionalTypeArgs
+TResult? mapOrNull<TResult extends Object?>({
+TResult? Function(ResetPasswordInitial value)? initial,
+TResult? Function(LoadingStoredData value)? loadingStoredData,
+TResult? Function(StoredDataLoaded value)? storedDataLoaded,
+TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult? Function(ResetPasswordError value)? error,
+}) {
+return resetPasswordSuccess?.call(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResetPasswordInitial value)? initial,
-    TResult Function(LoadingStoredData value)? loadingStoredData,
-    TResult Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult Function(ResetPasswordError value)? error,
-    required TResult orElse(),
-  }) {
-    if (resetPasswordSuccess != null) {
-      return resetPasswordSuccess(this);
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeMap<TResult extends Object?>({
+TResult Function(ResetPasswordInitial value)? initial,
+TResult Function(LoadingStoredData value)? loadingStoredData,
+TResult Function(StoredDataLoaded value)? storedDataLoaded,
+TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult Function(ResetPasswordError value)? error,
+required TResult orElse(),
+}) {
+if (resetPasswordSuccess != null) {
+return resetPasswordSuccess(this);
+}
+return orElse();
+}
 }
 
 abstract class ResetPasswordSuccess implements ResetPasswordState {
-  const factory ResetPasswordSuccess() = _$ResetPasswordSuccessImpl;
+const factory ResetPasswordSuccess() = _$ResetPasswordSuccessImpl;
 }
 
 /// @nodoc
 abstract class _$$ResetPasswordErrorImplCopyWith<$Res> {
-  factory _$$ResetPasswordErrorImplCopyWith(_$ResetPasswordErrorImpl value,
-          $Res Function(_$ResetPasswordErrorImpl) then) =
-      __$$ResetPasswordErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ApiErrorModel error});
+factory _$$ResetPasswordErrorImplCopyWith(_$ResetPasswordErrorImpl value,
+$Res Function(_$ResetPasswordErrorImpl) then) =
+__$$ResetPasswordErrorImplCopyWithImpl<$Res>;
+@useResult
+$Res call({ApiErrorModel error});
 }
 
 /// @nodoc
 class __$$ResetPasswordErrorImplCopyWithImpl<$Res>
-    extends _$ResetPasswordStateCopyWithImpl<$Res, _$ResetPasswordErrorImpl>
-    implements _$$ResetPasswordErrorImplCopyWith<$Res> {
-  __$$ResetPasswordErrorImplCopyWithImpl(_$ResetPasswordErrorImpl _value,
-      $Res Function(_$ResetPasswordErrorImpl) _then)
-      : super(_value, _then);
+extends _$ResetPasswordStateCopyWithImpl<$Res, _$ResetPasswordErrorImpl>
+implements _$$ResetPasswordErrorImplCopyWith<$Res> {
+__$$ResetPasswordErrorImplCopyWithImpl(_$ResetPasswordErrorImpl _value,
+$Res Function(_$ResetPasswordErrorImpl) _then)
+    : super(_value, _then);
 
-  /// Create a copy of ResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? error = null,
-  }) {
-    return _then(_$ResetPasswordErrorImpl(
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as ApiErrorModel,
-    ));
-  }
+/// Create a copy of ResetPasswordState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline')
+@override
+$Res call({
+Object? error = null,
+}) {
+return _then(_$ResetPasswordErrorImpl(
+error: null == error
+? _value.error
+    : error // ignore: cast_nullable_to_non_nullable
+as ApiErrorModel,
+));
+}
 }
 
 /// @nodoc
 
 class _$ResetPasswordErrorImpl implements ResetPasswordError {
-  const _$ResetPasswordErrorImpl({required this.error});
+const _$ResetPasswordErrorImpl({required this.error});
 
-  @override
-  final ApiErrorModel error;
+@override
+final ApiErrorModel error;
 
-  @override
-  String toString() {
-    return 'ResetPasswordState.error(error: $error)';
-  }
+@override
+String toString() {
+return 'ResetPasswordState.error(error: $error)';
+}
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ResetPasswordErrorImpl &&
-            (identical(other.error, error) || other.error == error));
-  }
+@override
+bool operator ==(Object other) {
+return identical(this, other) ||
+(other.runtimeType == runtimeType &&
+other is _$ResetPasswordErrorImpl &&
+(identical(other.error, error) || other.error == error));
+}
 
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
+@override
+int get hashCode => Object.hash(runtimeType, error);
 
-  /// Create a copy of ResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ResetPasswordErrorImplCopyWith<_$ResetPasswordErrorImpl> get copyWith =>
-      __$$ResetPasswordErrorImplCopyWithImpl<_$ResetPasswordErrorImpl>(
-          this, _$identity);
+/// Create a copy of ResetPasswordState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+@pragma('vm:prefer-inline')
+_$$ResetPasswordErrorImplCopyWith<_$ResetPasswordErrorImpl> get copyWith =>
+__$$ResetPasswordErrorImplCopyWithImpl<_$ResetPasswordErrorImpl>(
+this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadingStoredData,
-    required TResult Function(
-            bool isPasswordHidden, bool isConfirmPasswordHidden)
-        storedDataLoaded,
-    required TResult Function() resetPasswordLoading,
-    required TResult Function() resetPasswordSuccess,
-    required TResult Function(ApiErrorModel error) error,
-  }) {
-    return error(this.error);
-  }
+@override
+@optionalTypeArgs
+TResult when<TResult extends Object?>({
+required TResult Function() initial,
+required TResult Function() loadingStoredData,
+required TResult Function(
+bool isPasswordHidden, bool isConfirmPasswordHidden)
+storedDataLoaded,
+required TResult Function() resetPasswordLoading,
+required TResult Function() resetPasswordSuccess,
+required TResult Function(ApiErrorModel error) error,
+}) {
+return error(this.error);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loadingStoredData,
-    TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult? Function()? resetPasswordLoading,
-    TResult? Function()? resetPasswordSuccess,
-    TResult? Function(ApiErrorModel error)? error,
-  }) {
-    return error?.call(this.error);
-  }
+@override
+@optionalTypeArgs
+TResult? whenOrNull<TResult extends Object?>({
+TResult? Function()? initial,
+TResult? Function()? loadingStoredData,
+TResult? Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult? Function()? resetPasswordLoading,
+TResult? Function()? resetPasswordSuccess,
+TResult? Function(ApiErrorModel error)? error,
+}) {
+return error?.call(this.error);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadingStoredData,
-    TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
-        storedDataLoaded,
-    TResult Function()? resetPasswordLoading,
-    TResult Function()? resetPasswordSuccess,
-    TResult Function(ApiErrorModel error)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeWhen<TResult extends Object?>({
+TResult Function()? initial,
+TResult Function()? loadingStoredData,
+TResult Function(bool isPasswordHidden, bool isConfirmPasswordHidden)?
+storedDataLoaded,
+TResult Function()? resetPasswordLoading,
+TResult Function()? resetPasswordSuccess,
+TResult Function(ApiErrorModel error)? error,
+required TResult orElse(),
+}) {
+if (error != null) {
+return error(this.error);
+}
+return orElse();
+}
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResetPasswordInitial value) initial,
-    required TResult Function(LoadingStoredData value) loadingStoredData,
-    required TResult Function(StoredDataLoaded value) storedDataLoaded,
-    required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
-    required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
-    required TResult Function(ResetPasswordError value) error,
-  }) {
-    return error(this);
-  }
+@override
+@optionalTypeArgs
+TResult map<TResult extends Object?>({
+required TResult Function(ResetPasswordInitial value) initial,
+required TResult Function(LoadingStoredData value) loadingStoredData,
+required TResult Function(StoredDataLoaded value) storedDataLoaded,
+required TResult Function(ResetPasswordLoading value) resetPasswordLoading,
+required TResult Function(ResetPasswordSuccess value) resetPasswordSuccess,
+required TResult Function(ResetPasswordError value) error,
+}) {
+return error(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResetPasswordInitial value)? initial,
-    TResult? Function(LoadingStoredData value)? loadingStoredData,
-    TResult? Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult? Function(ResetPasswordError value)? error,
-  }) {
-    return error?.call(this);
-  }
+@override
+@optionalTypeArgs
+TResult? mapOrNull<TResult extends Object?>({
+TResult? Function(ResetPasswordInitial value)? initial,
+TResult? Function(LoadingStoredData value)? loadingStoredData,
+TResult? Function(StoredDataLoaded value)? storedDataLoaded,
+TResult? Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult? Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult? Function(ResetPasswordError value)? error,
+}) {
+return error?.call(this);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResetPasswordInitial value)? initial,
-    TResult Function(LoadingStoredData value)? loadingStoredData,
-    TResult Function(StoredDataLoaded value)? storedDataLoaded,
-    TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
-    TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
-    TResult Function(ResetPasswordError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
+@override
+@optionalTypeArgs
+TResult maybeMap<TResult extends Object?>({
+TResult Function(ResetPasswordInitial value)? initial,
+TResult Function(LoadingStoredData value)? loadingStoredData,
+TResult Function(StoredDataLoaded value)? storedDataLoaded,
+TResult Function(ResetPasswordLoading value)? resetPasswordLoading,
+TResult Function(ResetPasswordSuccess value)? resetPasswordSuccess,
+TResult Function(ResetPasswordError value)? error,
+required TResult orElse(),
+}) {
+if (error != null) {
+return error(this);
+}
+return orElse();
+}
 }
 
 abstract class ResetPasswordError implements ResetPasswordState {
-  const factory ResetPasswordError({required final ApiErrorModel error}) =
-      _$ResetPasswordErrorImpl;
+const factory ResetPasswordError({required final ApiErrorModel error}) =
+_$ResetPasswordErrorImpl;
 
-  ApiErrorModel get error;
+ApiErrorModel get error;
 
-  /// Create a copy of ResetPasswordState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ResetPasswordErrorImplCopyWith<_$ResetPasswordErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+/// Create a copy of ResetPasswordState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+_$$ResetPasswordErrorImplCopyWith<_$ResetPasswordErrorImpl> get copyWith =>
+throw _privateConstructorUsedError;
 }

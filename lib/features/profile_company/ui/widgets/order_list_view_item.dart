@@ -14,8 +14,8 @@ class OrderListViewItem extends StatelessWidget {
 
   const OrderListViewItem({super.key, required this.order});
 
-  String _getStatusText(int status) {
-    return status == 0 ? 'Pending' : 'Completed';
+  String _getStatusText(String status) {
+    return status == 'Pending' ? 'Active' : 'Completed';
   }
 
   @override

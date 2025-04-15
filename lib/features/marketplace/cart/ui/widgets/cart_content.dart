@@ -38,7 +38,7 @@ class CartContent extends StatelessWidget {
                   Text(
                     'No Items Added to Cart',
                     style: TextStyles.font16lightBlackRegular.copyWith(
-                        color: ColorsManager.lightBlack.withOpacity(0.7)),
+                        color: ColorsManager.lightBlack.withValues(alpha: 0.7)),
                   ),
                 ],
               ),

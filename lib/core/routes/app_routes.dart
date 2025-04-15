@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import '../di/dependency_injection.dart';
+import 'package:solidify/core/di/dependency_injection.dart';
+import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
+import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
+import 'package:solidify/features/marketplace/search/ui/screens/search_screen.dart';
+import 'package:solidify/features/marketplace/search/ui/screens/search_with_filter_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/shared_screens/help_screen.dart';
@@ -21,7 +25,6 @@ import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/core/shared_screens/about_your_account_screen.dart';
 import 'package:solidify/features/marketplace/search/logic/search_cubit.dart';
-import 'package:solidify/features/marketplace/search/screens/search_screen.dart';
 import 'package:solidify/features/marketplace/favorites/ui/favorites_screen.dart';
 import 'package:solidify/features/marketplace/order/ui/screens/payment_screen.dart';
 import 'package:solidify/features/marketplace/order/ui/screens/checkout_screen.dart';
@@ -37,7 +40,6 @@ import 'package:solidify/features/auth/forget_password/logic/forget_password_cub
 import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/reviews_screen.dart';
 import 'package:solidify/features/marketplace/order/ui/screens/address_details_screen.dart';
-import 'package:solidify/features/marketplace/search/screens/search_with_filter_screen.dart';
 import 'package:solidify/features/crack_detection/ui/screens/upload_crack_gallery_image.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/write_review_screen.dart';
@@ -45,7 +47,6 @@ import 'package:solidify/features/marketplace/marketplace/ui/screens/best_seller
 import 'package:solidify/features/crack_detection/ui/screens/crack_detection_result_screen.dart';
 import 'package:solidify/features/profile_company/logic/post_review_cubit/post_review_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/product_details_screen.dart';
-import '../../features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/ui/screens/product_category_screen.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_result.dart';
 import 'package:solidify/features/profile_company/logic/order_details_cubit/order_details_cubit.dart';
@@ -54,7 +55,6 @@ import 'package:solidify/features/marketplace/marketplace/data/models/get_produc
 import 'package:solidify/features/marketplace/order/logic/shipping_address_cubit/shipping_address_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/products_list_cubit/products_list_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/select_account_type/ui/select_account_type_screen.dart';
-import '../../features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_details_cubit/product_details_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/ui/engineer_account_sign_up_screen.dart';
 import 'package:solidify/features/marketplace/marketplace/logic/product_category_cubit.dart/product_category_cubit.dart';

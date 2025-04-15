@@ -27,6 +27,11 @@ class _ProfileCompanyScreenState extends State<ProfileCompanyScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _isDrawerOpen = false;
 
+  static const Map<String, int> _statusMap = {
+    'pending': 0,
+    'completed': 1,
+  };
+
   @override
   void initState() {
     super.initState();
@@ -37,7 +42,7 @@ class _ProfileCompanyScreenState extends State<ProfileCompanyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: CustomProfileDrawer(),
+      drawer: const CustomProfileDrawer(),
       onDrawerChanged: (isOpen) {
         setState(() {
           _isDrawerOpen = isOpen;
@@ -65,7 +70,7 @@ class _ProfileCompanyScreenState extends State<ProfileCompanyScreen> {
                         children: [
                           verticalSpace(37),
                           CustomTabToggle(
-                            tabs: const ['Active orders', 'Completed orders'],
+                            tabs: const ['Active Orders', 'Completed Orders'],
                             onTabSelected: (index) {
                               setState(() {
                                 _currentTabIndex = index;
@@ -77,13 +82,26 @@ class _ProfileCompanyScreenState extends State<ProfileCompanyScreen> {
                             getOrdersLoading: () => const Center(
                               child: CircularProgressIndicator(),
                             ),
-                            getOrdersSuccess: (response) => OrderListView(
-                              itemsToShow: 2,
-                              orders: response.model.items
-                                  .where((order) => order.orderStatus == _currentTabIndex)
-                                  .toList()
-                                ..sort((a, b) => b.orderDate.compareTo(a.orderDate)),
-                            ),
+                            getOrdersSuccess: (response) {
+                              final filteredOrders = response.model.items
+                                  .where((order) {
+                                final status = order.orderStatus.toLowerCase();
+                                return _statusMap[status] == _currentTabIndex;
+                              }).toList()
+                                ..sort((a, b) =>
+                                    b.orderDate.compareTo(a.orderDate));
+
+                              if (filteredOrders.isEmpty) {
+                                return const Center(
+                                  child: Text('No orders available yet'),
+                                );
+                              }
+
+                              return OrderListView(
+                                itemsToShow: 2,
+                                orders: filteredOrders,
+                              );
+                            },
                             getOrdersError: (error) => Center(
                               child: Text('Error: ${error.message}'),
                             ),
@@ -136,7 +154,7 @@ class _ProfileCompanyScreenState extends State<ProfileCompanyScreen> {
             BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
               child: Container(
-                color: Colors.black.withOpacity(0.2),
+                color: Colors.black.withValues(alpha: 0.2),
               ),
             ),
         ],

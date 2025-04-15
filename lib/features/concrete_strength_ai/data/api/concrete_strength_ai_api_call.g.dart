@@ -9,11 +9,7 @@ part of 'concrete_strength_ai_api_call.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _ConcreteStrengthAiApiCall implements ConcreteStrengthAiApiCall {
-  _ConcreteStrengthAiApiCall(
-    this._dio, {
-    this.baseUrl,
-    this.errorLogger,
-  }) {
+  _ConcreteStrengthAiApiCall(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??= 'https://mahmoud763-concrete.hf.space/';
   }
 
@@ -25,28 +21,23 @@ class _ConcreteStrengthAiApiCall implements ConcreteStrengthAiApiCall {
 
   @override
   Future<ConcreteAiResponseModel> getConcreteAiResponse(
-      ConcreteAiRequestModel concreteAiRequestModel) async {
+    ConcreteAiRequestModel concreteAiRequestModel,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(concreteAiRequestModel.toJson());
-    final _options = _setStreamType<ConcreteAiResponseModel>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          'predict',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
+    final _options = _setStreamType<ConcreteAiResponseModel>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'predict',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late ConcreteAiResponseModel _value;
     try {
@@ -71,10 +62,7 @@ class _ConcreteStrengthAiApiCall implements ConcreteStrengthAiApiCall {
     return requestOptions;
   }
 
-  String _combineBaseUrls(
-    String dioBaseUrl,
-    String? baseUrl,
-  ) {
+  String _combineBaseUrls(String dioBaseUrl, String? baseUrl) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }

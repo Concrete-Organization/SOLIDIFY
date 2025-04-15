@@ -31,11 +31,11 @@ class NotificationsListViewItem extends StatelessWidget {
         border: isHighlighted
             ? Border(
                 top: BorderSide(
-                  color: ColorsManager.mainBlue.withOpacity(0.2),
+                  color: ColorsManager.mainBlue.withValues(alpha: 0.2),
                   width: 1.w,
                 ),
                 bottom: BorderSide(
-                  color: ColorsManager.mainBlue.withOpacity(0.2),
+                  color: ColorsManager.mainBlue.withValues(alpha: 0.2),
                   width: 1.w,
                 ),
               )

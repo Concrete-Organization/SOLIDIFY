@@ -52,7 +52,7 @@ class AppTextButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? ColorsManager.mainBlue,
           disabledBackgroundColor: disabledBackgroundColor ??
-              ColorsManager.mainBlue.withOpacity(0.8),
+              ColorsManager.mainBlue.withValues(alpha: 0.8),
           disabledForegroundColor: disabledTextColor ?? ColorsManager.white,
           padding: padding ?? EdgeInsets.symmetric(vertical: 12.h),
           shape: RoundedRectangleBorder(
