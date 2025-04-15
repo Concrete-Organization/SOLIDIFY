@@ -88,7 +88,12 @@ class OrderProductItem extends StatelessWidget {
               if (productId != null) {
                 context.pushNamed(
                   Routes.writeReviewScreen,
-                  arguments: productId,
+                  arguments: {
+                    'productId': productId,
+                    'imageUri': imageUri,
+                    'name': name,
+                    'price': price,
+                  },
                 );
               }
             },

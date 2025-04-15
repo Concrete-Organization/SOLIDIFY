@@ -1,11 +1,22 @@
-import 'package:flutter/widgets.dart';
-import 'package:solidify/core/helpers/spacing.dart';
-import 'package:solidify/core/theming/text_styles.dart';
-import 'package:solidify/core/theming/color_manger.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/theming/color_manger.dart';
+import 'package:solidify/core/theming/text_styles.dart';
 
 class ProductRowForReview extends StatelessWidget {
-  const ProductRowForReview({super.key});
+  final String imageUri;
+  final String name;
+  final String price;
+
+  const ProductRowForReview({
+    super.key,
+    required this.imageUri,
+    required this.name,
+    required this.price,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,23 +32,34 @@ class ProductRowForReview extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(5.r),
           ),
-          child: Image.asset('assets/images/cement_bag_3x.png'),
+          child: CachedNetworkImage(
+            imageUrl: imageUri,
+            fit: BoxFit.contain,
+            placeholder: (context, url) => Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: Container(
+                color: Colors.white,
+              ),
+            ),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          ),
         ),
         horizontalSpace(15),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Ambuja cement',
+              name,
               style: TextStyles.font12LightBlackMedium,
             ),
             verticalSpace(20),
             Text(
-              '1,000 EGP',
+              price,
               style: TextStyles.font12MainBlueMedium,
             ),
           ],
-        )
+        ),
       ],
     );
   }

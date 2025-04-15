@@ -14,8 +14,17 @@ import 'package:solidify/features/profile_company/logic/post_review_cubit/post_r
 
 class WriteReviewScreen extends StatefulWidget {
   final String productId;
+  final String imageUri;
+  final String name;
+  final String price;
 
-  const WriteReviewScreen({super.key, required this.productId});
+  const WriteReviewScreen({
+    super.key,
+    required this.productId,
+    required this.imageUri,
+    required this.name,
+    required this.price,
+  });
 
   @override
   State<WriteReviewScreen> createState() => _WriteReviewScreenState();
@@ -78,7 +87,11 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   verticalSpace(35),
-                  const ProductRowForReview(),
+                  ProductRowForReview(
+                    imageUri: widget.imageUri,
+                    name: widget.name,
+                    price: widget.price,
+                  ),
                   verticalSpace(20),
                   const HorizontalDivider(),
                   verticalSpace(25),

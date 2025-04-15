@@ -60,9 +60,11 @@ class OrderCubit extends Cubit<OrderState> {
     final token =
         await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
     if (token.isEmpty) {
-      emit(OrderState.getOrdersError(
-        error: ApiErrorModel(message: 'No authentication token found'),
-      ));
+      emit(
+        OrderState.getOrdersError(
+          error: ApiErrorModel(message: 'No authentication token found'),
+        ),
+      );
       return;
     }
 
@@ -75,8 +77,11 @@ class OrderCubit extends Cubit<OrderState> {
           await SharedPrefHelper.cacheOrderIds(orderIds);
           emit(OrderState.getOrdersSuccess(response: response));
         } else {
-          emit(OrderState.getOrdersError(
-              error: ApiErrorModel(message: response.message)));
+          emit(
+            OrderState.getOrdersError(
+              error: ApiErrorModel(message: response.message),
+            ),
+          );
         }
       },
       failure: (error) {

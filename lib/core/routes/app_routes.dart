@@ -326,17 +326,27 @@ class AppRoutes {
           builder: (context) => const AccountTypeScreen(),
         );
       case Routes.writeReviewScreen:
-        final productId = settings.arguments as String?;
-        if (productId == null) {
+        final args = settings.arguments as Map<String, dynamic>?;
+        final productId = args?['productId'] as String?;
+        final imageUri = args?['imageUri'] as String?;
+        final name = args?['name'] as String?;
+        final price = args?['price'] as String?;
+        if (productId == null || imageUri == null || name == null || price == null) {
           return MaterialPageRoute(
             builder: (context) => const Scaffold(
-                body: Center(child: Text('No product ID provided'))),
+              body: Center(child: Text('Missing required arguments')),
+            ),
           );
         }
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<PostReviewCubit>(),
-            child: WriteReviewScreen(productId: productId),
+            child: WriteReviewScreen(
+              productId: productId,
+              imageUri: imageUri,
+              name: name,
+              price: price,
+            ),
           ),
         );
       default:
