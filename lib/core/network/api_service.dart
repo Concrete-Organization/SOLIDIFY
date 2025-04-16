@@ -193,6 +193,7 @@ abstract class ApiService {
   Future<ShippingAddressResponseModel> createShippingAddress(
     @Body() ShippingAddressRequestModel request,
   );
+
   @GET(ApiConstants.product)
   Future<ProductListResponseModel> searchProducts(
     @Query('PageNumber') int page,
@@ -208,30 +209,41 @@ abstract class ApiService {
     @Body() OrderPostRequest request,
     @Header('Authorization') String token,
   );
+
   @GET(ApiConstants.order)
   Future<GetOrderResponseModel> getOrders(
     @Query('PageNumber') int page,
     @Header('Authorization') String token,
   );
+
   @GET('${ApiConstants.order}/{id}')
   Future<GetOrderByIdResponseModel> getOrderById(
     @Path('id') String orderId,
     @Header('Authorization') String token,
   );
+
   @POST('${ApiConstants.reviews}/{productId}')
   Future<PostReviewResponseModel> postReview(
     @Path('productId') String productId,
     @Body() PostReviewRequestModel request,
     @Header('Authorization') String token,
   );
+
   @POST("CartItem/{id}/increment")
   Future<void> incrementCartItem(
     @Path("id") String id,
     @Header('Authorization') String token,
   );
+
   @POST("CartItem/{id}/decrement")
   Future<void> decrementCartItem(
     @Path("id") String id,
+    @Header('Authorization') String token,
+  );
+
+  @POST('${ApiConstants.order}/cancel/{orderId}')
+  Future<void> cancelOrder(
+    @Path('orderId') String orderId,
     @Header('Authorization') String token,
   );
 }

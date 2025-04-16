@@ -239,10 +239,6 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  @override
-  Future<void> close() {
-    return super.close();
-  }
 }
 
 extension ApiResultExtension<T> on ApiResult<T> {
