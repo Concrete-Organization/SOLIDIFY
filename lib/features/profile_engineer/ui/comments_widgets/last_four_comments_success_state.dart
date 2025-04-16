@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/features/profile_engineer/data/models/comment_with_post.dart';
@@ -48,9 +49,18 @@ class LastFourCommentsSuccessState extends StatelessWidget {
                   ),
                 );
               },
-              child: Text(
-                'Show all comments ->',
-                style: TextStyles.font15MainBlueMedium,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Show all comments',
+                    style: TextStyles.font12MainBlueMedium,
+                  ),
+                  horizontalSpace(10),
+                  SvgPicture.asset(
+                    'assets/svgs/see_all_arrow.svg',
+                  ),
+                ],
               ),
             ),
             verticalSpace(20),

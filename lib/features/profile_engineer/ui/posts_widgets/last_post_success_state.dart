@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
@@ -37,9 +38,18 @@ class LastPostSuccessState extends StatelessWidget {
                   ),
                 );
               },
-              child: Text(
-                'Show all posts ->',
-                style: TextStyles.font15MainBlueMedium,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Show all posts',
+                    style: TextStyles.font12MainBlueMedium,
+                  ),
+                  horizontalSpace(10),
+                  SvgPicture.asset(
+                    'assets/svgs/see_all_arrow.svg',
+                  ),
+                ],
               ),
             ),
             verticalSpace(20),
