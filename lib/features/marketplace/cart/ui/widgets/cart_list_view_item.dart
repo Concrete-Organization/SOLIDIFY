@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
@@ -125,11 +127,19 @@ class _CartListViewItemState extends State<CartListViewItem> {
                     horizontal: 10.w,
                     vertical: 10.h,
                   ),
-                  child: Image.network(
-                    widget.item.imageUri,
+                  child: CachedNetworkImage(
+                    imageUrl: widget.item.imageUri,
                     width: 67.w,
                     height: 84.h,
                     fit: BoxFit.contain,
+                    placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        color: Colors.white,
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
                 ),
               ),
