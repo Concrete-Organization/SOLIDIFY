@@ -19,4 +19,16 @@ class OrderDetailsRepo {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
+
+  Future<ApiResult<void>> cancelOrderById(
+      String orderId,
+      String token,
+      ) async {
+    try {
+      final response = await _apiService.cancelOrder(orderId, token);
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
 }
