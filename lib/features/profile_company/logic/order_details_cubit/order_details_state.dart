@@ -9,10 +9,14 @@ class OrderDetailsState with _$OrderDetailsState {
   const factory OrderDetailsState.initial() = _Initial;
 
   const factory OrderDetailsState.loading() = _Loading;
+
   const factory OrderDetailsState.success({
     required GetOrderByIdResponseModel response,
   }) = _Success;
+
   const factory OrderDetailsState.error({
     required ApiErrorModel error,
   }) = _Error;
+
+  const factory OrderDetailsState.canceled() = _Canceled;
 }

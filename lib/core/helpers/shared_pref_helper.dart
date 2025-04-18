@@ -29,8 +29,7 @@ class SharedPrefKeys {
   static const String shippingAddresses = 'shippingAddresses';
   static const String currentOrderId = 'currentOrderId';
   static const String orderHistory = 'orderHistory';
-  static const String cachedOrderIds =
-      'cachedOrderIds'; // New key for order IDs
+  static const String cachedOrderIds = 'cachedOrderIds';
 }
 
 class SharedPrefHelper {

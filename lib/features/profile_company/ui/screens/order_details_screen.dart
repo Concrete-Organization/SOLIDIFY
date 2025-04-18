@@ -34,7 +34,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
     if (cachedOrderIds.isEmpty) {
       await context.read<OrderCubit>().getOrders();
       final updatedCachedOrderIds =
-          await context.read<OrderCubit>().getCachedOrderIds();
+      await context.read<OrderCubit>().getCachedOrderIds();
       _setValidatedOrderId(updatedCachedOrderIds);
     } else {
       _setValidatedOrderId(cachedOrderIds);
@@ -67,6 +67,11 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
       body: BlocConsumer<OrderDetailsCubit, OrderDetailsState>(
         listener: (context, state) {
           state.maybeWhen(
+            canceled: () {
+              if (validatedOrderId != null) {
+                Navigator.pop(context, true);
+              }
+            },
             error: (error) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Error: ${error.message}')),
@@ -88,7 +93,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       orderId: response.model.id,
                       orderDate: response.model.orderDate,
                       shippingAddress:
-                          '${response.model.shippingAddress.street}, ${response.model.shippingAddress.city}, ${response.model.shippingAddress.postalCode}',
+                      '${response.model.shippingAddress.street}, ${response.model.shippingAddress.city}, ${response.model.shippingAddress.postalCode}',
                     ),
                     verticalSpace(15),
                     const HorizontalDivider(),
@@ -99,7 +104,13 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       orderStatus: response.model.orderStatus,
                     ),
                     verticalSpace(40),
-                    const CancelOrderButton(),
+                    CancelOrderButton(
+                      onPressed: () {
+                        if (validatedOrderId != null) {
+                          context.read<OrderDetailsCubit>().cancelOrder(validatedOrderId!);
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),

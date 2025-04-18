@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
@@ -6,6 +7,7 @@ import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
+import 'package:solidify/features/marketplace/order/logic/order_cubit/order_cubit.dart';
 import 'package:solidify/features/profile_company/ui/widgets/order_state_details_row.dart';
 import 'package:solidify/features/profile_company/data/models/get_order_response_model.dart';
 
@@ -71,7 +73,13 @@ class OrderListViewItem extends StatelessWidget {
                 context.pushNamed(
                   Routes.orderDetailsScreen,
                   arguments: order.id,
-                );
+                ).then((result) {
+                  if (result == true) {
+                    if(context.mounted){
+                      context.read<OrderCubit>().getOrders();
+                    }
+                  }
+                });
               },
               width: 255.w,
               height: 38.h,

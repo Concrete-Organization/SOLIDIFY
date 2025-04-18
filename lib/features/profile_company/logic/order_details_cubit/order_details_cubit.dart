@@ -15,7 +15,7 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
     emit(const OrderDetailsState.loading());
 
     final token =
-        await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
+    await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
     if (token.isEmpty) {
       emit(OrderDetailsState.error(
         error: ApiErrorModel(message: 'No authentication token found'),
@@ -43,7 +43,30 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
     );
   }
 
+  Future<void> cancelOrder(String orderId) async {
+    emit(const OrderDetailsState.loading());
+
+    final token = await SharedPrefHelper.getSecuredString(SharedPrefKeys.accessToken);
+    if (token.isEmpty) {
+      emit(OrderDetailsState.error(
+        error: ApiErrorModel(message: 'No authentication token found'),
+      ));
+      return;
+    }
+
+    final response = await _orderDetailsRepo.cancelOrderById(orderId, token);
+
+    response.when(
+      success: (response) {
+        emit(const OrderDetailsState.canceled());
+      },
+      failure: (error) {
+        emit(OrderDetailsState.error(error: error));
+      },
+    );
+  }
   String? getProductId(int index) {
     return index < productIds.length ? productIds[index] : null;
   }
+  
 }
