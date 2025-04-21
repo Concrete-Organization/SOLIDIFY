@@ -43,12 +43,14 @@ class UploadContainer extends StatelessWidget {
             else if (isUploaded)
               const Icon(Icons.file_present, color: Colors.blue),
             horizontalSpace(10),
-            Text(
-              isUploaded ? uploadedFileName ?? 'Uploaded' : 'Upload here',
-              overflow: TextOverflow.ellipsis,
-              style: isUploaded
-                  ? TextStyles.font12MainBlueMedium
-                  : TextStyles.font12lightBlackLight,
+            Expanded(
+              child: Text(
+                isUploaded ? uploadedFileName ?? 'Uploaded' : 'Upload here',
+                overflow: TextOverflow.ellipsis,
+                style: isUploaded
+                    ? TextStyles.font12MainBlueMedium
+                    : TextStyles.font12lightBlackLight,
+              ),
             ),
             const Spacer(),
             if (!isUploaded)
