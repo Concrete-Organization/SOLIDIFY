@@ -68,7 +68,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     AppTextButton(
                       onPressed: () async{
                         await SharedPrefHelper.setData(SharedPrefKeys.isFirstTime, false);
-                        context.pushReplacementNamed(Routes.loginScreen);
+                        if(context.mounted){
+                          context.pushReplacementNamed(Routes.loginScreen);
+                        }
                       },
                       textButton: 'Login',
                       width: 166.w,
@@ -76,8 +78,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     AppTextButton(
                       onPressed: () async{
                         await SharedPrefHelper.setData(SharedPrefKeys.isFirstTime, false);
-                        context.pushNamed(Routes.selectAccountTypeScreen);
-                      },
+                        if(context.mounted){
+                          context.pushReplacementNamed(Routes.selectAccountTypeScreen);
+                        }                      },
                       textButton: 'Register',
                       width: 166.w,
                       backgroundColor: ColorsManager.white,
