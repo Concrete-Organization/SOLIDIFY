@@ -21,9 +21,8 @@ class NotificationsListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity, // Span full width
-      padding:
-          EdgeInsets.symmetric(vertical: 12.h), // Remove horizontal padding
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(vertical: 12.h),
       decoration: BoxDecoration(
         color: isHighlighted
             ? ColorsManager.mainBlueWith15Opacity
@@ -42,8 +41,7 @@ class NotificationsListViewItem extends StatelessWidget {
             : null,
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: 18.w), // Add padding only for content
+        padding: EdgeInsets.symmetric(horizontal: 18.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

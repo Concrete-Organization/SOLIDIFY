@@ -5,13 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomIndicator extends StatelessWidget {
   final int currentPage;
   final int totalPages;
-  final double? width; // Make it optional
+  final double? width;
 
   const CustomIndicator({
     super.key,
     required this.currentPage,
     required this.totalPages,
-    this.width, // Not required
+    this.width,
   });
 
   @override

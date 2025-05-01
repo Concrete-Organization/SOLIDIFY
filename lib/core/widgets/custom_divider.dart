@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../theming/text_styles.dart';
+import 'package:solidify/core/theming/text_styles.dart';
 
 class CustomDivider extends StatelessWidget {
   const CustomDivider({super.key});

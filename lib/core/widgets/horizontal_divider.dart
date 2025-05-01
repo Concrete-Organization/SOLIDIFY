@@ -1,6 +1,6 @@
-import '../theming/color_manger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/theming/color_manger.dart';
 
 class HorizontalDivider extends StatelessWidget {
   final double? thickness;

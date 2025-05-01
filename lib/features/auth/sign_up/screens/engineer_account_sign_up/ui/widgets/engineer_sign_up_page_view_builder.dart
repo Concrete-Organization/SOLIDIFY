@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'engineer_account_sign_up_forms_list.dart';
 
-
 class EngineerSignUpPageViewBuilder extends StatelessWidget {
   final PageController controller;
   final Function(int) onPageChanged;

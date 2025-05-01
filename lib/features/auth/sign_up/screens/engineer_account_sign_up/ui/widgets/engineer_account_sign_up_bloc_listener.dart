@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_state.dart';
-import '../../../../../../../core/routes/routes_name.dart';
 
 class EngineerAccountSignUpBlocListener extends StatelessWidget {
   const EngineerAccountSignUpBlocListener({super.key});

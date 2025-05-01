@@ -1,27 +1,27 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import '../network/api_service.dart';
-import '../network/dio_factory.dart';
-import '../../features/auth/login/logic/login_cubit.dart';
-import '../../features/auth/otp/logic/verify_otp_cubit.dart';
-import '../../features/auth/login/data/repo/login_repo.dart';
-import '../../features/auth/otp/data/repos/verify_otp_repo.dart';
+import 'package:solidify/core/network/api_service.dart';
+import 'package:solidify/core/network/dio_factory.dart';
+import 'package:solidify/features/auth/forget_password/data/repos/forget_password_repo.dart';
+import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
+import 'package:solidify/features/auth/login/data/repo/login_repo.dart';
+import 'package:solidify/features/auth/login/logic/login_cubit.dart';
+import 'package:solidify/features/auth/otp/data/repos/verify_otp_repo.dart';
+import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
+import 'package:solidify/features/auth/reset_password/data/repos/reset_password_repo.dart';
+import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
 import 'package:solidify/features/community/data/repos/posts_repo.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/chatbot/data/api/chatbot_api_call.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/features/community/data/repos/comments_repo.dart';
-import '../../features/auth/reset_password/logic/reset_password_cubit.dart';
 import 'package:solidify/features/marketplace/search/logic/search_cubit.dart';
-import '../../features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/marketplace/cart/data/repos/cart_repo.dart';
 import 'package:solidify/features/profile_company/data/repos/reviews_repo.dart';
 import 'package:solidify/features/marketplace/order/data/repos/order_repo.dart';
 import 'package:solidify/features/community/logic/comments/comments_cubit.dart';
-import '../../features/auth/reset_password/data/repos/reset_password_repo.dart';
 import 'package:solidify/features/marketplace/search/data/repos/search_repo.dart';
-import '../../features/auth/forget_password/data/repos/forget_password_repo.dart';
 import 'package:solidify/features/chatbot/data/repos/chatbot_with_gemini_repo.dart';
 import 'package:solidify/features/profile_company/data/repos/order_details_repo.dart';
 import 'package:solidify/features/marketplace/order/logic/order_cubit/order_cubit.dart';
@@ -133,7 +133,6 @@ Future<void> setupGetIt() async {
   // search
   getIt.registerLazySingleton<SearchRepo>(() => SearchRepo(getIt()));
   getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt()));
-
   // order
   getIt.registerLazySingleton<OrderRepo>(() => OrderRepo(getIt()));
   getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
@@ -141,7 +140,6 @@ Future<void> setupGetIt() async {
   getIt
       .registerLazySingleton<OrderDetailsRepo>(() => OrderDetailsRepo(getIt()));
   getIt.registerFactory<OrderDetailsCubit>(() => OrderDetailsCubit(getIt()));
-
 // review
   getIt.registerLazySingleton<ReviewsRepo>(() => ReviewsRepo(getIt()));
   getIt.registerLazySingleton<PostReviewCubit>(

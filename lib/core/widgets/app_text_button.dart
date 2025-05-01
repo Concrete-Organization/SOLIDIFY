@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../theming/color_manger.dart';
-import '../theming/font_weight_helper.dart';
-import '../theming/text_styles.dart';
+import 'package:solidify/core/theming/color_manger.dart';
+import 'package:solidify/core/theming/font_weight_helper.dart';
+import 'package:solidify/core/theming/text_styles.dart';
 
 class AppTextButton extends StatelessWidget {
   final String textButton;
