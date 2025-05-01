@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/ui/widgets/concrete_company_account_sign_up_forms_list.dart';
 
-
 class ConcreteCompanySignUpPageViewBuilder extends StatelessWidget {
   final PageController controller;
   final Function(int) onPageChanged;

@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/widgets/custom_app_bar_with_indicator.dart';
 import 'package:solidify/features/auth/otp/ui/widgets/otp_bloc_listener.dart';
 import 'package:solidify/features/auth/otp/ui/widgets/otp_form.dart';
-
-import '../../../../core/widgets/custom_app_bar_with_indicator.dart';
 
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});

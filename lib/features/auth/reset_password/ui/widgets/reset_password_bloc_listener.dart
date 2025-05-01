@@ -3,9 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
-
-import '../../logic/reset_password_cubit.dart';
-import '../../logic/reset_password_state.dart';
+import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
+import 'package:solidify/features/auth/reset_password/logic/reset_password_state.dart';
 
 class ResetPasswordBlocListener extends StatelessWidget {
   const ResetPasswordBlocListener({super.key});

@@ -1,8 +1,8 @@
-import '../../../../../core/network/api_error_handler.dart';
-import '../../../../../core/network/api_result.dart';
-import '../../../../../core/network/api_service.dart';
-import '../models/reset_password_request_model.dart';
-import '../models/reset_password_response_model.dart';
+import 'package:solidify/core/network/api_error_handler.dart';
+import 'package:solidify/core/network/api_result.dart';
+import 'package:solidify/core/network/api_service.dart';
+import 'package:solidify/features/auth/reset_password/data/models/reset_password_request_model.dart';
+import 'package:solidify/features/auth/reset_password/data/models/reset_password_response_model.dart';
 
 class ResetPasswordRepo {
   final ApiService _apiService;

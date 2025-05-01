@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/app_validation.dart';
-import '../../../../../core/helpers/spacing.dart';
-import '../../../../../core/theming/color_manger.dart';
-import '../../../../../core/theming/text_styles.dart';
-import '../../../../../core/widgets/app_text_button.dart';
-import '../../../../../core/widgets/app_text_form_field.dart';
-import '../../logic/reset_password_cubit.dart';
+import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/theming/color_manger.dart';
+import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/widgets/app_text_button.dart';
+import 'package:solidify/core/widgets/app_text_form_field.dart';
+import 'package:solidify/features/auth/reset_password/logic/reset_password_cubit.dart';
 
 class ResetPasswordForm extends StatefulWidget {
   final bool isPasswordHidden;

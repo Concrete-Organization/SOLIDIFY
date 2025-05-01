@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/app_validation.dart';
+import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/widgets/app_text_form_field.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/logic/concrete_company_sign_up_cubit.dart';
-import '../../../../../../../core/helpers/spacing.dart';
-import '../../../../../../../core/theming/text_styles.dart';
-import '../../../../../../../core/widgets/app_text_form_field.dart';
 
 class ConcreteCompanyUserAndEmailSignUpForm extends StatefulWidget {
   const ConcreteCompanyUserAndEmailSignUpForm({super.key});

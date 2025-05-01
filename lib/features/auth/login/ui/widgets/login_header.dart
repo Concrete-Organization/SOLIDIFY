@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/theming/text_styles.dart';
+import 'package:solidify/core/theming/text_styles.dart';
 
 class LoginHeader extends StatelessWidget {
   const LoginHeader({super.key});

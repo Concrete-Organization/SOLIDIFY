@@ -1,8 +1,8 @@
-import '../../../../../core/network/api_error_handler.dart';
-import '../../../../../core/network/api_result.dart';
-import '../../../../../core/network/api_service.dart';
-import '../model/login_request_body.dart';
-import '../model/login_response_body.dart';
+import 'package:solidify/core/network/api_error_handler.dart';
+import 'package:solidify/core/network/api_result.dart';
+import 'package:solidify/core/network/api_service.dart';
+import 'package:solidify/features/auth/login/data/model/login_request_body.dart';
+import 'package:solidify/features/auth/login/data/model/login_response_body.dart';
 
 class LoginRepo {
   final ApiService _apiService;

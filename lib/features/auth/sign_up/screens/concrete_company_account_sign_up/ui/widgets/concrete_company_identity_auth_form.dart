@@ -8,8 +8,8 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/widgets/app_text_form_field.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/logic/concrete_company_sign_up_cubit.dart';
+import 'package:solidify/features/auth/sign_up/widgets/sign_up_upload_files_screen.dart';
 import 'package:solidify/features/auth/sign_up/widgets/upload_container.dart';
-import '../../../../widgets/sign_up_upload_files_screen.dart';
 
 class ConcreteCompanyIdentityAuthForm extends StatefulWidget {
   const ConcreteCompanyIdentityAuthForm({super.key});

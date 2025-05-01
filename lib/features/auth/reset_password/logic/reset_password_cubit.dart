@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
+import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/features/auth/reset_password/data/models/reset_password_request_model.dart';
 import 'package:solidify/features/auth/reset_password/data/repos/reset_password_repo.dart';
 import 'package:solidify/features/auth/reset_password/logic/reset_password_state.dart';
-
-import '../../../../core/network/api_error_model.dart';
 
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   final ResetPasswordRepo _resetPasswordRepo;

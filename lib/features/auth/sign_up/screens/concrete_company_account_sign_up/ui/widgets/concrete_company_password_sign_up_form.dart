@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/app_regex.dart';
 import 'package:solidify/core/helpers/app_validation.dart';
+import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/theming/color_manger.dart';
+import 'package:solidify/core/theming/text_styles.dart';
+import 'package:solidify/core/widgets/app_text_form_field.dart';
 import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_sign_up/logic/concrete_company_sign_up_cubit.dart';
-import '../../../../../../../core/helpers/app_regex.dart';
-import '../../../../../../../core/helpers/spacing.dart';
-import '../../../../../../../core/theming/color_manger.dart';
-import '../../../../../../../core/theming/text_styles.dart';
-import '../../../../../../../core/widgets/app_text_form_field.dart';
-import '../../../../widgets/password_validations.dart';
+import 'package:solidify/features/auth/sign_up/widgets/password_validations.dart';
 
 class ConcreteCompanyPasswordSignUpForm extends StatefulWidget {
   const ConcreteCompanyPasswordSignUpForm({super.key});

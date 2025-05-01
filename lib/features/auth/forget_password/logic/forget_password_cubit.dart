@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../data/models/forget_password_request_model.dart';
-import '../data/repos/forget_password_repo.dart';
+import 'package:solidify/features/auth/forget_password/data/models/forget_password_request_model.dart';
+import 'package:solidify/features/auth/forget_password/data/repos/forget_password_repo.dart';
 import 'forget_password_state.dart';
 
 class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {

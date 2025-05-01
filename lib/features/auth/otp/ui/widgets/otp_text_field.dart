@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/theming/color_manger.dart';
-
-import '../../../../../core/theming/text_styles.dart';
+import 'package:solidify/core/theming/text_styles.dart';
 
 class OtpTextField extends StatefulWidget {
   final int index;

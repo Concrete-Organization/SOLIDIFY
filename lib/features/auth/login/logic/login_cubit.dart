@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/jwt_helper.dart';
 import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/network/api_error_model.dart';
-import '../data/model/login_request_body.dart';
-import '../data/repo/login_repo.dart';
+import 'package:solidify/features/auth/login/data/model/login_request_body.dart';
+import 'package:solidify/features/auth/login/data/repo/login_repo.dart';
 import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {

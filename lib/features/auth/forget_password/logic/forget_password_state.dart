@@ -1,5 +1,5 @@
-import '../../../../../core/network/api_error_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:solidify/core/network/api_error_model.dart';
 
 part 'forget_password_state.freezed.dart';
 

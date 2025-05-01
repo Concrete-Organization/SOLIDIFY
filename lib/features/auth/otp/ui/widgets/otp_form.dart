@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/helpers/spacing.dart';
+import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/core/widgets/custom_snack_bar.dart';
-import '../../../../../core/helpers/shared_pref_helper.dart';
-import '../../../../../core/widgets/app_text_button.dart';
-import '../../data/models/verify_otp_request_model.dart';
-import '../../logic/verify_otp_cubit.dart';
+import 'package:solidify/features/auth/otp/data/models/verify_otp_request_model.dart';
+import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
 import 'otp_text_field.dart';
 
 class OtpForm extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../../core/network/api_error_model.dart';
-import '../data/model/login_response_body.dart';
+import 'package:solidify/core/network/api_error_model.dart';
+import 'package:solidify/features/auth/login/data/model/login_response_body.dart';
 
 part 'login_state.freezed.dart';
 

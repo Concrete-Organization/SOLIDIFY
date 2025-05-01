@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/extensions.dart';
+import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_cubit.dart';
 import 'package:solidify/features/auth/otp/logic/verify_otp_state.dart';
-
-import '../../../../../core/routes/routes_name.dart';
 
 class OtpBlocListener extends StatelessWidget {
   const OtpBlocListener({super.key});

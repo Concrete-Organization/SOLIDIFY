@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../data/models/verify_otp_request_model.dart';
-import '../data/repos/verify_otp_repo.dart';
+import 'package:solidify/features/auth/otp/data/models/verify_otp_request_model.dart';
+import 'package:solidify/features/auth/otp/data/repos/verify_otp_repo.dart';
 import 'verify_otp_state.dart';
 
 class VerifyOtpCubit extends Cubit<VerifyOtpState> {

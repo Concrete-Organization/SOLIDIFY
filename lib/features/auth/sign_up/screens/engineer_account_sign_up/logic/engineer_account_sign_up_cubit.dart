@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:solidify/core/helpers/shared_pref_helper.dart' as shared_prefs;
+import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/models/engineer_account_sign_up_request_model.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/data/repos/engineer_account_sign_up_repo.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_state.dart';
-
-import '../../../../../../core/helpers/shared_pref_helper.dart';
 
 class EngineerAccountSignUpCubit extends Cubit<EngineerAccountSignUpState> {
   final EngineerAccountSignUpRepo _engineerAccountSignUpRepo;
@@ -34,20 +32,20 @@ class EngineerAccountSignUpCubit extends Cubit<EngineerAccountSignUpState> {
     );
 
     response.when(success: (signupResponse) async {
-      await shared_prefs.SharedPrefHelper.setSecuredString(
-        shared_prefs.SharedPrefKeys.accessToken,
+      await SharedPrefHelper.setSecuredString(
+        SharedPrefKeys.accessToken,
         signupResponse.model.accessToken,
       );
-      await shared_prefs.SharedPrefHelper.setSecuredString(
-        shared_prefs.SharedPrefKeys.refreshToken,
+      await SharedPrefHelper.setSecuredString(
+        SharedPrefKeys.refreshToken,
         signupResponse.model.refreshToken,
       );
-      await shared_prefs.SharedPrefHelper.setSecuredString(
-        shared_prefs.SharedPrefKeys.expiresOn,
+      await SharedPrefHelper.setSecuredString(
+        SharedPrefKeys.expiresOn,
         signupResponse.model.expiresOn,
       );
-      await shared_prefs.SharedPrefHelper.setSecuredString(
-        shared_prefs.SharedPrefKeys.refreshTokenExpiration,
+      await SharedPrefHelper.setSecuredString(
+        SharedPrefKeys.refreshTokenExpiration,
         signupResponse.model.refreshTokenExpiration,
       );
       await SharedPrefHelper.setData(

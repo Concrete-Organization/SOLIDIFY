@@ -1,8 +1,8 @@
-import '../../../../../core/network/api_error_handler.dart';
-import '../../../../../core/network/api_result.dart';
-import '../../../../../core/network/api_service.dart';
-import '../models/forget_password_request_model.dart';
-import '../models/forget_password_response_model.dart';
+import 'package:solidify/core/network/api_error_handler.dart';
+import 'package:solidify/core/network/api_result.dart';
+import 'package:solidify/core/network/api_service.dart';
+import 'package:solidify/features/auth/forget_password/data/models/forget_password_request_model.dart';
+import 'package:solidify/features/auth/forget_password/data/models/forget_password_response_model.dart';
 
 class ForgetPasswordRepo {
   final ApiService _apiService;

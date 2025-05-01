@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../../../core/network/api_error_model.dart';
+import 'package:solidify/core/network/api_error_model.dart';
 
 part 'engineer_account_sign_up_state.freezed.dart';
 
