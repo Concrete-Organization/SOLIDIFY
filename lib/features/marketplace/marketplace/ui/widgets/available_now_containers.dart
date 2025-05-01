@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/helpers/spacing.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../../../../../core/theming/text_styles.dart';
+import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/theming/text_styles.dart';
 
 class AvailableNowContainers extends StatefulWidget {
   const AvailableNowContainers({super.key});
