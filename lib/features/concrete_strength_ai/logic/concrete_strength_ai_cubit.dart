@@ -1,13 +1,11 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/helpers/shared_pref_helper.dart';
 import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/features/concrete_strength_ai/data/models/concrete_ai_request_model.dart';
 import 'package:solidify/features/concrete_strength_ai/data/repo/concrete_strength_ai_repo.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_state.dart';
-
-import '../../../core/helpers/shared_pref_helper.dart';
 
 class ConcreteStrengthAiCubit extends Cubit<ConcreteStrengthAiState> {
   final ConcreteStrengthAiRepo _repo;

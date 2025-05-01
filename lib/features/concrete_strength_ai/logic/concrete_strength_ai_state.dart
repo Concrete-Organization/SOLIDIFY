@@ -1,6 +1,7 @@
+import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/features/concrete_strength_ai/data/models/concrete_ai_response_model.dart';
-import '../../../../../core/network/api_error_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 part 'concrete_strength_ai_state.freezed.dart';
 
 @freezed

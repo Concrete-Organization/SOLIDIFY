@@ -4,6 +4,7 @@ import 'package:solidify/features/community/data/models/post_models/create_post_
 import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
 
 part 'posts_state.freezed.dart';
+
 @freezed
 class PostsState<T> with _$PostsState<T> {
   const factory PostsState.initial() = _Initial;

@@ -3,7 +3,6 @@ import 'package:solidify/features/concrete_strength_ai/ui/widgets/second_page_ai
 import 'concrete_strength_ai_forms_list.dart';
 import 'first_page_ai_questions.dart';
 
-
 class ConcreteStrengthAiPageViewBuilder extends StatelessWidget {
   final PageController controller;
   final Function(int) onPageChanged;

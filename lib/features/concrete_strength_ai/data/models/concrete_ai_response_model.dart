@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'concrete_ai_response_model.g.dart';
 
+part 'concrete_ai_response_model.g.dart';
 
 @JsonSerializable()
 class ConcreteAiResponseModel {

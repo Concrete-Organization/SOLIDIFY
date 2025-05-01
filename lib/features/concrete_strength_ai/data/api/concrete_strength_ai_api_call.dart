@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:solidify/core/network/api_constants.dart';
 import 'package:solidify/features/concrete_strength_ai/data/models/concrete_ai_request_model.dart';
 import 'package:solidify/features/concrete_strength_ai/data/models/concrete_ai_response_model.dart';
-import '../../../../core/network/api_constants.dart';
 part 'concrete_strength_ai_api_call.g.dart';
 
 @RestApi(baseUrl: ApiConstants.concreteStrengthAiApiBaseUrl)

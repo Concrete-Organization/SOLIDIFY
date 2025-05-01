@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
 import 'package:solidify/features/concrete_strength_ai/logic/concrete_strength_ai_cubit.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/widgets/concrete_strength_ai_bloc_listener.dart';
+import 'package:solidify/features/concrete_strength_ai/ui/widgets/concrete_strength_ai_forms_list.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/widgets/concrete_strength_ai_page_view_builder.dart';
-import '../widgets/concrete_strength_ai_forms_list.dart';
 
 class ConcreteStrengthAiQuestionsScreen extends StatefulWidget {
   const ConcreteStrengthAiQuestionsScreen({super.key});
