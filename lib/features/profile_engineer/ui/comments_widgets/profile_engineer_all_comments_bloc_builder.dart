@@ -4,8 +4,8 @@ import 'package:solidify/core/widgets/error_state_message.dart';
 import 'package:solidify/core/widgets/shimmer_comment_with_post_list.dart';
 import 'package:solidify/features/profile_engineer/logic/profile_engineer_comments/profile_engineer_comments_cubit.dart';
 import 'package:solidify/features/profile_engineer/logic/profile_engineer_comments/profile_engineer_comments_state.dart';
+import 'package:solidify/features/profile_engineer/ui/comments_widgets/empty_profile_comments_state.dart';
 import 'package:solidify/features/profile_engineer/ui/comments_widgets/profile_engineer_all_comments_list_success_state.dart';
-import 'empty_profile_comments_state.dart';
 
 class ProfileEngineerAllCommentsBlocBuilder extends StatelessWidget {
   const ProfileEngineerAllCommentsBlocBuilder({super.key});

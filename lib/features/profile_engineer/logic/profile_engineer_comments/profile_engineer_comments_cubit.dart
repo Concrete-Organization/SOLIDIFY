@@ -54,7 +54,6 @@ class ProfileEngineerCommentsCubit extends Cubit<ProfileEngineerCommentsState> {
               newUserComments.addAll(userComments);
             },
             failure: (error) {
-              // Handle error silently
             },
           );
         }

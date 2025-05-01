@@ -5,8 +5,8 @@ import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/core/widgets/shimmer_comment_list.dart';
 import 'package:solidify/features/profile_engineer/logic/profile_engineer_comments/profile_engineer_comments_cubit.dart';
 import 'package:solidify/features/profile_engineer/logic/profile_engineer_comments/profile_engineer_comments_state.dart';
-import 'empty_profile_comments_state.dart';
-import 'last_four_comments_success_state.dart';
+import 'package:solidify/features/profile_engineer/ui/comments_widgets/empty_profile_comments_state.dart';
+import 'package:solidify/features/profile_engineer/ui/comments_widgets/last_four_comments_success_state.dart';
 
 class LastFourCommentsForTheUserBlocBuilder extends StatelessWidget {
   final String engineerId;

@@ -4,8 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/features/community/data/models/post_models/get_posts_response.dart';
+import 'package:solidify/features/profile_engineer/ui/posts_widgets/profile_engineer_all_posts.dart';
 import 'package:solidify/features/profile_engineer/ui/posts_widgets/profile_post_item.dart';
-import 'profile_engineer_all_posts.dart';
 
 class LastPostSuccessState extends StatelessWidget {
   final List<PostModel> posts;

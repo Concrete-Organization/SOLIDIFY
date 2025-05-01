@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:solidify/core/network/api_error_model.dart';
 import 'package:solidify/features/profile_engineer/data/models/comment_with_post.dart';
+
 part 'profile_engineer_comments_state.freezed.dart';
 
 @freezed
