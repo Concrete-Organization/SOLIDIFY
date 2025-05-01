@@ -6,9 +6,9 @@ import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/color_manger.dart';
 import 'package:solidify/core/widgets/app_text_button.dart';
+import 'package:solidify/features/onboarding/model/onboarding_model.dart';
 import 'package:solidify/features/onboarding/widgets/onboarding_app_bar.dart';
 import 'package:solidify/features/onboarding/widgets/onboarding_page_view_builder.dart';
-import 'model/onboarding_model.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

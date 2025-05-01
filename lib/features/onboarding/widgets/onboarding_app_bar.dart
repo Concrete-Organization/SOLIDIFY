@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/features/onboarding/model/onboarding_model.dart';
-
-import 'circle_indicator_list.dart';
+import 'package:solidify/features/onboarding/widgets/circle_indicator_list.dart';
 
 class OnboardingAppBar extends StatelessWidget implements PreferredSizeWidget {
   final int currentIndex;

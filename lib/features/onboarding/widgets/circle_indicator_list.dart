@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solidify/features/onboarding/model/onboarding_model.dart';
-import 'circle_indicator.dart';
+import 'package:solidify/features/onboarding/widgets/circle_indicator.dart';
 
 class CircleIndicatorList extends StatelessWidget {
   final int currentIndex;
