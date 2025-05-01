@@ -1,10 +1,8 @@
 import 'chatbot_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/features/chatbot/data/repos/chatbot_with_gemini_repo.dart';
-import 'package:solidify/features/chatbot/data/models/chatbot_request_model.dart'
-    as req;
-import 'package:solidify/features/chatbot/data/models/chatbot_response_model.dart'
-    as res;
+import 'package:solidify/features/chatbot/data/models/chatbot_request_model.dart' as req;
+import 'package:solidify/features/chatbot/data/models/chatbot_response_model.dart' as res;
 
 class ChatbotCubit extends Cubit<ChatbotState> {
   final ChatbotWithGeminiRepo _chatbotRepo;
