@@ -6,17 +6,18 @@ import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
-import 'package:solidify/features/crack_detection/ui/screens/upload_crack_gallery_image.dart';
 import 'package:solidify/features/crack_detection/ui/widgets/crack_image_option_container.dart';
 
 class CrackDetectionChooseUploadingImage extends StatefulWidget {
   const CrackDetectionChooseUploadingImage({super.key});
 
   @override
-  State<CrackDetectionChooseUploadingImage> createState() => _CrackDetectionChooseUploadingImageState();
+  State<CrackDetectionChooseUploadingImage> createState() =>
+      _CrackDetectionChooseUploadingImageState();
 }
 
-class _CrackDetectionChooseUploadingImageState extends State<CrackDetectionChooseUploadingImage> {
+class _CrackDetectionChooseUploadingImageState
+    extends State<CrackDetectionChooseUploadingImage> {
   File? _capturedImage;
 
   Future<void> _openCamera(BuildContext context) async {
@@ -26,13 +27,12 @@ class _CrackDetectionChooseUploadingImageState extends State<CrackDetectionChoos
       setState(() {
         _capturedImage = File(pickedFile.path);
       });
-      context.pushNamed(Routes.uploadCrackGalleryImageScreen, arguments: _capturedImage);
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => UploadCrackGalleryImage(imageFile: _capturedImage),
-      //   ),
-      // );
+      if (context.mounted) {
+        context.pushNamed(
+          Routes.uploadCrackGalleryImageScreen,
+          arguments: _capturedImage,
+        );
+      }
     }
   }
 
