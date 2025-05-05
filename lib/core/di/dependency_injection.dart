@@ -152,6 +152,6 @@ Future<void> setupGetIt() async {
   // crack detection
   getIt.registerLazySingleton<CrackDetectionAiRepo>(
       () => CrackDetectionAiRepo(getIt()));
-  getIt.registerFactory<CrackDetectionAiCubit>(
+  getIt.registerLazySingleton<CrackDetectionAiCubit>(
       () => CrackDetectionAiCubit(getIt()));
 }

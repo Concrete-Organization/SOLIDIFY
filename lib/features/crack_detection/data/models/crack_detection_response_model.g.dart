@@ -9,14 +9,13 @@ part of 'crack_detection_response_model.dart';
 CrackDetectionResponseModel _$CrackDetectionResponseModelFromJson(
         Map<String, dynamic> json) =>
     CrackDetectionResponseModel(
-      resultImageUrl:
-          FileConverter.fromJson(json['result_image_url'] as String?),
+      resultImageUrl: json['result_image_url'] as String?,
       status: json['status'] as String,
     );
 
 Map<String, dynamic> _$CrackDetectionResponseModelToJson(
         CrackDetectionResponseModel instance) =>
     <String, dynamic>{
-      'result_image_url': FileConverter.toJson(instance.resultImageUrl),
+      'result_image_url': instance.resultImageUrl,
       'status': instance.status,
     };

@@ -11,10 +11,30 @@ import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/features/crack_detection/logic/crack_detection_ai_cubit.dart';
 import 'package:solidify/features/crack_detection/ui/widgets/crack_detection_upload_container.dart';
 
-class UploadCrackGalleryImage extends StatelessWidget {
+class UploadCrackGalleryImage extends StatefulWidget {
   final File? imageFile;
 
   const UploadCrackGalleryImage({super.key, this.imageFile});
+
+  @override
+  State<UploadCrackGalleryImage> createState() => _UploadCrackGalleryImageState();
+}
+
+class _UploadCrackGalleryImageState extends State<UploadCrackGalleryImage> {
+  File? _selectedImage;
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedImage = widget.imageFile;
+  }
+
+  void _onImageSelected(File? image) {
+    setState(() {
+      _selectedImage = image;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +56,25 @@ class UploadCrackGalleryImage extends StatelessWidget {
               style: TextStyles.font16lightBlackRegular,
             ),
             verticalSpace(15),
-            CrackDetectionUploadContainer(imageFile: imageFile),
-            Spacer(),
+            CrackDetectionUploadContainer(
+              imageFile: _selectedImage,
+              onImageSelected: _onImageSelected,
+            ),
+            const Spacer(),
             AppTextButton(
-              onPressed: () {
-                if (imageFile != null) {
-                  context.read<CrackDetectionAiCubit>().crackDetect(imageFile);
-                  context.pushNamedAndRemoveUntil(
-                    Routes.crackDetectionResultScreen,
-                    predicate: (route) => false,
-                  );
+              isLoading: _isLoading,
+              onPressed: () async {
+                if (_selectedImage != null) {
+                  setState(() {
+                    _isLoading = true;
+                  });
+                  await context.read<CrackDetectionAiCubit>().crackDetect(_selectedImage);
+                  if (context.mounted) {
+                    context.pushNamedAndRemoveUntil(
+                      Routes.crackDetectionResultScreen,
+                      predicate: (route) => false,
+                    );
+                  }
                 } else {
                   CustomSnackBar.showInfo(
                     context,

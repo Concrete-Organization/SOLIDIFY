@@ -11,19 +11,21 @@ class CrackDetectionAiCubit extends Cubit<CrackDetectionAiState> {
       : super(const CrackDetectionAiState.initial());
 
   Future<void> crackDetect(File? image) async {
-    if (image == null) return;
+    if (image == null || isClosed) return;
 
     emit(const CrackDetectionAiState.loading());
     final request = CrackDetectionRequestModel(image: image);
     final result = await _crackDetectionAiRepo.getCrackAiResponse(request);
 
-    result.when(
-      success: (response) {
-        emit(CrackDetectionAiState.success(response));
-      },
-      failure: (error) {
-        emit(CrackDetectionAiState.failure(error));
-      },
-    );
+    if (!isClosed) {
+      result.when(
+        success: (response) {
+          emit(CrackDetectionAiState.success(response));
+        },
+        failure: (error) {
+          emit(CrackDetectionAiState.failure(error));
+        },
+      );
+    }
   }
 }
