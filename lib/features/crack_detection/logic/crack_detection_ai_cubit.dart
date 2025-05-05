@@ -26,39 +26,4 @@ class CrackDetectionAiCubit extends Cubit<CrackDetectionAiState> {
       },
     );
   }
-
-
-  // Future<void> handleCameraUpdate(String engineerId, BuildContext context) async {
-  //   try {
-  //     final ImagePicker picker = ImagePicker();
-  //     final XFile? image = await picker.pickImage(source: ImageSource.camera);
-  //
-  //     if (image != null) {
-  //       File imageFile = File(image.path);
-  //       await updateEngineerProfile(engineerId, imageFile);
-  //       if(context.mounted){
-  //         Navigator.pop(context);
-  //       }
-  //     }
-  //   } catch (e) {
-  //     emit(EngineerProfileState.failure(ApiErrorModel(message: 'Error while using camera')));
-  //   }
-  // }
-  //
-  // Future<void> handleGalleryUpdate(String engineerId, BuildContext context) async {
-  //   Navigator.pop(context);
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(
-  //       builder: (context) => BlocProvider.value(
-  //         value: this,
-  //         child: ChangeProfilePicScreen(
-  //           currentImageUrl: userData?.model?.profileImageUrl,
-  //           engineerId: engineerId,
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
 }
