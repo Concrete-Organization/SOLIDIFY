@@ -12,8 +12,11 @@ class CrackDetectionAiRepo {
   Future<ApiResult<CrackDetectionResponseModel>> getCrackAiResponse(
       CrackDetectionRequestModel crackDetectionRequestModel) async {
     try {
-      final response = await _crackDetectionAiApiCall
-          .getCrackAiResponse(crackDetectionRequestModel);
+      if (crackDetectionRequestModel.image == null) {
+        return ApiResult.failure(ApiErrorHandler.handle("Image is required"));
+      }
+      final formData = await crackDetectionRequestModel.toFormData();
+      final response = await _crackDetectionAiApiCall.getCrackAiResponse(formData);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
