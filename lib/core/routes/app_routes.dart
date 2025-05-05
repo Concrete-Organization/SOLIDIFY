@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:solidify/core/di/dependency_injection.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
@@ -65,6 +67,7 @@ import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_
 class AppRoutes {
   Route generateRoute(RouteSettings settings) {
     final crackDetectionCubit = getIt<CrackDetectionAiCubit>();
+    final args = settings.arguments;
     switch (settings.name) {
       case Routes.onboardingScreen:
         return MaterialPageRoute(
@@ -245,7 +248,9 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => BlocProvider.value(
             value: crackDetectionCubit,
-            child: const UploadCrackGalleryImage(),
+            child: UploadCrackGalleryImage(
+              imageFile: args is File ? args : null,
+            ),
           ),
         );
       case Routes.crackDetectionResultScreen:

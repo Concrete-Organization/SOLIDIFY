@@ -26,12 +26,13 @@ class _CrackDetectionChooseUploadingImageState extends State<CrackDetectionChoos
       setState(() {
         _capturedImage = File(pickedFile.path);
       });
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => UploadCrackGalleryImage(imageFile: _capturedImage),
-        ),
-      );
+      context.pushNamed(Routes.uploadCrackGalleryImageScreen, arguments: _capturedImage);
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => UploadCrackGalleryImage(imageFile: _capturedImage),
+      //   ),
+      // );
     }
   }
 
