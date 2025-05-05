@@ -61,7 +61,7 @@ class _ConcreteStrengthAiQuestionsScreenState
               child: ConcreteStrengthAiPageViewBuilder(
                 controller: _controller,
                 onPageChanged: (index) => setState(() => currentPage = index),
-                onTextChanged: _onTextChanged, // Pass the callback here
+                onTextChanged: _onTextChanged,
               ),
             ),
             Column(
