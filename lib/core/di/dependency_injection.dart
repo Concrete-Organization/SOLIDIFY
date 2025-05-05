@@ -14,6 +14,9 @@ import 'package:solidify/features/chatbot/logic/chatbot_cubit.dart';
 import 'package:solidify/features/community/data/repos/posts_repo.dart';
 import 'package:solidify/features/community/logic/posts/posts_cubit.dart';
 import 'package:solidify/features/chatbot/data/api/chatbot_api_call.dart';
+import 'package:solidify/features/crack_detection/data/api/crack_detection_ai_api_call.dart';
+import 'package:solidify/features/crack_detection/data/repo/crack_detection_ai_repo.dart';
+import 'package:solidify/features/crack_detection/logic/crack_detection_ai_cubit.dart';
 import 'package:solidify/features/marketplace/cart/logic/cart_cubit.dart';
 import 'package:solidify/features/community/data/repos/comments_repo.dart';
 import 'package:solidify/features/marketplace/search/logic/search_cubit.dart';
@@ -58,6 +61,8 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<ChatbotApiService>(() => ChatbotApiService(dio));
   getIt.registerLazySingleton<ConcreteStrengthAiApiCall>(
       () => ConcreteStrengthAiApiCall(dio));
+  getIt.registerLazySingleton<CrackDetectionAiApiCall>(
+      () => CrackDetectionAiApiCall(dio));
 
   // login
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
@@ -144,4 +149,9 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<ReviewsRepo>(() => ReviewsRepo(getIt()));
   getIt.registerLazySingleton<PostReviewCubit>(
       () => PostReviewCubit(getIt<ReviewsRepo>()));
+  // crack detection
+  getIt.registerLazySingleton<CrackDetectionAiRepo>(
+      () => CrackDetectionAiRepo(getIt()));
+  getIt.registerFactory<CrackDetectionAiCubit>(
+      () => CrackDetectionAiCubit(getIt()));
 }
