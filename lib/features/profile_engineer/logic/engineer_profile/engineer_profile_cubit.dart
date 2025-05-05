@@ -98,7 +98,9 @@ class EngineerProfileCubit extends Cubit<EngineerProfileState> {
       if (image != null) {
         File imageFile = File(image.path);
         await updateEngineerProfile(engineerId, imageFile);
-        Navigator.pop(context);
+        if(context.mounted){
+          Navigator.pop(context);
+        }
       }
     } catch (e) {
       emit(EngineerProfileState.failure(ApiErrorModel(message: 'Error while using camera')));
@@ -123,6 +125,8 @@ class EngineerProfileCubit extends Cubit<EngineerProfileState> {
 
   Future<void> handleRemoveImage(String engineerId, BuildContext context) async {
     await deleteEngineerProfile(engineerId);
-    Navigator.pop(context);
+    if(context.mounted){
+      Navigator.pop(context);
+    }
   }
 }

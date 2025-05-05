@@ -9,8 +9,13 @@ import 'package:solidify/core/theming/text_styles.dart';
 
 class CrackDetectionUploadContainer extends StatefulWidget {
   final File? imageFile;
+  final void Function(File?)? onImageSelected;
 
-  const CrackDetectionUploadContainer({super.key, this.imageFile});
+  const CrackDetectionUploadContainer({
+    super.key,
+    this.imageFile,
+    this.onImageSelected,
+  });
 
   @override
   State<CrackDetectionUploadContainer> createState() =>
@@ -25,9 +30,7 @@ class _CrackDetectionUploadContainerState
   @override
   void initState() {
     super.initState();
-    if (widget.imageFile != null) {
-      _selectedImage = widget.imageFile;
-    }
+    _selectedImage = widget.imageFile;
   }
 
   Future<void> _pickImage() async {
@@ -36,9 +39,9 @@ class _CrackDetectionUploadContainerState
       setState(() {
         _selectedImage = File(pickedFile.path);
       });
+      widget.onImageSelected?.call(_selectedImage);
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -52,27 +55,28 @@ class _CrackDetectionUploadContainerState
         ),
         child: _selectedImage == null
             ? Column(
-                children: [
-                  verticalSpace(132),
-                  SvgPicture.asset('assets/svgs/crack_upload.svg'),
-                  verticalSpace(18),
-                  Text(
-                    'Click to upload image',
-                    textAlign: TextAlign.center,
-                    style: TextStyles.font15MainBlueRegular.copyWith(
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                  verticalSpace(91),
-                ],
-              )
-            : ClipRRect(
-                borderRadius: BorderRadius.circular(10.r),
-                child: Image.file(
-                  _selectedImage!,
-                  fit: BoxFit.cover,
-                ),
+          children: [
+            verticalSpace(132),
+            SvgPicture.asset('assets/svgs/crack_upload.svg'),
+            verticalSpace(18),
+            Text(
+              'Click to upload image',
+              textAlign: TextAlign.center,
+              style: TextStyles.font15MainBlueRegular.copyWith(
+                decoration: TextDecoration.underline,
               ),
+            ),
+            verticalSpace(91),
+          ],
+        )
+            : ClipRRect(
+          borderRadius: BorderRadius.circular(10.r),
+          child: Image.file(
+            _selectedImage!,
+            fit: BoxFit.cover,
+            height: MediaQuery.of(context).size.height*0.5,
+          ),
+        ),
       ),
     );
   }

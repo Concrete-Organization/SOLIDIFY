@@ -1,0 +1,2 @@
+/Users/ibrahimagdy/Desktop/My Mac/Graduation /SOLIDIFY/android/app/.cxx/Debug/70e4j3g5/x86/CMakeFiles/edit_cache.dir
+/Users/ibrahimagdy/Desktop/My Mac/Graduation /SOLIDIFY/android/app/.cxx/Debug/70e4j3g5/x86/CMakeFiles/rebuild_cache.dir

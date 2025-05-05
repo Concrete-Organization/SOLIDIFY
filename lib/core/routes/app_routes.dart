@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:solidify/core/di/dependency_injection.dart';
 import 'package:solidify/features/auth/sign_up/screens/engineer_account_sign_up/logic/engineer_account_sign_up_cubit.dart';
 import 'package:solidify/features/concrete_strength_ai/ui/screens/concrete_strength_ai_questions_screen.dart';
+import 'package:solidify/features/crack_detection/logic/crack_detection_ai_cubit.dart';
 import 'package:solidify/features/marketplace/search/ui/screens/search_screen.dart';
 import 'package:solidify/features/marketplace/search/ui/screens/search_with_filter_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,6 +66,8 @@ import 'package:solidify/features/auth/sign_up/screens/concrete_company_account_
 
 class AppRoutes {
   Route generateRoute(RouteSettings settings) {
+    final crackDetectionCubit = getIt<CrackDetectionAiCubit>();
+    final args = settings.arguments;
     switch (settings.name) {
       case Routes.onboardingScreen:
         return MaterialPageRoute(
@@ -152,7 +157,6 @@ class AppRoutes {
           ),
           settings: settings,
         );
-
       case Routes.productDetailsScreen:
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
@@ -235,15 +239,26 @@ class AppRoutes {
         );
       case Routes.crackDetectionChooseUploadingImageScreen:
         return MaterialPageRoute(
-          builder: (context) => const CrackDetectionChooseUploadingImage(),
+          builder: (context) => BlocProvider.value(
+            value: crackDetectionCubit,
+            child: const CrackDetectionChooseUploadingImage(),
+          ),
         );
       case Routes.uploadCrackGalleryImageScreen:
         return MaterialPageRoute(
-          builder: (context) => const UploadCrackGalleryImage(),
+          builder: (context) => BlocProvider.value(
+            value: crackDetectionCubit,
+            child: UploadCrackGalleryImage(
+              imageFile: args is File ? args : null,
+            ),
+          ),
         );
       case Routes.crackDetectionResultScreen:
         return MaterialPageRoute(
-          builder: (context) => const CrackDetectionResultScreen(),
+          builder: (context) => BlocProvider.value(
+            value: crackDetectionCubit,
+            child: const CrackDetectionResultScreen(),
+          ),
         );
       case Routes.reviewsScreen:
         final List<ReviewModel> reviews =
