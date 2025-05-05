@@ -2,8 +2,11 @@ class ApiConstants {
   static const String apiBaseUrl = "https://solidifyapi.runasp.net/api/";
   static const String concreteStrengthAiApiBaseUrl =
       "https://mahmoud763-concrete.hf.space/";
+  static const String crackDetectionAiApiBaseUrl =
+      "https://mahmoud763-crack.hf.space/";
   static const String geminiApiUrl =
       "https://generativelanguage.googleapis.com/v1beta/";
+
 
   static const String login = "Account/login";
   static const String engineerSignUP = 'Account/registerEngineer';
