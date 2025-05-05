@@ -34,7 +34,9 @@ class _CrackDetectionUploadContainerState
   }
 
   Future<void> _pickImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    final pickedFile = await _picker.pickImage(
+      source: ImageSource.gallery,
+    );
     if (pickedFile != null) {
       setState(() {
         _selectedImage = File(pickedFile.path);
@@ -55,28 +57,28 @@ class _CrackDetectionUploadContainerState
         ),
         child: _selectedImage == null
             ? Column(
-          children: [
-            verticalSpace(132),
-            SvgPicture.asset('assets/svgs/crack_upload.svg'),
-            verticalSpace(18),
-            Text(
-              'Click to upload image',
-              textAlign: TextAlign.center,
-              style: TextStyles.font15MainBlueRegular.copyWith(
-                decoration: TextDecoration.underline,
-              ),
-            ),
-            verticalSpace(91),
-          ],
-        )
+                children: [
+                  verticalSpace(132),
+                  SvgPicture.asset('assets/svgs/crack_upload.svg'),
+                  verticalSpace(18),
+                  Text(
+                    'Click to upload image',
+                    textAlign: TextAlign.center,
+                    style: TextStyles.font15MainBlueRegular.copyWith(
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                  verticalSpace(91),
+                ],
+              )
             : ClipRRect(
-          borderRadius: BorderRadius.circular(10.r),
-          child: Image.file(
-            _selectedImage!,
-            fit: BoxFit.cover,
-            height: MediaQuery.of(context).size.height*0.5,
-          ),
-        ),
+                borderRadius: BorderRadius.circular(10.r),
+                child: Image.file(
+                  _selectedImage!,
+                  fit: BoxFit.cover,
+                  height: MediaQuery.of(context).size.height * 0.5,
+                ),
+              ),
       ),
     );
   }
