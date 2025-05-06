@@ -98,4 +98,10 @@ The project utilizes various dependencies to enhance functionality and streamlin
 
 Solidify App delivers an intuitive user experience through a series of purpose-driven screens tailored to the construction industry. The splash and onboarding screens introduce users to the app’s mission of enhancing construction practices. After secure authentication, engineers and companies are directed to personalized dashboards. Users can estimate concrete strength using AI, detect structural cracks, and explore a marketplace for sourcing construction materials. The app also features a dynamic community hub for knowledge sharing and a responsive chatbot for real-time support. Profile management is streamlined, ensuring easy access to user data and preferences.
 
+## 🌠 Splash & OnBoarding 
 
+![Splash](https://github.com/user-attachments/assets/286b9c3a-122c-4cd9-9937-ae1076e1b319)
+![OnBoarding1](https://github.com/user-attachments/assets/c073b0b3-b0da-48c7-ba05-0e3de459e684)
+![OnBoarding2](https://github.com/user-attachments/assets/0e125cd6-49a1-4459-8355-bc166fdd418e)
+![OnBoarding3](https://github.com/user-attachments/assets/09253231-e173-4c94-9fe2-508456e39463)
+![OnBoarding4](https://github.com/user-attachments/assets/1c133450-e573-43d7-82eb-dceb38492c05)
