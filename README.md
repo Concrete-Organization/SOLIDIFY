@@ -101,11 +101,11 @@ Solidify App delivers an intuitive user experience through a series of purpose-d
 ## 🌠 Splash & OnBoarding 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/286b9c3a-122c-4cd9-9937-ae1076e1b319" width="320"/>
-  <img src="https://github.com/user-attachments/assets/c073b0b3-b0da-48c7-ba05-0e3de459e684" width="320"/>
-  <img src="https://github.com/user-attachments/assets/0e125cd6-49a1-4459-8355-bc166fdd418e" width="320"/>
-  <img src="https://github.com/user-attachments/assets/09253231-e173-4c94-9fe2-508456e39463" width="320"/>
-  <img src="https://github.com/user-attachments/assets/1c133450-e573-43d7-82eb-dceb38492c05" width="320"/>
+  <img src="https://github.com/user-attachments/assets/286b9c3a-122c-4cd9-9937-ae1076e1b319" width="250"/>
+  <img src="https://github.com/user-attachments/assets/c073b0b3-b0da-48c7-ba05-0e3de459e684" width="250"/>
+  <img src="https://github.com/user-attachments/assets/0e125cd6-49a1-4459-8355-bc166fdd418e" width="250"/>
+  <img src="https://github.com/user-attachments/assets/09253231-e173-4c94-9fe2-508456e39463" width="250"/>
+  <img src="https://github.com/user-attachments/assets/1c133450-e573-43d7-82eb-dceb38492c05" width="250"/>
 </p>
 
 ## 🔐 Authentication
