@@ -110,29 +110,29 @@ Solidify App delivers an intuitive user experience through a series of purpose-d
 
 ## 🔐 Authentication
 - 🔑 **Login:**
-<img src="https://github.com/user-attachments/assets/a6383c14-0907-41a8-8d9e-3654cbcd706d" width="320"/>
+<img src="https://github.com/user-attachments/assets/a6383c14-0907-41a8-8d9e-3654cbcd706d" width="250"/>
 
 - ❓ **Forget Password:**
-<img src="https://github.com/user-attachments/assets/06db305d-ec75-4d07-8c19-beeeaaa71882" width="320"/>
-<img src="https://github.com/user-attachments/assets/b4b2f449-5e2c-41a5-830b-177654106e6f" width="320"/>
-<img src="https://github.com/user-attachments/assets/f3756f05-69a4-4e5a-b509-b41a4afe726d" width="320"/>
+<img src="https://github.com/user-attachments/assets/06db305d-ec75-4d07-8c19-beeeaaa71882" width="250"/>
+<img src="https://github.com/user-attachments/assets/b4b2f449-5e2c-41a5-830b-177654106e6f" width="250"/>
+<img src="https://github.com/user-attachments/assets/f3756f05-69a4-4e5a-b509-b41a4afe726d" width="250"/>
 
 - 🏢 **Sign Up as Concrete Company:**
-<img src="https://github.com/user-attachments/assets/6901d8ff-2f0e-4370-944a-eb034bc7be0f" width="320"/>
-<img src="https://github.com/user-attachments/assets/2495a7a8-4b38-4bc5-a029-cc3b5d4bae84" width="320"/>
-<img src="https://github.com/user-attachments/assets/0cb59e0e-979c-4314-910f-3ea974f9fc20" width="320"/>
-<img src="https://github.com/user-attachments/assets/8b5354e5-c9b2-40d5-9345-85429a9c46a8" width="320"/>
-<img src="https://github.com/user-attachments/assets/c79a9485-41e0-4043-b736-b10eda21047b" width="320"/>
-<img src="https://github.com/user-attachments/assets/a88143dd-30be-409e-a509-609175d4824f" width="320"/>
+<img src="https://github.com/user-attachments/assets/6901d8ff-2f0e-4370-944a-eb034bc7be0f" width="250"/>
+<img src="https://github.com/user-attachments/assets/2495a7a8-4b38-4bc5-a029-cc3b5d4bae84" width="250"/>
+<img src="https://github.com/user-attachments/assets/0cb59e0e-979c-4314-910f-3ea974f9fc20" width="250"/>
+<img src="https://github.com/user-attachments/assets/8b5354e5-c9b2-40d5-9345-85429a9c46a8" width="250"/>
+<img src="https://github.com/user-attachments/assets/c79a9485-41e0-4043-b736-b10eda21047b" width="250"/>
+<img src="https://github.com/user-attachments/assets/a88143dd-30be-409e-a509-609175d4824f" width="250"/>
 
 - 🧑‍🔧 **Sign Up as Engineer:**
-<img src="https://github.com/user-attachments/assets/03f08834-6c53-4459-8008-8adc2161ffec" width="320"/>
-<img src="https://github.com/user-attachments/assets/84d6f459-da94-4275-80d3-98023937ca83" width="320"/>
-<img src="https://github.com/user-attachments/assets/4a0e6065-b313-4ebe-bfd4-9d02aee2c48c" width="320"/>
-<img src="https://github.com/user-attachments/assets/ab67011f-e542-4fed-86c6-89ecb98ebdea" width="320"/>
+<img src="https://github.com/user-attachments/assets/03f08834-6c53-4459-8008-8adc2161ffec" width="250"/>
+<img src="https://github.com/user-attachments/assets/84d6f459-da94-4275-80d3-98023937ca83" width="250"/>
+<img src="https://github.com/user-attachments/assets/4a0e6065-b313-4ebe-bfd4-9d02aee2c48c" width="250"/>
+<img src="https://github.com/user-attachments/assets/ab67011f-e542-4fed-86c6-89ecb98ebdea" width="250"/>
 
 - 🛒 **MarketPlace:**
-<img src="https://github.com/user-attachments/assets/504837a0-fa9e-4f0d-8c76-3e167e3fe438" width="320"/>
-<img src="https://github.com/user-attachments/assets/e9b8a0a5-20fa-4764-b193-611e83eac378" width="320"/>
-<img src="https://github.com/user-attachments/assets/a71319d8-19cd-49c0-90fe-fb951c5bad38" width="320"/>
+<img src="https://github.com/user-attachments/assets/504837a0-fa9e-4f0d-8c76-3e167e3fe438" width="250"/>
+<img src="https://github.com/user-attachments/assets/e9b8a0a5-20fa-4764-b193-611e83eac378" width="250"/>
+<img src="https://github.com/user-attachments/assets/a71319d8-19cd-49c0-90fe-fb951c5bad38" width="250"/>
 
