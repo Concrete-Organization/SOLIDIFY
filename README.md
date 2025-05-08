@@ -131,8 +131,21 @@ Solidify App delivers an intuitive user experience through a series of purpose-d
 <img src="https://github.com/user-attachments/assets/4a0e6065-b313-4ebe-bfd4-9d02aee2c48c" width="250"/>
 <img src="https://github.com/user-attachments/assets/ab67011f-e542-4fed-86c6-89ecb98ebdea" width="250"/>
 
-- 🛒 **MarketPlace:**
+## 🛒 MarketPlace
+- 🏠 **Home:**
 <img src="https://github.com/user-attachments/assets/504837a0-fa9e-4f0d-8c76-3e167e3fe438" width="250"/>
 <img src="https://github.com/user-attachments/assets/e9b8a0a5-20fa-4764-b193-611e83eac378" width="250"/>
 <img src="https://github.com/user-attachments/assets/a71319d8-19cd-49c0-90fe-fb951c5bad38" width="250"/>
+
+- 🛍️ **Products Details & Favorites:**
+<img src="https://github.com/user-attachments/assets/5fc45563-6d11-4f9d-800b-5d1bb2934c3b" width="250"/>
+<img src="https://github.com/user-attachments/assets/cb8ebedf-da43-4776-b56b-1e912ec0496d" width="250"/>
+<img src="https://github.com/user-attachments/assets/11ea36f3-02a2-4807-b47c-100e10672c09" width="250"/>
+
+- 🔍 **Search & Filters:**
+<img src="https://github.com/user-attachments/assets/902edc55-5454-47a9-af54-b364ca2e2f8e" width="250"/>
+<img src="https://github.com/user-attachments/assets/9feba023-88d7-4691-ae4e-00ec8e33239d" width="250"/>
+<img src="https://github.com/user-attachments/assets/49b10cc3-a86d-47d5-b8b6-32ffb773750c" width="250"/>
+
+
 
