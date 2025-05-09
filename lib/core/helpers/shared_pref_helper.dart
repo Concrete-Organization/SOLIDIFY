@@ -4,10 +4,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:solidify/features/marketplace/favorites/domain/product_entity.dart';
 
+bool isLoggedInUser = false;
+
 class SharedPrefKeys {
   static const String userId = 'userId';
   static const String userName = 'userName';
   static const String email = 'email';
+  static const String userToken = 'userToken';
   static const String accessToken = 'accessToken';
   static const String refreshToken = 'refreshToken';
   static const String expiresOn = 'expiresOn';
