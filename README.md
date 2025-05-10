@@ -168,5 +168,16 @@ Solidify App delivers an intuitive user experience through a series of purpose-d
 <img src="https://github.com/user-attachments/assets/9819aaa8-417d-4612-b8da-3986ee048ffe" width="250"/>
 <img src="https://github.com/user-attachments/assets/3b6dd2cc-83e6-4d4d-b68a-20b92307315a" width="250"/>
 
+## 👤 Concrete Company Profile
+- 🔜 **Profile & Active orders:**
+<img src="https://github.com/user-attachments/assets/abe95b2b-55cc-47fb-923b-c02010d1fae3" width="250"/>
+<img src="https://github.com/user-attachments/assets/d5894c3e-7c93-4066-9f8b-4ba935a9c881" width="250"/>
+<img src="https://github.com/user-attachments/assets/06efd46b-beea-44ea-a6cb-f40fbb1fe63b" width="250"/>
+
+- ✅ **Profile & Completed orders:**
+<img src="https://github.com/user-attachments/assets/379b63e9-8649-45c8-bd30-5fb5d54362bf" width="250"/>
+<img src="https://github.com/user-attachments/assets/5e7f0795-d7b0-4c70-b6d5-e1d1928fee35" width="250"/>
+<img src="https://github.com/user-attachments/assets/c2d171d4-5ba6-4daa-b9ec-a27b65664328" width="250"/>
+
 
 
