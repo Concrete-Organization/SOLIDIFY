@@ -152,3 +152,10 @@ Solidify App delivers an intuitive user experience through a series of purpose-d
 <img src="https://github.com/user-attachments/assets/e026305d-7ceb-46d8-8377-85605fc1d3c2" width="250"/>
 <img src="https://github.com/user-attachments/assets/8fdd1671-414e-4069-97ac-2574fabeb51a" width="250"/>
 
+- 💰 **Cart & Cash on Delivery:**
+<img src="https://github.com/user-attachments/assets/6ed37664-74d9-4601-8e33-916293222a15" width="250"/>
+<img src="https://github.com/user-attachments/assets/ce086ae2-7643-4b6b-b2a2-4eeff39cdbd1" width="250"/>
+<img src="https://github.com/user-attachments/assets/1d0c834f-4688-470c-96e4-8aac629c88db" width="250"/>
+
+
+
