@@ -100,13 +100,11 @@ Solidify App delivers an intuitive user experience through a series of purpose-d
 
 ## 🌠 Splash & OnBoarding 
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/286b9c3a-122c-4cd9-9937-ae1076e1b319" width="250"/>
-  <img src="https://github.com/user-attachments/assets/c073b0b3-b0da-48c7-ba05-0e3de459e684" width="250"/>
-  <img src="https://github.com/user-attachments/assets/0e125cd6-49a1-4459-8355-bc166fdd418e" width="250"/>
-  <img src="https://github.com/user-attachments/assets/09253231-e173-4c94-9fe2-508456e39463" width="250"/>
-  <img src="https://github.com/user-attachments/assets/1c133450-e573-43d7-82eb-dceb38492c05" width="250"/>
-</p>
+<img src="https://github.com/user-attachments/assets/286b9c3a-122c-4cd9-9937-ae1076e1b319" width="250"/>
+<img src="https://github.com/user-attachments/assets/c073b0b3-b0da-48c7-ba05-0e3de459e684" width="250"/>
+<img src="https://github.com/user-attachments/assets/0e125cd6-49a1-4459-8355-bc166fdd418e" width="250"/>
+<img src="https://github.com/user-attachments/assets/09253231-e173-4c94-9fe2-508456e39463" width="250"/>
+<img src="https://github.com/user-attachments/assets/1c133450-e573-43d7-82eb-dceb38492c05" width="250"/>
 
 ## 🔐 Authentication
 - 🔑 **Login:**
@@ -161,5 +159,14 @@ Solidify App delivers an intuitive user experience through a series of purpose-d
 <img src="https://github.com/user-attachments/assets/4d62436d-25b2-45a6-a133-a70248f6d9c7" width="250"/>
 <img src="https://github.com/user-attachments/assets/e3ef004f-d725-456d-8e14-1499cf80a3a6" width="250"/>
 <img src="https://github.com/user-attachments/assets/0eeadd48-559c-4d74-b63c-beec78ceb4ef" width="250"/>
+
+## 🧱 Concrete Comprehensive Strength
+<img src="https://github.com/user-attachments/assets/92b38d07-1dc2-48b9-8383-59a5261afa28" width="250"/>
+<img src="https://github.com/user-attachments/assets/b12aab88-ef6c-42a0-9269-ed1f8ddf94d7" width="250"/>
+<img src="https://github.com/user-attachments/assets/891251f3-310f-49a4-9aac-0d491abce86e" width="250"/>
+<img src="https://github.com/user-attachments/assets/4cd5ab30-868c-4522-90a2-8fa8c48b1c37" width="250"/>
+<img src="https://github.com/user-attachments/assets/9819aaa8-417d-4612-b8da-3986ee048ffe" width="250"/>
+<img src="https://github.com/user-attachments/assets/3b6dd2cc-83e6-4d4d-b68a-20b92307315a" width="250"/>
+
 
 
