@@ -190,4 +190,12 @@ Solidify App delivers an intuitive user experience through a series of purpose-d
 <img src="https://github.com/user-attachments/assets/fc829372-e335-4e80-aa85-1823071b55b5" width="250"/>
 <img src="https://github.com/user-attachments/assets/c3f0412b-59e3-4c81-96de-6351e61a3ae5" width="250"/>
 
+## 🏚️ Crack Detection & Recommendation
+<img src="https://github.com/user-attachments/assets/64554f01-e0cb-4f81-a2c6-3030fa5e34bc" width="250"/>
+<img src="https://github.com/user-attachments/assets/db1775b2-325c-4461-b203-66a028bca1be" width="250"/>
+<img src="https://github.com/user-attachments/assets/717bbf8c-fae6-4531-8756-a52bf8965e10" width="250"/>
+<img src="https://github.com/user-attachments/assets/aae8109a-c13f-46cd-bbba-9ada8a8bbd02" width="250"/>
+<img src="https://github.com/user-attachments/assets/ab5a91ef-329f-4cb0-aad8-b895514f4d5a" width="250"/>
+<img src="https://github.com/user-attachments/assets/6da675aa-db6e-413c-8809-83f0d9eb019f" width="250"/>
+
 
