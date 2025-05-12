@@ -212,5 +212,10 @@ Solidify App delivers an intuitive user experience through a series of purpose-d
 <img src="https://github.com/user-attachments/assets/7ce16a45-f26b-428c-9098-3b07287c2ccd" width="250"/>
 <img src="https://github.com/user-attachments/assets/9e4d3271-b10b-49fa-8ac6-8ba96f3bdb8c" width="250"/>
 
+## 🤖 Sila Chatbot
+<img src="https://github.com/user-attachments/assets/f079186d-91d6-45c0-902f-50a94219afd6" width="250"/>
+<img src="https://github.com/user-attachments/assets/f4a6ff37-ac93-431b-802b-ffd73921f28f" width="250"/>
+<img src="https://github.com/user-attachments/assets/105fda0a-5b10-45a8-9625-a8fc27bd34d2" width="250"/>
+
 
 
