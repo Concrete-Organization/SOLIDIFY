@@ -217,5 +217,10 @@ Solidify App delivers an intuitive user experience through a series of purpose-d
 <img src="https://github.com/user-attachments/assets/f4a6ff37-ac93-431b-802b-ffd73921f28f" width="250"/>
 <img src="https://github.com/user-attachments/assets/105fda0a-5b10-45a8-9625-a8fc27bd34d2" width="250"/>
 
+## 🔔 Notifications
+<img src="https://github.com/user-attachments/assets/df46ab00-bd6d-4f2c-8b9b-110f3fb3b231" width="250"/>
+<img src="https://github.com/user-attachments/assets/9aec0283-06ed-413d-81cb-53fc9fa14fde" width="250"/>
+
+
 
 
