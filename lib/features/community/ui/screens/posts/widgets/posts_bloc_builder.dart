@@ -44,7 +44,7 @@ class PostsBlocBuilder extends StatelessWidget {
           postsError: (error) {
             final errorMessage = error.getAllErrorMessages();
             return ErrorStateMessage(
-              message: errorMessage,
+              message: '',
               lottieAssetPath: errorMessage == "Something went wrong"
                   ? 'assets/lottie/error_animation.json'
                   : null,
