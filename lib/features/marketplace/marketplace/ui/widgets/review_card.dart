@@ -21,7 +21,7 @@ class _ReviewCardState extends State<ReviewCard> {
   @override
   Widget build(BuildContext context) {
     final String reviewText =
-        '${widget.review.message}This product is amazing! This product is so good! It exceeded all my expectations. The quality is top-notch, and the delivery was super fast. I highly recommend it to anyone looking for a reliable and durable product. The customer service was also excellent, and they were very helpful throughout the process. Overall';
+        widget.review.message;
 
     const int maxChars = 70;
     final bool needTruncation = reviewText.length > maxChars;
