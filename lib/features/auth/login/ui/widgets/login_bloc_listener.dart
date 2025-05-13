@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/auth/login/logic/login_cubit.dart';
 import 'package:solidify/features/auth/login/logic/login_state.dart';
@@ -37,28 +38,14 @@ class LoginBlocListener extends StatelessWidget {
             }
           },
           error: (error) {
-            Navigator.of(context).pop();
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                backgroundColor: Colors.red,
-                content: Text(
-                  error.getAllErrorMessages(),
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ),
-            );
+            while (Navigator.of(context).canPop()) {
+              Navigator.of(context).pop();
+            }
+            CustomSnackBar.showError(context, error.getAllErrorMessages());
           },
           tokenExpired: (message) {
             Navigator.of(context).pop();
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                backgroundColor: Colors.orange,
-                content: Text(
-                  message,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ),
-            );
+            CustomSnackBar.showInfo(context, message);
             context.pushNamedAndRemoveUntil(
               Routes.loginScreen,
               predicate: (Route<dynamic> route) => false,

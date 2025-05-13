@@ -91,10 +91,11 @@ dependencies:
   package_info_plus: ^8.3.0
   # Flutter plugin for Android, iOS and Web supports cropping images
   image_cropper: ^9.0.0
-  #RxDart is an implementation of the popular ReactiveX api for asynchronous programming, leveraging the native Dart Streams api.
+  # RxDart is an implementation of the popular ReactiveX api for asynchronous programming, leveraging the native Dart Streams api.
   rxdart: ^0.28.0
-  #Collections and utilities functions and classes related to collections
+  # Collections and utilities functions and classes related to collections
   collection: ^1.18.0
+
 
 
 
@@ -112,7 +113,8 @@ dev_dependencies:
   json_serializable: ^6.9.0
   #A build system for Dart code generation and modular compilation
   build_runner: ^2.4.13
-
+  # simplifies the task of updating your Flutter app's launcher icon
+  flutter_launcher_icons: ^0.14.3
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
