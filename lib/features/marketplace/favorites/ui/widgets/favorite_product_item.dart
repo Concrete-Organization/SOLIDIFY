@@ -189,8 +189,12 @@ class _FavoriteProductItemState extends State<FavoriteProductItem> {
     return Row(
       children: [
         Text(
-          widget.product.brandName,
+          widget.product.brandName.length > 15
+              ? '${widget.product.brandName.substring(0, 15)}...'
+              : widget.product.brandName,
           style: TextStyles.font12lightBlackLight,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
         const Spacer(),
         const Icon(
