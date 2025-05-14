@@ -23,7 +23,7 @@ class NotificationsScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const NotificationsListView(), // Add the list view here
+      body: const NotificationsListView(),
     );
   }
 }

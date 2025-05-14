@@ -42,13 +42,8 @@ class CrackDetectionSuccessContent extends StatelessWidget {
           HorizontalDivider(thickness: 0.2),
           verticalSpace(14),
           Text(
-            'Recommendation : ',
-            style: TextStyles.font15lightBlackMedium,
-          ),
-          verticalSpace(8),
-          Text(
-            '- Minor issue detected. Regular monitoring and sealant application recommended',
-            style: TextStyles.font12MainBlueMedium,
+            'The image showing crack in details including :\n 1- Width \n2- Length \n3-Angle',
+            style: TextStyles.font14lightBlackRegular,
           ),
           const Spacer(),
           AppTextButton(
