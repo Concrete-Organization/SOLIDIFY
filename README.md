@@ -94,6 +94,13 @@ The project utilizes various dependencies to enhance functionality and streamlin
 - **rxdart:** Reactive Functional Programming for Streams.
 - **collection:** Additional collection utilities and enhancements for Dart core collections.
 
+## 📸 SOLIDIFY APP DEMO 
+
+'CLICK ON IMG & ENJOY WITH DEMO' 🤩👇
+
+[![Watch the Demo Video](https://github.com/user-attachments/assets/320374f3-9376-4b4c-9d24-6d5c1710b6e2)](https://drive.google.com/file/d/13tkMXVSvelSPX2Lm1RpgAu6pXliPZH1Z/view?usp=sharing)
+
+
 ## 🏗️ Solidify App Screens
 
 Solidify App delivers an intuitive user experience through a series of purpose-driven screens tailored to the construction industry. The splash and onboarding screens introduce users to the app’s mission of enhancing construction practices. After secure authentication, engineers and companies are directed to personalized dashboards. Users can estimate concrete strength using AI, detect structural cracks, and explore a marketplace for sourcing construction materials. The app also features a dynamic community hub for knowledge sharing and a responsive chatbot for real-time support. Profile management is streamlined, ensuring easy access to user data and preferences.
