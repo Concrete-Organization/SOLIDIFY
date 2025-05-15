@@ -56,7 +56,7 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
           verticalSpace(5),
           AppTextFormField(
             hintText: 'Enter your email',
-            controller: context.read<ForgetPasswordCubit>().emailController,
+            controller: cubit.emailController,
             validator: validateEmail,
           ),
           const Spacer(),

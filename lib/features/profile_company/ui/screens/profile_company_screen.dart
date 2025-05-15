@@ -7,6 +7,7 @@ import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
 import 'package:solidify/core/theming/text_styles.dart';
 import 'package:solidify/core/theming/color_manger.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/core/widgets/profile_top_bar.dart';
 import 'package:solidify/core/widgets/custom_tab_toggle.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
@@ -120,11 +121,7 @@ class _ProfileCompanyScreenState extends State<ProfileCompanyScreen> {
                                   );
                                 },
                                 orElse: () {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text('No orders to show'),
-                                    ),
-                                  );
+                                  CustomSnackBar.showInfo(context, 'No orders to show');
                                 },
                               );
                             },

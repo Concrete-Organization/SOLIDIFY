@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/extensions.dart';
 import 'package:solidify/core/routes/routes_name.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_cubit.dart';
 import 'package:solidify/features/auth/forget_password/logic/forget_password_state.dart';
@@ -28,9 +29,7 @@ class ForgetPasswordBlocListener extends StatelessWidget {
           },
           error: (error) {
             Navigator.pop(context);
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(error.getAllErrorMessages())),
-            );
+            CustomSnackBar.showError(context, error.getAllErrorMessages());
           },
         );
       },

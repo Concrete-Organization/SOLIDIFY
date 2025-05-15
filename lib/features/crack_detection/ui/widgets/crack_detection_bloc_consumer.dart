@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
 import 'package:solidify/features/crack_detection/logic/crack_detection_ai_cubit.dart';
 import 'package:solidify/features/crack_detection/logic/crack_detection_ai_state.dart';
@@ -13,8 +14,9 @@ class CrackDetectionBlocConsumer extends StatelessWidget {
     return BlocConsumer<CrackDetectionAiCubit, CrackDetectionAiState>(
       listener: (context, state) {
         if (state is Failure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.error.getAllErrorMessages())),
+          CustomSnackBar.showError(
+            context,
+            state.error.getAllErrorMessages(),
           );
         }
       },
@@ -22,7 +24,8 @@ class CrackDetectionBlocConsumer extends StatelessWidget {
         return state.when(
           initial: () => const SizedBox.shrink(),
           loading: () => LoadingCircleIndicator(),
-          success: (response) => CrackDetectionSuccessContent(response: response),
+          success: (response) =>
+              CrackDetectionSuccessContent(response: response),
           failure: (_) => const SizedBox.shrink(),
         );
       },
