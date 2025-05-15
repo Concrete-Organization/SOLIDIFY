@@ -55,8 +55,10 @@ class SearchScreen extends StatelessWidget {
                             if (products.isEmpty) {
                               return SliverToBoxAdapter(
                                 child: Center(
-                                  child: Text('No products found',
-                                      style: TextStyles.font15MainBlueMedium),
+                                  child: Text(
+                                    'No products found',
+                                    style: TextStyles.font15MainBlueMedium,
+                                  ),
                                 ),
                               );
                             }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solidify/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:solidify/core/widgets/custom_snack_bar.dart';
 import 'package:solidify/core/widgets/horizontal_divider.dart';
 import 'package:solidify/core/widgets/error_state_message.dart';
 import 'package:solidify/core/widgets/loading_circle_indicator.dart';
@@ -26,9 +27,7 @@ class ProductDetailsBlocConsumer extends StatelessWidget {
           loading: (_) {},
           success: (_) {},
           error: (productId, error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Error: ${error.message}')),
-            );
+            CustomSnackBar.showError(context, error.getAllErrorMessages());
           },
         );
       },
