@@ -72,7 +72,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
             isObscureText: widget.isConfirmPasswordHidden,
             validator: (value) => validateConfirmPassword(
               value,
-              cubit.confirmPasswordController.text,
+              cubit.newPasswordController.text,
             ),
             suffixIcon: IconButton(
               icon: Icon(
